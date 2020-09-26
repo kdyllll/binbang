@@ -1,0 +1,548 @@
+html, body {
+  position: relative;
+  height: 100%;
+}
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color:#000;
+  margin-top:100px;
+  padding: 0;
+}
+.swiper-container {
+  width: 100%;
+  height: 80vh;
+}
+/* 스와이프 전체영역 */
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* 채워지는 바  */
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+      background: black;
+}
+/* 왼쪽 버튼 */
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    background-image: url("../../image/common/icon/prev.png");
+    background-size:cover;
+    
+    left: 10px;
+    right: auto;
+}
+/* 오른쪽 버튼 */
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    background-image: url("../../image/common/icon/next.png");
+    background-size:cover;
+   
+    right: 10px;
+    left: auto;
+}
+
+ /* 스와이프 박스 안에서, 내용이 출력될 영역들 */
+.slide1, .slide2,.slide3,.slide4,.slide5,.slide6,.slide7,.slide8{
+  width: 90%;
+  height: 90%;
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding : 50px 30px;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------- */
+ /* 1/5 */
+.slide1 > * {
+  margin: 10px 20px;
+}
+/* 요소들 */
+.hNameBox, .hTypeBox, .hAddressBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+/* 항목들 사이의 경계선 */
+.line1{
+  width:50%;
+  height: 1px;
+  background-color: black;
+}
+/* 숙소이름,유형,위치 글씨들 */
+.slide1 > div > p {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 숙소이름입력 인풋창 */
+#hName{
+  border:0px;
+  outline:none;
+  height:30px;
+  padding-left: 20px;
+}
+/* 숙소유형 입력 인풋라디오 */
+.hTypeCon{
+  /* border:1px solid; */
+  text-align: left;
+  height: 40px;
+  font-size:13px;
+  padding-left: 20px;
+  margin-top:5px;
+}
+/* 주소 입력 전체 영역 */
+.hAddressCon{
+  width:100%;
+  height:100px;
+  padding-left: 20px;
+  /* border:1px solid; */
+}
+/* 우편번호와 버튼있는 라인 */
+.hAddNumCon{
+  width:500px;
+  height:30px;
+  display: flex;
+  padding-bottom: 8px;
+  
+}
+/* 우편번호 적히는 칸 */
+.hAddNum{
+  width:200px;
+  height:100%;
+  border:1px solid;
+}
+/* 주소 검색하는 버튼 */
+.hAddBtn{
+  width: 100px;
+  height:100%;
+  border:1px solid;
+}
+/* 주소 뜨는 창 */
+.hAdd{
+  width: 500px;
+  height:30px;
+  border:1px solid;
+  margin-bottom: 8px;
+}
+/* 상세주소 적는 창 */
+.hAddDetail{
+  width: 500px;
+  height:30px;
+  border:1px solid;
+}
+
+/* ----------------------------------- */
+ /* 2/5 */
+.slide2 > * {
+  margin: 10px 20px;
+  font-size: 13px;
+  text-align: left;
+}
+/* 요소들(숙소최대인원,개인물건유무) */
+.pNumBox, .personalBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+/* 항목들 사이의 경계선 */
+.line2{
+  width:50%;
+  height: 1px;
+  background-color: black;
+}
+/* 분류 글씨들 */
+.title2 {
+  /* border:1px solid; */
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 숙소최대인원 인풋박스 전체영역 */
+.pNumCon{
+  display: flex;
+  text-align: left;
+  height: 40px;
+  font-size:13px;
+}
+/* 숫자입력 인풋창(최대인원, 방 갯수 등) */
+.slide2 input[type="number"]{
+  border:1px solid rgb(32, 32, 32);
+  outline:none;
+  width: 80px;
+  height:20px;
+  margin-left: 30px;
+  text-align: right;
+  margin-right:5px;
+}
+/* 개인물건 유무 입력 라디오 전체영역 */
+.personalCon{
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  height: 40px;
+  font-size:13px;
+}
+/* 개인물건유무 입력 인풋라디오 */
+.slide2 input[type="radio"]{
+  /* border:1px solid; */
+  text-align: left;
+  margin-left: 20px;
+}
+/* 이용시설 영역 */
+.facilityBox{
+  /* border:1px solid; */
+  width:100%;
+  height: 280px;
+}
+/* 요소들(방,침대,욕실갯수) */
+.roomNumBox, .bedNumBox, .bathNumBox{
+  /* border:1px solid; */
+  display: flex;
+  text-justify: center;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  width:300px;
+  font-size:13px;
+  height:25px;
+  margin-left: 20px;
+}
+/* 방갯수, 침대갯수, 욕실 갯수 글자 */
+.pNum{
+  margin-bottom: 5px;
+  font-size:15px;
+}
+/* 인풋박스와 '개'글자 */
+.roomNumCon, .bedNumCon, .bathNumCons{
+  width:150px;
+}
+
+/* ----------------------------------- */
+ /* 3/5 */
+.slide3 > * {
+  margin: 10px 15px;
+}
+/* 요소들 */
+.timeBox, .phoneBox, .attentionBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width:100%;
+}
+/* 항목들 사이의 경계선 */
+.line3{
+  width:50%;
+  height: 1px;
+  background-color: black;
+}
+/* 체크인아웃, 호스트번호공개, 주의사항 글씨들 */
+.slide3 > div > p {
+  text-align: left;
+  margin-bottom: 10px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 체크인아웃시간 인풋창 */
+#checkTime{
+  border:0px;
+  outline:none;
+  width: 400px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+}
+/* 번호공개 입력 인풋라디오 */
+.phoneCon{
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  height: 40px;
+  font-size:13px;
+}
+/* 개인물건유무 입력 인풋라디오 */
+.slide3 input[type="radio"]{
+  border:1px solid;
+  text-align: left;
+  margin-left: 20px;
+}
+/* 주의사항 입력 전체 영역 */
+.attentionCon{
+  width:100%;
+  height:100px;
+  padding-left: 20px;
+  /* border:1px solid; */
+  text-align: left;
+}
+/* 주의 사항 입력 textarea */
+#attention{
+  border:1px solid rgb(32, 32, 32);
+  outline:none;
+}
+
+/* ----------------------------------- */
+ /* 4/5 */
+/* 전체 화면 */
+.slide4{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.line4{
+  width:1px;
+  height: 100%;
+  background-color: black;
+}
+/* 사진 등록 전체영역 */
+.photoListBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  text-align:left;
+  padding-left:20px;
+  padding-top:10px;
+}
+/* 숙소 사진등록 글씨 */
+.slide3 > div > p {
+  text-align: left;
+  margin-bottom: 30px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 사진 리스트 하나하나 영역 */
+.photoListBox > div{
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+/* 사진등록 인풋버튼 안보이게 */
+.picture{
+  display: none;
+}
+/* 사진 이름 뜰 곳 라인 */
+.picLine{
+  border-bottom: 1px solid;
+  width: 70%;
+  height: 20px;
+}
+/* +버튼 라벨 */
+.uploadPic{
+  fort-size: 25px;
+  font-weight: bolder;
+  margin-left:5px;
+}
+/* -버튼 라벨 */
+.deletePic{
+  fort-size: 25px;
+  font-weight: bolder;
+  margin-left:5px;
+}
+/* 사진미리보기 전체영역 */
+.photoPrevBox{
+  width:40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 사진 미리보기 네모 */
+.photoPreview{
+  width:300px;
+  height: 300px;
+  border:1px solid;
+}
+
+
+ /* ----------------------------------- */
+ /* 5/5 */
+.slide5 > * {
+  margin: 10px 20px;
+}
+/* 필터영역 */
+.filterBox{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  text-align: left;
+}
+/* 필터글씨 */
+.slide5 p{
+  text-align: left;
+  margin-bottom: 30px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 인풋박스와 라벨 영역 */
+.filterCon{
+  /* border:1px solid; */
+  width:50%;
+}
+/* 인풋박스와 라벨 한줄한줄 */
+.filterCon>li{
+  font-size:15px;
+  margin-top: 5px;
+  margin-bottom:25px;
+  padding-left:20px;
+}
+
+
+ /* ----------------------------------- */
+ /* 6/5 */
+ /* 전체(주변시설 글자와 세박스묶음) */
+.placeBox{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height: 100%;
+  text-align: left;
+}
+/* 주변시설 글자 */
+.placeBox>p{
+  font-size: 20px;
+  margin: 10px 10px;
+
+}
+/* 세박스 묶음 영역 */
+.slide6{
+  align-items: center;
+  justify-content: space-around;
+  /* border:1px solid; */
+  width:100%;
+  height:500px;
+}
+/* 세박스 각자 */
+.placeBox > div{
+  display: flex;
+  flex-direction: column;
+  border:1px solid;
+  width:300px;
+  height:400px;
+  padding-left:20px;
+  padding-top:20px;
+}
+/* 분류, 이름, 설명, 위치 글자 */
+.placeBox > div > div > p{
+  font-size:18px;
+  margin: 10px 0;
+}
+/* 분류 전체박스 */
+.pTypeBox{
+  display:flex;
+  flex-direction: column;
+  border:1px solid;
+  margin-bottom:10px;
+}
+/* 분류 라디오 영역 */
+.pTypeCon{
+  display:flex;
+}
+
+
+
+
+
+ /* ----------------------------------- */
+ /* 7/5 */
+.slide7 > * {
+  margin: 10px 20px;
+}
+/* 요소들 */
+.explainBox, .gemsungBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width:50%;
+  height: 350px;
+  margin-bottom: 20px;
+}
+.slide7 > div > p {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 설명 입력 전체 영역 */
+.explainCon,.gemsungCon{
+  width:100%;
+  height:100px;
+  padding-left: 20px;
+  /* border:1px solid; */
+  text-align: left;
+}
+/* 설명 입력 textarea */
+#explain,#gemsung{
+  border:1px solid rgb(32, 32, 32);
+  outline:none;
+}
+
+
+ /* ----------------------------------- */
+ /* 8/5 */
+.slide8 > * {
+  margin: 10px 20px;
+}
+/* 요소들 */
+.moneyBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width:50%;
+  height: 350px;
+  margin-bottom: 20px;
+}
+/* 요금 설정 글씨 */
+.slide8 > div > p {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 입력 영역들 */
+.moneyBox > div{
+  /* border:1px solid; */
+  width:350px;
+  height:40px;
+  padding-left: 20px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* 달력 선택부분 */
+.calendar{
+  border:1px solid;
+  width:150px;
+  height:30px;
+}
+/* 기간 선택 등 글씨 */
+.moneyBox > div > p {
+  text-align: left;
+  font-size:15px;
+}
+/* 숙소이름입력 인풋창 */
+#peakDay, #peakRest, #nonPeakDay, #nonPeakRest{
+  border:0px;
+  /* background-color: gray; */
+  outline:none;
+  height:30px;
+}

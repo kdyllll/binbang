@@ -1,0 +1,77 @@
+@charset "UTF-8";
+.header {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+/* 헤더로고 */
+.header .logo {
+  width: 70px;
+  height: 60px;
+  background-image: url("../../img/header/header_logo.png");
+  background-size: cover;
+}
+.bookingPage{
+  padding-left:30px;
+    font-size: 30px;
+    font-weight:bold;
+    color:black;
+    width: 100%;
+}
+/* 헤더 햄버거버튼 */
+.header .headerBtn {
+  width: 25px;
+  height: 23px;
+  position: relative;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.headerBtn > div {
+  width: 100%;
+  height: 2.5px;
+  background-color: rgb(78, 78, 76);
+  transition: all 0.8s;
+}
+/* 헤더메뉴 (사이드에서 나오는거) */
+.headerNav {
+  width: 250px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.85);
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(250px);
+  transition: all 0.6s;
+  z-index: 150;
+}
+/* 헤더 사이드에 숨겨두고 자바스크립트로 show클래스 추가하면 보이게 */
+
+.show {
+  transform: translateX(0);
+}
+/* 햄버거버튼 돌리기 클래스추가 (자바스크립트로) */
+
+
+
+/* scroll해서 내리면 header배경색 하얗게 바뀜 */
+
+.bgColor {
+  background-color: rgba(255, 255, 255, 0.63);
+  /* 헤더 내려올때 색이 하얗게, 약간 투명하게 되는 것 */
+  box-shadow: 0.25rem 0 0.25rem rgba(128, 128, 128, 0.288);
+  /* 약간 그림자 주는 것 rem은 뭐지?*/
+}
+
+.headerColor {
+   background-color: white;
+   box-shadow: 0.25rem 0 0.25rem rgba(128, 128, 128, 0.288);
+}

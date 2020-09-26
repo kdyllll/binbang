@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/* 여기가헤더 */
+.top{
+  
+    width: 100%;
+    height: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 130px;
+    box-sizing: border-box;
+    align-items: center;
+    z-index: 100;
+    transition: all 0.5s;
+  
+}
+
+/* 맨 위에booking 글씨 설정 */
+.bookingPage{
+   
+    margin: 10px 3px;
+    font-size: 30px;
+    font-weight:bold;
+    color: black;
+}
+
+}
+
+.section{
+   
+    width: 100%;
+    height: 700px;
+    display: flex;
+    padding: 300px 10px;
+
+    margin-bottom:-130px;
+    
+   
+    
+}
+
+
+/* 예약정보 글씨 간격설정 */
+.bookingInfo{
+    padding: 100px 100px;
+    padding-left: 50px;
+    margin-left: 100px;
+   
+    
+}
+.title{
+    text-align: center;
+    font-size: 25px;
+}
+/* 예약정보 글씨 아래 전체 박스 크기 및 간격 설정 */
+.infoBox{
+    /* margin-top: 100px; */
+    width: 800px;
+    height: 400px;
+    background-color:white;
+  
+    
+   
+    
+
+}
+
+/* 글씨들 사이의 간격설정 */
+.info{
+    width: 500px;
+    height: 400px;
+    line-height: 40px;
+    font-size: 15px;
+    padding_top:20px;
+    padding-left: 100px;
+   
+  
+}
+
+/* 예약 날짜를 감싸는 박스 크기 설정 */
+.priceInfoBox{
+   
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+/* 예약 날짜 위아래로 있는 선 설정 */
+.priceLine{
+    margin-top: 20px;
+    width: 600px;
+    text-align: center;
+    border-top:  2px black solid; 
+    /* 윗선 */
+    border-bottom:  2px black solid;
+   /* 아랫선 */
+}
+
+/* 예약 날짜 가 몇일 부터 몇일 까지를 나타내는 글씨 설정 */
+.priceInfo{
+    word-spacing: 10px;
+    font-size: 15px;
+    line-height: 50px;  
+ 
+}
+
+/* 메인 페이지, 마이페이지 전체를 감싸고 있는 박스 */
+.moveBox{
+    height: 50px;
+    display: flex;
+    justify-content : space-around;
+    padding:20px 100px 0;
+    
+
+}
+/* 메인 페이지 버튼 크기, 배격생 설정 */
+.mainPage{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+     border: 2px black solid;
+    background-color:white;
+}
+
+/* 메인페이지 글씨 위치설정 */
+.main{
+    line-height: 30px;
+    justify-content: center;
+}
+
+/* 마이 페이지 들어간 버튼의 간격 설정 */
+.myPage{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    border: 2px black solid;
+    background-color:white;
+}
+/* 메인페이지 글씨 위치 설정 */
+.my{
+    line-height: 30px;
+    justify-content: center;
+}

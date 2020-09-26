@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.header {
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 100;
+	transition: all 0.5s;
+}
+/* 헤더로고 */
+.header .logo {
+	width: 70px;
+	height: 60px;
+	background-image: url("../../image/common/header/header_logo.png");
+	background-size: cover;
+}
+/* 헤더 햄버거버튼 */
+.header .headerBtn {
+	width: 25px;
+	height: 23px;
+	position: relative;
+	z-index: 200;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.ham {
+	width: 100%;
+	height: 2.5px;
+	background-color: black;
+	transition: all 0.8s;
+}
+
+/* 헤더메뉴 (사이드에서 나오는거) */
+.headerNav {
+	width: 250px;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.85);
+	position: fixed;
+	top: 0;
+	right: 0;
+	transform: translateX(250px);
+	transition: all 0.6s;
+	z-index: 150;
+	padding-top: 100px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	font-size : 15px;
+	border-left:0.5px solid #eaeaea;
+}
+
+.headerNav a {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+	margin-bottom: 10px;
+}
+
+.headerNav .navLine {
+	width : 170px;
+	height:1px;
+	background:black;
+	display:inline-block;
+	margin-bottom:10px;
+}
+
+

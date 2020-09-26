@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+/* 비밀번호 재설정 */
+
+  /* 팝업창 */
+  .findIdPopup {
+   text-align:center;
+    padding:5%;
+  }
+
+  /* 팝업 타이틀 */
+  .popupTitle{
+   margin: 0 10%;
+    font-size:25px;
+    color:black;
+    text-align: right;
+    font-weight:700;
+  }
+ 
+/* 팝업 제목과 버튼 사이 선  */
+.findIdLine{
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: black;
+}
+
+/* 선 밑으로 */
+#enterNamePhone{
+    margin-top: 40px;
+     
+}
+
+.inputTitle{
+    margin:5% 0;
+    font-size:15px;
+    text-align: left;
+    padding-left:10px;
+}
+
+/* 아이디,인증번호 입력창 */
+#userName, #userPhone{
+    width:90%;
+    height: 35px;
+    border:0;
+    outline:0;
+    border-bottom:0.5px solid;
+   padding-left:10px;
+
+}
+
+/* 인증하기, 인증확인 버튼 */
+#emailConfirm, #numberConfirm{
+    
+    height: 35px;
+    background-color: black;
+    color:white;
+    border:0;
+    outline:0;
+    cursor: pointer;
+    padding-left:10%;
+   
+}
+
+/* 다음 버튼 */
+.next{
+  height: 35px;
+  width:100px;
+  border:0;
+  outline:0;
+  background-color: black;
+  color:white;
+  cursor: pointer;
+  margin-top: 40px;
+
+}

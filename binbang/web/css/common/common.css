@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+   
+body {
+  background-color: white;
+}
+.section {
+  width: 100%;
+  position: relative;
+}
+
+/* 양옆여백 */
+
+.section,
+.header,
+.footer {
+  padding: 0 10%;
+  box-sizing: border-box;
+}

@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+
+.enroll{
+  width: 35%;
+  margin: 0 auto;
+  margin-top: 100px;
+    margin-bottom:70px;
+  }
+
+/* 제목 */
+.title{
+margin: 0 10%;
+  text-align:right;
+  font-weight:600;
+}
+  .titletxt{
+    font-size: 25px;
+  }
+
+/* 구분선 */
+.titleLine {
+	width: 100%;
+  height: 2px;
+  background-color: black;
+  margin: 20px 0;
+}
+.line1{
+  width: 100%;
+  height: 0.5px;
+  background-color: gray;
+}
+.line2{
+  width: 100%;
+  height: 2px;
+  background-color: black;
+
+}
+
+.line3 {
+	margin-top : 20px;
+}
+
+/* 회원가입 */
+ .enrollForm >div {
+	display:flex;
+	flex-direction : column;
+	align-items :center;
+	justify-content:center;
+	position:relative;
+	
+} 
+  .enrollForm input{
+	width : 95%;
+    height: 30px;
+    background-color:none;
+    outline: none;
+    border:none;
+    border-bottom:1px solid #c0c0c0;
+    margin-bottom: 7%;
+    /* padding : 0 15px; */
+    box-sizing:border-box;
+  }
+
+  #duplicateBtn{
+    color: black;
+    font-size: 7px;
+    cursor: pointer;
+	position:absolute;
+	top:1%;
+	right:15px;
+  }
+
+/* 약관동의 */
+.contract{
+  width:100%;
+}
+
+/* 약관내용 */
+
+
+.title1{
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding-top:5%;
+}
+
+#extendBtn1,#extendBtn2,#extendBtn3{
+  font-size: 11px;
+  padding-top: 3%;
+  cursor: pointer;
+  text-align:left;
+}
+
+.Btn{
+  display: flex;
+  justify-content: center;
+}
+
+.content1,.content2,.content3{
+  max-height:100px;
+  overflow-y:scroll;
+  white-space: pre-wrap;
+  text-align: justify;
+  font-size: 5px;
+  display:none;
+  background-color: #f0f0f0;
+  margin-top : 10px;
+  
+}
+
+#signBtn{
+  margin-top: 5%;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  color: white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}

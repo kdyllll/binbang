@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+/* 공지사항 페이지 css */
+
+.section{
+    margin-top: 150px;
+    padding : 0 20%;
+    
+
+}
+    
+/* 사이 선 */
+.selectNoticeline{
+    width: 100%;
+    height: 0.5px;
+    margin: 20px 0;
+    background-color: black;
+} 
+
+.selectNoticeline2{
+    width: 100%;
+    height: 0.2px;
+    margin: 20px 0;
+    background-color: black;
+} 
+
+/* 버튼들 */
+.allBtns {
+    display : flex;
+    justify-content: space-between; 
+    margin:0 3%;
+}
+
+.modifyBtns,  .noticeListBtns, .titleDate{
+    display: flex;   
+}
+
+.modifyNotice, .deleteNotice,.prevNotice,.listNotice,.nextNotice{
+    color: black ;
+    padding : 5px;
+    margin : 5px;
+
+}
+
+/* 게시글 제목,내용 전체*/
+.selectNoticeContent{
+   width:90%;
+   display:block;
+   margin:50px auto;
+   
+}
+
+/* 제목과 날짜 */
+.titleDate {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top:20px;
+    margin:0 3%;
+}
+
+/* 게시글 제목 */
+.postingTitle{
+    font-size: 25px;
+}
+
+/* 게시글 날짜 */
+.postingDate{
+    color : darkgrey;
+}
+
+/* 내용 */
+.postingContent{
+    width:100%;
+    height: 300px;
+
+    
+}

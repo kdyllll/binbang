@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+/* main section */
+.section {
+  margin-top:5%;
+}
+
+/* logo */
+.section .myPageLogo>p{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 20px;
+}
+
+/* 회원정보*/
+.section .lineList{
+  width: 100%;
+  border:2px black solid;
+  display: inline-flex;
+  padding:5px;
+}
+/* 회원정보 */
+.lineList div{
+  width:60%;
+}
+.lineList div div{
+  opacity: 50%;
+}
+/* 메뉴바 */
+.section .nav{
+  padding: 10%;
+}
+.section .line5{
+  width: 80%;
+  height: 2px;
+  background-color: black;
+  margin-left: 11%;
+}
+.section .nav>ul{
+  top:100 ;
+  left:0 ;
+  height: 0px;
+  display: flex;
+  justify-content: space-around;
+}
+button {
+  width: 110px;
+  height: 35px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  outline:none;
+  background-color: white;
+  color: black;
+  font-size: 15px;
+}
+
+/* 숙소 */
+.section .house {
+  width: 100%;
+}
+.house .line8{
+  width:80%;
+  padding: 2%;
+}
+.house .line8 >p{
+  padding-bottom:1%;
+}
+.house .line8 .line9{
+  width: 120%;
+  height: 2px;
+  background-color: black;
+}
+/* 1. 예약완료된 숙소 */
+.stayed{
+  margin-top:10%;
+}
+.reserved .reservedList{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.reserved .reservedList div{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  background-size: cover;
+  
+}
+.reserved .reservedList .reservedContents {
+  width: 150px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.836);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/* 2. 이용했던숙소 */
+.stayed .stayedList{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.stayed .stayedList div{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  background-size: cover;
+  
+}
+.stayed .stayedList .stayedContents {
+  width: 150px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.836);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+
+
+/* 이용했던 숙소 사진*/
+  .recomPic1 {
+    background-image: url("../../image/common/main/recommend/recommend1.jpg");
+  }
+  .recomPic2 {
+    background-image: url("../../image/common/main/recommend/recommend2.jpg");
+  }
+  .recomPic3 {
+    background-image: url("../../image/common/main/recommend/recommend3.png");
+  }
+  .recomPic4 {
+    background-image: url("../../image/common/main/recommend/recommend4.jpg");
+  }
+  .recomPic5 {
+    background-image: url("../../image/common/main/recommend/recommend5.png");
+  }
+  .recomPic6 {
+    background-image: url("../../image/common/main/recommend/recommend6.jpg");
+  }
+  
+
+ /* 쿠폰총개수 */
+  .section .coupon{
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+  .coupon >div{
+    width: 50%;
+  }
+  .section .couponSum{
+    width:70%;
+    height: 50px;
+    background-color: rgb(156, 156, 156);
+  }
+  .section .couponSum .couponContents{
+    font-size: 15px;
+    font-weight: bolder;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+  }
+  /* 쿠폰변화유무 */
+  .section .line6{
+    width: 80%;
+    height: 2px;
+    background-color: black;
+    margin-top: 2%;
+  }
+  .section .line7{
+    width: 80%;
+    height: 2px;
+    background-color: black;
+    opacity: 40%;
+    margin-top: 2%;
+  }
+  .section .couponCount{
+    margin-top: 1%;
+  }
+  .section .couponCount>ul{
+    top:100 ;
+    height: 0px;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+/* 개인정보변경 */
+   .section .private{
+    margin-right: 5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+  /* 비밀번호변경 */
+  .section .private .passwordChange{
+    margin-bottom: 7%;    
+  }
+  .passwordChange>form>input{
+   width:55%;
+   height: 20px; 
+   background-color: gray;
+   border:none;
+   opacity: 70%;
+   float: right;
+   outline: none;
+  }
+  /* 닉네임변경 */
+  .section .private .nickNameChange{
+    margin-bottom: 7%;
+  }
+  .nickNameChange>form>input{
+    width:55%;
+    height: 20px; 
+    background-color: gray;
+    border:none;
+    opacity: 70%;
+    float: right;
+    outline: none;
+   }
+   /* 전화번호변경 */
+   .section .private .phoneChange{
+    margin-bottom: 7%;
+  }
+   .phoneChange>form>input{
+    width:55%;
+    height: 20px; 
+    background-color: gray;
+    border:none;
+    opacity: 70%;
+    float: right;
+    outline: none;
+   }
+  .private >div {
+      width: 60%;
+  }
+  .section .private p{
+     text-align: right;
+     margin-bottom:2%;
+  }
+  .section .private .line6{
+    width: 100%;
+    height: 2px;
+    background-color: black;
+}
+
+/* 회원수정/탈퇴버튼 */
+.btn{
+  display: flex;
+  justify-content: space-between;
+  margin-top:1%;
+
+}
+#btn2{
+margin-left: 60%;
+}
+  

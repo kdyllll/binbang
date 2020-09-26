@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+}
+.wrap,
+input,
+button {
+  /* font-family: "Gaegu", cursive; */
+  font-family: "Open Sans", sans-serif;
+}
+
+.hostInfoContainer {
+  width: 100%;
+  height: 80vh;
+  padding-top: 80px;
+  display: flex;
+
+  border-bottom: 2px solid rgb(221, 221, 221);
+}
+
+.hostInfoContainer > div {
+  width: 43%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hostInfoImg > img {
+  width: 150px;
+  height: 180px;
+  border: 0.5px black solid;
+}
+
+.hostInfoContainer > .hostInfoContent {
+  width: 57%;
+  height: 100%;
+  padding: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.hostInfoContent > div {
+  padding: 10px 0;
+}
+.hostInfoContent > div > p {
+  margin-bottom: 15px;
+}
+
+#textarea {
+  width: 100%;
+  background: none;
+  resize: none;
+  border: 0.5px #838383solid;
+  outline: none;
+}
+
+.hostInfoContent > div > input {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.hostInfoContent > #changeInfo {
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  cursor: pointer;
+  color: #757575;
+}
+
+.houseRequest {
+  width: 100%;
+  height: 100px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.houseRequest > li {
+  cursor: pointer;
+  padding-top: 5px;
+}
+
+.borderTop {
+  border-top: 2px solid black;
+  font-weight:600;
+}
+
+section > div > h2 {
+  font-size: 18px;
+}
+
+.myHouseImgCon {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.myHouseImgCon > div {
+  width: 250px;
+  height: 350px;
+}
+
+.myHouseImgCon > div > div {
+  width: 100%;
+  height: 280px;
+  border: 1px solid;
+}
+
+.disnone {
+  display: none;
+}

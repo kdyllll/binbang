@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* 비밀번호 재설정 */
+
+  /* 팝업창 */
+  .findIdPopup {
+    text-align: center;
+    padding:5%;
+  }
+
+  /* 팝업 타이틀 */
+  .popupTitle{
+    margin: 0 10%;
+     font-size:25px;
+    color:black;
+    text-align: right;
+    font-weight:700;
+  }
+ 
+/* 팝업 제목과 버튼 사이 선  */
+.findIdLine{
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: black;
+}
+
+.resultId{
+  margin-top: 40px;
+  margin-bottom: 20px;;
+}
+
+/* 다음 버튼 */
+.finishFindId{
+  height: 35px;
+  width:100px;
+  border:0;
+  outline:0;
+  background-color: black;
+  color:white;
+  cursor: pointer;
+  margin-top: 40px;
+
+}

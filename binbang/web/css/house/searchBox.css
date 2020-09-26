@@ -1,0 +1,7 @@
+@charset "UTF-8";
+/* 헤더 검색박스 */
+.searchBox{
+    width: 500px;
+    height: 40px;
+    background-color: black;
+}

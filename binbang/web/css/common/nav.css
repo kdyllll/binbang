@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/* 헤더 사이드에 숨겨두고 자바스크립트로 show클래스 추가하면 보이게 */
+.show {
+	transform: translateX(0);
+}
+/* 햄버거버튼 돌리기 클래스추가 (자바스크립트로) */
+.tranRotateOne {
+	transform: translateY(10px) rotate(45deg);
+}
+
+.tranRotateTwo {
+	transform: translateY(-10px) rotate(-45deg);
+}
+
+/* scroll해서 내리면 header배경색 하얗게 바뀜 */
+.bgColor {
+	background-color: rgba(255, 255, 255, 0.63);
+	box-shadow: 0.25rem 0 0.25rem rgba(128, 128, 128, 0.288);
+}
+
+.headerColor {
+	background-color: white;
+	box-shadow: 0.25rem 0 0.25rem rgba(128, 128, 128, 0.288);
+}

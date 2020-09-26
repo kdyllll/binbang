@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+*{box-sizing:border-box;}
+/* 로그인 페이지 */
+section {
+    /* position: relative; */
+    text-align: center;
+  }
+
+.loginContainer{
+    width:35%;
+     margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom:70px;
+}
+
+  /* x버튼 제외 팝업 전체 내용 */
+ 
+  /* '로그인' 팝업 타이틀 */
+  .loginTitle{
+    margin: 0 10%;
+    font-size:25px;
+    color:black;
+    text-align: right;
+    font-weight:700;
+  }
+ 
+/* '로그인'제목과 버튼 사이 선  */
+.loginLine{
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: black;
+}
+/* 밑에 선 */
+.loginLine2{
+    width: 100%;
+    height: 1px;
+    margin: 20px 0;
+    background-color: black;
+}
+
+/* 아이디,비밀번호 입력창 */
+.login{
+    width:100%;
+    height: 50px;
+    display: block;
+    margin: 10px auto;
+    border:0;
+    outline:0;
+}
+
+/* 아이디 저장 */
+.saveIdDiv{
+    text-align:left;
+    margin-bottom:10px; 
+}
+.saveIdDiv>input{
+    height: 10px;
+}
+.saveIdDiv>input+label{
+    font-size:10px;
+}
+
+
+
+/* 버튼들 */
+/* 로그인 버튼 */
+#loginButton{
+    font-size: 17px;
+    width:100%;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: black;
+    color:white;
+    border:0;
+    outline:0;
+    cursor: pointer;
+    
+}
+
+/* 아이디찾기,비밀번호찾기,회원가입 */
+.otherBtns{
+    text-align: center;
+    font-size: 13px;
+}
+.otherBtns > *:nth-child(2n){
+    cursor: pointer;
+    border:0;
+    outline:0;
+    background: none;
+    display : inline-block;
+    margin-top: 5px; 
+    color: black;
+}
+
+.division{
+    display : inline-block;
+    margin-top: 5px; 
+    color: black;
+ }
+
+ /* 네이버,카카오,구글 버튼들 */
+
+.buttonDiv{
+    height: 50px;
+    width: 100%;
+    border:1px solid black;
+    margin-bottom:20px;
+    background:none;
+    outline:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.buttonDiv > span {
+   width:100%;
+   font-size : 14px;
+
+}
+
+#naverImage,#kakaoImage,#googleImage{
+    height: 30px;
+    width:30px;
+    position:absolute;
+    left:2%;
+}
+#naverImage{
+    background: url("../../image/member/login/naver.png");
+    background-size: cover;
+}
+
+#kakaoImage{
+    background: url("../../image/member/login/kakao.jpg");
+    background-size: cover;
+}
+#googleImage{
+    background: url("../../image/member/login/google.png");
+    background-size: cover;
+}
