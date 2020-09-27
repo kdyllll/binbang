@@ -31,7 +31,7 @@ public class HostEnrollServlet extends HttpServlet {
 		HttpSession session =request.getSession();
 		String id = (String)session.getAttribute("id");
 		System.out.println(id);
-		request.getRequestDispatcher("/views/host/host_regist.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/host/hostRegist.jsp").forward(request, response);
 	}
 
 	/**

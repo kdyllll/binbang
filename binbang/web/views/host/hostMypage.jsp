@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp" %>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/host_mypage.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/hostMypage.css" />
   </head>
   <body>
     <div class="wrap">
@@ -55,26 +55,7 @@
               <span>제목</span>
               <button>삭제</button>
             </div>
-            <div>
-              <div>사진</div>
-              <span>제목</span>
-              <button>삭제</button>
-            </div>
-            <div>
-              <div>사진</div>
-              <span>제목</span>
-              <button>삭제</button>
-            </div>
-            <div>
-              <div>사진</div>
-              <span>제목</span>
-              <button>삭제</button>
-            </div>
-            <div>
-              <div>사진</div>
-              <span>제목</span>
-              <button>삭제</button>
-            </div>
+            
           </div>
         </div>
         <div class="houseReq disnone">
@@ -87,6 +68,6 @@
 	<%@ include file="/views/common/footer.jsp" %>
     </div>
 	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-    <script src="<%=request.getContextPath() %>/js/host/host_mypage.js"></script>
+    <script src="<%=request.getContextPath() %>/js/host/hostMypage.js"></script>
   </body>
 </html>
