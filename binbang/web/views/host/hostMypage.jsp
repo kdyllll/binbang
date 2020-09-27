@@ -8,11 +8,13 @@
       <%@ include file="/views/common/header.jsp" %>
       <section class="section">
         <!-- 호스트정보부분 -->
-        <div class="hostInfoContainer">
+        <form class="hostInfoContainer"  method="get">
           <div class="hostInfoImg">
             <img src="<%=request.getContextPath() %>/image/host/host_regist/host_img/basic.jpg" alt="" />
+            <input type="file" name="uploadImg" id="uploadImg" class="disnone">
+            <label for="uploadImg" class="disnone">변경</label>
           </div>
-          <form class="hostInfoContent" method="post">
+          <div class="hostInfoContent">
             <div>
               <p>호스트이름</p>
               <input
@@ -20,28 +22,26 @@
                 name="hostName"
                 id="hostNameChn"
                 value="인하준"
+                style="padding-left:10px;"
               />
             </div>
             <div>
               <p>호스트이메일</p>
-              <span>princeha@gmail.com</span>
+              <span style="padding-left:10px;">princeha@gmail.com</span>
             </div>
             <div>
               <p>소개글</p>
               <textarea name="hostIntro" id="textarea" cols="30" rows="10"></textarea>
             </div>
-            <div>
-            	<input type="file" name="uploadImg" id="uploadImg" style="display:none;">
-            	<label for="uploadImg">사진변경</label>
-            </div>
+            
             <input
               type="submit"
               id="changeInfo"
               value="수정"
               onclick="return invalidate();"
             />
-          </form>
-        </div>
+          </div>
+        </form>
         <ul class="houseRequest">
           <li class="borderTop">숙소관리</li>
           <li>숙소요청</li>
