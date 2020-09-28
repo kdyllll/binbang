@@ -4,7 +4,7 @@
    <!-- 스와이퍼 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/houseEnroll.css" /> 
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/house/houseEnroll.css" /> 
 </head>
 <body>
     <div class="wrap">
@@ -318,7 +318,7 @@
       <%@ include file="/views/common/footer.jsp" %>
       </div>
     <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-    <script src="<%=request.getContextPath() %>/js/host/houseEnroll.js"></script> 
+    <script src="<%=request.getContextPath() %>/js/house/houseEnroll.js"></script> 
 
    <script>
        var swiper = new Swiper('.swiper-container', {
