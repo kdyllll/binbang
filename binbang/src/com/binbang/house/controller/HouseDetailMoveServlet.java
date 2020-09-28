@@ -32,14 +32,8 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		int no=Integer.parseInt(request.getParameter("no"));
-		
-		
-		
+
 		//Binbang b=new BinbangService().BinbangDetail(no);
-		
-	
-	
-	
 	
 	
 	}
