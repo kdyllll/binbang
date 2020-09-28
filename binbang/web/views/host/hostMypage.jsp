@@ -50,11 +50,7 @@
         <form class="myHouse">
           <h2>숙소관리</h2>
           <div class="myHouseImgCon">
-            <div>
-              <div>사진</div>
-              <span>제목</span>
-              <button>삭제</button>
-            </div>
+            
           </div>
         </form>
         <form class="houseReq disnone">
