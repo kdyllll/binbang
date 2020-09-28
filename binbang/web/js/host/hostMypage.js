@@ -21,38 +21,6 @@ $(document).ready(function () {
     };
     reader.readAsDataURL($(e.target)[0].files[0]);
   });
-
-  $(".houseRequest > li").on("click", function (e) {
-    $(".houseRequest > li").removeClass("borderTop");
-    $(e.target).addClass("borderTop");
-    let target = $(e.target).html();
-    let myHouse = $(".myHouse");
-    let houseReq = $(".houseReq");
-    let houseReqCon = $(".houseReqConditon");
-    console.log(target);
-    myHouse.addClass("disnone");
-    houseReq.addClass("disnone");
-    houseReqCon.addClass("disnone");
-    let url = "";
-    if (target == "숙소관리") {
-      myHouse.removeClass("disnone");
-      url = "<%=request.getContextPath()%>/house/houseManageAjax";
-    } else if (target == "숙소요청") {
-      houseReq.removeClass("disnone");
-      url = "<%=request.getContextPath()%>/house/houseRequestAjax";
-    } else {
-      houseReqCon.removeClass("disnone");
-      url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
-    }
-    $.ajax({
-      url: url,
-      dataType: "html",
-      success: (data) => {
-        console.log(data);
-        $(".myHouseImgCon").html(data);
-      },
-    });
-  });
 });
 
 // 정보 넘기기 막기.
