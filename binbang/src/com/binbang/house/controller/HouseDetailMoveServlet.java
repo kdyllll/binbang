@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.member.model.service.BinbangService;
+//import com.binbang.member.model.service.BinbangService;
 
 /**
  * Servlet implementation class HouseDetailMoveServlet
@@ -35,7 +35,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		
 		
 		
-		Binbang b=new BinbangService().BinbangDetail(no);
+		//Binbang b=new BinbangService().BinbangDetail(no);
 		
 	
 	
