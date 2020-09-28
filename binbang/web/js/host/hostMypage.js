@@ -49,6 +49,7 @@ $(document).ready(function () {
       dataType: "html",
       success: (data) => {
         console.log(data);
+        $(".myHouseImgCon").html(data);
       },
     });
   });
