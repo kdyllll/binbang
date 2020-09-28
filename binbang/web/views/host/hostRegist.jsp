@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp" %>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/host_regist.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/hostRegist.css" />
 
 	</head>
 <body>
@@ -87,7 +87,7 @@
 		<%@ include file="/views/common/footer.jsp" %>
 	</div>
 	 <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-	 <script src="<%=request.getContextPath() %>/js/host/host_regist.js"></script>
+	 <script src="<%=request.getContextPath() %>/js/host/hostRegist.js"></script>
 	 <script>
 	 	function fn_enrollHost() {
 	 		$("#hostFrm").attr("action", "<%=request.getContextPath()%>/host/hostEnrollEnd").submit();

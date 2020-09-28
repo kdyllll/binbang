@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 	<header class="header headerColor">
-		<a href="<%=request.getContextPath() %>/mainMove.do" class="logo"></a>
+		<a href="<%=request.getContextPath() %>/mainMove" class="logo"></a>
 		<div class="searchBox"></div>
 		<div class="headerBox displayNone">
 			<a href="#" class="infoFilter"> 정보 </a> <a href="#"

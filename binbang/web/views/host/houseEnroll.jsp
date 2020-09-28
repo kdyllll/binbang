@@ -152,26 +152,26 @@
               </div>
             </div>
 
-            <div class="swiper-slide">
+             <div class="swiper-slide">
               <div class="slide6"> 
                   <p>주변 시설</p>
                   <div class="placeBox">
                     <div class="place1">
                       <div class="pTypeBox">
                         <p>분류</p>
-                        <div class="pTypeCon">
-                          <input type="radio" id="restaurant" name="pType"><label for="restaurant">음식점</label>
-                          <input type="radio" id="culture" name="pType"><label for="culture">문화시설</label>
-                          <input type="radio" id="etc" name="pType"><label for="etc">기타</label>
-                        </div>
+                        <ul class="pTypeCon">
+                          <li><input type="radio" id="restaurant" name="pType"><label for="restaurant">음식점</label></li>
+                          <li><input type="radio" id="culture" name="pType"><label for="culture">문화시설</label></li>
+                          <li><input type="radio" id="etc" name="pType"><label for="etc">기타</label></li>
+                        </ul>
                       </div>
                       <div class="pNameBox">
                         <p>이름</p>
-                        <input type="text" id="placeName" name="placeName">
+                        <input type="text" id="placeName" name="placeName" placeholder="주변 시설 이름">
                       </div>
                       <div class="pExplainBox">
                         <p>설명</p>
-                        <input type="text" id="placeExplain" name="placeExplain">
+                        <input type="text" id="placeExplain" name="placeExplain" placeholder="주변 시설 설명">
                       </div>
                       <div class="pAddressBox">
                         <p>위치</p>
