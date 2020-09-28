@@ -189,14 +189,14 @@
                     </div>
 
                     <div class="place2">
-                      <img src="/web/image/host/houseEnroll/icon/plus.png" alt="" class="addPlace" width="50px" height="50px">
+                      <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/plus.png" alt="" class="addPlace">
                       <div class="placeCon disnone">
                         <div class="pTypeBox">
                           <p>분류</p>
                           <ul class="pTypeCon">
-                            <li><input type="radio" id="restaurant2" name="pType2"><label for="restaurant">음식점</label></li>
-                            <li><input type="radio" id="culture2" name="pType2"><label for="culture">문화시설</label></li>
-                            <li><input type="radio" id="etc2" name="pType2"><label for="etc">기타</label></li>
+                            <li><input type="radio" id="restaurant2" name="pType2"><label for="restaurant2">음식점</label></li>
+                            <li><input type="radio" id="culture2" name="pType2"><label for="culture2">문화시설</label></li>
+                            <li><input type="radio" id="etc2" name="pType2"><label for="etc2">기타</label></li>
                           </ul>
                         </div>
                         <div class="pNameBox">
@@ -218,19 +218,19 @@
                             <div class="pAddDetail"></div>
                           </div>
                         </div>
-                        <img src="/web/image/host/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
+                        <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
                       </div>                     
                     </div>
 
                     <div class="place3">
-                      <img src="/web/image/host/houseEnroll/icon/plus.png" alt="" class="addPlace" width="50px" height="50px">
-                      <div class="placeCond disnone">
+                      <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/plus.png" alt="" class="addPlace">
+                      <div class="placeCon disnone">
                         <div class="pTypeBox">
                           <p>분류</p>
                           <ul class="pTypeCon">
-                            <li><input type="radio" id="restaurant3" name="pType3"><label for="restaurant">음식점</label></li>
-                            <li><input type="radio" id="culture3" name="pType3"><label for="culture">문화시설</label></li>
-                            <li><input type="radio" id="etc3" name="pType3"><label for="etc">기타</label></li>
+                            <li><input type="radio" id="restaurant3" name="pType3"><label for="restaurant3">음식점</label></li>
+                            <li><input type="radio" id="culture3" name="pType3"><label for="culture3">문화시설</label></li>
+                            <li><input type="radio" id="etc3" name="pType3"><label for="etc3">기타</label></li>
                           </ul>
                         </div>
                         <div class="pNameBox">
@@ -252,8 +252,8 @@
                             <div class="pAddDetail"></div>
                           </div>
                         </div>
-                        <img src="/web/image/host/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
-                      </div>                     
+                        <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
+                      </div>                  
                     </div>
                     
                   </div>
