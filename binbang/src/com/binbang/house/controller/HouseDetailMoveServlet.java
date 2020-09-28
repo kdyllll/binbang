@@ -35,7 +35,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		
 		
 		
-		Binbang b=new BinbangService().BinbangDetail(no);
+		//Binbang b=new BinbangService().BinbangDetail(no);
 		
 	
 	
