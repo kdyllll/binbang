@@ -62,6 +62,43 @@
       </section>
 	<%@ include file="/views/common/footer.jsp" %>
     </div>
+    <script>
+       $(".houseRequest > li").on("click", function (e) {
+        $(".houseRequest > li").removeClass("borderTop");
+        $(e.target).addClass("borderTop");
+        let target = $(e.target).html();
+        let myHouse = $(".myHouse");
+        let houseReq = $(".houseReq");
+        let houseReqCon = $(".houseReqConditon");
+        myHouse.addClass("disnone");
+        houseReq.addClass("disnone");
+        houseReqCon.addClass("disnone");
+        let url = "";
+        if (target == "숙소관리") {
+          myHouse.removeClass("disnone");
+          url = "<%=request.getContextPath()%>/house/houseManageAjax";
+        } else if (target == "숙소요청") {
+          houseReq.removeClass("disnone");
+          url = "<%=request.getContextPath()%>/house/houseRequestAjax";
+        } else {
+          houseReqCon.removeClass("disnone");
+          url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
+        }
+        $.ajax({
+          url:url,
+          type:"post",
+          dataType: "html",
+          success: (data) => {
+            $(".myHouseImgCon").html(data);
+          },
+          error: (request, status, error) => {
+              console.log(request);
+              console.log(status);
+              console.log(error);
+            }
+        });
+      });
+    </script>
 	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
     <script src="<%=request.getContextPath() %>/js/host/hostMypage.js"></script>
   </body>
