@@ -11,6 +11,7 @@ $(document).ready(function () {
       $(".hostInfoImg > label").addClass("disnone");
     }
   });
+  
 
   $("#uploadImg").on("change", (e) => {
     let reader = new FileReader();
