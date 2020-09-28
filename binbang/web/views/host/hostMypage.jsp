@@ -41,62 +41,53 @@
 				<li>숙소현황</li>
 			</ul>
 			<form class="myHouse">
-				<h2>숙소관리</h2>
-				<div class="myHouseImgCon"></div>
+				<div class="myHouseCon"></div>
 			</form>
-			<form class="houseReq disnone">
-				<h2>숙소요청</h2>
-				<div class="myHouseReqCon"></div>
-			</form>
-			<form class="houseReqConditon disnone">
-				<h2>숙소현황</h2>
-				<div class="myHouseReqResultCon"></div>
-			</form>
+
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
 		let url = "<%=request.getContextPath()%>/house/houseManageAjax";
-		let container = $(".myHouseImgCon");
+		let title = "숙소관리";
+		let h2 = $("<h2>");
+  	   	$(".myHouse").prepend(h2);
+		h2.html("");
+		ajaxTest();
        $(".houseRequest > li").on("click", function (e) {
         $(".houseRequest > li").removeClass("borderTop");
         $(e.target).addClass("borderTop");
         let target = $(e.target).html();
-        let myHouse = $(".myHouse");
-        let houseReq = $(".houseReq");
-        let houseReqCon = $(".houseReqConditon");
-        myHouse.addClass("disnone");
-        houseReq.addClass("disnone");
-        houseReqCon.addClass("disnone");
-        
         if (target == "숙소관리") {
-          myHouse.removeClass("disnone");
           url = "<%=request.getContextPath()%>/house/houseManageAjax";
-          container = $(".myHouseImgCon");
+          title = "숙소관리";
         } else if (target == "숙소요청") {
-          houseReq.removeClass("disnone");
           url = "<%=request.getContextPath()%>/house/houseRequestAjax";
-          container = $(".myHouseReqCon");
+          title = "숙소요청";
         } else {
-          houseReqCon.removeClass("disnone");
           url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
-          container = $(".myHouseReqResultCon");
+          title = "숙소현황";
         }
-        
+        ajaxTest();
       });
-       $.ajax({
-           url:url,
-           type:"post",
-           dataType: "html",
-           success: (data) => {
-        	   container.html(data);
-           },
-           error: (request, status, error) => {
-               console.log(request);
-               console.log(status);
-               console.log(error);
-             }
-         });
+       
+       //ajax
+       function ajaxTest() {
+    	   $.ajax({
+               url:url,
+               type:"post",
+               dataType: "html",
+               success: (data) => {
+            	   h2.html(title);
+            	   $(".myHouseCon").html(data);
+               },
+               error: (request, status, error) => {
+                   console.log(request);
+                   console.log(status);
+                   console.log(error);
+                 }
+             });
+       }     
     </script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/host/hostMypage.js"></script>
