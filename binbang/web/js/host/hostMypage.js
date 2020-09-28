@@ -44,6 +44,13 @@ $(document).ready(function () {
       houseReqCon.removeClass("disnone");
       url = "<%=request.getContextPath()%>/host/houseRequestResultAjax";
     }
+    $.ajax({
+      url: url,
+      dataType: "html",
+      success: (data) => {
+        console.log(data);
+      },
+    });
   });
 });
 
