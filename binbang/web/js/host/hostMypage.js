@@ -36,13 +36,13 @@ $(document).ready(function () {
     let url = "";
     if (target == "숙소관리") {
       myHouse.removeClass("disnone");
-      url = "<%=request.getContextPath()%>/host/houseManageAjax";
+      url = "<%=request.getContextPath()%>/house/houseManageAjax";
     } else if (target == "숙소요청") {
       houseReq.removeClass("disnone");
-      url = "<%=request.getContextPath()%>/host/houseRequestAjax";
+      url = "<%=request.getContextPath()%>/house/houseRequestAjax";
     } else {
       houseReqCon.removeClass("disnone");
-      url = "<%=request.getContextPath()%>/host/houseRequestResultAjax";
+      url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
     }
     $.ajax({
       url: url,
