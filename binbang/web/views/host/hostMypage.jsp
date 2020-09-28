@@ -47,7 +47,7 @@
           <li>숙소요청</li>
           <li>숙소현황</li>
         </ul>
-        <div class="myHouse">
+        <form class="myHouse">
           <h2>숙소관리</h2>
           <div class="myHouseImgCon">
             <div>
@@ -55,15 +55,14 @@
               <span>제목</span>
               <button>삭제</button>
             </div>
-            
           </div>
-        </div>
-        <div class="houseReq disnone">
+        </form>
+        <form class="houseReq disnone">
           <h2>숙소요청</h2>
-        </div>
-        <div class="houseReqConditon disnone">
+        </form>
+        <form class="houseReqConditon disnone">
           <h2>숙소현황</h2>
-        </div>
+        </form>
       </section>
 	<%@ include file="/views/common/footer.jsp" %>
     </div>
