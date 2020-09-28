@@ -34,10 +34,8 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		int no=Integer.parseInt(request.getParameter("no"));
 		
 		
-		
 		//Binbang b=new BinbangService().BinbangDetail(no);
-		
-	
+
 	
 	
 	
