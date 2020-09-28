@@ -46,15 +46,18 @@
 			</form>
 			<form class="houseReq disnone">
 				<h2>숙소요청</h2>
+				<div class="myHouseReqCon"></div>
 			</form>
 			<form class="houseReqConditon disnone">
 				<h2>숙소현황</h2>
+				<div class="myHouseReqResultCon"></div>
 			</form>
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
 		let url = "<%=request.getContextPath()%>/house/houseManageAjax";
+		let container = $(".myHouseImgCon");
        $(".houseRequest > li").on("click", function (e) {
         $(".houseRequest > li").removeClass("borderTop");
         $(e.target).addClass("borderTop");
@@ -69,12 +72,15 @@
         if (target == "숙소관리") {
           myHouse.removeClass("disnone");
           url = "<%=request.getContextPath()%>/house/houseManageAjax";
+          container = $(".myHouseImgCon");
         } else if (target == "숙소요청") {
           houseReq.removeClass("disnone");
           url = "<%=request.getContextPath()%>/house/houseRequestAjax";
+          container = $(".myHouseReqCon");
         } else {
           houseReqCon.removeClass("disnone");
           url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
+          container = $(".myHouseReqResultCon");
         }
         
       });
@@ -83,7 +89,7 @@
            type:"post",
            dataType: "html",
            success: (data) => {
-             $(".myHouseImgCon").html(data);
+        	   container.html(data);
            },
            error: (request, status, error) => {
                console.log(request);
