@@ -3,11 +3,24 @@ $(document).ready(function() {
 		let condition = $(e.target).val();
 		if (condition == "수정") {
 			$(e.target).val("완료");
+			$(e.target).css("color","black")
 			$("#hostNameChn").focus();
+			$(".hostInfoImg > label").removeClass("disnone");
 		} else if (condition == "완료") {
 			$(e.target).val("수정");
+			$(".hostInfoImg > label").addClass("disnone");
 		}
 	});
+	
+	$("#uploadImg").on("change", e => {
+		let reader = new FileReader();
+		reader.onload = e => {
+			 $(".hostInfoImg > img").attr({
+             src: e.target.result
+           });
+		}
+		reader.readAsDataURL($(e.target)[0].files[0]);
+	})
 
 	$(".houseRequest > li").on("click", function(e) {
 		$(".houseRequest > li").removeClass("borderTop");

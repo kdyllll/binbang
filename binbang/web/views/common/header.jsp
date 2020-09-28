@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <header class="header headerColor">
-	<a href="<%=request.getContextPath()%>/mainMove.do" class="logo"></a>
+	<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
 	<div class="headerBtn" id="headerBtn">
 		<div class="ham mainHamColor"></div>
 		<div class="ham mainHamColor"></div>

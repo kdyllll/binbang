@@ -152,45 +152,110 @@
               </div>
             </div>
 
-            <div class="swiper-slide">
+             <div class="swiper-slide">
               <div class="slide6"> 
                   <p>주변 시설</p>
                   <div class="placeBox">
                     <div class="place1">
-                      <div class="pTypeBox">
-                        <p>분류</p>
-                        <div class="pTypeCon">
-                          <input type="radio" id="restaurant" name="pType"><label for="restaurant">음식점</label>
-                          <input type="radio" id="culture" name="pType"><label for="culture">문화시설</label>
-                          <input type="radio" id="etc" name="pType"><label for="etc">기타</label>
+                      <div class="placeCon">
+                        <div class="pTypeBox">
+                          <p>분류</p>
+                          <ul class="pTypeCon">
+                            <li><input type="radio" id="restaurant1" name="pType1"><label for="restaurant">음식점</label></li>
+                            <li><input type="radio" id="culture1" name="pType1"><label for="culture">문화시설</label></li>
+                            <li><input type="radio" id="etc1" name="pType1"><label for="etc">기타</label></li>
+                          </ul>
                         </div>
-                      </div>
-                      <div class="pNameBox">
-                        <p>이름</p>
-                        <input type="text" id="placeName" name="placeName">
-                      </div>
-                      <div class="pExplainBox">
-                        <p>설명</p>
-                        <input type="text" id="placeExplain" name="placeExplain">
-                      </div>
-                      <div class="pAddressBox">
-                        <p>위치</p>
-                        <div class="pAddressCon">
-                          <div class="pAddNumCon">
-                              <div class="pAddNum"></div>
-                              <div class="pAddBtn"></div>
+                        <div class="pNameBox">
+                          <p>이름</p>
+                          <input type="text" id="placeName1" name="placeName1" placeholder="주변 시설 이름">
+                        </div>
+                        <div class="pExplainBox">
+                          <p>설명</p>
+                          <input type="text" id="placeExplain1" name="placeExplain1" placeholder="주변 시설 설명">
+                        </div>
+                        <div class="pAddressBox">
+                          <p>위치</p>
+                          <div class="pAddressCon">
+                            <div class="pAddNumCon">
+                                <div class="pAddNum"></div>
+                                <div class="pAddBtn"></div>
+                            </div>
+                            <div class="pAdd"></div>
+                            <div class="pAddDetail"></div>
                           </div>
-                          <div class="pAdd"></div>
-                          <div class="pAddDetail"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="place2">
-                      
-                    </div>
-                    <div class="place3">
 
+                    <div class="place2">
+                      <img src="/web/image/host/houseEnroll/icon/plus.png" alt="" class="addPlace" width="50px" height="50px">
+                      <div class="placeCon disnone">
+                        <div class="pTypeBox">
+                          <p>분류</p>
+                          <ul class="pTypeCon">
+                            <li><input type="radio" id="restaurant2" name="pType2"><label for="restaurant">음식점</label></li>
+                            <li><input type="radio" id="culture2" name="pType2"><label for="culture">문화시설</label></li>
+                            <li><input type="radio" id="etc2" name="pType2"><label for="etc">기타</label></li>
+                          </ul>
+                        </div>
+                        <div class="pNameBox">
+                          <p>이름</p>
+                          <input type="text" id="placeName2" name="placeName2" placeholder="주변 시설 이름">
+                        </div>
+                        <div class="pExplainBox">
+                          <p>설명</p>
+                          <input type="text" id="placeExplain2" name="placeExplain2" placeholder="주변 시설 설명">
+                        </div>
+                        <div class="pAddressBox">
+                          <p>위치</p>
+                          <div class="pAddressCon">
+                            <div class="pAddNumCon">
+                                <div class="pAddNum"></div>
+                                <div class="pAddBtn"></div>
+                            </div>
+                            <div class="pAdd"></div>
+                            <div class="pAddDetail"></div>
+                          </div>
+                        </div>
+                        <img src="/web/image/host/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
+                      </div>                     
                     </div>
+
+                    <div class="place3">
+                      <img src="/web/image/host/houseEnroll/icon/plus.png" alt="" class="addPlace" width="50px" height="50px">
+                      <div class="placeCond disnone">
+                        <div class="pTypeBox">
+                          <p>분류</p>
+                          <ul class="pTypeCon">
+                            <li><input type="radio" id="restaurant3" name="pType3"><label for="restaurant">음식점</label></li>
+                            <li><input type="radio" id="culture3" name="pType3"><label for="culture">문화시설</label></li>
+                            <li><input type="radio" id="etc3" name="pType3"><label for="etc">기타</label></li>
+                          </ul>
+                        </div>
+                        <div class="pNameBox">
+                          <p>이름</p>
+                          <input type="text" id="placeName3" name="placeName3" placeholder="주변 시설 이름">
+                        </div>
+                        <div class="pExplainBox">
+                          <p>설명</p>
+                          <input type="text" id="placeExplain3" name="placeExplain3" placeholder="주변 시설 설명">
+                        </div>
+                        <div class="pAddressBox">
+                          <p>위치</p>
+                          <div class="pAddressCon">
+                            <div class="pAddNumCon">
+                                <div class="pAddNum"></div>
+                                <div class="pAddBtn"></div>
+                            </div>
+                            <div class="pAdd"></div>
+                            <div class="pAddDetail"></div>
+                          </div>
+                        </div>
+                        <img src="/web/image/host/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
+                      </div>                     
+                    </div>
+                    
                   </div>
               </div>              
             </div>
