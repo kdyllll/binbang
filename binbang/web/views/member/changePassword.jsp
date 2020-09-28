@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>main</title>
    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member/changePassword.css" />
-    <script src="js/jquery/jquery-3.5.1.min.js"></script>
+     <script src="<%=request.getContextPath() %>/js/common/jquery-3.5.1.min.js"></script>
   </head>
 
   <body>
@@ -26,18 +26,27 @@
         
       <form id="newPassword_">
         <p class="inputTitle">새로운 비밀번호를 다시 입력하세요</p>
-        <input type="password" id="newPw_" name="newPw_" placeholder="비밀번호 입력">
+        <input type="password" id="newPw_" name="newPw_" onkeyup="checkPw();" placeholder="비밀번호 입력">
+        <div id="checkPw" align="left"></div>
       </form>   
         
       <div id="tt"></div>
         
-      <button class="next" onclick="alertPassword(); self.close();">완료</button>
+      <button class="next" onclick="self.close();">완료</button>
           
     </div>
         
     <script> 
-      function alertPassword() {
-        alert("비밀번호 변경이 완료되었습니다.");
+      function checkPw() {
+   	  	let pw1=$("#newPw").val();
+        let pw2=$("#newPw_").val();
+        if(pw1==pw2){
+            $("#checkPw").css("color","green").html("암호가 동일합니다.");
+            $(".next").prop("disabled",false);
+          }else if(pw1!=pw2){
+          	$("#checkPw").css("color","red").html("동일한 암호를 입력하세요.");
+            $(".next").prop("disabled",true);
+          }
       };
       
     </script>
