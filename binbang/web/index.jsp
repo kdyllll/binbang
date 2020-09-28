@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<%=request.getContextPath() %>/mainMove.do">메인으로이동</a>
+	<a href="<%=request.getContextPath() %>/mainMove">메인으로이동</a>
 </body>
 </html>

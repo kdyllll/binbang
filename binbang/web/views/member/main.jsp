@@ -67,7 +67,7 @@
               Lorem ipsum, dolo adipisicing elit. incidunt quas debitis<br />
               	궁금한 사항을 검색해보세요
             </li>
-            <li><a href="#">CONTACT US</a></li>
+            <li><a href="<%=request.getContextPath()%>/notice/noticeList">SHOW NOW</a></li>
           </ul>
           <ul>
             <li>ABOUT BINBANG</li>

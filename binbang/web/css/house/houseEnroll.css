@@ -67,7 +67,7 @@ body {
 }
 
 /* ----------------------------------- */
- /* 1/5 */
+ /* 1/8 */
 .slide1 > * {
   margin: 10px 20px;
 }
@@ -149,7 +149,7 @@ body {
 }
 
 /* ----------------------------------- */
- /* 2/5 */
+ /* 2/8 */
 .slide2 > * {
   margin: 10px 20px;
   font-size: 13px;
@@ -232,12 +232,12 @@ body {
   font-size:15px;
 }
 /* 인풋박스와 '개'글자 */
-.roomNumCon, .bedNumCon, .bathNumCons{
+.roomNumCon, .bedNumCon, .bathNumCon{
   width:150px;
 }
 
 /* ----------------------------------- */
- /* 3/5 */
+ /* 3/8 */
 .slide3 > * {
   margin: 10px 15px;
 }
@@ -298,7 +298,7 @@ body {
 }
 
 /* ----------------------------------- */
- /* 4/5 */
+ /* 4/8 */
 /* 전체 화면 */
 .slide4{
   display: flex;
@@ -374,7 +374,7 @@ body {
 
 
  /* ----------------------------------- */
- /* 5/5 */
+ /* 5/8 */
 .slide5 > * {
   margin: 10px 20px;
 }
@@ -406,24 +406,21 @@ body {
 }
 
 
- /* ----------------------------------- */
- /* 6/5 */
+/* ----------------------------------- */
+ /* 6/8 */
  /* 전체(주변시설 글자와 세박스묶음) */
-.placeBox{
-  display: flex;
-  flex-direction: column;
-  width:100%;
-  height: 100%;
+.slide6{
   text-align: left;
 }
 /* 주변시설 글자 */
-.placeBox>p{
+.slide6>p{
   font-size: 20px;
-  margin: 10px 10px;
-
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 /* 세박스 묶음 영역 */
-.slide6{
+.placeBox{
+  display:flex;
   align-items: center;
   justify-content: space-around;
   /* border:1px solid; */
@@ -432,37 +429,154 @@ body {
 }
 /* 세박스 각자 */
 .placeBox > div{
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   border:1px solid;
-  width:300px;
-  height:400px;
+  width:280px;
+  height:380px;
   padding-left:20px;
   padding-top:20px;
 }
+/* 박스안 내용들 묶음 */
+.placeCon{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  height:100%;
+  position:relative;
+}
+/* +버튼 */
+.addPlace{
+  width:30px;
+  height:30px;
+}
+.disnone{
+  display:none;
+}
+/* x버튼 */
+.deletePlace{
+  float:right;
+  position:absolute;
+  
+  width:20px;
+  height:20px;
+}
+/* 분류, 이름, 설명, 위치 각자 영역 */
+.placeCon > div {
+  margin-bottom: 15px;
+}
 /* 분류, 이름, 설명, 위치 글자 */
-.placeBox > div > div > p{
-  font-size:18px;
-  margin: 10px 0;
+.placeCon > div > p{
+  font-size:15px;
+  margin: 10px 10px;
 }
 /* 분류 전체박스 */
 .pTypeBox{
-  display:flex;
+  display: flex;
   flex-direction: column;
-  border:1px solid;
+  /* border:1px solid; */
   margin-bottom:10px;
+}
+/* 분류 글자 */
+.pTypeBox > p{
+  margin-bottom: 15px;
 }
 /* 분류 라디오 영역 */
 .pTypeCon{
+  /* border:1px solid; */
   display:flex;
+  font-size: 13px;
+  margin-left: 20px;
+  align-items: center;
 }
+/* 라디오 하나하나 */
+.pTypeCon > li{
+  margin-right:10px;
+}
+/* 이름 전체영역 */
+.pNameBox{
+  /* border:1px solid; */
+  display:flex;
+  /* align-items: center; */
+}
+/* 설명 전체영역 */
+.pExplainBox{
+  /* border:1px solid; */
+  display:flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+/* 이름, 설명 인풋박스 */
+.pNameBox > input, .pExplainBox > input{
+  border:0px;
+  border-bottom: 1px solid gray;
+  outline:none;
+  height:30px;
+  font-size: 13px;
+}
+.pNameBox > input{
+  width:150px;
+}
+.pExplainBox > input{
+  width:200px;
+  margin-left:20px;
+}
+/* 주소칸과 위치 글자 전체영역 */
+.pAddressBox{
+  /* border:1px solid; */
+  display:flex;
+  flex-direction: column;
+  height:150px;
+}
+/* 주소네모 영역 */
+.pAddressCon{
+  /* border:1px solid; */
+  display:flex;
+  flex-direction: column;
+  width:200px;
+  margin-top:5px;
+  margin-left: 20px;
+}
+/* 우편번호 영역 */
+.pAddNumCon{
+  display:flex;
+  height:30px;
+  margin-bottom: 5px;
+}
+/* 우편번호 뜨는 칸 */
+.pAddNum{
+  border:1px solid;
+  width: 100px;
+  height:100%;
+}
+/* 우편번호 찾기 버튼 */
+.pAddBtn{
+  border:1px solid;
+  width: 60px;
+  height:100%;
+}
+/* 주소 칸 */
+.pAdd{
+  border:1px solid;
+  width: 200px;
+  height:30px;
+  margin-bottom: 5px;
+}
+/* 상세주소 적는 칸 */
+.pAddDetail{
+  border:1px solid;
+  width: 200px;
+  height:30px;
+}
+
 
 
 
 
 
  /* ----------------------------------- */
- /* 7/5 */
+ /* 7/8 */
 .slide7 > * {
   margin: 10px 20px;
 }
@@ -497,7 +611,7 @@ body {
 
 
  /* ----------------------------------- */
- /* 8/5 */
+ /* 8/8 */
 .slide8 > * {
   margin: 10px 20px;
 }

@@ -28,7 +28,10 @@ public class HostDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		request.getRequestDispatcher("/views/host/host_mypage.jsp").forward(request, response);
+		
+		
+		
+		request.getRequestDispatcher("/views/host/hostMypage.jsp").forward(request, response);
 	}
 
 	/**

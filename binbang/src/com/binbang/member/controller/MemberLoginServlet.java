@@ -37,7 +37,7 @@ public class MemberLoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", "admin");
 			msg="로그인 성공";
-			loc="/mainMove.do";
+			loc="/mainMove";
 			response.sendRedirect(request.getContextPath()+loc);
 		} else {
 			msg = "로그인 실패";
