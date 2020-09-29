@@ -17,7 +17,6 @@ import com.binbang.house.model.vo.House;
 //import com.binbang.member.model.service.BinbangService;
 
 
-
 /**
  * Servlet implementation class HouseDetailMoveServlet
  */
@@ -36,6 +35,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//int no=Integer.parseInt(request.getParameter("no"));	
@@ -114,13 +114,13 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		
-	
 
-
-	
 		request.getRequestDispatcher("/views/house/houseDetail.jsp").forward(request, response);
 
 		
+
+
+
 	
 	}
 

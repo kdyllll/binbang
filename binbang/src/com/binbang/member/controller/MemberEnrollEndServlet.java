@@ -34,7 +34,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
-		String memberName=request.getParameter("memberName");
+		String memberName=request.getParameter("name");
 		String nickname=request.getParameter("nickname");
 		String phone=request.getParameter("phone");
 		Member m=new Member(null,email,password,memberName,nickname,phone,null,null,0,0,null);
@@ -50,8 +50,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
-		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
 	}
 
 	/**
