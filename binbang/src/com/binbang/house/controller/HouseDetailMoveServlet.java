@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-=======
+
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
 
