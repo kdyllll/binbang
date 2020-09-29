@@ -33,9 +33,9 @@
 	 $("#memberAll").click(e=>{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/memberListAjax",
-			dataType:"json",
+			dataType:"html",
 			success:data=>{
-				
+				$("#AllContents").html(data);
 			}
 		})
 		
