@@ -12,10 +12,10 @@
   
         <section class="section">
             <!-- Swiper -->
-           <form action="" class="swiper-container">
+           <form action="" class="swiper-container first">
            
              <div class="swiper-wrapper">
-               <div class="swiper-slide">
+               <div class="swiper-slide box">
                      <div class="slide1">
                           <div class="hNameBox">
                       <p>숙소 이름</p>
@@ -45,7 +45,7 @@
                 </div>
             </div>
                   
-               <div class="swiper-slide">
+               <div class="swiper-slide box">
               <div class="slide2">                       
                 <div class="pNumBox">
                     <p class="title2">숙소 최대 인원</p>
@@ -80,79 +80,141 @@
               </div>
             </div>
                   
-               <div class="swiper-slide">
+               <div class="swiper-slide box">
               <div class="slide3">
                 <div class="timeBox">
                   <p>체크인아웃 시간</p>
                   <input type="text" name="checkTime" id="checkTime" placeholder="(체크인 11:00 체크아웃 15:00)형식으로 작성해주세요.">
                 </div>                        
                 <div class="line3"></div>
-                <div class="phoneBox">
-                    <p>호스트 번호 공개 유무</p>
-                    <div class="phoneCon">
-                      <input type="radio" name="phone" id="phoneY"> <label for="phoneY">유</label>
-                      <input type="radio" name="phone" id="phoneN"> <label for="phoneN">무</label>
-                    </div>
-                </div>
-                <div class="line3"></div>
                 <div class="attentionBox">
                     <p>주의사항</p>
                     <div class="attentionCon">
-                        <textarea name="attention" id="attention" cols="60" rows="8" style="resize:none"></textarea>
+                        <textarea name="attention" id="attention" cols="60" rows="13" style="resize:none"></textarea>
                     </div>
                 </div> 
               </div>
             </div>
 
-               <div class="swiper-slide">
+               <div class="swiper-slide box">
               <div class="slide4">
                 <div class="photoListBox">
-                  <p>숙소 사진 등록(최소 3장/최대 10장) 여기 일단 보류</p>
+                  <p>숙소 사진 등록(최소 3장/최대 10장)</p>
                   <div class="photo1">
                     <div class="picLine">
                       <p class="picName"></p>
                     </div>
-                    <input type="file" name="picture" id="picture1" class="picture" accept="images/*">
+                    <input type="file" name="picture1" id="picture1" class="picture" accept="images/*">
                     <label class="uploadPic" for="picture1">+</label>
-                    <label class="deletePic" for="">-</label>
+                    <label class="deletePic" id="deletePic1" for="">-</label>
                   </div>
                   <div class="photo2">
                     <div class="picLine">
                       <p class="picName"></p>
                     </div>
-                    <input type="file" name="picture" id="picture2" class="picture" accept="images/*">
+                    <input type="file" name="picture2" id="picture2" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo3">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture3" id="picture3" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo4">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture4" id="picture4" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo5">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture5" id="picture5" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo6">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture6" id="picture6" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo7">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture7" id="picture7" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo8">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture8" id="picture8" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo9">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture9" id="picture9" class="picture" accept="images/*">
+                    <label class="uploadPic" for="picture2">+</label>
+                    <label class="deletePic" for="">-</label>
+                  </div>
+                  <div class="photo10">
+                    <div class="picLine">
+                      <p class="picName"></p>
+                    </div>
+                    <input type="file" name="picture10" id="picture10" class="picture" accept="images/*">
                     <label class="uploadPic" for="picture2">+</label>
                     <label class="deletePic" for="">-</label>
                   </div>
                 </div>
                 <div class="line4"></div>
-                <div class="photoPrevBox">
-                  <div class="photoPreview">
-                    <img class="previewImg" src="" alt="">
-                  </div>
+                <div class="photoPrevBox">                  
+                  <img class="prevImg">            
                 </div>
               </div>
             </div>
 
-               <div class="swiper-slide">
+               <div class="swiper-slide box">
               <div class="slide5">
                 <div class="filterBox">
-                  <p>편의 시설 및 서비스(보류)</p>
-                  <ul class="filterCon">
-                    <li><input type="checkbox" id="animal" name="filter" value="animal"><label for="animal">반려동물 동반가능</label></li>
-                    <li><input type="checkbox" id="smoke" name="filter" value="smoke"><label for="smoke">흡연 가능</label></li>
-                    <li><input type="checkbox" id="park" name="filter" value="park"><label for="park">주차 가능</label></li>
-                    <li><input type="checkbox" id="kitchen" name="filter" value="kitchen"><label for="kitchen">주방 사용 가능</label></li>
-                    <li><input type="checkbox" id="laundry" name="filter" value="laundry"><label for="laundry">세탁실 사용 가능</label></li>
-                    <li><input type="checkbox" id="dryer" name="filter" value="dryer"><label for="dryer">드라이기 구비</label></li>
-                    <li><input type="checkbox" id="aircon" name="filter" value="aircon"><label for="aircon">냉난방</label></li>
-                    <li><input type="checkbox" id="refri" name="filter" value="refri"><label for="refri">냉장고 사용 가능</label></li>
-                  </ul>                
+                  <p>편의 시설 및 서비스</p>
+                  <div class="filterContainer">
+                    <ul class="filterCon">
+                      <li><input type="checkbox" id="bbq" name="filter" value="bbq"><label for="bbq"> 바베큐</label></li>
+                      <li><input type="checkbox" id="breakfast" name="filter" value="breakfast"><label for="breakfast"> 조식</label></li>
+                      <li><input type="checkbox" id="terrace" name="filter" value="terrace"><label for="terrace"> 테라스</label></li>
+                      <li><input type="checkbox" id="shower" name="filter" value="shower"><label for="shower"> 샤워룸</label></li>
+                      <li><input type="checkbox" id="park" name="filter" value="park"><label for="park"> 정원</label></li>
+                      <li><input type="checkbox" id="swimming" name="filter" value="swimming"><label for="swimming"> 수영장</label></li>
+                    </ul>
+                    <ul class="filterCon">  
+                      <li><input type="checkbox" id="dog" name="filter" value="dog"><label for="dog"> 반려동물</label></li>
+                      <li><input type="checkbox" id="smoking" name="filter" value="smoking"><label for="smoking"> 흡연</label></li>
+                      <li><input type="checkbox" id="parking" name="filter" value="parking"><label for="parking"> 주차</label></li>
+                      <li><input type="checkbox" id="kitchen" name="filter" value="kitchen"><label for="kitchen"> 주방</label></li>
+                      <li><input type="checkbox" id="laundryRoom" name="filter" value="laundryRoom"><label for="laundryRoom"> 세탁실</label></li>
+                      <li><input type="checkbox" id="wifi" name="filter" value="wifi"><label for="wifi"> 와이파이</label></li>                   
+                    </ul>
+                  </div>                
                 </div>
               </div>
             </div>
 
-             <div class="swiper-slide">
+             <div class="swiper-slide box">
               <div class="slide6"> 
                   <p>주변 시설</p>
                   <div class="placeBox">
@@ -260,7 +322,7 @@
               </div>              
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide box">
               <div class="slide7">
                 <div class="explainBox">
                   <p>숙소 설명</p>
@@ -277,7 +339,7 @@
               </div>
             </div>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide box">
               <div class="slide8">
                 <div class="moneyBox">
                   <p>요금 설정</p>
@@ -303,6 +365,9 @@
                   </div>
                 </div>
               </div>
+              <div class="submitBox">
+                <input type="submit" value="완료" class="submit" name="submit">
+              </div>
             </div>
 
              </div>
@@ -321,7 +386,7 @@
     <script src="<%=request.getContextPath() %>/js/house/houseEnroll.js"></script> 
 
    <script>
-       var swiper = new Swiper('.swiper-container', {
+      var swiper = new Swiper('.first', {
          pagination: {
            el: '.swiper-pagination',
            type: 'progressbar',
@@ -331,6 +396,8 @@
            prevEl: '.swiper-button-prev',
          },
        });
+
+      
     </script>
    
 </body>
