@@ -27,6 +27,7 @@ public class MainMoveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		request.getRequestDispatcher("/views/member/main.jsp").forward(request,response);
 	}
 
