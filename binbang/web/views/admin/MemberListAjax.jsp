@@ -3,13 +3,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%
-   List<Member> list = (List) request.getAttribute("list");
-List searchCategory = (List) request.getAttribute("memberCategory");
-List cell = (List) request.getAttribute("cell");
-String adminTitle = (String) request.getAttribute("adminTitle");
+	List<Member> list = (List) request.getAttribute("list");
+	List searchCategory = (List) request.getAttribute("memberCategory");
+	List cell = (List) request.getAttribute("cell");
+	String adminTitle = (String) request.getAttribute("adminTitle");
 %>
 
-
+<div id="AllContents" class="searchCommon">
 <p class="pageTitle"><%=adminTitle%></p>
 <form action="">
 
@@ -68,4 +68,5 @@ String adminTitle = (String) request.getAttribute("adminTitle");
 
       </table>
    </div>
+</div>
 </div>
