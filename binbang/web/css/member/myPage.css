@@ -30,6 +30,12 @@
 .section .nav{
   padding: 10%;
 }
+
+.nav button:hover{
+  color: black;
+  text-decoration: overline;
+}
+
 .section .line5{
   width: 80%;
   height: 2px;
@@ -98,6 +104,14 @@ button {
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
+.reservedContents td{
+  font-size: 11px;
+  border: 1px solid;
+}
+.reservedContents tr{
+  font-size: 11px;
+  border: 1px solid;
+}
 
 /* 2. 이용했던숙소 */
 .stayed .stayedList{
@@ -128,22 +142,19 @@ button {
 
 /* 이용했던 숙소 사진*/
   .recomPic1 {
-    background-image: url("../../image/common/main/recommend/recommend1.jpg");
+    background-image: url("../../image/member/main/recommend/recommend1.jpg");
   }
   .recomPic2 {
-    background-image: url("../../image/common/main/recommend/recommend2.jpg");
+    background-image: url("../../image/member/main/recommend/recommend2.jpg");
   }
   .recomPic3 {
-    background-image: url("../../image/common/main/recommend/recommend3.png");
+    background-image: url("../../image/member/main/recommend/recommend3.png");
   }
   .recomPic4 {
-    background-image: url("../../image/common/main/recommend/recommend4.jpg");
+    background-image: url("../../image/member/main/recommend/recommend4.jpg");
   }
   .recomPic5 {
-    background-image: url("../../image/common/main/recommend/recommend5.png");
-  }
-  .recomPic6 {
-    background-image: url("../../image/common/main/recommend/recommend6.jpg");
+    background-image: url("../../image/member/main/recommend/recommend5.png");
   }
   
 

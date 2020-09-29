@@ -1,13 +1,22 @@
 package com.binbang.house.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
+=======
+
+
+import com.binbang.house.model.service.HouseService;
+import com.binbang.house.model.vo.House;
+
 
 //import com.binbang.member.model.service.BinbangService;
+
 
 /**
  * Servlet implementation class HouseDetailMoveServlet
@@ -32,13 +41,11 @@ public class HouseDetailMoveServlet extends HttpServlet {
 
 		int no=Integer.parseInt(request.getParameter("no"));
 
-		//Binbang b=new BinbangService().BinbangDetail(no);
 
+		House h=new HouseService().BinbangDetail(no);
 
 	
 		request.getRequestDispatcher("/views/house/houseDetail.jsp").forward(request, response);
-
-	
 	
 	}
 

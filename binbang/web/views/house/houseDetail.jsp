@@ -11,12 +11,12 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
-<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/Filter.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSwiper.css" />
 <title>house_regist</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
 </head>
 
 <body class="body">
