@@ -4,7 +4,7 @@
    <!-- 스와이퍼 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/houseEnroll.css" /> 
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/house/houseEnroll.css" /> 
 </head>
 <body>
     <div class="wrap">
@@ -157,40 +157,105 @@
                   <p>주변 시설</p>
                   <div class="placeBox">
                     <div class="place1">
-                      <div class="pTypeBox">
-                        <p>분류</p>
-                        <ul class="pTypeCon">
-                          <li><input type="radio" id="restaurant" name="pType"><label for="restaurant">음식점</label></li>
-                          <li><input type="radio" id="culture" name="pType"><label for="culture">문화시설</label></li>
-                          <li><input type="radio" id="etc" name="pType"><label for="etc">기타</label></li>
-                        </ul>
-                      </div>
-                      <div class="pNameBox">
-                        <p>이름</p>
-                        <input type="text" id="placeName" name="placeName" placeholder="주변 시설 이름">
-                      </div>
-                      <div class="pExplainBox">
-                        <p>설명</p>
-                        <input type="text" id="placeExplain" name="placeExplain" placeholder="주변 시설 설명">
-                      </div>
-                      <div class="pAddressBox">
-                        <p>위치</p>
-                        <div class="pAddressCon">
-                          <div class="pAddNumCon">
-                              <div class="pAddNum"></div>
-                              <div class="pAddBtn"></div>
+                      <div class="placeCon">
+                        <div class="pTypeBox">
+                          <p>분류</p>
+                          <ul class="pTypeCon">
+                            <li><input type="radio" id="restaurant1" name="pType1"><label for="restaurant">음식점</label></li>
+                            <li><input type="radio" id="culture1" name="pType1"><label for="culture">문화시설</label></li>
+                            <li><input type="radio" id="etc1" name="pType1"><label for="etc">기타</label></li>
+                          </ul>
+                        </div>
+                        <div class="pNameBox">
+                          <p>이름</p>
+                          <input type="text" id="placeName1" name="placeName1" placeholder="주변 시설 이름">
+                        </div>
+                        <div class="pExplainBox">
+                          <p>설명</p>
+                          <input type="text" id="placeExplain1" name="placeExplain1" placeholder="주변 시설 설명">
+                        </div>
+                        <div class="pAddressBox">
+                          <p>위치</p>
+                          <div class="pAddressCon">
+                            <div class="pAddNumCon">
+                                <div class="pAddNum"></div>
+                                <div class="pAddBtn"></div>
+                            </div>
+                            <div class="pAdd"></div>
+                            <div class="pAddDetail"></div>
                           </div>
-                          <div class="pAdd"></div>
-                          <div class="pAddDetail"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="place2">
-                      
-                    </div>
-                    <div class="place3">
 
+                    <div class="place2">
+                      <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/plus.png" alt="" class="addPlace">
+                      <div class="placeCon disnone">
+                        <div class="pTypeBox">
+                          <p>분류</p>
+                          <ul class="pTypeCon">
+                            <li><input type="radio" id="restaurant2" name="pType2"><label for="restaurant2">음식점</label></li>
+                            <li><input type="radio" id="culture2" name="pType2"><label for="culture2">문화시설</label></li>
+                            <li><input type="radio" id="etc2" name="pType2"><label for="etc2">기타</label></li>
+                          </ul>
+                        </div>
+                        <div class="pNameBox">
+                          <p>이름</p>
+                          <input type="text" id="placeName2" name="placeName2" placeholder="주변 시설 이름">
+                        </div>
+                        <div class="pExplainBox">
+                          <p>설명</p>
+                          <input type="text" id="placeExplain2" name="placeExplain2" placeholder="주변 시설 설명">
+                        </div>
+                        <div class="pAddressBox">
+                          <p>위치</p>
+                          <div class="pAddressCon">
+                            <div class="pAddNumCon">
+                                <div class="pAddNum"></div>
+                                <div class="pAddBtn"></div>
+                            </div>
+                            <div class="pAdd"></div>
+                            <div class="pAddDetail"></div>
+                          </div>
+                        </div>
+                        <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
+                      </div>                     
                     </div>
+
+                    <div class="place3">
+                      <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/plus.png" alt="" class="addPlace">
+                      <div class="placeCon disnone">
+                        <div class="pTypeBox">
+                          <p>분류</p>
+                          <ul class="pTypeCon">
+                            <li><input type="radio" id="restaurant3" name="pType3"><label for="restaurant3">음식점</label></li>
+                            <li><input type="radio" id="culture3" name="pType3"><label for="culture3">문화시설</label></li>
+                            <li><input type="radio" id="etc3" name="pType3"><label for="etc3">기타</label></li>
+                          </ul>
+                        </div>
+                        <div class="pNameBox">
+                          <p>이름</p>
+                          <input type="text" id="placeName3" name="placeName3" placeholder="주변 시설 이름">
+                        </div>
+                        <div class="pExplainBox">
+                          <p>설명</p>
+                          <input type="text" id="placeExplain3" name="placeExplain3" placeholder="주변 시설 설명">
+                        </div>
+                        <div class="pAddressBox">
+                          <p>위치</p>
+                          <div class="pAddressCon">
+                            <div class="pAddNumCon">
+                                <div class="pAddNum"></div>
+                                <div class="pAddBtn"></div>
+                            </div>
+                            <div class="pAdd"></div>
+                            <div class="pAddDetail"></div>
+                          </div>
+                        </div>
+                        <img src="<%=request.getContextPath()%>/image/house/houseEnroll/icon/x.png" alt="" class="deletePlace" width="50px" height="50px">
+                      </div>                  
+                    </div>
+                    
                   </div>
               </div>              
             </div>
@@ -253,7 +318,7 @@
       <%@ include file="/views/common/footer.jsp" %>
       </div>
     <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-    <script src="<%=request.getContextPath() %>/js/host/houseEnroll.js"></script> 
+    <script src="<%=request.getContextPath() %>/js/house/houseEnroll.js"></script> 
 
    <script>
        var swiper = new Swiper('.swiper-container', {
