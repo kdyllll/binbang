@@ -15,6 +15,7 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
+
 		<section class="section">
 			<div class="review">
 				<div class="Writerating">후기 작성</div>
@@ -68,6 +69,7 @@
 					<a href="<%=request.getContextPath()%>/houseReservation.do">등록하기</a>
 
 				</div>
+			</div>
 		</section>
 
 		<%@ include file="/views/common/footer.jsp"%>
