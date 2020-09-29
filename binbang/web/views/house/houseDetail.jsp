@@ -23,7 +23,7 @@
 	<div class="wrap">
 		<%@ include file="/views/common/houseHeader.jsp"%>
 		<section class="section">
-			<div>
+			<div class="mainBox">
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">Slide 1</div>
@@ -86,7 +86,7 @@
 						오픈플랜으로 구성된 정수리 아파트 4개의 객실중, 201호애는 욕조가 마련되어있습니다. <br> 여행의 피로를
 						풀며 편안한 휴식을 취할수 있습니다
 					</div>
-					<div class="swiper-container">
+					<!-- <div class="swiper-container">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">Slide 1</div>
 							<div class="swiper-slide">Slide 2</div>
@@ -99,11 +99,11 @@
 							<div class="swiper-slide">Slide 9</div>
 							<div class="swiper-slide">Slide 10</div>
 						</div>
-						<!-- Add Arrows -->
+						Add Arrows
 						<div class="swiper-button-next"></div>
 						<div class="swiper-button-prev"></div>
 					</div>
-
+ -->
 					<div>
 						<div class="test">
 							<div class="service">

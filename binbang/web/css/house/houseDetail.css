@@ -1,7 +1,7 @@
 @charset "UTF-8";
-.section > div {
-    display: flex;
-    margin-top: 150px;
+section{
+	
+	   
 }
 /* 이건 스크롤 내리면 헤더가 바뀌는데 거기에 대한 설정 */
 .headerBox {
@@ -36,7 +36,10 @@
 
 /* 숙소 이미지에 대한 정보 */
  
-
+.mainBox{
+	text-aglin:center;
+	display: inline-block;
+}
 .swiper-container {
    
     width: 600px;
@@ -204,6 +207,7 @@
 
 /* 숙소 정보 두번째 박스 설정  */
 .section .houseinfobox{
+	display:flex;
     width: 100%;
     height: 700px;
     display: flex;
