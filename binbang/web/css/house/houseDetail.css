@@ -491,6 +491,7 @@ section{
 }
 /* 박스안  글자들 위치 정렬 설정 */
 .gradeall {
+	 height: 200px;
     display: flex;
     background-color: white ;
     border:  solid;
