@@ -2,7 +2,6 @@
 /* 배너 */
 
 
-
 .banner {
   width: 100%;
   height: 100vh;
@@ -13,15 +12,81 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 80px;
+  position : relative;
 }
 
 .searchBox {
   width: 850px;
   height: 8%;
   transform: translateY(-70px);
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.9);
+  display:flex;
+  align-items:center;
+  padding:0 10px;
+  box-sizing: border-box;
+  position:relative;
 }
 
+.searchLoc {
+	width:30%;
+}
+
+.checkInDate {
+	width:20%;
+}
+.searchBox p {
+	font-size : 12.5px;
+	font-weight:600;
+	padding-bottom:5px;
+}
+
+.searchBox input[type="text"] {
+	outline:none;
+	background:none;
+	border:none;
+	
+}
+
+.searchBox .date {
+	cursor:pointer;
+}
+
+.searchBox .searchBtn {
+	position : absolute;
+	right:10px;
+	color:white;
+	background:#1e1e1e;
+	border:none;
+	outline:none;
+	width:45px;
+	height : 45px;
+	font-size : 12px;
+	cursor:pointer;
+}
+
+
+.peopleNumCon {
+	display : flex;
+	align-items:center;
+}
+
+.peopleNumCon span {
+	font-size : 13px;
+}
+
+#pMinus {
+	margin-left:10px;
+}
+
+.peopleNumCon > img {
+	width:10px;
+	height:10px;
+	cursor:pointer;
+}
+
+.peopleNum {
+	margin:0 15px;
+}
 /* section2 recommend부분 */
 
 .section .section2 {
