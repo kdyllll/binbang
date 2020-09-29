@@ -32,7 +32,7 @@ public class MemberDao {
 		ResultSet rs=null;
 		Member m=null;
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("searchMember"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectMember"));
 			pstmt.setString(1,email);
 			pstmt.setString(2,password);
 			rs=pstmt.executeQuery();
@@ -44,8 +44,7 @@ public class MemberDao {
 				m.setMemberName(rs.getString("memberName"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setEnrollDate(rs.getDate("enrollDate"));
-				m.setHostYn(rs.getString("hostYn"));
+				m.setEnrollDate(rs.getDate("enrollDate"));				
 				m.setStayDays(rs.getInt("stayDays"));
 				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("hostBlack"));				

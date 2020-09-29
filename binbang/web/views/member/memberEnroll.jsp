@@ -9,9 +9,7 @@
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
 
-		<section class="section">
-		
-		
+		<section class="section">				
 			<!-- 1. 회원가입 -->
 			<form action="<%=request.getContextPath() %>/member/memberEnrollEnd" method="post" class="enroll">
 				<div class="title">
@@ -21,11 +19,12 @@
 
 				<div class="enrollForm">
 					<div>
-						<input type="text" name="email" placeholder="Email" required>
-						<div id=duplicateBtn>중복검사</div>
+						<input type="text" name="email" placeholder="Email" id="email" required>
+						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_checkEmailDuplicate(); ">
 
-						<input type="password" name="password" placeholder="Password" required> 
-						<input type="password" name="password_" placeholder="Password Check" required> 
+						<input type="password" name="password" placeholder="Password" id="password" required> 
+						<input type="password" name="passwordCheck" placeholder="Password" id="passwordCheck" required> 
+						<div id="checkPw"></div>
 						<input type="text" name="name" placeholder="Name" required> 
 						<input type="text" name="nickname" placeholder="Nickname" required> 
 						<input type="text" name="phone" placeholder="Phone" required>
@@ -282,5 +281,42 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/member/memberEnroll.js"></script>
+	
+	<form action="" name="checkEmailDuplicate">
+        	<input type="hidden" name="email">
+    </form>
+<script>
+
+	/* password 일치 */
+    function checkPw() {
+      let pw1=$("#password").val();
+      let pw2=$("#passwordCheck").val();
+      if(pw1==pw2){
+          $("#checkPw").css("color","green").html("비밀번호가 동일합니다.");
+          $(".next").
+        }else if(pw1!=pw2){
+           $("#checkPw").css("color","red").html("동일한 비밀번호를 입력하세요.");          
+        }
+    };
+   
+   	/*email 중복검사 새창*/
+    function fn_checkEmailDuplicate(){
+   		const url="<%=request.getContextPath()%>/checkEmailDuplicate";
+   		const title="checkEmailDuplicate";
+   		const status="left=500px,top=100px,width=300px,height=200px";
+   		open("",title,status);
+   		
+   		checkEmailDuplicate.target=title;
+   		checkEmailDuplicate.action=url;   		
+   		checkEmailDuplicate.method="post";
+   		checkEmailDuplicate.email.value=email;
+   		checkEmailDuplicate.submit();   		
+   	}
+	
+    
+</script>
+	
+	
+	
 </body>
 </html>
