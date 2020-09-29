@@ -11,7 +11,7 @@
 
 		<section class="section">
 			<!-- 1. 회원가입 -->
-			<form action="" class="enroll">
+			<form action="<%=request.getContextPath() %>/memberEnrollEnd.do" method="post" class="enroll">
 				<div class="title">
 					<div class="titletxt">Sign Up</div>
 				</div>
@@ -19,14 +19,14 @@
 
 				<div class="enrollForm">
 					<div>
-						<input type="text" placeholder="Email">
+						<input type="text" placeholder="Email" required>
 						<div id=duplicateBtn>중복검사</div>
 
-						<input type="password" placeholder="Password"> <input
-							type="password" placeholder="Password Check"> <input
-							type="text" placeholder="Name"> <input type="text"
-							placeholder="Nickname"> <input type="text"
-							placeholder="Phone">
+						<input type="password" placeholder="Password" required> 
+						<input type="password" placeholder="Password Check" required> 
+						<input type="text" placeholder="Name" required> 
+						<input type="text" placeholder="Nickname" required> 
+						<input type="text" placeholder="Phone" required>
 					</div>
 				</div>
 

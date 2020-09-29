@@ -7,27 +7,27 @@ public class Member {
 	private String memberNo;
 	private String email;
 	private String password;
-	private String name;
-	private String nicname;
+	private String memberName;
+	private String nickname;
 	private String phone;
 	private Date enrollDate;
-	private char hostYn;
+	private String hostYn;
 	private int stayDays;
 	private int coupon;
-	private char hostBlack;
+	private String hostBlack;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String memberNo, String email, String password, String name, String nicname, String phone,
-			Date enrollDate, char hostYn, int stayDays, int coupon, char hostBlack) {
+	public Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
+			Date enrollDate, String hostYn, int stayDays, int coupon, String hostBlack) {
 		super();
 		this.memberNo = memberNo;
 		this.email = email;
 		this.password = password;
-		this.name = name;
-		this.nicname = nicname;
+		this.memberName = memberName;
+		this.nickname = nickname;
 		this.phone = phone;
 		this.enrollDate = enrollDate;
 		this.hostYn = hostYn;
@@ -60,20 +60,20 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
-	public String getNicname() {
-		return nicname;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNicname(String nicname) {
-		this.nicname = nicname;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public String getPhone() {
@@ -92,11 +92,11 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
-	public char getHostYn() {
+	public String getHostYn() {
 		return hostYn;
 	}
 
-	public void setHostYn(char hostYn) {
+	public void setHostYn(String hostYn) {
 		this.hostYn = hostYn;
 	}
 
@@ -116,20 +116,22 @@ public class Member {
 		this.coupon = coupon;
 	}
 
-	public char getHostBlack() {
+	public String getHostBlack() {
 		return hostBlack;
 	}
 
-	public void setHostBlack(char hostBlack) {
+	public void setHostBlack(String hostBlack) {
 		this.hostBlack = hostBlack;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [memberNo=" + memberNo + ", email=" + email + ", password=" + password + ", name=" + name
-				+ ", nicname=" + nicname + ", phone=" + phone + ", enrollDate=" + enrollDate + ", hostYn=" + hostYn
-				+ ", stayDays=" + stayDays + ", coupon=" + coupon + ", hostBlack=" + hostBlack + "]";
+		return "Member [memberNo=" + memberNo + ", email=" + email + ", password=" + password + ", memberName="
+				+ memberName + ", nickname=" + nickname + ", phone=" + phone + ", enrollDate=" + enrollDate
+				+ ", hostYn=" + hostYn + ", stayDays=" + stayDays + ", coupon=" + coupon + ", hostBlack=" + hostBlack
+				+ "]";
 	}
 	
 	
+
 }
