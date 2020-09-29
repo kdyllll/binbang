@@ -30,7 +30,12 @@
 				</div>
 				<div>
 					<p>인원</p>
-					<div class="peopleNumCon">인원</div>
+					<div class="peopleNumCon">
+						<input type="hidden" name="peopleNum" id="peopleNum" value="">
+						<img src="<%=request.getContextPath() %>/image/common/icon/minus.png" id="pMinus">
+						<span class="peopleNum">0</span>
+						<img src="<%=request.getContextPath() %>/image/common/icon/add.png" id="pAdd">
+					</div>
 				</div>
 				<input type="button" class="searchBtn" value="검색" onclick="fn_search();">
 			</form>
@@ -134,6 +139,24 @@
 						}
 					});
 		});
+		
+		let cnt = 0;
+		
+
+		$("#pAdd").on("click", e => {
+			if(cnt<9) {
+				cnt++;
+				$(".peopleNum").html(cnt);
+				$("#peopleNum").val(cnt);
+			}
+		})
+		$("#pMinus").on("click", e => {
+			if(cnt > 0) {
+				cnt--;
+				$(".peopleNum").html(cnt);
+				$("#peopleNum").val(cnt);
+			}
+		})
 
     	function fn_search(){
     		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList")

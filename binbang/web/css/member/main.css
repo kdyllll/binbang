@@ -55,14 +55,38 @@
 	position : absolute;
 	right:10px;
 	color:white;
-	background:#383838;
+	background:#1e1e1e;
 	border:none;
+	outline:none;
 	width:45px;
 	height : 45px;
 	font-size : 12px;
 	cursor:pointer;
 }
 
+
+.peopleNumCon {
+	display : flex;
+	align-items:center;
+}
+
+.peopleNumCon span {
+	font-size : 13px;
+}
+
+#pMinus {
+	margin-left:10px;
+}
+
+.peopleNumCon > img {
+	width:10px;
+	height:10px;
+	cursor:pointer;
+}
+
+.peopleNum {
+	margin:0 15px;
+}
 /* section2 recommend부분 */
 
 .section .section2 {
