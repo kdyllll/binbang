@@ -44,7 +44,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	
 		request.getRequestDispatcher("/views/house/houseDetail.jsp").forward(request, response);
 
-		int no=Integer.parseInt(request.getParameter("no"));
+		//int no=Integer.parseInt(request.getParameter("no"));
 
 		House h=new HouseService().BinbangDetail(no);
 	
