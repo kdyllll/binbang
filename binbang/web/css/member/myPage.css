@@ -30,6 +30,12 @@
 .section .nav{
   padding: 10%;
 }
+
+.nav button:hover{
+  color: black;
+  text-decoration: overline;
+}
+
 .section .line5{
   width: 80%;
   height: 2px;
@@ -97,6 +103,14 @@ button {
   left: 0;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
+}
+.reservedContents td{
+  font-size: 11px;
+  border: 1px solid;
+}
+.reservedContents tr{
+  font-size: 11px;
+  border: 1px solid;
 }
 
 /* 2. 이용했던숙소 */

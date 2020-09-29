@@ -65,16 +65,13 @@ public class MemberDao {
 		
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));
-			pstmt.setString(1, m.getMemberNo());
-			pstmt.setString(2, m.getEmail());
-			pstmt.setString(3, m.getPassword());
-			pstmt.setString(4, m.getMemberName());
-			pstmt.setString(5, m.getNickname());
-			pstmt.setString(6, m.getPhone());			
-			pstmt.setString(7, m.getHostYn());
-			pstmt.setInt(8, m.getStayDays());
-			pstmt.setInt(9, m.getCoupon());
-			pstmt.setString(10, m.getHostBlack());			
+			
+			pstmt.setString(1, m.getEmail());
+			pstmt.setString(2, m.getPassword());
+			pstmt.setString(3, m.getMemberName());
+			pstmt.setString(4, m.getNickname());
+			pstmt.setString(5, m.getPhone());									
+									
 			result=pstmt.executeUpdate();			
 		}catch(SQLException e) {
 			e.printStackTrace();
