@@ -1,34 +1,23 @@
-package com.binbang.house.controller;
+package com.binbang.house.ajax.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-=======
-import com.binbang.house.model.service.HouseService;
-import com.binbang.house.model.vo.House;
-
-
-//import com.binbang.member.model.service.BinbangService;
-
-
-
 /**
- * Servlet implementation class HouseDetailMoveServlet
+ * Servlet implementation class HouseRequestAjaxServlet
  */
-@WebServlet("/house/houseDetailMove")
-public class HouseDetailMoveServlet extends HttpServlet {
+@WebServlet("/house/houseRequestAjax")
+public class HouseRequestAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseDetailMoveServlet() {
+    public HouseRequestAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,18 +26,8 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int no=Integer.parseInt(request.getParameter("no"));	
-
-
-	
-		request.getRequestDispatcher("/views/house/houseDetail.jsp").forward(request, response);
-
-		int no=Integer.parseInt(request.getParameter("no"));
-
-		House h=new HouseService().BinbangDetail(no);
-	
-	
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/ajax/house/houseRequest.jsp").forward(request, response);
 	}
 
 	/**
