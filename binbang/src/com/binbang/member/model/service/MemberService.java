@@ -15,11 +15,8 @@ public class MemberService {
 
 	private MemberDao dao=new MemberDao();
 
-<<<<<<< HEAD
-	//회원조회
-=======
 	//로그인
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
+
 	public Member selectMember(String email, String password) {
 		Connection conn=getConnection();
 		Member m=dao.selectMember(conn,email,password);

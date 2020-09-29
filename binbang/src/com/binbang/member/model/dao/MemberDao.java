@@ -44,11 +44,7 @@ public class MemberDao {
 				m.setMemberName(rs.getString("memberName"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-<<<<<<< HEAD
 				m.setEnrollDate(rs.getDate("enrollDate"));				
-=======
-				m.setEnrollDate(rs.getDate("enrollDate"));
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 				m.setStayDays(rs.getInt("stayDays"));
 				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("hostBlack"));				
