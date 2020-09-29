@@ -19,13 +19,13 @@
                      <div class="slide1">
                           <div class="hNameBox">
                       <p>숙소 이름</p>
-                      <input type="text" name="hName" id="hName" placeholder="숙소 이름">
+                      <input type="text" name="hName" id="hName" placeholder="숙소 이름" required>
                     </div>                        
                     <div class="line1"></div>
                     <div class="hTypeBox">
                         <p>숙소 유형</p>
                         <div class="hTypeCon">
-                            <input type="radio" name="hType" id="home"> <label for="home">주택</label>
+                            <input type="radio" name="hType" id="home" required> <label for="home">주택</label>
                             <input type="radio" name="hType" id="apart"> <label for="apart">아파트</label>
                             <input type="radio" name="hType" id="pension"> <label for="pension">펜션</label>
                         </div>
@@ -50,14 +50,14 @@
                 <div class="pNumBox">
                     <p class="title2">숙소 최대 인원</p>
                     <div class="pNumCon">
-                      <input type="number" name="pNum" id="pNum" min="0" max="20" step="1"> 명
+                      <input type="number" name="pNum" id="pNum" min="0" max="9" step="1" required> 명
                     </div>
                 </div>
                 <div class="line2"></div>
                 <div class="personalBox">
                     <p class="title2">개인물건 유무</p>
                     <div class="personalCon">
-                        <input type="radio" name="personal" id="personalY"> <label for="personalY">유</label>
+                        <input type="radio" name="personal" id="personalY"> <label for="personalY" required>유</label>
                         <input type="radio" name="personal" id="personalN"> <label for="personalN">무</label>
                     </div>
                 </div>
@@ -66,15 +66,15 @@
                   <p class="title2">이용 시설</p>
                   <div class="roomNumBox">
                       <p class="pNum">방 갯수</p>
-                      <div class="roomNumCon"><input type="number" name="roomNum" id="roomNum" class="inputNum" min="0" max="20" step="1"> 개</div>
+                      <div class="roomNumCon"><input type="number" name="roomNum" id="roomNum" class="inputNum" min="0" max="20" step="1" required> 개</div>
                   </div>
                   <div class="bedNumBox">
                       <p class="pNum">침대 갯수</p>
-                      <div class="bedNumCon"><input type="number" name="bedNum" id="bedNum" m class="inputNum" in="0" max="20" step="1"> 개</div>
+                      <div class="bedNumCon"><input type="number" name="bedNum" id="bedNum" m class="inputNum" in="0" max="20" step="1" required> 개</div>
                   </div>
                   <div class="bathNumBox">
                       <p class="pNum">욕실 갯수</p>
-                      <div class="bathNumCon"><input type="number" name="bathNum" id="bathNum" class="inputNum" min="0" max="20" step="1"> 개</div>
+                      <div class="bathNumCon"><input type="number" name="bathNum" id="bathNum" class="inputNum" min="0" max="20" step="1" required> 개</div>
                   </div>
                 </div>                       
               </div>
@@ -84,13 +84,13 @@
               <div class="slide3">
                 <div class="timeBox">
                   <p>체크인아웃 시간</p>
-                  <input type="text" name="checkTime" id="checkTime" placeholder="(체크인 11:00 체크아웃 15:00)형식으로 작성해주세요.">
+                  <input type="text" name="checkTime" id="checkTime" placeholder="(체크인 11:00 체크아웃 15:00)형식으로 작성해주세요." required>
                 </div>                        
                 <div class="line3"></div>
                 <div class="attentionBox">
                     <p>주의사항</p>
                     <div class="attentionCon">
-                        <textarea name="attention" id="attention" cols="60" rows="13" style="resize:none"></textarea>
+                        <textarea name="attention" id="attention" cols="60" rows="13" style="resize:none" required></textarea>
                     </div>
                 </div> 
               </div>
@@ -104,7 +104,7 @@
                     <div class="picLine">
                       <p class="picName"></p>
                     </div>
-                    <input type="file" name="picture1" id="picture1" class="picture" accept="images/*">
+                    <input type="file" name="picture1" id="picture1" class="picture" accept="images/*" required>
                     <label class="uploadPic" for="picture1">+</label>
                     <label class="deletePic" id="deletePic1" for="">-</label>
                   </div>
@@ -112,7 +112,7 @@
                     <div class="picLine">
                       <p class="picName"></p>
                     </div>
-                    <input type="file" name="picture2" id="picture2" class="picture" accept="images/*">
+                    <input type="file" name="picture2" id="picture2" class="picture" accept="images/*" required>
                     <label class="uploadPic" for="picture2">+</label>
                     <label class="deletePic" for="">-</label>
                   </div>
@@ -120,7 +120,7 @@
                     <div class="picLine">
                       <p class="picName"></p>
                     </div>
-                    <input type="file" name="picture3" id="picture3" class="picture" accept="images/*">
+                    <input type="file" name="picture3" id="picture3" class="picture" accept="images/*" required>
                     <label class="uploadPic" for="picture2">+</label>
                     <label class="deletePic" for="">-</label>
                   </div>
@@ -223,18 +223,18 @@
                         <div class="pTypeBox">
                           <p>분류</p>
                           <ul class="pTypeCon">
-                            <li><input type="radio" id="restaurant1" name="pType1"><label for="restaurant">음식점</label></li>
+                            <li><input type="radio" id="restaurant1" name="pType1" required><label for="restaurant">음식점</label></li>
                             <li><input type="radio" id="culture1" name="pType1"><label for="culture">문화시설</label></li>
                             <li><input type="radio" id="etc1" name="pType1"><label for="etc">기타</label></li>
                           </ul>
                         </div>
                         <div class="pNameBox">
                           <p>이름</p>
-                          <input type="text" id="placeName1" name="placeName1" placeholder="주변 시설 이름">
+                          <input type="text" id="placeName1" name="placeName1" placeholder="주변 시설 이름" required>
                         </div>
                         <div class="pExplainBox">
                           <p>설명</p>
-                          <input type="text" id="placeExplain1" name="placeExplain1" placeholder="주변 시설 설명">
+                          <input type="text" id="placeExplain1" name="placeExplain1" placeholder="주변 시설 설명" required>
                         </div>
                         <div class="pAddressBox">
                           <p>위치</p>
@@ -327,13 +327,13 @@
                 <div class="explainBox">
                   <p>숙소 설명</p>
                   <div class="explainCon">
-                      <textarea name="explain" id="explain" cols="60" rows="10" style="resize:none"></textarea>
+                      <textarea name="explain" id="explain" cols="60" rows="10" style="resize:none" placeholder="2줄 이내로 작성해주세요" required></textarea>
                   </div>
                 </div> 
                 <div class="gemsungBox">
                   <p>감성글</p>
                   <div class="gemsungCon">
-                      <textarea name="gemsung" id="gemsung" cols="60" rows="10" style="resize:none"></textarea>
+                      <textarea name="gemsung" id="gemsung" cols="60" rows="10" style="resize:none" required></textarea>
                   </div>
                 </div> 
               </div>
@@ -349,19 +349,19 @@
                   </div>
                   <div class="peakDayCon">
                     <p>성수기 평일 요금</p>
-                    <input type="text" id="peakDay" name="peakDay" placeholder="성수기 평일">
+                    <input type="text" id="peakDay" name="peakDay" placeholder="성수기 평일" required>
                   </div>
                   <div class="peakRestCon">
                     <p>성수기 휴일 요금</p>
-                    <input type="text" id="peakRest" name="peakRest" placeholder="성수기 휴일">
+                    <input type="text" id="peakRest" name="peakRest" placeholder="성수기 휴일" required>
                   </div>
                   <div class="nonPeakDayCon">
                     <p>비성수기 평일 요금</p>
-                    <input type="text" id="nonPeakDay" name="nonPeakDay" placeholder="비성수기 평일">
+                    <input type="text" id="nonPeakDay" name="nonPeakDay" placeholder="비성수기 평일" required>
                   </div>
                   <div class="nonPeakRestCon">
                     <p>비성수기 휴일 요금</p>
-                    <input type="text" id="nonPeakRest" name="nonPeakRest" placeholder="비성수기 휴일">
+                    <input type="text" id="nonPeakRest" name="nonPeakRest" placeholder="비성수기 휴일" required>
                   </div>
                 </div>
               </div>
