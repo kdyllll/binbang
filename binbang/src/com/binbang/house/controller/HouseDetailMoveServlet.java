@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
 
 
 //import com.binbang.member.model.service.BinbangService;
+
 
 
 /**
@@ -34,14 +36,14 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+
+		int no=Integer.parseInt(request.getParameter("no"));	
 
 
 	
 		request.getRequestDispatcher("/views/house/houseDetail.jsp").forward(request, response);
 
-		int no=Integer.parseInt(request.getParameter("no"));
+		//int no=Integer.parseInt(request.getParameter("no"));
 
 		House h=new HouseService().BinbangDetail(no);
 	
