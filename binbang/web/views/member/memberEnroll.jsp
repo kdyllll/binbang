@@ -10,8 +10,10 @@
 		<%@ include file="/views/common/header.jsp"%>
 
 		<section class="section">
+		
+		
 			<!-- 1. 회원가입 -->
-			<form action="<%=request.getContextPath() %>/memberEnrollEnd.do" method="post" class="enroll">
+			<form action="<%=request.getContextPath() %>/member/memberEnrollEnd" method="post" class="enroll">
 				<div class="title">
 					<div class="titletxt">Sign Up</div>
 				</div>
@@ -22,11 +24,11 @@
 						<input type="text" placeholder="Email" required>
 						<div id=duplicateBtn>중복검사</div>
 
-						<input type="password" placeholder="Password" required> 
-						<input type="password" placeholder="Password Check" required> 
-						<input type="text" placeholder="Name" required> 
-						<input type="text" placeholder="Nickname" required> 
-						<input type="text" placeholder="Phone" required>
+						<input type="password" name="password" placeholder="Password" required> 
+						<input type="password" name="password_" placeholder="Password Check" required> 
+						<input type="text" name="name" placeholder="Name" required> 
+						<input type="text" name="nickname" placeholder="Nickname" required> 
+						<input type="text" name="phone" placeholder="Phone" required>
 					</div>
 				</div>
 
@@ -231,7 +233,7 @@
 					<div class="line2 line3"></div>
 
 					<div class="Btn">
-						<div id="signBtn">Sign Up</div>
+						<button id="signBtn">Sign Up</button>
 					</div>
 			</form>
 		</section>
