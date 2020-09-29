@@ -41,7 +41,7 @@
 				<li>숙소현황</li>
 			</ul>
 			<form class="myHouse">
-				<div class="myHouseCon"></div>
+				
 			</form>
 
 		</section>
@@ -49,10 +49,6 @@
 	</div>
 	<script>
 		let url = "<%=request.getContextPath()%>/house/houseManageAjax";
-		let title = "숙소관리";
-		let h2 = $("<h2>");
-  	   	$(".myHouse").prepend(h2);
-		h2.html("");
 		ajaxTest();
        $(".houseRequest > li").on("click", function (e) {
         $(".houseRequest > li").removeClass("borderTop");
@@ -60,13 +56,10 @@
         let target = $(e.target).html();
         if (target == "숙소관리") {
           url = "<%=request.getContextPath()%>/house/houseManageAjax";
-          title = "숙소관리";
         } else if (target == "숙소요청") {
           url = "<%=request.getContextPath()%>/house/houseRequestAjax";
-          title = "숙소요청";
         } else {
           url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
-          title = "숙소현황";
         }
         ajaxTest();
       });
@@ -78,8 +71,7 @@
                type:"post",
                dataType: "html",
                success: (data) => {
-            	   h2.html(title);
-            	   $(".myHouseCon").html(data);
+            	   $(".myHouse").html(data);
                },
                error: (request, status, error) => {
                    console.log(request);

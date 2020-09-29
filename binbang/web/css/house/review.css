@@ -1,96 +1,101 @@
-
-.section{
-    width: 100%;
-    height: 750px;
-    margin-top: 100px;
-
-}
-.Writerating{
-    margin-bottom:50px ;
-    font-size: 20px;
-   
- 
+.section {
+	margin-top: 100px;
 }
 
 
+.review {
+	margin: 0 auto;
+	width: 450px; 
+	background-color: white;
+	border: 1px black solid;
+	padding: 50px;
+	display:flex;
+	flex-direction : column;
+	justify-content: center;
+}
+
+
+.Writerating {
+	margin-bottom: 50px;
+	font-size: 20px;
+}
+
+/* 여기는 평점 별 찍는곳 */
 /* ////////////////////////// */
-
-*{margin:1; padding:1;}
-.star{
-  display:inline-block;
-  width: 20px;height: 40px;
-  cursor: pointer;
-  
-}
-.star_left{
-  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat 0 0; 
-  background-size: 40px; 
-  margin-right: -3px;
-}
-.star_right{
-  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat -20px 0; 
-  background-size: 40px; 
-  margin-left: -3px;
-}
-.star.on{
-  background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
-}
-.review{
-    margin-left: 250px;
-    padding: 50px;
-    width: 500px;
-    background-color: white
+* {
+	margin: 1;
+	padding: 1;
 }
 
-.gradeWriting{
-    padding-top: 10px;
-   font-size:30px;
+.star {
+	display: inline-block;
+	width: 20px;
+	height: 40px;
+	cursor: pointer;
 }
-.gradebox{
-    padding-top: 10px;
+
+.star_left {
+	background: url(http://gahyun.wooga.kr/main/img/testImg/star.png)
+		no-repeat 0 0;
+	background-size: 40px;
+	margin-right: -3px;
+}
+
+.star_right {
+	background: url(http://gahyun.wooga.kr/main/img/testImg/star.png)
+		no-repeat -20px 0;
+	background-size: 40px;
+	margin-left: -3px;
 }
 
 
 
-.title1{
-    padding-top: 20px;
-    padding-bottom: 10px;
-    font-size: 15px;
-    color: black;
-
-  
-
-}
-.titleWrite{
-    
-    color: gray;
-    width: 400px;
-    height: 30px;
+.gradeWriting {
+	padding-top: 10px;
+	font-size: 30px;
 }
 
-
-.file{
-    padding-top: 20px;
-    padding-bottom: 10px;
-    width: 100px;
-}
-.contents{
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-.contentsWrite{
-    color: gray;
-    width: 400px;
-    height: 200px;
+.gradebox {
+	padding-top: 10px;
 }
 
-.enrollment{
-   width: 100px;
-   height: 10px;
-   padding-top:20px;
-   padding-left: 170px;
+.title1 {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	font-size: 15px;
+	color: black;
 }
 
-#imgContainer{
-   padding-top:20px;
+.titleWrite {
+	color: gray;
+	width: 100%;
+	height: 30px;
+}
+
+.file {
+	padding-top: 20px;
+	padding-bottom: 10px;
+	width: 100px;
+}
+
+.contents {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.contentsWrite {
+	color: gray;
+	width: 100%;
+	height: 200px;
+}
+
+.enrollment {
+	width: 100px;
+	text-align:center;
+	height: 10px;
+	margin:20px auto 0;
+}
+
+#imgContainer {
+	padding-top: 20px;
 }

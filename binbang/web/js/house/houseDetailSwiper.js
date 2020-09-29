@@ -2,7 +2,7 @@
  * 
  */
 
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.first', {
       cssMode: true,
       navigation: {
         nextEl: '.swiper-button-next',
