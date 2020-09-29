@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  * Servlet implementation class HouseDetailMoveServlet
  */
@@ -31,12 +30,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		int no=Integer.parseInt(request.getParameter("no"));
-		
-		
-		
-		//Binbang b=new BinbangService().BinbangDetail(no);		
-	
-	
+
 	
 	
 	
