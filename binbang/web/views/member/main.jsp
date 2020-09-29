@@ -9,6 +9,7 @@
 	<%@ include file="/views/common/header.jsp" %>
       <div class="banner">
         <form class="searchBox">
+        	<input type="text" name="search" id="search">
         	<input type="button" value="검색" onclick="fn_search();">
         </form>
       </div>

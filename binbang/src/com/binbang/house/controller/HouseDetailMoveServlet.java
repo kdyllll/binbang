@@ -7,11 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-=======
 //import com.binbang.member.model.service.BinbangService;
 
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 /**
  * Servlet implementation class HouseDetailMoveServlet
  */
@@ -32,15 +29,15 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
+		int no=Integer.parseInt(request.getParameter("no"));
+
+		//Binbang b=new BinbangService().BinbangDetail(no);
 
 
 	
 		request.getRequestDispatcher("/views/house/houseDetail.jsp").forward(request, response);
 
-		int no=Integer.parseInt(request.getParameter("no"));
-
-		//Binbang b=new BinbangService().BinbangDetail(no);
 	
 	
 	}
