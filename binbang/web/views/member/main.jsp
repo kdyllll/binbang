@@ -15,17 +15,24 @@
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
 		<div class="banner">
-			<form class="searchBox" style="display: flex;">
-				<input type="text" name="search" id="search">
-					<div>
-						<p>체크인</p>
-						<input type="text" name="checkIn" id="checkIn" value="날짜선택" readonly>
-					</div>
-					<div>
-						<p>체크아웃</p>
-						<input type="text" name="checkOut" id="checkOut" value="날짜선택" readonly>
-					</div>
-				<input type="button" value="검색" onclick="fn_search();">
+			<form class="searchBox">
+				<div class="searchLoc">
+					<p>위치</p>
+					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요">
+				</div>
+				<div class="checkInDate">
+					<p>체크인</p>
+					<input type="text" class="date" name="checkIn" id="checkIn" value="날짜선택" readonly>
+				</div>
+				<div class="checkInDate">
+					<p>체크아웃</p>
+					<input type="text" class="date" name="checkOut" id="checkOut" value="날짜선택" readonly>
+				</div>
+				<div>
+					<p>인원</p>
+					<div class="peopleNumCon">인원</div>
+				</div>
+				<input type="button" class="searchBtn" value="검색" onclick="fn_search();">
 			</form>
 
 		</div>
@@ -100,10 +107,12 @@
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/member/main.js"></script>
 	<script>
+		//달력 datepicker
 		$(function() {
 			$("#checkIn").datepicker(
 					{
 						dateFormat : "yy/mm/dd",
+						minDate: new Date(),
 						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
 								"7월", "8월", "9월", "10월", "11월", "12월" ],
@@ -115,6 +124,7 @@
 			$("#checkOut").datepicker(
 					{
 						dateFormat : "yy/mm/dd",
+						minDate: new Date(),
 						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
 								"7월", "8월", "9월", "10월", "11월", "12월" ],
