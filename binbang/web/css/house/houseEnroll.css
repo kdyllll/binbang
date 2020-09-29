@@ -9,12 +9,14 @@ body {
   margin-top:100px;
   padding: 0;
 }
-.swiper-container {
+/* 큰 전체 스와이프 */
+.first {
   width: 100%;
   height: 80vh;
 }
+
 /* 스와이프 전체영역 */
-.swiper-slide {
+.box {
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -37,7 +39,7 @@ body {
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
       background: black;
 }
-/* 왼쪽 버튼 */
+/* 왼쪽 버튼 */ 
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
     background-image: url("../../image/common/icon/prev.png");
     background-size:cover;
@@ -257,9 +259,13 @@ body {
 /* 체크인아웃, 호스트번호공개, 주의사항 글씨들 */
 .slide3 > div > p {
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   margin-top:10px;
   font-size:20px;
+}
+/* 체크인아웃시간 영역 */
+.timeBox{
+  margin-top: 20px;
 }
 /* 체크인아웃시간 인풋창 */
 #checkTime{
@@ -269,24 +275,11 @@ body {
   padding-left: 20px;
   margin-bottom: 5px;
 }
-/* 번호공개 입력 인풋라디오 */
-.phoneCon{
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  height: 40px;
-  font-size:13px;
-}
-/* 개인물건유무 입력 인풋라디오 */
-.slide3 input[type="radio"]{
-  border:1px solid;
-  text-align: left;
-  margin-left: 20px;
-}
+
 /* 주의사항 입력 전체 영역 */
 .attentionCon{
   width:100%;
-  height:100px;
+  height:200px;
   padding-left: 20px;
   /* border:1px solid; */
   text-align: left;
@@ -306,9 +299,10 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+/* 나누는선 */
 .line4{
   width:1px;
-  height: 100%;
+  height: 450px;
   background-color: black;
 }
 /* 사진 등록 전체영역 */
@@ -316,7 +310,7 @@ body {
   /* border:1px solid; */
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
   height: 100%;
   text-align:left;
   padding-left:20px;
@@ -325,9 +319,13 @@ body {
 /* 숙소 사진등록 글씨 */
 .slide3 > div > p {
   text-align: left;
-  margin-bottom: 30px;
+  /* margin-bottom: 50px; */
   margin-top:10px;
   font-size:20px;
+}
+/* 사진리스트 1번영역(margin용) */
+.photo1{
+  margin-top:20px;
 }
 /* 사진 리스트 하나하나 영역 */
 .photoListBox > div{
@@ -342,36 +340,43 @@ body {
 /* 사진 이름 뜰 곳 라인 */
 .picLine{
   border-bottom: 1px solid;
-  width: 70%;
+  width: 80%;
   height: 20px;
 }
+/* 사진 이름 뜨는 곳 */
+.picName{
+  margin-left: 20px;
+}
 /* +버튼 라벨 */
-.uploadPic{
-  fort-size: 25px;
-  font-weight: bolder;
+.uploadPic>img{
+  /* src: url("/web/image/house/houseEnroll/icon/plus.png"); */
+  width: 20px;
+  height: 20px;
+  font-size:50px;
   margin-left:5px;
 }
 /* -버튼 라벨 */
-.deletePic{
-  fort-size: 25px;
-  font-weight: bolder;
-  margin-left:5px;
+.deletePic>img{
+  /* src: url("/web/image/house/houseEnroll/icon/minus.png"); */
+  width: 20px;
+  height: 20px;
+  font-size:50px;
+  margin-left:15px;
 }
 /* 사진미리보기 전체영역 */
 .photoPrevBox{
-  width:40%;
+  width:50%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-/* 사진 미리보기 네모 */
-.photoPreview{
-  width:300px;
-  height: 300px;
+/* 사진 미리보기 스와이프 */
+.prevImg {
+  width:450px;
+  height: 350px;
   border:1px solid;
 }
-
 
  /* ----------------------------------- */
  /* 5/8 */
@@ -392,10 +397,14 @@ body {
   margin-top:10px;
   font-size:20px;
 }
+.filterContainer{
+  display:flex;
+  margin-top:20px;
+}
 /* 인풋박스와 라벨 영역 */
 .filterCon{
   /* border:1px solid; */
-  width:50%;
+  width:25%;
 }
 /* 인풋박스와 라벨 한줄한줄 */
 .filterCon>li{
@@ -456,9 +465,9 @@ body {
 }
 /* x버튼 */
 .deletePlace{
-  float:right;
   position:absolute;
-  
+  top:0;
+  right:20px;
   width:20px;
   height:20px;
 }
@@ -612,6 +621,9 @@ body {
 
  /* ----------------------------------- */
  /* 8/8 */
+.slide8{
+  position: relative;
+}
 .slide8 > * {
   margin: 10px 20px;
 }
@@ -659,4 +671,14 @@ body {
   /* background-color: gray; */
   outline:none;
   height:30px;
+}
+.submit{
+  position:absolute;
+  bottom: 100px;
+  right:100px;
+  width:100px;
+  height:50px;
+  background-color: #fff;
+  border:0px;
+  font-size:25px;
 }

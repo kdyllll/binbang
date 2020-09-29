@@ -42,7 +42,7 @@ section{
 	display: inline-block;
 	
 }
-.swiper-container {
+.first {
    
     width: 1000px;
     height: 500px;
@@ -50,10 +50,22 @@ section{
     margin-right: 30px;
    
     }
-    
+.second{
+	
+	width: 700px;
+	height: 150px;
+	border:0px;
+	}
+	
+	
+   .aserviceimg{
+   margin-left: 30px;
+   display: flex;
+   } 
 
 
     .swiper-slide {
+    
       text-align: center;
       font-size: 18px;
       background: #fff;
@@ -76,7 +88,7 @@ section{
       
       /* 왼쪽 버튼 */
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-    background-image: url("../../image/houseReservation/left.png");
+    background-image: url("../../image/common/icon/prev.png");
     background-size:cover;
     
     left: 10px;
@@ -84,7 +96,7 @@ section{
 }
 /* 오른쪽 버튼 */
 .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-    background-image: url("../../image/houseReservation/right.png");
+    background-image: url("../../image/common/icon/next.png");
     background-size:cover;
    
     right: 10px;
@@ -459,15 +471,6 @@ section{
 
 /* 2번째 박스와의 간격설정 및 글자 박스와 이미지 박스 한줄로 정렬 */
 /* 이미지 */
-.gradePhoto {
-    width: 200px;
-    height: 200px;
-    background-image: url("/image/houseReservation/sunnySideupImg.jpg");
-    background-size: cover;
-    background-position: center;
-    
-    border: 1px black solid;
-}
 /* 글씨를 감싸는 박스 */
 .section  .comment {
     width: 100%;
@@ -476,25 +479,44 @@ section{
     position: relative;
     margin-top: 30px;
     
+    
+}
+.gradePhoto {
+	margin-left:100px;
+	margin-right:10px;
+    width: 200px;
+    height: 200px;
+    background-image: url("/image/.jpg");
+    background-size: cover;
+    background-position: center;
+    border: solid;
+    
 }
 
 
 
 /* 박스 사이즈 설정 및 박스안에 들어가는 글씨들 색설정 */
+
+.three{
+	width: 1200px;
+	height: 100%;
+	border:0px;
+	
+}
 .customer {
-    width: 75%;
+	margin-right:100px;
+    width: 80%;
     height: 100%;
     flex-direction: column;
     color: black;
-    
+   
    
 }
 /* 박스안  글자들 위치 정렬 설정 */
 .gradeall {
-	 height: 200px;
+	height: 200px;
     display: flex;
     background-color: white ;
-    border:  solid;
     padding:10px;
 }
 

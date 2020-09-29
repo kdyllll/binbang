@@ -8,3 +8,4 @@ $(".star").on('click',function(){
          $(".star").eq(i).addClass("on");
     }
   });
+
