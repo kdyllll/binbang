@@ -55,7 +55,7 @@ public class MemberLoginServlet extends HttpServlet {
 		if(m!=null||userId.equals("admin")&&userPw.equals("1234")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", m);
-//			session.setAttribute("id", "admin");
+			session.setAttribute("id", m.getEmail());
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
 
 		}else {
