@@ -55,25 +55,14 @@
                         </div>
                     </div>
                     <div class="line1"></div>
-                    <!-- <div class="hAddressBox">
-                        <p>위치</p>
-                        <div class="hAddressCon">
-                            <div class="hAddNumCon">
-                                <div class="hAddNum"></div>
-                                <div class="hAddBtn"></div>
-                            </div>
-                            <div class="hAdd"></div>
-                            <div class="hAddDetail"></div>
-                        </div>
-                    </div> -->
-                    <input type="button" onClick="goPopup();" value="팝업_domainChk"/>
+                    
+                    <input type="button" onclick="goPopup();" value="주소검색"/>
                     <div id="list"></div>
                     <div id="callBackDiv">
                       <table>                
                         <tr><td>우편번호             </td><td><input type="text"  style="width:500px;" id="zipNo"  name="zipNo" /></td></tr>
                         <tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" /></td></tr>                        
-                        <tr><td>건물명        		</td><td><input type="text"  style="width:500px;" id="bdNm"  name="bdNm" /></td></tr>
-                        
+                        <tr><td>고객입력 상세주소    </td><td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td></tr>
                       </table>
                     </div>
                 </div>
@@ -435,41 +424,25 @@
      //주소검색  
        function goPopup(){
         // 주소검색을 수행할 팝업 페이지를 호출합니다.
+        window.name="addressSearch";
         // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-        var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-        
+    	var pop = window.open("<%=request.getContextPath()%>/views/house/addressSearch.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
         // 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
           //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
       }
       function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
           // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-          document.form.roadFullAddr.value = roadFullAddr;
-          document.form.roadAddrPart1.value = roadAddrPart1;
-          document.form.roadAddrPart2.value = roadAddrPart2;
-          document.form.addrDetail.value = addrDetail;
-          document.form.engAddr.value = engAddr;
-          document.form.jibunAddr.value = jibunAddr;
-          document.form.zipNo.value = zipNo;
-          document.form.admCd.value = admCd;
-          document.form.rnMgtSn.value = rnMgtSn;
-          document.form.bdMgtSn.value = bdMgtSn;
-          document.form.detBdNmList.value = detBdNmList;
-          /** 2017년 2월 추가제공 **/
-          document.form.bdNm.value = bdNm;
-          document.form.bdKdcd.value = bdKdcd;
-          document.form.siNm.value = siNm;
-          document.form.sggNm.value = sggNm;
-          document.form.emdNm.value = emdNm;
-          document.form.liNm.value = liNm;
-          document.form.rn.value = rn;
-          document.form.udrtYn.value = udrtYn;
-          document.form.buldMnnm.value = buldMnnm;
-          document.form.buldSlno.value = buldSlno;
-          document.form.mtYn.value = mtYn;
-          document.form.lnbrMnnm.value = lnbrMnnm;
-          document.form.lnbrSlno.value = lnbrSlno;
-          /** 2017년 3월 추가제공 **/
-          document.form.emdNo.value = emdNo;
+          
+
+    	  let zipNo1 = document.getElementById("zipNo");
+          let roadFullAddr1 = document.getElementById("roadFullAddr");
+          let addrDetail1 = document.getElementById("addrDetail");
+          roadFullAddr1.value = roadFullAddr;
+      
+          addrDetail1.value = addrDetail;
+     
+          zipNo1.value = zipNo;
+         
           
       }
  
