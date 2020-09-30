@@ -85,10 +85,14 @@
 						<div class="pay">
 							<a href="<%=request.getContextPath()%>/booking/booking">booking</a>
 						</div>
-
 					</div>
 				</div>
+						
 			</div>
+		<div class="infoFilterScroll"></div>
+			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
+			
+			
 
 			<div class="houseinfobox">
 				<div class="houseinfo">
@@ -125,8 +129,8 @@
 										
 									</div>
 											<!-- Add Arrows -->
-										<div class="swiper-button-next"></div>
-										<div class="swiper-button-prev"></div>
+										<div class="swiper-button-next "></div>
+										<div class="swiper-button-prev "></div>
 										<!-- Add Pagination -->
 										<div class="swiper-pagination"></div>
 										</div>
@@ -176,10 +180,12 @@
 					제외한 4월~11월 기간 미온수 신청도 가능하여 쌀쌀한 봄, 가을날도 춥지 않게 수영을 즐길 수 있다. 또한 모든
 					객실에서 바베큐 그릴을 이용할 수 있다고 하니, 소중한 사람들과 함께 온전한 휴식을 즐기는데에 최적의 환경이 아닐까.
 					각박한 현실에서 벗어나 숨 돌릴 여유가 필요한 지금, 하늘과 바다를 품은 풀빌라에서의 황홀한 휴식이 기다리고 있다.</div>
-				<div class="houseinfo2"></div>
+				<div class="houseinfo2"></div>				
 			</div>
-			<br> <br> <br> <br>
-
+			
+				<div class="reviewFilterScroll"></div>
+			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
+			
 			<div class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
@@ -205,22 +211,25 @@
 						
 					</div>
 				</div>
-										
+				
 			</div>
+			
+			
 			<!-- Add Arrows -->
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
 			<!-- Add Pagination -->
 			<div class="swiper-pagination"></div>
+			
 			</div>
-									
-									
-				
+			
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 			</div>
 			</div>
 			
-
+			<div class="photoFilterScroll"></div>
+			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
+				
 
 			<div class="place">
 				<div class="placeSection">

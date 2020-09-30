@@ -16,7 +16,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MemberLoginServlet
  */
-@WebServlet("/member/login")
+@WebServlet(name="login",urlPatterns="/member/login")
 public class MemberLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -52,10 +52,10 @@ public class MemberLoginServlet extends HttpServlet {
 		String msg = "";
 		String loc = "";
 		
-		if(m!=null||userId.equals("admin")&&userPw.equals("1234")) {
+		if(m!=null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", m);
-//			session.setAttribute("id", "admin");
+			session.setAttribute("m", m);
+			//session.setAttribute("id", m.getEmail());
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
 
 		}else {

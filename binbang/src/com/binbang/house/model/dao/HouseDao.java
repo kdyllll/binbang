@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.binbang.house.model.vo.House;
+import com.binbang.house.model.vo.Review;
 
 public class HouseDao {
 
@@ -135,6 +136,23 @@ public class HouseDao {
 			      }
 			      return result;
 			   }
+		 public int insertReview(Connection conn, Review r) {
+				PreparedStatement pstmt=null;
+				int result=0;
+				
+				try {
+					pstmt=conn.prepareStatement(prop.getProperty(""));
+					pstmt.setDouble(1, r.getHouseGrade());
+					pstmt.setString(2,r.getCommentTitle());
+					pstmt.setNString(3, r.getCommentContents());
+					pstmt.setNString(4, r.getFilePath());
+					result=pstmt.executeUpdate();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}finally {
+					close(pstmt);
+				}return result;
+			}
 			
 	
 

@@ -43,5 +43,34 @@ public class MemberService {
 	
 	//mypage 탈퇴
 	
-	//mypage 비밀번호수정
+	//로그인 화면 비밀번호수정용
+	public int findPassword(String email,String newPassword) {
+		Connection conn=getConnection();
+		int result=-1;
+		Member m=dao.selectMemberId(conn, email);
+		
+		if(m!=null) {
+			result=dao.updatePassword(conn,email,newPassword);
+			if(result>0) commit(conn);
+			else rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	//마이페이지 비밀번호 수정용
+	public int updatePassword(String email,String password,String newPassword) {
+		Connection conn=getConnection();
+		int result=-1;
+		Member m=dao.selectMember(conn, email, password);
+		
+		if(m!=null) {
+			result=dao.updatePassword(conn,email,newPassword);
+			if(result>0) commit(conn);
+			else rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	}
 }
