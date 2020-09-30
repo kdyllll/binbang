@@ -8,3 +8,4 @@
         $(".star").eq(i).addClass("on");
    }
  });
+
