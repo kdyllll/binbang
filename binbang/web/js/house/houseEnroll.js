@@ -34,13 +34,8 @@ $("#deletePic1").on("click",function(e){
     img.css({"border":"1px solid"});
 })
 
-// 주변장소 추가
-$(".addPlace").on("click", function (e) {
-    $(e.target).siblings("div").removeClass("disnone");
-    $(e.target).addClass("disnone");
-});
-// 주변장소 삭제
-$(".deletePlace").on("click", function (e) {
-    $(e.target).parent().addClass("disnone");
-    $(e.target).parent().siblings(".addPlace").removeClass("disnone");
-});
+
+
+
+
+   
