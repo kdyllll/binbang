@@ -47,6 +47,9 @@
 	background-size: 40px;
 	margin-left: -3px;
 }
+.star.on{
+  background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
+}
 
 
 

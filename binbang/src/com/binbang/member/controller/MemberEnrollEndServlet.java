@@ -14,7 +14,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MemberEnrollEndServlet
  */
-@WebServlet(name="/member/memberEnrollEnd",urlPatterns="/member/memberEnrollEnd")
+@WebServlet(name="memberEnrollEnd",urlPatterns="/member/memberEnrollEnd")
 public class MemberEnrollEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
