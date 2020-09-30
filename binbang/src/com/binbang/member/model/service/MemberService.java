@@ -16,6 +16,7 @@ public class MemberService {
 	private MemberDao dao=new MemberDao();
 
 	//로그인
+
 	public Member selectMember(String email, String password) {
 		Connection conn=getConnection();
 		Member m=dao.selectMember(conn,email,password);

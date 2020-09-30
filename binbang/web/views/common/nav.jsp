@@ -1,14 +1,14 @@
+<%@page import="com.binbang.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.binbang.member.model.vo.Member" %>
 <%
-	
-	String id=(String)session.getAttribute("id");
+	Member m=(Member)session.getAttribute("m");
 %>
 <!--Member loginMember=(Member)session.getAttribute("loginMember");-->
 
 <nav class="headerNav" id="nav">
-		<%if(id==null) { %>
+		<%if(m==null) { %>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/member/moveLoginPage">로그인</a></li>
 			<li><a href="<%=request.getContextPath()%>/member/memberEnrollChoice">회원가입</a></li>

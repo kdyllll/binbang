@@ -44,7 +44,7 @@ public class MemberDao {
 				m.setMemberName(rs.getString("memberName"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setEnrollDate(rs.getDate("enrollDate"));
+				m.setEnrollDate(rs.getDate("enrollDate"));				
 				m.setStayDays(rs.getInt("stayDays"));
 				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("hostBlack"));				

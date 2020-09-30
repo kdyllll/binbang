@@ -11,7 +11,6 @@ public class Member {
 	private String nickname;
 	private String phone;
 	private Date enrollDate;
-	private String hostYn;
 	private int stayDays;
 	private int coupon;
 	private String hostBlack;
@@ -21,7 +20,7 @@ public class Member {
 	}
 
 	public Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
-			Date enrollDate, String hostYn, int stayDays, int coupon, String hostBlack) {
+			Date enrollDate, int stayDays, int coupon, String hostBlack) {
 		super();
 		this.memberNo = memberNo;
 		this.email = email;
@@ -30,7 +29,6 @@ public class Member {
 		this.nickname = nickname;
 		this.phone = phone;
 		this.enrollDate = enrollDate;
-		this.hostYn = hostYn;
 		this.stayDays = stayDays;
 		this.coupon = coupon;
 		this.hostBlack = hostBlack;
@@ -92,14 +90,6 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
-	public String getHostYn() {
-		return hostYn;
-	}
-
-	public void setHostYn(String hostYn) {
-		this.hostYn = hostYn;
-	}
-
 	public int getStayDays() {
 		return stayDays;
 	}
@@ -128,8 +118,7 @@ public class Member {
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", email=" + email + ", password=" + password + ", memberName="
 				+ memberName + ", nickname=" + nickname + ", phone=" + phone + ", enrollDate=" + enrollDate
-				+ ", hostYn=" + hostYn + ", stayDays=" + stayDays + ", coupon=" + coupon + ", hostBlack=" + hostBlack
-				+ "]";
+				+ ", stayDays=" + stayDays + ", coupon=" + coupon + ", hostBlack=" + hostBlack + "]";
 	}
 	
 	

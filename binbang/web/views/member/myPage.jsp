@@ -131,7 +131,8 @@
 				<div class="couponCount">
 					<ul>
 						<li class="addDate">2020-09-05</li>
-						<li class="addCoupon">1박쿠폰 +</li>
+						<li class="addContent">이나주니 집사용</li>
+						<li class="addCoupon">1박쿠폰 -</li>
 					</ul>
 				</div>
 				<div class="line7"></div>

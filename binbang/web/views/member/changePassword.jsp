@@ -37,6 +37,7 @@
     </div>
         
     <script> 
+
       function checkPw() {
    	  	let pw1=$("#newPw").val();
         let pw2=$("#newPw_").val();

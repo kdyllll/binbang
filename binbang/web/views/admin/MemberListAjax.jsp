@@ -45,19 +45,19 @@
          %>
          <tr>
             <td class="<%=cell.get(0)%>"><%=m.getMemberNo()%></td>
-            <td class="<%=cell.get(1)%>"><%=m.getName()%></td>
+            <td class="<%=cell.get(1)%>"><%=m.getMemberName()%></td>
             <!--회원분류-->
-            <%
+           <%--  <%
                if (m.getHostYn() == 'Y') {
-            %>
-            <td class="<%=cell.get(2)%>">호스트</td>
+            %> --%>
+            <%-- <td class="<%=cell.get(2)%>">호스트</td>
             <%
                } else {
             %>
             <td class="<%=cell.get(2)%>">일반</td>
             <%
                }
-            %>
+            %> --%>
             <td class="<%=cell.get(3)%>"><%=m.getEmail()%></td>
             <td class="<%=cell.get(4)%>"><%=m.getPhone()%></td>
             <td class="<%=cell.get(5)%>"><%=m.getEnrollDate()%></td>
