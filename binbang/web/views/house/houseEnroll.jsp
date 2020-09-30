@@ -6,8 +6,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
     <!-- css -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/house/houseEnroll.css" /> 
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common/cal.css" type="text/css" />
     <!-- 주소검색 api js -->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   </head>
 <body>
     <div class="wrap">
@@ -241,10 +243,12 @@
                   <p>요금 설정</p>
                   <div class="periodCon">
                     <p>성수기 기간 선택</p>
-                    <div class="calendar">달력</div>
+                    <div id="calendar">
+                    <p id="cal">cal</p>
+                    </div>
                   </div>
                   <div class="peakDayCon">
-                    <p>성수기 평일 요금</p>
+                    <p >성수기 평일 요금</p>
                     <input type="text" id="peakDay" name="peakDay" placeholder="성수기 평일" required>
                   </div>
                   <div class="peakRestCon">
@@ -278,6 +282,7 @@
   
       <%@ include file="/views/common/footer.jsp" %>
       </div>
+
     <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
     <script src="<%=request.getContextPath() %>/js/house/houseEnroll.js"></script> 
 
@@ -344,7 +349,7 @@
             }
         }).open();
     }
- 
+
     </script>
    
 </body>

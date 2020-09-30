@@ -36,6 +36,4 @@ $("#deletePic1").on("click",function(e){
 
 
 
-
-
    
