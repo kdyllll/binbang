@@ -15,7 +15,7 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-<form action="<%=request.getContextPath()%>/???????" method="post" >
+<form action="<%=request.getContextPath()%>/review/reviewEnd" method="post" >
 		<section class="section">
 			<div class="review">
 				<div class="Writerating">후기 작성</div>
@@ -66,7 +66,7 @@
 
 
 				<div class="enrollment">
-					<a href="<%=request.getContextPath()%>/houseReservation.do">등록하기</a>
+					  <input type="submit" value="등록하기" onclick=>
 
 				</div>
 			</div>
