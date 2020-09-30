@@ -9,15 +9,18 @@
 .section .myPageLogo>p{
   padding-top: 5%;
   padding-bottom: 5%;
+  margin-left:5%;
   font-size: 20px;
 }
 
 /* 회원정보*/
 .section .lineList{
-  width: 100%;
+  width: 90%;
   border:2px black solid;
   display: inline-flex;
   padding:5px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 /* 회원정보 */
 .lineList div{
@@ -49,6 +52,7 @@
   display: flex;
   justify-content: space-around;
 }
+
 button {
   width: 110px;
   height: 35px;
@@ -77,6 +81,8 @@ button {
   height: 2px;
   background-color: black;
 }
+
+
 /* 1. 예약완료된 숙소 */
 .stayed{
   margin-top:10%;
@@ -169,7 +175,7 @@ button {
     width: 50%;
   }
   .section .couponSum{
-    width:70%;
+    width:50%;
     height: 50px;
     background-color: rgb(156, 156, 156);
   }
@@ -182,15 +188,21 @@ button {
     align-items: center;
     padding-top: 15px;
   }
+  
+  .addContent{
+  padding-right: 2%;
+  padding-left: 2%;
+  }
+  
   /* 쿠폰변화유무 */
   .section .line6{
-    width: 80%;
+    width: 60%;
     height: 2px;
     background-color: black;
     margin-top: 2%;
   }
   .section .line7{
-    width: 80%;
+    width: 60%;
     height: 2px;
     background-color: black;
     opacity: 40%;
@@ -199,12 +211,11 @@ button {
   .section .couponCount{
     margin-top: 1%;
   }
+  
   .section .couponCount>ul{
-    top:100 ;
-    height: 0px;
-    padding: 2%;
     display: flex;
     justify-content: space-between;
+  	font-size: 12px;
   }
   
 

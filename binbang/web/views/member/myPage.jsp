@@ -122,7 +122,7 @@
 			<!-- 2. 총 보유쿠폰 -->
 			<div class="coupon">
 				<div class="couponSum">
-					<div class="couponContents">현재보유쿠폰 :</div>
+					<div class="couponContents">현재보유쿠폰    : 1개</div>
 				</div>
 
 				<!-- 구분선 -->
@@ -140,47 +140,35 @@
 
 			<!-- 3. 개인정보변경 -->
 			<div class="private">
+			<form action="">
 				<div class="passwordChange">
 					<p>비밀번호변경</p>
-					<div class="line6"></div>
-					<br> <br> 현재 비밀번호
-					<div></div>
-					<br> <br>
-					<form>
-						새로운 비밀번호 <input type="password">
-					</form>
+					<div class="line6"></div><br><br> 
+					현재 비밀번호<div></div><br><br>					
+					새로운 비밀번호 <input type="password">					
 				</div>
 
 				<div class="nickNameChange">
 					<p>닉네임변경</p>
-					<div class="line6"></div>
-					<br> <br> 현재 닉네임
-					<div></div>
-					<br> <br>
-					<form>
-						새로운 닉네임 <input type="text">
-					</form>
+					<div class="line6"></div><br><br> 
+					현재 닉네임<div></div><br><br>
+					새로운 닉네임 <input type="text">					
 				</div>
 
 				<div class="phoneChange">
 					<p>전화번호변경</p>
-					<div class="line6"></div>
-					<br> <br> 현재 전화번호
-					<div></div>
-					<br> <br>
-					<form>
-						새로운 전화번호<input type="text">
-					</form>
+					<div class="line6"></div><br><br> 
+					현재 전화번호<div></div><br> <br>					
+					새로운 전화번호<input type="text">					
 				</div>
-
+				</form>
 				<div class="modifyComplete">
-					<div class="line6"></div>
-					<br>
+					<div class="line6"></div><br>
 					<div class="btn">
 						<button id="btn1">회원탈퇴</button>
 						<button id="btn2">수정완료</button>
 					</div>
-				</div>
+				</div>				
 			</div>
 		</section>
 
