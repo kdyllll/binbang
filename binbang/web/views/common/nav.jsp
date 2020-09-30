@@ -5,7 +5,6 @@
 <%
 	Member m=(Member)session.getAttribute("m");
 %>
-<!--Member loginMember=(Member)session.getAttribute("loginMember");-->
 
 <nav class="headerNav" id="nav">
 		<%if(m==null) { %>

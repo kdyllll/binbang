@@ -26,7 +26,6 @@
 
 		<section class="section">
 
-			<%if(loginMember==null) {%>
 			<div class="loginContainer">
 				<form id="loginFrm" method="post" action="<%=request.getContextPath() %>/member/login">
 					<p class="loginTitle">LogIn</p>
@@ -71,11 +70,6 @@
 				</form>
 
 			</div>
-			<%}else {%>
-				
-				
-			<%} %>
-
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 		<script>

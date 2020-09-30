@@ -52,10 +52,10 @@ public class MemberLoginServlet extends HttpServlet {
 		String msg = "";
 		String loc = "";
 		
-		if(m!=null||userId.equals("admin")&&userPw.equals("1234")) {
+		if(m!=null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("loginMember", m);
-			session.setAttribute("id", m.getEmail());
+			session.setAttribute("m", m);
+			//session.setAttribute("id", m.getEmail());
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
 
 		}else {

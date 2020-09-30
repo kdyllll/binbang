@@ -32,7 +32,7 @@ public class MemberLogoutServlet extends HttpServlet {
 			session.invalidate();
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/mainMove.do");
+		response.sendRedirect(request.getContextPath()+"/mainMove");
 	}
 
 	/**
