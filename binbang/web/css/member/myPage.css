@@ -32,8 +32,8 @@
 }
 
 .nav button:hover{
-  color: black;
-  text-decoration: overline;
+  /* text-decoration: overline; */
+  font-weight:600;
 }
 
 .section .line5{

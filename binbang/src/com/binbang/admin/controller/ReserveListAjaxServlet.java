@@ -1,6 +1,8 @@
-package com.binbang.member.controller;
+package com.binbang.admin.controller;
 
+import java.awt.List;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,20 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberEnrollEndServlet
+ * Servlet implementation class ReserveListAjaxServlet
  */
-@WebServlet(name="/member/memberEnrollEnd",urlPatterns="/member/memberEnrollEnd")
-public class MemberEnrollEndServlet extends HttpServlet {
+@WebServlet("/admin/reserveListAjax")
+public class ReserveListAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollEndServlet() {
+    public ReserveListAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,26 +32,33 @@ public class MemberEnrollEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		
-		String email=request.getParameter("email");
-		String password=request.getParameter("password");
-		String memberName=request.getParameter("name");
-		String nickname=request.getParameter("nickname");
-		String phone=request.getParameter("phone");
-		Member m=new Member(null,email,password,memberName,nickname,phone,null,0,0,null);
+		String adminTitle="예약현황";
 		
-		int result=new MemberService().insertMember(m);
+		String reserveName="예약자이름";
+		String enrollDate="예약 날짜";
+		String houseNo="숙소번호";
 		
-		String msg="";
-		String loc="/";
-		if(result>0) {
-			msg="회원등록 성공";
-		}else {
-			msg="회원등록 실패";
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
+		ArrayList searchCategory= new ArrayList();
+		searchCategory.add(reserveName);
+		searchCategory.add(enrollDate);
+		searchCategory.add(houseNo);
+		
+		ArrayList cell=new ArrayList();
+		cell.add("cell1");
+		cell.add("cell3");
+		cell.add("cell3");
+		cell.add("cell3");
+		cell.add("cell2");
+		cell.add("cell2");
+		
+		request.setAttribute("adminTilte", adminTitle);
+		request.setAttribute("searchCategory", searchCategory);
+		request.setAttribute("cell", cell);
+		
+		request.getRequestDispatcher("/views/admin/reserveListAjax.jsp").forward(request, response);
+		
 	}
 
 	/**
