@@ -15,6 +15,7 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
+
 		<section class="section">
 			<div class="review">
 				<div class="Writerating">후기 작성</div>
@@ -61,13 +62,14 @@
             </script>
 
 				<div class="contents">내용</div>
-				<input class="contentsWrite" type="text" placeholder="제목을 입력하세요">
+				<input class="contentsWrite" type="text" placeholder="내용을 입력하세요">
 
 
 				<div class="enrollment">
 					<a href="<%=request.getContextPath()%>/houseReservation.do">등록하기</a>
 
 				</div>
+			</div>
 		</section>
 
 		<%@ include file="/views/common/footer.jsp"%>

@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.List,com.binbang.house.model.vo.House"%>
+	<%
+   List<House> list = (List)request.getAttribute("list");
+
+	int numPerPage;
+	try{
+		numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
+	}catch(NumberFormatException e){
+		numPerPage=5;
+	}
+
+	%>
+	
+	<% String[] filter = new String[] {"bathRoom.png","bbq.png","breakfast.png","dog.png","kitchen.png","laundrtRoom.png","park.png",
+								"parking.png","projector.png","refrigerator.png","shower.png","smoking.png","swimming.png","terrace.png","wifi.png"};%>
+							
+	
 
 <%@ include file="/views/common/commonLink.jsp"%>
 
@@ -11,20 +28,20 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
-<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/Filter.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSwiper.css" />
 <title>house_regist</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
 </head>
 
 <body class="body">
 	<div class="wrap">
 		<%@ include file="/views/common/houseHeader.jsp"%>
 		<section class="section">
-			<div>
-				<div class="swiper-container">
+			<div class="mainBox">
+				<div class="swiper-container first">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">Slide 1</div>
 						<div class="swiper-slide">Slide 2</div>
@@ -86,44 +103,38 @@
 						오픈플랜으로 구성된 정수리 아파트 4개의 객실중, 201호애는 욕조가 마련되어있습니다. <br> 여행의 피로를
 						풀며 편안한 휴식을 취할수 있습니다
 					</div>
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">Slide 1</div>
-							<div class="swiper-slide">Slide 2</div>
-							<div class="swiper-slide">Slide 3</div>
-							<div class="swiper-slide">Slide 4</div>
-							<div class="swiper-slide">Slide 5</div>
-							<div class="swiper-slide">Slide 6</div>
-							<div class="swiper-slide">Slide 7</div>
-							<div class="swiper-slide">Slide 8</div>
-							<div class="swiper-slide">Slide 9</div>
-							<div class="swiper-slide">Slide 10</div>
-						</div>
-						<!-- Add Arrows -->
-						<div class="swiper-button-next"></div>
-						<div class="swiper-button-prev"></div>
-					</div>
-
+					
+					
+					
+ 
 					<div>
-						<div class="test">
+						<div class="test"> 
+						
 							<div class="service">
-								SERVICE
+								SERVICE 
 								<div class="a">
-									<div class="aserviceimg"></div>
-									<div class="aservicefont">독립화장실</div>
+									<div class="aserviceimg">
+									<div class="swiper-container second">
+									<div class="swiper-wrapper">
+									<% for(String h : filter){ %>
+										<div class="swiper-slide">Slide 1
+										
+												<img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20">
+										 </div>
+										 <%} %>
+										
+									</div>
+											<!-- Add Arrows -->
+										<div class="swiper-button-next"></div>
+										<div class="swiper-button-prev"></div>
+										<!-- Add Pagination -->
+										<div class="swiper-pagination"></div>
+										</div>
+									
+									</div>
+									
 								</div>
-								<div class="b">
-									<div class="bserviceimg"></div>
-									<div class="bservicefont">독립키친</div>
-								</div>
-								<div class="c">
-									<div class="cserviceimg"></div>
-									<div class="cservicefont">오픈배스</div>
-								</div>
-								<div class="d">
-									<div class="dserviceimg"></div>
-									<div class="dservicefont">흡연부스</div>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -177,7 +188,10 @@
 			</div>
 
 			<div class="comment">
-				<div class="gradePhoto"></div>
+			<div class="aserviceimg">
+			<div class="swiper-container three">
+			<div class="swiper-wrapper">
+			<div class="gradePhoto"></div>
 				<div class="customer">
 					<div class="gradeall">
 						<div class="gradeinfo">
@@ -187,25 +201,25 @@
 							<br> <br> <br> <br>
 							<div>내용 :</div>
 						</div>
-						<tbody>
-
-							<div>
-								<div colspan="3">조회된 회원이 없습니다.</div>
-							</div>
-
-							<div>
-								<div></div>
-								<div></div>
-								<div></div>
-
-							</div>
-
-						</tbody>
+					
+						
 					</div>
 				</div>
+										
+			</div>
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+			</div>
+									
+									
+				
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 			</div>
-			<div id="pageBar"></div>
+			</div>
+			
 
 
 			<div class="place">

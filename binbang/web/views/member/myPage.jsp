@@ -55,7 +55,18 @@
 					<div class="reservedList">
 						<div>
 							<div class="recomPic1 recommon"></div>
-							<div class="reservedContents"></div>
+							<div class="reservedContents">
+								<table>
+									<tr>
+										<td>숙소이름</td>
+										<td>예약완료</td>
+									</tr>
+									<tr>
+										<td>2020-01-08 ~ 2020-05-08</td>
+										<td>예약취소</td>
+									</tr>
+								</table>
+							</div>
 						</div>
 						<div>
 							<div class="recomPic2 recommon"></div>
@@ -120,7 +131,8 @@
 				<div class="couponCount">
 					<ul>
 						<li class="addDate">2020-09-05</li>
-						<li class="addCoupon">1박쿠폰 +</li>
+						<li class="addContent">이나주니 집사용</li>
+						<li class="addCoupon">1박쿠폰 -</li>
 					</ul>
 				</div>
 				<div class="line7"></div>
@@ -131,11 +143,9 @@
 				<div class="passwordChange">
 					<p>비밀번호변경</p>
 					<div class="line6"></div>
-					<br>
-					<br> 현재 비밀번호
+					<br> <br> 현재 비밀번호
 					<div></div>
-					<br>
-					<br>
+					<br> <br>
 					<form>
 						새로운 비밀번호 <input type="password">
 					</form>
@@ -144,11 +154,9 @@
 				<div class="nickNameChange">
 					<p>닉네임변경</p>
 					<div class="line6"></div>
-					<br>
-					<br> 현재 닉네임
+					<br> <br> 현재 닉네임
 					<div></div>
-					<br>
-					<br>
+					<br> <br>
 					<form>
 						새로운 닉네임 <input type="text">
 					</form>
@@ -157,11 +165,9 @@
 				<div class="phoneChange">
 					<p>전화번호변경</p>
 					<div class="line6"></div>
-					<br>
-					<br> 현재 전화번호
+					<br> <br> 현재 전화번호
 					<div></div>
-					<br>
-					<br>
+					<br> <br>
 					<form>
 						새로운 전화번호<input type="text">
 					</form>

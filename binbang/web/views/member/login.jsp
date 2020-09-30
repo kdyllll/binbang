@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.binbang.member.model.vo.Member" %>
 <%@ include file="/views/common/commonLink.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/login.css" />
+<%
+	
+	Member loginMember=(Member)session.getAttribute("loginMember");
+
+	Cookie[] cookies=request.getCookies();
+	String saveId=null;
+	if(cookies!=null){
+		for(Cookie c : cookies){
+			if(c.getName().equals("saveId")){ 
+				saveId=c.getValue();  
+			}
+		}
+	}
+
+%>
+
 </head>
 <body>
 	<div class="wrap">
@@ -9,14 +26,14 @@
 
 		<section class="section">
 
-			<!-- 로그인 페이지 -->
+			<%if(loginMember==null) {%>
 			<div class="loginContainer">
 				<form id="loginFrm" method="post">
 					<p class="loginTitle">LogIn</p>
 					<div class="loginLine"></div>
 
 					<input type="text" class="login" name="userId"
-						placeholder="아이디(이메일) 입력해주세요"> 
+						placeholder="아이디(이메일) 입력해주세요" value='<%=saveId!=null?saveId:"" %>'> 
 					<input type="password"
 						class="login" name="password" placeholder="비밀번호 입력해주세요">
 
@@ -26,7 +43,7 @@
 					</div>
 
 					<div class=otherBtns>
-						<button id="loginButton" onclick="fn_login();">LogIn</button>
+						<input type="submit" value="LogIn" id="loginButton">
 						<a  href="#" id="findId">아이디 찾기</a>
 						<p class="division">|</p>
 						<a  href="#" id="findPw">비밀번호 찾기</a>
@@ -54,6 +71,10 @@
 				</form>
 
 			</div>
+			<%}else {%>
+				
+			
+			<%} %>
 
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
