@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<%@ include file="/views/common/header.jsp"%>
+		<%@ include file="/views/common/header.jsp" %>
 
 		<section class="section">				
 			<!-- 1. 회원가입 -->

@@ -21,14 +21,13 @@
 
       <form id="newPassword">
         <p class="inputTitle">새로운 비밀번호를 입력하세요</p>
-        <input type="password" id="newPw" name="newPw" placeholder="비밀번호 입력"> 
+        <input type="password" id="newPw" name="new_password" placeholder="비밀번호 입력"> 
       </form>
         
-      <form id="newPassword_">
-        <p class="inputTitle">새로운 비밀번호를 다시 입력하세요</p>
-        <input type="password" id="newPw_" name="newPw_" onkeyup="checkPw();" placeholder="비밀번호 입력">
-        <div id="checkPw" align="left"></div>
-      </form>   
+       <p class="inputTitle">새로운 비밀번호를 다시 입력하세요</p>
+       <input type="password" id="newPw_" name="new_password_" onkeyup="checkPw();" placeholder="비밀번호 입력">
+       <div id="checkPw" align="left"></div>
+       
         
       <div id="tt"></div>
         
@@ -42,10 +41,10 @@
    	  	let pw1=$("#newPw").val();
         let pw2=$("#newPw_").val();
         if(pw1==pw2){
-            $("#checkPw").css("color","green").html("암호가 동일합니다.");
+            $("#checkPw").css("color","green").html("비밀번호가 동일합니다.");
             $(".next").prop("disabled",false);
           }else if(pw1!=pw2){
-          	$("#checkPw").css("color","red").html("동일한 암호를 입력하세요.");
+          	$("#checkPw").css("color","red").html("동일한 비밀번호를 입력하세요.");
             $(".next").prop("disabled",true);
           }
       };

@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<%@ include file="/views/common/header.jsp"%>
+		<%@ include file="/views/common/header.jsp" %>
 
 		<section class="section">
 			<div class="myPageLogo">
@@ -47,7 +47,6 @@
 			<!-- 숙소 -->
 			<!-- 1. 예약완료된 숙소 -->
 			<div class="house">
-
 				<div class="reserved">
 					<div class="line8">
 						<p>예약완료된 숙소</p>
@@ -80,10 +79,6 @@
 							<div class="recomPic4 recommon"></div>
 							<div class="reservedContents"></div>
 						</div>
-						<div>
-							<div class="recomPic5 recommon"></div>
-							<div class="reservedContents"></div>
-						</div>
 					</div>
 				</div>
 
@@ -110,10 +105,6 @@
 							<div class="recomPic4 recommon"></div>
 							<div class="stayedContents"></div>
 						</div>
-						<div>
-							<div class="recomPic5 recommon"></div>
-							<div class="stayedContents"></div>
-						</div>
 					</div>
 				</div>
 
@@ -122,66 +113,66 @@
 			<!-- 2. 총 보유쿠폰 -->
 			<div class="coupon">
 				<div class="couponSum">
-					<div class="couponContents">현재보유쿠폰 :</div>
+					<div class="couponContents">현재보유쿠폰    : 1개</div>
 				</div>
 
 				<!-- 구분선 -->
-				<div class="line6"></div>
 				<!-- 쿠폰사용/생성시 마다 추가되는 로직 -->
 				<div class="couponCount">
+					<div class="line6"></div>
 					<ul>
 						<li class="addDate">2020-09-05</li>
 						<li class="addContent">이나주니 집사용</li>
 						<li class="addCoupon">1박쿠폰 -</li>
 					</ul>
+						<div class="line7"></div>
 				</div>
-				<div class="line7"></div>
 			</div>
 
 			<!-- 3. 개인정보변경 -->
+		<form action="">
 			<div class="private">
-				<div class="passwordChange">
-					<p>비밀번호변경</p>
+				<div>			
+					<p>개인정보변경</p>
 					<div class="line6"></div>
-					<br> <br> 현재 비밀번호
-					<div></div>
-					<br> <br>
-					<form>
-						새로운 비밀번호 <input type="password">
-					</form>
 				</div>
-
-				<div class="nickNameChange">
-					<p>닉네임변경</p>
-					<div class="line6"></div>
-					<br> <br> 현재 닉네임
-					<div></div>
-					<br> <br>
-					<form>
-						새로운 닉네임 <input type="text">
-					</form>
-				</div>
-
-				<div class="phoneChange">
-					<p>전화번호변경</p>
-					<div class="line6"></div>
-					<br> <br> 현재 전화번호
-					<div></div>
-					<br> <br>
-					<form>
-						새로운 전화번호<input type="text">
-					</form>
-				</div>
-
-				<div class="modifyComplete">
-					<div class="line6"></div>
-					<br>
-					<div class="btn">
-						<button id="btn1">회원탈퇴</button>
-						<button id="btn2">수정완료</button>
-					</div>
-				</div>
+				
+				<table>
+					<tr>
+						<td>새로운 비밀번호</td>
+						<td><input type="password" placeholder="비밀번호 입력"></td>
+					</tr>
+					<tr class="tr2">
+						<td>비밀번호 확인</td>
+						<td><input type="password" placeholder="비밀번호 확인"></td>
+						<td><button id=btn3>비밀번호 변경</button></td>
+					</tr>			
+					<tr>
+						<td>현재 닉네임</td>
+						<td><div>이나주니</div></td>
+					</tr>	
+					<tr class="tr2">
+						<td>새로운 닉네임</td>
+						<td><input type="text" placeholder="닉네임 입력"></td>						
+						<td></td>
+					</tr>
+					<tr>
+						<td>현재 전화번호</td>
+						<td>010-6565-9203</td>
+					</tr>
+					<tr>
+						<td>새로운 전화번호</td>
+						<td><input type="text" placeholder="닉네임 입력"></td>
+						<td><button id="btn2">수정완료</button></td>
+					</tr>		
+				</table>						
+				
+				<div class="modifyComplete">				
+					<div class="line6"></div>										
+					<button id="btn1">회원탈퇴</button>											
+				</div>				
 			</div>
+			</form>
 		</section>
 
 		<%@ include file="/views/common/footer.jsp"%>

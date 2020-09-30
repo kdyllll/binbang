@@ -15,22 +15,22 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-
+<form action="<%=request.getContextPath()%>/review/reviewEnd" method="post" >
 		<section class="section">
 			<div class="review">
 				<div class="Writerating">후기 작성</div>
 				<div class="grade">평점</div>
 				<div class="gradebox">
 					<div class="star-box">
-						<span class="star star_left"></span> <span class="star star_right"></span>
+						<span class="star star_left 0.5"></span> <span class="star star_right 1" ></span>
 
-						<span class="star star_left"></span> <span class="star star_right"></span>
+						<span class="star star_left 1.5"></span> <span class="star star_right 2"></span>
 
-						<span class="star star_left"></span> <span class="star star_right"></span>
+						<span class="star star_left 2.5"></span> <span class="star star_right 3"></span>
 
-						<span class="star star_left"></span> <span class="star star_right"></span>
+						<span class="star star_left 3.5"></span> <span class="star star_right 4"></span>
 
-						<span class="star star_left"></span> <span class="star star_right"></span>
+						<span class="star star_left 4.5"></span> <span class="star star_right 5"></span>
 					</div>
 				</div>
 
@@ -66,11 +66,12 @@
 
 
 				<div class="enrollment">
-					<a href="<%=request.getContextPath()%>/houseReservation.do">등록하기</a>
+					  <input type="submit" value="등록하기" onclick=>
 
 				</div>
 			</div>
 		</section>
+		</form>
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
