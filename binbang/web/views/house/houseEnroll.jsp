@@ -1,11 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ include file="/views/common/commonLink.jsp" %>
-   <!-- 스와이퍼 -->
+<!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>main</title>
+      <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/reset.css" />
+      <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/common.css" />
+      <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/header.css" />
+      <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/footer.css" />
+      <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/nav.css" />
+      <script src="<%=request.getContextPath() %>/js/common/jquery-3.5.1.min.js"></script>   <!-- 스와이퍼 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/house/houseEnroll.css" /> 
-</head>
+    <style>
+  
+        @font-face {
+      font-family: 'IBMPlexSansKR-Light';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      }
+              
+      body {
+        //font-family: 'IBMPlexSansKR-Light';
+      }
+                
+    </style>
+  </head>
 <body>
     <div class="wrap">
         <%@ include file="/views/common/header.jsp" %>
@@ -31,7 +55,7 @@
                         </div>
                     </div>
                     <div class="line1"></div>
-                    <div class="hAddressBox">
+                    <!-- <div class="hAddressBox">
                         <p>위치</p>
                         <div class="hAddressCon">
                             <div class="hAddNumCon">
@@ -41,6 +65,16 @@
                             <div class="hAdd"></div>
                             <div class="hAddDetail"></div>
                         </div>
+                    </div> -->
+                    <input type="button" onClick="goPopup();" value="팝업_domainChk"/>
+                    <div id="list"></div>
+                    <div id="callBackDiv">
+                      <table>                
+                        <tr><td>우편번호             </td><td><input type="text"  style="width:500px;" id="zipNo"  name="zipNo" /></td></tr>
+                        <tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" /></td></tr>                        
+                        <tr><td>건물명        		</td><td><input type="text"  style="width:500px;" id="bdNm"  name="bdNm" /></td></tr>
+                        
+                      </table>
                     </div>
                 </div>
             </div>
@@ -386,6 +420,7 @@
     <script src="<%=request.getContextPath() %>/js/house/houseEnroll.js"></script> 
 
    <script>
+    //  스와이퍼
       var swiper = new Swiper('.first', {
          pagination: {
            el: '.swiper-pagination',
@@ -397,7 +432,47 @@
          },
        });
 
-      
+     //주소검색  
+       function goPopup(){
+        // 주소검색을 수행할 팝업 페이지를 호출합니다.
+        // 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+        var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+        
+        // 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+          //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+      }
+      function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+          // 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+          document.form.roadFullAddr.value = roadFullAddr;
+          document.form.roadAddrPart1.value = roadAddrPart1;
+          document.form.roadAddrPart2.value = roadAddrPart2;
+          document.form.addrDetail.value = addrDetail;
+          document.form.engAddr.value = engAddr;
+          document.form.jibunAddr.value = jibunAddr;
+          document.form.zipNo.value = zipNo;
+          document.form.admCd.value = admCd;
+          document.form.rnMgtSn.value = rnMgtSn;
+          document.form.bdMgtSn.value = bdMgtSn;
+          document.form.detBdNmList.value = detBdNmList;
+          /** 2017년 2월 추가제공 **/
+          document.form.bdNm.value = bdNm;
+          document.form.bdKdcd.value = bdKdcd;
+          document.form.siNm.value = siNm;
+          document.form.sggNm.value = sggNm;
+          document.form.emdNm.value = emdNm;
+          document.form.liNm.value = liNm;
+          document.form.rn.value = rn;
+          document.form.udrtYn.value = udrtYn;
+          document.form.buldMnnm.value = buldMnnm;
+          document.form.buldSlno.value = buldSlno;
+          document.form.mtYn.value = mtYn;
+          document.form.lnbrMnnm.value = lnbrMnnm;
+          document.form.lnbrSlno.value = lnbrSlno;
+          /** 2017년 3월 추가제공 **/
+          document.form.emdNo.value = emdNo;
+          
+      }
+ 
     </script>
    
 </body>
