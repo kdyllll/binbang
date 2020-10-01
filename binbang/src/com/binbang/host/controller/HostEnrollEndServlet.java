@@ -1,7 +1,8 @@
 package com.binbang.host.controller;
 
-import java.io.File;
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,10 +41,7 @@ public class HostEnrollEndServlet extends HttpServlet {
 			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);;
 			return;
 		}
-		String path = getServletContext().getRealPath("/upload/host");
-		File dir = new File(path);
-		//폴더만들기 => 폴더없으면 만들어줌
-		if(!dir.exists()) dir.mkdirs();
+		String path = getServletContext().getRealPath("/upload");
 		
 		int maxSize = 1024*1024*50;
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();

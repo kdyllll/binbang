@@ -15,14 +15,14 @@
               <div>
                 <div class="addBtn">
                   <label for="idFile">추가</label>
-                  <input type="file" id="idFile" name="uploadId" class="fileUpload" required />
+                  <input type="file" id="idFile" name="uploadId" class="fileUpload"  accept="image/*"/>
                 </div>
                 <p class="hostCon">신분증 사진</p>
                 <p class="uploadCommon"  id="uploadId" >파일이름</p>
                 <div>
                   <div class="addBtn">
                     <label for="profileFile">추가</label>
-                    <input type="file" name="uploadProfile" id="profileFile" class="fileUpload" required />
+                    <input type="file" name="uploadProfile" id="profileFile" class="fileUpload" accept="image/*" />
                   </div>
                   <p class="hostCon">프로필 사진 등록</p>
                   <p class="uploadCommon" id="uploadProfile">파일이름</p>
