@@ -34,13 +34,4 @@ $("#deletePic1").on("click",function(e){
     img.css({"border":"1px solid"});
 })
 
-$(".datePlus").on("click",function(e){
-    let startDay=$("#date1").val();
-    let endDay=$("#date2").val();
-    $(".peakStartDay").val(startDay);
-    $(".peakEndDay").val(endDay);
-    $("#date1").val("");
-    $("#date2").val("");
-});
 
-   

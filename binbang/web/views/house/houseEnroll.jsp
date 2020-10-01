@@ -18,7 +18,7 @@
   
         <section class="section">
             <!-- Swiper -->
-           <form action="" class="swiper-container first">
+           <form action="<%=request.getContextPath()%>/house/houseEnrollEnd" class="swiper-container first" method="post" enctype="multipart/form-data">
            
              <div class="swiper-wrapper">
                <div class="swiper-slide box">
