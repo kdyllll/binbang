@@ -50,7 +50,8 @@ public class HostEnrollEndServlet extends HttpServlet {
 		MultipartRequest mr = new MultipartRequest(request,path,maxSize,"UTF-8",rename);
 		
 		Host host = new Host();
-		System.out.println(mr.getParameter("uploadId"));
+		System.out.println(mr.getFilesystemName("uploadId"));
+		System.out.println(mr.getFilesystemName("uploadProfile"));
 	}
 
 	/**
