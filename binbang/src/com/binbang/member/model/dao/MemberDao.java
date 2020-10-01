@@ -40,7 +40,6 @@ public class MemberDao {
 				m=new Member();
 				m.setMemberNo(rs.getString("member_No"));
 				m.setEmail(rs.getString("email"));
-				m.setPassword(rs.getString("password"));
 				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));

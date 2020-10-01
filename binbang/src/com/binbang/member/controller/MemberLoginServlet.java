@@ -49,17 +49,13 @@ public class MemberLoginServlet extends HttpServlet {
 		
 		Member m= new MemberService().selectMember(userId,userPw);
 		
-		System.out.println(m.getHostConfirm());
-		
 		String msg = "";
 		String loc = "";
 		
 		if(m!=null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("id", m.getEmail());
-			request.setAttribute("m", m);
+			session.setAttribute("m", m);
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
-
 		}else {
 			msg = "아이디나 패스워드가 일치하지 않습니다";
 			loc="/member/moveLoginPage";
