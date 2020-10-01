@@ -158,8 +158,7 @@
 		})
 
     	function fn_search(){
-    		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList")
-					.submit();
+    		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList").submit();
 		}
 	</script>
 </body>

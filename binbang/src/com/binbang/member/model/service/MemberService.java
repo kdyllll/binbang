@@ -34,6 +34,14 @@ public class MemberService {
 		return result;
 	}
 	
+	//아이디 찾기
+	public String findId(String name,String phone) {
+		Connection conn=getConnection();
+		String email=dao.selectEmail(conn,name,phone);
+		close(conn);
+		return email;
+	}
+	
 	//중복확인
 	
 	

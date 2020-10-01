@@ -55,9 +55,7 @@ public class MemberLoginServlet extends HttpServlet {
 		if(m!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("m", m);
-			//session.setAttribute("id", m.getEmail());
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
-
 		}else {
 			msg = "아이디나 패스워드가 일치하지 않습니다";
 			loc="/member/moveLoginPage";

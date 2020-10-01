@@ -73,9 +73,7 @@
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 		<script>
-		function fn_login() {
-			$("#loginFrm").attr("action","<%=request.getContextPath() %>/member/login");
-		}
+		
 		$(document).ready(function(){
 	          $("#findId").on("click",function(){
 	             const url="<%=request.getContextPath()%>/member/findId";
