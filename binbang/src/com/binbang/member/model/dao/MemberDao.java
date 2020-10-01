@@ -38,16 +38,16 @@ public class MemberDao {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				m=new Member();
-				m.setMemberNo(rs.getString("memberNo"));
+				m.setMemberNo(rs.getString("member_No"));
 				m.setEmail(rs.getString("email"));
-				m.setPassword(rs.getString("password"));
-				m.setMemberName(rs.getString("memberName"));
+				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setEnrollDate(rs.getDate("enrollDate"));				
-				m.setStayDays(rs.getInt("stayDays"));
+				m.setEnrollDate(rs.getDate("enroll_Date"));				
+				m.setStayDays(rs.getInt("stay_Days"));
 				m.setCoupon(rs.getInt("coupon"));
-				m.setHostBlack(rs.getString("hostBlack"));				
+				m.setHostBlack(rs.getString("host_black"));				
+				m.setHostConfirm(rs.getString("host_confirm"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -78,6 +78,28 @@ public class MemberDao {
 			close(pstmt);
 		}return result;
 	}
+	
+	//이메일 조회
+	public String selectEmail(Connection conn,String name,String phone) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String email=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectEmail"));
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				email=rs.getString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return email;
+	}
+	
 	
 	//중복확인
 	

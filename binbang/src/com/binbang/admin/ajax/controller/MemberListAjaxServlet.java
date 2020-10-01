@@ -1,4 +1,4 @@
-package com.binbang.admin.controller;
+package com.binbang.admin.ajax.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;

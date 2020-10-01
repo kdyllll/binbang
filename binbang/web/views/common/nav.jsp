@@ -3,21 +3,29 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.binbang.member.model.vo.Member" %>
 <%
-	Member m=(Member)session.getAttribute("m");
-%>
+	Member m = (Member)session.getAttribute("m");
 
+%>
 <nav class="headerNav" id="nav">
-		<%if(m==null) { %>
+		<% if(m==null) { %>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/member/moveLoginPage">로그인</a></li>
 			<li><a href="<%=request.getContextPath()%>/member/memberEnrollChoice">회원가입</a></li>
 		</ul>
-		<%} else {%>
+		<%} else if(m.getEmail().equals("admin")) { %>
+		<ul>
+			<li><a href="<%=request.getContextPath()%>/admin/moveAdminPage">관리자페이지</a></li>
+			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
+		</ul>
+		<%} else if(m.getEmail()!=null && !m.getEmail().equals("admin")) {%>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/member/myPage">마이페이지</a></li>
 			<li><a href="<%=request.getContextPath()%>/member/favoriteFolder">관심숙소</a></li>
+			<% if(m != null && m.getHostConfirm() == null) {%>
 			<li><a href="<%=request.getContextPath()%>/host/hostEnroll">호스트등록</a></li>
+			<%} else { %>
 			<li><a href="<%=request.getContextPath()%>/host/hostDetail">호스트페이지</a></li>
+			<%} %>
 			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
 		</ul>
 		<% } %>
