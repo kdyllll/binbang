@@ -79,6 +79,28 @@ public class MemberDao {
 		}return result;
 	}
 	
+	//이메일 조회
+	public String selectEmail(Connection conn,String name,String phone) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String email=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectEmail"));
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				email=rs.getString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return email;
+	}
+	
+	
 	//중복확인
 	
 	//mypage 조회
