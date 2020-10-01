@@ -28,24 +28,25 @@
         </div>
       </form>
        
-      <form id="numberForm">
+      <form id="numberForm" method="post" action="<%=request.getContextPath() %>/member/checkConfirmNumber">
         <p class="inputTitle">인증번호</p>
         <div class="input">
           <input type="password" class="setPassword" name="number" placeholder="인증번호 입력">
+          <input type="hidden" readonly="readonly" name="confirmNumber" value="return randomNumber();">
           <button id="numberConfirm" onclick="start_timer();">인증확인</button>
         </div>
-
+      </form>
+	
+	<form>
         <div id="resend">
           <p id="timer"></p>
           <input type="button" value="재전송" style="display:none;" onclick="sendNumber2();" id="reNumberConfirm">
         </div>
+         <input type="button" value="다음" class="next">
       </form>
       
-        <!-- 완료면 인증완료되었습니다 알림
-        실패면 인증번호를 다시 입력해주세요 알림
-        재전송 버튼 -->
-        <!-- <p class="successConfirm">인증 완료 되었습니다.</p> -->
-      <button class="next" onclick="location.replace('<%=request.getContextPath() %>/member/changePassword')">다음</button>
+      
+      
           
     </div>
         
@@ -73,7 +74,12 @@
           let test = document.getElementById("reNumberConfirm");
         },1000);
       };
-
+      
+	function randomNumber(){
+		int random=0;
+		random=(int)Math.floor((Math.random()*(99999-10000+1)))+10000;
+		return random;
+	}
        
 
     </script>

@@ -42,6 +42,14 @@ public class MemberService {
 		return email;
 	}
 	
+	//비밀번호 찾기
+//	public Member findPassword(String email) {
+//		Connection conn=getConnection();
+//		Member m=dao.findPassword(conn,email);
+//		close(conn);
+//		return m;
+//	}
+	
 	//중복확인
 	
 	
