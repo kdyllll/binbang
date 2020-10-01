@@ -45,8 +45,6 @@
          <input type="button" value="다음" class="next">
       </form>
       
-      
-      
           
     </div>
         
