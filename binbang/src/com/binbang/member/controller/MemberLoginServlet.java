@@ -49,13 +49,15 @@ public class MemberLoginServlet extends HttpServlet {
 		
 		Member m= new MemberService().selectMember(userId,userPw);
 		
+		System.out.println(m.getHostConfirm());
+		
 		String msg = "";
 		String loc = "";
 		
 		if(m!=null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("m", m);
-			//session.setAttribute("id", m.getEmail());
+			session.setAttribute("id", m.getEmail());
+			request.setAttribute("m", m);
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
 
 		}else {
