@@ -47,12 +47,8 @@ public class MemberDao {
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
 				m.setCoupon(rs.getInt("coupon"));
-<<<<<<< HEAD
-				m.setHostBlack(rs.getString("hostBlack"));
-=======
 				m.setHostBlack(rs.getString("host_black"));				
 				m.setHostConfirm(rs.getString("host_confirm"));
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
