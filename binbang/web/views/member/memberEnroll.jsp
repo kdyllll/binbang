@@ -23,9 +23,9 @@
 						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();">
 
 						<input type="password" name="password" placeholder="Password" id="pw" required>						 
-						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" required>
-						 
-						<div id="pwCheck"></div>
+						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" onkeyup="pwCheck();" required>
+						<span id="pwCheck"></span>
+						
 						<input type="text" name="name" placeholder="Name" required> 
 						<input type="text" name="nickname" placeholder="Nickname" required> 
 						<input type="text" name="phone" placeholder="Phone" required>
@@ -291,14 +291,14 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 
 	/* password 일치 */
     function pwCheck() {
-      let pw=$("#pw").val();
-      let pwck=$("#pwck").val();
+      let pw=$("#pw").val().trim();
+      let pwck=$("#pwck").val().trim();
       if(pw==pwck){
           $("#pwCheck").css("color","green").html("비밀번호가 동일합니다.");            
         }else if(pw!=pwck){
            $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
         }
-      return true;
+      
     };
     
     /* 중복확인 */
