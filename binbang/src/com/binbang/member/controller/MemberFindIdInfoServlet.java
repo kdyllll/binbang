@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.member.model.service.MemberService;
+
 /**
  * Servlet implementation class MemberFindIdInfoServlet
  */
@@ -27,6 +29,14 @@ public class MemberFindIdInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String name=request.getParameter("userName");
+		String phone=request.getParameter("userPhone");
+		
+		String email=new MemberService().findId(name, phone);
+		
+		request.setAttribute("email", email);
+		
 		request.getRequestDispatcher("/views/member/findIdInfo.jsp").forward(request, response);
 	}
 

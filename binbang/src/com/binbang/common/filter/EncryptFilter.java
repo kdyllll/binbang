@@ -40,7 +40,7 @@ public class EncryptFilter implements Filter {
 		EncryptorWrapper ew=new EncryptorWrapper((HttpServletRequest)request);
 		
 		// pass the request along the filter chain
-		chain.doFilter(request, response);
+		chain.doFilter(ew, response);
 	}
 
 	/**
