@@ -47,7 +47,7 @@ public class MemberDao {
 				m.setEnrollDate(rs.getDate("enrollDate"));				
 				m.setStayDays(rs.getInt("stayDays"));
 				m.setCoupon(rs.getInt("coupon"));
-				m.setHostBlack(rs.getString("hostBlack"));				
+				m.setHostBlack(rs.getString("hostBlack"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
