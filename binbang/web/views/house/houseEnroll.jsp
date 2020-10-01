@@ -4,9 +4,10 @@
     <!-- 스와이퍼 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <!--달력 css -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common/cal.css" type="text/css" />
     <!-- css -->
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/house/houseEnroll.css" /> 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common/cal.css" type="text/css" />
     <!-- 주소검색 api js -->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -239,14 +240,74 @@
 
             <div class="swiper-slide box">
               <div class="slide7">
-                <div class="moneyBox">
-                  <p>요금 설정</p>
+                <div class="periodBox">                 
+                  <p>성수기 기간 선택</p>
                   <div class="periodCon">
-                    <p>성수기 기간 선택</p>
-                    <div id="calendar">
-                    <p id="cal">cal</p>
+                    <div class="season1">
+                      <p id="seasonName">시즌 1</p>
+                      <div class="startCon">
+                        <p>시작 날짜</p>
+                        <input type="text" id="startDay1" name="startDay1" class="date1" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                      <div class="endCon">
+                        <p>끝 날짜</p>
+                        <input type="text" id="endDay1" name="endDay1" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="season2">
+                      <p id="seasonName">시즌 2</p>
+                      <div class="startCon">
+                        <p>시작 날짜</p>
+                        <input type="text" id="startDay2" name="startDay2" class="date1" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                      <div class="endCon">
+                        <p>끝 날짜</p>
+                        <input type="text" id="endDay2" name="endDay2" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="season3">
+                      <p id="seasonName">시즌 3</p>
+                      <div class="startCon">
+                        <p>시작 날짜</p>
+                        <input type="text" id="startDay3" name="startDay3" class="date1" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                      <div class="endCon">
+                        <p>끝 날짜</p>
+                        <input type="text" id="endDay3" name="endDay3" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="season4">
+                      <p id="seasonName">시즌 4</p>
+                      <div class="startCon">
+                        <p>시작 날짜</p>
+                        <input type="text" id="startDay4" name="startDay4" class="date1" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                      <div class="endCon">
+                        <p>끝 날짜</p>
+                        <input type="text" id="endDay4" name="endDay4" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                    </div>
+                    <div class="season5">
+                      <p id="seasonName">시즌 5</p>
+                      <div class="startCon">
+                        <p>시작 날짜</p>
+                        <input type="text" id="startDay5" name="startDay5" class="date1" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
+                      <div class="endCon">
+                        <p>끝 날짜</p>
+                        <input type="text" id="endDay5" name="endDay5" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
+                      </div>
                     </div>
                   </div>
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide box">
+              <div class="slide8">
+                <div class="moneyBox">
+                  <p>요금 설정</p>
                   <div class="peakDayCon">
                     <p >성수기 평일 요금</p>
                     <input type="text" id="peakDay" name="peakDay" placeholder="성수기 평일" required>
@@ -350,6 +411,34 @@
         }).open();
     }
 
+    $(function() {
+			$(".date1").datepicker(
+					{
+						dateFormat : "mm/dd",
+						
+						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
+								"7월", "8월", "9월", "10월", "11월", "12월" ],
+						onSelect : function(d) {
+							 $(this).val(d);
+							var week = new Array("일", "월", "화", "수", "목", "금","토");
+            },
+            
+					});
+			$(".date2").datepicker(
+					{
+						dateFormat : "mm/dd",
+						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
+								"7월", "8월", "9월", "10월", "11월", "12월" ],
+						onSelect : function(d) {
+							 $(this).val(d);
+							var week = new Array("일", "월", "화", "수", "목", "금","토");
+						}
+					});
+    });
+    
+    
     </script>
    
 </body>
