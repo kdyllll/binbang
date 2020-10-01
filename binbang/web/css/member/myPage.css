@@ -265,11 +265,21 @@ button {
 	margin-bottom: 2%;
 }
 
+
+/* 개인정보변경 table */
+.private> table{
+	width:60%;
+	font-size:15px;
+}
+
+.private table{
+	padding: 0 20px;
+}
 .private table td{
-	padding: 10px 50px;	
+	padding: 20px 20px;	
 }
 .tr2{
-	border-bottom: 1px solid;
+	border-bottom: 1px gray solid;
 }
 
 .private .line6 {

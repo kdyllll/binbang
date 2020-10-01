@@ -173,6 +173,7 @@
 				</div>				
 			</div>
 			</form>
+			
 		</section>
 
 		<%@ include file="/views/common/footer.jsp"%>

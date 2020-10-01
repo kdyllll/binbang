@@ -41,9 +41,7 @@
         </div>
       </form>
       
-        <!-- 완료면 인증완료되었습니다 알림
-        실패면 인증번호를 다시 입력해주세요 알림
-        재전송 버튼 -->
+        <!-- 완료면 인증완료되었습니다 알림 실패면 인증번호를 다시 입력해주세요 알림 재전송 버튼 -->
         <!-- <p class="successConfirm">인증 완료 되었습니다.</p> -->
       <button class="next" onclick="location.replace('<%=request.getContextPath() %>/member/changePassword')">다음</button>
           

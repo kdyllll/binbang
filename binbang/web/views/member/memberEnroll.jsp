@@ -20,11 +20,12 @@
 				<div class="enrollForm">
 					<div>
 						<input type="text" name="email" placeholder="Email" id="email" required>
-						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_checkEmailDuplicate(); ">
+						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();">
 
-						<input type="password" name="password" placeholder="Password" id="password" required> 
-						<input type="password" name="passwordCheck" placeholder="Password" id="passwordCheck" required> 
-						<div id="checkPw"></div>
+						<input type="password" name="password" placeholder="Password" id="pw" required>						 
+						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" required>
+						 
+						<div id="pwCheck"></div>
 						<input type="text" name="name" placeholder="Name" required> 
 						<input type="text" name="nickname" placeholder="Nickname" required> 
 						<input type="text" name="phone" placeholder="Phone" required>
@@ -285,33 +286,36 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 	<form action="" name="checkEmailDuplicate">
         	<input type="hidden" name="email">
     </form>
+    
 <script>
 
 	/* password 일치 */
-    function checkPw() {
-      let pw1=$("#password").val();
-      let pw2=$("#passwordCheck").val();
-      if(pw1==pw2){
-          $("#checkPw").css("color","green").html("비밀번호가 동일합니다.");
-          $(".next").
-        }else if(pw1!=pw2){
-           $("#checkPw").css("color","red").html("동일한 비밀번호를 입력하세요.");          
+    function pwCheck() {
+      let pw=$("#pw").val();
+      let pwck=$("#pwck").val();
+      if(pw==pwck){
+          $("#pwCheck").css("color","green").html("비밀번호가 동일합니다.");            
+        }else if(pw!=pwck){
+           $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
         }
+      return true;
     };
-   
-   	/*email 중복검사 새창*/
-    function fn_checkEmailDuplicate(){
-   		const url="<%=request.getContextPath()%>/checkEmailDuplicate";
-   		const title="checkEmailDuplicate";
-   		const status="left=500px,top=100px,width=300px,height=200px";
-   		open("",title,status);
-   		
-   		checkEmailDuplicate.target=title;
-   		checkEmailDuplicate.action=url;   		
-   		checkEmailDuplicate.method="post";
-   		checkEmailDuplicate.email.value=email;
-   		checkEmailDuplicate.submit();   		
-   	}
+    
+    /* 중복확인 */
+    function fn_duplicateCheck(){
+    	let email=$("#email").val();
+    	
+    	if(email.trim().length=0){
+    		alert("이메일을 입력하세요");
+    		return;
+    	}    		
+    	const url="<%=request.getContextPath()%>/member/checkEmailDuplicate";    	
+    	const status="left=500px,top=100px, width=300px, height=200px";
+    	
+    	open(url,"",status);    	
+    }
+  
+
 	
     
 </script>
