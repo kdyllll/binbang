@@ -1,11 +1,18 @@
 package com.binbang.host.controller;
 
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.binbang.host.model.vo.Host;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class HostEnrollEndServlet
@@ -27,7 +34,23 @@ public class HostEnrollEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/host/hostMypage.jsp").forward(request, response);
+		if(!ServletFileUpload.isMultipartContent(request)) {
+			request.setAttribute("msg", "요청정보가 이상합니다. 관리자에게 문의하세요");
+			request.setAttribute("loc", "/host/hostEnroll");
+			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);;
+			return;
+		}
+		String path = getServletContext().getRealPath("/upload/host");
+		File dir = new File(path);
+		//폴더만들기 => 폴더없으면 만들어줌
+		if(!dir.exists()) dir.mkdirs();
+		
+		int maxSize = 1024*1024*50;
+		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+		MultipartRequest mr = new MultipartRequest(request,path,maxSize,"UTF-8",rename);
+		
+		Host host = new Host();
+		System.out.println(mr.getParameter("uploadId"));
 	}
 
 	/**
