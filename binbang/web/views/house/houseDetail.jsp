@@ -25,7 +25,9 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 	
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper-bundle.min.js"></script>
+<script 
+	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper-bundle.min.js"></script>
+<!-- <script src="../package/swiper-bundle.min.js"></script> -->
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
@@ -122,8 +124,8 @@
 									<div class="aserviceimg">
 									<div class="swiper-container second">
 									<div class="swiper-wrapper">
-									<% for(String h : filter){ %>
-										<div>
+								<%-- 	<% for(String h : filter){ %> --%>
+										<!-- <div> -->
 										 	  <div class="swiper-slide">Slide 1</div>
 										      <div class="swiper-slide">Slide 2</div>
 										      <div class="swiper-slide">Slide 3</div>
@@ -132,11 +134,10 @@
 										<!-- Add Pagination -->
 										    <!-- <div class="swiper-pagination"></div> -->
 										    <!-- Add Arrows -->
-										    <div class="swiper-button-next"></div>
-										    <div class="swiper-button-prev"></div>
-												<img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20">
-										 </div>
-										 <%} %>
+										   
+												<%-- <img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20"> --%>
+										 <!-- </div> -->
+										 <%-- <%} %> --%>
 										
 									</div>
 											<!-- Add Arrows -->
@@ -149,7 +150,7 @@
 									</div>
 									
 								</div>
-								
+									  
 							</div>
 						</div>
 					</div>
@@ -230,6 +231,7 @@
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
 			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
 			<!-- <div class="swiper-pagination"></div> -->
 			
 			</div>
