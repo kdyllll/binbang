@@ -49,7 +49,7 @@ public class HouseDao {
 				h.setBedNum(rs.getInt("bedNum")); // 침대 갯수
 				h.setHouseComment(rs.getNString("HouseComment")); // 숙소소개
 				h.setHouseGemsung(rs.getNString("HouseGemsung")); // 감성글
-				h.setPhoneOption(rs.getNString("phoneOption")); //
+				//h.setPhoneOption(rs.getNString("phoneOption")); //
 				h.setAttention(rs.getNString("attention")); //
 				h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
 				h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일
@@ -97,7 +97,7 @@ public class HouseDao {
 				h.setBedNum(rs.getInt("bedNum")); // 침대 갯수
 				h.setHouseComment(rs.getNString("HouseComment")); // 숙소소개
 				h.setHouseGemsung(rs.getNString("HouseGemsung")); // 감성글
-				h.setPhoneOption(rs.getNString("phoneOption")); //
+				//h.setPhoneOption(rs.getNString("phoneOption")); //
 				h.setAttention(rs.getNString("attention")); //
 				h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
 				h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일

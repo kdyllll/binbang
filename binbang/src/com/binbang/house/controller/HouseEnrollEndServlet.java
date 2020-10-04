@@ -153,8 +153,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 			if (pic[i] != null) {
 				if(i==0) {type="M";}
 				else {type="S";}
-				results.add(new HouseService().insertPicture(h, pic[i],type));
-				
+				results.add(new HouseService().insertPicture(h, pic[i],type));				
 			}
 		}
 		
@@ -168,14 +167,10 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		}
 		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
-		
+
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

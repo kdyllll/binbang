@@ -289,6 +289,12 @@ button {
 }
 
 /* 회원수정/탈퇴/비밀번호변경버튼 */
-.private button {
-	font-size: 14px;
+
+#block{
+	display:none;
 }
+.private #btn1,#btn2,#btn3 {
+	font-size: 14px;
+	cursor: pointer;
+}
+
