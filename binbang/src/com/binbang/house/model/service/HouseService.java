@@ -67,9 +67,9 @@ public class HouseService {
 		return houseNo;
 	}
 	
-	public int insertFilter(House h) {
+	public int insertFilter(House h,String f) {
 		Connection conn = getConnection();
-		int result = dao.insertFilter(conn, h);
+		int result = dao.insertFilter(conn, h, f);
 		if (result > 0)
 			commit(conn);
 		else
@@ -78,4 +78,29 @@ public class HouseService {
 		return result;
 	}
 	
+	public int insertPeak(House h, String day,String season) {
+		Connection conn = getConnection();
+		int result = dao.insertPeak(conn,h, day,season);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
+	public int insertPicture(House h,String pic,String type) {
+		Connection conn = getConnection();
+		int result = dao.insertPicture(conn,h,pic,type);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
+
 }
+
+

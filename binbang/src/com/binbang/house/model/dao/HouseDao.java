@@ -207,12 +207,12 @@ public class HouseDao {
 	
 	}
 	
-	public int insertFilter(Connection conn,House h) {
+	public int insertFilter(Connection conn,House h,String f) {
 		PreparedStatement pstmt=null;
 		int result=0;		
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("insertFilter"));
-			pstmt.setString(1, );
+			pstmt.setString(1, f);
 			pstmt.setString(2, h.getHouseNo());
 			
 			result=pstmt.executeUpdate();
@@ -220,13 +220,43 @@ public class HouseDao {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
-		}return result;
-		
-		
-		
+		}return result;	
+	}
+	
+	public int insertPeak(Connection conn,House h,String day,String season) {
+		PreparedStatement pstmt=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertPeak"));
+			pstmt.setString(1, h.getHouseNo());//숙소번호
+			pstmt.setString(2, day);//해당날짜
+			pstmt.setString(3, season);//시즌번호
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;	
 	}
 	
 
-
+	public int insertPicture(Connection conn,House h,String pic,String type) {
+		PreparedStatement pstmt=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertPeak"));
+			pstmt.setString(1, h.getHouseNo());//숙소번호
+			pstmt.setString(2, pic);//사진 이름
+			pstmt.setString(3, type);//사진분류
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;	
+	}
+	
 
 }
