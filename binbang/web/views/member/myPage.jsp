@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ include file="/views/common/commonLink.jsp"%>
+
+
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/member/myPage.css" />
 
@@ -13,27 +16,29 @@
 			<div class="myPageLogo">
 				<p>My Page</p>
 			</div>
-
+			
+			<form id="memberFrm" method="post">
 			<!-- 회원정보 -->
 			<div class="lineList">
 				<div class="line1">
 					<p>회원이름</p>
-					<div class="memberName">인하준</div>
+					<div class="memberName" name="name" id="name_"><%=m.getMemberName()%></div>
 				</div>
 				<div class="line2">
 					<p>이메일</p>
-					<div class="memberEmail">jiny25@naver.com</div>
+					<div class="memberEmail" name="email" id="email_"><%=m.getEmail()%></div>
 				</div>
 				<div class="line3">
 					<p>전화번호</p>
-					<div class="memberPhone">010-5104-9605</div>
+					<div class="memberPhone" name="phone" id="phone_"><%=m.getPhone() %></div>
 				</div>
 				<div class="line4">
 					<p>닉네임</p>
-					<div class="memeberNickName">왕자님</div>
+					<div class="memeberNickName" name="nickname" id="nickname_"><%=m.getNickname() %></div>
 				</div>
 			</div>
-
+		</form>
+		
 			<!-- 회원메뉴 -->
 			<div class="nav">
 				<div class="line5"></div>
@@ -113,7 +118,7 @@
 			<!-- 2. 총 보유쿠폰 -->
 			<div class="coupon">
 				<div class="couponSum">
-					<div class="couponContents">현재보유쿠폰    : 1개</div>
+					<div class="couponContents">현재보유쿠폰    : <%=m.getCoupon()%> 개</div>
 				</div>
 
 				<!-- 구분선 -->
@@ -130,7 +135,7 @@
 			</div>
 
 			<!-- 3. 개인정보변경 -->
-		<form action="">
+		<form id="memberModify" method="post">
 			<div class="private">
 				<div>			
 					<p>개인정보변경</p>
@@ -145,31 +150,31 @@
 					<tr class="tr2">
 						<td>비밀번호 확인</td>
 						<td><input type="password" placeholder="비밀번호 확인"></td>
-						<td><button id=btn3>비밀번호 변경</button></td>
+						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경"/> </td>
 					</tr>			
 					<tr>
-						<td>현재 닉네임</td>
-						<td><div>이나주니</div></td>
+						<td>현재 닉네임 </td>
+						<td><%=m.getNickname()%></td>
 					</tr>	
 					<tr class="tr2">
 						<td>새로운 닉네임</td>
-						<td><input type="text" placeholder="닉네임 입력"></td>						
+						<td><input type="text" name="nickname" placeholder="닉네임 입력"></td>						
 						<td></td>
 					</tr>
 					<tr>
 						<td>현재 전화번호</td>
-						<td>010-6565-9203</td>
+						<td> <%=m.getPhone()%></td>
 					</tr>
 					<tr>
 						<td>새로운 전화번호</td>
-						<td><input type="text" placeholder="닉네임 입력"></td>
-						<td><button id="btn2">수정완료</button></td>
+						<td><input type="text" name="phone" placeholder="전화번호 입력"></td>
+						<td><input tpye="button" onclick="fn_updateMember();" id="btn2" value="수정완료"/></td>
 					</tr>		
 				</table>						
 				
 				<div class="modifyComplete">				
-					<div class="line6"></div>										
-					<button id="btn1">회원탈퇴</button>											
+					<div class="line6"></div>
+					<input tpye="button" onclick="fn_deleteMember();" id="btn1" value="회원탈퇴"/>																
 				</div>				
 			</div>
 			</form>
@@ -180,5 +185,17 @@
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/member/myPage.js"></script>
+	
+	<script>
+	
+			//정보수정
+			function fn_updateMember(){			
+			$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();
+			}
+			//회원탈퇴
+			function fn_deleteMember(){
+		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
+		     }
+	</script>
 </body>
 </html>

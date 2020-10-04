@@ -12,7 +12,7 @@
 </head>
 <body>
 	<script>
-		alert('<%=msg%>');
+		alert('<%=msg%>');		
 		location.replace('<%=request.getContextPath()%><%=loc%>');
 	</script>
 </body>

@@ -34,7 +34,7 @@ public class MemberDuplicateCheckServlet extends HttpServlet {
 		String result=new MemberService().emailCheck(email);
 		
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("/views/member/duplicateCheck.jsp").forward(request,response);
+		request.getRequestDispatcher("/views/member/duplicateCheck.jsp").forward(request, response);
 	}
 
 	/**

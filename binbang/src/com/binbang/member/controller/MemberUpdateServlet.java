@@ -1,7 +1,6 @@
 package com.binbang.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +11,16 @@ import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberMyPageServlet
+ * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet(name="mypage",urlPatterns="/member/myPage")
-public class MemberMyPageServlet extends HttpServlet {
+@WebServlet("/member/memberUpdate")
+public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberMyPageServlet() {
+    public MemberUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +30,28 @@ public class MemberMyPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String email=request.getParameter("email");
-		Member m=new MemberService().selectInf(email);
+		Member m=new Member();
+		m.setNickname(request.getParameter("nickname"));
+		m.setPhone(request.getParameter("phone"));
+		m.setEmail(request.getParameter("email"));
 		
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/member/myPage.jsp").forward(request, response);
+		int result=new MemberService().updateMember(m);
+		
+		String msg="";
+		String loc="";
+		
+		if(result>0) {
+			msg="회원수정 성공!";
+			loc="/";
+		}else {
+			msg="회원수정 실패!";
+			loc="/member/myPage?email="+m.getEmail();			
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		
 	}
 
 	/**
