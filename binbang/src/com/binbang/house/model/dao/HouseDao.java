@@ -49,7 +49,7 @@ public class HouseDao {
 				h.setBedNum(rs.getInt("bedNum")); // 침대 갯수
 				h.setHouseComment(rs.getNString("HouseComment")); // 숙소소개
 				h.setHouseGemsung(rs.getNString("HouseGemsung")); // 감성글
-				h.setPhoneOption(rs.getNString("phoneOption")); //
+				//h.setPhoneOption(rs.getNString("phoneOption")); //
 				h.setAttention(rs.getNString("attention")); //
 				h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
 				h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일
@@ -58,7 +58,7 @@ public class HouseDao {
 				h.setPricePeakWeekend(rs.getInt("pricePeakWeekend")); // 성수기 주말
 
 			}
-<<<<<<< HEAD
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -97,7 +97,7 @@ public class HouseDao {
 				h.setBedNum(rs.getInt("bedNum")); // 침대 갯수
 				h.setHouseComment(rs.getNString("HouseComment")); // 숙소소개
 				h.setHouseGemsung(rs.getNString("HouseGemsung")); // 감성글
-				h.setPhoneOption(rs.getNString("phoneOption")); //
+				//h.setPhoneOption(rs.getNString("phoneOption")); //
 				h.setAttention(rs.getNString("attention")); //
 				h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
 				h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일
@@ -153,15 +153,30 @@ public class HouseDao {
 			close(pstmt);
 		}
 		return result;
-	}=======
+	}
 
 	public int insertHouse(Connection conn,House h) {
 		PreparedStatement pstmt=null;
-		int result=0;
-		
+		int result=0;		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty(""));
-			
+			pstmt=conn.prepareStatement(prop.getProperty("insertHouse"));//? 17개
+			pstmt.setString(1, h.getHostNo());
+			pstmt.setString(2, h.getHouseName());
+			pstmt.setString(3, h.getHouseType());
+			pstmt.setString(4, h.getHouseLocation());
+			pstmt.setInt(5, h.getHousePnum());
+			pstmt.setString(6, h.getpObjects());
+			pstmt.setInt(7, h.getRoomNum());
+			pstmt.setInt(8, h.getBathNum());
+			pstmt.setInt(9, h.getBedNum());
+			pstmt.setString(10, h.getHouseComment());
+			pstmt.setString(11, h.getHouseGemsung());
+			pstmt.setString(12, h.getAttention());
+			pstmt.setString(13, h.getInoutTime());
+			pstmt.setInt(14, h.getPriceDay());
+			pstmt.setInt(15, h.getPriceWeekend());
+			pstmt.setInt(16, h.getPricePeakDay());
+			pstmt.setInt(17, h.getPricePeakWeekend());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -172,8 +187,76 @@ public class HouseDao {
 		
 	}
 
-	>>>>>>>branch'develop'
+	public String selectHouseNo(Connection conn,House h) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String houseNo="";
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseNo"));
+			pstmt.setString(1, h.getHouseName());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				houseNo=rs.getNString(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return houseNo;
+	
+	}
+	
+	public int insertFilter(Connection conn,House h,String f) {
+		PreparedStatement pstmt=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertFilter"));
+			pstmt.setString(1, f);
+			pstmt.setString(2, h.getHouseNo());
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;	
+	}
+	
+	public int insertPeak(Connection conn,House h,String day,String season) {
+		PreparedStatement pstmt=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertPeak"));
+			pstmt.setString(1, h.getHouseNo());//숙소번호
+			pstmt.setString(2, day);//해당날짜
+			pstmt.setString(3, season);//시즌번호
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;	
+	}
+	
 
-	of https:// github.com/kdyllll/binbang.git
+	public int insertPicture(Connection conn,House h,String pic,String type) {
+		PreparedStatement pstmt=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertPeak"));
+			pstmt.setString(1, h.getHouseNo());//숙소번호
+			pstmt.setString(2, pic);//사진 이름
+			pstmt.setString(3, type);//사진분류
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;	
+	}
+	
 
 }
