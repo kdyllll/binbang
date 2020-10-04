@@ -20,22 +20,22 @@
       
       <div class="passwordLine"></div>
       
-      <form id="emailForm">
+     
         <p class="inputTitle">아이디(이메일)를 입력하세요</p>
         <div class="input">
-          <input type="text" class="setPassword" name="userId" placeholder="아이디(이메일) 입력"> 
-          <input type="button" value="인증하기" id="emailConfirm" onclick="sendNumber();">
+          <input type="text" class="setPassword" name="email" id="email" placeholder="아이디(이메일) 입력"> 
+          <input type="button" value="인증하기" id="emailConfirm">
         </div>
-      </form>
-       
-      <form id="numberForm" method="post" action="<%=request.getContextPath() %>/member/checkConfirmNumber">
+     
+     
+     
         <p class="inputTitle">인증번호</p>
         <div class="input">
-          <input type="password" class="setPassword" name="number" placeholder="인증번호 입력">
-          <input type="hidden" readonly="readonly" name="confirmNumber" value="return randomNumber();">
-          <button id="numberConfirm" onclick="start_timer();">인증확인</button>
+          <input type="text" class="setPassword" name="number" id="number" placeholder="인증번호 입력">
+          <input type="hidden" readonly="readonly" name="confirmNumber">
+          <button id="numberConfirm">인증확인</button>
         </div>
-      </form>
+      
 	
 	<form>
         <div id="resend">
@@ -49,36 +49,77 @@
     </div>
         
     <script> 
+    $("#emailConfirm").click(e => {
+    	$.ajax({
+    		url:"<%=request.getContextPath()%>/member/checkConfirmNumber",
+    		type:"post",
+    		data:{"email":$("#email").val()},
+    		dataType:"html",
+    		success:data => {
+    			console.log(data);
+    			if(data.trim().length!=0){
+    				alert("인증번호가 발송되었습니다.");
+    				sendNumber();
+    				return;
+    			}else{
+    				alert("아이디를 확인해주세요.");
+    			}
+    			
+    		},
+    		error:(request,status,error)=>{
+				console.log(request);
+				console.log(status);
+				console.log(error);
+			}
+    		
+    	});
+    	
+    });
+    
+    $("#numberConfirm").click(e => {
+    	$.ajax({
+    		url:"<%=request.getContextPath()%>/member/findPasswordAjax",
+    		type:"post",
+    		data:{"number":$("#number").val()},
+    		dataType:"html",
+    		success:data=>{
+    			console.log(data);
+    		},
+    		error:(request,status,error)=>{
+				console.log(request);
+				console.log(status);
+				console.log(error);
+			}
+    	});
+    });
+    
        let time=300;
        let min=0;
        let sec=0;
        let x = 0;
        
      function sendNumber2(){
-        clearInterval(x);
+    	 clearInterval(x);
         document.getElementById("timer").innerHTML="";
         time=300;
         
         sendNumber();
      }
+     
       function sendNumber() {
-       document.getElementById("reNumberConfirm").style.display="block";
-        alert("인증번호가 발송되었습니다.");
+    	
+       	document.getElementById("reNumberConfirm").style.display="block";
+      
         x=setInterval(function(){
           min=parseInt(time/60);
           sec=time%60;
           document.getElementById("timer").innerHTML="인증 시간 : "+min+"분"+sec+"초";
           time--;
           let test = document.getElementById("reNumberConfirm");
+          
         },1000);
-      };
-      
-	function randomNumber(){
-		int random=0;
-		random=(int)Math.floor((Math.random()*(99999-10000+1)))+10000;
-		return random;
-	}
-       
+      };       
+     
 
     </script>
 
