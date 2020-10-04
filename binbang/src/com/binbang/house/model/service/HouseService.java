@@ -1,9 +1,10 @@
 package com.binbang.house.model.service;
 
 import static com.binbang.common.JDBCTemplate.close;
-import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.commit;
+import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.List;
 
@@ -14,13 +15,22 @@ import com.binbang.house.model.vo.Review;
 public class HouseService {
 	private HouseDao dao = new HouseDao();
 
+
+	public House HouseDetail(int no) {
+		Connection conn=getConnection();
+		House h=dao.HouseDetail(conn, no);
+		 close(conn);
+		 return h;
+	}
+	
+
 	public House BinbangDetail(int no) {
 		Connection conn = getConnection();
-		House b = dao.BinbangDetail(conn, no);
+		House h = dao.BinbangDetail(conn, no);
 		close(conn);
-		return b;
-
+		return h;
 	}
+
 
 	public List<House> HouseFilterList(int cPage, int numPerPage) {
 		Connection conn = getConnection();
@@ -67,9 +77,9 @@ public class HouseService {
 		return houseNo;
 	}
 	
-	public int insertFilter(House h) {
+	public int insertFilter(House h,String f) {
 		Connection conn = getConnection();
-		int result = dao.insertFilter(conn, h);
+		int result = dao.insertFilter(conn, h, f);
 		if (result > 0)
 			commit(conn);
 		else
@@ -78,4 +88,29 @@ public class HouseService {
 		return result;
 	}
 	
+	public int insertPeak(House h, String day,String season) {
+		Connection conn = getConnection();
+		int result = dao.insertPeak(conn,h, day,season);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
+	public int insertPicture(House h,String pic,String type) {
+		Connection conn = getConnection();
+		int result = dao.insertPicture(conn,h,pic,type);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
+
 }
+
+

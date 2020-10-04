@@ -1,4 +1,4 @@
-package com.binbang.admin.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MoveAdminPageServlet
+ * Servlet implementation class HostInfoChange
  */
-@WebServlet("/admin/moveAdminPage")
-public class MoveAdminPageServlet extends HttpServlet {
+@WebServlet("/host/hostInfoUpdate")
+public class HostInfoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoveAdminPageServlet() {
+    public HostInfoUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class MoveAdminPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/admin/manager2.jsp").forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

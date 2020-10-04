@@ -3,8 +3,12 @@ package com.binbang.host.model.vo;
 import java.sql.Date;
 
 public class Host {
+	private String hostEmail;
+	private String hostName;
 	private String hostNo;
 	private String memberNo;
+	private String memberName;
+	private String memberPhone;
 	private String idCard;
 	private String profilePic;
 	private String intro;
@@ -17,11 +21,16 @@ public class Host {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Host(String hostNo, String memberNo, String idCard, String profilePic, String intro, int complaintCount,
+
+	public Host(String hostEmail,String hostName,String hostNo, String memberNo, String idCard, String profilePic, String intro, int complaintCount,
 			Date hostEnrollDate, Date hostAcceptDate, String hostConfirm) {
 		super();
+		this.hostEmail = hostEmail;
+		this.hostName = hostName;
 		this.hostNo = hostNo;
 		this.memberNo = memberNo;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
 		this.idCard = idCard;
 		this.profilePic = profilePic;
 		this.intro = intro;
@@ -45,6 +54,22 @@ public class Host {
 
 	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 
 	public String getIdCard() {
@@ -103,12 +128,32 @@ public class Host {
 		this.hostConfirm = hostConfirm;
 	}
 
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+
+	public String getHostEmail() {
+		return hostEmail;
+	}
+
+	public void setHostEmail(String hostEmail) {
+		this.hostEmail = hostEmail;
+	}
+
 	@Override
 	public String toString() {
-		return "Host [hostNo=" + hostNo + ", memberNo=" + memberNo + ", idCard=" + idCard + ", profilePic=" + profilePic
-				+ ", intro=" + intro + ", complaintCount=" + complaintCount + ", hostEnrollDate=" + hostEnrollDate
-				+ ", hostAcceptDate=" + hostAcceptDate + ", hostConfirm=" + hostConfirm + "]";
+
+		return "Host [hostEmail=" + hostEmail + ", hostName=" + hostName + ", hostNo=" + hostNo + ", memberNo="
+				+ memberNo + ", idCard=" + idCard + ", profilePic=" + profilePic + ", intro=" + intro
+				+ ", complaintCount=" + complaintCount + ", hostEnrollDate=" + hostEnrollDate + ", hostAcceptDate="
+				+ hostAcceptDate + ", hostConfirm=" + hostConfirm + "]";
 	}
+
+	
 	
 	
 }
