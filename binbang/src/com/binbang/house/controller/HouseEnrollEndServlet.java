@@ -1,7 +1,12 @@
 package com.binbang.house.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,44 +48,71 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setHouseName(mr.getParameter("hName"));//숙소이름
 		h.setHouseType(mr.getParameter("hType"));//숙소타입
 		String location=mr.getParameter("roadAddress")+" "+mr.getParameter("detailAddress");
-		h.setHouseLocation(location);
-		h.setHousePnum(Integer.parseInt(mr.getParameter("pNum")));
-		h.setpObjects(mr.getParameter("personal"));
-		h.setRoomNum(Integer.parseInt(mr.getParameter("roomNum")));
-		h.setBedNum(Integer.parseInt(mr.getParameter("bedNum")));
-		h.setBathNum(Integer.parseInt(mr.getParameter("bathNum")));
-		h.setHouseComment(mr.getParameter("explain"));
-		h.setHouseGemsung(mr.getParameter("gemsung"));
-		h.setAttention(mr.getParameter("attention"));
-		h.setInoutTime(mr.getParameter("checkTime"));
+		h.setHouseLocation(location);//숙소 위치
+		h.setHousePnum(Integer.parseInt(mr.getParameter("pNum")));//숙소 최대인원
+		h.setpObjects(mr.getParameter("personal"));//개인물건 유무
+		h.setRoomNum(Integer.parseInt(mr.getParameter("roomNum")));//방갯수
+		h.setBedNum(Integer.parseInt(mr.getParameter("bedNum")));//침대 갯수
+		h.setBathNum(Integer.parseInt(mr.getParameter("bathNum")));//욕실 갯수
+		h.setHouseComment(mr.getParameter("explain"));//설명
+		h.setHouseGemsung(mr.getParameter("gemsung"));//감성글
+		h.setAttention(mr.getParameter("attention"));//주의사항
+		h.setInoutTime(mr.getParameter("checkTime"));//체크인아웃시간
 		
-		
+		//성수기 기간
 		String sDay1=mr.getParameter("startDay1");
 		String sDay2=mr.getParameter("endDay1");
-		int days=dateCalculator(sDay1,sDay2);
-		
-		mr.getParameter("startDay2");
-		mr.getParameter("endDay2");
-		mr.getParameter("startDay3");
-		mr.getParameter("endDay3");
-		mr.getParameter("startDay4");
-		mr.getParameter("endDay4");
-		mr.getParameter("startDay5");
-		mr.getParameter("endDay5");
-		
-		h.setPeakDay();
+		if(sDay1!=null&&sDay2!=null) {
+			h.setPeakDay1(dateCalculator(sDay1,sDay2));
+		}else {
+			h.setPeakDay1(null);
+		}
+		sDay1=mr.getParameter("startDay2");
+		sDay2=mr.getParameter("endDay2");
+		if(sDay1!=null&&sDay2!=null) {
+			h.setPeakDay2(dateCalculator(sDay1,sDay2));
+		}else {
+			h.setPeakDay2(null);
+		}
+		sDay1=mr.getParameter("startDay3");
+		sDay2=mr.getParameter("endDay3");
+		if(sDay1!=null&&sDay2!=null) {
+			h.setPeakDay3(dateCalculator(sDay1,sDay2));
+		}else {
+			h.setPeakDay3(null);
+		}
+		sDay1=mr.getParameter("startDay4");
+		sDay2=mr.getParameter("endDay4");
+		if(sDay1!=null&&sDay2!=null) {
+			h.setPeakDay4(dateCalculator(sDay1,sDay2));
+		}else {
+			h.setPeakDay4(null);
+		}
+		sDay1=mr.getParameter("startDay5");
+		sDay2=mr.getParameter("endDay5");
+		if(sDay1!=null&&sDay2!=null) {
+			h.setPeakDay5(dateCalculator(sDay1,sDay2));
+		}else {
+			h.setPeakDay5(null);
+		}
+
+		//요금들
 		h.setPriceDay(Integer.parseInt(mr.getParameter("nonPeakDay")));
 		h.setPriceWeekend(Integer.parseInt(mr.getParameter("nonPeakRest")));
 		h.setPricePeakDay(Integer.parseInt(mr.getParameter("peakDay")));
 		h.setPricePeakWeekend(Integer.parseInt(mr.getParameter("peakRest")));
-		String[] filter=mr.getParameterValues("filter");
+		//필터
+		String[] filter=mr.getParameterValues("filter"); 
 	    String filters=String.join(",", filter);
 		h.setFilter(filters);
 		
-		//사진파일 업로드
-		
-		h.setHousePicture();
-		
+		//사진파일
+		String[] pic=new String[10];
+		for(int i=0;i<10;i++) {
+			String a="picture"+(i+1);
+			pic[i]=mr.getParameter(a);
+		}	
+		h.setHousePicture(pic);//사진 새로운 이름들만 
 		
 		
 		
@@ -94,8 +126,9 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	public int dateCalculator(String day1,String day2) {
+	public List dateCalculator(String day1,String day2) {
 		//시작날짜 캘린더형
+		List list=new ArrayList();
 		String[] Date=day1.split("/");
 		int[] Date2=new int[Date.length];
 		for(int i=0;i<Date.length;i++) {
@@ -122,8 +155,24 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		int cal3=Math.abs(cal2);
 		int day=cal3/24; //날짜 수
 		
-		return day;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		Calendar c=Calendar.getInstance();
+		Date date1;
+		try {
+			date1 = sdf.parse(day1);
+			c.setTime(date1);
+		}catch (ParseException e) {
+				e.printStackTrace();
+		}
+		for(int i=0;i<day;i++) {
+			c.add(Calendar.DATE,1);
+			String days=sdf.format(c.getTime());
+			list.add(days);
+		}
 		
+		return list;
 	}
+	
+
 
 }
