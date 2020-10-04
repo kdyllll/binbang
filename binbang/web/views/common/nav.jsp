@@ -23,7 +23,8 @@
 			<% if(m != null && m.getHostConfirm() == null) {%>
 			<li><a href="<%=request.getContextPath()%>/host/hostEnroll">호스트등록</a></li>
 			<%} else if(m.getHostConfirm() != null && m.getHostConfirm().equals("승인")) { %>
-			<li><a href="<%=request.getContextPath()%>/host/hostDetail">호스트페이지</a></li>
+			<li><a href="<%=request.getContextPath()%>/host/hostDetail">호스트페이지</a>
+			<input type="hidden" name="memberNo" value="<%=m.getMemberNo()%>"></li>
 			<%} %>
 			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
 		</ul>

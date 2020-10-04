@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Properties;
 
 import com.binbang.host.model.vo.Host;
@@ -39,5 +40,29 @@ public class HostDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public Host selectHostOne(Connection conn, String memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Host host = null;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHostOne"));
+			pstmt.setString(1, memberNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				host = new Host();
+				host.setHostName(rs.getString("member_name"));
+				host.setHostEmail(rs.getString("email"));
+				host.setIntro(rs.getString("intro"));
+				host.setProfilePic(rs.getString("profile_pic"));
+				host.setComplaintCount(rs.getInt("complaint_count"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}return host;
 	}
 }

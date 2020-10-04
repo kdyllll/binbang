@@ -20,4 +20,11 @@ public class HostService {
 		close(conn);
 		return result;
 	}
+	
+	public Host selectHostOne(String memberNo) {
+		Connection conn= getConnection();
+		Host h = hdao.selectHostOne(conn, memberNo);
+		close(conn);
+		return h;
+	}
 }
