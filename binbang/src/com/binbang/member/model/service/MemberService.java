@@ -16,7 +16,6 @@ public class MemberService {
 	private MemberDao dao=new MemberDao();
 
 	//로그인
-
 	public Member selectMember(String email, String password) {
 		Connection conn=getConnection();
 		Member m=dao.selectMember(conn,email,password);
@@ -42,14 +41,57 @@ public class MemberService {
 		return email;
 	}
 	
-	//중복확인
+
+	//비밀번호 찾기
+//	public Member findPassword(String email) {
+//		Connection conn=getConnection();
+//		Member m=dao.findPassword(conn,email);
+//		close(conn);
+//		return m;
+//	}
+	
+
+	//email중복확인
+	public String emailCheck(String email) {
+		Connection conn=getConnection();
+		String result=dao.emailCheck(conn,email);
+		close(conn);
+		return result;
+	}
+
 	
 	
 	//mypage 조회
+	public Member selectInf(String email) {
+		Connection conn=getConnection();
+		Member m=dao.selecInf(conn,email);
+		close(conn);
+		return m;
+	}
 	
 	//mypage 수정
+	public int updateMember(Member m) {
+		Connection conn=getConnection();
+		int result=dao.updateMember(conn,m);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	} 
 	
 	//mypage 탈퇴
+	public int deleteMember(String email) {
+		Connection conn=getConnection();
+		int result=dao.deleteMember(conn, email);
+		if(result>0) commit(conn);
+		else {
+			rollback(conn);
+			close(conn);
+		}
+		return result;
+	}
+	
+	
 	
 	//로그인 화면 비밀번호수정용
 	public int findPassword(String email,String newPassword) {
