@@ -13,7 +13,7 @@
 		<%@ include file="/views/common/header.jsp"%>
 		<section class="section">
 			<!-- 호스트정보부분 -->
-			<form class="hostInfoContainer" method="get">
+			<form class="hostInfoContainer" action="/host/hostInfoUpdate" method="post">
 				<div class="hostInfoImg">
 					<img
 						src="<%=request.getContextPath()%>/image/host/host_regist/host_img/basic.jpg"
