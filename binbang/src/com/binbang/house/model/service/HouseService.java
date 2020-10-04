@@ -14,9 +14,9 @@ import com.binbang.house.model.vo.Review;
 public class HouseService {
 	private HouseDao dao=new HouseDao();
 
-	public House BinbangDetail(int no) {
+	public House HouseDetail(int no) {
 		Connection conn=getConnection();
-		House b=dao.BinbangDetail(conn, no);
+		House b=dao.HouseDetail(conn, no);
 		 close(conn);
 		 return b;
 	

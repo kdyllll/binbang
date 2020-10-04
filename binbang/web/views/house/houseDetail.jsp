@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List,com.binbang.house.model.vo.House"%>
 	<%
-   List<House> list = (List)request.getAttribute("list");
+  /*  List<House> list = (List)request.getAttribute("list"); */
 
 	int numPerPage;
 	try{
@@ -19,6 +19,7 @@
 	
 
 <%@ include file="/views/common/commonLink.jsp"%>
+  
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
@@ -206,25 +207,26 @@
 			</div>
 
 			<div class="comment">
-			<div class="aserviceimg">
 			<div class="swiper-container three">
-			<div class="swiper-wrapper">
+			<div class="swiper-wrapper threeButton">
 			<div class="gradePhoto"></div>
 				<div class="customer">
 					<div class="gradeall">
 						<div class="gradeinfo">
-							<div>평점 :</div>
-							<br> <br> <br> <br>
-							<div>제목 :</div>
-							<br> <br> <br> <br>
-							<div>내용 :</div>
-						</div>
+							<div class="a">평점 :</div>
+							<br> <br> 
+							<div class="b">제목 :</div>
+							<br> <br> 
+							<div class="c">내용 :</div>
 					
-						
+						</div>
 					</div>
+					
 				</div>
-				
+						<div class="aa">댓글 등록하기</div>
+	
 			</div>
+  
 			
 			
 			<!-- Add Arrows -->
@@ -237,12 +239,33 @@
 			</div>
 			
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
+			
 			</div>
-			</div>
+			
 			
 			<div class="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-				
+	<div class="commentRegistration"> 
+  <div id="popup">
+    <div class="color"></div>
+    <div class="popupBtn">x</div>
+    <div class="popupContent">
+        <p class="popupTitle">댓글 등록하기</p>
+        <div class="reasonBox">
+          <div class="largeComments">
+								 <div class="comment-editor">
+									<form action="" method="post">
+										<textarea name="comentContext" cols="70" rows="3" placeholder="호스트만 등록 가능합니다."></textarea>
+										<input type="submit" value="등록">
+									</form>
+								</div> 
+							
+							</div>		
+        </div>
+    </div>
+
+  </div>
+</div>
 
 			<div class="place">
 				<div class="placeSection">
@@ -299,5 +322,7 @@
 	<script src="<%=request.getContextPath() %>/js/house/houseDetailHeader.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/filter.js"></script>
+	<script src="<%=request.getContextPath() %>/js/house/housePopup.js"></script>
+
 </body>
 </html>

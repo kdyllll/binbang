@@ -30,7 +30,7 @@ public class HouseDao {
 		}
 		
 
-		public House BinbangDetail(Connection conn, int no) {
+		public House HouseDetail(Connection conn, int no) {
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
 			House h=null;
