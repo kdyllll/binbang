@@ -48,6 +48,7 @@ public class MemberDao {
 				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("host_black"));				
 				m.setHostConfirm(rs.getString("host_confirm"));
+				m.setHostNo(rs.getString("host_no"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
