@@ -42,6 +42,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("서블릿 실행");
 		String path = getServletContext().getRealPath("/upload/house");
 		int maxSize = 1024 * 1024 * 50;
 		String encode = "UTF-8";
@@ -148,27 +149,29 @@ public class HouseEnrollEndServlet extends HttpServlet {
 			results.add(new HouseService().insertPeak(h, p, "S5"));
 		}
 
-		String type="";
-		for (int i = 0; i < pic.length; i++) {	
+		String type = "";
+		for (int i = 0; i < pic.length; i++) {
 			if (pic[i] != null) {
-				if(i==0) {type="M";}
-				else {type="S";}
-				results.add(new HouseService().insertPicture(h, pic[i],type));				
+				if (i == 0) {
+					type = "M";
+				} else {
+					type = "S";
+				}
+				results.add(new HouseService().insertPicture(h, pic[i], type));
 			}
 		}
-		
-		String msg="";
-		for(int a:results) {
-			if(a>0) {
-				msg="등록 성공";
-			}else {
-				msg="등록 실패";
+
+		String msg = "";
+		for (int a : results) {
+			if (a > 0) {
+				msg = "등록 성공";
+			} else {
+				msg = "등록 실패";
 			}
 		}
 		request.setAttribute("msg", msg);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -181,9 +184,16 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		// 시작날짜 캘린더형
 		List list = new ArrayList();
 		String[] Date = day1.split("/");
+		for(String a:Date) {
+			System.out.println("날짜 각각 값"+a);
+		}
 		int[] Date2 = new int[Date.length];
-		for (int i = 0; i < Date.length; i++) {
-			Date2[i] = Integer.parseInt(Date[i]);
+		try {
+			for (int i = 0; i < Date.length; i++) {
+				Date2[i] = Integer.parseInt(Date[i]);
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
 		}
 		Calendar start = Calendar.getInstance();
 		start.set(Calendar.YEAR, Date2[0]);
@@ -192,9 +202,16 @@ public class HouseEnrollEndServlet extends HttpServlet {
 
 		// 끝날짜 캘린더형
 		String[] eDate = day2.split("/");
+		for(String a:eDate) {
+			System.out.println("날짜 각각 값"+a);
+		}
 		int[] eDate2 = new int[eDate.length];
-		for (int i = 0; i < eDate.length; i++) {
-			eDate2[i] = Integer.parseInt(eDate[i]);
+		try {
+			for (int i = 0; i < eDate.length; i++) {
+				eDate2[i] = Integer.parseInt(eDate[i]);
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
 		}
 		Calendar end = Calendar.getInstance();
 		end.set(Calendar.YEAR, eDate2[0]);
