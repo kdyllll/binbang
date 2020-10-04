@@ -167,26 +167,6 @@ public class MemberDao {
 	}
 	
 	
-	
-	
-	
-	//mypage 비밀번호 수정
-	public int updatePassword(Connection conn,String email,String password) {
-		PreparedStatement pstmt=null;
-		int result=0;
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("updatePassword"));
-			pstmt.setString(1,password);
-			pstmt.setString(2, email);
-			result=pstmt.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}return result;
-	}
-	
-	
 	//mypage 탈퇴
 	public int deleteMember(Connection conn, String email) {
 		PreparedStatement pstmt = null;
@@ -201,6 +181,26 @@ public class MemberDao {
 			close(pstmt);
 		}return result;
 	}
+	
+	
+	//mypage 비밀번호 수정
+	public int updatePassword(Connection conn,String newPw,String email) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updatePassword"));
+			pstmt.setString(1,newPw);
+			pstmt.setString(2, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	
 	
 	//로그인화면 비밀번호 수정용(아이디 확인용)
 	public Member selectMemberId(Connection conn,String email) {

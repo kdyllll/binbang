@@ -12,7 +12,7 @@ import com.binbang.house.model.dao.HouseDao;
 import static com.binbang.common.JDBCTemplate.close;
 
 public class HostDao {
-	
+
 	private Properties prop = new Properties();
 
 	public HostDao() {
@@ -23,25 +23,26 @@ public class HostDao {
 			e.printStackTrace();
 		}
 	}
+
 	public int hostEnroll(Connection conn, Host h) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		try {			
+		try {
 			pstmt = conn.prepareStatement(prop.getProperty("hostEnroll"));
 			pstmt.setString(1, h.getMemberNo());
 			pstmt.setString(2, h.getIdCard());
 			pstmt.setString(3, h.getProfilePic());
 			pstmt.setString(4, h.getIntro());
 			result = pstmt.executeUpdate();
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
 		return result;
 	}
-	
+
 	public Host selectHostOne(Connection conn, String memberNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -50,19 +51,38 @@ public class HostDao {
 			pstmt = conn.prepareStatement(prop.getProperty("selectHostOne"));
 			pstmt.setString(1, memberNo);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				host = new Host();
 				host.setHostName(rs.getString("member_name"));
 				host.setHostEmail(rs.getString("email"));
 				host.setIntro(rs.getString("intro"));
 				host.setProfilePic(rs.getString("profile_pic"));
 				host.setComplaintCount(rs.getInt("complaint_count"));
+				host.setMemberNo(rs.getString("member_no"));
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
 			close(pstmt);
-		}return host;
+		}
+		return host;
+	}
+
+	public int updateHostInfo(Connection conn, String hostInfo, String memberNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("updateHostInfo"));
+			pstmt.setString(1, hostInfo);
+			pstmt.setString(2, memberNo);
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

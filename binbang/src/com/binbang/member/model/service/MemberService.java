@@ -92,6 +92,22 @@ public class MemberService {
 		return result;
 	}
 	
+	//mypage 비밀번호 수정
+	public int updatePassword(String oriPw,String newPw , String email) {
+		Connection conn=getConnection();
+		int result=dao.updatePassword(conn, newPw, email);
+		Member m=dao.selectMember(conn, email, oriPw);
+		
+		if(m!=null) {
+			result=dao.updatePassword(conn,email,newPw);
+			if(result>0) commit(conn);
+			else rollback(conn);
+		}
+		close(conn);
+		return result;		
+	}
+	
+	
 	
 	
 	//로그인 화면 비밀번호수정용
@@ -109,19 +125,5 @@ public class MemberService {
 		return result;
 	}
 	
-	//마이페이지 비밀번호 수정용
-	public int updatePassword(String email,String password,String newPassword) {
-		Connection conn=getConnection();
-		int result=-1;
-		Member m=dao.selectMember(conn, email, password);
-		
-		if(m!=null) {
-			result=dao.updatePassword(conn,email,newPassword);
-			if(result>0) commit(conn);
-			else rollback(conn);
-		}
-		close(conn);
-		return result;
-		
-	}
+	
 }
