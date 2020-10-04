@@ -18,16 +18,18 @@ public class HouseService {
 
 	public House HouseDetail(int no) {
 		Connection conn=getConnection();
-		House b=dao.HouseDetail(conn, no);
+		House h=dao.HouseDetail(conn, no);
 		 close(conn);
-		 return b;
+		 return h;
+	}
 	
 
 	public House BinbangDetail(int no) {
 		Connection conn = getConnection();
-		House b = dao.BinbangDetail(conn, no);
+		House h = dao.BinbangDetail(conn, no);
 		close(conn);
-		return b;
+		return h;
+	}
 
 
 	public List<House> HouseFilterList(int cPage, int numPerPage) {
