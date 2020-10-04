@@ -31,9 +31,9 @@ public class MemberUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Member m=new Member();
+		m.setEmail(request.getParameter("email"));
 		m.setNickname(request.getParameter("nickname"));
 		m.setPhone(request.getParameter("phone"));
-		m.setEmail(request.getParameter("email"));
 		
 		int result=new MemberService().updateMember(m);
 		
@@ -42,7 +42,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="회원수정 성공!";
-			loc="/";
+			loc="/views/member/myPage.jsp";
 		}else {
 			msg="회원수정 실패!";
 			loc="/member/myPage?email="+m.getEmail();			

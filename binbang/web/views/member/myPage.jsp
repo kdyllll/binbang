@@ -22,19 +22,19 @@
 			<div class="lineList">
 				<div class="line1">
 					<p>회원이름</p>
-					<div class="memberName" name="name" id="name_"><%=m.getMemberName()%></div>
+					<div class="memberName"  id="name_"><%=m.getMemberName()%></div>
 				</div>
 				<div class="line2">
 					<p>이메일</p>
-					<div class="memberEmail" name="email" id="email_"><%=m.getEmail()%></div>
+					<div class="memberEmail" id="email_"><%=m.getEmail()%></div>
 				</div>
 				<div class="line3">
 					<p>전화번호</p>
-					<div class="memberPhone" name="phone" id="phone_"><%=m.getPhone() %></div>
+					<div class="memberPhone"id="phone_"><%=m.getPhone() %></div>
 				</div>
 				<div class="line4">
 					<p>닉네임</p>
-					<div class="memeberNickName" name="nickname" id="nickname_"><%=m.getNickname() %></div>
+					<div class="memeberNickName" id="nickname_"><%=m.getNickname() %></div>
 				</div>
 			</div>
 		</form>
@@ -139,18 +139,21 @@
 			<div class="private">
 				<div>			
 					<p>개인정보변경</p>
+					<input type="text" name="email" id="block">	
 					<div class="line6"></div>
 				</div>
 				
 				<table>
+					
 					<tr>
 						<td>새로운 비밀번호</td>
-						<td><input type="password" placeholder="비밀번호 입력"></td>
+						<td><input type="password" placeholder="비밀번호 입력" name="password" id="pw"></td>
+							<td><span id="pwCheck"></span></td>
 					</tr>
 					<tr class="tr2">
 						<td>비밀번호 확인</td>
-						<td><input type="password" placeholder="비밀번호 확인"></td>
-						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경"/> </td>
+						<td><input type="password" placeholder="비밀번호 확인" name="passwordCheck" id="pwck" onkeyup="pwCheck();"></td>						
+						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경"/> </td>					
 					</tr>			
 					<tr>
 						<td>현재 닉네임 </td>
@@ -168,13 +171,13 @@
 					<tr>
 						<td>새로운 전화번호</td>
 						<td><input type="text" name="phone" placeholder="전화번호 입력"></td>
-						<td><input tpye="button" onclick="fn_updateMember();" id="btn2" value="수정완료"/></td>
+						<td><input type="button" onclick="fn_updateMember();" id="btn2" value="수정완료"/></td>
 					</tr>		
 				</table>						
 				
 				<div class="modifyComplete">				
 					<div class="line6"></div>
-					<input tpye="button" onclick="fn_deleteMember();" id="btn1" value="회원탈퇴"/>																
+					<input type="button" onclick="fn_deleteMember();" id="btn1" value="회원탈퇴"/>																					
 				</div>				
 			</div>
 			</form>
@@ -187,15 +190,27 @@
 	<script src="<%=request.getContextPath()%>/js/member/myPage.js"></script>
 	
 	<script>
+			//비밀번호 & 비밀번호확인
+		    function pwCheck() {
+		        let pw=$("#pw").val().trim();
+		        let pwck=$("#pwck").val().trim();
+		        if(pw==pwck){
+		            $("#pwCheck").css("color","green").html("비밀번호가 동일합니다.");            
+		          }else if(pw!=pwck){
+		             $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
+		          }		        
+		      };			
 	
 			//정보수정
-			function fn_updateMember(){			
-			$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();
+			function fn_updateMember(){
+				$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();				
 			}
 			//회원탈퇴
 			function fn_deleteMember(){
 		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
 		     }
+			
+			
 	</script>
 </body>
 </html>

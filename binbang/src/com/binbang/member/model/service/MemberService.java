@@ -11,6 +11,7 @@ import static com.binbang.common.JDBCTemplate.commit;
 import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.rollback;
 
+
 public class MemberService {
 
 	private MemberDao dao=new MemberDao();
@@ -66,7 +67,7 @@ public class MemberService {
 		else rollback(conn);
 		close(conn);
 		return result;
-	} 
+	}
 	
 	//mypage 탈퇴
 	public int deleteMember(String email) {

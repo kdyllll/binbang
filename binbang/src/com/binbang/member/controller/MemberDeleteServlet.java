@@ -31,13 +31,15 @@ public class MemberDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String email=request.getParameter("email");
+		
+		
 		int result=new MemberService().deleteMember(email);
 		String msg="";
 		String loc="";
 		
 		if(result>0) {
 			msg="탈퇴완료";
-			loc="/";
+			loc="/views/member/main.jsp";
 			HttpSession session=request.getSession(false);
 			if(session!=null) {
 				session.invalidate();
