@@ -27,7 +27,7 @@ public class House {
 	private int priceWeekend;
 	private int pricePeakDay;
 	private int pricePeakWeekend;
-	private String filter;
+	private String[] filter;
 	private String[] housePicture;
 
 
@@ -41,7 +41,7 @@ public class House {
 	public House(String houseNo, String hostNo, String houseName, String houseType, String houseLocation, int housePnum,
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
 			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
-			List peakDay5, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend, String filter,
+			List peakDay5, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend, String[] filter,
 			String[] housePicture) {
 		super();
 		this.houseNo = houseNo;
@@ -349,13 +349,13 @@ public class House {
 
 
 
-	public String getFilter() {
+	public String[] getFilter() {
 		return filter;
 	}
 
 
 
-	public void setFilter(String filter) {
+	public void setFilter(String[] filter) {
 		this.filter = filter;
 	}
 
@@ -382,7 +382,7 @@ public class House {
 				+ inoutTime + ", peakDay1=" + peakDay1 + ", peakDay2=" + peakDay2 + ", peakDay3=" + peakDay3
 				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", priceDay=" + priceDay + ", priceWeekend="
 				+ priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend=" + pricePeakWeekend
-				+ ", filter=" + filter + ", housePicture=" + Arrays.toString(housePicture) + "]";
+				+ ", filter=" + Arrays.toString(filter) + ", housePicture=" + Arrays.toString(housePicture) + "]";
 	}
 
 
@@ -394,7 +394,7 @@ public class House {
 		result = prime * result + ((attention == null) ? 0 : attention.hashCode());
 		result = prime * result + bathNum;
 		result = prime * result + bedNum;
-		result = prime * result + ((filter == null) ? 0 : filter.hashCode());
+		result = prime * result + Arrays.hashCode(filter);
 		result = prime * result + ((hostNo == null) ? 0 : hostNo.hashCode());
 		result = prime * result + ((houseComment == null) ? 0 : houseComment.hashCode());
 		result = prime * result + ((houseGemsung == null) ? 0 : houseGemsung.hashCode());
@@ -439,10 +439,7 @@ public class House {
 			return false;
 		if (bedNum != other.bedNum)
 			return false;
-		if (filter == null) {
-			if (other.filter != null)
-				return false;
-		} else if (!filter.equals(other.filter))
+		if (!Arrays.equals(filter, other.filter))
 			return false;
 		if (hostNo == null) {
 			if (other.hostNo != null)
@@ -530,9 +527,9 @@ public class House {
 			return false;
 		return true;
 	}
-	
-	
-	
+
+
+
 
 
 	
