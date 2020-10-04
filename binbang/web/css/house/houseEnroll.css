@@ -497,6 +497,14 @@ body {
   font-size:17px;
   cursor: pointer;
 }
+.deleteDate{
+  background-image: url("../../image/house/houseEnroll/icon/x.png");
+  background-size:cover;
+  width: 15px;
+  height: 15px;
+  margin-left:15px;
+  cursor: pointer;
+}
 
 
  /* ----------------------------------- */

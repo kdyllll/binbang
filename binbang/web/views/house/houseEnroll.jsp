@@ -253,6 +253,7 @@
                         <p>끝 날짜</p>
                         <input type="text" id="endDay1" name="endDay1" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
                       </div>
+                      <div class="deleteDate"></div>
                     </div>
                     <div class="season2">
                       <p id="seasonName">시즌 2</p>
@@ -414,7 +415,7 @@
     $(function() {
 			$(".date1").datepicker(
 					{
-						dateFormat : "mm/dd",
+						dateFormat : "yy/mm/dd",
 						
 						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
@@ -427,7 +428,7 @@
 					});
 			$(".date2").datepicker(
 					{
-						dateFormat : "mm/dd",
+						dateFormat : "yy/mm/dd",
 						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
 								"7월", "8월", "9월", "10월", "11월", "12월" ],
