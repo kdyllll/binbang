@@ -102,13 +102,84 @@ public class MemberDao {
 	}
 	
 	
-	//중복확인
+	//email중복확인
+	public String emailCheck(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String result=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectEmailCheck"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getNString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;		
+	}	
 	
 	//mypage 조회
+	public Member selecInf(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Member m=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberOne"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				m=new Member();
+				m.setEmail(rs.getString("email"));
+				m.setMemberName(rs.getNString("member_name"));
+				m.setPhone(rs.getNString("phone"));
+				m.setNickname(rs.getNString("nickname"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;		
+	}
 	
-	//mypage 수정
+	
+	//mypage 회원정보수정(비밀번호 이외)
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateMember"));			
+			pstmt.setString(1, m.getNickname());
+			pstmt.setString(2, m.getPhone());	
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
 	
 	//mypage 탈퇴
+	public int deleteMember(Connection conn, String email) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteMember"));
+			pstmt.setString(1, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	
 	
 	//로그인화면 비밀번호 수정용(아이디 확인용)
 	public Member selectMemberId(Connection conn,String email) {

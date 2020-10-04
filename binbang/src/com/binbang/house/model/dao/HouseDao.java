@@ -21,7 +21,7 @@ public class HouseDao {
 
 	public HouseDao() {
 		try {
-			String path = HouseDao.class.getResource("/sql/binbang/blnbang_sql.properties").getPath();
+			String path = HouseDao.class.getResource("/sql/house/house_sql.properties").getPath();
 			prop.load(new FileReader(path));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -58,6 +58,7 @@ public class HouseDao {
 				h.setPricePeakWeekend(rs.getInt("pricePeakWeekend")); // 성수기 주말
 
 			}
+<<<<<<< HEAD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -152,6 +153,27 @@ public class HouseDao {
 			close(pstmt);
 		}
 		return result;
+	}=======
+
+	public int insertHouse(Connection conn,House h) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty(""));
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+		
+		
 	}
+
+	>>>>>>>branch'develop'
+
+	of https:// github.com/kdyllll/binbang.git
 
 }

@@ -32,8 +32,10 @@ $("#deletePic1").on("click",function(e){
     let img=$(".prevImg");
     img.attr("src","");
     img.css({"border":"1px solid"});
-})
+});
 
-
-
-   
+//성수기 날짜 삭제
+$(".deleteDate").on("click",function(e){
+	console.log($(e.target));
+    $(e.target).siblings().children("input").val("");
+});

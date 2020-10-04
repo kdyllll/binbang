@@ -1,23 +1,26 @@
 package com.binbang.member.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.member.model.service.MemberService;
+
 /**
- * Servlet implementation class MemberFindPasswordServlet
+ * Servlet implementation class MemberDuplicateCheckServlet
  */
-@WebServlet("/member/findPassword")
-public class MemberFindPasswordServlet extends HttpServlet {
+@WebServlet("/member/checkEmailDuplicate")
+public class MemberDuplicateCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberFindPasswordServlet() {
+    public MemberDuplicateCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +29,12 @@ public class MemberFindPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/member/findPasswordAjax.jsp").forward(request, response);
+		 
+		String email=request.getParameter("email");
+		String result=new MemberService().emailCheck(email);
+		
+		request.setAttribute("result", result);
+		request.getRequestDispatcher("/views/member/duplicateCheck.jsp").forward(request,response);
 	}
 
 	/**

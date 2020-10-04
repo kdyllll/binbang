@@ -24,6 +24,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+	
+<script 
+	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper-bundle.min.js"></script>
+<!-- <script src="../package/swiper-bundle.min.js"></script> -->
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
@@ -120,12 +124,20 @@
 									<div class="aserviceimg">
 									<div class="swiper-container second">
 									<div class="swiper-wrapper">
-									<% for(String h : filter){ %>
-										<div class="swiper-slide">Slide 1
-										
-												<img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20">
-										 </div>
-										 <%} %>
+								<%-- 	<% for(String h : filter){ %> --%>
+										<!-- <div> -->
+										 	  <div class="swiper-slide">Slide 1</div>
+										      <div class="swiper-slide">Slide 2</div>
+										      <div class="swiper-slide">Slide 3</div>
+										      <div class="swiper-slide">Slide 4</div>
+										 
+										<!-- Add Pagination -->
+										    <!-- <div class="swiper-pagination"></div> -->
+										    <!-- Add Arrows -->
+										   
+												<%-- <img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20"> --%>
+										 <!-- </div> -->
+										 <%-- <%} %> --%>
 										
 									</div>
 											<!-- Add Arrows -->
@@ -138,7 +150,7 @@
 									</div>
 									
 								</div>
-								
+									  
 							</div>
 						</div>
 					</div>
@@ -181,9 +193,9 @@
 					객실에서 바베큐 그릴을 이용할 수 있다고 하니, 소중한 사람들과 함께 온전한 휴식을 즐기는데에 최적의 환경이 아닐까.
 					각박한 현실에서 벗어나 숨 돌릴 여유가 필요한 지금, 하늘과 바다를 품은 풀빌라에서의 황홀한 휴식이 기다리고 있다.</div>
 				<div class="houseinfo2"></div>				
+				
 			</div>
-			
-				<div class="reviewFilterScroll"></div>
+			<div class="reviewFilterScroll"></div>
 			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 			
 			<div class="gradeTitle">
@@ -220,6 +232,7 @@
 			<div class="swiper-button-prev"></div>
 			<!-- Add Pagination -->
 			<div class="swiper-pagination"></div>
+			<!-- <div class="swiper-pagination"></div> -->
 			
 			</div>
 			

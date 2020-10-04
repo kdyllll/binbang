@@ -95,8 +95,11 @@
 /* 예약 날짜 위아래로 있는 선 설정 */
 .priceLine{
     margin-top: 20px;
-    width: 600px;
+    width: 900px;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    
     border-top:  2px black solid; 
     /* 윗선 */
     border-bottom:  2px black solid;
@@ -127,6 +130,8 @@
     text-align: center;
      border: 2px black solid;
     background-color:white;
+  
+    
 }
 
 /* 메인페이지 글씨 위치설정 */
@@ -142,6 +147,8 @@
     text-align: center;
     border: 2px black solid;
     background-color:white;
+   
+    
 }
 /* 메인페이지 글씨 위치 설정 */
 .my{

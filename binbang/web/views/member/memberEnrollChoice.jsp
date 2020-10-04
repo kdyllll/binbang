@@ -12,7 +12,7 @@
 
 			<div class="joinCategory">
 				<div>
-					<a href="<%=request.getContextPath()%>/member/memberEnroll">Email 회원가입</a>
+					<a href="<%=request.getContextPath()%>/member/memberEnroll"><img src="<%=request.getContextPath()%>/image/member/login/email.png">Email 회원가입</a>
 					<a href="#"><img src="<%=request.getContextPath()%>/image/member/login/google.png">Google 회원가입</a>
 					<a href="#"><img src="<%=request.getContextPath()%>/image/member/login/naver.png">Naver 회원가입</a>
 					<a href="#"><img src="<%=request.getContextPath()%>/image/member/login/kakao.jpg">Kakao 회원가입</a>
