@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
-    $(".aa").on("click", function () {
-      $(".commentRegistration").addClass("active");
+    $(".ex").on("click", function () {
+      $(".enrollbg").addClass("active");
     });
     $(".popupBtn").on("click", function (e) {
       $(e.target).parent().parent().removeClass("active");
