@@ -14,15 +14,15 @@ import javax.servlet.http.HttpSession;
 import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet Filter implementation class AdminCheckFilter
+ * Servlet Filter implementation class HostCheckFilter
  */
-@WebFilter("/admin/*")
-public class AdminCheckFilter implements Filter {
+@WebFilter("/host/hostDetail")
+public class HostCheckFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public AdminCheckFilter() {
+    public HostCheckFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -37,13 +37,11 @@ public class AdminCheckFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
 		HttpServletRequest rq = (HttpServletRequest) request;
 		HttpSession session = rq.getSession(false);
 		Member m = (Member) session.getAttribute("m");
-		if (m == null || !m.getEmail().equals("admin")) {
-			rq.setAttribute("msg", "관리자만 접근가능합니다.");
+		if (m == null || m.getHostConfirm()==null) {
+			rq.setAttribute("msg", "호스트권한을 가진 회원만 접근가능합니다.");
 			rq.setAttribute("loc", "/mainMove");
 			rq.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 			return;

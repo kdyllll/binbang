@@ -27,4 +27,13 @@ public class HostService {
 		close(conn);
 		return h;
 	}
+	
+	public int updateHostInfo(String hostInfo, String memberNo) {
+		Connection conn = getConnection();
+		int result = hdao.updateHostInfo(conn, hostInfo,memberNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
 }
