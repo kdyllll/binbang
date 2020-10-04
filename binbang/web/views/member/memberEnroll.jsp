@@ -19,11 +19,12 @@
 
 				<div class="enrollForm">
 					<div>
-						<input type="text" name="email" placeholder="Email" id="email" required>
+						<input type="text" placeholder="Email" name="email" id="email_" required>
 						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();">
 
 						<input type="password" name="password" placeholder="Password" id="pw" required>						 
 						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" onkeyup="pwCheck();" required>
+						
 						<span id="pwCheck"></span>
 						
 						<input type="text" name="name" placeholder="Name" required> 
@@ -271,22 +272,22 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 
 					<div class="line2 line3"></div>
 
+					
 					<div class="Btn">
 						<button id="signBtn">Sign Up</button>
 					</div>
 			</form>
+			
+			<form action="" name="checkEmailDuplicate">
+		        	<input type="hidden" name="email">
+		    </form>
+		    
 		</section>
-
-
-		<%@ include file="/views/common/footer.jsp"%>
 	</div>
-	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath()%>/js/member/memberEnroll.js"></script>
 	
-	<form action="" name="checkEmailDuplicate">
-        	<input type="hidden" name="email">
-    </form>
     
+<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
+<script src="<%=request.getContextPath()%>/js/member/memberEnroll.js"></script>
 <script>
 
 	/* password 일치 */
@@ -303,23 +304,27 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     
     /* 중복확인 */
     function fn_duplicateCheck(){
-    	let email=$("#email").val();
+    	let email=$("#email_").val();
     	
-    	if(email.trim().length=0){
+    	if(email.trim().length==0){
     		alert("이메일을 입력하세요");
     		return;
     	}    		
     	const url="<%=request.getContextPath()%>/member/checkEmailDuplicate";    	
+    	const title="checkEmailDuplicate";
     	const status="left=500px,top=100px, width=300px, height=200px";
     	
-    	open(url,"",status);    	
+    	open("",title,status);   
+    	console.log(checkEmailDuplicate);
+    	checkEmailDuplicate.target=title;
+    	checkEmailDuplicate.action=url;
+    	checkEmailDuplicate.method="post";
+    	checkEmailDuplicate.email.value=email;    	
+    	checkEmailDuplicate.submit();
     }
-  
-
-	
-    
 </script>
 	
+<%@ include file="/views/common/footer.jsp"%>
 	
 	
 </body>

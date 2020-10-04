@@ -1,27 +1,26 @@
 package com.binbang.member.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.service.MemberService;
-import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberEnrollEndServlet
+ * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet(name="memberEnrollEnd",urlPatterns="/member/memberEnrollEnd")
-public class MemberEnrollEndServlet extends HttpServlet {
+@WebServlet("/member/memberDelete")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollEndServlet() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,28 +30,31 @@ public class MemberEnrollEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		String email=request.getParameter("email");
-		String password=request.getParameter("password");
-		String memberName=request.getParameter("name");
-		String nickname=request.getParameter("nickname");
-		String phone=request.getParameter("phone");
-
-		Member m=new Member(null,email,password,memberName,nickname,phone,null,0,0,null,"대기",null);
 		
-		int result=new MemberService().insertMember(m);
 		
+		int result=new MemberService().deleteMember(email);
 		String msg="";
-		String loc="/";
+		String loc="";
+		
 		if(result>0) {
-			msg="회원등록 성공";
+			msg="탈퇴완료";
 			loc="/views/member/main.jsp";
+			HttpSession session=request.getSession(false);
+			if(session!=null) {
+				session.invalidate();
+			}
 		}else {
-			msg="회원등록 실패";
+			msg="탈퇴실패";
+			loc="/member/myPage";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
+		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		
+		
+		
 	}
 
 	/**

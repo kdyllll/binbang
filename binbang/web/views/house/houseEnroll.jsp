@@ -11,6 +11,7 @@
     <!-- 주소검색 api js -->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <% Member member=(Member)session.getAttribute("m"); %>
   </head>
 <body>
     <div class="wrap">
@@ -18,7 +19,7 @@
   
         <section class="section">
             <!-- Swiper -->
-           <form action="<%=request.getContextPath()%>/house/houseEnrollEnd" class="swiper-container first" method="post" enctype="multipart/form-data">
+           <form action="<%=request.getContextPath() %>/house/houseEnrollEnd" class="swiper-container first" method="post" enctype="multipart/form-data">
            
              <div class="swiper-wrapper">
                <div class="swiper-slide box">
@@ -200,20 +201,20 @@
                     <p>편의 시설 및 서비스</p>
                     <div class="filterContainer">
                       <ul class="filterCon">
-                        <li><input type="checkbox" id="bbq" name="filter" value="bbq"><label for="bbq"> 바베큐</label></li>
-                        <li><input type="checkbox" id="breakfast" name="filter" value="breakfast"><label for="breakfast"> 조식</label></li>
-                        <li><input type="checkbox" id="terrace" name="filter" value="terrace"><label for="terrace"> 테라스</label></li>
-                        <li><input type="checkbox" id="shower" name="filter" value="shower"><label for="shower"> 샤워룸</label></li>
-                        <li><input type="checkbox" id="park" name="filter" value="park"><label for="park"> 정원</label></li>
-                        <li><input type="checkbox" id="swimming" name="filter" value="swimming"><label for="swimming"> 수영장</label></li>
+                        <li><input type="checkbox" id="bbq" name="filter" value="1"><label for="bbq"> 바베큐</label></li>
+                        <li><input type="checkbox" id="breakfast" name="filter" value="2"><label for="breakfast"> 조식</label></li>
+                        <li><input type="checkbox" id="terrace" name="filter" value="3"><label for="terrace"> 테라스</label></li>
+                        <li><input type="checkbox" id="shower" name="filter" value="4"><label for="shower"> 샤워룸</label></li>
+                        <li><input type="checkbox" id="park" name="filter" value="5"><label for="park"> 정원</label></li>
+                        <li><input type="checkbox" id="swimming" name="filter" value="6"><label for="swimming"> 수영장</label></li>
                       </ul>
                       <ul class="filterCon">  
-                        <li><input type="checkbox" id="dog" name="filter" value="dog"><label for="dog"> 반려동물</label></li>
-                        <li><input type="checkbox" id="smoking" name="filter" value="smoking"><label for="smoking"> 흡연</label></li>
-                        <li><input type="checkbox" id="parking" name="filter" value="parking"><label for="parking"> 주차</label></li>
-                        <li><input type="checkbox" id="kitchen" name="filter" value="kitchen"><label for="kitchen"> 주방</label></li>
-                        <li><input type="checkbox" id="laundryRoom" name="filter" value="laundryRoom"><label for="laundryRoom"> 세탁실</label></li>
-                        <li><input type="checkbox" id="wifi" name="filter" value="wifi"><label for="wifi"> 와이파이</label></li>                   
+                        <li><input type="checkbox" id="dog" name="filter" value="7"><label for="dog"> 반려동물</label></li>
+                        <li><input type="checkbox" id="smoking" name="filter" value="8"><label for="smoking"> 흡연</label></li>
+                        <li><input type="checkbox" id="parking" name="filter" value="9"><label for="parking"> 주차</label></li>
+                        <li><input type="checkbox" id="kitchen" name="filter" value="10"><label for="kitchen"> 주방</label></li>
+                        <li><input type="checkbox" id="laundryRoom" name="filter" value="11"><label for="laundryRoom"> 세탁실</label></li>
+                        <li><input type="checkbox" id="wifi" name="filter" value="12"><label for="wifi"> 와이파이</label></li>                   
                       </ul>
                     </div>                
                   </div>
@@ -253,6 +254,7 @@
                         <p>끝 날짜</p>
                         <input type="text" id="endDay1" name="endDay1" class="date2" placeholder="날짜 선택" readonly autocomplete="off">
                       </div>
+                      <div class="deleteDate"></div>
                     </div>
                     <div class="season2">
                       <p id="seasonName">시즌 2</p>
@@ -332,7 +334,7 @@
             </div>
 
              </div>
-           
+           	<input type="hidden" name="loginHost" value="<%=member.getHostNo()%>">
              <!-- Add Pagination -->
              <div class="swiper-pagination"></div>
              <!-- Add Arrows -->
@@ -414,7 +416,7 @@
     $(function() {
 			$(".date1").datepicker(
 					{
-						dateFormat : "mm/dd",
+						dateFormat : "yy/mm/dd",
 						
 						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
@@ -427,7 +429,7 @@
 					});
 			$(".date2").datepicker(
 					{
-						dateFormat : "mm/dd",
+						dateFormat : "yy/mm/dd",
 						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
 						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
 								"7월", "8월", "9월", "10월", "11월", "12월" ],
