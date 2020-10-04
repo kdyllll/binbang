@@ -15,6 +15,7 @@ public class Member {
 	private int coupon;
 	private String hostBlack;
 	private String hostConfirm;
+	private String hostNo;
 	
 	
 	public Member() {
@@ -23,7 +24,7 @@ public class Member {
 
 
 	public Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
-			Date enrollDate, int stayDays, int coupon, String hostBlack, String hostConfirm) {
+			Date enrollDate, int stayDays, int coupon, String hostBlack, String hostConfirm, String hostNo) {
 		super();
 		this.memberNo = memberNo;
 		this.email = email;
@@ -36,6 +37,7 @@ public class Member {
 		this.coupon = coupon;
 		this.hostBlack = hostBlack;
 		this.hostConfirm = hostConfirm;
+		this.hostNo = hostNo;
 	}
 
 
@@ -147,6 +149,16 @@ public class Member {
 	public void setHostConfirm(String hostConfirm) {
 		this.hostConfirm = hostConfirm;
 	}
+	
+	
+	public String getHostNo() {
+		return hostNo;
+	}
+
+
+	public void setHostNo(String hostNo) {
+		this.hostNo = hostNo;
+	}
 
 
 	@Override
@@ -154,11 +166,8 @@ public class Member {
 		return "Member [memberNo=" + memberNo + ", email=" + email + ", password=" + password + ", memberName="
 				+ memberName + ", nickname=" + nickname + ", phone=" + phone + ", enrollDate=" + enrollDate
 				+ ", stayDays=" + stayDays + ", coupon=" + coupon + ", hostBlack=" + hostBlack + ", hostConfirm="
-				+ hostConfirm + "]";
+				+ hostConfirm + ", hostNo=" + hostNo + "]";
 	}
 
-	
-	
-	
 
 }

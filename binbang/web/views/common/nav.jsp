@@ -4,7 +4,6 @@
 <%@ page import="com.binbang.member.model.vo.Member" %>
 <%
 	Member m = (Member)session.getAttribute("m");
-
 %>
 <nav class="headerNav" id="nav">
 		<% if(m==null) { %>
@@ -23,7 +22,7 @@
 			<li><a href="<%=request.getContextPath()%>/member/favoriteFolder">관심숙소</a></li>
 			<% if(m != null && m.getHostConfirm() == null) {%>
 			<li><a href="<%=request.getContextPath()%>/host/hostEnroll">호스트등록</a></li>
-			<%} else { %>
+			<%} else if(m.getHostConfirm() != null && m.getHostConfirm().equals("승인")) { %>
 			<li><a href="<%=request.getContextPath()%>/host/hostDetail">호스트페이지</a></li>
 			<%} %>
 			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>

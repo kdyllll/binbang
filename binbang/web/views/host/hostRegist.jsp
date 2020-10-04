@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp" %>
-		<link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/hostRegist.css" />
-
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/host/hostRegist.css" />
+<%
+	Member member = (Member)request.getAttribute("member");
+%>
 	</head>
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp" %>
 		<section class="section">
         <div class="registImg">
-          <form class="registContainer" id="hostFrm" method="post" enctype="multipart/form-data">
-            <h2>호스트가 되어 수입을 올려보세요.</h2>
+          <form class="registContainer" id="hostFrm" action="<%=request.getContextPath()%>/host/hostEnrollEnd" method="post" enctype="multipart/form-data">
+            <h2><%=member.getMemberName() %>님 호스트가 되어 수입을 올려보세요.</h2>
             <div>
               <div>
                 <div class="addBtn">
@@ -34,8 +36,9 @@
                 <img src="<%=request.getContextPath() %>/image/host/host_regist/host_img/basic.jpg" alt="" />
               </div>
             </div>
-            <input type="button" value="등록하기" id="enrollHost" onclick="fn_enrollHost();" style="display:none;">
+            <input type="submit" value="등록하기" id="enrollHost" style="display:none;">
             <label class="hostEnrollEnd"  for="enrollHost">등록하기</label>
+            <input type="hidden" name="memberNo" value="<%=m.getMemberNo()%>">
           </form>
         </div>
         <div class="hostRegist">
@@ -83,10 +86,6 @@
 	</div>
 	 <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
 	 <script src="<%=request.getContextPath() %>/js/host/hostRegist.js"></script>
-	 <script>
-	 	function fn_enrollHost() {
-	 		$("#hostFrm").attr("action", "<%=request.getContextPath()%>/host/hostEnrollEnd").submit();
-	 	}
-	 </script>
+
 </body>
 </html>
