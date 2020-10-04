@@ -133,8 +133,11 @@ public class MemberCheckConfirmNumberServlet extends HttpServlet {
         }
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-     
+        
+//        request.setAttribute(name, o);
+        
 		}
+//		request.getRequestDispatcher("/views/member.findPasswordAjax.jsp").forward(request, response);
 	}
 
 	/**

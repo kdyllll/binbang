@@ -56,13 +56,12 @@
     		data:{"email":$("#email").val()},
     		dataType:"html",
     		success:data => {
-    			console.log(data);
-    			if(data.trim().length!=0){
-    				alert("인증번호가 발송되었습니다.");
-    				sendNumber();
+    			if($("#email").val().trim().length==0){
+    				alert("아이디를 확인해주세요.");
     				return;
     			}else{
-    				alert("아이디를 확인해주세요.");
+    				alert("인증번호가 발송되었습니다.");
+    				sendNumber();
     			}
     			
     		},

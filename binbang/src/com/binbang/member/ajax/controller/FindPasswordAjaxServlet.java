@@ -38,14 +38,16 @@ public class FindPasswordAjaxServlet extends HttpServlet {
             System.out.println("인증번호 일치하지 않음");
             msg="인증번호가 일치하지 않습니다";
             loc="/member/findPasswordAjax";
-            request.setAttribute("msg", msg);
-            request.setAttribute("loc", loc);
-            request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
             return;
             
         }else {
+        	msg="인증이 완료되었습니다";
+        	loc="/member/memberChangePassword";
         	System.out.println("인증번호 일치함");
         }
+        request.setAttribute("msg", msg);
+        request.setAttribute("loc", loc);
+        request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 	}
 
 	/**
