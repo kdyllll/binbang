@@ -5,6 +5,7 @@ import java.util.List;
 
 public class House {
 	private String houseNo;
+	private String hostNo;
 	private String houseName;
 	private String houseType;
 	private String houseLocation;
@@ -37,13 +38,14 @@ public class House {
 
 
 
-	public House(String houseNo, String houseName, String houseType, String houseLocation, int housePnum,
+	public House(String houseNo, String hostNo, String houseName, String houseType, String houseLocation, int housePnum,
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
 			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
 			List peakDay5, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend, String filter,
 			String[] housePicture) {
 		super();
 		this.houseNo = houseNo;
+		this.hostNo = hostNo;
 		this.houseName = houseName;
 		this.houseType = houseType;
 		this.houseLocation = houseLocation;
@@ -79,6 +81,18 @@ public class House {
 
 	public void setHouseNo(String houseNo) {
 		this.houseNo = houseNo;
+	}
+
+
+
+	public String getHostNo() {
+		return hostNo;
+	}
+
+
+
+	public void setHostNo(String hostNo) {
+		this.hostNo = hostNo;
 	}
 
 
@@ -361,8 +375,8 @@ public class House {
 
 	@Override
 	public String toString() {
-		return "House [houseNo=" + houseNo + ", houseName=" + houseName + ", houseType=" + houseType
-				+ ", houseLocation=" + houseLocation + ", housePnum=" + housePnum + ", pObjects=" + pObjects
+		return "House [houseNo=" + houseNo + ", hostNo=" + hostNo + ", houseName=" + houseName + ", houseType="
+				+ houseType + ", houseLocation=" + houseLocation + ", housePnum=" + housePnum + ", pObjects=" + pObjects
 				+ ", roomNum=" + roomNum + ", bathNum=" + bathNum + ", bedNum=" + bedNum + ", houseComment="
 				+ houseComment + ", houseGemsung=" + houseGemsung + ", attention=" + attention + ", inoutTime="
 				+ inoutTime + ", peakDay1=" + peakDay1 + ", peakDay2=" + peakDay2 + ", peakDay3=" + peakDay3
@@ -381,6 +395,7 @@ public class House {
 		result = prime * result + bathNum;
 		result = prime * result + bedNum;
 		result = prime * result + ((filter == null) ? 0 : filter.hashCode());
+		result = prime * result + ((hostNo == null) ? 0 : hostNo.hashCode());
 		result = prime * result + ((houseComment == null) ? 0 : houseComment.hashCode());
 		result = prime * result + ((houseGemsung == null) ? 0 : houseGemsung.hashCode());
 		result = prime * result + ((houseLocation == null) ? 0 : houseLocation.hashCode());
@@ -428,6 +443,11 @@ public class House {
 			if (other.filter != null)
 				return false;
 		} else if (!filter.equals(other.filter))
+			return false;
+		if (hostNo == null) {
+			if (other.hostNo != null)
+				return false;
+		} else if (!hostNo.equals(other.hostNo))
 			return false;
 		if (houseComment == null) {
 			if (other.houseComment != null)
@@ -510,8 +530,8 @@ public class House {
 			return false;
 		return true;
 	}
-
-
+	
+	
 	
 
 

@@ -160,7 +160,7 @@ public class HouseDao {
 		int result=0;
 		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty(""));
+			pstmt=conn.prepareStatement(prop.getProperty("insertHouse"));
 			
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
