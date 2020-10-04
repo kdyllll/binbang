@@ -120,13 +120,13 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		results.add(new HouseService().insertHouse(h));
 		h.setHouseNo(new HouseService().selectHouseNo(h));
 		
-		List results=new ArrayList();
+		//List results=new ArrayList();
 		for(int i=0;i<filter.length;i++) {
 		results.add(new HouseService().insertFilter(h));
 		}
 		
-		results.add(new HouseService().insertPeak(h));
-		results.add(new HouseService().insertPicture(h));
+		//results.add(new HouseService().insertPeak(h));
+		//results.add(new HouseService().insertPicture(h));
 		
 		
 	}
