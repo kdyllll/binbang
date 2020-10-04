@@ -45,6 +45,15 @@ public class HouseService {
 			return result;
 		}
 	 
+	 public int insertHouse(House h) {
+		 Connection conn=getConnection();
+		 int result=dao.insertHouse(conn,h);
+		 if(result>0) commit(conn);
+		 else rollback(conn);
+		 close(conn);
+		 return result;
+	 }
+	 
 }
 
 

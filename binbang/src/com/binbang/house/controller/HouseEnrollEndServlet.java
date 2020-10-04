@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -114,7 +115,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		}	
 		h.setHousePicture(pic);//사진 새로운 이름들만 
 		
-		
+		int result=new HouseService().insertHouse(h);
 		
 	}
 
