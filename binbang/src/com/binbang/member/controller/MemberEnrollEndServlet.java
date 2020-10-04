@@ -37,7 +37,16 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		String memberName=request.getParameter("name");
 		String nickname=request.getParameter("nickname");
 		String phone=request.getParameter("phone");
-		Member m=new Member(null,email,password,memberName,nickname,phone,null,0,0,null);
+
+		Member m=new Member();
+		
+		m.setEmail(email);
+		m.setPassword(password);
+		m.setMemberName(memberName);
+		m.setNickname(nickname);
+		m.setPhone(phone);						
+	
+		
 		
 		int result=new MemberService().insertMember(m);
 		
@@ -45,6 +54,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		String loc="/";
 		if(result>0) {
 			msg="회원등록 성공";
+			loc="/views/member/main.jsp";
 		}else {
 			msg="회원등록 실패";
 		}

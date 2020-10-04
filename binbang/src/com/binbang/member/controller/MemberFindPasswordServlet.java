@@ -27,7 +27,7 @@ public class MemberFindPasswordServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/member/findPassword.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/member/findPasswordAjax.jsp").forward(request, response);
 	}
 
 	/**

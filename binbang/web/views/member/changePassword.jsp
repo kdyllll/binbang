@@ -38,8 +38,8 @@
     <script> 
 
       function checkPw() {
-   	  	let pw1=$("#newPw").val();
-        let pw2=$("#newPw_").val();
+   	  	let pw1=$("#newPw").val().trim();
+        let pw2=$("#newPw_").val().trim();
         if(pw1==pw2){
             $("#checkPw").css("color","green").html("비밀번호가 동일합니다.");
             $(".next").prop("disabled",false);

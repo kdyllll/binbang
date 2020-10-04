@@ -11,12 +11,12 @@ import static com.binbang.common.JDBCTemplate.commit;
 import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.rollback;
 
+
 public class MemberService {
 
 	private MemberDao dao=new MemberDao();
 
 	//로그인
-
 	public Member selectMember(String email, String password) {
 		Connection conn=getConnection();
 		Member m=dao.selectMember(conn,email,password);
@@ -34,14 +34,81 @@ public class MemberService {
 		return result;
 	}
 	
-	//중복확인
+	//아이디 찾기
+	public String findId(String name,String phone) {
+		Connection conn=getConnection();
+		String email=dao.selectEmail(conn,name,phone);
+		close(conn);
+		return email;
+	}
+	
+
+	//비밀번호 찾기
+//	public Member findPassword(String email) {
+//		Connection conn=getConnection();
+//		Member m=dao.findPassword(conn,email);
+//		close(conn);
+//		return m;
+//	}
+	
+
+	//email중복확인
+	public String emailCheck(String email) {
+		Connection conn=getConnection();
+		String result=dao.emailCheck(conn,email);
+		close(conn);
+		return result;
+	}
+
 	
 	
 	//mypage 조회
+	public Member selectInf(String email) {
+		Connection conn=getConnection();
+		Member m=dao.selecInf(conn,email);
+		close(conn);
+		return m;
+	}
 	
 	//mypage 수정
+	public int updateMember(Member m) {
+		Connection conn=getConnection();
+		int result=dao.updateMember(conn,m);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
 	
 	//mypage 탈퇴
+	public int deleteMember(String email) {
+		Connection conn=getConnection();
+		int result=dao.deleteMember(conn, email);
+		if(result>0) commit(conn);
+		else {
+			rollback(conn);
+			close(conn);
+		}
+		return result;
+	}
+	
+	//mypage 비밀번호 수정
+	public int updatePassword(String oriPw,String newPw , String email) {
+		Connection conn=getConnection();
+		int result=dao.updatePassword(conn, newPw, email);
+		Member m=dao.selectMember(conn, email, oriPw);
+		
+		if(m!=null) {
+			result=dao.updatePassword(conn,email,newPw);
+			if(result>0) commit(conn);
+			else rollback(conn);
+		}
+		close(conn);
+		return result;		
+	}
+	
+	
+	
 	
 	//로그인 화면 비밀번호수정용
 	public int findPassword(String email,String newPassword) {
@@ -58,19 +125,5 @@ public class MemberService {
 		return result;
 	}
 	
-	//마이페이지 비밀번호 수정용
-	public int updatePassword(String email,String password,String newPassword) {
-		Connection conn=getConnection();
-		int result=-1;
-		Member m=dao.selectMember(conn, email, password);
-		
-		if(m!=null) {
-			result=dao.updatePassword(conn,email,newPassword);
-			if(result>0) commit(conn);
-			else rollback(conn);
-		}
-		close(conn);
-		return result;
-		
-	}
+	
 }

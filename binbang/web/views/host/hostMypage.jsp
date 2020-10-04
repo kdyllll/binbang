@@ -1,6 +1,10 @@
+<%@page import="com.binbang.host.model.vo.Host"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
+<%
+	Host h = (Host) request.getAttribute("host");
+%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/host/hostMypage.css" />
 </head>
@@ -9,7 +13,7 @@
 		<%@ include file="/views/common/header.jsp"%>
 		<section class="section">
 			<!-- 호스트정보부분 -->
-			<form class="hostInfoContainer" method="get">
+			<form class="hostInfoContainer" action="<%=request.getContextPath() %>/host/hostInfoUpdate" method="post">
 				<div class="hostInfoImg">
 					<img
 						src="<%=request.getContextPath()%>/image/host/host_regist/host_img/basic.jpg"
@@ -19,20 +23,18 @@
 				<div class="hostInfoContent">
 					<div>
 						<p>호스트이름</p>
-						<input type="text" name="hostName" id="hostNameChn" value="인하준"
-							style="padding-left: 10px;" />
+						<span style="padding-left: 10px;"><%=h.getHostName() %></span>
 					</div>
 					<div>
 						<p>호스트이메일</p>
-						<span style="padding-left: 10px;">princeha@gmail.com</span>
+						<span style="padding-left: 10px;"><%=h.getHostEmail()%></span>
 					</div>
 					<div>
 						<p>소개글</p>
-						<textarea name="hostIntro" id="textarea" cols="30" rows="10"></textarea>
+						<textarea name="hostIntro" id="hostIntro" cols="30" rows="10" readonly="true"><%=h.getIntro()%></textarea>
 					</div>
-
-					<input type="submit" id="changeInfo" value="수정"
-						onclick="return invalidate();" />
+					<input type="hidden" name="memberNo" value="<%=h.getMemberNo() %>">
+					<input type="submit" id="changeInfo" value="수정" onclick="return invalidate();" />
 				</div>
 			</form>
 			<ul class="houseRequest">
@@ -40,9 +42,7 @@
 				<li>숙소요청</li>
 				<li>숙소현황</li>
 			</ul>
-			<form class="myHouse">
-				
-			</form>
+			<form class="myHouse"></form>
 
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>

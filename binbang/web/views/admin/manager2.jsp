@@ -28,29 +28,43 @@
 			</div>
 			<div id="AllContents"></div>
 
+	
 			<script>
 
-	 $("#memberAll").click(e=>{
+	 $("#memberAll").click(e => {
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/memberListAjax",
 			dataType:"html",
 			success:data=>{
+				$("#AllContents").children().remove();
 				$("#AllContents").html(data);
 			}
-		})
+		});
 		
-	})	
+	});
+	 
+	 $("#acceptList").click(e => {
+			$.ajax({
+				url:"<%=request.getContextPath()%>/admin/hostAcceptListAjax",
+				dataType:"html",
+				success:data=>{
+					$("#AllContents").children().remove();
+					$("#AllContents").html(data);
+				}
+			});
+			
+		});
 
 
 </script>
-			<!-- 여기부터 ajax -->
+		
 
 
 
 
 
 
-			<!-- 예약 현황 -->
+	
 
 
 			<!-- 호스트 목록 -->
@@ -94,53 +108,6 @@
 				</div>
 			</div>
 
-			<!-- 호스트 승인 -->
-			<div id="acceptListContents" class="searchCommon">
-				<p class="pageTitle">호스트 승인</p>
-				<!-- 호스트 관리자 승인 후 접속 가능하게 -임시저장..?-->
-				<!-- 회원번호,이름,전화번호,신분증사진,본인사진, 가입날짜 -->
-				<!-- 수락,거절 시 안내 메일가기 -->
-				<div class="tb_wrap">
-					<div class="tableDiv">
-						<table class="tableAll">
-							<tr class="fixed_top">
-								<th class="cell1">이름</th>
-								<th class="cell3">전화번호</th>
-								<th class="cell3">본인사진</th>
-								<th class="cell3">신분증사진</th>
-								<th class="cell2">요청날짜</th>
-								<th class="cell2">승인 여부</th>
-							</tr>
-							<tr>
-								<td class="cell1">한수경</td>
-								<td class="cell3">010-1111-2222</td>
-								<td class="cell3">한수경.jpg</td>
-								<td class="cell3">한수경2.jpg</td>
-								<td class="cell2">2020-09-09</td>
-								<td class="cell2">
-									<div class="acceptChoice">
-										<input type="checkbox" name="accept" value="승인" id="yes">승인
-										<input type="checkbox" name="accept" value="거절" id="no">거절
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="cell1">김다예</td>
-								<td class="cell3">010-2222-2222</td>
-								<td class="cell3">박진영러브.jpg</td>
-								<td class="cell3">김다예2.jpg</td>
-								<td class="cell2">2020-09-09</td>
-								<td class="cell2">
-									<div class="acceptChoice">
-										<input type="checkbox" name="accept" value="승인" id="yes">승인
-										<input type="checkbox" name="accept" value="거절" id="no">거절
-									</div>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
 
 			<!-- 호스트 신고 -->
 			<div id="blackListContents" class="searchCommon">

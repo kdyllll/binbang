@@ -1,9 +1,11 @@
 package com.binbang.house.model.vo;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class House {
 	private String houseNo;
+	private String hostNo;
 	private String houseName;
 	private String houseType;
 	private String houseLocation;
@@ -14,28 +16,36 @@ public class House {
 	private int bedNum;
 	private String houseComment;
 	private String houseGemsung;
-	private String phoneOption;
 	private String attention;
 	private String inoutTime;
-	private String[] peakDay;
+	private List peakDay1;
+	private List peakDay2;
+	private List peakDay3;
+	private List peakDay4;
+	private List peakDay5;
 	private int priceDay;
 	private int priceWeekend;
 	private int pricePeakDay;
 	private int pricePeakWeekend;
 	private String[] filter;
 	private String[] housePicture;
-	private Object[] place;
+
+
 	
 	public House() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public House(String houseNo, String houseName, String houseType, String houseLocation, int housePnum,
+
+
+	public House(String houseNo, String hostNo, String houseName, String houseType, String houseLocation, int housePnum,
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
-			String phoneOption, String attention, String inoutTime, String[] peakDay, int priceDay, int priceWeekend,
-			int pricePeakDay, int pricePeakWeekend, String[] filter, String[] housePicture, Object[] place) {
+			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
+			List peakDay5, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend, String[] filter,
+			String[] housePicture) {
 		super();
 		this.houseNo = houseNo;
+		this.hostNo = hostNo;
 		this.houseName = houseName;
 		this.houseType = houseType;
 		this.houseLocation = houseLocation;
@@ -46,206 +56,336 @@ public class House {
 		this.bedNum = bedNum;
 		this.houseComment = houseComment;
 		this.houseGemsung = houseGemsung;
-		this.phoneOption = phoneOption;
 		this.attention = attention;
 		this.inoutTime = inoutTime;
-		this.peakDay = peakDay;
+		this.peakDay1 = peakDay1;
+		this.peakDay2 = peakDay2;
+		this.peakDay3 = peakDay3;
+		this.peakDay4 = peakDay4;
+		this.peakDay5 = peakDay5;
 		this.priceDay = priceDay;
 		this.priceWeekend = priceWeekend;
 		this.pricePeakDay = pricePeakDay;
 		this.pricePeakWeekend = pricePeakWeekend;
 		this.filter = filter;
 		this.housePicture = housePicture;
-		this.place = place;
 	}
+
+
 
 	public String getHouseNo() {
 		return houseNo;
 	}
 
+
+
 	public void setHouseNo(String houseNo) {
 		this.houseNo = houseNo;
 	}
+
+
+
+	public String getHostNo() {
+		return hostNo;
+	}
+
+
+
+	public void setHostNo(String hostNo) {
+		this.hostNo = hostNo;
+	}
+
+
 
 	public String getHouseName() {
 		return houseName;
 	}
 
+
+
 	public void setHouseName(String houseName) {
 		this.houseName = houseName;
 	}
+
+
 
 	public String getHouseType() {
 		return houseType;
 	}
 
+
+
 	public void setHouseType(String houseType) {
 		this.houseType = houseType;
 	}
+
+
 
 	public String getHouseLocation() {
 		return houseLocation;
 	}
 
+
+
 	public void setHouseLocation(String houseLocation) {
 		this.houseLocation = houseLocation;
 	}
+
+
 
 	public int getHousePnum() {
 		return housePnum;
 	}
 
+
+
 	public void setHousePnum(int housePnum) {
 		this.housePnum = housePnum;
 	}
+
+
 
 	public String getpObjects() {
 		return pObjects;
 	}
 
+
+
 	public void setpObjects(String pObjects) {
 		this.pObjects = pObjects;
 	}
+
+
 
 	public int getRoomNum() {
 		return roomNum;
 	}
 
+
+
 	public void setRoomNum(int roomNum) {
 		this.roomNum = roomNum;
 	}
+
+
 
 	public int getBathNum() {
 		return bathNum;
 	}
 
+
+
 	public void setBathNum(int bathNum) {
 		this.bathNum = bathNum;
 	}
+
+
 
 	public int getBedNum() {
 		return bedNum;
 	}
 
+
+
 	public void setBedNum(int bedNum) {
 		this.bedNum = bedNum;
 	}
+
+
 
 	public String getHouseComment() {
 		return houseComment;
 	}
 
+
+
 	public void setHouseComment(String houseComment) {
 		this.houseComment = houseComment;
 	}
+
+
 
 	public String getHouseGemsung() {
 		return houseGemsung;
 	}
 
+
+
 	public void setHouseGemsung(String houseGemsung) {
 		this.houseGemsung = houseGemsung;
 	}
 
-	public String getPhoneOption() {
-		return phoneOption;
-	}
 
-	public void setPhoneOption(String phoneOption) {
-		this.phoneOption = phoneOption;
-	}
 
 	public String getAttention() {
 		return attention;
 	}
 
+
+
 	public void setAttention(String attention) {
 		this.attention = attention;
 	}
+
+
 
 	public String getInoutTime() {
 		return inoutTime;
 	}
 
+
+
 	public void setInoutTime(String inoutTime) {
 		this.inoutTime = inoutTime;
 	}
 
-	public String[] getPeakDay() {
-		return peakDay;
+
+
+	public List getPeakDay1() {
+		return peakDay1;
 	}
 
-	public void setPeakDay(String[] peakDay) {
-		this.peakDay = peakDay;
+
+
+	public void setPeakDay1(List peakDay1) {
+		this.peakDay1 = peakDay1;
 	}
+
+
+
+	public List getPeakDay2() {
+		return peakDay2;
+	}
+
+
+
+	public void setPeakDay2(List peakDay2) {
+		this.peakDay2 = peakDay2;
+	}
+
+
+
+	public List getPeakDay3() {
+		return peakDay3;
+	}
+
+
+
+	public void setPeakDay3(List peakDay3) {
+		this.peakDay3 = peakDay3;
+	}
+
+
+
+	public List getPeakDay4() {
+		return peakDay4;
+	}
+
+
+
+	public void setPeakDay4(List peakDay4) {
+		this.peakDay4 = peakDay4;
+	}
+
+
+
+	public List getPeakDay5() {
+		return peakDay5;
+	}
+
+
+
+	public void setPeakDay5(List peakDay5) {
+		this.peakDay5 = peakDay5;
+	}
+
+
 
 	public int getPriceDay() {
 		return priceDay;
 	}
 
+
+
 	public void setPriceDay(int priceDay) {
 		this.priceDay = priceDay;
 	}
+
+
 
 	public int getPriceWeekend() {
 		return priceWeekend;
 	}
 
+
+
 	public void setPriceWeekend(int priceWeekend) {
 		this.priceWeekend = priceWeekend;
 	}
+
+
 
 	public int getPricePeakDay() {
 		return pricePeakDay;
 	}
 
+
+
 	public void setPricePeakDay(int pricePeakDay) {
 		this.pricePeakDay = pricePeakDay;
 	}
+
+
 
 	public int getPricePeakWeekend() {
 		return pricePeakWeekend;
 	}
 
+
+
 	public void setPricePeakWeekend(int pricePeakWeekend) {
 		this.pricePeakWeekend = pricePeakWeekend;
 	}
+
+
 
 	public String[] getFilter() {
 		return filter;
 	}
 
+
+
 	public void setFilter(String[] filter) {
 		this.filter = filter;
 	}
+
+
 
 	public String[] getHousePicture() {
 		return housePicture;
 	}
 
+
+
 	public void setHousePicture(String[] housePicture) {
 		this.housePicture = housePicture;
 	}
 
-	public Object[] getPlace() {
-		return place;
-	}
 
-	public void setPlace(Object[] place) {
-		this.place = place;
-	}
 
 	@Override
 	public String toString() {
-		return "House [houseNo=" + houseNo + ", houseName=" + houseName + ", houseType=" + houseType
-				+ ", houseLocation=" + houseLocation + ", housePnum=" + housePnum + ", pObjects=" + pObjects
+		return "House [houseNo=" + houseNo + ", hostNo=" + hostNo + ", houseName=" + houseName + ", houseType="
+				+ houseType + ", houseLocation=" + houseLocation + ", housePnum=" + housePnum + ", pObjects=" + pObjects
 				+ ", roomNum=" + roomNum + ", bathNum=" + bathNum + ", bedNum=" + bedNum + ", houseComment="
-				+ houseComment + ", houseGemsung=" + houseGemsung + ", phoneOption=" + phoneOption + ", attention="
-				+ attention + ", inoutTime=" + inoutTime + ", peakDay=" + Arrays.toString(peakDay) + ", priceDay="
-				+ priceDay + ", priceWeekend=" + priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend="
-				+ pricePeakWeekend + ", filter=" + Arrays.toString(filter) + ", housePicture="
-				+ Arrays.toString(housePicture) + ", place=" + Arrays.toString(place) + "]";
+				+ houseComment + ", houseGemsung=" + houseGemsung + ", attention=" + attention + ", inoutTime="
+				+ inoutTime + ", peakDay1=" + peakDay1 + ", peakDay2=" + peakDay2 + ", peakDay3=" + peakDay3
+				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", priceDay=" + priceDay + ", priceWeekend="
+				+ priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend=" + pricePeakWeekend
+				+ ", filter=" + Arrays.toString(filter) + ", housePicture=" + Arrays.toString(housePicture) + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -255,6 +395,7 @@ public class House {
 		result = prime * result + bathNum;
 		result = prime * result + bedNum;
 		result = prime * result + Arrays.hashCode(filter);
+		result = prime * result + ((hostNo == null) ? 0 : hostNo.hashCode());
 		result = prime * result + ((houseComment == null) ? 0 : houseComment.hashCode());
 		result = prime * result + ((houseGemsung == null) ? 0 : houseGemsung.hashCode());
 		result = prime * result + ((houseLocation == null) ? 0 : houseLocation.hashCode());
@@ -265,9 +406,11 @@ public class House {
 		result = prime * result + ((houseType == null) ? 0 : houseType.hashCode());
 		result = prime * result + ((inoutTime == null) ? 0 : inoutTime.hashCode());
 		result = prime * result + ((pObjects == null) ? 0 : pObjects.hashCode());
-		result = prime * result + Arrays.hashCode(peakDay);
-		result = prime * result + ((phoneOption == null) ? 0 : phoneOption.hashCode());
-		result = prime * result + Arrays.deepHashCode(place);
+		result = prime * result + ((peakDay1 == null) ? 0 : peakDay1.hashCode());
+		result = prime * result + ((peakDay2 == null) ? 0 : peakDay2.hashCode());
+		result = prime * result + ((peakDay3 == null) ? 0 : peakDay3.hashCode());
+		result = prime * result + ((peakDay4 == null) ? 0 : peakDay4.hashCode());
+		result = prime * result + ((peakDay5 == null) ? 0 : peakDay5.hashCode());
 		result = prime * result + priceDay;
 		result = prime * result + pricePeakDay;
 		result = prime * result + pricePeakWeekend;
@@ -275,6 +418,8 @@ public class House {
 		result = prime * result + roomNum;
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -295,6 +440,11 @@ public class House {
 		if (bedNum != other.bedNum)
 			return false;
 		if (!Arrays.equals(filter, other.filter))
+			return false;
+		if (hostNo == null) {
+			if (other.hostNo != null)
+				return false;
+		} else if (!hostNo.equals(other.hostNo))
 			return false;
 		if (houseComment == null) {
 			if (other.houseComment != null)
@@ -340,14 +490,30 @@ public class House {
 				return false;
 		} else if (!pObjects.equals(other.pObjects))
 			return false;
-		if (!Arrays.equals(peakDay, other.peakDay))
-			return false;
-		if (phoneOption == null) {
-			if (other.phoneOption != null)
+		if (peakDay1 == null) {
+			if (other.peakDay1 != null)
 				return false;
-		} else if (!phoneOption.equals(other.phoneOption))
+		} else if (!peakDay1.equals(other.peakDay1))
 			return false;
-		if (!Arrays.deepEquals(place, other.place))
+		if (peakDay2 == null) {
+			if (other.peakDay2 != null)
+				return false;
+		} else if (!peakDay2.equals(other.peakDay2))
+			return false;
+		if (peakDay3 == null) {
+			if (other.peakDay3 != null)
+				return false;
+		} else if (!peakDay3.equals(other.peakDay3))
+			return false;
+		if (peakDay4 == null) {
+			if (other.peakDay4 != null)
+				return false;
+		} else if (!peakDay4.equals(other.peakDay4))
+			return false;
+		if (peakDay5 == null) {
+			if (other.peakDay5 != null)
+				return false;
+		} else if (!peakDay5.equals(other.peakDay5))
 			return false;
 		if (priceDay != other.priceDay)
 			return false;
@@ -361,8 +527,11 @@ public class House {
 			return false;
 		return true;
 	}
-	
-	
+
+
+
+
+
 	
 
 }

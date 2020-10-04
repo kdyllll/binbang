@@ -38,16 +38,17 @@ public class MemberDao {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				m=new Member();
-				m.setMemberNo(rs.getString("memberNo"));
+				m.setMemberNo(rs.getString("member_no"));
 				m.setEmail(rs.getString("email"));
-				m.setPassword(rs.getString("password"));
-				m.setMemberName(rs.getString("memberName"));
+				m.setMemberName(rs.getString("member_name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setEnrollDate(rs.getDate("enrollDate"));				
-				m.setStayDays(rs.getInt("stayDays"));
+				m.setEnrollDate(rs.getDate("enroll_Date"));				
+				m.setStayDays(rs.getInt("stay_Days"));
 				m.setCoupon(rs.getInt("coupon"));
-				m.setHostBlack(rs.getString("hostBlack"));				
+				m.setHostBlack(rs.getString("host_black"));				
+				m.setHostConfirm(rs.getString("host_confirm"));
+				m.setHostNo(rs.getString("host_no"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -79,13 +80,127 @@ public class MemberDao {
 		}return result;
 	}
 	
-	//중복확인
+	//이메일 조회
+	public String selectEmail(Connection conn,String name,String phone) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String email=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectEmail"));
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				email=rs.getString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return email;
+	}
+	
+	
+	//email중복확인
+	public String emailCheck(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String result=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectEmailCheck"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getNString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;		
+	}	
+	
 	
 	//mypage 조회
+	public Member selecInf(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Member m=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberInf"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				m=new Member();				
+				m.setEmail(rs.getString("email"));				
+				m.setMemberName(rs.getString("member_Name"));
+				m.setNickname(rs.getString("nickname"));
+				m.setPhone(rs.getString("phone"));
+				m.setCoupon(rs.getInt("coupon"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;		
+	}
 	
-	//mypage 수정
+	
+	//mypage 회원정보수정(비밀번호 이외)
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateMember"));			
+			pstmt.setString(1, m.getNickname());
+			pstmt.setString(2, m.getPhone());
+			pstmt.setString(3, m.getEmail());	
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 	//mypage 탈퇴
+	public int deleteMember(Connection conn, String email) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteMember"));
+			pstmt.setString(1, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	//mypage 비밀번호 수정
+	public int updatePassword(Connection conn,String newPw,String email) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updatePassword"));
+			pstmt.setString(1,newPw);
+			pstmt.setString(2, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	
 	
 	//로그인화면 비밀번호 수정용(아이디 확인용)
 	public Member selectMemberId(Connection conn,String email) {
@@ -98,16 +213,16 @@ public class MemberDao {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				m=new Member();
-				m.setMemberNo(rs.getString("memberNo"));
+				m.setMemberNo(rs.getString("member_No"));
 				m.setEmail(rs.getString("email"));
 				m.setPassword(rs.getString("password"));
-				m.setMemberName(rs.getString("memberName"));
+				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setEnrollDate(rs.getDate("enrollDate"));				
-				m.setStayDays(rs.getInt("stayDays"));
+				m.setEnrollDate(rs.getDate("enroll_Date"));				
+				m.setStayDays(rs.getInt("stay_Days"));
 				m.setCoupon(rs.getInt("coupon"));
-				m.setHostBlack(rs.getString("hostBlack"));				
+				m.setHostBlack(rs.getString("host_Black"));				
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -117,21 +232,6 @@ public class MemberDao {
 		}return m;
 	}
 	
-	//마이페이지 비밀번호 수정용
-	public int updatePassword(Connection conn,String email,String password) {
-		PreparedStatement pstmt=null;
-		int result=0;
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("updatePassword"));
-			pstmt.setString(1,password);
-			pstmt.setString(2, email);
-			result=pstmt.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}return result;
-	}
 	
 	
 	
