@@ -5,6 +5,8 @@ import java.sql.Date;
 public class Host {
 	private String hostNo;
 	private String memberNo;
+	private String memberName;
+	private String memberPhone;
 	private String idCard;
 	private String profilePic;
 	private String intro;
@@ -17,11 +19,14 @@ public class Host {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Host(String hostNo, String memberNo, String idCard, String profilePic, String intro, int complaintCount,
-			Date hostEnrollDate, Date hostAcceptDate, String hostConfirm) {
+	public Host(String hostNo, String memberNo, String memberName, String memberPhone, String idCard,
+			String profilePic, String intro, int complaintCount, Date hostEnrollDate, Date hostAcceptDate,
+			String hostConfirm) {
 		super();
 		this.hostNo = hostNo;
 		this.memberNo = memberNo;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
 		this.idCard = idCard;
 		this.profilePic = profilePic;
 		this.intro = intro;
@@ -45,6 +50,22 @@ public class Host {
 
 	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 
 	public String getIdCard() {
@@ -105,10 +126,13 @@ public class Host {
 
 	@Override
 	public String toString() {
-		return "Host [hostNo=" + hostNo + ", memberNo=" + memberNo + ", idCard=" + idCard + ", profilePic=" + profilePic
-				+ ", intro=" + intro + ", complaintCount=" + complaintCount + ", hostEnrollDate=" + hostEnrollDate
-				+ ", hostAcceptDate=" + hostAcceptDate + ", hostConfirm=" + hostConfirm + "]";
+		return "Host [hostNo=" + hostNo + ", memberNo=" + memberNo + ", memberName=" + memberName + ", memberPhone="
+				+ memberPhone + ", idCard=" + idCard + ", profilePic=" + profilePic + ", intro=" + intro
+				+ ", complaintCount=" + complaintCount + ", hostEnrollDate=" + hostEnrollDate + ", hostAcceptDate="
+				+ hostAcceptDate + ", hostConfirm=" + hostConfirm + "]";
 	}
+
+	
 	
 	
 }

@@ -1,10 +1,11 @@
 <%@page import="com.binbang.member.model.vo.Member"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/views/common/commonLink.jsp"%>
+
 <%
 	List<Member> list = (List) request.getAttribute("list");
-	List searchCategory = (List) request.getAttribute("memberCategory");
+	List searchCategory = (List) request.getAttribute("searchCategory");
 	List cell = (List) request.getAttribute("cell");
 	String adminTitle = (String) request.getAttribute("adminTitle");
 %>
@@ -13,7 +14,7 @@
 <p class="pageTitle"><%=adminTitle%></p>
 <form action="">
 
-   <select class="searchCategory" name="membercategory">
+   <select class="searchCategory" name="searchCategory">
       <option value="" selected disabled hidden>선택</option>
       <option value="이름"><%=searchCategory.get(0)%></option>
       <option value="분류"><%=searchCategory.get(1)%></option>
@@ -22,7 +23,6 @@
    </select>
 
    <div class="search">
-      <div>작성중</div>
       <input type="text" class="searchinput">
       <button class="inputButton"></button>
    </div>
@@ -45,19 +45,19 @@
          %>
          <tr>
             <td class="<%=cell.get(0)%>"><%=m.getMemberNo()%></td>
-            <td class="<%=cell.get(1)%>"><%=m.getMemberName()%></td>
-            <!--회원분류-->
-           <%--  <%
-               if (m.getHostYn() == 'Y') {
-            %> --%>
-            <%-- <td class="<%=cell.get(2)%>">호스트</td>
+           
+            <% 
+               if (m.getHostConfirm()!=null) {
+            %> 
+          		<td class="<%=cell.get(1)%>">호스트</td>
             <%
                } else {
             %>
-            <td class="<%=cell.get(2)%>">일반</td>
+            	<td class="<%=cell.get(1)%>">일반</td>
             <%
                }
-            %> --%>
+            %> 
+             <td class="<%=cell.get(2)%>"><%=m.getMemberName()%></td>
             <td class="<%=cell.get(3)%>"><%=m.getEmail()%></td>
             <td class="<%=cell.get(4)%>"><%=m.getPhone()%></td>
             <td class="<%=cell.get(5)%>"><%=m.getEnrollDate()%></td>
