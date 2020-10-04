@@ -140,6 +140,7 @@
 				<div>			
 					<p>개인정보변경</p>
 					<input type="text" name="email" id="block">	
+					<input type="text" name="ori_pw" id="block" >	
 					<div class="line6"></div>
 				</div>
 				
@@ -147,7 +148,7 @@
 					
 					<tr>
 						<td>새로운 비밀번호</td>
-						<td><input type="password" placeholder="비밀번호 입력" name="password" id="pw"></td>
+						<td><input type="password" placeholder="비밀번호 입력" name="new_pw" id="pw"></td>
 							<td><span id="pwCheck"></span></td>
 					</tr>
 					<tr class="tr2">
@@ -200,10 +201,13 @@
 		             $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
 		          }		        
 		      };			
-	
-			//정보수정
+			//비밀번호 변경
+			function fn_updatePassword(){
+				$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberPasswordUpdate").submit();
+			}	
+			//정보수정(비밀번호 이외)
 			function fn_updateMember(){
-				$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();				
+				 $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();			
 			}
 			//회원탈퇴
 			function fn_deleteMember(){
