@@ -60,19 +60,20 @@ input[type="number"]{
     position: fixed;
     bottom: 45px;
     right: 20px;
-    padding: 30px 10px;
+    padding-top:10px;
     padding-left:20px;
     width: 40%;
     height: 520px;
-    border:  solid;
+    border: solid;
     background-color: white;
     color:black;
-    margin-top: 10px;
-
+    
+   
 }
 .on {
     position: absolute;
     bottom: 40px;
+   
 }
 
 /* 이건 화면 보면 오른쪽에 있는네모 박스 전체 설정 */
@@ -81,6 +82,8 @@ input[type="number"]{
     text-align: center;
     margin:50px;
     bottom: 40px;
+    margin-top: 10px;
+    
     
 
 

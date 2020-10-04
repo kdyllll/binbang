@@ -1,9 +1,10 @@
 package com.binbang.house.model.service;
 
 import static com.binbang.common.JDBCTemplate.close;
-import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.commit;
+import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.rollback;
+
 import java.sql.Connection;
 import java.util.List;
 
@@ -14,13 +15,22 @@ import com.binbang.house.model.vo.Review;
 public class HouseService {
 	private HouseDao dao = new HouseDao();
 
+
+	public House HouseDetail(int no) {
+		Connection conn=getConnection();
+		House h=dao.HouseDetail(conn, no);
+		 close(conn);
+		 return h;
+	}
+	
+
 	public House BinbangDetail(int no) {
 		Connection conn = getConnection();
-		House b = dao.BinbangDetail(conn, no);
+		House h = dao.BinbangDetail(conn, no);
 		close(conn);
-		return b;
-
+		return h;
 	}
+
 
 	public List<House> HouseFilterList(int cPage, int numPerPage) {
 		Connection conn = getConnection();
