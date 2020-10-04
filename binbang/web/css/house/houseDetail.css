@@ -3,6 +3,8 @@ section{
 	
 	   
 }
+ 
+
 /* 이건 스크롤 내리면 헤더가 바뀌는데 거기에 대한 설정 */
 .headerBox {
     display: flex;
@@ -53,19 +55,21 @@ section{
 .second{
 	
 	width: 700px;
-	height: 150px;
-	border:0px;
+	height: 200px;
+	display: flex;
+	border: 0px;
+
+	
 	}
+	
 	
 	
    .aserviceimg{
    margin-left: 30px;
-   display: flex;
    } 
 
 
-    .swiper-slide {
-    
+   .swiper-slide {
       text-align: center;
       font-size: 18px;
       background: #fff;
@@ -83,7 +87,6 @@ section{
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center;
-      
     }
       
       /* 왼쪽 버튼 */
