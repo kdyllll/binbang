@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
+import com.binbang.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -46,6 +47,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		MultipartRequest mr=new MultipartRequest(request,path,maxSize,encode,rename);
 		
 		House h=new House();
+		h.setHostNo(mr.getParameter("loginHost"));//호스트번호
 		h.setHouseName(mr.getParameter("hName"));//숙소이름
 		h.setHouseType(mr.getParameter("hType"));//숙소타입
 		String location=mr.getParameter("roadAddress")+" "+mr.getParameter("detailAddress");
@@ -104,8 +106,8 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setPricePeakWeekend(Integer.parseInt(mr.getParameter("peakRest")));
 		//필터
 		String[] filter=mr.getParameterValues("filter"); 
-	    String filters=String.join(",", filter);
-		h.setFilter(filters);
+//	    String filters=String.join(",", filter);
+		h.setFilter(filter);
 		
 		//사진파일
 		String[] pic=new String[10];
@@ -114,8 +116,18 @@ public class HouseEnrollEndServlet extends HttpServlet {
 			pic[i]=mr.getParameter(a);
 		}	
 		h.setHousePicture(pic);//사진 새로운 이름들만 
+		List<Integer> results=new ArrayList<Integer>();
+		results.add(new HouseService().insertHouse(h));
+		h.setHouseNo(new HouseService().selectHouseNo(h));
 		
-		int result=new HouseService().insertHouse(h);
+		List results=new ArrayList();
+		for(int i=0;i<filter.length;i++) {
+		results.add(new HouseService().insertFilter(h));
+		}
+		
+		results.add(new HouseService().insertPeak(h));
+		results.add(new HouseService().insertPicture(h));
+		
 		
 	}
 

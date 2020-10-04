@@ -58,7 +58,7 @@ public class HouseDao {
 				h.setPricePeakWeekend(rs.getInt("pricePeakWeekend")); // 성수기 주말
 
 			}
-<<<<<<< HEAD
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -153,15 +153,30 @@ public class HouseDao {
 			close(pstmt);
 		}
 		return result;
-	}=======
+	}
 
 	public int insertHouse(Connection conn,House h) {
 		PreparedStatement pstmt=null;
-		int result=0;
-		
+		int result=0;		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty(""));
-			
+			pstmt=conn.prepareStatement(prop.getProperty("insertHouse"));//? 17개
+			pstmt.setString(1, h.getHostNo());
+			pstmt.setString(2, h.getHouseName());
+			pstmt.setString(3, h.getHouseType());
+			pstmt.setString(4, h.getHouseLocation());
+			pstmt.setInt(5, h.getHousePnum());
+			pstmt.setString(6, h.getpObjects());
+			pstmt.setInt(7, h.getRoomNum());
+			pstmt.setInt(8, h.getBathNum());
+			pstmt.setInt(9, h.getBedNum());
+			pstmt.setString(10, h.getHouseComment());
+			pstmt.setString(11, h.getHouseGemsung());
+			pstmt.setString(12, h.getAttention());
+			pstmt.setString(13, h.getInoutTime());
+			pstmt.setInt(14, h.getPriceDay());
+			pstmt.setInt(15, h.getPriceWeekend());
+			pstmt.setInt(16, h.getPricePeakDay());
+			pstmt.setInt(17, h.getPricePeakWeekend());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -172,8 +187,46 @@ public class HouseDao {
 		
 	}
 
-	>>>>>>>branch'develop'
+	public String selectHouseNo(Connection conn,House h) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String houseNo="";
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseNo"));
+			pstmt.setString(1, h.getHouseName());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				houseNo=rs.getNString(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return houseNo;
+	
+	}
+	
+	public int insertFilter(Connection conn,House h) {
+		PreparedStatement pstmt=null;
+		int result=0;		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertFilter"));
+			pstmt.setString(1, );
+			pstmt.setString(2, h.getHouseNo());
+			
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+		
+		
+		
+	}
+	
 
-	of https:// github.com/kdyllll/binbang.git
+
 
 }
