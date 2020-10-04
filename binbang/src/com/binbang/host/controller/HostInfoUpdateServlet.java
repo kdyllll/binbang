@@ -1,27 +1,23 @@
-package com.binbang.member.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.member.model.service.MemberService;
-import com.binbang.member.model.vo.Member;
-
 /**
- * Servlet implementation class MemberMyPageServlet
+ * Servlet implementation class HostInfoChange
  */
-@WebServlet(name="mypage",urlPatterns="/member/myPage")
-public class MemberMyPageServlet extends HttpServlet {
+@WebServlet("/host/hostInfoUpdate")
+public class HostInfoUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberMyPageServlet() {
+    public HostInfoUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +26,8 @@ public class MemberMyPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String email=request.getParameter("email");
-		Member m=new MemberService().selectInf(email);
-		
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/member/myPage.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
