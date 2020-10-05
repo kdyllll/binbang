@@ -5,8 +5,7 @@
 <%
 	Host h = (Host) request.getAttribute("host");
 %>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/host/hostMypage.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/host/hostMypage.css" />
 </head>
 <body>
 	<div class="wrap">
