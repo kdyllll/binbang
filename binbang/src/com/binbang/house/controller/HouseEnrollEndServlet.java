@@ -162,13 +162,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		}
 
 		String msg = "";
-		for (int a : results) {
-			if (a > 0) {
-				msg = "등록 성공";
-			} else {
-				msg = "등록 실패";
-			}
-		}
+		
 		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 
@@ -182,10 +176,11 @@ public class HouseEnrollEndServlet extends HttpServlet {
 
 	public List dateCalculator(String day1, String day2) {
 		// 시작날짜 캘린더형
+		String sDay=day1.trim();
 		List list = new ArrayList();
-		String[] Date = day1.split("/");
+		String[] Date = sDay.split("/");
 		for(String a:Date) {
-			System.out.println("날짜 각각 값"+a);
+			System.out.println("시작 날짜 값"+a);
 		}
 		int[] Date2 = new int[Date.length];
 		try {
@@ -201,9 +196,10 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		start.set(Calendar.DATE, Date2[2]);
 
 		// 끝날짜 캘린더형
-		String[] eDate = day2.split("/");
+		String eDay=day2.trim();
+		String[] eDate = eDay.split("/");
 		for(String a:eDate) {
-			System.out.println("날짜 각각 값"+a);
+			System.out.println("끝 날짜 값"+a);
 		}
 		int[] eDate2 = new int[eDate.length];
 		try {

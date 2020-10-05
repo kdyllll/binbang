@@ -77,9 +77,8 @@
 							<div class="personalBox">
 								<p class="title2">개인물건 유무</p>
 								<div class="personalCon">
-									<input type="radio" name="personal" id="personalY"> <label
-										for="personalY" required>유</label> <input type="radio"
-										name="personal" id="personalN"> <label for="personalN">무</label>
+									<input type="radio" name="personal" id="personalY" value="Y"> <label for="personalY" required>유</label> 
+										<input type="radio" name="personal" id="personalN" value="N"> <label for="personalN">무</label>
 								</div>
 							</div>
 							<div class="line2"></div>
