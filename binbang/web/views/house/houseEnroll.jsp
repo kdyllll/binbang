@@ -56,9 +56,9 @@
 									<input type="text" id="postcode" placeholder="우편번호"> <input
 										type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 								</div>
-								<input type="text" id="roadAddress" placeholder="도로명주소">
+								<input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소">
 								<span id="guide" style="color: #999; display: none"></span> <input
-									type="text" id="detailAddress" placeholder="상세주소">
+									type="text" name="detailAddress" id="detailAddress" placeholder="상세주소">
 							</div>
 						</div>
 					</div>

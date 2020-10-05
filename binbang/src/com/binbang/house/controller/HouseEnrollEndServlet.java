@@ -53,9 +53,10 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setHostNo(mr.getParameter("loginHost"));// 호스트번호
 		h.setHouseName(mr.getParameter("hName"));// 숙소이름
 		h.setHouseType(mr.getParameter("hType"));// 숙소타입
+		
 		String location = mr.getParameter("roadAddress") + " " + mr.getParameter("detailAddress");
-		System.out.println(mr.getParameter("roadAddress")+mr.getParameter("detailAddress"));
 		h.setHouseLocation(location);// 숙소 위치
+		
 		h.setHousePnum(Integer.parseInt(mr.getParameter("pNum")));// 숙소 최대인원
 		h.setpObjects(mr.getParameter("personal"));// 개인물건 유무
 		h.setRoomNum(Integer.parseInt(mr.getParameter("roomNum")));// 방갯수
@@ -127,7 +128,9 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		String[] pic = new String[10];
 		for (int i = 0; i < 10; i++) {
 			String a = "picture" + (i + 1);
+			System.out.println("사진파라미터 불러올때 이름:"+a);
 			pic[i] = mr.getFilesystemName(a);
+			System.out.println("사진 이름 불러와짐?"+pic[i]);
 		}
 		h.setHousePicture(pic);// 사진 새로운 이름들만
 
@@ -168,6 +171,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 				results.add(new HouseService().insertPeak(h, p, "S5"));
 			}
 		}
+		
 		String type = "";
 		for (int i = 0; i < pic.length; i++) {
 			if (pic[i] != null) {
@@ -177,6 +181,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 					type = "S";
 				}
 				results.add(new HouseService().insertPicture(h, pic[i], type));
+				System.out.println("사진 배열에 들은 값"+pic[i]);
 			}
 		}
 
@@ -203,9 +208,6 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		String sDay = day1.trim();
 		List list = new ArrayList();
 		String[] Date = sDay.split("/");
-		for (String a : Date) {
-			System.out.println("시작 날짜 값" + a);
-		}
 		int[] Date2 = new int[Date.length];
 		try {
 			for (int i = 0; i < Date.length; i++) {
@@ -222,9 +224,6 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		// 끝날짜 캘린더형
 		String eDay = day2.trim();
 		String[] eDate = eDay.split("/");
-		for (String a : eDate) {
-			System.out.println("끝 날짜 값" + a);
-		}
 		int[] eDate2 = new int[eDate.length];
 		try {
 			for (int i = 0; i < eDate.length; i++) {
