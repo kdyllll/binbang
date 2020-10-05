@@ -289,7 +289,7 @@ public class HouseDao {
 		PreparedStatement pstmt=null;
 		int result=0;		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("insertPeak"));
+			pstmt=conn.prepareStatement(prop.getProperty("insertPicture"));
 			pstmt.setString(1, h.getHouseNo());//숙소번호
 			pstmt.setString(2, pic);//사진 이름
 			pstmt.setString(3, type);//사진분류
