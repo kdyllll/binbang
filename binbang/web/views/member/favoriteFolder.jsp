@@ -44,11 +44,12 @@
 					</div>
 				</div>
 
-				<div class="favoriteList">
+				<div class="favoriteList">				
 					<a href="<%=request.getContextPath() %>/member/favoriteContents" class="eachList">
 						<div class="recomPic1 recommon"></div>
 						<div class="favoriteContents"></div>
 					</a>
+				
 				</div>
 			</div>
 

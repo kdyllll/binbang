@@ -42,10 +42,10 @@
 							<div class="hTypeBox">
 								<p>숙소 유형</p>
 								<div class="hTypeCon">
-									<input type="radio" name="hType" id="home" required> <label
+									<input type="radio" name="hType" id="home" value="주택" required> <label
 										for="home">주택</label> <input type="radio" name="hType"
-										id="apart"> <label for="apart">아파트</label> <input
-										type="radio" name="hType" id="pension"> <label
+										id="apart" value="아파트"> <label for="apart">아파트</label> <input
+										type="radio" name="hType" id="pension" value="펜션"> <label
 										for="pension">펜션</label>
 								</div>
 							</div>
@@ -56,9 +56,9 @@
 									<input type="text" id="postcode" placeholder="우편번호"> <input
 										type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 								</div>
-								<input type="text" id="roadAddress" placeholder="도로명주소">
+								<input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소">
 								<span id="guide" style="color: #999; display: none"></span> <input
-									type="text" id="detailAddress" placeholder="상세주소">
+									type="text" name="detailAddress" id="detailAddress" placeholder="상세주소">
 							</div>
 						</div>
 					</div>
@@ -77,9 +77,8 @@
 							<div class="personalBox">
 								<p class="title2">개인물건 유무</p>
 								<div class="personalCon">
-									<input type="radio" name="personal" id="personalY"> <label
-										for="personalY" required>유</label> <input type="radio"
-										name="personal" id="personalN"> <label for="personalN">무</label>
+									<input type="radio" name="personal" id="personalY" value="Y"> <label for="personalY" required>유</label> 
+										<input type="radio" name="personal" id="personalN" value="N"> <label for="personalN">무</label>
 								</div>
 							</div>
 							<div class="line2"></div>

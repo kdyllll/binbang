@@ -24,8 +24,10 @@
       <section class="section">
         
         <div class="sidebar">
+
           <ul id="menuAll">
             <li id="memberAll" class="clickList" onclick="memberList();">회원 현황</li>
+
             <li id="reserveAll" >예약 현황</li>
             <li id="hostAll" onclick="slideMenu(event);">호스트 관리
               <ul id="subAll">

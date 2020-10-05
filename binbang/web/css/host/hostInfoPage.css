@@ -1,0 +1,21 @@
+section {
+  margin-top: 100px;
+}
+* {
+  box-sizing: border-box;
+}
+.section {
+  display: flex;
+  justify-content: space-between;
+}
+.hostInfoCon {
+  width: 350px;
+  height: 500px;
+  padding: 20px;
+  border: 1px solid;
+}
+
+.hostHouseInfoCon {
+  width: 950px;
+  border: 1px solid;
+}

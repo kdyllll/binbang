@@ -53,8 +53,10 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setHostNo(mr.getParameter("loginHost"));// 호스트번호
 		h.setHouseName(mr.getParameter("hName"));// 숙소이름
 		h.setHouseType(mr.getParameter("hType"));// 숙소타입
+		
 		String location = mr.getParameter("roadAddress") + " " + mr.getParameter("detailAddress");
 		h.setHouseLocation(location);// 숙소 위치
+		
 		h.setHousePnum(Integer.parseInt(mr.getParameter("pNum")));// 숙소 최대인원
 		h.setpObjects(mr.getParameter("personal"));// 개인물건 유무
 		h.setRoomNum(Integer.parseInt(mr.getParameter("roomNum")));// 방갯수
@@ -66,38 +68,48 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setInoutTime(mr.getParameter("checkTime"));// 체크인아웃시간
 
 		// 성수기 기간
-		String sDay1 = mr.getParameter("startDay1");
-		String sDay2 = mr.getParameter("endDay1");
-		if (sDay1 != null && sDay2 != null) {
-			h.setPeakDay1(dateCalculator(sDay1, sDay2));
+		String Day1 = mr.getParameter("startDay1");
+		String Day2 = mr.getParameter("endDay1");
+		String sDay = Day1.trim();
+		String eDay = Day2.trim();
+		if (!sDay.isEmpty() && !eDay.isEmpty()) {
+			h.setPeakDay1(dateCalculator(sDay, eDay));
 		} else {
 			h.setPeakDay1(null);
 		}
-		sDay1 = mr.getParameter("startDay2");
-		sDay2 = mr.getParameter("endDay2");
-		if (sDay1 != null && sDay2 != null) {
-			h.setPeakDay2(dateCalculator(sDay1, sDay2));
+		Day1 = mr.getParameter("startDay2");
+		Day2 = mr.getParameter("endDay2");
+		sDay = Day1.trim();
+		eDay = Day2.trim();
+		if (!sDay.isEmpty() && !eDay.isEmpty()) {
+			h.setPeakDay2(dateCalculator(sDay, eDay));
 		} else {
 			h.setPeakDay2(null);
 		}
-		sDay1 = mr.getParameter("startDay3");
-		sDay2 = mr.getParameter("endDay3");
-		if (sDay1 != null && sDay2 != null) {
-			h.setPeakDay3(dateCalculator(sDay1, sDay2));
+		Day1 = mr.getParameter("startDay3");
+		Day2 = mr.getParameter("endDay3");
+		sDay = Day1.trim();
+		eDay = Day2.trim();
+		if (!sDay.isEmpty() && !eDay.isEmpty()) {
+			h.setPeakDay3(dateCalculator(sDay, eDay));
 		} else {
 			h.setPeakDay3(null);
 		}
-		sDay1 = mr.getParameter("startDay4");
-		sDay2 = mr.getParameter("endDay4");
-		if (sDay1 != null && sDay2 != null) {
-			h.setPeakDay4(dateCalculator(sDay1, sDay2));
+		Day1 = mr.getParameter("startDay4");
+		Day2 = mr.getParameter("endDay4");
+		sDay = Day1.trim();
+		eDay = Day2.trim();
+		if (!sDay.isEmpty() && !eDay.isEmpty()) {
+			h.setPeakDay4(dateCalculator(sDay, eDay));
 		} else {
 			h.setPeakDay4(null);
 		}
-		sDay1 = mr.getParameter("startDay5");
-		sDay2 = mr.getParameter("endDay5");
-		if (sDay1 != null && sDay2 != null) {
-			h.setPeakDay5(dateCalculator(sDay1, sDay2));
+		Day1 = mr.getParameter("startDay5");
+		Day2 = mr.getParameter("endDay5");
+		sDay = Day1.trim();
+		eDay = Day2.trim();
+		if (!sDay.isEmpty() && !eDay.isEmpty()) {
+			h.setPeakDay5(dateCalculator(sDay, eDay));
 		} else {
 			h.setPeakDay5(null);
 		}
@@ -116,7 +128,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		String[] pic = new String[10];
 		for (int i = 0; i < 10; i++) {
 			String a = "picture" + (i + 1);
-			pic[i] = mr.getParameter(a);
+			pic[i] = mr.getFilesystemName(a);
 		}
 		h.setHousePicture(pic);// 사진 새로운 이름들만
 
@@ -127,28 +139,37 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		for (int i = 0; i < filter.length; i++) {
 			results.add(new HouseService().insertFilter(h, filter[i]));
 		}
-
-		for (Object peak : h.getPeakDay1()) {
-			String p = (String) peak;
-			results.add(new HouseService().insertPeak(h, p, "S1"));
+		if (h.getPeakDay1() != null) {
+			for (Object peak : h.getPeakDay1()) {
+				String p = (String) peak;
+				results.add(new HouseService().insertPeak(h, p, "S1"));
+			}
 		}
-		for (Object peak : h.getPeakDay2()) {
-			String p = (String) peak;
-			results.add(new HouseService().insertPeak(h, p, "S2"));
+		if (h.getPeakDay2() != null) {
+			for (Object peak : h.getPeakDay2()) {
+				String p = (String) peak;
+				results.add(new HouseService().insertPeak(h, p, "S2"));
+			}
 		}
-		for (Object peak : h.getPeakDay3()) {
-			String p = (String) peak;
-			results.add(new HouseService().insertPeak(h, p, "S3"));
+		if (h.getPeakDay3() != null) {
+			for (Object peak : h.getPeakDay3()) {
+				String p = (String) peak;
+				results.add(new HouseService().insertPeak(h, p, "S3"));
+			}
 		}
-		for (Object peak : h.getPeakDay4()) {
-			String p = (String) peak;
-			results.add(new HouseService().insertPeak(h, p, "S4"));
+		if (h.getPeakDay4() != null) {
+			for (Object peak : h.getPeakDay4()) {
+				String p = (String) peak;
+				results.add(new HouseService().insertPeak(h, p, "S4"));
+			}
 		}
-		for (Object peak : h.getPeakDay5()) {
-			String p = (String) peak;
-			results.add(new HouseService().insertPeak(h, p, "S5"));
+		if (h.getPeakDay5() != null) {
+			for (Object peak : h.getPeakDay5()) {
+				String p = (String) peak;
+				results.add(new HouseService().insertPeak(h, p, "S5"));
+			}
 		}
-
+		
 		String type = "";
 		for (int i = 0; i < pic.length; i++) {
 			if (pic[i] != null) {
@@ -158,19 +179,22 @@ public class HouseEnrollEndServlet extends HttpServlet {
 					type = "S";
 				}
 				results.add(new HouseService().insertPicture(h, pic[i], type));
+
 			}
 		}
 
-		String msg = "";
-		for (int a : results) {
-			if (a > 0) {
-				msg = "등록 성공";
-			} else {
-				msg = "등록 실패";
+		String msg = "숙소 정보 등록에 성공했습니다.";
+		String loc="/host/hostDetail";
+		for(Integer a:results) {
+			if(a<=0) {
+				msg="숙소 정보 등록에 실패했습니다. 다시 시도하세요";
+				loc="/house/houseEnroll";
+				
 			}
 		}
 		request.setAttribute("msg", msg);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);	
 
 	}
 
@@ -182,11 +206,9 @@ public class HouseEnrollEndServlet extends HttpServlet {
 
 	public List dateCalculator(String day1, String day2) {
 		// 시작날짜 캘린더형
+		String sDay = day1.trim();
 		List list = new ArrayList();
-		String[] Date = day1.split("/");
-		for(String a:Date) {
-			System.out.println("날짜 각각 값"+a);
-		}
+		String[] Date = sDay.split("/");
 		int[] Date2 = new int[Date.length];
 		try {
 			for (int i = 0; i < Date.length; i++) {
@@ -201,10 +223,8 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		start.set(Calendar.DATE, Date2[2]);
 
 		// 끝날짜 캘린더형
-		String[] eDate = day2.split("/");
-		for(String a:eDate) {
-			System.out.println("날짜 각각 값"+a);
-		}
+		String eDay = day2.trim();
+		String[] eDate = eDay.split("/");
 		int[] eDate2 = new int[eDate.length];
 		try {
 			for (int i = 0; i < eDate.length; i++) {

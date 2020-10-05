@@ -14,6 +14,8 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MemberPasswordUpdate
  */
+
+/* mypage 비밀번호 변경 */
 @WebServlet(name="updatePassword" ,urlPatterns="/member/memberPasswordUpdate")
 public class MemberPasswordUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,8 +34,8 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	
-		String oriPw=request.getParameter("ori_pw");
-		String newPw=request.getParameter("new_pw");
+		String oriPw=request.getParameter("ori_pw");//이전 비밀번호
+		String newPw=request.getParameter("new_pw");//변경할 비밀번호
 		String email=request.getParameter("email");
 		
 		int result=new MemberService().updatePassword(oriPw,newPw,email);

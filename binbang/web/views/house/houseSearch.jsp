@@ -5,6 +5,11 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
+<%@ page import="java.util.List,com.binbang.house.model.vo.House" %>    
+<%
+	List<House> list=(List)request.getAttribute("list");
+	/* House h=(House)request.getAttribute("house"); */
+%> 
 </head>
 <body>
 	<div class="wrap">
@@ -15,9 +20,9 @@
 			<div class="section1">
 				<!-- 정렬구역 -->
 
-				<div class="btnCon">
+				<form action="" class="btnCon sort">
 					<div class="btn">
-						<p class="btnText">정렬</p>
+						<p class="btnText pSort">정렬</p>
 						<div class="arrow"></div>
 					</div>
 
@@ -27,7 +32,7 @@
 						<li>가격낮은순</li>
 						<li>가격높은순</li>
 					</ul>
-				</div>
+				</form>
 
 				<form action="" class="btnCon">
 					<div class="btn">
@@ -89,394 +94,10 @@
 
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
-				<!-- 지도 -->
-				<div class="map">지도</div>
-				<!-- 선 -->
-				<div class="line"></div>
-				<!-- 숙소리스트 -->
-				<div class="list">
-					<div class="house1">
 
-						<a href="<%=request.getContextPath() %>/house/houseDetailMove" class="housePic1"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="house2">
-						<a href="#" class="housePic2"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house3">
-						<a href="#" class="housePic3"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house4">
-						<a href="#" class="housePic4"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house5">
-						<a href="#" class="housePic5"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house6">
-						<a href="#" class="housePic6"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house7">
-						<a href="#" class="housePic7"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house8">
-						<a href="#" class="housePic8"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-					<div class="house9">
-						<a href="#" class="housePic9"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
 
 				</div>
+
 
 			</div>
 
@@ -485,6 +106,26 @@
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
+	
+	<script>
+		$.ajax({
+	        url:"<%=request.getContextPath()%>/ajax/houseSearchAjax",
+	        /* data:{"name" : "다예가 보내주는 정보"}, */
+	        type:"post",
+	        dataType: "html",
+	        success: (data) => {
+	     	$(".section2").children().remove();
+	     	$(".section2").html(data);
+	        },
+	        error: (request, status, error) => {
+	            console.log(request);
+	            console.log(status);
+	            console.log(error);
+	          }
+	      });
+	
+	
+	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>

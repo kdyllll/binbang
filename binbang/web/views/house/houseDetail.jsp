@@ -1,34 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List,com.binbang.house.model.vo.House"%>
-	<%
-  /*  List<House> list = (List)request.getAttribute("list"); */
+<%
+	/*  List<House> list = (List)request.getAttribute("list"); */
 
-	int numPerPage;
-	try{
-		numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
-	}catch(NumberFormatException e){
-		numPerPage=5;
-	}
 
-	%>
-	
-	<% String[] filter = new String[] {"bathRoom.png","bbq.png","breakfast.png","dog.png","kitchen.png","laundrtRoom.png","park.png",
-								"parking.png","projector.png","refrigerator.png","shower.png","smoking.png","swimming.png","terrace.png","wifi.png"};%>
-							
-	
+%>
+
+<%
+	String[] filter = new String[] { "bathRoom.png", "bbq.png", "breakfast.png", "dog.png", "kitchen.png",
+		"laundrtRoom.png", "park.png", "parking.png", "projector.png", "refrigerator.png", "shower.png", "smoking.png",
+		"swimming.png", "terrace.png", "wifi.png" };
+%>
+
+
 
 <%@ include file="/views/common/commonLink.jsp"%>
-  
+
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-	
-<script 
+
+<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper-bundle.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/common/jquery-3.5.1.min.js"></script>
+
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
@@ -40,7 +37,8 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/house/HousePopup.css" />
+	href="<%=request.getContextPath()%>/css/house/housePopup.css" />
+
 </head>
 
 <body class="body">
@@ -94,12 +92,12 @@
 						</div>
 					</div>
 				</div>
-						
+
 			</div>
-		<div class="infoFilterScroll"></div>
+			<div class="infoFilterScroll"></div>
 			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-			
-			
+
+
 
 			<div class="houseinfobox">
 				<div class="houseinfo">
@@ -114,46 +112,46 @@
 						오픈플랜으로 구성된 정수리 아파트 4개의 객실중, 201호애는 욕조가 마련되어있습니다. <br> 여행의 피로를
 						풀며 편안한 휴식을 취할수 있습니다
 					</div>
-					
-					
-					
- 
+
+
+
+
 					<div>
-						<div class="test"> 
-						
+						<div class="test">
+
 							<div class="service">
-								SERVICE 
+								SERVICE
 								<div class="a">
 									<div class="aserviceimg">
-									<div class="swiper-container second">
-									<div class="swiper-wrapper">
-								<%-- 	<% for(String h : filter){ %> --%>
-										<!-- <div> -->
-										 	  <div class="swiper-slide">Slide 1</div>
-										      <div class="swiper-slide">Slide 2</div>
-										      <div class="swiper-slide">Slide 3</div>
-										      <div class="swiper-slide">Slide 4</div>
-										 
-										<!-- Add Pagination -->
-										    <!-- <div class="swiper-pagination"></div> -->
-										    <!-- Add Arrows -->
-										   
+										<div class="swiper-container second">
+											<div class="swiper-wrapper">
+												<%-- 	<% for(String h : filter){ %> --%>
+												<!-- <div> -->
+												<div class="swiper-slide">Slide 1</div>
+												<div class="swiper-slide">Slide 2</div>
+												<div class="swiper-slide">Slide 3</div>
+												<div class="swiper-slide">Slide 4</div>
+
+												<!-- Add Pagination -->
+												<!-- <div class="swiper-pagination"></div> -->
+												<!-- Add Arrows -->
+
 												<%-- <img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20"> --%>
-										 <!-- </div> -->
-										 <%-- <%} %> --%>
-										
-									</div>
+												<!-- </div> -->
+												<%-- <%} %> --%>
+
+											</div>
 											<!-- Add Arrows -->
-										<div class="swiper-button-next "></div>
-										<div class="swiper-button-prev "></div>
-										<!-- Add Pagination -->
-										<div class="swiper-pagination"></div>
+											<div class="swiper-button-next "></div>
+											<div class="swiper-button-prev "></div>
+											<!-- Add Pagination -->
+											<div class="swiper-pagination"></div>
 										</div>
-									
+
 									</div>
-									
+
 								</div>
-									  
+
 							</div>
 						</div>
 					</div>
@@ -195,12 +193,12 @@
 					제외한 4월~11월 기간 미온수 신청도 가능하여 쌀쌀한 봄, 가을날도 춥지 않게 수영을 즐길 수 있다. 또한 모든
 					객실에서 바베큐 그릴을 이용할 수 있다고 하니, 소중한 사람들과 함께 온전한 휴식을 즐기는데에 최적의 환경이 아닐까.
 					각박한 현실에서 벗어나 숨 돌릴 여유가 필요한 지금, 하늘과 바다를 품은 풀빌라에서의 황홀한 휴식이 기다리고 있다.</div>
-				<div class="houseinfo2"></div>				
-				
+				<div class="houseinfo2"></div>
+
 			</div>
 			<div class="reviewFilterScroll"></div>
 			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-			
+
 			<div class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
@@ -209,22 +207,38 @@
 			</div>
 
 			<div class="comment">
-			<div class="swiper-container three">
-			<div class="swiper-wrapper threeButton">
-			<div class="gradePhoto"></div>
-				<div class="customer">
-					<div class="gradeall">
-						<div class="gradeinfo">
-							<div class="a">평점 :</div>
-							<br> <br> 
-							<div class="b">제목 :</div>
-							<br> <br> 
-							<div class="c">내용 :</div>
-					
+				<div class="swiper-container three">
+					<div class="swiper-wrapper threeButton">
+						<div class="gradePhoto"></div>
+						<div class="customer">
+							<div class="gradeall">
+								<div class="gradeinfo">
+									<div class="a">평점 :</div>
+									<br> <br>
+									<div class="b">제목 :</div>
+									<br> <br>
+									<div class="c">내용 :</div>
+									<div class="ex">댓글 등록하기</div>
+								</div>
+								
+							</div>
+
 						</div>
+
+
 					</div>
-					
+
+
+
+					<!-- Add Arrows -->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+					<!-- <div class="swiper-pagination"></div> -->
+
 				</div>
+<<<<<<< HEAD
 						
 	
 			</div>
@@ -240,14 +254,23 @@
 			
 			</div>
 			
+=======
+
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
-			
+
 			</div>
-			
-			
+
+
 			<div class="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
+<<<<<<< HEAD
 	<div id="ex">댓글 등록하기</div>
+=======
+
+			
+
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
 			<div class="place">
 				<div class="placeSection">
@@ -257,7 +280,7 @@
 								이름: <span> 인하준꽃집</span>
 							</div>
 							<div class="placeContents">
-								내용: <span>누가 꽃이게 알겠어? 욕하지마</span>
+								내용: <span>누가 꽃이게? 알겠어 욕하지마</span>
 							</div>
 							<div class="placeClassification">
 								분류: <span>기타</span>
@@ -295,6 +318,7 @@
 				</div>
 				<div class="placemap"></div>
 			</div>
+<<<<<<< HEAD
 			
 			
 			
@@ -316,13 +340,54 @@
            빈방은 다음과 같은 방법으로 개인정보를 수집합니다.
         </div>
     </div>
+=======
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
-  </div>
-</div>
+
+
+			<aside class="enrollbg active">
+			
+				<div id="popup">
+					<div class="color"></div>
+					<div class="popupBtn">x</div>
+					<div class="popupContent">
+						<p class="popupTitle">게스트에게 답변해주기</p>
+						<div class="reasonBox">
+							<form action="<%=request.getContextPath() %>/board/boardWriteEnd" method="post"
+							    enctype="multipart/form-data">
+										<table id='tbl-board'>
+											<div>
+												<div>제목 : </div>
+												<div><%-- <%=loginMember.getUserId()%>  --%></div><br>
+											</div>
+											<div>
+												<div>작성자 : </div>
+												<div><input type="text" name="writer" 
+							            value="" readonly></div><br>
+											</div>
+											
+											<div>
+												<div>내용</div>
+												<div><textarea rows="5" cols="45" name="content"></textarea> </div>
+											</div>
+											<div>
+												<div colspan="2">
+													   <input type="submit" value="등록하기" onclick=>
+												</div>
+											</div>
+										</table>
+									</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</aside>
 
 		</section>
 		
 	</div>
+<<<<<<< HEAD
 	
 
 	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
@@ -330,6 +395,16 @@
 	<script src="<%=request.getContextPath() %>/js/house/houseDetailHeader.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/filter.js"></script>
+=======
+	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
+	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
 	<%@ include file="/views/common/footer.jsp"%>
 </body>
