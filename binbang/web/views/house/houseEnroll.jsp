@@ -42,10 +42,10 @@
 							<div class="hTypeBox">
 								<p>숙소 유형</p>
 								<div class="hTypeCon">
-									<input type="radio" name="hType" id="home" required> <label
+									<input type="radio" name="hType" id="home" value="주택" required> <label
 										for="home">주택</label> <input type="radio" name="hType"
-										id="apart"> <label for="apart">아파트</label> <input
-										type="radio" name="hType" id="pension"> <label
+										id="apart" value="아파트"> <label for="apart">아파트</label> <input
+										type="radio" name="hType" id="pension" value="펜션"> <label
 										for="pension">펜션</label>
 								</div>
 							</div>

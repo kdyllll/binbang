@@ -15,9 +15,9 @@
 			<div class="section1">
 				<!-- 정렬구역 -->
 
-				<div class="btnCon">
+				<form action="" class="btnCon sort">
 					<div class="btn">
-						<p class="btnText">정렬</p>
+						<p class="btnText pSort">정렬</p>
 						<div class="arrow"></div>
 					</div>
 
@@ -27,7 +27,7 @@
 						<li>가격낮은순</li>
 						<li>가격높은순</li>
 					</ul>
-				</div>
+				</form>
 
 				<form action="" class="btnCon">
 					<div class="btn">
@@ -97,7 +97,8 @@
 				<div class="list">
 					<div class="house1">
 
-						<a href="<%=request.getContextPath() %>/house/houseDetailMove" class="housePic1"></a>
+						<a href="<%=request.getContextPath()%>/house/houseDetailMove"
+							class="housePic1"></a>
 						<div class="houseContents">
 
 							<div class="contentSection1">
