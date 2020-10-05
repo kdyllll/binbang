@@ -5,6 +5,11 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
+<%@ page import="java.util.List,com.binbang.house.model.vo.House" %>    
+<%
+	List<House> list=(List)request.getAttribute("list");
+	/* House h=(House)request.getAttribute("house"); */
+%> 
 </head>
 <body>
 	<div class="wrap">
@@ -89,7 +94,10 @@
 
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
-		
+
+
+				</div>
+
 
 			</div>
 

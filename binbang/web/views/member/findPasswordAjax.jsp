@@ -16,10 +16,8 @@
     
     <div class="loginPopup">
       
-      <p class="popupTitle">비밀번호 재설정</p>
-      
-      <div class="passwordLine"></div>
-      
+      <p class="popupTitle">비밀번호 재설정</p>      
+      <div class="passwordLine"></div>      
      
         <p class="inputTitle">아이디(이메일)를 입력하세요</p>
         <div class="input">
