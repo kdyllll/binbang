@@ -3,22 +3,30 @@ $("#changeCoupon").ready(e =>{
     $(".house").show();
     $(".coupon").hide();
     $(".private").hide();
+	$(".passwordCheck").hide();
 });
 $("#changeCoupon").click(e =>{
     $(".coupon").show();
     $(".house").hide();
     $(".private").hide();
+	$(".passwordCheck").hide();
 });
 $("#changeStayed").click(e =>{
     $(".house").show();
     $(".coupon").hide();
     $(".private").hide();
+	$(".passwordCheck").hide();
 });
+
 $("#changeModify").click(e =>{
-    $(".private").show();
+    $(".private").hide();
     $(".coupon").hide();
     $(".house").hide();
+	$(".passwordCheck").show();
 });
+
+
+
 
 // 경고창
 $("#btn1").click(e =>{
