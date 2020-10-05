@@ -16,7 +16,7 @@
 
 .myHouseImgCon {
 	display: flex;
-	justify-content: space-between;
+	justify-content: stretch;
 	flex-wrap: wrap;
 }
 
@@ -24,40 +24,44 @@
 	width: 250px;
 	height: 350px;
 	padding-bottom: 30px;
+	margin-right:20px;
 }
 
-.houseImg>img {
+.houseImg img {
 	width: 100%;
-	height: 90%;
+	height: 300px;
 	border: 1px solid;
 }
 
-.houseImg>div {
+ .houseImg>form {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
+	flex-direction : column;
+} 
+
+
 </style>
 <ul>
 	<li><h2>숙소관리</h2></li>
-	<li><input type="button" value="숙소등록"
-		onclick="location.replace('<%=request.getContextPath()%>/house/houseEnroll')"></li>
+	<li><input type="button" value="숙소등록" onclick="location.replace('<%=request.getContextPath()%>/house/houseEnroll')"></li>
 </ul>
 <div class="myHouseImgCon">
-	<div class="houseImg">
-		<%
+	<%
 			for (House h : list) {
 		%>
+	<div class="houseImg">	
 		<form class="houseAll" method="post">
-			<img> <input type="hidden" name="houseNo"
-				value="<%=h.getHouseNo()%>" /> <span><%=h.getHouseName()%></span> <span><%=h.getHouseNo()%></span>
-			<button class="updateH">수정</button>
-			<button class="deleteH">삭제</button>
-		</form>
-		<%
+			<img> 
+			<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>" /> 
+				<span><%=h.getHouseName().length() > 15 ? h.getHouseName().substring(0, 15) +"..." : h.getHouseName() %></span> 
+			<div>
+				<button class="updateH">수정</button>
+				<button class="deleteH">삭제</button>
+			</div>
+		</form>	
+	</div>
+	<%
 			}
 		%>
-	</div>
 </div>
 <script>
 	$(".deleteH").on("click",e => {

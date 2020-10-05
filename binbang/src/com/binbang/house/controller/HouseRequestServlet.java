@@ -1,4 +1,4 @@
-package com.binbang.house.ajax.controller;
+package com.binbang.house.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

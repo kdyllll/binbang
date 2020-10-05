@@ -39,6 +39,13 @@ public class HostDetailServlet extends HttpServlet {
 
 		Host h = new HostService().selectHostOne(m.getMemberNo());
 		request.setAttribute("host", h);
+		String loc = (String)request.getAttribute("loc");
+		
+		if(loc==null) {
+			loc = "/house/houseManageAjax";
+		}
+
+		request.setAttribute("loc", loc);
 		request.getRequestDispatcher("/views/host/hostMypage.jsp").forward(request, response);
 	}
 

@@ -44,16 +44,17 @@
 				</div>
 			</form>
 			<ul class="houseRequest">
-				<li class="borderTop">숙소관리</li>
-				<li id="test">숙소요청</li>
-				<li>숙소현황</li>
+				<li class="<%=loc.equals("/house/houseManageAjax") ? "borderTop" : "" %>">숙소관리</li>
+				<li class="<%=loc.equals("/house/houseRequestAjax") ? "borderTop" : "" %>">숙소요청</li>
+				<li class="<%=loc.equals("/house/houseRequestResultAjax") ? "borderTop" : "" %>">숙소현황</li>
 			</ul>
 			<form class="myHouse"></form>
 
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
-	<script>	
+	<script>
+
 		let url = "<%=request.getContextPath()%><%=loc%>";	
 	 	ajaxTest();
        $(".houseRequest > li").on("click", function (e) {
@@ -77,9 +78,7 @@
                type:"post",
                dataType: "html",
                success: (data) => {
-            	   console.log(data);
-            	   $(".myHouse").html(data);
-            	  
+            	   $(".myHouse").html(data);            	  
                },
                error: (request, status, error) => {
                    console.log(request);
