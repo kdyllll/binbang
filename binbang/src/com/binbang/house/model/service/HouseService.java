@@ -109,6 +109,13 @@ public class HouseService {
 		close(conn);
 		return result;
 	}
+	
+	public List<House> selectHostHouse(String hostNo) {
+		Connection conn = getConnection();
+		List<House> list = dao.selectHostHouse(conn, hostNo);
+		close(conn);
+		return list;
+	}
 
 
 }
