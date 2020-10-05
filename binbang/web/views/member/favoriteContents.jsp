@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/member/favoriteContents.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/favoriteContents.css" />
 </head>
 <body>
 	<div class="wrap">

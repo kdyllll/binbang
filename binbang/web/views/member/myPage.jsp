@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/views/common/commonLink.jsp"%>
-
+<%
+	String email=request.getParameter("email");	
+%>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/member/myPage.css" />
@@ -17,7 +19,7 @@
 				<p>My Page</p>
 			</div>
 			
-			<form id="memberFrm" method="post">
+		<form id="memberFrm" method="post">
 			<!-- 회원정보 -->
 			<div class="lineList">
 				<div class="line1">
@@ -45,7 +47,7 @@
 				<ul>
 					<li><button id="changeStayed">숙소</button></li>
 					<li><button id="changeCoupon">쿠폰</button></li>
-					<li><button id="changeModify">개인정보수정</button></li>
+					<li><button id="changeModify" onclick="fn_modify();">개인정보수정</button></li>
 				</ul>
 			</div>
 
@@ -88,7 +90,6 @@
 				</div>
 
 				<!-- 2. 이용했던숙소 -->
-
 				<div class="stayed">
 					<div class="line8">
 						<p>이용했던 숙소</p>
@@ -115,6 +116,8 @@
 
 			</div>
 
+
+
 			<!-- 2. 총 보유쿠폰 -->
 			<div class="coupon">
 				<div class="couponSum">
@@ -134,18 +137,37 @@
 				</div>
 			</div>
 
-			<!-- 3. 개인정보변경 -->
+
+		<!-- 3. mypage 비밀번호 확인 -->
+		
+		<form id="changePassword">	
+			<div class="passwordCheck">
+				<div class="container">
+					<div> 
+						<p class="passTitle">비밀번호 확인</p>						
+					</div>
+					<div> 
+						<p>현재 비밀번호</p>
+						<div><input type="password" placeholder="비밀번호 입력" ></div>
+						<div><input type="button" value="확인" class="checkBtn"> </div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+		<!-- 4. 개인정보변경 -->
 		<form id="memberModify" method="post">
 			<div class="private">
 				<div>			
 					<p>개인정보변경</p>
-					<input type="text" name="email" id="block">	
-					<input type="text" name="ori_pw" id="block" >	
+					 <input type="hidden" value="<%=email %>" name="email">					 									
 					<div class="line6"></div>
 				</div>
 				
-				<table>
-					
+				<table>					
 					<tr>
 						<td>새로운 비밀번호</td>
 						<td><input type="password" placeholder="비밀번호 입력" name="new_pw" id="pw"></td>
@@ -153,7 +175,7 @@
 					</tr>
 					<tr class="tr2">
 						<td>비밀번호 확인</td>
-						<td><input type="password" placeholder="비밀번호 확인" name="passwordCheck" id="pwck" onkeyup="pwCheck();"></td>						
+						<td><input type="password" placeholder="비밀번호 확인" id="pwck" onkeyup="pwCheck();"></td>						
 						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경"/> </td>					
 					</tr>			
 					<tr>
@@ -213,6 +235,11 @@
 			function fn_deleteMember(){
 		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
 		     }
+			
+			
+		
+			
+			
 			
 			
 	</script>

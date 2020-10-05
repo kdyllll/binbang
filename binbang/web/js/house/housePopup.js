@@ -1,9 +1,10 @@
 
 $(document).ready(function () {
     $(".ex").on("click", function () {
-      $(".enrollbg").addClass("active");
+      $(".enrollbg").removeClass("active");
+	
     });
-    $(".popupBtn").on("click", function (e) {
-      $(e.target).parent().parent().removeClass("active");
+   $(".popupBtn").on("click", function (e) {
+      $(e.target).parent().parent().addClass("active");
     });
   });

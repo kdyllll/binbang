@@ -178,6 +178,11 @@ button {
 		url("../../image/member/main/recommend/recommend5.png");
 }
 
+
+
+
+
+
 /* 4. 쿠폰총개수 */
 .section .coupon {
 	display: flex;
@@ -238,7 +243,51 @@ button {
 	margin: 1% 0;
 }
 
-/* 5. 개인정보변경 */
+
+
+
+
+
+
+/* 5-1 비밀번호 확인 */
+.passwordCheck{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.passwordCheck .container{
+	border: 1px solid; 
+}
+
+
+.passwordCheck .checkBtn{
+	font-size: 14px;
+	cursor: pointer;
+	background-color: black;
+	color:white;
+	width:130px;
+	
+}
+.passwordCheck input{
+	width: 100%;
+	height: 30px;
+	background-color: none;
+	outline: none;
+	border: none;
+	box-sizing: border-box;	
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 5-2. 개인정보변경 */
 .section .private {
 	width: 100%;
 	padding: 2%;
@@ -293,8 +342,15 @@ button {
 #block{
 	display:none;
 }
-.private #btn1,#btn2,#btn3 {
+
+#btn1,#btn2,#btn3 {
 	font-size: 14px;
 	cursor: pointer;
+	background-color: black;
+	color:white;
 }
 
+#btn1{
+	width:130px;
+	margin: 3% 0;
+}

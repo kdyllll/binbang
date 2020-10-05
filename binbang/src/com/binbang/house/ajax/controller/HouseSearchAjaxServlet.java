@@ -1,4 +1,4 @@
-package com.binbang.member.controller;
+package com.binbang.house.ajax.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,18 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberEnrollChoice
+ * Servlet implementation class HouseSearchAjaxServlet
  */
-@WebServlet("/member/memberEnrollChoice")
-public class MemberEnrollChoice extends HttpServlet {
+@WebServlet("/house/houseSearchAjax")
+public class HouseSearchAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollChoice() {
+    public HouseSearchAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +30,10 @@ public class MemberEnrollChoice extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/member/memberEnrollChoice.jsp").forward(request, response);
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("m");
+		
+		request.getRequestDispatcher("/ajax/house/houseSearchAjax.jsp").forward(request, response);
 	}
 
 	/**
