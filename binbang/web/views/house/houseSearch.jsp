@@ -5,6 +5,11 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
+<%@ page import="java.util.List,com.binbang.house.model.vo.House" %>    
+<%
+	List<House> list=(List)request.getAttribute("list");
+	/* House h=(House)request.getAttribute("house"); */
+%> 
 </head>
 <body>
 	<div class="wrap">
@@ -96,10 +101,10 @@
 				<!-- 숙소리스트 -->
 				<div class="list">
 					<div class="house1">
-
-						<a href="<%=request.getContextPath() %>/house/houseDetailMove" class="housePic1"></a>
+					<%for(House h : list) {%>
+						<a href="<%=request.getContextPath()%>/house/houseDetailMove?no=<%=h.getHouseNo()%>" class="housePic1"></a>
 						<div class="houseContents">
-
+						
 							<div class="contentSection1">
 								<p class="houseName">제주제주</p>
 								<div class="heartCommon heart"></div>
@@ -137,6 +142,7 @@
 							</div>
 
 						</div>
+						<%} %>
 					</div>
 
 					<div class="house2">
