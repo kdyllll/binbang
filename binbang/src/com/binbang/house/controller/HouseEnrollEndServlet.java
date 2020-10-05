@@ -185,15 +185,18 @@ public class HouseEnrollEndServlet extends HttpServlet {
 			}
 		}
 
-		String msg = "등록 성공";
+		String msg = "숙소 정보 등록에 성공했습니다.";
+		String loc="/host/hostDetail";
 		for(Integer a:results) {
 			if(a<=0) {
-				msg="등록 실패";
+				msg="숙소 정보 등록에 실패했습니다. 다시 시도하세요";
+				loc="/house/houseEnroll";
+				
 			}
 		}
-
 		request.setAttribute("msg", msg);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);	
 
 	}
 
