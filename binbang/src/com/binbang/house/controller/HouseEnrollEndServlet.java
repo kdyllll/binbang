@@ -128,9 +128,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		String[] pic = new String[10];
 		for (int i = 0; i < 10; i++) {
 			String a = "picture" + (i + 1);
-			System.out.println("사진파라미터 불러올때 이름:"+a);
 			pic[i] = mr.getFilesystemName(a);
-			System.out.println("사진 이름 불러와짐?"+pic[i]);
 		}
 		h.setHousePicture(pic);// 사진 새로운 이름들만
 
@@ -181,7 +179,7 @@ public class HouseEnrollEndServlet extends HttpServlet {
 					type = "S";
 				}
 				results.add(new HouseService().insertPicture(h, pic[i], type));
-				System.out.println("사진 배열에 들은 값"+pic[i]);
+
 			}
 		}
 
