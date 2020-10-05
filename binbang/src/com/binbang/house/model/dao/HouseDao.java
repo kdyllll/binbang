@@ -325,5 +325,20 @@ public class HouseDao {
 		
 	}
 	
+	public int deleteHouse(Connection conn, String houseNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt= conn.prepareStatement(prop.getProperty("deleteHouse"));
+			pstmt.setString(1, houseNo);
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 
 }

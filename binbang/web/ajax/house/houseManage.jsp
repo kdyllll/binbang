@@ -2,30 +2,11 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%
-		List<House> list = (List)request.getAttribute("list");
-	%>
-<ul>
-	<li><h2>숙소관리</h2></li>
-	<li><input type="button" value="숙소등록" onclick="location.replace('<%=request.getContextPath()%>/house/houseEnroll')"></li>
-</ul>
-<div class="myHouseImgCon">
-	<%
-		for (House h : list) {
-	%>
-	<div class="houseImg">
-		<img>
-		<form>
-			<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
-			<span><%=h.getHouseName() %></span>
-			<input type="button" value="수정">
-			<input type="button" value="삭제">
-		</form>
-	</div>
-	<%
-		}
-	%>
-</div>
+<%@ include file="/views/common/commonLink.jsp"%>
+<%
+	List<House> list = (List) request.getAttribute("list");
+%>
+
 <style>
 .myHouse>ul {
 	display: flex;
@@ -57,3 +38,30 @@
 	align-items: center;
 }
 </style>
+<ul>
+	<li><h2>숙소관리</h2></li>
+	<li><input type="button" value="숙소등록"
+		onclick="location.replace('<%=request.getContextPath()%>/house/houseEnroll')"></li>
+</ul>
+<div class="myHouseImgCon">
+	<div class="houseImg">
+		<%
+			for (House h : list) {
+		%>
+		<form class="houseAll" method="post">
+			<img> <input type="hidden" name="houseNo"
+				value="<%=h.getHouseNo()%>" /> <span><%=h.getHouseName()%></span> <span><%=h.getHouseNo()%></span>
+			<button class="updateH">수정</button>
+			<button class="deleteH">삭제</button>
+		</form>
+		<%
+			}
+		%>
+	</div>
+</div>
+<script>
+	$(".deleteH").on("click",e => {
+		$(".houseAll").attr("action","<%=request.getContextPath()%>/house/houseDelete").submit();
+	})
+</script>
+
