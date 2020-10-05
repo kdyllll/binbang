@@ -54,7 +54,7 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>	
-		 let url = "<%=request.getContextPath()%><%=loc%>";	
+		let url = "<%=request.getContextPath()%><%=loc%>";	
 	 	ajaxTest();
        $(".houseRequest > li").on("click", function (e) {
         $(".houseRequest > li").removeClass("borderTop");
