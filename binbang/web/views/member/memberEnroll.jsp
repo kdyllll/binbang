@@ -19,7 +19,7 @@
 
 				<div class="enrollForm">
 					<div>
-						<input type="text" placeholder="Email" name="email" id="email_" required>
+						<input type="email" placeholder="Email" name="email" id="email_" required>
 						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();">
 
 						<input type="password" name="password" placeholder="Password" id="pw" required>						 
@@ -45,7 +45,7 @@
 
 						<div id="agree">
 							<div class="title1">
-								서비스 이용 약관 동의(필수)<input type="checkbox" id="checkbox1" name="chk">
+								서비스 이용 약관 동의(필수)<input type="checkbox" id="checkbox1" name="chk" required>
 							</div>
 							<div class="line1"></div>
 
@@ -63,7 +63,7 @@
 
 							<div id="agree">
 								<div class="title1">
-									개인정보 취급방침 동의<input type="checkbox" id="checkbox2" name="chk">
+									개인정보 취급방침 동의<input type="checkbox" id="checkbox2" name="chk" required>
 								</div>
 								<div class="line1"></div>
 								<div id="extendBtn2">자세히보기</div>
@@ -255,8 +255,7 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 
 							<div id="agree">
 								<div class="title1">
-									마케팅 정보 수신 동의(선택)<input type="checkbox" id="checkbox3"
-										name="chk">
+									마케팅 정보 수신 동의(선택)<input type="checkbox" id="checkbox3" name="chk" required>
 								</div>
 								<div class="line1"></div>
 								<div id="extendBtn3">자세히보기</div>

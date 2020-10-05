@@ -19,7 +19,7 @@
 				<p>My Page</p>
 			</div>
 			
-			<form id="memberFrm" method="post">
+		<form id="memberFrm" method="post">
 			<!-- 회원정보 -->
 			<div class="lineList">
 				<div class="line1">
@@ -90,7 +90,6 @@
 				</div>
 
 				<!-- 2. 이용했던숙소 -->
-
 				<div class="stayed">
 					<div class="line8">
 						<p>이용했던 숙소</p>
@@ -117,6 +116,8 @@
 
 			</div>
 
+
+
 			<!-- 2. 총 보유쿠폰 -->
 			<div class="coupon">
 				<div class="couponSum">
@@ -136,18 +137,37 @@
 				</div>
 			</div>
 
-			<!-- 3. 개인정보변경 -->
+
+		<!-- 3. mypage 비밀번호 확인 -->
+		
+		<form id="changePassword">	
+			<div class="passwordCheck">
+				<div class="container">
+					<div> 
+						<p class="passTitle">비밀번호 확인</p>						
+					</div>
+					<div> 
+						<p>현재 비밀번호</p>
+						<div><input type="password" placeholder="비밀번호 입력" ></div>
+						<div><input type="button" value="확인" class="checkBtn"> </div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+		<!-- 4. 개인정보변경 -->
 		<form id="memberModify" method="post">
 			<div class="private">
 				<div>			
 					<p>개인정보변경</p>
-					 <input type="hidden" value="<%=email %>" name="email">
-					 									
+					 <input type="hidden" value="<%=email %>" name="email">					 									
 					<div class="line6"></div>
 				</div>
 				
-				<table>
-					
+				<table>					
 					<tr>
 						<td>새로운 비밀번호</td>
 						<td><input type="password" placeholder="비밀번호 입력" name="new_pw" id="pw"></td>
@@ -216,16 +236,8 @@
 		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
 		     }
 			
-			//개인정보 클릭시 비밀번호 확인창
-			function fn_modify(){
-				const url="<%=request.getContextPath()%>/member/memberPasswordCheck";
-				const title="passwordCheck";
-				const status="left=500px,top=100px, width=300px, height=200px";
-				
-				open("",title,status);
-				
-				
-			}
+			
+		
 			
 			
 			
