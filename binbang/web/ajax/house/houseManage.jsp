@@ -1,19 +1,26 @@
+<%@page import="com.binbang.house.model.vo.House"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+		List<House> list = (List)request.getAttribute("list");
+	%>
 <ul>
 	<li><h2>숙소관리</h2></li>
 	<li><input type="button" value="숙소등록" onclick="location.replace('<%=request.getContextPath()%>/house/houseEnroll')"></li>
 </ul>
 <div class="myHouseImgCon">
 	<%
-		for (int i = 1; i < 10; i++) {
+		for (House h : list) {
 	%>
 	<div class="houseImg">
 		<img>
-		<div>
-			<span>제목</span>
-			<button>삭제</button>
-		</div>
+		<form>
+			<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
+			<span><%=h.getHouseName() %></span>
+			<input type="button" value="수정">
+			<input type="button" value="삭제">
+		</form>
 	</div>
 	<%
 		}

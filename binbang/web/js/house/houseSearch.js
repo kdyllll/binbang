@@ -9,9 +9,9 @@ $(".btnText").on("click", function (e) {
 });
 
 //정렬에서 선택하면 부모칸에 선택한 항목 이름 나옴
-$(".btnCon li").on("click", function (e) {
+$("#houseSort > li").on("click", function (e) {
 let a = $(e.target).html();
-$(e.target).parent().prev().children("p").html(a);
+$(".pSort").html(a);
 $(e.target).parent().addClass("box");
 });
 
