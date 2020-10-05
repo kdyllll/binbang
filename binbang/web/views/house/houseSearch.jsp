@@ -89,60 +89,7 @@
 
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
-				<!-- 지도 -->
-				<div class="map">지도</div>
-				<!-- 선 -->
-				<div class="line"></div>
-				<!-- 숙소리스트 -->
-				<div class="list">
-					<div class="house1">
-
-						<a href="<%=request.getContextPath()%>/house/houseDetailMove"
-							class="housePic1"></a>
-						<div class="houseContents">
-
-							<div class="contentSection1">
-								<p class="houseName">제주제주</p>
-								<div class="heartCommon heart"></div>
-							</div>
-
-							<div class="houseLine"></div>
-
-
-							<div class="contentSection2">
-								<div class="contentBox">
-									<div class="iconLocation"></div>
-									<p class="locationName">제주</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconGrade"></div>
-									<p class="gradeName">4.5/5</p>
-								</div>
-							</div>
-							<div class="houseLine2"></div>
-							<div class="contentSection3">
-								<div class="contentBox">
-									<div class="iconPrice"></div>
-									<p class="priceName">100,000</p>
-								</div>
-
-								<div class="contentLine"></div>
-
-								<div class="contentBox">
-									<div class="iconPeople"></div>
-									<p class="PeopleName">최대 인원 8명</p>
-								</div>
-							</div>
-
-						</div>
-					</div>
-
-					
-
-				</div>
+		
 
 			</div>
 
@@ -151,6 +98,26 @@
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
+	
+	<script>
+		$.ajax({
+	        url:"<%=request.getContextPath()%>/ajax/houseSearchAjax",
+	        /* data:{"name" : "다예가 보내주는 정보"}, */
+	        type:"post",
+	        dataType: "html",
+	        success: (data) => {
+	     	$(".section2").children().remove();
+	     	$(".section2").html(data);
+	        },
+	        error: (request, status, error) => {
+	            console.log(request);
+	            console.log(status);
+	            console.log(error);
+	          }
+	      });
+	
+	
+	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
