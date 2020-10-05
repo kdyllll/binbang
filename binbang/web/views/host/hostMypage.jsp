@@ -13,7 +13,7 @@
 		<%@ include file="/views/common/header.jsp"%>
 		<section class="section">
 			<!-- 호스트정보부분 -->
-			<form class="hostInfoContainer" action="/host/hostInfoUpdate" method="post">
+			<form class="hostInfoContainer" action="<%=request.getContextPath() %>/host/hostInfoUpdate" method="post">
 				<div class="hostInfoImg">
 					<img
 						src="<%=request.getContextPath()%>/image/host/host_regist/host_img/basic.jpg"
@@ -31,9 +31,9 @@
 					</div>
 					<div>
 						<p>소개글</p>
-						<textarea name="hostIntro" id="hostIntro" cols="30" rows="10"><%=h.getIntro()%></textarea>
+						<textarea name="hostIntro" id="hostIntro" cols="30" rows="10" readonly="true"><%=h.getIntro()%></textarea>
 					</div>
-
+					<input type="hidden" name="memberNo" value="<%=h.getMemberNo() %>">
 					<input type="submit" id="changeInfo" value="수정" onclick="return invalidate();" />
 				</div>
 			</form>

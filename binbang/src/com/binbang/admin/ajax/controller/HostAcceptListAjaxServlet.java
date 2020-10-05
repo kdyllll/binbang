@@ -1,26 +1,29 @@
-package com.binbang.host.controller;
+package com.binbang.admin.ajax.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.host.model.service.HostService;
+import com.binbang.admin.model.service.AdminService;
 import com.binbang.host.model.vo.Host;
 
 /**
- * Servlet implementation class HostInfoChange
+ * Servlet implementation class HostAcceptListAjaxServlet
  */
-@WebServlet("/host/hostInfoUpdate")
-public class HostInfoUpdateServlet extends HttpServlet {
+@WebServlet("/admin/hostAcceptListAjax")
+public class HostAcceptListAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostInfoUpdateServlet() {
+    public HostAcceptListAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,22 +32,23 @@ public class HostInfoUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String hostIntro = request.getParameter("hostIntro");
-		String memberNo = request.getParameter("memberNo");
-		int result = new HostService().updateHostInfo(hostIntro, memberNo);
+		List<Host> list=new AdminService().acceptHost();
 		
-		String msg = "";
+		String adminTitle = "호스트 승인";
 
-		if(result > 0) {
-			msg = "호스트 정도 수정에 성공하였습니다";
+		ArrayList cell = new ArrayList();
+		cell.add("cell1");
+		cell.add("cell3");
+		cell.add("cell3");
+		cell.add("cell3");
+		cell.add("cell2");
+		cell.add("cell2");
 
-		} else {
-			msg = "호스트 정보 수정에 실패하였습니다.";
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", "/host/hostDetail");
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		request.setAttribute("list", list);
+		request.setAttribute("adminTitle", adminTitle);
+		request.setAttribute("cell", cell);
+
+		request.getRequestDispatcher("/views/admin/memberListAjax.jsp").forward(request, response);
 	}
 
 	/**

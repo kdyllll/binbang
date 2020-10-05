@@ -12,16 +12,16 @@ import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberEnrollEndServlet
+ * Servlet implementation class MemberPasswordUpdate
  */
-@WebServlet(name="memberEnrollEnd",urlPatterns="/member/memberEnrollEnd")
-public class MemberEnrollEndServlet extends HttpServlet {
+@WebServlet(name="updatePassword" ,urlPatterns="/member/memberPasswordUpdate")
+public class MemberPasswordUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollEndServlet() {
+    public MemberPasswordUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,36 +31,27 @@ public class MemberEnrollEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		String email=request.getParameter("email");
-		String password=request.getParameter("password");
-		String memberName=request.getParameter("name");
-		String nickname=request.getParameter("nickname");
-		String phone=request.getParameter("phone");
-
-		Member m=new Member();
-		
-		m.setEmail(email);
-		m.setPassword(password);
-		m.setMemberName(memberName);
-		m.setNickname(nickname);
-		m.setPhone(phone);						
 	
+		String oriPw=request.getParameter("ori_pw");
+		String newPw=request.getParameter("new_pw");
+		String email=request.getParameter("email");
 		
-		
-		int result=new MemberService().insertMember(m);
+		int result=new MemberService().updatePassword(oriPw,newPw,email);
 		
 		String msg="";
-		String loc="/";
+		String loc="";
+		
 		if(result>0) {
-			msg="회원등록 성공";
-			loc="/views/member/main.jsp";
+			msg="Password 수정완료";
+			loc="/member/updatePassword?email="+email;			
 		}else {
-			msg="회원등록 실패";
+			msg="Password 변경실패";
+			loc="/member/myPage";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
+		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 	}
 
 	/**

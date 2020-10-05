@@ -5,6 +5,7 @@ $(document).ready(function () {
       $(e.target).val("완료");
       $(e.target).css("color", "black");
       $("#hostIntro").focus();
+      $("#hostIntro").attr("readonly", false);
       $(".hostInfoImg > label").removeClass("disnone");
     } else if (condition == "완료") {
       $(e.target).val("수정");
