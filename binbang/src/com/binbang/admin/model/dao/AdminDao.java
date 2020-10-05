@@ -78,7 +78,7 @@ public class AdminDao {
 				h.setIdCard(rs.getString("id_card"));
 				h.setProfilePic(rs.getString("profile_pic"));
 				h.setIntro(rs.getString("intro"));
-				h.setComplaintCount(rs.getInt("complain_count"));
+				h.setComplaintCount(rs.getInt("complaint_count"));
 				h.setHostEnrollDate(rs.getDate("host_enrolldate"));
 				h.setHostAcceptDate(rs.getDate("host_acceptdate"));				
 				h.setHostConfirm(rs.getString("host_confirm"));
@@ -93,4 +93,22 @@ public class AdminDao {
 		}return list;
 	}
 
+	//호스트 승인
+	public int hostAccept(Connection conn,String memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("hostAccept"));
+			pstmt.setString(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
+	
+	
+		
+	
 }

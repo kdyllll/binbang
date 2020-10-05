@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
-
 /* 팝업 */
 section {
     height: 100vh;
@@ -16,10 +14,9 @@ section {
     top: 0;
     width: 100vw;
     height: 100vh;
-  
-
     display: none;
   }
+  
   .popup{
    background-color: black;
   }

@@ -1,6 +1,7 @@
 package com.binbang.admin.model.service;
 
 import static com.binbang.common.JDBCTemplate.close;
+import static com.binbang.common.JDBCTemplate.rollback;
 import static com.binbang.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -23,11 +24,20 @@ public class AdminService {
 	}
 	
 	//호스트 승인 리스트
-	public List<Host> acceptHost(){
+	public List<Host> acceptHostList(){
 		Connection conn=getConnection();
 		List<Host> list=dao.hostAcceptList(conn);
 		close(conn);
 		return list;
+	}
+	
+	//호스트 승인으로 값 바꾸기
+	public int acceptHost(String memberNo) {
+		Connection conn=getConnection();
+		int result=dao.hostAccept(conn,memberNo);
+		if(result>0) close(conn);
+		else rollback(conn);
+		return result;
 	}
 
 }

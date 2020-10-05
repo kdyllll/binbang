@@ -39,6 +39,8 @@
 <title>house_regist</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/house/HousePopup.css" />
 </head>
 
 <body class="body">
@@ -223,7 +225,7 @@
 					</div>
 					
 				</div>
-						<div class="ex">댓글 등록하기</div>
+						
 	
 			</div>
   
@@ -245,7 +247,7 @@
 			
 			<div class="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-	
+	<div id="ex">댓글 등록하기</div>
 
 			<div class="place">
 				<div class="placeSection">
@@ -296,7 +298,7 @@
 			
 			
 			
-<div class="enrollbg">
+<div class="enrollbg" style="display:none">
   <div id="popup">
     <div class="color"></div>
     <div class="popupBtn">x</div>
@@ -319,14 +321,16 @@
 </div>
 
 		</section>
-		<%@ include file="/views/common/footer.jsp"%>
+		
 	</div>
+	
+
 	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath() %>/js/common/heart.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/houseDetailHeader.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath() %>/js/house/filter.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/housePopup.js"></script>
 
+	<%@ include file="/views/common/footer.jsp"%>
 </body>
 </html>

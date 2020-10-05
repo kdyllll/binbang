@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/views/common/commonLink.jsp"%>
+<%@page import="com.binbang.member.model.vo.Member,com.binbang.host.model.vo.Host"%>
+<%@page import="java.util.List"%>
 
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
+<%@ include file="/views/common/commonLink.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
+<%
+	List<Member> memberList=(List<Member>)request.getAttribute("memberList");
+	List<Host> hostList = (List<Host>) request.getAttribute("hostList");
+//	List cell = (List) request.getAttribute("cell");
+//	String adminTitle = (String) request.getAttribute("adminTitle");
+//	String memberNo = (String) request.getAttribute("memberNo");
+//int result=(int)request.getAttribute("result");
+%>
+
      
   </head>
 
@@ -14,23 +25,23 @@
         
         <div class="sidebar">
           <ul id="menuAll">
-            <li id="memberAll" class="clickList" >회원 현황!!!!!!</li>
+            <li id="memberAll" class="clickList" onclick="memberList();">회원 현황</li>
             <li id="reserveAll" >예약 현황</li>
             <li id="hostAll" onclick="slideMenu(event);">호스트 관리
               <ul id="subAll">
                 <li id="hostList">호스트 목록</li>
-                <li id="acceptList">호스트 승인</li>
+                <li id="acceptList" onclick="acceptList();">호스트 승인</li>
                 <li id="blackList">호스트 신고</li>
               </ul>
             </li>
           </ul>
         </div>
 
-<!-- 여기부터 ajax -->
         <!-- 회원현황 -->
-          <div id="memberAllContents" class="searchCommon">
+
+          <form id="memberAllContents" class="searchCommon">
             <p class="pageTitle">회원 현황</p>
-            <form action="">
+            
               <!-- <div class="test"> -->
               <select class="researchCategory" name="membercategory">
                 <option value="" selected disabled hidden>선택</option>  
@@ -43,10 +54,9 @@
                 <input type="text" class="searchinput">
                 <button class="inputButton"></button>
               </div>
-              <!-- </div> -->
-            </form> 
+            
 
-            <div class="tb_wrap">
+            <div class="tb_wrap"> 
               <div class="tableDiv">
                 <table class="tableAll">
                   
@@ -58,96 +68,44 @@
                     <th class="cell2" >전화번호</th>
                     <th class="cell3" >가입일</th>
                   </tr>
-                  <tr>
-                    <td class="cell1" >1</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">한수경</td>
-                    <td class="cell4">gkstnr2668@gmail.com</td>
-                    <td class="cell2">010-2222-3333</td>
-                    <td class="cell3">2020-09-08</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >2</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">라라라</td>
-                    <td class="cell4">tnrud@naver.com</td>
-                    <td class="cell2">010-2222-4444</td>
-                    <td class="cell3">2020-05-04</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >1</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">한수경</td>
-                    <td class="cell4">gkstnr2668@gmail.com</td>
-                    <td class="cell2">010-2222-3333</td>
-                    <td class="cell3">2020-09-08</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >2</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">라라라</td>
-                    <td class="cell4">tnrud@naver.com</td>
-                    <td class="cell2">010-2222-4444</td>
-                    <td class="cell3">2020-05-04</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >1</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">한수경</td>
-                    <td class="cell4">gkstnr2668@gmail.com</td>
-                    <td class="cell2">010-2222-3333</td>
-                    <td class="cell3">2020-09-08</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >2</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">라라라</td>
-                    <td class="cell4">tnrud@naver.com</td>
-                    <td class="cell2">010-2222-4444</td>
-                    <td class="cell3">2020-05-04</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >1</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">한수경</td>
-                    <td class="cell4">gkstnr2668@gmail.com</td>
-                    <td class="cell2">010-2222-3333</td>
-                    <td class="cell3">2020-09-08</td>
-                  </tr>
-                  <tr>
-                    <td class="cell1" >2</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">라라라</td>
-                    <td class="cell4">tnrud@naver.com</td>
-                    <td class="cell2">010-2222-4444</td>
-                    <td class="cell3">2020-05-04</td>
-                  </tr>
-                   <tr>
-                    <td class="cell1" >2</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">라라라</td>
-                    <td class="cell4">tnrud@naver.com</td>
-                    <td class="cell2">010-2222-4444</td>
-                    <td class="cell3">2020-05-04</td>
-                  </tr>
-                   <tr>
-                    <td class="cell1" >2</td>
-                    <td class="cell2">일반</td>
-                    <td class="cell2">라라라</td>
-                    <td class="cell4">tnrud@naver.com</td>
-                    <td class="cell2">010-2222-4444</td>
-                    <td class="cell3">2020-05-04</td>
-                  </tr>
-                
+                  
+                  <%
+            		for (Member ml : memberList) {
+        		 %>
+         		<tr>
+		            <td class="cell1" ><%=ml.getMemberNo()%></td>
+		           
+		            <% 
+		               if (ml.getHostConfirm()!=null) {
+		            %> 
+		          		<td class="cell2">호스트</td>
+		            <%
+		               } else {
+		            %>
+		            	<td class="cell2">일반</td>
+		            <%
+		               }
+		            %> 
+		             <td class="cell2" ><%=ml.getMemberName()%></td>
+		            <td class="cell4" ><%=ml.getEmail()%></td>
+		            <td class="cell2" ><%=ml.getPhone()%></td>
+		            <td class="cell3" ><%=ml.getEnrollDate()%></td>
+		         </tr>
+		         <%
+		            }
+		         %>
+         
+           
+
                 </table>
               </div>
             </div>
-          </div>
+          </form>
 
           <!-- 예약 현황 -->
-          <div id="reserveAllContents" class="searchCommon">
+          <form id="reserveAllContents" class="searchCommon">
             <p class="pageTitle">예약 현황</p>
-            <form action="">
+            
               <select class="researchCategory" name="reserveCategory">
                 <option value="" selected disabled hidden>선택</option>  
                 <option value="예약자 이름">예약자 이름</option> 
@@ -160,7 +118,7 @@
                 <!-- <a href=""><img src="search.png" alt=""></a> -->
                 <button class="inputButton"></button>
               </div>
-            </form> 
+           
             <div class="tb_wrap">
               <div class="tableDiv">
                 <table class="tableAll">
@@ -192,7 +150,7 @@
                 </table>
              </div>
             </div>
-          </div>
+          </form>
 
           <!-- 호스트 목록 -->
           <div id="hostListContents" class="searchCommon">
@@ -236,7 +194,7 @@
          </div>
 
           <!-- 호스트 승인 -->
-          <div id="acceptListContents" class="searchCommon">
+          <form id="acceptListContents" class="searchCommon">
             <p class="pageTitle">호스트 승인</p>
             <!-- 호스트 관리자 승인 후 접속 가능하게 -임시저장..?-->
             <!-- 회원번호,이름,전화번호,신분증사진,본인사진, 가입날짜 -->
@@ -252,36 +210,11 @@
                     <th class="cell2">요청날짜</th>
                     <th class="cell2">승인 여부</th>
                   </tr>
-                  <tr>
-                    <td class="cell1">한수경</td>
-                    <td class="cell3">010-1111-2222</td>
-                    <td class="cell3">한수경.jpg</td>
-                    <td class="cell3">한수경2.jpg</td>
-                    <td class="cell2">2020-09-09</td>
-                    <td class="cell2">
-                      <div class="acceptChoice">
-                        <input type="checkbox" name="accept" value="승인" id="yes">승인
-                        <input type="checkbox" name="accept" value="거절" id="no">거절
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="cell1">김다예</td>
-                    <td class="cell3">010-2222-2222</td>
-                    <td class="cell3">박진영러브.jpg</td>
-                    <td class="cell3">김다예2.jpg</td>
-                    <td class="cell2">2020-09-09</td>
-                    <td class="cell2">
-                      <div class="acceptChoice">
-                        <input type="checkbox" name="accept" value="승인" id="yes">승인
-                        <input type="checkbox" name="accept" value="거절" id="no">거절
-                      </div>
-                    </td>
-                  </tr>
+              
                 </table>
               </div>
             </div>
-          </div>
+          </form>
 
           <!-- 호스트 신고 -->
           <div id="blackListContents" class="searchCommon">
@@ -363,3 +296,14 @@
 
   </body>
 </html>
+
+<%-- <script>
+	function memberList(){
+		$("#memberAllContents").attr("action","<%=request.getContextPath()%>/admin/memberListAjax").submit();
+	}
+	function acceptList(){
+		$("#acceptListContents").attr("action","<%=request.getContextPath()%>/admin/hostAcceptListAjax").submit();
+	}
+	
+	
+</script> --%>

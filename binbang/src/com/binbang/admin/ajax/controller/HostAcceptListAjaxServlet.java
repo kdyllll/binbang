@@ -32,23 +32,31 @@ public class HostAcceptListAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Host> list=new AdminService().acceptHost();
+		System.out.println("서블릿 실행");
+		List<Host> hostList=new AdminService().acceptHostList();
+		for(Host h : hostList) {
+			System.out.println("서블릿에서는 출력:"+h);
+		}
+//		String memberNo="";
+//		for(Host h : list) {
+//			memberNo=h.getMemberNo();
+//		}
+//		String adminTitle = "호스트 승인";
+//
+//		ArrayList cell = new ArrayList();
+//		cell.add("cell1");
+//		cell.add("cell3");
+//		cell.add("cell3");
+//		cell.add("cell3");
+//		cell.add("cell2");
+//		cell.add("cell2");
 		
-		String adminTitle = "호스트 승인";
-
-		ArrayList cell = new ArrayList();
-		cell.add("cell1");
-		cell.add("cell3");
-		cell.add("cell3");
-		cell.add("cell3");
-		cell.add("cell2");
-		cell.add("cell2");
-
-		request.setAttribute("list", list);
-		request.setAttribute("adminTitle", adminTitle);
-		request.setAttribute("cell", cell);
-
-		request.getRequestDispatcher("/views/admin/memberListAjax.jsp").forward(request, response);
+		request.setAttribute("hostList", hostList);
+//		request.setAttribute("adminTitle", adminTitle);
+//		request.setAttribute("cell", cell);
+//		request.setAttribute("memberNo", memberNo);
+//		request.getRequestDispatcher("/ajax/admin/hostAcceptList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/manager.jsp").forward(request, response);
 	}
 
 	/**

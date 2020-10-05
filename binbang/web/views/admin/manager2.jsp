@@ -30,7 +30,7 @@
 
 	
 			<script>
-
+	
 	 $("#memberAll").click(e => {
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/memberListAjax",
@@ -58,7 +58,7 @@
 
 </script>
 		
-
+	
 
 
 
