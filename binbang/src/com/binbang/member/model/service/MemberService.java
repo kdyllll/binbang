@@ -1,15 +1,16 @@
 package com.binbang.member.model.service;
 
-import static com.binbang.common.JDBCTemplate.getConnection;
-
-import java.sql.Connection;
-
-import com.binbang.member.model.dao.MemberDao;
-import com.binbang.member.model.vo.Member;
 import static com.binbang.common.JDBCTemplate.close;
 import static com.binbang.common.JDBCTemplate.commit;
 import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.rollback;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.binbang.member.model.dao.MemberDao;
+import com.binbang.member.model.vo.Favorite;
+import com.binbang.member.model.vo.Member;
 
 
 public class MemberService {
@@ -123,6 +124,14 @@ public class MemberService {
 		}
 		close(conn);
 		return result;
+	}
+	
+	//관심숙소 리스트
+	public List<Favorite> selectFavList(Member m){
+		Connection conn=getConnection();
+		List<Favorite> fList=dao.selectFavList(conn,m);
+		close(conn);
+		return fList;
 	}
 	
 	

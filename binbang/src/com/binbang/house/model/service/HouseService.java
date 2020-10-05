@@ -116,6 +116,27 @@ public class HouseService {
 		close(conn);
 		return list;
 	}
+	
+	public List<House> selectHouseAll(){
+		Connection conn = getConnection();
+		List<House> list = dao.selectHouseAll(conn);
+		close(conn);
+		return list;
+	}
+	
+	public Double selectAvgGrade(String houseNo){
+		Connection conn = getConnection();
+		Double avg = dao.selectAvgGrade(conn, houseNo);
+		close(conn);
+		return avg;
+	}
+	
+	public List selectPeakDay(House h,String season) {
+		Connection conn = getConnection();
+		List pList = dao.selectPeakDay(conn,h,season);
+		close(conn);
+		return pList;
+	}
 
 
 }
