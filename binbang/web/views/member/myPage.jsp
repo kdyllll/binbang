@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/views/common/commonLink.jsp"%>
-
+<%
+	String email=request.getParameter("email");	
+%>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/member/myPage.css" />
@@ -45,7 +47,7 @@
 				<ul>
 					<li><button id="changeStayed">숙소</button></li>
 					<li><button id="changeCoupon">쿠폰</button></li>
-					<li><button id="changeModify">개인정보수정</button></li>
+					<li><button id="changeModify" onclick="fn_modify();">개인정보수정</button></li>
 				</ul>
 			</div>
 
@@ -139,8 +141,8 @@
 			<div class="private">
 				<div>			
 					<p>개인정보변경</p>
-					<input type="text" name="email" id="block">	
-					<input type="text" name="ori_pw" id="block" >	
+					 <input type="hidden" value="<%=email %>" name="email">
+					 									
 					<div class="line6"></div>
 				</div>
 				
@@ -153,7 +155,7 @@
 					</tr>
 					<tr class="tr2">
 						<td>비밀번호 확인</td>
-						<td><input type="password" placeholder="비밀번호 확인" name="passwordCheck" id="pwck" onkeyup="pwCheck();"></td>						
+						<td><input type="password" placeholder="비밀번호 확인" id="pwck" onkeyup="pwCheck();"></td>						
 						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경"/> </td>					
 					</tr>			
 					<tr>
@@ -213,6 +215,19 @@
 			function fn_deleteMember(){
 		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
 		     }
+			
+			//개인정보 클릭시 비밀번호 확인창
+			function fn_modify(){
+				const url="<%=request.getContextPath()%>/member/memberPasswordCheck";
+				const title="passwordCheck";
+				const status="left=500px,top=100px, width=300px, height=200px";
+				
+				open("",title,status);
+				
+				
+			}
+			
+			
 			
 			
 	</script>
