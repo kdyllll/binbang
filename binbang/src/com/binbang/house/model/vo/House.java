@@ -23,6 +23,7 @@ public class House {
 	private List peakDay3;
 	private List peakDay4;
 	private List peakDay5;
+	private List totalPeak;
 	private int priceDay;
 	private int priceWeekend;
 	private int pricePeakDay;
@@ -40,8 +41,8 @@ public class House {
 	public House(String houseNo, String hostNo, String houseName, String houseType, String houseLocation, int housePnum,
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
 			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
-			List peakDay5, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend, String[] filter,
-			String[] housePicture, Double avgGrade) {
+			List peakDay5, List totalPeak, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend,
+			String[] filter, String[] housePicture, Double avgGrade) {
 		super();
 		this.houseNo = houseNo;
 		this.hostNo = hostNo;
@@ -62,6 +63,7 @@ public class House {
 		this.peakDay3 = peakDay3;
 		this.peakDay4 = peakDay4;
 		this.peakDay5 = peakDay5;
+		this.totalPeak = totalPeak;
 		this.priceDay = priceDay;
 		this.priceWeekend = priceWeekend;
 		this.pricePeakDay = pricePeakDay;
@@ -262,6 +264,16 @@ public class House {
 	}
 
 
+	public List getTotalPeak() {
+		return totalPeak;
+	}
+
+
+	public void setTotalPeak(List totalPeak) {
+		this.totalPeak = totalPeak;
+	}
+
+
 	public int getPriceDay() {
 		return priceDay;
 	}
@@ -339,10 +351,10 @@ public class House {
 				+ ", roomNum=" + roomNum + ", bathNum=" + bathNum + ", bedNum=" + bedNum + ", houseComment="
 				+ houseComment + ", houseGemsung=" + houseGemsung + ", attention=" + attention + ", inoutTime="
 				+ inoutTime + ", peakDay1=" + peakDay1 + ", peakDay2=" + peakDay2 + ", peakDay3=" + peakDay3
-				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", priceDay=" + priceDay + ", priceWeekend="
-				+ priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend=" + pricePeakWeekend
-				+ ", filter=" + Arrays.toString(filter) + ", housePicture=" + Arrays.toString(housePicture)
-				+ ", avgGrade=" + avgGrade + "]";
+				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", totalPeak=" + totalPeak + ", priceDay="
+				+ priceDay + ", priceWeekend=" + priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend="
+				+ pricePeakWeekend + ", filter=" + Arrays.toString(filter) + ", housePicture="
+				+ Arrays.toString(housePicture) + ", avgGrade=" + avgGrade + "]";
 	}
 
 
@@ -376,6 +388,7 @@ public class House {
 		result = prime * result + pricePeakWeekend;
 		result = prime * result + priceWeekend;
 		result = prime * result + roomNum;
+		result = prime * result + ((totalPeak == null) ? 0 : totalPeak.hashCode());
 		return result;
 	}
 
@@ -489,8 +502,15 @@ public class House {
 			return false;
 		if (roomNum != other.roomNum)
 			return false;
+		if (totalPeak == null) {
+			if (other.totalPeak != null)
+				return false;
+		} else if (!totalPeak.equals(other.totalPeak))
+			return false;
 		return true;
 	}
+
+	
 
 
 }

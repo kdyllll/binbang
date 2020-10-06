@@ -170,6 +170,8 @@ List dayList = (List) request.getAttribute("dayList");
 										<p class="priceName">
 											<!-- 가격 : 총요금/날짜수-->
 											<%	int total=0;
+												int days=0;
+												int price=0;
 												//주말인지 평일인지 //성수기인지 비수기인지
 											for (Object o : dayList) {
 												String day = "20" + (String) o; //숙박 날짜 하루하루
@@ -181,16 +183,35 @@ List dayList = (List) request.getAttribute("dayList");
 												System.out.println();
 												int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토
 												if (dayNum == 6 || dayNum == 7) {//주말이라면
-													/* for (Object o1 : h.getPeakDay1()) { //성수기 시즌1
+													for (Object o1 : h.getTotalPeak()) { //성수기
 														String pDay = (String) o1;
-														if (day.equals(pDay)) {
+														if (day.equals(pDay)) {//성수기(주말)라면
 															total+=h.getPricePeakWeekend();
+															days++;
+														}else{//비수기(주말)라면
+															total+=h.getPriceWeekend();
+															days++;
 														}
-													} */ //아니 성수기를 한번에 모은 멤버변수가 필요해! 그래야 비교가능
-													
+													}							
+												}else{//평일이라면
+													for (Object o1 : h.getTotalPeak()) { //성수기
+														String pDay = (String) o1;
+														if (day.equals(pDay)) {//성수기(평일)라면
+															total+=h.getPricePeakDay();
+															days++;
+														}else{//비수기(평일)라면
+															total+=h.getPriceDay();
+															days++;
+														}
+													}	
 												}
-											}
+											}	
+												
+												if(total!=0&&days!=0){
+													price=total/days;
+												}
 											%>
+											약 <%=price%> 원/1박
 										</p>
 									</div>
 
