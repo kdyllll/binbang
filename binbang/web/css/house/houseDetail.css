@@ -125,6 +125,7 @@
     color: black;
     display: flex;
     justify-content: center;
+    padding-top: 50px; 
 
 
 }
@@ -150,8 +151,10 @@
     padding: 1px 40px;
     margin-bottom: 20px;
     color: black;
+    width: 200px;
 
 }
+
 /* 호스트 정보 박스 크지 설정 */
 .section .host{
     width: 100%;
@@ -239,23 +242,32 @@
 /* 체크 인 아웃, 수용인원 정보  */
 .section .houseinfobox .houseinfo{
     
-    width: 35%;
-    height: 350px;
-    padding-top: 200px;
-    border :  1px solid black;
-    background-color: white;
+    width: 36%;
+    height: 400px;
+    border : 1px solid black;
+  	padding-top: 120px;
    
-    
+   
+}
+.infoDetail{
+	text-align: center;
+
+}
+.infoDetail2{
+	text-align:left;
+	margin-left: 70px;
+
 }
 
 /* 숙소 간단정보 */
 .section .houseinfobox .houseIntroduce{
-	width: 65%;
+	width: 64%;
     margin-top: 20px;
     line-height: 200%;
     padding: 50px ;
     justify-content: center;
 }
+
  
 
 
@@ -443,18 +455,19 @@
 
 /* 갬성글 정보 */
 .section .houseinfobox2 .houseIntroduce2{
-    margin-top: 50px;
+	width:70%;
     margin-left:-50px;
-    line-height: 200%;
+    line-height: 320px;
     color: black;
+    border: solid;
 }
 
 /* 숙소 갬성글에대한 이미지, 이런 이지미가 없을 경우 로고와 전하고 싶은 단어 몇가지 입력 */
 .section .houseinfobox2 .houseinfo2{
     text-align: center;
-    width: 1000px;
-    height: 300px;
-    margin: 10px;
+    width: 30%;
+    height: 320px;
+    margin-left: 10px;
     border :  solid;
     background-image: url("../img/regist/sunny.jpg");
     background-size: contain;
@@ -497,6 +510,9 @@
     background-position: center;
     border: solid;
     
+}
+.ex{
+	text-align: right;
 }
 
 

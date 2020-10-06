@@ -281,6 +281,31 @@ public class HouseDao {
 			close(pstmt);
 		}return h;
 	}
+	//숙소 후기 조회화는 다오
+	public Review ReviewDetail(Connection conn, int no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Review r=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("reviewDetail"));
+			pstmt.setInt(1, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				r=new Review();
+				r.setHouseGrade(rs.getDouble("houseGrade")); //숙소평점
+				r.setCommentTitle(rs.getString("commentTitle")); //후기제목
+				r.setCommentContents(rs.getNString("commentContents")); //후기내용
+				r.setFilePath(rs.getNString("filePath")); //후기사진
+				r.setHouseNo(rs.getNString("house_no")); //숙소번호
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return r;
+	}
 
 	//숙소사진 인서트하는 다오
 	public int insertPicture(Connection conn,House h,String pic,String type) {

@@ -37,15 +37,17 @@
 .star_left {
 	background: url(http://gahyun.wooga.kr/main/img/testImg/star.png)
 		no-repeat 0 0;
-	background-size: 40px;
-	margin-right: -3px;
+	background-size: 46px;
+	margin-right: -5px;
+	border: none;
 }
 
 .star_right {
 	background: url(http://gahyun.wooga.kr/main/img/testImg/star.png)
 		no-repeat -20px 0;
-	background-size: 40px;
-	margin-left: -3px;
+	background-size: 46px;
+	margin-left: -4.5px;
+	border: none;
 }
 .star.on{
   background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
