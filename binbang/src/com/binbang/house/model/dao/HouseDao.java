@@ -325,13 +325,15 @@ public class HouseDao {
 	}
 	
 
-	//모든 숙소 리스트 받아오는 다오
-	public List<House> selectHouseAll(Connection conn){
+	//모든 숙소 리스트 받아오는 다오(페이징 처리 포함)
+	public List<House> selectHouseAll(Connection conn,int cPage, int numPerPage){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<House> list = new ArrayList();
 		try {
 			pstmt = conn.prepareStatement(prop.getProperty("selectHouseAll"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+	        pstmt.setInt(2, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				House h = new House();
@@ -439,5 +441,25 @@ public class HouseDao {
 			close(pstmt);
 		}return pictures;
 	}
+	
+	//숙소 갯수 세는 다오
+	public int houseCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int count=0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("houseCount"));
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count=rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return count;
+	}
+
 
 }

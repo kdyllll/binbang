@@ -5,6 +5,10 @@
 	box-sizing: border-box;
 }
 
+#pageBar{
+    height:20px;
+    text-align:center;
+}
 /* 검색구역 */
 /* 지도 */
 .wrap{
@@ -27,6 +31,17 @@
     position: absolute;
   }
 
+/* 숙소 리스트 영역 */
+.listCon{
+    display:flex;
+    flex-direction: column;
+   
+}
+#pageBar{
+
+    height:30px;
+    margin-top:10px;
+}
 /* 숙소리스트 */
 .list{
     /* border:1px solid red; */
