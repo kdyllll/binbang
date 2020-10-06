@@ -30,12 +30,8 @@
                     </form> <br>
                     <div class="payMent">결제방법 : 
                         <form class="payments">
-                            <input type="checkbox" name="pay1" value="신용카드" id="card">
-                            <label for="card">신용카드</label>
-                            <input type="checkbox" name="pay2" value="휴대폰결제" id="phone">
-                            <label for="phone">휴대폰결제</label>
-                            <input type="checkbox" name="pay3" value="무통장입금" id="bankTransfer">
-                            <label for="bankTransfer">무통장입금</label>
+                        <label><input type="radio" name="pay" value="card" id="card" >신용카드</label>
+                        <label><input type="radio" name="pay" value="bankTransfer" id="bankTransfer" >무통장입금</label>
                         </form>
                     </div> <br><br>
                     <div class="guidanceBox">
@@ -112,21 +108,7 @@
 
                
       </section>
-     <script>
-
-
-$(".pay").on("click",e => {
-	  if (!$("#check").checked) {
-		    alert("개인정보취급방침의 내용에 동의하시기 바랍니다.");
-		  }
-	  return 
-
-}) 
-
-
-
-
-</script>
+   
      <%@ include file="/views/common/footer.jsp" %>
   </div>
    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
