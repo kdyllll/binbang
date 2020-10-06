@@ -37,15 +37,82 @@ public class HouseSearchAjaxServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
+	
+				// paging처리하기
+				int cPage;
+				try {
+					cPage = Integer.parseInt(request.getParameter("cPage"));
+
+				} catch (NumberFormatException e) {
+					cPage = 1;
+				}
+				int numPerPage = 9;
+				
+				//------------------------------------------------------------------------
+				//하우스 목록 검색한 기준에 맞춰 가져와야함(일단은 임시로 다 가져오기)
+				List<House> house=new HouseService().selectHouseAll(cPage, numPerPage);
+				//데이터 갯수 세기
+				int totalData = new HouseService().houseCount();
+				//------------------------------------------------------------------------
+				
+				int totalPage = (int) Math.ceil((double) totalData / numPerPage);
+
+				int pageBarSize = 5;
+
+				int pageNo = ((cPage - 1) / pageBarSize) * pageBarSize + 1;
+				int pageEnd = pageNo + pageBarSize - 1;
+
+				// 페이지를 요청할 수 있는 페이지 html구성
+				String pageBar = "";
+				// 이전
+				// 1.이전 버튼
+				if (pageNo == 1) {
+					// 페이지넘이 1이면(1~5) 이전 버튼 없게
+					pageBar += " ◁ ";
+
+				} else {
+					// 페이지넘이 1이 아닐때 (6~10, 11~15,..) 이런 상태일때는 이전으로 가는 버튼 작동하도록)
+					pageBar += "<a href='" + request.getContextPath() + "/notice/noticeList?cPage=" + (pageNo - 1)
+							+ "'> ◀ </a>";
+
+				}
+
+				while (!(pageNo > pageEnd || pageNo > totalPage)) {
+					if (pageNo == cPage) {
+						pageBar += "<span>" + pageNo + "</span>";
+					} else {
+						pageBar += "<a href='" + request.getContextPath() + "/notice/noticeList?cPage=" + pageNo + "'>" + pageNo
+								+ "</a>";
+					}
+					pageNo++;
+				}
+
+				// 다음
+				if (pageNo > totalPage) {
+					pageBar += " ▷ ";
+				} else {
+					pageBar += "<a href='" + request.getContextPath() + "/notice/noticeList?cPage=" + pageNo + "'> ▶ </a>";
+				}
+
+				request.setAttribute("pageBar", pageBar);
+		
+		try {
 		Member m = (Member)session.getAttribute("m");
-		
-		//하우스 목록 검색한 기준에 맞춰 가져와야함(일단은 임시로 다 가져오기)
-		List<House> house=new HouseService().selectHouseAll();
-		
 		//관심숙소 목록
 		List<Favorite> favorite=new MemberService().selectFavList(m);	
+		for(Favorite ff:favorite) {
+			System.out.println("관심숙소:"+ff);	
+		}
+		request.setAttribute("favorite", favorite);
+		}catch(NullPointerException e) {
+			
+		}
 		
 		for(House h:house) {
+			//사진 House객체에 넣기
+			h.setHousePicture(new HouseService().selectMainPicture(h));
+			
+			
 			//평균평점
 			h.setAvgGrade(new HouseService().selectAvgGrade(h.getHouseNo()));
 			
@@ -58,7 +125,7 @@ public class HouseSearchAjaxServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("house", house);
-		request.setAttribute("favorite", favorite);
+		
 			
 		request.getRequestDispatcher("/ajax/house/houseSearchAjax.jsp").forward(request, response);
 	}

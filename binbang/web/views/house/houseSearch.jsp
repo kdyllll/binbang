@@ -110,7 +110,7 @@
 
 	<script>
 		$.ajax({
-	        url:"<%=request.getContextPath()%>/ajax/houseSearchAjax",
+	        url:"<%=request.getContextPath()%>/house/houseSearchAjax",
 	        /* data:{"name" : "다예가 보내주는 정보"}, */
 	        type:"post",
 	        dataType: "html",
@@ -145,7 +145,7 @@
 		});
 		//금액 검색 누를때
 		$("#filterBtn").on("click",function(e){
-			var param = $("form[name=priceForm]").serialize();
+			var param = $("form[name=priceForm]").serialize(); //자동으로 쿼리스트링으로 바꿔서 보내줌
 			$.ajax({
 				url:"<%=request.getContextPath()%>/house/priceSort",
 				data:param,

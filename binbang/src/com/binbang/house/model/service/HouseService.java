@@ -118,9 +118,9 @@ public class HouseService {
 	}
 	
 
-	public List<House> selectHouseAll(){
+	public List<House> selectHouseAll(int cPage,int numPerPage){
 		Connection conn = getConnection();
-		List<House> list = dao.selectHouseAll(conn);
+		List<House> list = dao.selectHouseAll(conn,cPage,numPerPage);
 		close(conn);
 		return list;
 	}
@@ -148,6 +148,23 @@ public class HouseService {
 		return result;
 
 	}
+	
+	public String[] selectMainPicture(House h) {
+		Connection conn = getConnection();
+		String[] pictures = dao.selectMainPicture(conn,h);
+		close(conn);
+		return pictures;
+	}
+	
+	public int houseCount() {
+		Connection conn = getConnection();
+		int count = dao.houseCount(conn);
+		close(conn);
+		return count;
+	}
+
+	
+	
 
 
 }

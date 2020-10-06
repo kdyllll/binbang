@@ -1,6 +1,24 @@
 @charset "UTF-8";
+
+.section {
+	padding: 0 30px;
+	box-sizing: border-box;
+}
+
+#pageBar{
+    height:20px;
+    text-align:center;
+}
 /* 검색구역 */
 /* 지도 */
+.wrap{
+     width:100%;
+
+    /* border:1px solid; */
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
 .map{
     width: 400px;
     height: 500px;
@@ -11,17 +29,27 @@
 
 .map.on {
     position: absolute;
-    
   }
 
+/* 숙소 리스트 영역 */
+.listCon{
+    display:flex;
+    flex-direction: column;
+   
+}
+#pageBar{
 
-
-
+    height:30px;
+    margin-top:10px;
+}
 /* 숙소리스트 */
 .list{
-    
+    /* border:1px solid red; */
     width:1000px;
     /* height:590px; */
+    /* position: relative;
+    right:0; */
+    
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -64,8 +92,8 @@
 }
 .heartCommon{
     /* 관심숙소 버튼 */
-    width: 25px;
-    height:25px;
+    width: 23px;
+    height:23px;
     
     margin-right:5px;
     cursor: pointer;
@@ -133,33 +161,7 @@
     margin-right: 10px;
 }
 
-.housePic1{
-    background-image:  url("../../image/house/houseSearch/house/house1.jpg");
-}
-.housePic2{
-    background-image:  url("../../image/house/houseSearch/house/house2.jpg");
-}
-.housePic3{
-    background-image:  url("../../image/house/houseSearch/house/house3.png");
-}
-.housePic4{
-    background-image:  url("../../image/house/houseSearch/house/house4.jpg");
-}
-.housePic5{
-    background-image:  url("../../image/house/houseSearch/house/house5.webp");
-}
-.housePic6{
-    background-image:  url("../../image/house/houseSearch/house/house6.png");
-}
-.housePic7{
-    background-image:  url("../../image/house/houseSearch/house/house7.jpg");
-}
-.housePic8{
-    background-image:  url("../../image/house/houseSearch/house/house8.webp");
-}
-.housePic9{
-    background-image:  url("../../image/house/houseSearch/house/house9.jpg");
-}
+
 .iconLocation{
     background-image: url("../../image/house/houseSearch/listicon/pin.png");
 }
