@@ -42,7 +42,7 @@ public class HostDetailServlet extends HttpServlet {
 		String loc = (String)request.getAttribute("loc");
 		
 		if(loc==null) {
-			loc = "/house/houseManageAjax";
+			loc = "/host/houseManageAjax";
 		}
 
 		request.setAttribute("loc", loc);

@@ -15,6 +15,8 @@ public class Booking {
 	private Date approvalDate;
 	private int price;
 	private Date reservDate;
+	private String memberEmail;
+	private String houseName;
 	
 	public Booking() {
 		// TODO Auto-generated constructor stub
@@ -22,7 +24,7 @@ public class Booking {
 
 	public Booking(String reservationNo, String memberNo, String houseNo, String guestName, Date checkInDate,
 			Date checkOutDate, int guestPnum, String paymentOption, String houseRequest, Date approvalDate, int price,
-			Date reservDate) {
+			Date reservDate, String memberEmail, String houseName) {
 		super();
 		this.reservationNo = reservationNo;
 		this.memberNo = memberNo;
@@ -36,6 +38,8 @@ public class Booking {
 		this.approvalDate = approvalDate;
 		this.price = price;
 		this.reservDate = reservDate;
+		this.memberEmail = memberEmail;
+		this.houseName = houseName;
 	}
 
 	public String getReservationNo() {
@@ -134,13 +138,34 @@ public class Booking {
 		this.reservDate = reservDate;
 	}
 
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
+	public String getHouseName() {
+		return houseName;
+	}
+
+	public void setHouseName(String houseName) {
+		this.houseName = houseName;
+	}
+
 	@Override
 	public String toString() {
 		return "Booking [reservationNo=" + reservationNo + ", memberNo=" + memberNo + ", houseNo=" + houseNo
 				+ ", guestName=" + guestName + ", checkInDate=" + checkInDate + ", checkOutDate=" + checkOutDate
 				+ ", guestPnum=" + guestPnum + ", paymentOption=" + paymentOption + ", houseRequest=" + houseRequest
-				+ ", approvalDate=" + approvalDate + ", price=" + price + ", reservDate=" + reservDate + "]";
-	}
+				+ ", approvalDate=" + approvalDate + ", price=" + price + ", reservDate=" + reservDate
+				+ ", memberEmail=" + memberEmail + ", houseName=" + houseName + "]";
+	}  
+	
+	
+	
+	
 	
 	
 }

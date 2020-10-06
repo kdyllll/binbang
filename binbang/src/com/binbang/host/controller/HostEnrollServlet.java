@@ -13,7 +13,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class HostEnrollServlet
  */
-@WebServlet("/host/hostEnroll")
+@WebServlet("/hostEnroll")
 public class HostEnrollServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

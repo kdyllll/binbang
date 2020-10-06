@@ -1,4 +1,4 @@
-package com.binbang.house.ajax.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.house.model.service.HouseService;
+
 /**
- * Servlet implementation class HouseRequestResultAjaxServlet
+ * Servlet implementation class HouseDeleteServlet
  */
-@WebServlet("/house/houseRequestResultAjax")
-public class HouseRequestResultAjaxServlet extends HttpServlet {
+@WebServlet("/host/houseDelete")
+public class HouseDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseRequestResultAjaxServlet() {
+    public HouseDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +28,13 @@ public class HouseRequestResultAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/ajax/house/houseRequestResult.jsp").forward(request, response);
+		String houseNo = request.getParameter("houseNo");
+		
+		int result = new HouseService().deleteHouse(houseNo);
+
+		request.setAttribute("result", result);
+		request.setAttribute("loc","/host/houseManageAjax");
+		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
 	}
 
 	/**
