@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import com.binbang.member.model.vo.Favorite;
 import com.binbang.member.model.vo.Member;
 
 
@@ -232,6 +235,29 @@ public class MemberDao {
 		}return m;
 	}
 	
+	public List<Favorite> selectFavList(Connection conn,Member m){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Favorite> fList=new ArrayList<Favorite>();
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectFavList"));
+			pstmt.setString(1,m.getMemberNo());
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				Favorite f=new Favorite();
+				f.setFolderNo(rs.getString("folder_no"));
+				f.setMemberNo(rs.getString("member_no"));
+				f.setFolderName(rs.getString("folder_name"));
+				f.setHouseNo(rs.getString("house_no"));
+				fList.add(f);
+			}		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return fList;
+	}
 	
 	
 	
