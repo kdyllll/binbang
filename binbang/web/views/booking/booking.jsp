@@ -59,7 +59,7 @@
                             </div> <br>
                             <div>$150,000 ⅹ1박 → $150,000</div> <br>
                             <div class="payInfoBox">
-                                <form class="payInfo">
+                                <form class="payInfo" method="POST" >
                                     결제 약관 정보 <br>
                                     <input type="checkbox" name="check" value="전체동의" id="check">
                                     <label for="check">결제약관(개인정보)전체동의</label>
@@ -75,11 +75,17 @@
                             </div>
                             <div class="payBox">
                                 <div class="pay"><a href="<%=request.getContextPath()%>/booking/bookingFinal">booking</a>
+                                
+
+
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
+                                  
                 </div>
+
             
                 
 <div class="enrollbg">
@@ -103,13 +109,30 @@
 
   </div>
 </div>
+
                
       </section>
+     <script>
+
+
+$(".pay").on("click",e => {
+	  if (!$("#check").checked) {
+		    alert("개인정보취급방침의 내용에 동의하시기 바랍니다.");
+		  }
+	  return 
+
+}) 
+
+
+
+
+</script>
      <%@ include file="/views/common/footer.jsp" %>
   </div>
    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
     <script src="<%=request.getContextPath() %>/js/booking/bookingPopup.js"></script>
     <script src="<%=request.getContextPath() %>/js/booking/booking.js"></script>   
+	<script src="<%=request.getContextPath() %>/js/booking/pay.js"></script>  
 </body>
  
 </html>
