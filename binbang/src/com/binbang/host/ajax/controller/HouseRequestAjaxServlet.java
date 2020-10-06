@@ -40,7 +40,6 @@ public class HouseRequestAjaxServlet extends HttpServlet {
 		Member m = (Member)session.getAttribute("m");
 		List<Booking> list = new BookingService().selectHouseRequest(m.getHostNo());
 		request.setAttribute("list", list);
- 
 		request.getRequestDispatcher("/ajax/house/houseRequest.jsp").forward(request, response);
 	}
 

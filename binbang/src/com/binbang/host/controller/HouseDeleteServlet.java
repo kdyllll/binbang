@@ -1,6 +1,8 @@
 package com.binbang.host.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,32 +17,37 @@ import com.binbang.house.model.service.HouseService;
 @WebServlet("/host/houseDelete")
 public class HouseDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HouseDeleteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String houseNo = request.getParameter("houseNo");
-		
-		int result = new HouseService().deleteHouse(houseNo);
-
-		request.setAttribute("result", result);
-		request.setAttribute("loc","/host/houseManageAjax");
-		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
+	public HouseDeleteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String houseNo = request.getParameter("houseNo");
+
+		int result = new HouseService().deleteHouse(houseNo);
+
+		request.setAttribute("result", result);
+		request.setAttribute("loc", "/host/houseManageAjax");
+		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

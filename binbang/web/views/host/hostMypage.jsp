@@ -76,7 +76,8 @@
                type:"post",
                dataType: "html",
                success: (data) => {
-            	   $(".myHouse").html(data);            	  
+            	   $(".myHouse").html(data);      
+
                },
                error: (request, status, error) => {
                    console.log(request);

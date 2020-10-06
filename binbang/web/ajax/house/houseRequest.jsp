@@ -38,10 +38,14 @@ tr>td {
 
 .houseReq input[type="submit"] {
 	background: none;
-	border:none;
+	border: none;
 	outline:none;
 	cursor:pointer;	
 	font-weight:600;
+}
+
+.denyH {
+	color:#b33939;
 }
 </style>
 
