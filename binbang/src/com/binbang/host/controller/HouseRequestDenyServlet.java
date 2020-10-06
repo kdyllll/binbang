@@ -1,4 +1,4 @@
-package com.binbang.house.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

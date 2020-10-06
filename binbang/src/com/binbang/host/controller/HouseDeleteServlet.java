@@ -1,4 +1,4 @@
-package com.binbang.house.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.booking.model.service.BookingService;
 import com.binbang.house.model.service.HouseService;
 
 /**
- * Servlet implementation class HouseRequestAcceptServlet
+ * Servlet implementation class HouseDeleteServlet
  */
-@WebServlet("/host/houseRequestAccept")
-public class HouseRequestAcceptServlet extends HttpServlet {
+@WebServlet("/host/houseDelete")
+public class HouseDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseRequestAcceptServlet() {
+    public HouseDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +28,12 @@ public class HouseRequestAcceptServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String reservNo = request.getParameter("reservNo");
-		int result = new BookingService().acceptBooking(reservNo);
-		request.setAttribute("loc", "/host/houseRequestAjax");
+		String houseNo = request.getParameter("houseNo");
+		
+		int result = new HouseService().deleteHouse(houseNo);
+
+		request.setAttribute("result", result);
+		request.setAttribute("loc","/host/houseManageAjax");
 		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
 	}
 
