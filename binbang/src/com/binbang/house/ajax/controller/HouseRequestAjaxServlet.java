@@ -38,7 +38,7 @@ public class HouseRequestAjaxServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("m");
-		List<Booking> list = new BookingService().selectReservationRequest();
+		List<Booking> list = new BookingService().selectHostRequest();
  
 		request.getRequestDispatcher("/ajax/house/houseRequest.jsp").forward(request, response);
 	}

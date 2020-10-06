@@ -1,5 +1,12 @@
 package com.binbang.booking.model.service;
 
-public class BookingService {
+import java.util.List;
 
+import com.binbang.booking.model.vo.Booking;
+
+public class BookingService {
+	public List<Booking> selectHostRequest() {
+		
+		return null;
+	}
 }
