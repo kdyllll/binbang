@@ -126,6 +126,14 @@ public class HouseSearchListServlet extends HttpServlet {
 			h.setPeakDay3(new HouseService().selectPeakDay(h,"S3"));
 			h.setPeakDay4(new HouseService().selectPeakDay(h,"S4"));
 			h.setPeakDay5(new HouseService().selectPeakDay(h,"S5"));
+			List totalPeak=new ArrayList();
+			totalPeak.addAll(h.getPeakDay1());
+			totalPeak.addAll(h.getPeakDay2());
+			totalPeak.addAll(h.getPeakDay3());
+			totalPeak.addAll(h.getPeakDay4());
+			totalPeak.addAll(h.getPeakDay5());
+			h.setTotalPeak(totalPeak);
+			
 		}
 		
 		//총금액(여기서 받아주면 좋겠는데....음)
