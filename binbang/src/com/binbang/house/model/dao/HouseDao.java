@@ -324,6 +324,7 @@ public class HouseDao {
 		
 	}
 	
+
 	//모든 숙소 리스트 받아오는 다오
 	public List<House> selectHouseAll(Connection conn){
 		PreparedStatement pstmt = null;
@@ -402,5 +403,21 @@ public class HouseDao {
 			close(pstmt);
 		}return pList;
 	}
+
+	public int deleteHouse(Connection conn, String houseNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt= conn.prepareStatement(prop.getProperty("deleteHouse"));
+			pstmt.setString(1, houseNo);
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+
 
 }

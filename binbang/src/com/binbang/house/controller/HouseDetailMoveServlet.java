@@ -35,6 +35,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
 		int no=Integer.parseInt(request.getParameter("no"));
 		
@@ -58,10 +59,6 @@ public class HouseDetailMoveServlet extends HttpServlet {
 		
 	
 				request.getRequestDispatcher(path).forward(request, response);
-
-		
-
-
 
 	
 	}

@@ -117,6 +117,7 @@ public class HouseService {
 		return list;
 	}
 	
+
 	public List<House> selectHouseAll(){
 		Connection conn = getConnection();
 		List<House> list = dao.selectHouseAll(conn);
@@ -136,6 +137,16 @@ public class HouseService {
 		List pList = dao.selectPeakDay(conn,h,season);
 		close(conn);
 		return pList;
+	}
+
+	public int deleteHouse(String houseNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteHouse(conn, houseNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+
 	}
 
 
