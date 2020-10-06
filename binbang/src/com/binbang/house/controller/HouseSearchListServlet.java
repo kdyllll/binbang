@@ -116,6 +116,11 @@ public class HouseSearchListServlet extends HttpServlet {
 			h.setPeakDay5(new HouseService().selectPeakDay(h,"S5"));
 		}
 		
+		//총금액(여기서 받아주면 좋겠는데....음)
+		
+		//필터
+		
+		
 		request.setAttribute("house", house);
 		request.setAttribute("houseJson", new Gson().toJson(house));
 		request.getRequestDispatcher("/views/house/houseSearch.jsp").forward(request, response);

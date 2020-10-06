@@ -207,10 +207,17 @@
 		$("#houseSort > li").on("click",function(e){
 			let standard=$(e.target).val();
 			
-			function customSort(a, b) { 
+			//기본순(최신순)
+			function basicSort(a, b) { 
 				if(a.houseNo == b.houseNo){ return 0} return a.houseNo > b.houseNo ? -1 : 1; 
 			} 
-			houseList.sort(customSort); 
+			//추천순
+			
+			//가격 낮은순
+			
+			//가격 높은순
+			
+			houseList.sort(basicSort); 
 
 			console.dir("정렬 후"+JSON.stringify(houseList));
 		});
