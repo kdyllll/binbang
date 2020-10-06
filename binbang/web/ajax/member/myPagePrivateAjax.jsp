@@ -1,73 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="com.binbang.member.model.vo.Member" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="com.binbang.member.model.vo.Member"%>
 
 <%@ include file="/views/common/commonLink.jsp"%>
 
 
 <%
-	String email=request.getParameter("email");	
-	Member m = (Member)session.getAttribute("m");
+	String email = request.getParameter("email");
+Member m = (Member) session.getAttribute("m");
 %>
 
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member/mypage.css" />
-   
-  </head>
-  <body>
-    <div class="wrap">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/member/mypage.css" />
+
+</head>
+<body>
+	<div class="wrap">
 
 
-	<!-- 4. 개인정보변경 -->
+		<!-- 4. 개인정보변경 -->
 		<form id="memberModify" method="post">
 			<div class="private">
-				<div>			
+				<div>
 					<p>개인정보변경</p>
-					 <input type="hidden" value="<%=email %>" name="email">					 									
+					<input type="hidden" value="<%=email%>" name="email">
 					<div class="line6"></div>
 				</div>
-				
-				<table>					
+
+				<table>
 					<tr>
 						<td>새로운 비밀번호</td>
-						<td><input type="password" placeholder="비밀번호 입력" name="new_pw" id="pw"></td>
-							<td><span id="pwCheck"></span></td>
+						<td><input type="password" placeholder="비밀번호 입력"
+							name="new_pw" id="pw"></td>
+						<td><span id="pwCheck"></span></td>
 					</tr>
 					<tr class="tr2">
 						<td>비밀번호 확인</td>
-						<td><input type="password" placeholder="비밀번호 확인" id="pwck" onkeyup="pwCheck();"></td>						
-						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경"/> </td>					
-					</tr>			
+						<td><input type="password" placeholder="비밀번호 확인" id="pwck"
+							onkeyup="pwCheck();"></td>
+						<td><input type="button" onclick="fn_updatePassword();"
+							id="btn3" value="비밀번호변경" /></td>
+					</tr>
 					<tr>
-						<td>현재 닉네임 </td>
+						<td>현재 닉네임</td>
 						<td><%=m.getNickname()%></td>
-					</tr>	
+					</tr>
 					<tr class="tr2">
 						<td>새로운 닉네임</td>
-						<td><input type="text" name="nickname" placeholder="닉네임 입력"></td>						
+						<td><input type="text" name="nickname" placeholder="닉네임 입력"></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>현재 전화번호</td>
-						<td> <%=m.getPhone()%></td>
+						<td><%=m.getPhone()%></td>
 					</tr>
 					<tr>
 						<td>새로운 전화번호</td>
 						<td><input type="text" name="phone" placeholder="전화번호 입력"></td>
-						<td><input type="button" onclick="fn_updateMember();" id="btn2" value="수정완료"/></td>
-					</tr>		
-				</table>						
-				
-				<div class="modifyComplete">				
+						<td><input type="button" onclick="fn_updateMember();"
+							id="btn2" value="수정완료" /></td>
+					</tr>
+				</table>
+
+				<div class="modifyComplete">
 					<div class="line6"></div>
-					<input type="button" onclick="fn_deleteMember();" id="btn1" value="회원탈퇴"/>																					
-				</div>				
+					<input type="button" onclick="fn_deleteMember();" id="btn1"
+						value="회원탈퇴" />
+				</div>
 			</div>
-			</form>        
-      
-    </div>
-     
-    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-	
+		</form>
+
+	</div>
+
+	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
+
 	<script>	
 			//비밀번호 & 비밀번호확인
 		    function pwCheck() {
@@ -103,5 +109,5 @@
 			
 	</script>
 
-  </body>
+</body>
 </html>
