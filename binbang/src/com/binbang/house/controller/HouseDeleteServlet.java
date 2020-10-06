@@ -12,7 +12,7 @@ import com.binbang.house.model.service.HouseService;
 /**
  * Servlet implementation class HouseDeleteServlet
  */
-@WebServlet("/house/houseDelete")
+@WebServlet("/host/houseDelete")
 public class HouseDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,8 +32,8 @@ public class HouseDeleteServlet extends HttpServlet {
 		
 		int result = new HouseService().deleteHouse(houseNo);
 
-		request.setAttribute("loc","/house/houseManageAjax");
-
+		request.setAttribute("result", result);
+		request.setAttribute("loc","/host/houseManageAjax");
 		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
 	}
 

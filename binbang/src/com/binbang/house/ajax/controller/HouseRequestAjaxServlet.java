@@ -20,7 +20,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class HouseRequestAjaxServlet
  */
-@WebServlet("/house/houseRequestAjax")
+@WebServlet("/host/houseRequestAjax")
 public class HouseRequestAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

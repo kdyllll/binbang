@@ -7,11 +7,50 @@
 	List<Booking> list = (List) request.getAttribute("list");
 %>
 
+
+<style>
+.myHouse>ul {
+	margin-bottom: 30px;
+}
+
+.houseReq {
+	width: 100%;
+	font-size:14px;
+}
+
+.houseReq > tr {
+	width:100%;
+
+}
+
+tr>th {
+	height:50px;
+	font-weight : 600;
+	vertical-align:center;
+}
+
+tr>td {
+	border: none;
+	text-align: center;
+	height:50px;
+	vertical-align:center;s
+}
+
+.houseReq input[type="submit"] {
+	background: none;
+	border:none;
+	outline:none;
+	cursor:pointer;	
+	font-weight:600;
+}
+</style>
+
+
 <ul>
 	<li><h2>숙소요청</h2></li>
 </ul>
 
-<form action="" class="myHouseCon houseAll" method="post">
+<div>
 	<table class="houseReq">
 		<tr>
 			<th>요청날짜</th>
@@ -39,37 +78,26 @@
 			<td><%=b.getPrice()%></td>
 			<td><%=b.getPaymentOption()%></td>
 			<td>
-				<button class="deleteH">수락</button>
-				<button class="deleteH">거절</button>
+				<form class="myHouseCon houseAll" method="post">
+					<input type="hidden" name="reservNo" value="<%=b.getReservationNo() %>">
+					<input type="submit" class="acceptH" onclick="fn_houseAccept();" value="승인">
+					<input type="submit" class="denyH" onclick="fn_houseDeny();" value="거절">
+				</form>
 			</td>
 		</tr>
 		<%
 			}
 		%>
 	</table>
-</form>
+</div>
 
-<style>
-.myHouse>ul {
-	margin-bottom: 30px;
-}
-
-.houseReq {
-	width: 100%;
-}
-
-.houseReq > tr {
-
-}
-
-tr>td {
-	border: none;
-	text-align: center;
-}
-</style>
 
 <script>
-	$(".deleteH").on("click",e => {
-		$(".houseAll").attr("action","<%=request.getContextPath()%>/house/houseRequest").submit();
-	})
+	function fn_houseAccept() {
+			$(".houseAll").attr("action","<%=request.getContextPath()%>/host/houseRequestAccept").submit();
+	}
+	function fn_houseDeny() {
+			$(".houseAll").attr("action","<%=request.getContextPath()%>/host/houseRequestDeny").submit();
+	}
 </script>
+

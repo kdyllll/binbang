@@ -17,7 +17,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class HouseManageAjaxServlet
  */
-@WebServlet("/house/houseManageAjax")
+@WebServlet("/host/houseManageAjax")
 public class HouseManageAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

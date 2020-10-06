@@ -16,7 +16,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet Filter implementation class HostCheckFilter
  */
-@WebFilter("/host/hostDetail")
+@WebFilter("/host/*")
 public class HostCheckFilter implements Filter {
 
     /**

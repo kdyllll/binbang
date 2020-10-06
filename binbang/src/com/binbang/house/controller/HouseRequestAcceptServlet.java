@@ -7,17 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.booking.model.service.BookingService;
+import com.binbang.house.model.service.HouseService;
+
 /**
- * Servlet implementation class HouseRequestServlet
+ * Servlet implementation class HouseRequestAcceptServlet
  */
-@WebServlet("/house/houseRequest")
-public class HouseRequestServlet extends HttpServlet {
+@WebServlet("/host/houseRequestAccept")
+public class HouseRequestAcceptServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseRequestServlet() {
+    public HouseRequestAcceptServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +30,9 @@ public class HouseRequestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("loc","/house/houseRequestAjax");
+		String reservNo = request.getParameter("reservNo");
+		int result = new BookingService().acceptBooking(reservNo);
+		request.setAttribute("loc", "/host/houseRequestAjax");
 		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
 	}
 

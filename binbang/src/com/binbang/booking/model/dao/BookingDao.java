@@ -14,25 +14,27 @@ import com.binbang.booking.model.vo.Booking;
 import static com.binbang.common.JDBCTemplate.close;
 
 public class BookingDao {
-	private Properties prop=new Properties();
+	private Properties prop = new Properties();
+
 	public BookingDao() {
 		try {
-			String path=AdminDao.class.getResource("/sql/booking/booking_sql.properties").getPath();
+			String path = AdminDao.class.getResource("/sql/booking/booking_sql.properties").getPath();
 			prop.load(new FileReader(path));
-			
-		}catch(IOException e) {
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public List<Booking> selectHouseRequest(Connection conn, String hostNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Booking> list = new ArrayList();
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectHouseRequest"));
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseRequest"));
 			pstmt.setString(1, hostNo);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
 				Booking b = new Booking();
 				b.setReservationNo(rs.getString("reservation_no"));
 				b.setMemberNo(rs.getString("member_no"));
@@ -48,8 +50,8 @@ public class BookingDao {
 				b.setHouseName(rs.getString("house_name"));
 				list.add(b);
 			}
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close(rs);
@@ -57,4 +59,69 @@ public class BookingDao {
 		}
 		return list;
 	}
+
+	public List<Booking> selectHouseRequestResultList(Connection conn, String hostNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseRequestResult"));
+			pstmt.setString(1, hostNo);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Booking b = new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setPaymentOption(rs.getString("payment_option"));
+				b.setPrice(rs.getInt("price"));
+				b.setApprovalDate(rs.getDate("approval_date"));
+				b.setMemberEmail(rs.getString("email"));
+				b.setHouseName(rs.getString("house_name"));
+				list.add(b);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	public int deleteBooking(Connection conn, String reservNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("deleteReservation"));
+			pstmt.setString(1, reservNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int acceptBooking(Connection conn, String reservNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("acceptReservation"));
+			pstmt.setString(1, reservNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }
