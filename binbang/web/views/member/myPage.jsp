@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/views/common/commonLink.jsp"%>
-<%
-	String email=request.getParameter("email");	
-%>
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/myPage.css" />
 
@@ -23,19 +20,19 @@
 			<div class="lineList">
 				<div class="line1">
 					<p>회원이름</p>
-					<div class="memberName"  id="name_"><%=m.getMemberName()%></div>
+					<div class="memberName"><%=m.getMemberName()%></div>
 				</div>
 				<div class="line2">
 					<p>이메일</p>
-					<div class="memberEmail" id="email_"><%=m.getEmail()%></div>
+					<div class="memberEmail"><%=m.getEmail()%></div>
 				</div>
 				<div class="line3">
 					<p>전화번호</p>
-					<div class="memberPhone"id="phone_"><%=m.getPhone() %></div>
+					<div class="memberPhone"><%=m.getPhone() %></div>
 				</div>
 				<div class="line4">
 					<p>닉네임</p>
-					<div class="memeberNickName" id="nickname_"><%=m.getNickname() %></div>
+					<div class="memeberNickName"><%=m.getNickname() %></div>
 				</div>
 			</div>
 		</form>
@@ -51,14 +48,14 @@
 			</div>
 		
 		
-			<div id="AllContents"></div>					
+			<div id="AllContents"></div>		
+						
 	</section>
 
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath()%>/js/member/myPage.js"></script>
 		
 	<script>		
 	//myPagePCKAjax로 이동

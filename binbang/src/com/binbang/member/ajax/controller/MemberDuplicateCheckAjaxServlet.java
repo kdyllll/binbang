@@ -1,4 +1,4 @@
-package com.binbang.member.controller;
+package com.binbang.member.ajax.controller;
 
 import java.io.IOException;
 
@@ -13,14 +13,14 @@ import com.binbang.member.model.service.MemberService;
 /**
  * Servlet implementation class MemberDuplicateCheckServlet
  */
-@WebServlet("/member/checkEmailDuplicate")
-public class MemberDuplicateCheckServlet extends HttpServlet {
+@WebServlet("/member/checkEmailDuplicateAjax")
+public class MemberDuplicateCheckAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDuplicateCheckServlet() {
+    public MemberDuplicateCheckAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +36,7 @@ public class MemberDuplicateCheckServlet extends HttpServlet {
 		
 		
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("/views/member/duplicateCheckAjax.jsp").forward(request, response);
+		request.getRequestDispatcher("/ajax/member/duplicateCheckAjax.jsp").forward(request, response);
 	}
 
 	/**

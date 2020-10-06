@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.binbang.member.model.vo.Member" %>
+
 <%@ include file="/views/common/commonLink.jsp"%>
 
 
 <%
 	String email=request.getParameter("email");	
+	Member m = (Member)session.getAttribute("m");
 %>
 
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member/mypage.css" />

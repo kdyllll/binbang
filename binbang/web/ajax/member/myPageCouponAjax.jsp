@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ page import="com.binbang.member.model.vo.Member" %>
+<%
+	Member m = (Member)session.getAttribute("m");
+%>
+
+
 <%@ include file="/views/common/commonLink.jsp"%>
-     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/member/mypage.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/member/mypage.css" />
    
   </head>
   <body>
@@ -10,7 +17,7 @@
       		<!-- 2. 총 보유쿠폰 -->
 			<div class="coupon">
 				<div class="couponSum">
-					<%-- <div class="couponContents">현재보유쿠폰    : <%=m.getCoupon()%> 개</div> --%>
+					<div class="couponContents">현재보유쿠폰    : <%=m.getCoupon()%> 개</div>
 				</div>
 
 				<!-- 구분선 -->

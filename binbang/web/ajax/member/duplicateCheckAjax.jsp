@@ -50,7 +50,7 @@
 				[<span id="duplicated"><%=email %></span>]는 사용중입니다.				
 			</div>
 																							
-			<form action="<%=request.getContextPath() %>/member/checkEmailDuplicate" method="post">
+			<form action="<%=request.getContextPath() %>/member/checkEmailDuplicateAjax" method="post">
 					
 					<input type="text" name="email" class="passDuplicate" placeholder="Email Retry">
 					<input type="submit" value="중복검사" onclick="return fn_validate();" id="duplicateRetry">
