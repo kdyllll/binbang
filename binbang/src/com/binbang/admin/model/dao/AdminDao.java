@@ -48,7 +48,7 @@ public class AdminDao {
 				m.setStayDays(rs.getInt("stay_Days"));
 				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("host_black"));				
-
+				m.setHostConfirm(rs.getString("host_confirm"));
 				list.add(m);
 			}
 			
@@ -108,6 +108,42 @@ public class AdminDao {
 		}return result;
 	}
 	
+	//멤버 검색
+	public List<Member> searchMemberList(Connection conn, String type, String key){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Member> list=new ArrayList();
+		try {
+			System.out.println("변경 전 : " +prop.getProperty("searchMemberList"));
+			String sql=prop.getProperty("searchMemberList").replaceAll("@type", type);
+			System.out.println("변경 후 : " + sql);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+key+"%");
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Member m=new Member();
+				m.setMemberNo(rs.getString("member_No"));
+				m.setEmail(rs.getString("email"));
+				m.setMemberName(rs.getString("member_Name"));
+				m.setNickname(rs.getString("nickname"));
+				m.setPhone(rs.getString("phone"));
+				m.setEnrollDate(rs.getDate("enroll_Date"));				
+				m.setStayDays(rs.getInt("stay_Days"));
+				m.setCoupon(rs.getInt("coupon"));
+				m.setHostBlack(rs.getString("host_black"));
+				m.setHostConfirm(rs.getString("host_confirm"));
+
+				list.add(m);
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
 	
 		
 	

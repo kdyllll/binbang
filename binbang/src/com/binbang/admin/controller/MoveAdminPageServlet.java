@@ -36,12 +36,12 @@ public class MoveAdminPageServlet extends HttpServlet {
 		//List<Host> hostList=new AdminService().acceptHostList();
 		
 		
-		List<Member> memberList=new AdminService().selectMemberAll();
-		
-		request.setAttribute("memberList", memberList);
+//		List<Member> memberList=new AdminService().selectMemberAll();
+//		
+//		request.setAttribute("memberList", memberList);
 		//request.setAttribute("hostList", hostList);
 		
-		request.getRequestDispatcher("/views/admin/manager.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/manager2.jsp").forward(request, response);
 	}
 
 	/**

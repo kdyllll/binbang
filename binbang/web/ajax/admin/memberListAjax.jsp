@@ -4,29 +4,50 @@
 <%@ include file="/views/common/commonLink.jsp"%>
 
 <%
-	List<Member> list = (List) request.getAttribute("list");
+	List<Member> list = (List) request.getAttribute("memberList");
 	List searchCategory = (List) request.getAttribute("searchCategory");
 	List cell = (List) request.getAttribute("cell");
 	String adminTitle = (String) request.getAttribute("adminTitle");
+	String type=request.getParameter("searchType");
+ 	String key=request.getParameter("searchKeyword");
 %>
 
 <div id="AllContents" class="searchCommon">
 <p class="pageTitle"><%=adminTitle%></p>
-<form action="">
 
-   <select class="searchCategory" name="searchCategory">
+
+   <select class="searchCategory" name="searchCategory" id="searchType">
       <option value="" selected disabled hidden>선택</option>
-      <option value="이름"><%=searchCategory.get(0)%></option>
-      <option value="분류"><%=searchCategory.get(1)%></option>
-      <option value="가입일"><%=searchCategory.get(2)%></option>
-      <!-- 최신순,오래된순 -->
+      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>><%=searchCategory.get(0)%></option>
+      <option value="host_confirm" <%=type!=null&&type.equals("host_confirm")?"selected":"" %>><%=searchCategory.get(1)%></option>
+      <option value="enroll_date" <%=type!=null&&type.equals("enroll_date")?"selected":"" %>><%=searchCategory.get(2)%></option>
+     
    </select>
-
-   <div class="search">
-      <input type="text" class="searchinput">
-      <button class="inputButton"></button>
-   </div>
-</form>
+		<div class="search" id="search-member_name">
+     		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    			<input type="hidden" name="searchType" value="member_name">
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    				value="<%=key!=null&&type!=null&&type.equals("member_name")?key:""%>">
+    			<button class="inputButton"></button>
+    		</form>
+    	</div>
+    	<div class="search" id="search-host_confirm">
+    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    			<input type="hidden" name="searchType" value="host_confirm">
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    				value="<%=key!=null&&type!=null&&type.equals("host_confirm")?key:""%>">
+    			<button class="inputButton"></button>
+    		</form>
+    	</div>
+    	<div class="search" id="search-enroll_date">
+    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    			<input type="hidden" name="searchType" value="enroll_date">
+    			<input type="text"  class="searchinput" name="" size="25"
+    				value="<%=key!=null&&type!=null&&type.equals("enroll_date")?key:""%>">
+  				<button class="inputButton"></button>  			
+    		</form>
+    	</div>
+        
 
 <div class="tb_wrap">
    <div class="tableDiv">
@@ -65,10 +86,27 @@
          <%
             }
          %>
-         
-         <% %>
+      
 
       </table>
    </div>
 </div>
 </div>
+
+<script>
+$(function(){
+	let memberName=$("#search-member_name");
+	let hostConfirm=$("#search-host_confirm");
+	let enrollDate=$("#search-enroll_date");
+	
+	$("#searchType").change(e => {
+		memberName.css("display","none");
+		hostConfirm.css("display","none");
+		enrollDate.css("display","none");
+		let v=$(e.target).val(); 
+		$("#search-"+v).css("display","inline-block");
+	});
+	$("#searchType").change(); 
+	
+});
+</script>

@@ -37,31 +37,31 @@ public class MemberListAjaxServlet extends HttpServlet {
 		
 		List<Member> memberList=new AdminService().selectMemberAll();
 				
-//		String adminTitle = "회원 현황";
-//
-//		String memberName = "이름";
-//		String category = "분류";
-//		String enrollDate = "가입일";
-//
-//		ArrayList searchCategory = new ArrayList();
-//		searchCategory.add(memberName);
-//		searchCategory.add(category);
-//		searchCategory.add(enrollDate);
-//
-//		ArrayList cell = new ArrayList();
-//		cell.add("cell1");
-//		cell.add("cell2");
-//		cell.add("cell2");
-//		cell.add("cell4");
-//		cell.add("cell2");
-//		cell.add("cell3");
+		String adminTitle = "회원 현황";
+
+		String memberName = "이름";
+		String category = "분류";
+		String enrollDate = "가입일";
+
+		ArrayList searchCategory = new ArrayList();
+		searchCategory.add(memberName);
+		searchCategory.add(category);
+		searchCategory.add(enrollDate);
+
+		ArrayList cell = new ArrayList();
+		cell.add("cell1");
+		cell.add("cell2");
+		cell.add("cell2");
+		cell.add("cell4");
+		cell.add("cell2");
+		cell.add("cell3");
 
 		request.setAttribute("memberList", memberList);
-//		request.setAttribute("adminTitle", adminTitle);
-//		request.setAttribute("searchCategory", searchCategory);
-//		request.setAttribute("cell", cell);
+		request.setAttribute("adminTitle", adminTitle);
+		request.setAttribute("searchCategory", searchCategory);
+		request.setAttribute("cell", cell);
 
-		request.getRequestDispatcher("/views/admin/manager.jsp").forward(request, response);
+		request.getRequestDispatcher("/ajax/admin/memberListAjax.jsp").forward(request, response);
 	}
 
 	/**

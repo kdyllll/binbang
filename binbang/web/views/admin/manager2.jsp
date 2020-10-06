@@ -9,7 +9,7 @@
 
 <body>
 	<div class="wrap">
-		<%@ include file="/views/common/header.jsp"%>
+		<%@ include file="/views/common/adminHeader.jsp"%>
 
 		<section class="section">
 
@@ -26,12 +26,53 @@
 					</li>
 				</ul>
 			</div>
-			<div id="AllContents"></div>
+			<div id="AllContents" class="searchCommon"></div>
 
 	
 			<script>
+<%-- 			$(document).ready(function() {
+					$.ajax({
+						url:"<%=request.getContextPath()%>/admin/memberListJson",
+						dataType:"json",
+						success:data=>{
+							$("#AllContents").children().remove();
+							let div3=$("<div  id='memberAllContents' class='searchCommon'>");
+							let p=$("<p class='pageTitle'>회원 현황</p>")
+							let div=$("<div class='tb_wrap'>");
+							let div2=$("<div class='tableDiv'>");
+							
+							let table = $("<table class='tableAll'>");
+				            let th = $("<tr class='fixed_top'>")
+				              .append($("<th class='cell1'>").html("회원 번호"))
+				              .append($("<th class='cell2'>").html("분류"))
+				              .append($("<th class='cell2'>").html("이름"))
+				              .append($("<th class='cell4'>").html("이메일"))
+				              .append($("<th class='cell2'>").html("전화번호"))
+				            .append($("<th class='cell3'>").html("가입일"));
+				            table.append(th);
+				            
+				          
+				            for (let i = 0; i < data.length; i++) {
+			                       let tr = $("<tr>")
+			                         .append($("<td class='cell1'>").html(data[i]["memberNo"]))
+			                         .append($("<td class='cell2'>").html(data[i]["nickname"]))
+			                         .append($("<td class='cell2'>").html(data[i]["memberName"]))
+			                         .append($("<td class='cell4'>").html(data[i]["email"]))
+			                         .append($("<td class='cell2'>").html(data[i]["phone"]))
+			                       .append($("<td class='cell3'>").html(data[i]["enrollDate"]));
+			                       table.append(tr);
+			                     }
+				            div2.append(table);
+				            div.append(div2);
+				            div3.append(p);
+				            div3.append(div);
+							
+							$("#AllContents").html(div3);
+						}
+					});
+			}); --%>
 	
-	 $("#memberAll").click(e => {
+	$("#memberAll").click(e => {
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/memberListAjax",
 			dataType:"html",
@@ -39,9 +80,8 @@
 				$("#AllContents").children().remove();
 				$("#AllContents").html(data);
 			}
-		});
-		
-	});
+		});		
+	}); 
 	 
 	 $("#acceptList").click(e => {
 			$.ajax({

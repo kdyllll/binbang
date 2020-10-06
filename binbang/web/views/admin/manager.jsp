@@ -24,10 +24,8 @@
       <section class="section">
         
         <div class="sidebar">
-
           <ul id="menuAll">
             <li id="memberAll" class="clickList" onclick="memberList();">회원 현황</li>
-
             <li id="reserveAll" >예약 현황</li>
             <li id="hostAll" onclick="slideMenu(event);">호스트 관리
               <ul id="subAll">
@@ -212,7 +210,33 @@
                     <th class="cell2">요청날짜</th>
                     <th class="cell2">승인 여부</th>
                   </tr>
-              
+                   <%
+				for (Host h : hostList) {
+			%>
+
+			<%
+				if (h.getHostAcceptDate() == null) {
+			%>
+			<tr>
+				<td class="cell1"><%=h.getMemberName()%></td>
+				<td class="cell2"><%=h.getMemberPhone()%></td>
+				<td class="cell2"><%=h.getProfilePic()%></td>
+				<td class="cell4"><%=h.getIdCard()%></td>
+				<td class="cell2"><%=h.getHostEnrollDate()%></td>
+				<td class="cell3">
+					<div class="acceptChoice">
+						<input type="hidden" name="memberNo" class="mNo" value="<%=h.getMemberNo()%>">
+						<input type="button" name="acceptY" value="승인" class="yes">
+						<input type="button" name="acceptN" value="거절" class="no">
+					</div>
+				</td>
+			</tr>
+				<%
+					}
+				%>
+			<%
+				}
+			%>
                 </table>
               </div>
             </div>
@@ -299,7 +323,7 @@
   </body>
 </html>
 
-<%-- <script>
+<script>
 	function memberList(){
 		$("#memberAllContents").attr("action","<%=request.getContextPath()%>/admin/memberListAjax").submit();
 	}
@@ -308,4 +332,4 @@
 	}
 	
 	
-</script> --%>
+</script>

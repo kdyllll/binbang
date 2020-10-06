@@ -39,5 +39,13 @@ public class AdminService {
 		else rollback(conn);
 		return result;
 	}
+	
+	//멤버 리스트 검색
+	public List<Member> searchMemberList(String type, String key){
+		Connection conn=getConnection();
+		List<Member> list=dao.searchMemberList(conn,type,key);
+		close(conn);
+		return list;
+	}
 
 }
