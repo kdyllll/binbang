@@ -61,7 +61,7 @@
                             <div class="payInfoBox">
                                 <form class="payInfo" method="POST" >
                                     결제 약관 정보 <br>
-                                    <input type="checkbox" name="check" value="전체동의" id="check">
+                                    <input type="checkbox" name="check" value="전체동의" class="check">
                                     <label for="check">결제약관(개인정보)전체동의</label>
                                     <div class="guidance">
                                         체크인 5일 전까지 결제 취소 시 전액환불처리됩니다.
@@ -116,12 +116,12 @@
 
 
 $(".pay").on("click",e => {
-	  if (!$("#check").checked) {
+	  if (!$(".check").checked) {
 		    alert("개인정보취급방침의 내용에 동의하시기 바랍니다.");
 		  }
-	  return 
+	  return;
 
-}) 
+}); 
 
 
 
