@@ -14,6 +14,7 @@ import com.binbang.booking.model.service.BookingService;
 import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
+import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
 
 /**
@@ -30,7 +31,6 @@ public class HouseRequestAjaxServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -38,7 +38,8 @@ public class HouseRequestAjaxServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("m");
-		List<Booking> list = new BookingService().selectHostRequest();
+		List<Booking> list = new BookingService().selectHouseRequest(m.getHostNo());
+		request.setAttribute("list", list);
  
 		request.getRequestDispatcher("/ajax/house/houseRequest.jsp").forward(request, response);
 	}

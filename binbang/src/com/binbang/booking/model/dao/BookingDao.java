@@ -1,5 +1,60 @@
 package com.binbang.booking.model.dao;
 
-public class BookingDao {
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
+import com.binbang.admin.model.dao.AdminDao;
+import com.binbang.booking.model.vo.Booking;
+import static com.binbang.common.JDBCTemplate.close;
+
+public class BookingDao {
+	private Properties prop=new Properties();
+	public BookingDao() {
+		try {
+			String path=AdminDao.class.getResource("/sql/booking/booking_sql.properties").getPath();
+			prop.load(new FileReader(path));
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public List<Booking> selectHouseRequest(Connection conn, String hostNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectHouseRequest"));
+			pstmt.setString(1, hostNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Booking b = new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setPaymentOption(rs.getString("payment_option"));
+				b.setPrice(rs.getInt("price"));
+				b.setReservDate(rs.getDate("reserv_date"));
+				b.setMemberEmail(rs.getString("email"));
+				b.setHouseName(rs.getString("house_name"));
+				list.add(b);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 }
