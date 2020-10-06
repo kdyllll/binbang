@@ -143,14 +143,15 @@
 		<form id="changePassword">	
 			<div class="passwordCheck">
 				<div class="container">
-					<div> 
-						<p class="passTitle">비밀번호 확인</p>						
+					 
+					<p class="passTitle">비밀번호 확인</p>						
+					
+					
+					<div class="passLine"> 						
+						<input type="password" placeholder="비밀번호 입력" >
+						<input type="button" value="확인" class="checkBtn">
 					</div>
-					<div> 
-						<p>현재 비밀번호</p>
-						<div><input type="password" placeholder="비밀번호 입력" ></div>
-						<div><input type="button" value="확인" class="checkBtn"> </div>
-					</div>
+					
 				</div>
 			</div>
 		</form>

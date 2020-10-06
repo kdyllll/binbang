@@ -256,7 +256,22 @@ button {
 	justify-content: center;
 }
 .passwordCheck .container{
-	border: 1px solid; 
+	width: 500px;
+	height:150px;
+	border: 1.5px solid; 
+}
+
+.passTitle{
+margin : 5%;
+margin-left : 9%;
+}
+
+.passLine{
+display: flex;	
+margin : 3%;
+}
+.passLine input{
+margin : 5%;	
 }
 
 

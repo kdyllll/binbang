@@ -90,11 +90,14 @@
     	});
     });
     
+    
+    
+    
        let time=300;
        let min=0;
        let sec=0;
        let x = 0;
-       
+       /* 재전송 */
      function sendNumber2(){
     	 clearInterval(x);
         document.getElementById("timer").innerHTML="";

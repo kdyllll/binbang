@@ -70,7 +70,7 @@ div#emailCheck {
 
 
 /* 인증하기, 인증확인 버튼 */
-#resendBtn, #emailComplite, #emailConfirm {
+#resendBtn, #numConfirm, #emailConfirm {
 	width: 80px;
 	height: 35px;
 	background-color: black;
@@ -90,6 +90,18 @@ div#emailCheck {
 	outline: 0;
 	cursor: pointer;
  }
+ 
+ /* email재전송 */
+ #resend{
+  display: flex;
+  justify-content: space-between;
+}
+#timer{
+  margin-top : 15px;
+    text-align: left;
+    font-size : 15px;
+    color:rgb(253, 94, 94);
+}
 
 
 
