@@ -38,24 +38,24 @@ public class HouseDao {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				h = new House();
-				h.setHouseNo(rs.getString("houseNo")); // 숙소번호
-				h.setHouseName(rs.getNString("houseName")); // 숙소이름
-				h.setHouseType(rs.getNString("houseType")); // 숙소유형
-				h.setHouseLocation(rs.getNString("houseLocation")); // 숙소위치
-				h.setHousePnum(rs.getInt("HousePnum")); // 숙소최대인원
-				h.setpObjects(rs.getNString("pObjects")); // 개인물건 유무
-				h.setRoomNum(rs.getInt("roomNum")); // 방갯수
-				h.setBathNum(rs.getInt("bathNum")); // 화장실 갯수
-				h.setBedNum(rs.getInt("bedNum")); // 침대 갯수
-				h.setHouseComment(rs.getNString("HouseComment")); // 숙소소개
-				h.setHouseGemsung(rs.getNString("HouseGemsung")); // 감성글
-				//h.setPhoneOption(rs.getNString("phoneOption")); //
-				h.setAttention(rs.getNString("attention")); //
-				h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
-				h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일
-				h.setPriceWeekend(rs.getInt("priceWeekend")); // 비수기주말
-				h.setPricePeakDay(rs.getInt("pricePeakDay")); // 성수기평일
-				h.setPricePeakWeekend(rs.getInt("pricePeakWeekend")); // 성수기 주말
+				h.setHouseNo(rs.getString("house_no")); //숙소번호
+				h.setHostNo(rs.getString("host_no")); //숙소번호
+				h.setHouseName(rs.getNString("house_name")); //숙소이름
+				h.setHouseType(rs.getNString("house_type")); //숙소유형
+				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
+				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
+				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
+				h.setRoomNum(rs.getInt("room_num")); //방갯수
+				h.setBathNum(rs.getInt("bath_num")); //화장실 갯수
+				h.setBedNum(rs.getInt("bed_num")); //침대 갯수
+				h.setHouseComment(rs.getNString("House_comment")); //숙소소개
+				h.setHouseGemsung(rs.getNString("House_gemsung")); //감성글				
+				h.setAttention(rs.getNString("attention")); //주의사항
+				h.setInoutTime(rs.getString("inout_time")); // 체크인아웃 시간
+				h.setPriceDay(rs.getInt("price_day")); // 비수기 평일
+				h.setPriceWeekend(rs.getInt("price_weekend")); //비수기주말
+				h.setPricePeakDay(rs.getInt("price_peak_day")); //성수기평일
+				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); //성수기 주말
 
 			}
 
@@ -86,24 +86,24 @@ public class HouseDao {
 			while (rs.next()) {
 				House h = new House();
 				h = new House();
-				h.setHouseNo(rs.getString("houseNo")); // 숙소번호
-				h.setHouseName(rs.getNString("houseName")); // 숙소이름
-				h.setHouseType(rs.getNString("houseType")); // 숙소유형
-				h.setHouseLocation(rs.getNString("houseLocation")); // 숙소위치
-				h.setHousePnum(rs.getInt("HousePnum")); // 숙소최대인원
-				h.setpObjects(rs.getNString("pObjects")); // 개인물건 유무
-				h.setRoomNum(rs.getInt("roomNum")); // 방갯수
-				h.setBathNum(rs.getInt("bathNum")); // 화장실 갯수
-				h.setBedNum(rs.getInt("bedNum")); // 침대 갯수
-				h.setHouseComment(rs.getNString("HouseComment")); // 숙소소개
-				h.setHouseGemsung(rs.getNString("HouseGemsung")); // 감성글
-				//h.setPhoneOption(rs.getNString("phoneOption")); //
-				h.setAttention(rs.getNString("attention")); //
-				h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
-				h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일
-				h.setPriceWeekend(rs.getInt("priceWeekend")); // 비수기주말
-				h.setPricePeakDay(rs.getInt("pricePeakDay")); // 성수기평일
-				h.setPricePeakWeekend(rs.getInt("pricePeakWeekend")); // 성수기 주말
+				h.setHouseNo(rs.getString("house_no")); //숙소번호
+				h.setHostNo(rs.getString("host_no")); //숙소번호
+				h.setHouseName(rs.getNString("house_name")); //숙소이름
+				h.setHouseType(rs.getNString("house_type")); //숙소유형
+				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
+				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
+				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
+				h.setRoomNum(rs.getInt("room_num")); //방갯수
+				h.setBathNum(rs.getInt("bath_num")); //화장실 갯수
+				h.setBedNum(rs.getInt("bed_num")); //침대 갯수
+				h.setHouseComment(rs.getNString("House_comment")); //숙소소개
+				h.setHouseGemsung(rs.getNString("House_gemsung")); //감성글				
+				h.setAttention(rs.getNString("attention")); //주의사항
+				h.setInoutTime(rs.getString("inout_time")); // 체크인아웃 시간
+				h.setPriceDay(rs.getInt("price_day")); // 비수기 평일
+				h.setPriceWeekend(rs.getInt("price_weekend")); //비수기주말
+				h.setPricePeakDay(rs.getInt("price_peak_day")); //성수기평일
+				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); //성수기 주말
 				list.add(h);
 			}
 		} catch (Exception e) {
@@ -154,7 +154,8 @@ public class HouseDao {
 		}
 		return result;
 	}
-
+	
+	//숙소테이블에 인서트하는 다오
 	public int insertHouse(Connection conn,House h) {
 		PreparedStatement pstmt=null;
 		int result=0;		
@@ -187,6 +188,7 @@ public class HouseDao {
 		
 	}
 
+	//숙소 이름으로 숙소 번호 알아내는 다오
 	public String selectHouseNo(Connection conn,House h) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -207,6 +209,7 @@ public class HouseDao {
 	
 	}
 	
+	//숙소 필터테이블 인서트하는 다오
 	public int insertFilter(Connection conn,House h,String f) {
 		PreparedStatement pstmt=null;
 		int result=0;		
@@ -223,6 +226,7 @@ public class HouseDao {
 		}return result;	
 	}
 	
+	//성수기 테이블 인서트하는 다오
 	public int insertPeak(Connection conn,House h,String day,String season) {
 		PreparedStatement pstmt=null;
 		int result=0;		
@@ -239,52 +243,46 @@ public class HouseDao {
 			close(pstmt);
 		}return result;	
 	}
-	
 
+	public House HouseDetail(Connection conn, int no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		House h=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("houseDetail"));
+			pstmt.setInt(1, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				h=new House();
+				h.setHouseNo(rs.getString("house_no")); //숙소번호
+				h.setHostNo(rs.getString("host_no")); //숙소번호
+				h.setHouseName(rs.getNString("house_name")); //숙소이름
+				h.setHouseType(rs.getNString("house_type")); //숙소유형
+				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
+				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
+				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
+				h.setRoomNum(rs.getInt("room_num")); //방갯수
+				h.setBathNum(rs.getInt("bath_num")); //화장실 갯수
+				h.setBedNum(rs.getInt("bed_num")); //침대 갯수
+				h.setHouseComment(rs.getNString("House_comment")); //숙소소개
+				h.setHouseGemsung(rs.getNString("House_gemsung")); //감성글				
+				h.setAttention(rs.getNString("attention")); //주의사항
+				h.setInoutTime(rs.getString("inout_time")); // 체크인아웃 시간
+				h.setPriceDay(rs.getInt("price_day")); // 비수기 평일
+				h.setPriceWeekend(rs.getInt("price_weekend")); //비수기주말
+				h.setPricePeakDay(rs.getInt("price_peak_day")); //성수기평일
+				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); //성수기 주말
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return h;
+	}
 
-		
-
-		public House HouseDetail(Connection conn, int no) {
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			House h=null;
-			try {
-				pstmt=conn.prepareStatement(prop.getProperty("houseDetail"));
-				pstmt.setInt(1, no);
-				rs=pstmt.executeQuery();
-				if(rs.next()) {
-					h=new House();
-					h.setHouseNo(rs.getString("houseNo")); //숙소번호
-					h.setHostNo(rs.getString("hostNo")); //숙소번호
-					h.setHouseName(rs.getNString("houseName")); //숙소이름
-					h.setHouseType(rs.getNString("houseType")); //숙소유형
-					h.setHouseLocation(rs.getNString("houseLocation")); //숙소위치
-					h.setHousePnum(rs.getInt("HousePnum")); //숙소최대인원
-					h.setpObjects(rs.getNString("pObjects")); //개인물건 유무
-					h.setRoomNum(rs.getInt("roomNum")); //방갯수
-					h.setBathNum(rs.getInt("bathNum")); //화장실 갯수
-					h.setBedNum(rs.getInt("bedNum")); //침대 갯수
-					h.setHouseComment(rs.getNString("HouseComment")); //숙소소개
-					h.setHouseGemsung(rs.getNString("HouseGemsung")); //감성글				
-					h.setAttention(rs.getNString("attention")); //
-					h.setInoutTime(rs.getString("inoutTime")); // 체크인아웃 시간
-					h.setPriceDay(rs.getInt("priceDay")); // 비수기 평일
-					h.setPriceWeekend(rs.getInt("priceWeekend")); //비수기주말
-					h.setPricePeakDay(rs.getInt("pricePeakDay")); //성수기평일
-					h.setPricePeakWeekend(rs.getInt("pricePeakWeekend")); //성수기 주말
-					
-				}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}finally {
-				close(rs);
-				close(pstmt);
-			}return h;
-		}
-		
-		
-	
-
+	//숙소사진 인서트하는 다오
 	public int insertPicture(Connection conn,House h,String pic,String type) {
 		PreparedStatement pstmt=null;
 		int result=0;		
@@ -301,6 +299,7 @@ public class HouseDao {
 			close(pstmt);
 		}return result;	
 	}
+	
 	
 	public List<House> selectHostHouse(Connection conn, String hostNo) {
 		PreparedStatement pstmt = null;
@@ -325,6 +324,86 @@ public class HouseDao {
 		
 	}
 	
+
+	//모든 숙소 리스트 받아오는 다오
+	public List<House> selectHouseAll(Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<House> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseAll"));
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				House h = new House();
+				h.setHouseNo(rs.getString("house_no")); //숙소번호
+				h.setHostNo(rs.getString("host_no")); //숙소번호
+				h.setHouseName(rs.getNString("house_name")); //숙소이름
+				h.setHouseType(rs.getNString("house_type")); //숙소유형
+				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
+				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
+				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
+				h.setRoomNum(rs.getInt("room_num")); //방갯수
+				h.setBathNum(rs.getInt("bath_num")); //화장실 갯수
+				h.setBedNum(rs.getInt("bed_num")); //침대 갯수
+				h.setHouseComment(rs.getNString("House_comment")); //숙소소개
+				h.setHouseGemsung(rs.getNString("House_gemsung")); //감성글				
+				h.setAttention(rs.getNString("attention")); //주의사항
+				h.setInoutTime(rs.getString("inout_time")); // 체크인아웃 시간
+				h.setPriceDay(rs.getInt("price_day")); // 비수기 평일
+				h.setPriceWeekend(rs.getInt("price_weekend")); //비수기주말
+				h.setPricePeakDay(rs.getInt("price_peak_day")); //성수기평일
+				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); //성수기 주말
+				list.add(h);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	
+	//한 숙소의 평균평점
+	public Double selectAvgGrade(Connection conn,String houseNo){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Double avg=0.0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectAvgGrade"));
+			pstmt.setString(1, houseNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				avg=rs.getDouble(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return avg;
+	}
+	
+	//성수기 기간 받아오는 다오
+	public List selectPeakDay(Connection conn,House h,String season) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List pList = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectPeakDay"));
+			pstmt.setString(1, season);
+			pstmt.setString(2, h.getHouseNo());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				pList.add(rs.getString(1));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return pList;
+	}
+
 	public int deleteHouse(Connection conn, String houseNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -339,6 +418,26 @@ public class HouseDao {
 			close(pstmt);
 		}return result;
 	}
-	
+
+	//슥소 메인사진 받아오는 다오
+	public String[] selectMainPicture(Connection conn,House h) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String[] pictures=new String[1];
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectMainPicture"));
+			pstmt.setString(1, h.getHouseNo());
+			pstmt.setString(2, "M");
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pictures[0]=rs.getString(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return pictures;
+	}
 
 }

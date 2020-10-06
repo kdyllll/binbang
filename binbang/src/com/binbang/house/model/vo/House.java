@@ -29,6 +29,7 @@ public class House {
 	private int pricePeakWeekend;
 	private String[] filter;
 	private String[] housePicture;
+	private Double avgGrade;
 
 
 	
@@ -42,7 +43,7 @@ public class House {
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
 			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
 			List peakDay5, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend, String[] filter,
-			String[] housePicture) {
+			String[] housePicture, Double avgGrade) {
 		super();
 		this.houseNo = houseNo;
 		this.hostNo = hostNo;
@@ -69,6 +70,7 @@ public class House {
 		this.pricePeakWeekend = pricePeakWeekend;
 		this.filter = filter;
 		this.housePicture = housePicture;
+		this.avgGrade = avgGrade;
 	}
 
 
@@ -373,6 +375,18 @@ public class House {
 
 
 
+	public Double getAvgGrade() {
+		return avgGrade;
+	}
+
+
+
+	public void setAvgGrade(Double avgGrade) {
+		this.avgGrade = avgGrade;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "House [houseNo=" + houseNo + ", hostNo=" + hostNo + ", houseName=" + houseName + ", houseType="
@@ -382,7 +396,8 @@ public class House {
 				+ inoutTime + ", peakDay1=" + peakDay1 + ", peakDay2=" + peakDay2 + ", peakDay3=" + peakDay3
 				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", priceDay=" + priceDay + ", priceWeekend="
 				+ priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend=" + pricePeakWeekend
-				+ ", filter=" + Arrays.toString(filter) + ", housePicture=" + Arrays.toString(housePicture) + "]";
+				+ ", filter=" + Arrays.toString(filter) + ", housePicture=" + Arrays.toString(housePicture)
+				+ ", avgGrade=" + avgGrade + "]";
 	}
 
 
@@ -392,6 +407,7 @@ public class House {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((attention == null) ? 0 : attention.hashCode());
+		result = prime * result + ((avgGrade == null) ? 0 : avgGrade.hashCode());
 		result = prime * result + bathNum;
 		result = prime * result + bedNum;
 		result = prime * result + Arrays.hashCode(filter);
@@ -434,6 +450,11 @@ public class House {
 			if (other.attention != null)
 				return false;
 		} else if (!attention.equals(other.attention))
+			return false;
+		if (avgGrade == null) {
+			if (other.avgGrade != null)
+				return false;
+		} else if (!avgGrade.equals(other.avgGrade))
 			return false;
 		if (bathNum != other.bathNum)
 			return false;
@@ -528,6 +549,7 @@ public class House {
 		return true;
 	}
 
+	
 
 
 
