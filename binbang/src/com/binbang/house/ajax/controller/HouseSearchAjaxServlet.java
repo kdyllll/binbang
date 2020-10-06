@@ -42,10 +42,16 @@ public class HouseSearchAjaxServlet extends HttpServlet {
 		//하우스 목록 검색한 기준에 맞춰 가져와야함(일단은 임시로 다 가져오기)
 		List<House> house=new HouseService().selectHouseAll();
 		
+		
+		
 		//관심숙소 목록
 		List<Favorite> favorite=new MemberService().selectFavList(m);	
 		
 		for(House h:house) {
+			//사진 House객체에 넣기
+			h.setHousePicture(new HouseService().selectMainPicture(h));
+			
+			
 			//평균평점
 			h.setAvgGrade(new HouseService().selectAvgGrade(h.getHouseNo()));
 			

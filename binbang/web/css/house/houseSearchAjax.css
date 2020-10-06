@@ -136,30 +136,7 @@
 .housePic1{
     background-image:  url("../../image/house/houseSearch/house/house1.jpg");
 }
-.housePic2{
-    background-image:  url("../../image/house/houseSearch/house/house2.jpg");
-}
-.housePic3{
-    background-image:  url("../../image/house/houseSearch/house/house3.png");
-}
-.housePic4{
-    background-image:  url("../../image/house/houseSearch/house/house4.jpg");
-}
-.housePic5{
-    background-image:  url("../../image/house/houseSearch/house/house5.webp");
-}
-.housePic6{
-    background-image:  url("../../image/house/houseSearch/house/house6.png");
-}
-.housePic7{
-    background-image:  url("../../image/house/houseSearch/house/house7.jpg");
-}
-.housePic8{
-    background-image:  url("../../image/house/houseSearch/house/house8.webp");
-}
-.housePic9{
-    background-image:  url("../../image/house/houseSearch/house/house9.jpg");
-}
+
 .iconLocation{
     background-image: url("../../image/house/houseSearch/listicon/pin.png");
 }

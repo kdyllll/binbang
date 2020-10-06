@@ -1,3 +1,4 @@
+<%@page import="com.binbang.member.model.vo.Member"%>
 <%@page import="com.binbang.house.model.vo.Review"%>
 <%@page import="com.binbang.member.model.vo.Favorite"%>
 <%@page import="com.binbang.house.model.vo.House"%>
@@ -18,7 +19,6 @@
 </head>
 <body>
 	<div class="wrap">
-		<%@ include file="/views/common/header.jsp"%>
 			<!-- 지도 -->
 			<div class="map">지도</div>
 			<!-- 선 -->
@@ -31,7 +31,7 @@
 				<div class="house">
 
 					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
-						class="housePic1"></a>
+						class="housePic" style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 					<div class="houseContents">
 
 						<div class="contentSection1">
@@ -94,7 +94,6 @@
 					}
 				%>
 			</div>
-		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

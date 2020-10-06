@@ -148,6 +148,16 @@ public class HouseService {
 		return result;
 
 	}
+	
+	public String[] selectMainPicture(House h) {
+		Connection conn = getConnection();
+		String[] pictures = dao.selectMainPicture(conn,h);
+		close(conn);
+		return pictures;
+	}
+
+	
+	
 
 
 }
