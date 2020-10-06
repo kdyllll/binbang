@@ -1,4 +1,4 @@
-package com.binbang.house.ajax.controller;
+package com.binbang.host.ajax.controller;
 
 import java.io.IOException;
 import java.util.List;
