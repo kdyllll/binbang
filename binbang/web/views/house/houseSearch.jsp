@@ -208,11 +208,11 @@
 			let standard=$(e.target).val();
 			
 			function customSort(a, b) { 
-				if(a.houseNo == b.houseNo){ return 0} return a.houseNo > b.houseNo ? 1 : -1; 
+				if(a.houseNo == b.houseNo){ return 0} return a.houseNo > b.houseNo ? -1 : 1; 
 			} 
 			houseList.sort(customSort); 
 
-			console.dir("정렬 후"+houseList);
+			console.dir("정렬 후"+JSON.stringify(houseList));
 		});
 		
 		//금액 검색 누를때
