@@ -20,11 +20,11 @@
 				<p class="title">이메일 인증</p>
 				<div class="line"></div>
 				
-				<div class="line1">
-				
-				<input type="hidden" name="email" id="email">
-				
-				[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. <input type="button" value="인증하기" id="emailConfirm">  
+				<div class="line1">											
+				[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. <input type="button" value="인증하기" id="emailConfirm"> 
+				 
+				 <!-- 임시logic -->
+				 <input type="hidden" value="<%=request.getParameter("email")%>" name="email" id="email1">  
 				</div>		
 								
 				<p class="checkTitle">인증번호</p>				
@@ -38,7 +38,7 @@
 				<form>
 					<div id="resend">
 						<p id="timer"> </p>
-						<input type="button" value="재전송" style="" id="resendBtn" onclick="resendNum();" id="reconfirm">									
+						<input type="button" value="재전송" style="display:none;" id="resendBtn" onclick="resendNum();" id="reconfirm">									
 					</div>
 				</form>												
 				
@@ -64,28 +64,23 @@
 /* 이메일 인증 */
 $("#emailConfirm").click(e => {
 	$.ajax({
-		url:"<%=request.getContextPath()%>/member/checkConfirmNumber",
+		url:"<%=request.getContextPath()%>/member/memberEmailConfirm",
 		type:"post",
-		data:{"email":$("#email").val()},
+		data:{"email": $("#email1").val()},
 		dataType:"html",
 		success:data => {
-			if($("#email").val().trim().length==0){
-				alert("이메일을 확인해주세요.");
-				return;
-			}else{
 				alert("인증번호가 발송되었습니다.");
 				sendNum();
-			}			
-		},
-		error:(request,status,error)=>{
-			console.log(request);
-			console.log(status);
-			console.log(error);
-		}
-		
+			},
+    	error:(request,status,error)=>{
+				console.log(request);
+				console.log(status);
+				console.log(error);
+				
+				}
+		});		
 	});
 	
-});
 	
 	
 	
@@ -127,14 +122,13 @@ function resendNum(){
 
 /* 인증시간 */
 function sendNum(){	
-	document.getElementById("reconfirm").style.display="";
+	document.getElementById("reconfirm").style.display="block";
 	
 	x=setInterval(function(){
 		min=parseInt(time/60);
 		sec=time%60;
 		document.getElementById("timer").innerHTML="인증 시간 : "+min+"분"+sec+"초";
 		time--;
-		let test = document.getElementById("reconfirm");
 	},1000);
 };
 

@@ -29,12 +29,14 @@ public class MemberDuplicateCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+		 //입력한 email
 		String email=request.getParameter("email");
+		//존재한 email과 비교한 후 result
 		String result=new MemberService().emailCheck(email);
 		
+		
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("/views/member/duplicateCheck.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/member/duplicateCheckAjax.jsp").forward(request, response);
 	}
 
 	/**
