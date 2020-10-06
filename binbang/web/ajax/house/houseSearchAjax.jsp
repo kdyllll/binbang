@@ -1,21 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="com.binbang.member.model.vo.Member"%>
 <%@page import="com.binbang.house.model.vo.Review"%>
 <%@page import="com.binbang.member.model.vo.Favorite"%>
 <%@page import="com.binbang.house.model.vo.House"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ include file="/views/common/commonLink.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/house/houseSearchAjax.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <%
 	List<House> house = (List<House>)request.getAttribute("house");
-	List<Favorite> favorite=(List<Favorite>)request.getAttribute("fav");
+	List<Favorite> favorite=(List<Favorite>)request.getAttribute("favorite");
 	Member member = (Member) session.getAttribute("m");
+	
 %>
-
-<%@ include file="/views/common/commonLink.jsp"%>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/house/houseSearchAjax.css" />
 </head>
 <body>
 	<div class="wrap">
@@ -36,16 +34,18 @@
 
 						<div class="contentSection1">
 							<p class="houseName"><%=h.getHouseName()%></p>
-							<div class="heartCommon fav">
+							<div class="heartCommon heart">
 							<%
-							for(Favorite f : favorite){
-								if(f.getHouseNo().equals(h.getHostNo())){
-									//이집이 관심숙소 리스트에 있는 집이면 heart %>							
-							  	<script> 
-							  	$(".heartCommon").removeClass(".fav"); 
-							  	$(".heartCommon").addClass(".heart"); 
-							  	</script>
-							  	<%}
+							if(favorite!=null){
+								for(Favorite f : favorite){
+									if(f.getHouseNo().equals(h.getHouseNo())){
+										//이집이 관심숙소 리스트에 있는 집이면 heart %>							
+								  	<script> 
+								  	$(".heartCommon").removeClass(".heart"); 
+								  	$(".heartCommon").addClass(".fav"); 
+								  	</script>
+								  	<%}
+								}
 							}
 							%>
 							</div>
@@ -97,7 +97,7 @@
 	</div>
 	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/houseSearchMap.js"></script>
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 </body>
 </html>
