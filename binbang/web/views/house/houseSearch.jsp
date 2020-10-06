@@ -110,7 +110,7 @@
 
 	<script>
 		$.ajax({
-	        url:"<%=request.getContextPath()%>/ajax/houseSearchAjax",
+	        url:"<%=request.getContextPath()%>/house/houseSearchAjax",
 	        /* data:{"name" : "다예가 보내주는 정보"}, */
 	        type:"post",
 	        dataType: "html",
