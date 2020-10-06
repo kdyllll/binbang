@@ -15,6 +15,7 @@ import com.binbang.house.model.vo.House;
 import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Favorite;
 import com.binbang.member.model.vo.Member;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class HouseSearchListServlet
@@ -116,6 +117,7 @@ public class HouseSearchListServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("house", house);
+		request.setAttribute("houseJson", new Gson().toJson(house));
 		request.getRequestDispatcher("/views/house/houseSearch.jsp").forward(request, response);
 	}
 

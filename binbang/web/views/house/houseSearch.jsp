@@ -9,9 +9,9 @@
 <%@ page import="java.util.List,com.binbang.house.model.vo.House"%>
 <%
 	List<House> house = (List<House>) request.getAttribute("house");
-List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
-Member member = (Member) session.getAttribute("m");
-String pageBar = (String) request.getAttribute("pageBar");
+	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
+	Member member = (Member) session.getAttribute("m");
+	String pageBar = (String) request.getAttribute("pageBar");
 %>
 </head>
 <body>
@@ -37,7 +37,7 @@ String pageBar = (String) request.getAttribute("pageBar");
 					</ul>
 				</form>
 
-				<form name="priceForm" class="btnCon">
+				<form id="priceForm" name="priceForm" class="btnCon">
 					<div class="btn">
 						<p class="btnText">요금</p>
 						<div class="arrow"></div>
@@ -62,7 +62,7 @@ String pageBar = (String) request.getAttribute("pageBar");
 					</ul>
 				</form>
 
-				<form name="filterForm" class="btnCon">
+				<form id="filterForm" name="filterForm" class="btnCon">
 					<div class="btn">
 						<p class="btnText">필터</p>
 						<div class="arrow"></div>
@@ -200,64 +200,29 @@ String pageBar = (String) request.getAttribute("pageBar");
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
 
-	<script>
-
-		
+	<script>	
+		let houseList=<%=request.getAttribute("houseJson")%>;
+		console.log(houseList);
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click",function(e){
-			$.ajax({
-				url:"<%=request.getContextPath()%>/house/houseSort",
-				data:{"key":$(e.target).val()},
-				type:"post",
-				dataType:"html",
-				success: (data)=>{
-					$(".section2").children().remove();
-			     	$(".section2").html(data);
-				},
-				error: (request, status, error) => {
-		            console.log(request);
-		            console.log(status);
-		            console.log(error);
-		        }
-			});
+			let standard=$(e.target).val();
+			
+			function customSort(a, b) { 
+				if(a.houseNo == b.houseNo){ return 0} return a.houseNo > b.houseNo ? 1 : -1; 
+			} 
+			houseList.sort(customSort); 
+
+			console.dir("정렬 후"+houseList);
 		});
+		
 		//금액 검색 누를때
 		$("#filterBtn").on("click",function(e){
-			var param = $("form[name=priceForm]").serialize(); //자동으로 쿼리스트링으로 바꿔서 보내줌
-			$.ajax({
-				url:"<%=request.getContextPath()%>/house/priceSort",
-				data:param,
-				type:"post",
-				dataType:"html",
-				success: (data)=>{
-					$(".section2").children().remove();
-			     	$(".section2").html(data);
-				},
-				error: (request, status, error) => {
-		            console.log(request);
-		            console.log(status);
-		            console.log(error);
-		        }
-			});
+			
 		});
+		
 		//필터 검색 누를 때
 		$("#priceBtn").on("click",function(e){
-			var param = $("form[name=filterForm]").serialize();
-			$.ajax({
-				url:"<%=request.getContextPath()%>/house/filterSort",
-				data:param,
-				type:"post",
-				dataType:"html",
-				success: (data)=>{
-					$(".section2").children().remove();
-			     	$(".section2").html(data);
-				},
-				error: (request, status, error) => {
-		            console.log(request);
-		            console.log(status);
-		            console.log(error);
-		        }
-			});
+			
 		});
 		
 		
