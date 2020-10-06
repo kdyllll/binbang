@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
+import com.binbang.house.model.vo.Review;
 
 
 
@@ -37,7 +38,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
-		int no=Integer.parseInt(request.getParameter("no"));
+		int no=Integer.parseInt(request.getParameter("houseNo"));
 		
 		
 		House h=new HouseService().HouseDetail(no);
@@ -47,7 +48,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				String path="";
 				if(h==null) {
 					//선택한 공지사항이 삭제됨.
-					msg="선택한 공지사항이 존재하지 않습니다.";
+					msg="선택한 숙소가 존재하지 않습니다.";
 					loc="/house/houseSearch";
 					path="/views/common/msg.jsp";
 					request.setAttribute("msg",msg);
@@ -57,10 +58,17 @@ public class HouseDetailMoveServlet extends HttpServlet {
 					path="/views/house/houseDetail.jsp";
 				}
 		
+				//리뷰연결 
+				Review r=new HouseService().ReviewDetail(no);
+			
+					request.setAttribute("review",r);
+					path="/views/house/houseDetail.jsp";
+				
+				
 	
 				request.getRequestDispatcher(path).forward(request, response);
 
-	
+			
 	}
 
 	/**

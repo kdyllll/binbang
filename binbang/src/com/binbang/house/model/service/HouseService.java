@@ -23,6 +23,13 @@ public class HouseService {
 		 return h;
 	}
 	
+	public Review ReviewDetail(int no) {
+		Connection conn=getConnection();
+		Review r=dao.ReviewDetail(conn, no);
+		 close(conn);
+		 return r;
+	}
+	
 
 	public House BinbangDetail(int no) {
 		Connection conn = getConnection();

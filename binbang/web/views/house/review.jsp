@@ -15,35 +15,35 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-<form action="<%=request.getContextPath()%>/review/reviewEnd" method="post" >
+<form action="<%=request.getContextPath()%>/house/houseDetailMove" method="post" >
 		<section class="section">
 			<div class="review">
+			
 				<div class="Writerating">후기 작성</div>
 				<div class="grade">평점</div>
 				<div class="gradebox">
 					<div class="star-box">
-						<span class="star star_left 0.5"></span> <span class="star star_right 1" ></span>
+						<input class="star star_left 0.5"> <input class="star star_right 1" >
 
-						<span class="star star_left 1.5"></span> <span class="star star_right 2"></span>
+						<input class="star star_left 1.5"> <input class="star star_right 2">
 
-						<span class="star star_left 2.5"></span> <span class="star star_right 3"></span>
+						<input class="star star_left 2.5"> <input class="star star_right 3">
 
-						<span class="star star_left 3.5"></span> <span class="star star_right 4"></span>
+						<input class="star star_left 3.5"> <input class="star star_right 4">
 
-						<span class="star star_left 4.5"></span> <span class="star star_right 5"></span>
+						<input class="star star_left 4.5"> <input class="star star_right 5">
 					</div>
 				</div>
 
 
 				<div class="title1">제목</div>
 				<input class="titleWrite" type="text" placeholder="제목을 입력하세요">
-
+				
 				<div class="file">첨부파일</div>
 
-
-
-				<input type="file" id="upload"multiple ">
+				<input type="file" id="upload" multiple>
 				<div id="imgContainer"></div>
+				
 				<script>
          
          $("#upload").change(e =>{

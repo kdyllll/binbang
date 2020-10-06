@@ -1,30 +1,26 @@
-package com.binbang.house.ajax.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.binbang.booking.model.service.BookingService;
 import com.binbang.house.model.service.HouseService;
-import com.binbang.house.model.vo.House;
-import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class HouseManageAjaxServlet
+ * Servlet implementation class HouseRequestAcceptServlet
  */
-@WebServlet("/house/houseManageAjax")
-public class HouseManageAjaxServlet extends HttpServlet {
+@WebServlet("/host/houseRequestAccept")
+public class HouseRequestAcceptServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseManageAjaxServlet() {
+    public HouseRequestAcceptServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,11 +30,10 @@ public class HouseManageAjaxServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		Member m = (Member)session.getAttribute("m");
-		List<House> list = new HouseService().selectHostHouse(m.getHostNo());
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/ajax/house/houseManage.jsp").forward(request, response);
+		String reservNo = request.getParameter("reservNo");
+		int result = new BookingService().acceptBooking(reservNo);
+		request.setAttribute("loc", "/host/houseRequestAjax");
+		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
 	}
 
 	/**

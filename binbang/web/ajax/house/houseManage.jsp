@@ -65,7 +65,7 @@
 </div>
 <script>
 	$(".deleteH").on("click",e => {
-		$(".houseAll").attr("action","<%=request.getContextPath()%>/house/houseDelete").submit();
+		$(".houseAll").attr("action","<%=request.getContextPath()%>/host/houseDelete").submit();
 	})
 </script>
 

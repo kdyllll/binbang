@@ -4,7 +4,6 @@
 <%@ include file="/views/common/commonLink.jsp"%>
 <%
 	Host h = (Host) request.getAttribute("host");
-
 	String loc = (String) request.getAttribute("loc");
 %>
 <link rel="stylesheet"
@@ -44,9 +43,9 @@
 				</div>
 			</form>
 			<ul class="houseRequest">
-				<li class="<%=loc.equals("/house/houseManageAjax") ? "borderTop" : "" %>">숙소관리</li>
-				<li class="<%=loc.equals("/house/houseRequestAjax") ? "borderTop" : "" %>">숙소요청</li>
-				<li class="<%=loc.equals("/house/houseRequestResultAjax") ? "borderTop" : "" %>">숙소현황</li>
+				<li class="<%=loc.equals("/host/houseManageAjax") ? "borderTop" : "" %>">숙소관리</li>
+				<li class="<%=loc.equals("/host/houseRequestAjax") ? "borderTop" : "" %>">숙소요청</li>
+				<li class="<%=loc.equals("/host/houseRequestResultAjax") ? "borderTop" : "" %>">숙소현황</li>
 			</ul>
 			<form class="myHouse"></form>
 
@@ -54,7 +53,6 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
-
 		let url = "<%=request.getContextPath()%><%=loc%>";	
 	 	ajaxTest();
        $(".houseRequest > li").on("click", function (e) {
@@ -62,11 +60,11 @@
         $(e.target).addClass("borderTop");
         let target = $(e.target).html();
         if (target == "숙소관리") {
-          url = "<%=request.getContextPath()%>/house/houseManageAjax";
+          url = "<%=request.getContextPath()%>/host/houseManageAjax";
         } else if (target == "숙소요청") {
-          url = "<%=request.getContextPath()%>/house/houseRequestAjax";
+          url = "<%=request.getContextPath()%>/host/houseRequestAjax";
         } else {
-          url = "<%=request.getContextPath()%>/house/houseRequestResultAjax";
+          url = "<%=request.getContextPath()%>/host/houseRequestResultAjax";
         }
         ajaxTest();
       });
@@ -78,7 +76,8 @@
                type:"post",
                dataType: "html",
                success: (data) => {
-            	   $(".myHouse").html(data);            	  
+            	   $(".myHouse").html(data);      
+
                },
                error: (request, status, error) => {
                    console.log(request);

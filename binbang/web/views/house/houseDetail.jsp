@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.List,com.binbang.house.model.vo.House"%>
+<%@page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
-	/*  List<House> list = (List)request.getAttribute("list"); */
-
-
+	
+	House h=(House)request.getAttribute("house");
+	Review r=(Review)request.getAttribute("riview");
 %>
 
 <%
@@ -67,13 +67,12 @@
 				</div>
 				<div class="info">
 					<div class="title">
-						써니 사이드업
+						<%=h.getHouseName() %>
 						<div class="heartCommon heart"></div>
 					</div>
 					<br> <br> <br>
 					<div class="titleInfo">
-						밤과 음악사이는 청춘남녀들을 위한 청춘 숙소입니다 <br> <br> check in 15:00 <br>
-						check out 11:00 <br>
+						<%=h.getHouseComment() %> <br> <br>	<%=h.getInoutTime() %> <br><br>
 					</div>
 					<div class="host">
 						<div class="hostInfo">
@@ -83,7 +82,7 @@
 					<br>
 
 					<div class="pricebox">
-						<div class="price">$ 150,000 WON</div>
+						<div class="price"><%=h.getPricePeakWeekend() %> won</div>
 					</div>
 					<br> <br>
 					<div class="paybox">
@@ -101,16 +100,26 @@
 
 			<div class="houseinfobox">
 				<div class="houseinfo">
-					<div>
-						201호 <br> <br> 체크인 16:00/체크아웃 <br> <br> <br>
-						기준 인원 2명 / 최대인원 4명 <br> <br> 객식면적 10㎡<br> <br>
-						더블배드 1
+					<div class="infoDetail">
+						<div><%=h.getHouseName()%></div><br><br><br><br><br><br><br>
+						<div><%=h.getInoutTime()%></div><br><br>
+						<div><%=h.getHouseLocation()%></div><br><br>
 					</div>
+					<div class="infoDetail2">
+						<div>숙박허용인원 <%=h.getHousePnum()%> 명</div><br>
+						<div>숙소 유형 <%=h.getHouseType()%></div><br>
+						<div>숙소 방 갯수 <%=h.getRoomNum()%></div><br>
+						<div>숙소 화장실 갯수<%=h.getBathNum()%></div><br>
+						<div>숙소 침대 갯수<%=h.getBedNum()%></div><br>
+					</div>	
+						 <br> <br> 
+						 
+					
+					
 				</div>
 				<div class="houseIntroduce">
 					<div>
-						오픈플랜으로 구성된 정수리 아파트 4개의 객실중, 201호애는 욕조가 마련되어있습니다. <br> 여행의 피로를
-						풀며 편안한 휴식을 취할수 있습니다
+						<%=h.getHouseComment()%>
 					</div>
 
 
@@ -189,10 +198,7 @@
 			</div>
 
 			<div class="houseinfobox2">
-				<div class="houseIntroduce2">바다와 하나가 된 듯한 느낌이 드는 인피니티풀은 여름을
-					제외한 4월~11월 기간 미온수 신청도 가능하여 쌀쌀한 봄, 가을날도 춥지 않게 수영을 즐길 수 있다. 또한 모든
-					객실에서 바베큐 그릴을 이용할 수 있다고 하니, 소중한 사람들과 함께 온전한 휴식을 즐기는데에 최적의 환경이 아닐까.
-					각박한 현실에서 벗어나 숨 돌릴 여유가 필요한 지금, 하늘과 바다를 품은 풀빌라에서의 황홀한 휴식이 기다리고 있다.</div>
+				<div class="houseIntroduce2"><%=h.getHouseGemsung() %></div>
 				<div class="houseinfo2"></div>
 
 			</div>
@@ -213,9 +219,9 @@
 						<div class="customer">
 							<div class="gradeall">
 								<div class="gradeinfo">
-									<div class="a">평점 :</div>
+									<div class="a">평점 : </div>
 									<br> <br>
-									<div class="b">제목 :</div>
+									<div class="b">제목 : </div><%-- <%=r.getCommentTitle()%> --%>
 									<br> <br>
 									<div class="c">내용 :</div>
 									<div class="ex">댓글 등록하기</div>
@@ -312,12 +318,11 @@
 										<table id='tbl-board'>
 											<div>
 												<div>제목 : </div>
-												<div><%-- <%=loginMember.getUserId()%>  --%></div><br>
+												<div><%-- <%=r.getCommentTitle()%>  --%></div><br> 
 											</div>
 											<div>
 												<div>작성자 : </div>
-												<div><input type="text" name="writer" 
-							            value="" readonly></div><br>
+												<div><%-- <%=m.getNickName()%>  --%></div><br>
 											</div>
 											
 											<div>
@@ -326,7 +331,7 @@
 											</div>
 											<div>
 												<div colspan="2">
-													   <input type="submit" value="등록하기" onclick=>
+													   <input type="submit" value="등록하기" onclick="">
 												</div>
 											</div>
 										</table>
