@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.binbang.booking.model.service.BookingService;
 import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
@@ -37,6 +38,7 @@ public class HouseRequestAjaxServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("m");
+		List<Booking> list = new BookingService().selectHostRequest();
  
 		request.getRequestDispatcher("/ajax/house/houseRequest.jsp").forward(request, response);
 	}
