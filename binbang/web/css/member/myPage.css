@@ -262,8 +262,11 @@ button {
 }
 
 .passTitle{
-margin : 5%;
-margin-left : 9%;
+width: 21%;
+padding: 1%;
+margin : 4%;
+margin-left : 8%;
+ /* border-bottom: 1.4px solid; */ 
 }
 
 .passLine{
@@ -273,6 +276,12 @@ margin : 3%;
 .passLine input{
 margin : 5%;	
 }
+.passLine #passInput{
+border-bottom: 1px gray solid;	
+}
+
+
+
 
 
 .passwordCheck .checkBtn{
@@ -291,12 +300,6 @@ margin : 5%;
 	border: none;
 	box-sizing: border-box;	
 }
-
-
-
-
-
-
 
 
 

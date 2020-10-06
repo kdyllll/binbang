@@ -37,10 +37,11 @@ public class MemberEmailConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String userId = request.getParameter("email");
-		String mesg="";
-		String loc="";
-					
+		String userId = request.getParameter("email");				
+		//임시변수
+		String sendEmail=userId;
+		
+		
 		String host="smtp.naver.com";
 		String user="tnrud2668@naver.com";
 		String password="spdlqj7547";
@@ -55,7 +56,8 @@ public class MemberEmailConfirmServlet extends HttpServlet {
         props.put("mail.smtp.ssl.trust", "smtp.naver.com"); 
         
         StringBuffer temp =new StringBuffer();
-        Random rnd = new Random();
+        Random rnd = new Random();        
+        
         for(int i=0;i<10;i++)
         {
             int rIndex = rnd.nextInt(3);
@@ -88,7 +90,7 @@ public class MemberEmailConfirmServlet extends HttpServlet {
         try {
             MimeMessage msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(user, "BINBANG"));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(userId));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
                         
             msg.setSubject("빈방 인증 메일입니다.");            
             msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
@@ -100,8 +102,9 @@ public class MemberEmailConfirmServlet extends HttpServlet {
         }
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-		}
-//		request.getRequestDispatcher("/views/member.findPasswordAjax.jsp").forward(request, response);
+
+	}
+		
 		
 	
 
