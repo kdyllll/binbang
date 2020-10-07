@@ -31,8 +31,6 @@ public class MemberDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String email=request.getParameter("email");
-		
-		
 		int result=new MemberService().deleteMember(email);
 		String msg="";
 		String loc="";
@@ -46,7 +44,7 @@ public class MemberDeleteServlet extends HttpServlet {
 			}
 		}else {
 			msg="탈퇴실패";
-			loc="/member/myPage";
+			loc="/views/member/myPage";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
