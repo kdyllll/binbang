@@ -15,24 +15,22 @@
 <body>
 	<div class="wrap">
 
-		<!-- 2. 총 보유쿠폰 -->
-		<div class="coupon">
-			<div class="couponSum">
-				<div class="couponContents">
-					현재보유쿠폰 :
-					<%=m.getCoupon()%>
-					개
+		<!-- 2. 총 포인트 -->
+		<div class="point">
+			<div>
+				<div class="pointContents">
+					POINT : <%=m.getPoint()%>					
 				</div>
 			</div>
 
 			<!-- 구분선 -->
-			<!-- 쿠폰사용/생성시 마다 추가되는 로직 -->
-			<div class="couponCount">
+			<!-- 포인트사용/추가시 마다 추가되는 로직 -->
+			<div class="pointCount">
 				<div class="line6"></div>
 				<ul>
 					<li class="addDate">2020-09-05</li>
 					<li class="addContent">이나주니 집사용</li>
-					<li class="addCoupon">1박쿠폰 -</li>
+					<li class="addpoint">100,000,000 point 사용</li>
 				</ul>
 				<div class="line7"></div>
 			</div>

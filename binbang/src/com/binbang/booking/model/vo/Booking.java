@@ -17,7 +17,7 @@ public class Booking {
 	private Date reservDate;
 	private String memberEmail;
 	private String houseName;
-	
+
 	public Booking() {
 		// TODO Auto-generated constructor stub
 	}

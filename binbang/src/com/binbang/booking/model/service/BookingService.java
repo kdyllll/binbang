@@ -1,5 +1,6 @@
 package com.binbang.booking.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.binbang.booking.model.dao.BookingDao;
@@ -10,6 +11,8 @@ import static com.binbang.common.JDBCTemplate.rollback;
 import static com.binbang.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class BookingService {
 	private BookingDao dao = new BookingDao();
@@ -44,6 +47,15 @@ public class BookingService {
 		close(conn);
 		return list;
 	}
+	
+	public List<Booking> reserveDoneList(String memberNo) {
+		Connection conn = getConnection();
+		List<Booking> list = dao.reserveDoneList(conn,memberNo);
+		close(conn);
+		return list;
+	}
+	
+	
 	
 	
 }
