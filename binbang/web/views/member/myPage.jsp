@@ -42,9 +42,9 @@
 			<div class="nav">
 				<div class="line5"></div>
 				<ul>
-					<li><button id="changeStayed">숙소</button></li>
-					<li><button id="changeCoupon">쿠폰</button></li>
-					<li><button id="changeModify">개인정보수정</button></li>
+					<li><button id="changeStayed">HOUSE</button></li>
+					<li><button id="changePoint">POINT</button></li>
+					<li><button id="changeModify">PRIVATE</button></li>
 				</ul>
 			</div>
 
@@ -58,7 +58,8 @@
 
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 
-	<script>		
+	<script>	
+
 	//myPagePCKAjax로 이동
 		$("#changeModify").click(e=>{
 			$.ajax({
@@ -76,10 +77,10 @@
 			});												
 		});
 	
-	//myPageCouponAjax로 이동
-		$("#changeCoupon").click(e=>{
+	//myPagePointAjax로 이동
+		$("#changePoint").click(e=>{
 			$.ajax({
-				url:"<%=request.getContextPath()%>/member/mypageCouponAjax",
+				url:"<%=request.getContextPath()%>/member/mypagePointAjax",
 				dataType:"html",
 				success:data=>{
 					$("#AllContents").children().remove();

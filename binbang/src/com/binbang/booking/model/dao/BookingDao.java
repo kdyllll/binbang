@@ -3,6 +3,7 @@ package com.binbang.booking.model.dao;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -82,6 +83,7 @@ public class BookingDao {
 				b.setApprovalDate(rs.getDate("approval_date"));
 				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
+				b.setHouseRequest(rs.getString("house_request"));
 				list.add(b);
 			}
 
@@ -122,6 +124,39 @@ public class BookingDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public List<Booking> reserveDoneList(Connection conn,String memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("reserveDoneList"));
+			pstmt.setString(1, memberNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Booking b = new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setPaymentOption(rs.getString("payment_option"));
+				b.setPrice(rs.getInt("price"));
+				b.setApprovalDate(rs.getDate("approval_date"));
+				b.setMemberEmail(rs.getString("email"));
+				b.setHouseName(rs.getString("house_name"));
+				b.setHouseRequest(rs.getString("house_request"));
+				list.add(b);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
 	}
 
 }

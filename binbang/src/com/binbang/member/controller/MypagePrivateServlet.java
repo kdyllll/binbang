@@ -1,4 +1,4 @@
-package com.binbang.member.ajax.controller;
+package com.binbang.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MypagePrivateAjaxServlet
+ * Servlet implementation class MypagePrivateServlet
  */
-@WebServlet("/member/mypagePrivateAjax")
-public class MypagePrivateAjaxServlet extends HttpServlet {
+@WebServlet("/member/mypagePrivate")
+public class MypagePrivateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypagePrivateAjaxServlet() {
+    public MypagePrivateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +26,8 @@ public class MypagePrivateAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//private 페이지로 이동
-		request.getRequestDispatcher("/ajax/member/myPagePrivateAjax.jsp").forward(request, response);		
+
+		request.getRequestDispatcher("/ajax/member/myPagePrivate.jsp").forward(request, response);
 	}
 
 	/**

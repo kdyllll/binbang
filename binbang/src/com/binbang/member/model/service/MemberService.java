@@ -64,9 +64,9 @@ public class MemberService {
 	
 	
 	//mypage 조회
-	public Member selectInf(String email) {
+	public Member selectInfo(String email) {
 		Connection conn=getConnection();
-		Member m=dao.selecInf(conn,email);
+		Member m=dao.selecInfo(conn,email);
 		close(conn);
 		return m;
 	}

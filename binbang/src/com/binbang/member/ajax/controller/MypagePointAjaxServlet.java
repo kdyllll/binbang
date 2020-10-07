@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MypageCouponAjaxServlet
  */
-@WebServlet("/member/mypageCouponAjax")
-public class MypageCouponAjaxServlet extends HttpServlet {
+@WebServlet("/member/mypagePointAjax")
+public class MypagePointAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageCouponAjaxServlet() {
+    public MypagePointAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class MypageCouponAjaxServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/ajax/member/myPageCouponAjax.jsp").forward(request, response);
+		request.getRequestDispatcher("/ajax/member/myPagePointAjax.jsp").forward(request, response);
 		
 	}
 
