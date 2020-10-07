@@ -1,4 +1,4 @@
-package com.binbang.admin.ajax.controller;
+package com.binbang.admin.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.google.gson.Gson;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.member.model.vo.Member;
+import com.binbang.house.model.vo.House;
 
 /**
- * Servlet implementation class MemberListJsonServlet
+ * Servlet implementation class SearchHouseListServelt
  */
-@WebServlet("/admin/memberListJson")
-public class MemberListJsonServlet extends HttpServlet {
+@WebServlet("/admin/searchHouseList")
+public class SearchHouseListServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberListJsonServlet() {
+    public SearchHouseListServelt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,9 +32,11 @@ public class MemberListJsonServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Member> list=new AdminService().selectMemberAll();
-		response.setContentType("aplication/json;charset=utf-8");
-		new Gson().toJson(list,response.getWriter());
+		String type=request.getParameter("searchType");
+		String keyword=request.getParameter("searchKeyword");
+		List<House> list=new AdminService().searchHouseList(type,keyword);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/houseList.jsp").forward(request, response);
 		
 	}
 

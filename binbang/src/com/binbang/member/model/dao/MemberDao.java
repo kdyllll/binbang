@@ -45,7 +45,7 @@ public class MemberDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setCoupon(rs.getInt("coupon"));
+				m.setPoint(rs.getInt("point"));
 				m.setHostBlack(rs.getString("host_black"));				
 				m.setHostConfirm(rs.getString("host_confirm"));
 				m.setHostNo(rs.getString("host_no"));
@@ -138,7 +138,7 @@ public class MemberDao {
 				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setCoupon(rs.getInt("coupon"));
+				m.setPoint(rs.getInt("point"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -221,7 +221,7 @@ public class MemberDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setCoupon(rs.getInt("coupon"));
+				m.setPoint(rs.getInt("point"));
 				m.setHostBlack(rs.getString("host_Black"));				
 			}		
 		}catch(SQLException e) {

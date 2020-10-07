@@ -3,6 +3,7 @@ package com.binbang.host.model.vo;
 import java.sql.Date;
 
 public class Host {
+	
 	private String hostEmail;
 	private String hostName;
 	private String hostNo;
@@ -16,14 +17,15 @@ public class Host {
 	private Date hostEnrollDate;
 	private Date hostAcceptDate;
 	private String hostConfirm;
+	private String hostBlack; 
 	
 	public Host() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Host(String hostEmail,String hostName,String hostNo, String memberNo, String idCard, String profilePic, String intro, int complaintCount,
-			Date hostEnrollDate, Date hostAcceptDate, String hostConfirm) {
+	public Host(String hostEmail, String hostName, String hostNo, String memberNo, String memberName,
+			String memberPhone, String idCard, String profilePic, String intro, int complaintCount, Date hostEnrollDate,
+			Date hostAcceptDate, String hostConfirm, String hostBlack) {
 		super();
 		this.hostEmail = hostEmail;
 		this.hostName = hostName;
@@ -38,6 +40,23 @@ public class Host {
 		this.hostEnrollDate = hostEnrollDate;
 		this.hostAcceptDate = hostAcceptDate;
 		this.hostConfirm = hostConfirm;
+		this.hostBlack = hostBlack;
+	}
+
+	public String getHostEmail() {
+		return hostEmail;
+	}
+
+	public void setHostEmail(String hostEmail) {
+		this.hostEmail = hostEmail;
+	}
+
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
 	}
 
 	public String getHostNo() {
@@ -128,32 +147,24 @@ public class Host {
 		this.hostConfirm = hostConfirm;
 	}
 
-	public String getHostName() {
-		return hostName;
+	public String getHostBlack() {
+		return hostBlack;
 	}
 
-	public void setHostName(String hostName) {
-		this.hostName = hostName;
-	}
-
-	public String getHostEmail() {
-		return hostEmail;
-	}
-
-	public void setHostEmail(String hostEmail) {
-		this.hostEmail = hostEmail;
+	public void setHostBlack(String hostBlack) {
+		this.hostBlack = hostBlack;
 	}
 
 	@Override
 	public String toString() {
-
 		return "Host [hostEmail=" + hostEmail + ", hostName=" + hostName + ", hostNo=" + hostNo + ", memberNo="
-				+ memberNo + ", idCard=" + idCard + ", profilePic=" + profilePic + ", intro=" + intro
-				+ ", complaintCount=" + complaintCount + ", hostEnrollDate=" + hostEnrollDate + ", hostAcceptDate="
-				+ hostAcceptDate + ", hostConfirm=" + hostConfirm + "]";
+				+ memberNo + ", memberName=" + memberName + ", memberPhone=" + memberPhone + ", idCard=" + idCard
+				+ ", profilePic=" + profilePic + ", intro=" + intro + ", complaintCount=" + complaintCount
+				+ ", hostEnrollDate=" + hostEnrollDate + ", hostAcceptDate=" + hostAcceptDate + ", hostConfirm="
+				+ hostConfirm + ", hostBlack=" + hostBlack + "]";
 	}
 
-	
+
 	
 	
 }

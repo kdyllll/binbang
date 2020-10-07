@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.member.model.vo.Member;
+import com.binbang.host.model.vo.Host;
 
 /**
- * Servlet implementation class AdminSearchServlet
+ * Servlet implementation class SearchHostListServlet
  */
-@WebServlet("/admin/adminSearch")
-public class MemberSearchServlet extends HttpServlet {
+@WebServlet("/admin/searchHostList")
+public class SearchHostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberSearchServlet() {
+    public SearchHostListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +31,12 @@ public class MemberSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String type=request.getParameter("searchType");
-		String key=request.getParameter("searchKeyword");
-		
-		List<Member> list=new AdminService().searchMemberList(type,key);
-		
+		String keyword=request.getParameter("searchKeyword");
+		List<Host> list= new AdminService().searchHostList(type, keyword);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/admin/memberList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/hostList.jsp").forward(request, response);
 	}
 
 	/**

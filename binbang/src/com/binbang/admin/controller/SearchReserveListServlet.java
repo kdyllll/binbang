@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.host.model.vo.Host;
-import com.binbang.member.model.vo.Member;
+import com.binbang.member.model.vo.Reservation;
 
 /**
- * Servlet implementation class MoveAdminPageServlet
+ * Servlet implementation class SearchReserveListServlet
  */
-@WebServlet("/admin/moveAdminPage")
-public class MoveAdminPageServlet extends HttpServlet {
+@WebServlet("/admin/searchReserveList")
+public class SearchReserveListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoveAdminPageServlet() {
+    public SearchReserveListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +31,14 @@ public class MoveAdminPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//List<Host> hostList=new AdminService().acceptHostList();
 		
+		String type=request.getParameter("searchType");
+		String key=request.getParameter("searchKeyword");
 		
-//		List<Member> memberList=new AdminService().selectMemberAll();
-//		
-//		request.setAttribute("memberList", memberList);
-		//request.setAttribute("hostList", hostList);
+		List<Reservation> list=new AdminService().searchReserveList(type, key);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/reserveList.jsp").forward(request, response);
 		
-		request.getRequestDispatcher("/views/admin/manager2.jsp").forward(request, response);
 	}
 
 	/**

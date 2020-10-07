@@ -1,45 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.binbang.member.model.vo.Member,com.binbang.host.model.vo.Host"%>
+<%@page import="com.binbang.member.model.vo.Member"%>
 <%@page import="java.util.List"%>
-
 <%@ include file="/views/common/commonLink.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
 <%
-//	List<Member> memberList=(List<Member>)request.getAttribute("memberList");
-//	List<Host> hostList = (List<Host>) request.getAttribute("hostList");
-//	List cell = (List) request.getAttribute("cell");
-//	String adminTitle = (String) request.getAttribute("adminTitle");
-//	String memberNo = (String) request.getAttribute("memberNo");
-//int result=(int)request.getAttribute("result");
+	List<Member> memberList=(List)request.getAttribute("list"); 
+	String type=request.getParameter("searchType");
+	String key=request.getParameter("searchKeyword");
 %>
 
-     
   </head>
-
   <body>
+  
     <div class="wrap">
-    <%@ include file="/views/common/adminHeader.jsp"%>
-
+	<%@ include file="/views/common/adminHeader.jsp"%>
       <section class="section">
-        <%@ include file="/views/admin/adminNav.jsp"%>
+          <%@ include file="/views/admin/adminNav.jsp"%>
 
-        <!-- 회원현황 -->
 
           <form id="memberAllContents" class="searchCommon">
             <p class="pageTitle">회원 현황</p>
          
-              <select class="researchCategory" name="membercategory">
-                <option value="" selected disabled hidden>선택</option>  
-                <option value="member_no">이름</option> 
-                <option value="분류">분류</option>  
-                <option value="가입일">가입일</option>  
-                <!-- 최신순,오래된순 -->
-              </select>
-              <div class="search">
-                <input type="text" class="searchinput">
-                <button class="inputButton"></button>
-              </div>
+         <select class="searchCategory"  id="searchType">
+		      <option value="" selected disabled hidden>선택</option>
+		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>이름</option>
+		      <option value="host_confirm" <%=type!=null&&type.equals("host_confirm")?"selected":"" %>>분류</option>
+		      <option value="email" <%=type!=null&&type.equals("email")?"selected":"" %>>이메일</option>
+   		</select>
+   		
+		<div class="search" id="search-member_name">
+     		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    			<input type="hidden" name="searchType" value="member_name">
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    				value="<%=key!=null&&type!=null&&type.equals("member_name")?key:""%>">
+    			<button class="inputButton"></button>
+    		</form>
+    	</div>
+    	<div class="search" id="search-host_confirm">
+    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    			<input type="hidden" name="searchType" value="host_confirm">
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    				value="<%=key!=null&&type!=null&&type.equals("host_confirm")?key:""%>">
+    			<button class="inputButton"></button>
+    		</form>
+    	</div>
+    	<div class="search" id="search-email">
+    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    			<input type="hidden" name="searchType" value="email">
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    				value="<%=key!=null&&type!=null&&type.equals("email")?key:""%>">
+  				<button class="inputButton"></button>  			
+    		</form>
+    	</div>
             
 
             <div class="tb_wrap"> 
@@ -55,35 +68,33 @@
                     <th class="cell3" >가입일</th>
                   </tr>
                   
-                 <%--
+                 <%
             		for (Member ml : memberList) {
-        		 --%>
-         		<!--<tr>
-		            <td class="cell1" ><%--ml.getMemberNo()%></td>
+        		 %>
+         		<tr>
+		            <td class="cell1" ><%=ml.getMemberNo() %></td>
 		           
-		            <%--
+		            <%
 		               if (ml.getHostConfirm()!=null) {
-		            --%> 
+		            %> 
 		          		<td class="cell2">호스트</td>
-		            <%--
+		            <%
 		               } else {
-		            --%>
+		            %>
 		            	<td class="cell2">일반</td>
-		            <%--
+		            <%
 		               }
-		            --%> 
-		             <td class="cell2" ><%--ml.getMemberName()--%></td>
-		            <td class="cell4" ><%--ml.getEmail()--%></td>
-		            <td class="cell2" ><%--ml.getPhone()--%></td>
-		            <td class="cell3" ><%--ml.getEnrollDate()--%></td>
-		         </tr> -->
-		         <%--
+		            %> 
+		             <td class="cell2" ><%=ml.getMemberName() %></td>
+		            <td class="cell4" ><%=ml.getEmail() %></td>
+		            <td class="cell2" ><%=ml.getPhone() %></td>
+		            <td class="cell3" ><%=ml.getEnrollDate() %></td>
+		         </tr> 
+		         <%
 		            }
-		         --%>
+		        	%> 
          
-         
-           
-
+        
                 </table>
               </div>
             </div>
@@ -92,15 +103,25 @@
           
  </section>
  </div>
-     
-
- 
-    <%@ include file="/views/common/footer.jsp"%>
-    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-    <script src="<%=request.getContextPath() %>/js/admin/manager.js"></script>
-
+  
   </body>
 </html>
 
 
-
+<script>
+$(function(){
+	let memberName=$("#search-member_name");
+	let hostConfirm=$("#search-host_confirm");
+	let email=$("#search-email");
+	
+	$("#searchType").change(e => {
+		memberName.css("display","none");
+		hostConfirm.css("display","none");
+		email.css("display","none");
+		let v=$(e.target).val(); 
+		$("#search-"+v).css("display","inline-block");
+	});
+	$("#searchType").change(); 
+	
+});
+</script>

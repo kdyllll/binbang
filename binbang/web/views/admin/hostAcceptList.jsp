@@ -1,34 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.binbang.member.model.vo.Member,com.binbang.host.model.vo.Host"%>
-<%@page import="java.util.List"%>
 
+<%@page import="java.util.List"%>
+<%@ page import="com.binbang.host.model.vo.Host" %>
 <%@ include file="/views/common/commonLink.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
 <%
-	//List<Member> memberList=(List<Member>)request.getAttribute("memberList");
-	//List<Host> hostList = (List<Host>) request.getAttribute("hostList");
-//	List cell = (List) request.getAttribute("cell");
-//	String adminTitle = (String) request.getAttribute("adminTitle");
-//	String memberNo = (String) request.getAttribute("memberNo");
-//int result=(int)request.getAttribute("result");
-%>
-
-     
+	
+	List<Host> list = (List) request.getAttribute("list");
+	//int result=(int)request.getAttribute("result");
+%>    
   </head>
 
   <body>
     <div class="wrap">
-    <%@ include file="/views/common/adminHeader.jsp"%>
-
+	<%@ include file="/views/common/adminHeader.jsp"%>
       <section class="section">
         <%@ include file="/views/admin/adminNav.jsp"%>
  
  <form id="acceptListContents" class="searchCommon">
             <p class="pageTitle">호스트 승인</p>
-            <!-- 호스트 관리자 승인 후 접속 가능하게 -임시저장..?-->
-            <!-- 회원번호,이름,전화번호,신분증사진,본인사진, 가입날짜 -->
-            <!-- 수락,거절 시 안내 메일가기 -->
+            
             <div class="tb_wrap">
               <div class="tableDiv" >
                 <table class="tableAll">
@@ -40,7 +32,33 @@
                     <th class="cell2">요청날짜</th>
                     <th class="cell2">승인 여부</th>
                   </tr>
-              
+              	<%
+				for (Host h : list) {
+			%>
+
+			<%
+				if (h.getHostAcceptDate() == null) {
+			%>
+			<tr>
+				<td class="cell1"><%=h.getHostName()%></td>
+				<td class="cell3"><%=h.getMemberPhone()%></td>
+				<td class="cell3"><%=h.getProfilePic()%></td>
+				<td class="cell3"><%=h.getIdCard()%></td>
+				<td class="cell2"><%=h.getHostEnrollDate()%></td>
+				<td class="cell2">
+					<div class="acceptChoice">
+						<input type="hidden" name="memberNo" class="mNo" value="<%=h.getMemberNo()%>">
+						<input type="button" name="acceptY" value="승인" class="yes">
+						<input type="button" name="acceptN" value="거절" class="no">
+					</div>
+				</td>
+			</tr>
+				<%
+					}
+				%>
+			<%
+				}
+			%>
                 </table>
               </div>
             </div>
@@ -48,10 +66,36 @@
     </section>
     </div>
 
-    <%@ include file="/views/common/footer.jsp"%>
-    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-    <script src="<%=request.getContextPath() %>/js/admin/manager.js"></script>
-
-
   </body>
 </html>
+
+<script>
+	 $(".yes").on("click",e=>{
+		$.ajax({
+			url:"<%=request.getContextPath()%>/admin/moveHostAcceptList",
+			data:{"memberNo" : $(".mNo").val() },
+			dataType:"html",
+			success: data => { 
+				
+				 if(data>0){ 
+					alert("승인되었습니다."); 
+				}else{
+					alert("승인을 실패하였습니다.") 
+				}  
+				console.log(data);
+			}
+	
+		}); 
+	}); 
+	 
+	 $(".no").on("click",e=>{
+		 $.ajax({
+			 url:"<%=request.getContextPath()%>/admin/hostReject",
+			 data:{"memberNo" : $(".mNo").val() },
+			 dataType:"html",
+			 success: data => { 
+			 	alert("승인 거절하였습니다.");
+			 }
+		 });
+	 });
+</script>

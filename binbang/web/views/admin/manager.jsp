@@ -317,7 +317,7 @@
     </div>
     <%@ include file="/views/common/footer.jsp"%>
     <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-    <script src="<%=request.getContextPath() %>/js/admin/manager.js"></script>
+    <script src="<%=request.getContextPath() %>/js/admin/manager.js<%--  --%>"></script>
 
 
   </body>
