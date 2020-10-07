@@ -58,7 +58,8 @@
 
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 
-	<script>		
+	<script>	
+
 	//myPagePCKAjax로 이동
 		$("#changeModify").click(e=>{
 			$.ajax({
