@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MypagePasswordCheckAjaxServlet
+ * Servlet implementation class MypagePrivateAjaxServlet
  */
-@WebServlet("/member/myPagePCKAjax")
-public class MypagePCKAjaxServlet extends HttpServlet {
+@WebServlet("/member/mypagePrivateAjax")
+public class MypagePrivateAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypagePCKAjaxServlet() {
+    public MypagePrivateAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,11 +25,10 @@ public class MypagePCKAjaxServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-		//mypage private 가기전 비밀번호 확인
-		request.getRequestDispatcher("/ajax/member/myPagePCKAjax.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//private 페이지로 이동
+		request.getRequestDispatcher("/ajax/member/myPagePrivateAjax.jsp").forward(request, response);		
 	}
 
 	/**
