@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
-	
-	House h=(House)request.getAttribute("house");
-	Review r=(Review)request.getAttribute("riview");
+
+	House h=(House)request.getAttribute("h");
+	Member member = (Member)session.getAttribute("m");
+	List<Review> list=(List)request.getAttribute("list");
 %>
 
 <%
@@ -67,12 +68,12 @@
 				</div>
 				<div class="info">
 					<div class="title">
-						<%=h.getHouseName() %>
+						<%=h.getHouseName()%>
 						<div class="heartCommon heart"></div>
 					</div>
 					<br> <br> <br>
 					<div class="titleInfo">
-						<%=h.getHouseComment() %> <br> <br>	<%=h.getInoutTime() %> <br><br>
+						<%=h.getHouseComment()%> <br> <br>	<%=h.getInoutTime()%> <br><br>
 					</div>
 					<div class="host">
 						<div class="hostInfo">
@@ -208,10 +209,10 @@
 			<div class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
-					<a href="<%=request.getContextPath()%>/house/review">글쓰기</a>
+					<a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
 				</div>
 			</div>
-
+			<%for(Review r : list) {%>
 			<div class="comment">
 				<div class="swiper-container three">
 					<div class="swiper-wrapper threeButton">
@@ -221,9 +222,9 @@
 								<div class="gradeinfo">
 									<div class="a">평점 : </div>
 									<br> <br>
-									<div class="b">제목 : </div><%-- <%=r.getCommentTitle()%> --%>
+									<div class="b">제목 : </div><%=r.getCommentTitle()%>
 									<br> <br>
-									<div class="c">내용 :</div>
+									<div class="c">내용 : </div><%=r.getCommentContents()%>
 									<div class="ex">댓글 등록하기</div>
 								</div>
 								
@@ -248,6 +249,7 @@
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 
 			</div>
+			<% }%>
 
 
 			<div class="photoFilterScroll"></div>

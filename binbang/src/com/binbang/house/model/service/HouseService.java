@@ -16,18 +16,18 @@ public class HouseService {
 	private HouseDao dao = new HouseDao();
 
 
-	public House HouseDetail(int no) {
+	public House HouseDetail(String no) {
 		Connection conn=getConnection();
 		House h=dao.HouseDetail(conn, no);
 		 close(conn);
 		 return h;
 	}
 	
-	public Review ReviewDetail(int no) {
+	public List<Review> ReviewDetail(String no) {
 		Connection conn=getConnection();
-		Review r=dao.ReviewDetail(conn, no);
+		List<Review> list = dao.ReviewDetail(conn, no);
 		 close(conn);
-		 return r;
+		 return list;
 	}
 	
 
