@@ -36,13 +36,13 @@
 							<div class="hNameBox">
 								<p>숙소 이름</p>
 								<input type="text" name="hName" id="hName" placeholder="숙소 이름"
-									required>
+									>
 							</div>
 							<div class="line1"></div>
 							<div class="hTypeBox">
 								<p>숙소 유형</p>
 								<div class="hTypeCon">
-									<input type="radio"" name="hType" id="home" value="주택" required> <label
+									<input type="radio"" name="hType" id="home" value="주택" > <label
 										for="home">주택</label> <input type="radio" name="hType"
 										id="apart" value="아파트"> <label for="apart">아파트</label> <input
 										type="radio" name="hType" id="pension" value="펜션"> <label
@@ -70,14 +70,14 @@
 								<p class="title2">숙소 최대 인원</p>
 								<div class="pNumCon">
 									<input type="number" name="pNum" id="pNum" min="0" max="9"
-										step="1" required> 명
+										step="1" > 명
 								</div>
 							</div>
 							<div class="line2"></div>
 							<div class="personalBox">
 								<p class="title2">개인물건 유무</p>
 								<div class="personalCon">
-									<input type="radio" name="personal" id="personalY" value="Y"> <label for="personalY" required>유</label> 
+									<input type="radio" name="personal" id="personalY" value="Y"> <label for="personalY" >유</label> 
 										<input type="radio" name="personal" id="personalN" value="N"> <label for="personalN">무</label>
 								</div>
 							</div>
@@ -88,22 +88,22 @@
 									<p class="pNum">방 갯수</p>
 									<div class="roomNumCon">
 										<input type="number" name="roomNum" id="roomNum"
-											class="inputNum" min="0" max="20" step="1" required>
+											class="inputNum" min="0" max="20" step="1" >
 										개
 									</div>
 								</div>
 								<div class="bedNumBox">
 									<p class="pNum">침대 갯수</p>
 									<div class="bedNumCon">
-										<input type="number" name="bedNum" id="bedNum" m
-											class="inputNum" in="0" max="20" step="1" required> 개
+										<input type="number" name="bedNum" id="bedNum" 
+											class="inputNum" in="0" max="20" step="1" > 개
 									</div>
 								</div>
 								<div class="bathNumBox">
 									<p class="pNum">욕실 갯수</p>
 									<div class="bathNumCon">
 										<input type="number" name="bathNum" id="bathNum"
-											class="inputNum" min="0" max="20" step="1" required>
+											class="inputNum" min="0" max="20" step="1" >
 										개
 									</div>
 								</div>
@@ -116,14 +116,14 @@
 							<div class="timeBox">
 								<p>체크인아웃 시간</p>
 								<input type="text" name="checkTime" id="checkTime"
-									placeholder="(체크인 11:00 체크아웃 15:00)형식으로 작성해주세요." required>
+									placeholder="(체크인 11:00 체크아웃 15:00)형식으로 작성해주세요." >
 							</div>
 							<div class="line3"></div>
 							<div class="attentionBox">
 								<p>주의사항</p>
 								<div class="attentionCon">
 									<textarea name="attention" id="attention" cols="60" rows="13"
-										style="resize: none" required></textarea>
+										style="resize: none" ></textarea>
 								</div>
 							</div>
 						</div>
@@ -138,7 +138,7 @@
 										<p class="picName" id="picName1">메인사진을 선택하세요</p>
 									</div>
 									<input type="file" name="picture1" id="picture1"
-										class="picture" accept="images/*" required> <label
+										class="picture" accept="images/*" > <label
 										class="uploadPic" for="picture1">+</label> <label
 										class="deletePic" id="deletePic1" for="">-</label>
 								</div>
@@ -147,7 +147,7 @@
 										<p class="picName" id="picName2"></p>
 									</div>
 									<input type="file" name="picture2" id="picture2"
-										class="picture" accept="images/*" required> <label
+										class="picture" accept="images/*" > <label
 										class="uploadPic" for="picture2">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -156,7 +156,7 @@
 										<p class="picName" id="picName3"></p>
 									</div>
 									<input type="file" name="picture3" id="picture3"
-										class="picture" accept="images/*" required> <label
+										class="picture" accept="images/*" > <label
 										class="uploadPic" for="picture3">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -276,14 +276,14 @@
 								<p>숙소 설명</p>
 								<div class="explainCon">
 									<textarea name="explain" id="explain" cols="60" rows="10"
-										style="resize: none" placeholder="2줄 이내로 작성해주세요" required></textarea>
+										style="resize: none" placeholder="2줄 이내로 작성해주세요" ></textarea>
 								</div>
 							</div>
 							<div class="gemsungBox">
 								<p>감성글</p>
 								<div class="gemsungCon">
 									<textarea name="gemsung" id="gemsung" cols="60" rows="10"
-										style="resize: none" required></textarea>
+										style="resize: none" ></textarea>
 								</div>
 							</div>
 						</div>
@@ -382,22 +382,22 @@
 								<div class="peakDayCon">
 									<p>성수기 평일 요금</p>
 									<input type="text" id="peakDay" name="peakDay"
-										placeholder="성수기 평일" required>
+										placeholder="성수기 평일" >
 								</div>
 								<div class="peakRestCon">
 									<p>성수기 휴일 요금</p>
 									<input type="text" id="peakRest" name="peakRest"
-										placeholder="성수기 휴일" required>
+										placeholder="성수기 휴일" >
 								</div>
 								<div class="nonPeakDayCon">
 									<p>비성수기 평일 요금</p>
 									<input type="text" id="nonPeakDay" name="nonPeakDay"
-										placeholder="비성수기 평일" required>
+										placeholder="비성수기 평일" >
 								</div>
 								<div class="nonPeakRestCon">
 									<p>비성수기 휴일 요금</p>
 									<input type="text" id="nonPeakRest" name="nonPeakRest"
-										placeholder="비성수기 휴일" required>
+										placeholder="비성수기 휴일" >
 								</div>
 							</div>
 						</div>
@@ -525,34 +525,34 @@
 			console.log(count);
 			if($("#hName").val().trim().length==0){
 				alert("숙소 이름을 입력하세요.");
-				$("#hName").focus(); return;
+				return;
 			}else if($("input[name=hType]:checked").length==0){
 				alert("숙소 유형을 선택하세요.");	
-				$("#home").focus(); return;
+				return;
 			}else if($("#roadAddress").val().trim().length==0||$("#detailAddress").val().trim().length==0){
 				alert("숙소 위치를 입력하세요.");	
-				$("#home").focus(); return;
+				return;
 			}else if($("#pNum").val().trim().length==0){
 				alert("숙소 최대 인원을 입력하세요.");	
-				$("#pNum").focus(); return;
+				return;
 			}else if($("input[name=personal]:checked").length==0){
 				alert("개인물건 유무를 선택하세요.");	
-				$("#personalY").focus(); return;
+				return;
 			}else if($("#roomNum").val().trim().length==0){
 				alert("방 갯수를 입력하세요.");	
-				$("#roomNum").focus(); return;
+				return;
 			}else if($("#bedNum").val().trim().length==0){
 				alert("침대 갯수를 입력하세요.");	
-				$("#bedNum").focus(); return;
+				return;
 			}else if($("#bathNum").val().trim().length==0){
 				alert("욕실 갯수를 입력하세요.");	
-				$("#bathNum").focus(); return;
+				return;
 			}else if($("#checkTime").val().trim().length==0){
 				alert("체크인/체크아웃 시간을 입력하세요.");	
-				$("#checkTime").focus(); return;
+				return;
 			}else if($("#attention").val().trim().length==0){
 				alert("주의사항을 입력하세요.");	
-				$("#attention").focus(); return;
+				return;
 			}else if(!$("#picture1").val()){
 				alert("메인 사진을 등록하세요.");	
 				return;
@@ -561,28 +561,28 @@
 				return;
 			}else if($("#explain").val().trim().length==0){
 				alert("설명을 입력하세요.");	
-				$("#explain").focus(); return;
+				return;
 			}else if($("#gemsung").val().trim().length==0){
 				alert("감성글을 입력하세요.");	
-				$("#gemsung").focus(); return;
+				return;
 			}else if($("#gemsung").val().trim().length==0){
 				alert("감성글을 입력하세요.");	
-				$("#gemsung").focus(); return;
+				return;
 			}else if($("#startDay1").val().trim().length==0||$("#endDay1").val().trim().length==0){
 				alert("성수기 기간을 하나 이상 입력하세요.");	
-				$("#startDay1").focus(); return;
+				return;
 			}else if($("#peakDay").val().trim().length==0){
 				alert("성수기 평일 요금을 입력하세요.");	
-				$("#peakDay").focus(); return;
+				return;
 			}else if($("#peakRest").val().trim().length==0){
 				alert("성수기 휴일 요금을 입력하세요.");	
-				$("#peakRest").focus(); return;
+				return;
 			}else if($("#nonPeakDay").val().trim().length==0){
 				alert("비성수기 평일 요금을 입력하세요.");	
-				$("#nonPeakDay").focus(); return;
+				return;
 			}else if($("#nonPeakRest").val().trim().length==0){
 				alert("비성수기 휴일 요금을 입력하세요.");	
-				$("#nonPeakRest").focus(); return;
+				return;
 			}else{		
 			$("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
 			}
