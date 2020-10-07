@@ -1,23 +1,28 @@
 package com.binbang.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.admin.model.service.AdminService;
+import com.binbang.member.model.vo.Member;
+
 /**
- * Servlet implementation class MoveAdminPageServlet
+ * Servlet implementation class memberServlet
  */
-@WebServlet("/admin/moveAdminPage")
-public class MoveAdminPageServlet extends HttpServlet {
+@WebServlet("/admin/newMoveAdminPage")
+public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoveAdminPageServlet() {
+    public MemberListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +32,9 @@ public class MoveAdminPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/admin/manager2.jsp").forward(request, response);
+		List<Member> list = new AdminService().selectMemberAll();
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/memberList.jsp").forward(request, response);
 	}
 
 	/**

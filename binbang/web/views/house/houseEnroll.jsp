@@ -26,7 +26,7 @@
 
 		<section class="section">
 			<!-- Swiper -->
-			<form action="<%=request.getContextPath()%>/house/houseEnrollEnd"
+			<form id="enrollForm"
 				class="swiper-container first" method="post"
 				enctype="multipart/form-data">
 
@@ -42,7 +42,7 @@
 							<div class="hTypeBox">
 								<p>숙소 유형</p>
 								<div class="hTypeCon">
-									<input type="radio" name="hType" id="home" value="주택" required> <label
+									<input type="radio"" name="hType" id="home" value="주택" required> <label
 										for="home">주택</label> <input type="radio" name="hType"
 										id="apart" value="아파트"> <label for="apart">아파트</label> <input
 										type="radio" name="hType" id="pension" value="펜션"> <label
@@ -135,7 +135,7 @@
 								<p>숙소 사진 등록(최소 3장/최대 10장)</p>
 								<div class="photo1">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName1">메인사진을 선택하세요</p>
 									</div>
 									<input type="file" name="picture1" id="picture1"
 										class="picture" accept="images/*" required> <label
@@ -144,7 +144,7 @@
 								</div>
 								<div class="photo2">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName2"></p>
 									</div>
 									<input type="file" name="picture2" id="picture2"
 										class="picture" accept="images/*" required> <label
@@ -153,7 +153,7 @@
 								</div>
 								<div class="photo3">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName3"></p>
 									</div>
 									<input type="file" name="picture3" id="picture3"
 										class="picture" accept="images/*" required> <label
@@ -162,7 +162,7 @@
 								</div>
 								<div class="photo4">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName4"></p>
 									</div>
 									<input type="file" name="picture4" id="picture4"
 										class="picture" accept="images/*"> <label
@@ -171,7 +171,7 @@
 								</div>
 								<div class="photo5">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName5"></p>
 									</div>
 									<input type="file" name="picture5" id="picture5"
 										class="picture" accept="images/*"> <label
@@ -180,7 +180,7 @@
 								</div>
 								<div class="photo6">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName6"></p>
 									</div>
 									<input type="file" name="picture6" id="picture6"
 										class="picture" accept="images/*"> <label
@@ -189,7 +189,7 @@
 								</div>
 								<div class="photo7">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName7"></p>
 									</div>
 									<input type="file" name="picture7" id="picture7"
 										class="picture" accept="images/*"> <label
@@ -198,7 +198,7 @@
 								</div>
 								<div class="photo8">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName8"></p>
 									</div>
 									<input type="file" name="picture8" id="picture8"
 										class="picture" accept="images/*"> <label
@@ -207,7 +207,7 @@
 								</div>
 								<div class="photo9">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName9"></p>
 									</div>
 									<input type="file" name="picture9" id="picture9"
 										class="picture" accept="images/*"> <label
@@ -216,7 +216,7 @@
 								</div>
 								<div class="photo10">
 									<div class="picLine">
-										<p class="picName"></p>
+										<p class="picName" id="picName10"></p>
 									</div>
 									<input type="file" name="picture10" id="picture10"
 										class="picture" accept="images/*"> <label
@@ -402,7 +402,7 @@
 							</div>
 						</div>
 						<div class="submitBox">
-							<input type="submit" value="완료" class="submit" name="submit">
+							<input type="submit" value="완료" class="submit" name="submit" onclick="fn_complete();">
 						</div>
 					</div>
 
@@ -519,6 +519,74 @@
 						}
 					});
 		});
+		
+		//입력항목 유효성검사
+		function fn_complete(){
+			console.log(count);
+			if($("#hName").val().trim().length==0){
+				alert("숙소 이름을 입력하세요.");
+				$("#hName").focus(); return;
+			}else if($("input[name=hType]:checked").length==0){
+				alert("숙소 유형을 선택하세요.");	
+				$("#home").focus(); return;
+			}else if($("#roadAddress").val().trim().length==0||$("#detailAddress").val().trim().length==0){
+				alert("숙소 위치를 입력하세요.");	
+				$("#home").focus(); return;
+			}else if($("#pNum").val().trim().length==0){
+				alert("숙소 최대 인원을 입력하세요.");	
+				$("#pNum").focus(); return;
+			}else if($("input[name=personal]:checked").length==0){
+				alert("개인물건 유무를 선택하세요.");	
+				$("#personalY").focus(); return;
+			}else if($("#roomNum").val().trim().length==0){
+				alert("방 갯수를 입력하세요.");	
+				$("#roomNum").focus(); return;
+			}else if($("#bedNum").val().trim().length==0){
+				alert("침대 갯수를 입력하세요.");	
+				$("#bedNum").focus(); return;
+			}else if($("#bathNum").val().trim().length==0){
+				alert("욕실 갯수를 입력하세요.");	
+				$("#bathNum").focus(); return;
+			}else if($("#checkTime").val().trim().length==0){
+				alert("체크인/체크아웃 시간을 입력하세요.");	
+				$("#checkTime").focus(); return;
+			}else if($("#attention").val().trim().length==0){
+				alert("주의사항을 입력하세요.");	
+				$("#attention").focus(); return;
+			}else if(!$("#picture1").val()){
+				alert("메인 사진을 등록하세요.");	
+				return;
+			}else if(!$("#picture2").val()||!$("#picture3").val()){
+				alert("사진을 3장 이상 등록해주세요.");	
+				return;
+			}else if($("#explain").val().trim().length==0){
+				alert("설명을 입력하세요.");	
+				$("#explain").focus(); return;
+			}else if($("#gemsung").val().trim().length==0){
+				alert("감성글을 입력하세요.");	
+				$("#gemsung").focus(); return;
+			}else if($("#gemsung").val().trim().length==0){
+				alert("감성글을 입력하세요.");	
+				$("#gemsung").focus(); return;
+			}else if($("#startDay1").val().trim().length==0||$("#endDay1").val().trim().length==0){
+				alert("성수기 기간을 하나 이상 입력하세요.");	
+				$("#startDay1").focus(); return;
+			}else if($("#peakDay").val().trim().length==0){
+				alert("성수기 평일 요금을 입력하세요.");	
+				$("#peakDay").focus(); return;
+			}else if($("#peakRest").val().trim().length==0){
+				alert("성수기 휴일 요금을 입력하세요.");	
+				$("#peakRest").focus(); return;
+			}else if($("#nonPeakDay").val().trim().length==0){
+				alert("비성수기 평일 요금을 입력하세요.");	
+				$("#nonPeakDay").focus(); return;
+			}else if($("#nonPeakRest").val().trim().length==0){
+				alert("비성수기 휴일 요금을 입력하세요.");	
+				$("#nonPeakRest").focus(); return;
+			}else{		
+			$("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
+			}
+		}
 	</script>
 
 </body>
