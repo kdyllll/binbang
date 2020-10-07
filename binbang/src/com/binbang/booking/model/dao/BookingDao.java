@@ -131,7 +131,7 @@ public class BookingDao {
 		ResultSet rs = null;
 		List<Booking> list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("reserveDoneList"));
+			pstmt = conn.prepareStatement(prop.getProperty("reserveDoneHouseList"));
 			pstmt.setString(1, memberNo);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

@@ -36,14 +36,14 @@ public class MypageStayedAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * HttpSession session = request.getSession(false); Member m =
-		 * (Member)session.getAttribute("m"); List<Booking> reserveList = new
-		 * BookingService().reserveDoneList(m.getMemberNo());
-		 * System.out.println(reserveList); request.setAttribute("reserveList",
-		 * reserveList);
-		 */
-		request.getRequestDispatcher("/ajax/member/myPageStayedAjax.jsp").forward(request, response);
+		
+		  HttpSession session = request.getSession(false); 
+		  Member m = (Member)session.getAttribute("m"); 
+		  List<Booking> reserveList = new BookingService().reserveDoneList(m.getMemberNo());
+		  System.out.println(reserveList); 
+		  
+		  request.setAttribute("reserveList",reserveList);
+		  request.getRequestDispatcher("/ajax/member/myPageStayedAjax.jsp").forward(request, response);
 		
 	}
 
