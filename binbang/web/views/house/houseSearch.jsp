@@ -1,3 +1,7 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.binbang.member.model.vo.Favorite"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
@@ -7,8 +11,11 @@
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
 <%@ page import="java.util.List,com.binbang.house.model.vo.House"%>
 <%
-	List<House> list = (List) request.getAttribute("list");
-/* House h=(House)request.getAttribute("house"); */
+	List<House> house = (List<House>) request.getAttribute("house");
+List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
+Member member = (Member) session.getAttribute("m");
+String pageBar = (String) request.getAttribute("pageBar");
+List dayList = (List) request.getAttribute("dayList");
 %>
 </head>
 <body>
@@ -34,7 +41,7 @@
 					</ul>
 				</form>
 
-				<form name="priceForm" class="btnCon">
+				<form id="priceForm" name="priceForm" class="btnCon">
 					<div class="btn">
 						<p class="btnText">요금</p>
 						<div class="arrow"></div>
@@ -59,7 +66,7 @@
 					</ul>
 				</form>
 
-				<form name="filterForm" class="btnCon">
+				<form id="filterForm" name="filterForm" class="btnCon">
 					<div class="btn">
 						<p class="btnText">필터</p>
 						<div class="arrow"></div>
@@ -97,7 +104,137 @@
 
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
+				<!-- 지도 -->
+				<div class="map">지도</div>
+				<!-- 선 -->
+				<div class="line"></div>
+				<!-- 숙소리스트 -->
+				<div class="listCon">
+					<div class="list">
 
+						<%
+							for (House h : house) {
+						%>
+						<div class="house">
+
+							<a
+								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
+								class="housePic"
+								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
+							<div class="houseContents">
+
+								<div class="contentSection1">
+									<p class="houseName"><%=h.getHouseName()%></p>
+									<div class="heartCommon heart">
+										<%
+											if (favorite != null) {
+											for (Favorite f : favorite) {
+												if (f.getHouseNo().equals(h.getHouseNo())) {
+											//이집이 관심숙소 리스트에 있는 집이면 heart
+										%>
+										<script>
+											$(".heartCommon").removeClass(
+													".heart");
+											$(".heartCommon").addClass(".fav");
+										</script>
+										<%
+											}
+										}
+										}
+										%>
+									</div>
+								</div>
+
+								<div class="houseLine"></div>
+
+
+								<div class="contentSection2">
+									<div class="contentBox">
+										<div class="iconLocation"></div>
+										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
+									</div>
+
+									<div class="contentLine"></div>
+
+									<div class="contentBox">
+										<div class="iconGrade"></div>
+										<p class="gradeName">
+											<%=h.getAvgGrade()%>/5
+										</p>
+									</div>
+								</div>
+								<div class="houseLine2"></div>
+								<div class="contentSection3">
+									<div class="contentBox">
+										<div class="iconPrice"></div>
+										<p class="priceName">
+											<!-- 가격 : 총요금/날짜수-->
+											<%	int total=0;
+												int days=0;
+												int price=0;
+												//주말인지 평일인지 //성수기인지 비수기인지
+											for (Object o : dayList) {
+												String day = "20" + (String) o; //숙박 날짜 하루하루
+												//요일 구하기
+												SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
+												Date date = form.parse(day);
+												Calendar c = Calendar.getInstance();
+												c.setTime(date);
+												System.out.println();
+												int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토
+												if (dayNum == 6 || dayNum == 7) {//주말이라면
+													for (Object o1 : h.getTotalPeak()) { //성수기
+														String pDay = (String) o1;
+														if (day.equals(pDay)) {//성수기(주말)라면
+															total+=h.getPricePeakWeekend();
+															days++;
+														}else{//비수기(주말)라면
+															total+=h.getPriceWeekend();
+															days++;
+														}
+													}							
+												}else{//평일이라면
+													for (Object o1 : h.getTotalPeak()) { //성수기
+														String pDay = (String) o1;
+														if (day.equals(pDay)) {//성수기(평일)라면
+															total+=h.getPricePeakDay();
+															days++;
+														}else{//비수기(평일)라면
+															total+=h.getPriceDay();
+															days++;
+														}
+													}	
+												}
+											}	
+												
+												if(total!=0&&days!=0){
+													price=total/days;
+												}
+											%>
+											약 <%=price%> 원/1박
+										</p>
+									</div>
+
+									<div class="contentLine"></div>
+
+									<div class="contentBox">
+										<div class="iconPeople"></div>
+										<p class="PeopleName"><%=h.getHousePnum()%>명
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<%
+							}
+						%>
+
+					</div>
+					<div id="pageBar">
+						<%=pageBar%>
+					</div>
+				</div>
 
 			</div>
 	</div>
@@ -109,80 +246,46 @@
 	</div>
 
 	<script>
-		$.ajax({
-	        url:"<%=request.getContextPath()%>/house/houseSearchAjax",
-	        /* data:{"name" : "다예가 보내주는 정보"}, */
-	        type:"post",
-	        dataType: "html",
-	        success: (data) => {
-	     	$(".section2").children().remove();
-	     	$(".section2").html(data);
-	        },
-	        error: (request, status, error) => {
-	            console.log(request);
-	            console.log(status);
-	            console.log(error);
-	        }
-	      });
-		
+		let houseList =
+	<%=request.getAttribute("houseJson")%>
+		;
+		console.log(houseList);
 		//정렬 버튼 누를때
-		$("#houseSort > li").on("click",function(e){
-			$.ajax({
-				url:"<%=request.getContextPath()%>/house/houseSort",
-				data:{"key":$(e.target).val()},
-				type:"post",
-				dataType:"html",
-				success: (data)=>{
-					$(".section2").children().remove();
-			     	$(".section2").html(data);
-				},
-				error: (request, status, error) => {
-		            console.log(request);
-		            console.log(status);
-		            console.log(error);
-		        }
-			});
+		$("#houseSort > li").on("click", function(e) {
+			let standard = $(e.target).val();
+
+			//기본순(최신순)=하우스넘버 내림차순
+			function basicSort(a, b) {
+				if (a.houseNo == b.houseNo) {
+					return 0
+				}
+				return a.houseNo > b.houseNo ? -1 : 1;
+			}
+			//추천순=총평점 내림차순
+			function gradeSort(a, b) {
+				if (a.avgGrade == b.avgGrade) {
+					return 0
+				}
+				return a.avgGrade > b.avgGrade ? -1 : 1;
+			}
+			//가격 낮은순
+
+			//가격 높은순
+
+			houseList.sort(basicSort);
+
+			console.dir("정렬 후" + JSON.stringify(houseList));
 		});
+
 		//금액 검색 누를때
-		$("#filterBtn").on("click",function(e){
-			var param = $("form[name=priceForm]").serialize(); //자동으로 쿼리스트링으로 바꿔서 보내줌
-			$.ajax({
-				url:"<%=request.getContextPath()%>/house/priceSort",
-				data:param,
-				type:"post",
-				dataType:"html",
-				success: (data)=>{
-					$(".section2").children().remove();
-			     	$(".section2").html(data);
-				},
-				error: (request, status, error) => {
-		            console.log(request);
-		            console.log(status);
-		            console.log(error);
-		        }
-			});
+		$("#filterBtn").on("click", function(e) {
+
 		});
+
 		//필터 검색 누를 때
-		$("#priceBtn").on("click",function(e){
-			var param = $("form[name=filterForm]").serialize();
-			$.ajax({
-				url:"<%=request.getContextPath()%>/house/filterSort",
-				data:param,
-				type:"post",
-				dataType:"html",
-				success: (data)=>{
-					$(".section2").children().remove();
-			     	$(".section2").html(data);
-				},
-				error: (request, status, error) => {
-		            console.log(request);
-		            console.log(status);
-		            console.log(error);
-		        }
-			});
+		$("#priceBtn").on("click", function(e) {
+
 		});
-		
-		
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>

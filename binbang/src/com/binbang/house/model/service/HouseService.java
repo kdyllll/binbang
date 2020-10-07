@@ -23,6 +23,13 @@ public class HouseService {
 		 return h;
 	}
 	
+	public Review ReviewDetail(int no) {
+		Connection conn=getConnection();
+		Review r=dao.ReviewDetail(conn, no);
+		 close(conn);
+		 return r;
+	}
+	
 
 	public House BinbangDetail(int no) {
 		Connection conn = getConnection();
@@ -118,9 +125,9 @@ public class HouseService {
 	}
 	
 
-	public List<House> selectHouseAll(int cPage,int numPerPage){
+	public List<House> selectHouseList(String location,String checkIn, String checkOut, String pNum, int cPage,int numPerPage){
 		Connection conn = getConnection();
-		List<House> list = dao.selectHouseAll(conn,cPage,numPerPage);
+		List<House> list = dao.selectHouseList(conn,location,checkIn,checkOut,pNum,cPage,numPerPage);
 		close(conn);
 		return list;
 	}

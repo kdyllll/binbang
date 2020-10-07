@@ -281,6 +281,31 @@ public class HouseDao {
 			close(pstmt);
 		}return h;
 	}
+	//숙소 후기 조회화는 다오
+	public Review ReviewDetail(Connection conn, int no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Review r=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("reviewDetail"));
+			pstmt.setInt(1, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				r=new Review();
+				r.setHouseGrade(rs.getDouble("houseGrade")); //숙소평점
+				r.setCommentTitle(rs.getString("commentTitle")); //후기제목
+				r.setCommentContents(rs.getNString("commentContents")); //후기내용
+				r.setFilePath(rs.getNString("filePath")); //후기사진
+				r.setHouseNo(rs.getNString("house_no")); //숙소번호
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return r;
+	}
 
 	//숙소사진 인서트하는 다오
 	public int insertPicture(Connection conn,House h,String pic,String type) {
@@ -325,15 +350,19 @@ public class HouseDao {
 	}
 	
 
-	//모든 숙소 리스트 받아오는 다오(페이징 처리 포함)
-	public List<House> selectHouseAll(Connection conn,int cPage, int numPerPage){
+	//검색한 숙소 리스트 받아오는 다오(페이징 처리 포함)
+	public List<House> selectHouseList(Connection conn,String location,String checkIn, String checkOut, String pNum,int cPage, int numPerPage){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<House> list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectHouseAll"));
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-	        pstmt.setInt(2, cPage*numPerPage);
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseList"));
+			pstmt.setString(1, "%"+location+"%");
+			pstmt.setString(2, pNum);
+			pstmt.setString(3, checkIn);
+			pstmt.setString(4, checkOut);
+			pstmt.setInt(5, (cPage-1)*numPerPage+1);
+	        pstmt.setInt(6, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				House h = new House();
