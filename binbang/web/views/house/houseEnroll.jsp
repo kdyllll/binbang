@@ -26,7 +26,7 @@
 
 		<section class="section">
 			<!-- Swiper -->
-			<form action="<%=request.getContextPath()%>/house/houseEnrollEnd"
+			<form id="enrollForm"
 				class="swiper-container first" method="post"
 				enctype="multipart/form-data">
 
@@ -402,7 +402,7 @@
 							</div>
 						</div>
 						<div class="submitBox">
-							<input type="submit" value="완료" class="submit" name="submit">
+							<input type="submit" value="완료" class="submit" name="submit" onclick="fn_complete();">
 						</div>
 					</div>
 
@@ -519,6 +519,19 @@
 						}
 					});
 		});
+		
+		
+		function fn_complete(){
+			if($("#hName").val().trim().length==0){
+				alert("숙소 이름을 입력하세요.");
+				$("#hName").focus();
+			}else if($("input[name=hType]:checked").length==0){
+				alert("숙소 이름을 입력하세요.");
+				
+			}
+			$("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
+		
+		}
 	</script>
 
 </body>
