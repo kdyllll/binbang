@@ -7,7 +7,7 @@
 
 <%
 	String email = request.getParameter("email");
-Member m = (Member) session.getAttribute("m");
+	Member m = (Member) session.getAttribute("m");
 %>
 
 <link rel="stylesheet"
@@ -17,8 +17,7 @@ Member m = (Member) session.getAttribute("m");
 <body>
 	<div class="wrap">
 
-
-		<!-- 4. 개인정보변경 -->
+		
 		<form id="memberModify" method="post">
 			<div class="private">
 				<div>

@@ -183,25 +183,20 @@ button {
 
 
 
-/* 4. 쿠폰총개수 */
-.section .coupon {
+/* 4. POINT 사용내역 */
+.section .point {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 10%;
 }
 
-.coupon>div {
+.point>div {
 	width: 50%;
 }
 
-.section .couponSum {
-	width: 50%;
-	height: 50px;
-	background-color: #f0f0f0;
-}
 
-.couponSum .couponContents {
+.pointSum .pointContents {
 	font-size: 15px;
 	font-weight: 400;
 	color: black;
@@ -216,15 +211,15 @@ button {
 	padding-left: 2%;
 }
 
-/* 쿠폰변화유무 */
-.couponCount .line6 {
+/* POINT변화유무 */
+.pointCount .line6 {
 	width: 100%;
 	height: 2px;
 	background-color: black;
 	margin: 2% 0;
 }
 
-.couponCount .line7 {
+.pointCount .line7 {
 	width: 100%;
 	height: 1px;
 	background-color: black;
@@ -232,11 +227,11 @@ button {
 	margin-top: 2%;
 }
 
-.section .couponCount {
+.section .pointCount {
 	margin-top: 1%;
 }
 
-.section .couponCount>ul {
+.section .pointCount>ul {
 	display: flex;
 	justify-content: space-between;
 	font-size: 12px;
