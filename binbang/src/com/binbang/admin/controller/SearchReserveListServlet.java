@@ -1,7 +1,6 @@
-package com.binbang.admin.ajax.controller;
+package com.binbang.admin.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.host.model.vo.Host;
+import com.binbang.member.model.vo.Reservation;
 
 /**
- * Servlet implementation class HostAcceptListAjaxServlet
+ * Servlet implementation class SearchReserveListServlet
  */
-@WebServlet("/admin/hostAcceptListAjax")
-public class HostAcceptListAjaxServlet extends HttpServlet {
+@WebServlet("/admin/searchReserveList")
+public class SearchReserveListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostAcceptListAjaxServlet() {
+    public SearchReserveListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,23 +31,14 @@ public class HostAcceptListAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Host> list=new AdminService().acceptHost();
 		
-		String adminTitle = "호스트 승인";
-
-		ArrayList cell = new ArrayList();
-		cell.add("cell1");
-		cell.add("cell3");
-		cell.add("cell3");
-		cell.add("cell3");
-		cell.add("cell2");
-		cell.add("cell2");
-
+		String type=request.getParameter("searchType");
+		String key=request.getParameter("searchKeyword");
+		
+		List<Reservation> list=new AdminService().searchReserveList(type, key);
 		request.setAttribute("list", list);
-		request.setAttribute("adminTitle", adminTitle);
-		request.setAttribute("cell", cell);
-
-		request.getRequestDispatcher("/views/admin/memberListAjax.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/reserveList.jsp").forward(request, response);
+		
 	}
 
 	/**
