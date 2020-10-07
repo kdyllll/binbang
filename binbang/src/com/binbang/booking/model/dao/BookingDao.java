@@ -49,6 +49,8 @@ public class BookingDao {
 				b.setReservDate(rs.getDate("reserv_date"));
 				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
 				list.add(b);
 			}
 
@@ -84,6 +86,8 @@ public class BookingDao {
 				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
 				b.setHouseRequest(rs.getString("house_request"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
 				list.add(b);
 			}
 

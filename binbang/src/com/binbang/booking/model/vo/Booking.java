@@ -18,6 +18,8 @@ public class Booking {
 	private String memberEmail;
 	private String houseName;
 	private String houseMainPic;
+	private int pointPlus;
+	private int pointMinus;
 	
 
 	public Booking() {
@@ -25,9 +27,11 @@ public class Booking {
 	}
 
 
+	
+
 	public Booking(String reservationNo, String memberNo, String houseNo, String guestName, Date checkInDate,
 			Date checkOutDate, int guestPnum, String paymentOption, String houseRequest, Date approvalDate, int price,
-			Date reservDate, String memberEmail, String houseName, String houseMainPic) {
+			Date reservDate, String memberEmail, String houseName, String houseMainPic, int pointPlus, int pointMinus) {
 		super();
 		this.reservationNo = reservationNo;
 		this.memberNo = memberNo;
@@ -44,7 +48,40 @@ public class Booking {
 		this.memberEmail = memberEmail;
 		this.houseName = houseName;
 		this.houseMainPic = houseMainPic;
+		this.pointPlus = pointPlus;
+		this.pointMinus = pointMinus;
 	}
+
+
+
+
+	public int getPointPlus() {
+		return pointPlus;
+	}
+
+
+
+
+	public void setPointPlus(int pointPlus) {
+		this.pointPlus = pointPlus;
+	}
+
+
+
+
+	public int getPointMinus() {
+		return pointMinus;
+	}
+
+
+
+
+	public void setPointMinus(int pointMinus) {
+		this.pointMinus = pointMinus;
+	}
+
+
+
 
 	public String getReservationNo() {
 		return reservationNo;
