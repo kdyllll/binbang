@@ -67,10 +67,17 @@ public class HouseReviewEndServlet extends HttpServlet {
 		
 		
 		Review r=new Review();
+		r.setCommentNo(mr.getParameter("commentNo"));
+		r.setHouseNo(mr.getParameter("houseNo"));
+		r.setMemberNo(mr.getParameter("memberNo"));
 		r.setHouseGrade(Double.parseDouble(mr.getParameter("houseGrade")));
 		r.setCommentTitle(mr.getParameter("commentTitle"));
 		r.setCommentContents(mr.getParameter("commentContents"));
+		r.setCommentDate(mr.getParameter("commentDate"));
+		r.setHostComment(mr.getParameter("hostComment"));
+		r.setHostCommentDate(mr.getParameter("hostCommentDate"));
 		r.setFilePath(mr.getFilesystemName("upload"));
+		
 		int result=new HouseService().insertReview(r);
 		
 		
@@ -79,15 +86,13 @@ public class HouseReviewEndServlet extends HttpServlet {
       //결과에 따라 메세지를 출력하고 메인화면으로 이동
 
 		String msg="";
-		String loc="/house/houseDetailMove";
+		String loc="/house/review";
 		msg=result>0?"공지사항등록성공":"공지사항등록실패";
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc",loc);
 		request.getRequestDispatcher("/views/common/msg.jsp")
 		.forward(request, response);
 	}
-	
-	
 	
 	
 	

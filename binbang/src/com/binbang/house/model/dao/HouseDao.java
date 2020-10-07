@@ -141,11 +141,17 @@ public class HouseDao {
 		int result = 0;
 
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty(""));
-			pstmt.setDouble(1, r.getHouseGrade());
-			pstmt.setString(2, r.getCommentTitle());
-			pstmt.setNString(3, r.getCommentContents());
-			pstmt.setNString(4, r.getFilePath());
+			pstmt = conn.prepareStatement(prop.getProperty("insertReview"));
+			pstmt.setString(1, r.getCommentNo());//댓글번호
+			pstmt.setString(2, r.getHouseNo());//숙소번호
+			pstmt.setString(3, r.getMemberNo());//회원번호
+			pstmt.setDouble(4, r.getHouseGrade());//숙소평점
+			pstmt.setString(5, r.getCommentTitle());//후기제목
+			pstmt.setNString(6, r.getCommentContents());//후기내용
+			pstmt.setString(7, r.getCommentDate());//후기작성일자
+			pstmt.setString(8, r.getHostComment());//호스트댓글
+			pstmt.setString(9, r.getHostCommentDate());//호스트 댓글 작성일
+			pstmt.setNString(10, r.getFilePath());//후기사진
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -154,6 +160,9 @@ public class HouseDao {
 		}
 		return result;
 	}
+
+    
+    
 	
 	//숙소테이블에 인서트하는 다오
 	public int insertHouse(Connection conn,House h) {
@@ -292,6 +301,7 @@ public class HouseDao {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				r=new Review();
+				
 				r.setHouseGrade(rs.getDouble("houseGrade")); //숙소평점
 				r.setCommentTitle(rs.getString("commentTitle")); //후기제목
 				r.setCommentContents(rs.getNString("commentContents")); //후기내용

@@ -54,10 +54,9 @@ public class HouseService {
 		return count;
 	}
 
-	public int insertReview(Review R) {
+	public int insertReview(Review r) {
 		Connection conn = getConnection();
-		int result = dao.insertReview(conn, R);
-		// 트렌젝션처리
+		int result = dao.insertReview(conn, r);
 		if (result > 0)
 			commit(conn);
 		else

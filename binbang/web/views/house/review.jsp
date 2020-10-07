@@ -15,7 +15,7 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-<form action="<%=request.getContextPath()%>/house/houseDetailMove" method="post" >
+<form action="<%=request.getContextPath()%>/review/reviewEnd" method="post" >
 		<section class="section">
 			<div class="review">
 			
@@ -62,8 +62,7 @@
             </script>
 
 				<div class="contents">내용</div>
-				<input class="contentsWrite" type="text" placeholder="내용을 입력하세요">
-
+				<textarea class="contentsWrite" rows="10" cols="40" placeholder="내용을 입력하세요"></textarea>
 
 				<div class="enrollment">
 					  <input type="submit" value="등록하기" onclick=>
