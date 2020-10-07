@@ -1,21 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/views/common/commonLink.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-      <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/myPagePrivate.css" />
+        
+<%@ include file="/views/common/commonLink.jsp"%>
+ 
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/myPagePrivate.css" />
 </head>
+
 <body>
 
     <div class="wrap">
 <%@ include file="/views/common/header.jsp"%>
-      		
+     
+		<!-- 2. 회원정보변경	 -->
+     <section class="section">     		
 		<form id="memberModify" method="post">
 			<div class="private">
 				<div>
-					<p>개인정보변경</p>
-					<%-- <input type="hidden" value="<%=email%>" name="email"> --%>
-					<div class="line6"></div>
+					<p>개인정보변경</p><input type="text" value="<%=m.getEmail()%>" name="email" readonly>
 				</div>
+					<div class="line6"></div>
 
 				<table>
 					<tr>
@@ -30,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>현재 닉네임</td>
-						<%-- <td><%=m.getNickname()%></td> --%>
+						<td><%=m.getNickname()%></td>
 					</tr>
 					<tr class="tr2">
 						<td>새로운 닉네임</td>
@@ -39,7 +42,7 @@
 					</tr>
 					<tr>
 						<td>현재 전화번호</td>
-						<%-- <td><%=m.getPhone()%></td> --%>
+						<td><%=m.getPhone()%></td>
 					</tr>
 					<tr>
 						<td>새로운 전화번호</td>
@@ -54,10 +57,10 @@
 				</div>
 			</div>
 		</form>
-
 	</div>
-
-
+	</section>
+	
+	
 <%@ include file="/views/common/footer.jsp"%>      
     </div>
     <script src="<%=request.getContextPath() %>/js/common/header.js"></script>

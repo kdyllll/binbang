@@ -251,7 +251,6 @@
 	<script>
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		console.log(houseList);
-		console.log($(".price").val());
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
 			let standard = $(e.target).val();
@@ -288,6 +287,7 @@
 		$("#priceBtn").on("click", function(e) {
 
 		});
+		
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>

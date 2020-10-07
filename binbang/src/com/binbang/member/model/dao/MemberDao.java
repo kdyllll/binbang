@@ -61,6 +61,7 @@ public class MemberDao {
 		}return m;
 	}
 	
+	
 	//회원가입
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
@@ -122,7 +123,27 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}return result;		
-	}	
+	}
+	
+	//비밀번호 확인용
+	public String selectPassword(Connection conn,String password) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String result=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectPassword"));
+			pstmt.setString(1, password);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
 	
 	
 	//mypage 조회

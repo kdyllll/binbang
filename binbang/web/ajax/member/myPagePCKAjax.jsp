@@ -3,9 +3,6 @@
 
 <%@ page import="com.binbang.member.model.vo.Member" %>	
 
-<%
-	Member m = (Member) session.getAttribute("m");
-%>
 
 	
 <%@ include file="/views/common/commonLink.jsp"%>
@@ -16,22 +13,19 @@
 
 <body>
 	<div class="wrap">
-	
-	<form method="post" id="memberCheck"  action="<%=request.getContextPath() %>/member/mypagePrivateAjax">
-		
-		<div class="passwordCheck">
-			<div class="container">
-				<p class="passTitle">비밀번호 확인</p>
-				<div class="passLine">
-					<input type="password" placeholder="비밀번호 입력" id="passInput" name="passInput"> 
-					<input type="button" value="확인" class="checkBtn" id="checkBtn" onclick="<%=request.getContextPath() %>/member/mypagePrivateAjax">
+					
+		<form  action="<%=request.getContextPath() %>/member/mypagePrivate" method="post" id="memberCheck">		
+			<div class="passwordCheck">
+				<div class="container">
+					<p class="passTitle">비밀번호 확인</p>
+					<div class="passLine">							
+						<input type="password" placeholder="비밀번호 입력" id="passInput" name="password"> 						
+						<button class="checkBtn" id="checkBtn">확인</button>												
+					</div>
 				</div>
-			</div>
-		</div>	
-			
-	</form>
-
-
+			</div>				
+		</form>
+		
 	</div>
 
 	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>

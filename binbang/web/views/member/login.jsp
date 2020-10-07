@@ -27,15 +27,14 @@
 		<section class="section">
 
 			<div class="loginContainer">
+			
 				<form id="loginFrm" method="post" action="<%=request.getContextPath() %>/member/login">
 					<p class="loginTitle">LogIn</p>
 					<div class="loginLine"></div>
 
 					<input type="text" class="login" name="userId"
 						placeholder="아이디(이메일) 입력해주세요" value='<%=saveId!=null?saveId:"" %>'> 
-					<input type="password"
-						class="login" name="password" placeholder="비밀번호 입력해주세요">
-
+					<input type="password" class="login" name="password" placeholder="비밀번호 입력해주세요">
 					<div class="saveIdDiv">
 						<input type="checkbox" name="saveId" id="saveId" checked>
 						<label for="saveId">아이디 저장</label>
