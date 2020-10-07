@@ -46,16 +46,18 @@ public class HouseSearchListServlet extends HttpServlet {
 		String location=request.getParameter("search"); //검색 장소
 		String checkIn=(request.getParameter("checkIn")).trim(); 
 		String checkOut=(request.getParameter("checkOut")).trim();
-		List dayList=dateCalculator(checkIn, checkOut); //숙박 날짜들
+		List dayList=dateCalculator(checkIn, checkOut); //숙박 날짜들		
 		request.setAttribute("dayList", dayList);
-		String pNum=request.getParameter("peopleNum"); //숙박 인원
 		
+		String pNum=request.getParameter("peopleNum"); //숙박 인원
+		request.setAttribute("checkIn", checkIn);
+		request.setAttribute("checkOut", checkOut);
+		request.setAttribute("pNum", pNum);
 				
 		// paging처리하기
 		int cPage;
 		try {
 			cPage = Integer.parseInt(request.getParameter("cPage"));
-
 		} catch (NumberFormatException e) {
 			cPage = 1;
 		}
@@ -63,7 +65,7 @@ public class HouseSearchListServlet extends HttpServlet {
 		
 		//------------------------------------------------------------------------
 		//검색 기준에 맞는 숙소 리스트		
-		List<House> house=new HouseService().selectHouseList(location,checkIn,checkOut,pNum,cPage, numPerPage);
+		List<House> house=new HouseService().selectHouseList(location,checkIn,checkOut,pNum,cPage,numPerPage);
 		//데이터 갯수 세기
 		int totalData = house.size();
 		//------------------------------------------------------------------------
