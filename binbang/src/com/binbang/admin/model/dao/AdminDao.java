@@ -46,7 +46,7 @@ public class AdminDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setCoupon(rs.getInt("coupon"));
+				m.setPoint(rs.getInt("point"));
 				m.setHostBlack(rs.getString("host_black"));				
 
 				list.add(m);
