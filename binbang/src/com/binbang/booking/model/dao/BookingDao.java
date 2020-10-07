@@ -82,6 +82,7 @@ public class BookingDao {
 				b.setApprovalDate(rs.getDate("approval_date"));
 				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
+				b.setHouseRequest(rs.getString("house_request"));
 				list.add(b);
 			}
 
