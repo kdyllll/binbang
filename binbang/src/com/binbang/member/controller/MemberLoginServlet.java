@@ -41,11 +41,11 @@ public class MemberLoginServlet extends HttpServlet {
 			Cookie c= new Cookie("saveId",userId);
 			c.setMaxAge(24*60*60);
 			response.addCookie(c);
-		}else {
+		}else{
 			Cookie c= new Cookie("saveId","");
 			c.setMaxAge(0);
 			response.addCookie(c);
-		}
+		}		
 		
 		Member m= new MemberService().selectMember(userId,userPw);
 		

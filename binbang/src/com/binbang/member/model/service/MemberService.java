@@ -25,6 +25,8 @@ public class MemberService {
 		return m;
 	}
 	
+	
+	
 	//회원가입
 	public int insertMember(Member m) {
 		Connection conn=getConnection();
@@ -57,6 +59,14 @@ public class MemberService {
 	public String emailCheck(String email) {
 		Connection conn=getConnection();
 		String result=dao.emailCheck(conn,email);
+		close(conn);
+		return result;
+	}
+	
+	//mypage 비밀번호 확인
+	public String selectPassword(String password) {
+		Connection conn=getConnection();
+		String result=dao.selectPassword(conn,password);
 		close(conn);
 		return result;
 	}

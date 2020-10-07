@@ -1,24 +1,28 @@
-package com.binbang.member.controller;
+package com.binbang.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.binbang.admin.model.service.AdminService;
+import com.binbang.member.model.vo.Reservation;
 
 /**
- * Servlet implementation class MyPagePasswordCheckServlet
+ * Servlet implementation class SearchReserveListServlet
  */
-@WebServlet("/member/MyPagePasswordCheck")
-public class MyPagePasswordCheckServlet extends HttpServlet {
+@WebServlet("/admin/searchReserveList")
+public class SearchReserveListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPagePasswordCheckServlet() {
+    public SearchReserveListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +32,13 @@ public class MyPagePasswordCheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/* Member m=new MemberService().passwordCheck(password); */
+		String type=request.getParameter("searchType");
+		String key=request.getParameter("searchKeyword");
 		
-		String msg = "";
-		String loc = "";
-
-
+		List<Reservation> list=new AdminService().searchReserveList(type, key);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/reserveList.jsp").forward(request, response);
+		
 	}
 
 	/**

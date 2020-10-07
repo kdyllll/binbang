@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.member.model.service.MemberService;
+import com.binbang.member.model.vo.Member;
+
 /**
  * Servlet implementation class MypagePasswordCheckAjaxServlet
  */
@@ -28,7 +31,7 @@ public class MypagePCKAjaxServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-		//mypage private 가기전 비밀번호 확인
+		//mypage private 가기전 비밀번호 확인  	
 		request.getRequestDispatcher("/ajax/member/myPagePCKAjax.jsp").forward(request, response);
 	}
 

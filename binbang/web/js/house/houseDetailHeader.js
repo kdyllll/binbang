@@ -18,13 +18,3 @@ $(document).ready(function () {
     });
   });
 
-
-
-
-
-
-
-
-
-
-  

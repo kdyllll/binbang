@@ -1,5 +1,6 @@
 package com.binbang.house.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -44,6 +45,8 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("서블릿 실행");
 		String path = getServletContext().getRealPath("/upload/house");
+		File dir=new File(path);
+		if(dir.exists()) dir.mkdirs();
 		int maxSize = 1024 * 1024 * 50;
 		String encode = "UTF-8";
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();

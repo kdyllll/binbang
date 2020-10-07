@@ -14,7 +14,7 @@
 		</ul>
 		<%} else if(m.getEmail().equals("admin")) { %>
 		<ul>
-			<li><a href="<%=request.getContextPath()%>/admin/moveAdminPage">관리자페이지</a></li>
+			<li><a href="<%=request.getContextPath()%>/admin/newMoveAdminPage">관리자페이지</a></li>
 			<li><a href="<%=request.getContextPath()%>/member/logout">로그아웃</a></li>
 		</ul>
 		<%} else if(m.getEmail()!=null && !m.getEmail().equals("admin")) {%>

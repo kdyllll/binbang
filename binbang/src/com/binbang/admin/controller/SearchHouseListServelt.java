@@ -1,26 +1,28 @@
-package com.binbang.member.controller;
+package com.binbang.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.binbang.member.model.service.MemberService;
+import com.binbang.admin.model.service.AdminService;
+import com.binbang.house.model.vo.House;
 
 /**
- * Servlet implementation class MemberDeleteServlet
+ * Servlet implementation class SearchHouseListServelt
  */
-@WebServlet("/member/memberDelete")
-public class MemberDeleteServlet extends HttpServlet {
+@WebServlet("/admin/searchHouseList")
+public class SearchHouseListServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteServlet() {
+    public SearchHouseListServelt() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,28 +32,11 @@ public class MemberDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String email=request.getParameter("email");
-		int result=new MemberService().deleteMember(email);
-		String msg="";
-		String loc="";
-		
-		if(result>0) {
-			msg="탈퇴완료";
-			loc="/views/member/main.jsp";
-			HttpSession session=request.getSession(false);
-			if(session!=null) {
-				session.invalidate();
-			}
-		}else {
-			msg="탈퇴실패";
-			loc="/views/member/myPage";
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-		
-		
+		String type=request.getParameter("searchType");
+		String keyword=request.getParameter("searchKeyword");
+		List<House> list=new AdminService().searchHouseList(type,keyword);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/houseList.jsp").forward(request, response);
 		
 	}
 

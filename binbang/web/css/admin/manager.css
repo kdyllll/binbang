@@ -34,19 +34,21 @@
     margin-top: 20px;
 }
 
-#memberAll, #reserveAll, #hostAll,#hostList, #acceptList, #blackList{
+/*#memberAll, #reserveAll, #hostAll,#hostList, #acceptList, #blackList*/
+#menuAll li{
     padding : 20px 10px 20px 30px;
     height : 20px;
     cursor: pointer;     
 }
 
-#memberAll, #reserveAll, #hostAll{
+/*#memberAll, #reserveAll, #hostAll*/
+#menuAll>li{
     font-weight: bolder;
     font-size:18px;
     padding-left: 15%;
 }
 
-#subAll{ 
+#subAll, #memberSubAll{ 
   background-color: none;
   margin-top: 30px;
   display:none;
@@ -186,6 +188,9 @@ th{
 .cell5 {
     width:35%;
 }
+.cell6 {
+    width:30%;
+}
 
 
 /* 팝업 */
@@ -200,7 +205,7 @@ section {
     width: 100vw;
     height: 100vh;
     background: none;
- 
+
     display: none;
     
   }

@@ -1,23 +1,28 @@
 package com.binbang.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.admin.model.service.AdminService;
+import com.binbang.house.model.vo.House;
+
 /**
- * Servlet implementation class MoveAdminPageServlet
+ * Servlet implementation class HouseListServlet
  */
-@WebServlet("/admin/moveAdminPage")
-public class MoveAdminPageServlet extends HttpServlet {
+@WebServlet("/admin/houseList")
+public class HouseListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoveAdminPageServlet() {
+    public HouseListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +31,10 @@ public class MoveAdminPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/admin/manager2.jsp").forward(request, response);
+	
+		List<House> list=new AdminService().houseList();
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/houseList.jsp").forward(request, response);
 	}
 
 	/**

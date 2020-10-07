@@ -16,12 +16,13 @@ public class Member {
 	private String hostConfirm;
 	private String hostNo;
 	private int point;
-		
+
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
+
+	private Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
 			Date enrollDate, int stayDays, String hostBlack, String hostConfirm, String hostNo, int point) {
 		super();
 		this.memberNo = memberNo;
@@ -141,9 +142,6 @@ public class Member {
 				+ ", stayDays=" + stayDays + ", hostBlack=" + hostBlack + ", hostConfirm=" + hostConfirm + ", hostNo="
 				+ hostNo + ", point=" + point + "]";
 	}
-
-
-	
 
 
 }
