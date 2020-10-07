@@ -33,7 +33,7 @@ public class MemberMyPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
 		String email = request.getParameter("email");
-		Member m = new MemberService().selectInf(email);
+		Member m = new MemberService().selectInfo(email);
 
 		request.setAttribute("member", m);
 		request.getRequestDispatcher("/views/member/myPage.jsp").forward(request, response);

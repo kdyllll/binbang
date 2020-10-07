@@ -42,7 +42,7 @@ public class MemberCheckConfirmNumberServlet extends HttpServlet {
 		
 //		String email=null;
 		String userId = request.getParameter("email");
-		Member m=new MemberService().selectInf(userId);
+		Member m=new MemberService().selectInfo(userId);
 //		email= new MemberService().emailCheck(userId);
 		System.out.println(userId);
 		   
