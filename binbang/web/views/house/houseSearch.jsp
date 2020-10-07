@@ -1,3 +1,6 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.binbang.member.model.vo.Favorite"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -9,9 +12,10 @@
 <%@ page import="java.util.List,com.binbang.house.model.vo.House"%>
 <%
 	List<House> house = (List<House>) request.getAttribute("house");
-	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
-	Member member = (Member) session.getAttribute("m");
-	String pageBar = (String) request.getAttribute("pageBar");
+List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
+Member member = (Member) session.getAttribute("m");
+String pageBar = (String) request.getAttribute("pageBar");
+List dayList = (List) request.getAttribute("dayList");
 %>
 </head>
 <body>
@@ -128,9 +132,10 @@
 												if (f.getHouseNo().equals(h.getHouseNo())) {
 											//이집이 관심숙소 리스트에 있는 집이면 heart
 										%>
-										<script> 
-										$(".heartCommon").removeClass(".heart"); 
-										$(".heartCommon").addClass(".fav"); 
+										<script>
+											$(".heartCommon").removeClass(
+													".heart");
+											$(".heartCommon").addClass(".fav");
 										</script>
 										<%
 											}
@@ -164,9 +169,49 @@
 										<div class="iconPrice"></div>
 										<p class="priceName">
 											<!-- 가격 : 총요금/날짜수-->
-											<%
+											<%	int total=0;
+												int days=0;
+												int price=0;
+												//주말인지 평일인지 //성수기인지 비수기인지
+											for (Object o : dayList) {
+												String day = "20" + (String) o; //숙박 날짜 하루하루
+												//요일 구하기
+												SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
+												Date date = form.parse(day);
+												Calendar c = Calendar.getInstance();
+												c.setTime(date);
+												System.out.println();
+												int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토
+												if (dayNum == 6 || dayNum == 7) {//주말이라면
+													for (Object o1 : h.getTotalPeak()) { //성수기
+														String pDay = (String) o1;
+														if (day.equals(pDay)) {//성수기(주말)라면
+															total+=h.getPricePeakWeekend();
+															days++;
+														}else{//비수기(주말)라면
+															total+=h.getPriceWeekend();
+															days++;
+														}
+													}							
+												}else{//평일이라면
+													for (Object o1 : h.getTotalPeak()) { //성수기
+														String pDay = (String) o1;
+														if (day.equals(pDay)) {//성수기(평일)라면
+															total+=h.getPricePeakDay();
+															days++;
+														}else{//비수기(평일)라면
+															total+=h.getPriceDay();
+															days++;
+														}
+													}	
+												}
+											}	
 												
+												if(total!=0&&days!=0){
+													price=total/days;
+												}
 											%>
+											약 <%=price%> 원/1박
 										</p>
 									</div>
 
@@ -200,32 +245,47 @@
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
 
-	<script>	
-		let houseList=<%=request.getAttribute("houseJson")%>;
+	<script>
+		let houseList =
+	<%=request.getAttribute("houseJson")%>
+		;
 		console.log(houseList);
 		//정렬 버튼 누를때
-		$("#houseSort > li").on("click",function(e){
-			let standard=$(e.target).val();
-			
-			function customSort(a, b) { 
-				if(a.houseNo == b.houseNo){ return 0} return a.houseNo > b.houseNo ? -1 : 1; 
-			} 
-			houseList.sort(customSort); 
+		$("#houseSort > li").on("click", function(e) {
+			let standard = $(e.target).val();
 
-			console.dir("정렬 후"+JSON.stringify(houseList));
+			//기본순(최신순)=하우스넘버 내림차순
+			function basicSort(a, b) {
+				if (a.houseNo == b.houseNo) {
+					return 0
+				}
+				return a.houseNo > b.houseNo ? -1 : 1;
+			}
+			//추천순=총평점 내림차순
+			function gradeSort(a, b) {
+				if (a.avgGrade == b.avgGrade) {
+					return 0
+				}
+				return a.avgGrade > b.avgGrade ? -1 : 1;
+			}
+			//가격 낮은순
+
+			//가격 높은순
+
+			houseList.sort(basicSort);
+
+			console.dir("정렬 후" + JSON.stringify(houseList));
 		});
-		
+
 		//금액 검색 누를때
-		$("#filterBtn").on("click",function(e){
-			
+		$("#filterBtn").on("click", function(e) {
+
 		});
-		
+
 		//필터 검색 누를 때
-		$("#priceBtn").on("click",function(e){
-			
+		$("#priceBtn").on("click", function(e) {
+
 		});
-		
-		
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>

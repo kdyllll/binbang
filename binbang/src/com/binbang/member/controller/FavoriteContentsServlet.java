@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberFavoriteFolderServlet
+ * Servlet implementation class MemberFavoriteContentsServlet
  */
-@WebServlet("/member/favoriteFolder")
-public class MemberFavoriteFolderServlet extends HttpServlet {
+@WebServlet("/member/favoriteContents")
+public class FavoriteContentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberFavoriteFolderServlet() {
+    public FavoriteContentsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class MemberFavoriteFolderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/member/favoriteContents.jsp").forward(request, response);
 	}
 
 	/**

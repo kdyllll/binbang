@@ -67,8 +67,7 @@ public class MemberDao {
 		int result=0;
 		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));
-			
+			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));			
 			pstmt.setString(1, m.getEmail());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getMemberName());
@@ -258,6 +257,8 @@ public class MemberDao {
 			close(pstmt);
 		}return fList;
 	}
+	
+	
 	
 	
 	

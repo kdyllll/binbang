@@ -350,15 +350,19 @@ public class HouseDao {
 	}
 	
 
-	//모든 숙소 리스트 받아오는 다오(페이징 처리 포함)
-	public List<House> selectHouseAll(Connection conn,int cPage, int numPerPage){
+	//검색한 숙소 리스트 받아오는 다오(페이징 처리 포함)
+	public List<House> selectHouseList(Connection conn,String location,String checkIn, String checkOut, String pNum,int cPage, int numPerPage){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<House> list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectHouseAll"));
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-	        pstmt.setInt(2, cPage*numPerPage);
+			pstmt = conn.prepareStatement(prop.getProperty("selectHouseList"));
+			pstmt.setString(1, "%"+location+"%");
+			pstmt.setString(2, pNum);
+			pstmt.setString(3, checkIn);
+			pstmt.setString(4, checkOut);
+			pstmt.setInt(5, (cPage-1)*numPerPage+1);
+	        pstmt.setInt(6, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				House h = new House();
