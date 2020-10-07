@@ -31,7 +31,7 @@
 				<div>
 					<p>인원</p>
 					<div class="peopleNumCon">
-						<input type="hidden" name="peopleNum" id="peopleNum" value="">
+						<input type="hidden" name="peopleNum" id="peopleNum" value="" required>
 						<img src="<%=request.getContextPath() %>/image/common/icon/minus.png" id="pMinus">
 						<span class="peopleNum">0</span>
 						<img src="<%=request.getContextPath() %>/image/common/icon/add.png" id="pAdd">
@@ -158,8 +158,20 @@
 		})
 
     	function fn_search(){
+			console.log($("#search").val().trim().length);
+			if($("#search").val().trim().length==0){
+				alert("지역을 입력하세요");
+				return;
+			}else if($("#checkIn").val().trim()=="날짜선택"||$("#checkOut").val().trim()=="날짜선택"){
+				alert("숙박 날짜를 선택하세요");
+				return;
+			}else if($("#peopleNum").val().trim().length==0||$("#peopleNum").val().trim()=="0"){
+				alert("인원을 선택하세요");
+				return;
+			}else{
     		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList").submit();
-		}
+			}
+		} 
 	</script>
 </body>
 </html>
