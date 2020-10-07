@@ -1,30 +1,26 @@
-package com.binbang.host.controller;
+package com.binbang.member.ajax.controller;
 
 import java.io.IOException;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.binbang.host.model.service.HostService;
-import com.binbang.host.model.vo.Host;
-import com.binbang.member.model.vo.Member;
+import com.binbang.member.model.service.MemberService;
 
 /**
- * Servlet implementation class HostDetailServlet
+ * Servlet implementation class MemberDuplicateCheckServlet
  */
-@WebServlet("/host/hostDetail")
-public class HostDetailServlet extends HttpServlet {
+@WebServlet("/member/checkEmailDuplicateAjax")
+public class MemberDuplicateCheckAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostDetailServlet() {
+    public MemberDuplicateCheckAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,20 +29,14 @@ public class HostDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		Member m = (Member)session.getAttribute("m");
-
-		Host h = new HostService().selectHostOne(m.getMemberNo());
-		request.setAttribute("host", h);
-		String loc = (String)request.getAttribute("loc");
+		 //입력한 email
+		String email=request.getParameter("email");
+		//존재한 email과 비교한 후 result
+		String result=new MemberService().emailCheck(email);
 		
-		if(loc==null) {
-			loc = "/host/houseManageAjax";
-		}
-
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/host/hostMypage.jsp").forward(request, response);
+		
+		request.setAttribute("result", result);
+		request.getRequestDispatcher("/ajax/member/duplicateCheckAjax.jsp").forward(request, response);
 	}
 
 	/**

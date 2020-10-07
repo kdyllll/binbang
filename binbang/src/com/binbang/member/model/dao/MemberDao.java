@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import com.binbang.member.model.vo.Favorite;
 import com.binbang.member.model.vo.Member;
 
 
@@ -45,10 +48,10 @@ public class MemberDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setPoint(rs.getInt("point"));
 				m.setHostBlack(rs.getString("host_black"));				
 				m.setHostConfirm(rs.getString("host_confirm"));
 				m.setHostNo(rs.getString("host_no"));
+				m.setPoint(rs.getInt("point"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -64,8 +67,7 @@ public class MemberDao {
 		int result=0;
 		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));
-			
+			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));			
 			pstmt.setString(1, m.getEmail());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getMemberName());
@@ -124,12 +126,12 @@ public class MemberDao {
 	
 	
 	//mypage 조회
-	public Member selecInf(Connection conn, String email) {
+	public Member selecInfo(Connection conn, String email) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Member m=null;
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectMemberInf"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberInfo"));
 			pstmt.setString(1, email);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -221,8 +223,8 @@ public class MemberDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setPoint(rs.getInt("point"));
 				m.setHostBlack(rs.getString("host_Black"));				
+				m.setPoint(rs.getInt("point"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -231,6 +233,31 @@ public class MemberDao {
 			close(pstmt);
 		}return m;
 	}
+	
+	public List<Favorite> selectFavList(Connection conn,Member m){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Favorite> fList=new ArrayList<Favorite>();
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectFavList"));
+			pstmt.setString(1,m.getMemberNo());
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				Favorite f=new Favorite();
+				f.setFolderNo(rs.getString("folder_no"));
+				f.setMemberNo(rs.getString("member_no"));
+				f.setFolderName(rs.getString("folder_name"));
+				f.setHouseNo(rs.getString("house_no"));
+				fList.add(f);
+			}		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return fList;
+	}
+	
 	
 	
 	

@@ -23,6 +23,13 @@ public class HouseService {
 		 return h;
 	}
 	
+	public Review ReviewDetail(int no) {
+		Connection conn=getConnection();
+		Review r=dao.ReviewDetail(conn, no);
+		 close(conn);
+		 return r;
+	}
+	
 
 	public House BinbangDetail(int no) {
 		Connection conn = getConnection();
@@ -116,6 +123,55 @@ public class HouseService {
 		close(conn);
 		return list;
 	}
+	
+
+	public List<House> selectHouseList(String location,String checkIn, String checkOut, String pNum, int cPage,int numPerPage){
+		Connection conn = getConnection();
+		List<House> list = dao.selectHouseList(conn,location,checkIn,checkOut,pNum,cPage,numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	public Double selectAvgGrade(String houseNo){
+		Connection conn = getConnection();
+		Double avg = dao.selectAvgGrade(conn, houseNo);
+		close(conn);
+		return avg;
+	}
+	
+	public List selectPeakDay(House h,String season) {
+		Connection conn = getConnection();
+		List pList = dao.selectPeakDay(conn,h,season);
+		close(conn);
+		return pList;
+	}
+
+	public int deleteHouse(String houseNo) {
+		Connection conn = getConnection();
+		int result = dao.deleteHouse(conn, houseNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+
+	}
+	
+	public String[] selectMainPicture(House h) {
+		Connection conn = getConnection();
+		String[] pictures = dao.selectMainPicture(conn,h);
+		close(conn);
+		return pictures;
+	}
+	
+	public int houseCount() {
+		Connection conn = getConnection();
+		int count = dao.houseCount(conn);
+		close(conn);
+		return count;
+	}
+
+	
+	
 
 
 }

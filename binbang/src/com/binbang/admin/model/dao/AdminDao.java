@@ -62,7 +62,6 @@ public class AdminDao {
 				close(rs);
 				close(conn);
 			}return list;
-			
 		}
 		
 		//호스트 리스트

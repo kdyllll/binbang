@@ -1,27 +1,25 @@
-package com.binbang.member.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.member.model.service.MemberService;
-import com.binbang.member.model.vo.Member;
+import com.binbang.booking.model.service.BookingService;
 
 /**
- * Servlet implementation class MemberMyPageServlet
+ * Servlet implementation class HouseRequestServlet
  */
-@WebServlet(name = "mypage", urlPatterns = "/member/myPage")
-public class MemberMyPageServlet extends HttpServlet {
+@WebServlet("/host/houseRequestDeny")
+public class HouseRequestDenyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MemberMyPageServlet() {
+	public HouseRequestDenyServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -30,13 +28,15 @@ public class MemberMyPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String reservNo = request.getParameter("reservNo");
+		System.out.println(reservNo);
+		int result = new BookingService().deleteBooking(reservNo);
 
-		String email = request.getParameter("email");
-		Member m = new MemberService().selectInfo(email);
-
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/member/myPage.jsp").forward(request, response);
+		request.setAttribute("loc", "/host/houseRequestAjax");
+		request.getRequestDispatcher("/host/hostDetail").forward(request, response);
 	}
 
 	/**

@@ -47,7 +47,7 @@ public class FindPasswordAjaxServlet extends HttpServlet {
         }
         request.setAttribute("msg", msg);
         request.setAttribute("loc", loc);
-        request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);        
 	}
 
 	/**

@@ -30,12 +30,8 @@
                     </form> <br>
                     <div class="payMent">결제방법 : 
                         <form class="payments">
-                            <input type="checkbox" name="pay1" value="신용카드" id="card">
-                            <label for="card">신용카드</label>
-                            <input type="checkbox" name="pay2" value="휴대폰결제" id="phone">
-                            <label for="phone">휴대폰결제</label>
-                            <input type="checkbox" name="pay3" value="무통장입금" id="bankTransfer">
-                            <label for="bankTransfer">무통장입금</label>
+                        <label><input type="radio" name="pay" value="card" id="card" >신용카드</label>
+                        <label><input type="radio" name="pay" value="bankTransfer" id="bankTransfer" >무통장입금</label>
                         </form>
                     </div> <br><br>
                     <div class="guidanceBox">
@@ -59,7 +55,7 @@
                             </div> <br>
                             <div>$150,000 ⅹ1박 → $150,000</div> <br>
                             <div class="payInfoBox">
-                                <form class="payInfo">
+                                <form class="payInfo" method="POST" >
                                     결제 약관 정보 <br>
                                     <input type="checkbox" name="check" value="전체동의" id="check">
                                     <label for="check">결제약관(개인정보)전체동의</label>
@@ -75,11 +71,17 @@
                             </div>
                             <div class="payBox">
                                 <div class="pay"><a href="<%=request.getContextPath()%>/booking/bookingFinal">booking</a>
+                                
+
+
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
+                                  
                 </div>
+
             
                 
 <div class="enrollbg">
@@ -103,13 +105,16 @@
 
   </div>
 </div>
+
                
       </section>
+   
      <%@ include file="/views/common/footer.jsp" %>
   </div>
    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
     <script src="<%=request.getContextPath() %>/js/booking/bookingPopup.js"></script>
     <script src="<%=request.getContextPath() %>/js/booking/booking.js"></script>   
+	<script src="<%=request.getContextPath() %>/js/booking/pay.js"></script>  
 </body>
  
 </html>
