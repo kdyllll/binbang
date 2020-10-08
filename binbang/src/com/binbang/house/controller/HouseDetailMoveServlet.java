@@ -63,7 +63,11 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				request.setAttribute("house",h);
 				request.setAttribute("list",list);
 					
-				path="/views/house/houseDetail.jsp";
+					path="/views/house/houseDetail.jsp";
+					for(Review r : list) {
+						System.out.println(r);	
+					}
+					
 				
 				
 	

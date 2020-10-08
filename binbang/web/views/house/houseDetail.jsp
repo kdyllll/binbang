@@ -1,3 +1,5 @@
+하우스 디테일 jsp
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
@@ -66,9 +68,13 @@
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
 				</div>
+				
 				<div class="info">
 					<div class="title">
+						 <% if( h != null){ %> 
 						<%=h.getHouseName()%>
+						
+						
 						<div class="heartCommon heart"></div>
 					</div>
 					<br> <br> <br>
@@ -212,6 +218,7 @@
 					<a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
 				</div>
 			</div>
+			<%} %>
 			<%for(Review r : list) {%>
 			<div class="comment">
 				<div class="swiper-container three">
@@ -245,25 +252,7 @@
 					<!-- <div class="swiper-pagination"></div> -->
 
 				</div>
-<<<<<<< HEAD
-						
-	
-			</div>
-  
-			
-			
-			<!-- Add Arrows -->
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-			<!-- Add Pagination -->
-			<div class="swiper-pagination"></div>
-			<!-- <div class="swiper-pagination"></div> -->
-			
-			</div>
-			
-=======
 
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 
 			</div>
@@ -272,13 +261,9 @@
 
 			<div class="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-<<<<<<< HEAD
-	<div id="ex">댓글 등록하기</div>
-=======
 
 			
 
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
 			<div class="place">
 				<div class="placeSection">
@@ -326,30 +311,6 @@
 				</div>
 				<div class="placemap"></div>
 			</div>
-<<<<<<< HEAD
-			
-			
-			
-<div class="enrollbg" style="display:none">
-  <div id="popup">
-    <div class="color"></div>
-    <div class="popupBtn">x</div>
-    <div class="popupContent">
-        <p class="popupTitle">자세히 보기</p>
-        <div class="reasonBox">
-          제 1조 (총칙) 개인정보란 생존하는 개인에 관한 정보로서 당해 정보에 포함되어 있는 성명, 주민등록번호 등의 사항에 의하여 당해 개인을 식별할 수 있는 정보 (당해 정보만으로는 특정 개인을 식별할 수 없더라도 다른 정보와 용이하게 결합하여 식별할 수 있는 것을 포함합니다.) 를 말합니다. <br><br>
-          빈방은 귀하의 개인정보 보호를 매우 중요시하며, ‘정보통신망 이용촉진 및 정보보호에 관한 법률’ 상의 개인정보 보호규정 및 정보통신부가 제정한 ‘개인정보 보호지침’을 준수하고 있습니다. 빈방은 개인정보취급방침을 정하고 이를 귀하께서 언제나 쉽게 확인할 수 있게 공개하도록 하고 있습니다. <br><br><br>         
-          빈방은 개인정보 처리방침의 지속적인 개선을 위하여 개정하는데 필요한 절차를 정하고 있으며, 개인정보 처리방침을 회사의 필요한 사회적 변화에 맞게 변경할 수 있습니다. <br><br>
-           그리고 개인정보처리방침을 개정하는 경우 버전번호 등을 부여하여 개정된 사항을 귀하께서 쉽게 알아볼 수 있도록 하고 있습니다. <br><br>
-           제 2조 (수집하는 개인정보 항목 및 수집방법) 빈방은 별도의 회원가입 절차 없이 대부분의 컨텐츠에 자유롭게 접근할 수 있습니다. <br><br>
-           빈방에서 예약 및 프로모션. 이벤트 서비스를 이용하시고자 할 경우 다음의 정보를 입력해주셔야 합니다.<br> <br>
-           입력항목 : 희망ID, 비밀번호, 성명, 이메일주소 또한 서비스 이용과정이나 사업 처리 과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다. <br><br>
-           최근접속일, 접속 IP 정보, 쿠키, 구매로그, 이벤트로그 회원가입 시 회원이 원하시는 경우에 한하여 추가 정보를 선택, 제공하실 수 있도록 되어있으며, 일부 재화 또는 용역 상품에 대한 주문 및 예약 시 회원이 원하는 정확한 주문 내용 파악을 통한 원활한 고객 응대 및 예약 처리를 위하여 추가적인 정보를 요구하고 있습니다. <br><br>
-           빈방은 다음과 같은 방법으로 개인정보를 수집합니다.
-        </div>
-    </div>
-=======
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
 
 
@@ -392,17 +353,8 @@
 			</aside>
 
 		</section>
-		
+		<%@ include file="/views/common/footer.jsp"%>
 	</div>
-<<<<<<< HEAD
-	
-
-	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath() %>/js/common/heart.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/houseDetailHeader.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/houseDetailSwiper.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/filter.js"></script>
-=======
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 	<script
@@ -411,8 +363,6 @@
 		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
-	<%@ include file="/views/common/footer.jsp"%>
 </body>
 </html>
