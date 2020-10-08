@@ -120,7 +120,7 @@
 						<div class="house">
 
 							<a 
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=h.getTotalPrice()%>"
+								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
@@ -154,6 +154,7 @@
 									<div class="contentBox box1">
 										<div class="iconLocation"></div>
 										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
+										
 									</div>
 
 									<div class="contentLine"></div>
@@ -199,7 +200,7 @@
 
 			</div>
 	</div>
-
+	<div id="ttttest"></div>
 
 	</section>
 
@@ -209,7 +210,9 @@
 	<script>
 	
 		let houseList =<%=request.getAttribute("houseJson")%>;
+		let favorite =<%=request.getAttribute("filterJson")%>;
 		let days= <%=request.getAttribute("days")%>;
+		let main=<%=request.getContextPath()%>;
 		console.log(houseList);
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
@@ -247,14 +250,57 @@
 				}
 				return a.totalPrice > b.totalPrice ? -1 : 1;
 			}
-			console.dir("정렬 후" + JSON.stringify(houseList));
-			new Gson.fromJson(houseList)
+			console.log("정렬 후" + JSON.stringify(houseList));
+			
+			
+			for(let h in houseList){
+				let a = $("<a>");
+				a.attr({
+				  class: "housePic",
+				  href: "<%=request.getContextPath()%>/house/houseDetailMove?houseNo="+houseList[h].houseNo,	/* 이거맞음 */			  
+				});
+				
+			}
+			//for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)
+			//	for(var ele2 in i[ele]){  //ele2는 객체의 키값(name등)
+			//		console.log(i[ele][ele2]); // 배열이름/인덱스(객체순서)/키값 이 되는 것
+			//	} 
+			//}
+				
+
+			$(".list").children().remove();
+			
+			
 		});
 
-		//금액 검색 누를때
+		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		$("#priceBtn").on("click", function(e) {
-			let pricelist=houseList.filter(val => val.getTotalPrice / days > 100000 );
-			console.log(pricelist);
+			let price=$(".price").text();
+			let hiddenPriceTag=$(".price").filter(function(i,v){
+				return $(v).text()<
+			})
+			hiddenPriceTag.each(function(i,v){
+				$(v).parents("div.list").show
+				hide()
+			})
+			let result=true;
+			$("input[name=price]:checked").each(function() {
+				if($(this).val() == "10"){
+					if(price > 100000){
+						result=false;
+					}
+				} 
+				if($(this).val() == "20"){
+					if(price < 100000 && price >200000){
+						result=false;
+					}
+				} 
+				
+			});
+			if(result==false){
+				$(".house").hide();
+			}
+		
 		});
 
 		//필터 검색 누를 때
