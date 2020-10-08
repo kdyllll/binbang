@@ -136,11 +136,12 @@ public class HouseSearchListServlet extends HttpServlet {
 			totalPeak.addAll(h.getPeakDay5());
 			h.setTotalPeak(totalPeak);
 			
+			//필터
+			h.setFilter(new HouseService().HouseFilterList(h.getHouseNo()));
+			
 		}
 		
-		//총금액(여기서 받아주면 좋겠는데....음)
 		
-		//필터
 		
 		
 		request.setAttribute("house", house);
@@ -201,14 +202,15 @@ public class HouseSearchListServlet extends HttpServlet {
 		Date date1;
 		try {
 			date1 = sdf.parse(day1);
-			c.setTime(date1);
+			c.setTime(date1);//첫번째 체크인 날짜
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		for (int i = 0; i < day; i++) {
-			c.add(Calendar.DATE, 1);
+		
+		for (int i = 0; i < day; i++) {			
 			String days = sdf.format(c.getTime());
 			list.add(days);
+			c.add(Calendar.DATE, 1);
 		}
 
 		return list;
