@@ -15,7 +15,7 @@
 	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
-	List dayList = (List) request.getAttribute("dayList");
+	int days=(int)request.getAttribute("days");
 %>
 
 
@@ -118,51 +118,9 @@
 							for (House h : house) {
 						%>
 						<div class="house">
-						<%	//총요금과 날짜 구하는 식(a태그로 같이 넘겨주기 위해서 상단으로 옮김)
-							int total=0;
-							int days=0;
-							int price=0;
-							//주말인지 평일인지 //성수기인지 비수기인지
-						for (Object o : dayList) {
-							String day = (String) o; //숙박 날짜 하루하루
-							//요일 구하기
-							SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
-							Date date = form.parse(day);
-							Calendar c = Calendar.getInstance();
-							c.setTime(date);
-							int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토	
-							if (dayNum == 6 || dayNum == 7) {//주말(금토)이라면
-								for (Object o1 : h.getTotalPeak()) { //성수기
-									String pDay = "20"+(String) o1;
-									if (day.equals(pDay)) {//성수기(주말)라면
-										total+=h.getPricePeakWeekend();
-										days++;
-									}else{//비수기(주말)라면
-										total+=h.getPriceWeekend();
-										days++;
-									}
-								}							
-							}else{//평일이라면													
-								for (Object o1 : h.getTotalPeak()) { //성수기
-									String pDay = "20"+(String) o1;
-									if (day.equals(pDay)) {//성수기(평일)라면
-										total+=h.getPricePeakDay();
-										days++;
-									}else{//비수기(평일)라면
-										total+=h.getPriceDay();
-										days++;
-									}
-								}	
-							}
-						}	
-							
-							if(total!=0&&days!=0){
-								price=total/days;
-							}
-						%>
 
 							<a 
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=total%>"
+								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=h.getTotalPrice()%>"
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
@@ -193,14 +151,14 @@
 
 
 								<div class="contentSection2">
-									<div class="contentBox">
+									<div class="contentBox box1">
 										<div class="iconLocation"></div>
 										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
 									</div>
 
 									<div class="contentLine"></div>
 
-									<div class="contentBox">
+									<div class="contentBox box2">
 										<div class="iconGrade"></div>
 										<p class="gradeName">
 											<%=h.getAvgGrade()%>/5
@@ -209,18 +167,18 @@
 								</div>
 								<div class="houseLine2"></div>
 								<div class="contentSection3">
-									<div class="contentBox">
+									<div class="contentBox box1">
 										<div class="iconPrice"></div>
 										<p class="priceName">
-											<!-- 가격 : 총요금/날짜수-->
+											<!-- 가격 : 총요금/날짜수-->											
+											약 <span class="price"><%=h.getTotalPrice()%></span>원/1박
 											
-											약 <span class="price" value="<%=price%>"><%=price%></span>원/1박
 										</p>
 									</div>
 
 									<div class="contentLine"></div>
 
-									<div class="contentBox">
+									<div class="contentBox box2">
 										<div class="iconPeople"></div>
 										<p class="PeopleName"><%=h.getHousePnum()%>명
 										</p>
@@ -249,6 +207,7 @@
 	</div>
 
 	<script>
+	
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		console.log(houseList);
 		//정렬 버튼 누를때

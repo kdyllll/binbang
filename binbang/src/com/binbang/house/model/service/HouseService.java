@@ -39,10 +39,9 @@ public class HouseService {
 	}
 
 
-	public List<House> HouseFilterList(int cPage, int numPerPage) {
+	public List selectFilterList(String houseNo) {
 		Connection conn = getConnection();
-
-		List<House> list = dao.HouseFilterList(conn, cPage, numPerPage);
+		List list = dao.selectFilterList(conn,houseNo);
 		close(conn);
 		return list;
 	}
