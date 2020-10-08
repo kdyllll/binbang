@@ -423,172 +423,175 @@
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseEnroll.js"></script>
 
-	<script>
-		//  스와이퍼
-		var swiper = new Swiper('.first', {
-			pagination : {
-				el : '.swiper-pagination',
-				type : 'progressbar',
-			},
-			navigation : {
-				nextEl : '.swiper-button-next',
-				prevEl : '.swiper-button-prev',
-			},
-		});
+</script>
+   <script src="<%=request.getContextPath()%>/js/house/houseEnroll.js"></script>
 
-		function execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+   <script>
+      //  스와이퍼
+      var swiper = new Swiper('.first', {
+         pagination : {
+            el : '.swiper-pagination',
+            type : 'progressbar',
+         },
+         navigation : {
+            nextEl : '.swiper-button-next',
+            prevEl : '.swiper-button-prev',
+         },
+      });
 
-							// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-							var roadAddr = data.roadAddress; // 도로명 주소 변수
-							var extraRoadAddr = ''; // 참고 항목 변수
+      function execDaumPostcode() {
+         new daum.Postcode(
+               {
+                  oncomplete : function(data) {
+                     // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-							if (data.bname !== ''
-									&& /[동|로|가]$/g.test(data.bname)) {
-								extraRoadAddr += data.bname;
-							}
-							// 건물명이 있고, 공동주택일 경우 추가한다.
-							if (data.buildingName !== ''
-									&& data.apartment === 'Y') {
-								extraRoadAddr += (extraRoadAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
-							}
-							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-							if (extraRoadAddr !== '') {
-								extraRoadAddr = ' (' + extraRoadAddr + ')';
-							}
+                     // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                     // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                     var roadAddr = data.roadAddress; // 도로명 주소 변수
+                     var extraRoadAddr = ''; // 참고 항목 변수
 
-							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('postcode').value = data.zonecode;
-							document.getElementById("roadAddress").value = roadAddr;
+                     // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                     // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                     if (data.bname !== ''
+                           && /[동|로|가]$/g.test(data.bname)) {
+                        extraRoadAddr += data.bname;
+                     }
+                     // 건물명이 있고, 공동주택일 경우 추가한다.
+                     if (data.buildingName !== ''
+                           && data.apartment === 'Y') {
+                        extraRoadAddr += (extraRoadAddr !== '' ? ', '
+                              + data.buildingName : data.buildingName);
+                     }
+                     // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                     if (extraRoadAddr !== '') {
+                        extraRoadAddr = ' (' + extraRoadAddr + ')';
+                     }
 
-							// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-							if (roadAddr !== '') {
-								document.getElementById("detailAddress").value = extraRoadAddr;
-							} else {
-								document.getElementById("detailAddress").value = '';
-							}
+                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                     document.getElementById('postcode').value = data.zonecode;
+                     document.getElementById("roadAddress").value = roadAddr;
 
-							var guideTextBox = document.getElementById("guide");
-							// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-							if (data.autoRoadAddress) {
-								var expRoadAddr = data.autoRoadAddress
-										+ extraRoadAddr;
-								guideTextBox.innerHTML = '(예상 도로명 주소 : '
-										+ expRoadAddr + ')';
-								guideTextBox.style.display = 'block';
+                     // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                     if (roadAddr !== '') {
+                        document.getElementById("detailAddress").value = extraRoadAddr;
+                     } else {
+                        document.getElementById("detailAddress").value = '';
+                     }
 
-							} else {
-								guideTextBox.innerHTML = '';
-								guideTextBox.style.display = 'none';
-							}
-						}
-					}).open();
-		}
+                     var guideTextBox = document.getElementById("guide");
+                     // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                     if (data.autoRoadAddress) {
+                        var expRoadAddr = data.autoRoadAddress
+                              + extraRoadAddr;
+                        guideTextBox.innerHTML = '(예상 도로명 주소 : '
+                              + expRoadAddr + ')';
+                        guideTextBox.style.display = 'block';
 
-		$(function() {
-			$(".date1").datepicker(
-					{
-						dateFormat : "yy/mm/dd",
-						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
-								"7월", "8월", "9월", "10월", "11월", "12월" ],
-						onSelect : function(d) {
-							$(this).val(d);
-							var week = new Array("일", "월", "화", "수", "목", "금",
-									"토");
-						}
+                     } else {
+                        guideTextBox.innerHTML = '';
+                        guideTextBox.style.display = 'none';
+                     }
+                  }
+               }).open();
+      }
 
-					});
-			$(".date2").datepicker(
-					{
-						dateFormat : "yy/mm/dd",
-						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
-								"7월", "8월", "9월", "10월", "11월", "12월" ],
-						onSelect : function(d) {
-							$(this).val(d);
-							var week = new Array("일", "월", "화", "수", "목", "금",
-									"토");
-						}
-					});
-		});
-		
-		//입력항목 유효성검사
-		function fn_complete(){
-			console.log(count);
-			if($("#hName").val().trim().length==0){
-				alert("숙소 이름을 입력하세요.");
-				return;
-			}else if($("input[name=hType]:checked").length==0){
-				alert("숙소 유형을 선택하세요.");	
-				return;
-			}else if($("#roadAddress").val().trim().length==0||$("#detailAddress").val().trim().length==0){
-				alert("숙소 위치를 입력하세요.");	
-				return;
-			}else if($("#pNum").val().trim().length==0){
-				alert("숙소 최대 인원을 입력하세요.");	
-				return;
-			}else if($("input[name=personal]:checked").length==0){
-				alert("개인물건 유무를 선택하세요.");	
-				return;
-			}else if($("#roomNum").val().trim().length==0){
-				alert("방 갯수를 입력하세요.");	
-				return;
-			}else if($("#bedNum").val().trim().length==0){
-				alert("침대 갯수를 입력하세요.");	
-				return;
-			}else if($("#bathNum").val().trim().length==0){
-				alert("욕실 갯수를 입력하세요.");	
-				return;
-			}else if($("#checkTime").val().trim().length==0){
-				alert("체크인/체크아웃 시간을 입력하세요.");	
-				return;
-			}else if($("#attention").val().trim().length==0){
-				alert("주의사항을 입력하세요.");	
-				return;
-			}else if(!$("#picture1").val()){
-				alert("메인 사진을 등록하세요.");	
-				return;
-			}else if(!$("#picture2").val()||!$("#picture3").val()){
-				alert("사진을 3장 이상 등록해주세요.");	
-				return;
-			}else if($("#explain").val().trim().length==0){
-				alert("설명을 입력하세요.");	
-				return;
-			}else if($("#gemsung").val().trim().length==0){
-				alert("감성글을 입력하세요.");	
-				return;
-			}else if($("#gemsung").val().trim().length==0){
-				alert("감성글을 입력하세요.");	
-				return;
-			}else if($("#startDay1").val().trim().length==0||$("#endDay1").val().trim().length==0){
-				alert("성수기 기간을 하나 이상 입력하세요.");	
-				return;
-			}else if($("#peakDay").val().trim().length==0){
-				alert("성수기 평일 요금을 입력하세요.");	
-				return;
-			}else if($("#peakRest").val().trim().length==0){
-				alert("성수기 휴일 요금을 입력하세요.");	
-				return;
-			}else if($("#nonPeakDay").val().trim().length==0){
-				alert("비성수기 평일 요금을 입력하세요.");	
-				return;
-			}else if($("#nonPeakRest").val().trim().length==0){
-				alert("비성수기 휴일 요금을 입력하세요.");	
-				return;
-			}else{		
-			$("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
-			}
-		}
-		
-	</script>
+      $(function() {
+         $(".date1").datepicker(
+               {
+                  dateFormat : "yy/mm/dd",
+                  dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+                  monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
+                        "7월", "8월", "9월", "10월", "11월", "12월" ],
+                  onSelect : function(d) {
+                     $(this).val(d);
+                     var week = new Array("일", "월", "화", "수", "목", "금",
+                           "토");
+                  }
+
+               });
+         $(".date2").datepicker(
+               {
+                  dateFormat : "yy/mm/dd",
+                  dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+                  monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
+                        "7월", "8월", "9월", "10월", "11월", "12월" ],
+                  onSelect : function(d) {
+                     $(this).val(d);
+                     var week = new Array("일", "월", "화", "수", "목", "금",
+                           "토");
+                  }
+               });
+      });
+      
+      //입력항목 유효성검사
+      function fn_complete(){
+         if($("#hName").val().trim().length==0){
+            alert("숙소 이름을 입력하세요.");
+            return;
+         }else if($("input[name=hType]:checked").length==0){
+            alert("숙소 유형을 선택하세요.");   
+            return;
+         }else if($("#roadAddress").val().trim().length==0||$("#detailAddress").val().trim().length==0){
+            alert("숙소 위치를 입력하세요.");   
+            return;
+         }else if($("#pNum").val().trim().length==0){
+            alert("숙소 최대 인원을 입력하세요.");   
+            return;
+         }else if($("input[name=personal]:checked").length==0){
+            alert("개인물건 유무를 선택하세요.");   
+            return;
+         }else if($("#roomNum").val().trim().length==0){
+            alert("방 갯수를 입력하세요.");   
+            return;
+         }else if($("#bedNum").val().trim().length==0){
+            alert("침대 갯수를 입력하세요.");   
+            return;
+         }else if($("#bathNum").val().trim().length==0){
+            alert("욕실 갯수를 입력하세요.");   
+            return;
+         }else if($("#checkTime").val().trim().length==0){
+            alert("체크인/체크아웃 시간을 입력하세요.");   
+            return;
+         }else if($("#attention").val().trim().length==0){
+            alert("주의사항을 입력하세요.");   
+            return;
+         }else if(!$("#picture1").val()){
+            alert("메인 사진을 등록하세요.");   
+            return;
+         }else if(!$("#picture2").val()||!$("#picture3").val()){
+            alert("사진을 3장 이상 등록해주세요.");   
+            return;
+         }else if($("#explain").val().trim().length==0){
+            alert("설명을 입력하세요.");   
+            return;
+         }else if($("#gemsung").val().trim().length==0){
+            alert("감성글을 입력하세요.");   
+            return;
+         }else if($("#gemsung").val().trim().length==0){
+            alert("감성글을 입력하세요.");   
+            return;
+         }else if($("#startDay1").val().trim().length==0||$("#endDay1").val().trim().length==0){
+            alert("성수기 기간을 하나 이상 입력하세요.");   
+            return;
+         }else if($("#peakDay").val().trim().length==0){
+            alert("성수기 평일 요금을 입력하세요.");   
+            return;
+         }else if($("#peakRest").val().trim().length==0){
+            alert("성수기 휴일 요금을 입력하세요.");   
+            return;
+         }else if($("#nonPeakDay").val().trim().length==0){
+            alert("비성수기 평일 요금을 입력하세요.");   
+            return;
+         }else if($("#nonPeakRest").val().trim().length==0){
+            alert("비성수기 휴일 요금을 입력하세요.");   
+            return;
+         }else{      
+         $("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
+         }
+      }
+   </script>
+
+
 
 </body>
 </html>

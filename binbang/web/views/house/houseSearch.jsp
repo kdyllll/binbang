@@ -212,8 +212,12 @@
 		console.log(houseList);
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
-			let standard = $(e.target).val();
-		
+			let standard = $(e.target).text();
+			console.log(standard);
+			if(standard == "기본순") houseList.sort(basicSort); 
+			else if(standard == "추천순") houseList.sort(gradeSort); 
+			else if(standard == "가격낮은순") houseList.sort(priceLowSort); 
+			else if(standard == "가격높은순") houseList.sort(priceHighSort); 		
 			//기본순(최신순)=하우스넘버 내림차순
 			function basicSort(a, b) {
 				if (a.houseNo == b.houseNo) {
@@ -228,11 +232,22 @@
 				}
 				return a.avgGrade > b.avgGrade ? -1 : 1;
 			}
-			//가격 낮은순
-			$(".price").val()
-			//가격 높은순
+			//가격 낮은순(오름차)
+			function priceLowSort(a, b){
+				if(a.totalPrice == b.totalPrice){
+					return 0
+				}
+				return a.totalPrice > b.totalPrice ? 1 : -1;
+			}
+			//가격 높은순(내림차)
+			function priceHighSort(a, b){
+				if(a.totalPrice == b.totalPrice){
+					return 0
+				}
+				return a.totalPrice > b.totalPrice ? -1 : 1;
+			}
 
-			houseList.sort(basicSort);
+			 
 
 			console.dir("정렬 후" + JSON.stringify(houseList));
 		});
