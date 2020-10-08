@@ -125,12 +125,14 @@
 							//주말인지 평일인지 //성수기인지 비수기인지
 						for (Object o : dayList) {
 							String day = (String) o; //숙박 날짜 하루하루
+						
 							//요일 구하기
 							SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
 							Date date = form.parse(day);
 							Calendar c = Calendar.getInstance();
 							c.setTime(date);
-							int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토	
+							int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토	//여기까지 요일 구하기
+							
 							if (dayNum == 6 || dayNum == 7) {//주말(금토)이라면
 								for (Object o1 : h.getTotalPeak()) { //성수기
 									String pDay = "20"+(String) o1;
@@ -141,6 +143,8 @@
 										total+=h.getPriceWeekend();
 										days++;
 									}
+									total+=h.getPriceWeekend();//성수기 기간이 없다면
+									days++;
 								}							
 							}else{//평일이라면													
 								for (Object o1 : h.getTotalPeak()) { //성수기
@@ -152,10 +156,11 @@
 										total+=h.getPriceDay();
 										days++;
 									}
-								}	
+								}
+								total+=h.getPriceDay(); //성수기 기간이 없다면
+								days++;
 							}
 						}	
-							
 							if(total!=0&&days!=0){
 								price=total/days;
 							}

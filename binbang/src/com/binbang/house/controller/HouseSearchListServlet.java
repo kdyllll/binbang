@@ -201,14 +201,15 @@ public class HouseSearchListServlet extends HttpServlet {
 		Date date1;
 		try {
 			date1 = sdf.parse(day1);
-			c.setTime(date1);
+			c.setTime(date1);//첫번째 체크인 날짜
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		for (int i = 0; i < day; i++) {
-			c.add(Calendar.DATE, 1);
+		
+		for (int i = 0; i < day; i++) {			
 			String days = sdf.format(c.getTime());
 			list.add(days);
+			c.add(Calendar.DATE, 1);
 		}
 
 		return list;
