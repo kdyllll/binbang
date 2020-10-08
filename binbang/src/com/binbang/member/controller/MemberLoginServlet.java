@@ -37,6 +37,7 @@ public class MemberLoginServlet extends HttpServlet {
 		String userPw = request.getParameter("password");
 		String saveId=request.getParameter("saveId");
 		
+		//Id저장
 		if(saveId!=null) {
 			Cookie c= new Cookie("saveId",userId);
 			c.setMaxAge(24*60*60);

@@ -48,7 +48,7 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 			loc="/member/updatePassword?email="+email;			
 		}else {
 			msg="Password 변경실패";
-			loc="/member/myPage";
+			loc="/member/mypagePrivate";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

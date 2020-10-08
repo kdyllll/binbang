@@ -2,10 +2,13 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="com.binbang.member.model.vo.Member" %>	
-
+<%
+	Member m = (Member) session.getAttribute("m");
+%>
 
 	
 <%@ include file="/views/common/commonLink.jsp"%>
+
 <link rel="stylesheet"
 	href="<%=request.getContextPath() %>/css/member/mypage.css" />
 </head>
@@ -15,7 +18,9 @@
 	<div class="wrap">
 					
 		<form  action="<%=request.getContextPath() %>/member/mypagePrivate" method="post" id="memberCheck">		
-			<div class="passwordCheck">
+			<div class="passwordCheck">								
+				
+				<input type="hidden" value="<%=m.getEmail()%>" name="email" readonly>
 				<div class="container">
 					<p class="passTitle">비밀번호 확인</p>
 					<div class="passLine">							

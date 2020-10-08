@@ -62,14 +62,6 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
-	
-	//mypage 비밀번호 확인
-	public String selectPassword(String password) {
-		Connection conn=getConnection();
-		String result=dao.selectPassword(conn,password);
-		close(conn);
-		return result;
-	}
 
 	
 	

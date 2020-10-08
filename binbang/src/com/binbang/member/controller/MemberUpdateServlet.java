@@ -42,16 +42,15 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="회원수정 성공!";
-			loc="/views/member/myPage.jsp";
+			loc="/views/member/myPagePrivate.jsp";
 		}else {
 			msg="회원수정 실패!";
-			loc="/member/myPage?email="+m.getEmail();			
+			loc="/member/mypagePrivate?email="+m.getEmail();			
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);		
 	}
 
 	/**
