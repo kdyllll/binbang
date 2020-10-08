@@ -2,7 +2,6 @@
     <wb-module deploy-name="binbang">
         <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
         <property name="context-root" value="binbang"/>
         <property name="java-output-path" value="/binbang/web/WEB-INF/classes"/>
     </wb-module>
