@@ -28,8 +28,8 @@
      
      
         <p class="inputTitle">인증번호</p>
-        <form id="numberForm" class="input">
-        	
+        
+        <form id="numberForm" class="input">        	
           	<input type="text" class="setPassword" name="number" id="number" placeholder="인증번호 입력">
           	<input type="button" id="numberConfirm" value="인증확인">
         </form>

@@ -18,7 +18,7 @@
 </head>
 <body>
 
-	<form id="duplicateFrm">
+	
 	<div id="emailCheck">
 		<% if (email == null) { %>
 		<p class="title">이메일 인증</p>
@@ -30,14 +30,21 @@
 			<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>">
 		</div>
 
+
+
+
+
 		<p class="checkTitle">인증번호</p>
 		
-		<form id="numberFrm">
-			<div>
+		<form id="numberFrm">			
 				<input type="text" class="passNumber" name="num" id="num" placeholder="인증번호 입력"> 				 
-				<input type="button" value="인증확인" id="numConfirm">
-			</div>
+				<input type="button" id="numConfirm" value="인증확인">			
 		</form>				
+		
+
+
+
+
 		
 		<form>
 			<div id="resend">
@@ -62,8 +69,7 @@
 			<input type="submit" value="중복검사" onclick="return fn_validate();" id="duplicateRetry">
 		</form>
 		<% } %>
-	</div>
-	</form>
+	</div>	
 
 
 	<script>
@@ -101,7 +107,11 @@
 			}
 		});
 	});	
-		
+	
+
+	$("#numConfirm").on("click",e =>{
+		$("#numberFrm").attr("action","<%=request.getContextPath()%>/member/duplicateNumberCheck").submit();
+	});
 	
  	
  	/* 재전송 */ 
@@ -112,7 +122,6 @@
  	
  	function resendNum(){
  		clearInterval(x);
- 		document.getElementById("timer").innerHTML="";
  		time=300;
  		
  		sendNumber(); 		
@@ -127,14 +136,14 @@
  			sec=time%60;
  			document.getElementById("timer").innerHTML="인증 시간 : "+min+"분"+sec+"초";
  			time--;
- 			let test = document.getElementById("resendBtn")
+ 			
+ 	        if(time<0){
+ 	           clearInterval(x);
+ 	           document.getElementById("timer").innerHTML="다시 인증해주세요.";
+ 	        }
  		},1000); 		
  	};
  	
-
-	$("#numConfirm").on("click",e =>{
-		$("#numberFrm").attr("action","<%=request.getContextPath()%>/member/duplicateNumberCheck").submit();
-	});
 
 
 
