@@ -5,7 +5,7 @@
 <%@page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
 
-	House h=(House)request.getAttribute("h");
+	House h=(House)request.getAttribute("house");
 	Member member = (Member)session.getAttribute("m");
 	List<Review> list=(List)request.getAttribute("list");
 %>
@@ -71,7 +71,7 @@
 				
 				<div class="info">
 					<div class="title">
-						 <%-- <% if( h != null){ %>  --%>
+						 
 						<%=h.getHouseName()%>
 						
 						
@@ -218,8 +218,8 @@
 					<a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
 				</div>
 			</div>
-			<%-- <%} %> --%>
-			<%for(Review r : list) {%>
+			
+			
 			<div class="comment">
 				<div class="swiper-container three">
 					<div class="swiper-wrapper threeButton">
@@ -227,22 +227,18 @@
 						<div class="customer">
 							<div class="gradeall">
 								<div class="gradeinfo">
+								<%for(Review r : list) {%>
 									<div class="a">평점 : </div>
 									<br> <br>
-									<div class="b">제목 : </div><%=r.getCommentTitle()%>
+									<div class="b">제목 : <%=r.getCommentTitle()%></div>
 									<br> <br>
-									<div class="c">내용 : </div><%=r.getCommentContents()%>
+									<div class="c">내용 : <%=r.getCommentContents()%></div>
 									<div class="ex">댓글 등록하기</div>
+									<% }%> 
 								</div>
-								
 							</div>
-
 						</div>
-
-
 					</div>
-
-
 
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
@@ -256,7 +252,7 @@
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 
 			</div>
-			<% }%>
+			 
 
 
 			<div class="photoFilterScroll"></div>

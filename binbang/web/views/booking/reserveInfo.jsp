@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.binbang.house.model.vo.House,com.binbang.booking.model.vo.Booking,com.binbang.member.model.vo.Member"%>
+<%@ page import="com.binbang.house.model.vo.House,com.binbang.booking.model.vo.Booking,com.binbang.member.model.vo.Member"%>
     <%
     	House h=(House)request.getAttribute("h");
     	Booking b=(Booking)request.getAttribute("b");
-    	Member m=(Member)request.getAttribute("m");
     %>
 
 <%@ include file="/views/common/commonLink.jsp" %>
@@ -15,7 +14,7 @@
 
 <body>
    <div class="wrap">
-        <%@ include file="/views/common/bookingHeader.jsp" %> 
+        <%@ include file="/views/common/bookingHeader.jsp" %>
       <section class="section">
 
          <div class="bookingInfo">
