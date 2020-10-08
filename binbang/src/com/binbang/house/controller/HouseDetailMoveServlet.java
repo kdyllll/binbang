@@ -38,14 +38,11 @@ public class HouseDetailMoveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		String no=request.getParameter("houseNo");
-		
-		House h=new HouseService().FilterDetail(no);
-		
-		
-	
+			
+				String no=request.getParameter("houseNo");
 				
+				House h=new HouseService().FilterDetail(no);
+		
 				String msg="";
 				String loc="";
 				String path="";
@@ -59,6 +56,8 @@ public class HouseDetailMoveServlet extends HttpServlet {
 					
 					path="/views/house/houseDetail.jsp";
 				}
+				
+				
 				
 				House h2=new HouseService().HouseDetail(no);
 				List filterList=h2.getFilter();//여기에 숙소에대한 필터 이미지가 담겨온것임
