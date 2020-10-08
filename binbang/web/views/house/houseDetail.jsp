@@ -2,12 +2,12 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
+<%@page
+	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
-
-	House h=(House)request.getAttribute("house");
-	Member member = (Member)session.getAttribute("m");
-	List<Review> list=(List)request.getAttribute("list");
+	House h = (House) request.getAttribute("house");
+Member member = (Member) session.getAttribute("m");
+List<Review> list = (List) request.getAttribute("list");
 %>
 
 <%
@@ -68,18 +68,22 @@
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
 				</div>
-				
+
 				<div class="info">
 					<div class="title">
-						 
+
 						<%=h.getHouseName()%>
-						
-						
+
+
 						<div class="heartCommon heart"></div>
 					</div>
 					<br> <br> <br>
 					<div class="titleInfo">
-						<%=h.getHouseComment()%> <br> <br>	<%=h.getInoutTime()%> <br><br>
+						<%=h.getHouseComment()%>
+						<br> <br>
+						<%=h.getInoutTime()%>
+						<br>
+						<br>
 					</div>
 					<div class="host">
 						<div class="hostInfo">
@@ -89,7 +93,9 @@
 					<br>
 
 					<div class="pricebox">
-						<div class="price"><%=h.getPricePeakWeekend() %> won</div>
+						<div class="price"><%=h.getPricePeakWeekend()%>
+							won
+						</div>
 					</div>
 					<br> <br>
 					<div class="paybox">
@@ -108,21 +114,47 @@
 			<div class="houseinfobox">
 				<div class="houseinfo">
 					<div class="infoDetail">
-						<div><%=h.getHouseName()%></div><br><br><br><br><br><br><br>
-						<div><%=h.getInoutTime()%></div><br><br>
-						<div><%=h.getHouseLocation()%></div><br><br>
+						<div><%=h.getHouseName()%></div>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<div><%=h.getInoutTime()%></div>
+						<br>
+						<br>
+						<div><%=h.getHouseLocation()%></div>
+						<br>
+						<br>
 					</div>
 					<div class="infoDetail2">
-						<div>숙박허용인원 <%=h.getHousePnum()%> 명</div><br>
-						<div>숙소 유형 <%=h.getHouseType()%></div><br>
-						<div>숙소 방 갯수 <%=h.getRoomNum()%></div><br>
-						<div>숙소 화장실 갯수<%=h.getBathNum()%></div><br>
-						<div>숙소 침대 갯수<%=h.getBedNum()%></div><br>
-					</div>	
-						 <br> <br> 
-						 
-					
-					
+						<div>
+							숙박허용인원
+							<%=h.getHousePnum()%>
+							명
+						</div>
+						<br>
+						<div>
+							숙소 유형
+							<%=h.getHouseType()%></div>
+						<br>
+						<div>
+							숙소 방 갯수
+							<%=h.getRoomNum()%></div>
+						<br>
+						<div>
+							숙소 화장실 갯수<%=h.getBathNum()%></div>
+						<br>
+						<div>
+							숙소 침대 갯수<%=h.getBedNum()%></div>
+						<br>
+					</div>
+					<br> <br>
+
+
+
 				</div>
 				<div class="houseIntroduce">
 					<div>
@@ -205,7 +237,7 @@
 			</div>
 
 			<div class="houseinfobox2">
-				<div class="houseIntroduce2"><%=h.getHouseGemsung() %></div>
+				<div class="houseIntroduce2"><%=h.getHouseGemsung()%></div>
 				<div class="houseinfo2"></div>
 
 			</div>
@@ -215,50 +247,60 @@
 			<div class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
-					<a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
+					<a
+						href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
 				</div>
 			</div>
-			
-			
+
+
 			<div class="comment">
 				<div class="swiper-container three">
+					<%
+						for (Review r : list) {
+					%>
 					<div class="swiper-wrapper threeButton">
-						<div class="gradePhoto"></div>
+						<div class="gradePhoto"><%=r.getFilePath()%></div>
 						<div class="customer">
 							<div class="gradeall">
 								<div class="gradeinfo">
-								<%for(Review r : list) {%> 
-									<div class="a">평점 : <%=r.getHouseGrade() %></div>
+
+									<div class="a">
+										평점 :
+										<%=r.getHouseGrade()%></div>
 									<br> <br>
-									<div class="b">제목 : <%=r.getCommentTitle()%> </div>
+									<div class="b">
+										제목 :
+										<%=r.getCommentTitle()%>
+									</div>
 									<br> <br>
-									<div class="c">내용 : <%=r.getCommentContents()%> </div>
+									<div class="c">
+										내용 :
+										<%=r.getCommentContents()%>
+									</div>
 									<div class="ex">댓글 등록하기</div>
-								<% }%>  
+									<%
+										}
+									%>
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
 					<!-- <div class="swiper-pagination"></div> -->
-
 				</div>
-
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
-
 			</div>
-			 
+
 
 
 			<div class="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
-			
+
 
 
 			<div class="place">
@@ -311,41 +353,49 @@
 
 
 			<aside class="enrollbg active">
-			
+
 				<div id="popup">
 					<div class="color"></div>
 					<div class="popupBtn">x</div>
 					<div class="popupContent">
 						<p class="popupTitle">게스트에게 답변해주기</p>
 						<div class="reasonBox">
-							<form action="<%=request.getContextPath() %>/board/boardWriteEnd" method="post"
-							    enctype="multipart/form-data">
-										<table id='tbl-board'>
-											<div>
-												<div>제목 : </div>
-												<div><%-- <%=r.getCommentTitle()%>  --%></div><br> 
-											</div>
-											<div>
-												<div>작성자 : </div>
-												<div><%-- <%=m.getNickName()%>  --%></div><br>
-											</div>
-											
-											<div>
-												<div>내용</div>
-												<div><textarea rows="5" cols="45" name="content"></textarea> </div>
-											</div>
-											<div>
-												<div colspan="2">
-													   <input type="submit" value="등록하기" onclick="">
-												</div>
-											</div>
-										</table>
-									</form>
+							<form action="<%=request.getContextPath()%>/board/boardWriteEnd"
+								method="post" enctype="multipart/form-data">
+								<table id='tbl-board'>
+									<div>
+										<div>제목 :</div>
+										<div>
+											<%-- <%=r.getCommentTitle()%>  --%>
+										</div>
+										<br>
+									</div>
+									<div>
+										<div>작성자 :</div>
+										<div>
+											<%-- <%=m.getNickName()%>  --%>
+										</div>
+										<br>
+									</div>
+
+									<div>
+										<div>내용</div>
+										<div>
+											<textarea rows="5" cols="45" name="content"></textarea>
+										</div>
+									</div>
+									<div>
+										<div colspan="2">
+											<input type="submit" value="등록하기" onclick="">
+										</div>
+									</div>
+								</table>
+							</form>
 						</div>
 					</div>
 
 				</div>
-				
+
 			</aside>
 
 		</section>
