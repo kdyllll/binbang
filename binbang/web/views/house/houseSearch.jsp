@@ -198,14 +198,14 @@
 
 
 								<div class="contentSection2">
-									<div class="contentBox">
+									<div class="contentBox box1">
 										<div class="iconLocation"></div>
 										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
 									</div>
 
 									<div class="contentLine"></div>
 
-									<div class="contentBox">
+									<div class="contentBox box2">
 										<div class="iconGrade"></div>
 										<p class="gradeName">
 											<%=h.getAvgGrade()%>/5
@@ -214,18 +214,17 @@
 								</div>
 								<div class="houseLine2"></div>
 								<div class="contentSection3">
-									<div class="contentBox">
+									<div class="contentBox box1">
 										<div class="iconPrice"></div>
 										<p class="priceName">
-											<!-- 가격 : 총요금/날짜수-->
-											
+											<!-- 가격 : 총요금/날짜수-->											
 											약 <span class="price" value="<%=price%>"><%=price%></span>원/1박
 										</p>
 									</div>
 
 									<div class="contentLine"></div>
 
-									<div class="contentBox">
+									<div class="contentBox box2">
 										<div class="iconPeople"></div>
 										<p class="PeopleName"><%=h.getHousePnum()%>명
 										</p>
