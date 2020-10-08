@@ -69,17 +69,16 @@ public class HouseDao {
 	}
 
 	// 여기는 숙소에 필터 내용들 출력해주는 다오
-	public List<House> HouseFilterList(Connection conn,String houseNo) {
+	public List selectFilterList(Connection conn,String houseNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<House> list = new ArrayList();
+		List list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty(""));
+			pstmt = conn.prepareStatement(prop.getProperty("selectFilterList"));
 			pstmt.setString(1,houseNo);		
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				
-				list.add(h);
+				list.add(rs.getString(1));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
