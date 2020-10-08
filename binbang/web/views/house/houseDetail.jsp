@@ -147,9 +147,6 @@
 						<%=h.getHouseComment()%>
 					</div>
 
-
-
-
 					<div>
 						<div class="test">
 
