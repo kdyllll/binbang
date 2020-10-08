@@ -184,8 +184,8 @@ public class MemberDao {
 		}return result;
 	}
 	
-	
 
+	//비밀번호 수정
 	public int updatePassword(Connection conn,String email,String newPw) {
 		PreparedStatement pstmt=null;
 		int result=0;

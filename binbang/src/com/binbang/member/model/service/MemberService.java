@@ -73,20 +73,6 @@ public class MemberService {
 		return result;
 	}
 	
-	//mypage 비밀번호 수정
-	public int updatePassword(String ori, String newPw , String email) {
-		Connection conn=getConnection();
-		int result=0;
-		Member m=dao.selectMember(conn, email, ori);
-		if(m!=null) {
-			result=dao.updatePassword(conn, newPw, email);
-			if(result>0) commit(conn);
-			else rollback(conn);
-		}
-		close(conn);
-		return result;		
-	}
-	
 	
 	//mypage 탈퇴
 	public int deleteMember(String email) {
@@ -100,12 +86,8 @@ public class MemberService {
 		return result;
 	}
 	
-	
-	
-	
-	//비밀번호수정
-	public int findPassword(String email,String newPassword) {
-		
+	//비밀번호수정(비밀번호찾기, mypage비밀번호 변경)
+	public int updatePassword(String email,String newPassword) {		
 		Connection conn=getConnection();
 		int result=dao.updatePassword(conn,email,newPassword);
 		System.out.println("서비스 : "+email);
@@ -114,6 +96,13 @@ public class MemberService {
 		else rollback(conn);
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	//관심숙소 리스트
 	public List<Favorite> selectFavList(Member m){

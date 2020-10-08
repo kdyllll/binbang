@@ -15,8 +15,7 @@
      <section class="section">     		
 		<form id="memberModify" method="post">
 			<div class="private">
-				<input type="hidden" value="<%=m.getEmail()%>" name="email" readonly>
-				<input type="text" value="<%=m.getEmail()%>" name="password" readonly>
+				<input type="hidden" value="<%=m.getEmail()%>" name="email" readonly>				
 				<div>
 					<p>개인정보변경</p>
 				</div>
