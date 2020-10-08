@@ -136,11 +136,12 @@ public class HouseSearchListServlet extends HttpServlet {
 			totalPeak.addAll(h.getPeakDay5());
 			h.setTotalPeak(totalPeak);
 			
+			//필터
+			h.setFilter(new HouseService().HouseFilterList(h.getHouseNo()));
+			
 		}
 		
-		//총금액(여기서 받아주면 좋겠는데....음)
 		
-		//필터
 		
 		
 		request.setAttribute("house", house);

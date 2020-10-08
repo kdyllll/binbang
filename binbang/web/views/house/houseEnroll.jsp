@@ -587,6 +587,7 @@
 			$("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
 			}
 		}
+		
 	</script>
 
 </body>

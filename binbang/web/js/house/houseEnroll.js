@@ -37,31 +37,3 @@ $(".deleteDate").on("click",function(e){
     $(e.target).siblings().children("input").val("");
 });
 
-//required 발생시
-$(".submit").on("click", function(e) {
-    let f  = this.form;
-    // var $f = jQuery(f);
-    // // var $b = jQuery(this);
-    // let $t, t;
-    // let result = true;
-
-    $(f).find("input, textarea").each(function(i) {
-        
-
-    //     if($(this).prop("required")) {
-    //         if(!jQuery.trim($(this).val())) {
-    //             t = jQuery("label[for='"+$(this).attr("id")+"']").text();
-    //             result = false;
-    //             $(this).focus();
-    //             alert(t+" 필수 입력입니다.");
-    //             return false;
-    //         }
-    //     }
-    });
-
-    // if(!result)
-    //     return false;
-
-
-
-});
