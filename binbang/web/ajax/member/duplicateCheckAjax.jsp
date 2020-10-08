@@ -101,9 +101,31 @@
 	});	
 	
 
-	$("#numConfirm").on("click",e =>{
+<%-- 	$("#numConfirm").on("click",e =>{
 		$("#numberFrm").attr("action","<%=request.getContextPath()%>/member/duplicateNumberCheck").submit();
+	}); --%>
+
+	$("#numConfirm").click(e => {
+		$.ajax({
+			url:"<%=request.getContextPath()%>/member/duplicateNumberCheck",
+			type:"post",
+			data:{"num":$("#num").val()},
+			dataType:"json",
+			success:data => {
+				console.log(data);
+				alert(data["msg"]);
+				if(data["result"]=='0'){
+					self.close();
+				}
+			},
+			error:(request,status,error)=>{
+				console.log(request);
+				console.log(status);
+				console.log(error);
+			}
+		});
 	});
+	
 	
  	
  	/* 재전송 */ 
