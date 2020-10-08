@@ -1,4 +1,4 @@
-package com.binbang.member.ajax.controller;
+package com.binbang.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FindPasswordAjaxServlet
  */
-@WebServlet("/member/findPasswordAjax")
-public class FindPasswordAjaxServlet extends HttpServlet {
+@WebServlet("/member/checkEmailNumber")
+public class LoginCheckEmailNumberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindPasswordAjaxServlet() {
+    public LoginCheckEmailNumberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,15 +29,15 @@ public class FindPasswordAjaxServlet extends HttpServlet {
 		
 		String AuthenticationKey = (String)request.getSession().getAttribute("AuthenticationKey");
         String number = request.getParameter("number");
-       
+
         String msg="";
-        String loc="";
+		String loc="";
        
-        if(!AuthenticationKey.equals(number)){
+        if(AuthenticationKey==null||number==null||!AuthenticationKey.equals(number)){
         	
-            System.out.println("인증번호 일치하지 않음");
             msg="인증번호가 일치하지 않습니다";
-            loc="/member/findPasswordAjax";
+            loc="/member/findPassword";
+            System.out.println("인증번호 일치하지 않음");
             return;
             
         }else {
@@ -46,8 +46,8 @@ public class FindPasswordAjaxServlet extends HttpServlet {
         	System.out.println("인증번호 일치함");
         }
         request.setAttribute("msg", msg);
-        request.setAttribute("loc", loc);
-        request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);        
+		request.setAttribute("loc", loc);
+        request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);        
 	}
 
 	/**
