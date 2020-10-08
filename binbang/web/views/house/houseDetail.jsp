@@ -227,14 +227,14 @@
 						<div class="customer">
 							<div class="gradeall">
 								<div class="gradeinfo">
-								<%for(Review r : list) {%>
-									<div class="a">평점 : </div>
+								<%for(Review r : list) {%> 
+									<div class="a">평점 : <%=r.getHouseGrade() %></div>
 									<br> <br>
-									<div class="b">제목 : <%=r.getCommentTitle()%></div>
+									<div class="b">제목 : <%=r.getCommentTitle()%> </div>
 									<br> <br>
-									<div class="c">내용 : <%=r.getCommentContents()%></div>
+									<div class="c">내용 : <%=r.getCommentContents()%> </div>
 									<div class="ex">댓글 등록하기</div>
-									<% }%> 
+								<% }%>  
 								</div>
 							</div>
 						</div>

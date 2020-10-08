@@ -270,12 +270,12 @@ public class HouseDao {
 			pstmt=conn.prepareStatement(prop.getProperty("reviewDetail"));
 			pstmt.setString(1, no);
 			rs=pstmt.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				Review r=new Review();
 				r.setHouseGrade(Double.parseDouble(rs.getString("house_grade"))); //숙소평점
 				r.setCommentTitle(rs.getString("comment_title")); //후기제목
 				r.setCommentContents(rs.getNString("comment_contents")); //후기내용
-				r.setFilePath(rs.getNString("filepath")); //후기사진
+				r.setFilePath(rs.getNString("file_path")); //후기사진
 				r.setHouseNo(rs.getNString("house_no")); //숙소번호
 				list.add(r);
 			}
