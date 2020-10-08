@@ -28,9 +28,11 @@ public class House {
 	private int priceWeekend;
 	private int pricePeakDay;
 	private int pricePeakWeekend;
+	private int totalPrice;
 	private List filter;
 	private String[] housePicture;
 	private Double avgGrade;
+
 
 
 	public House() {
@@ -38,11 +40,12 @@ public class House {
 	}
 
 
+
 	public House(String houseNo, String hostNo, String houseName, String houseType, String houseLocation, int housePnum,
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
 			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
 			List peakDay5, List totalPeak, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend,
-			List filter, String[] housePicture, Double avgGrade) {
+			int totalPrice, List filter, String[] housePicture, Double avgGrade) {
 		super();
 		this.houseNo = houseNo;
 		this.hostNo = hostNo;
@@ -68,10 +71,12 @@ public class House {
 		this.priceWeekend = priceWeekend;
 		this.pricePeakDay = pricePeakDay;
 		this.pricePeakWeekend = pricePeakWeekend;
+		this.totalPrice = totalPrice;
 		this.filter = filter;
 		this.housePicture = housePicture;
 		this.avgGrade = avgGrade;
 	}
+
 
 
 	public String getHouseNo() {
@@ -79,9 +84,11 @@ public class House {
 	}
 
 
+
 	public void setHouseNo(String houseNo) {
 		this.houseNo = houseNo;
 	}
+
 
 
 	public String getHostNo() {
@@ -89,9 +96,11 @@ public class House {
 	}
 
 
+
 	public void setHostNo(String hostNo) {
 		this.hostNo = hostNo;
 	}
+
 
 
 	public String getHouseName() {
@@ -99,9 +108,11 @@ public class House {
 	}
 
 
+
 	public void setHouseName(String houseName) {
 		this.houseName = houseName;
 	}
+
 
 
 	public String getHouseType() {
@@ -109,9 +120,11 @@ public class House {
 	}
 
 
+
 	public void setHouseType(String houseType) {
 		this.houseType = houseType;
 	}
+
 
 
 	public String getHouseLocation() {
@@ -119,9 +132,11 @@ public class House {
 	}
 
 
+
 	public void setHouseLocation(String houseLocation) {
 		this.houseLocation = houseLocation;
 	}
+
 
 
 	public int getHousePnum() {
@@ -129,9 +144,11 @@ public class House {
 	}
 
 
+
 	public void setHousePnum(int housePnum) {
 		this.housePnum = housePnum;
 	}
+
 
 
 	public String getpObjects() {
@@ -139,9 +156,11 @@ public class House {
 	}
 
 
+
 	public void setpObjects(String pObjects) {
 		this.pObjects = pObjects;
 	}
+
 
 
 	public int getRoomNum() {
@@ -149,9 +168,11 @@ public class House {
 	}
 
 
+
 	public void setRoomNum(int roomNum) {
 		this.roomNum = roomNum;
 	}
+
 
 
 	public int getBathNum() {
@@ -159,9 +180,11 @@ public class House {
 	}
 
 
+
 	public void setBathNum(int bathNum) {
 		this.bathNum = bathNum;
 	}
+
 
 
 	public int getBedNum() {
@@ -169,9 +192,11 @@ public class House {
 	}
 
 
+
 	public void setBedNum(int bedNum) {
 		this.bedNum = bedNum;
 	}
+
 
 
 	public String getHouseComment() {
@@ -179,9 +204,11 @@ public class House {
 	}
 
 
+
 	public void setHouseComment(String houseComment) {
 		this.houseComment = houseComment;
 	}
+
 
 
 	public String getHouseGemsung() {
@@ -189,9 +216,11 @@ public class House {
 	}
 
 
+
 	public void setHouseGemsung(String houseGemsung) {
 		this.houseGemsung = houseGemsung;
 	}
+
 
 
 	public String getAttention() {
@@ -199,9 +228,11 @@ public class House {
 	}
 
 
+
 	public void setAttention(String attention) {
 		this.attention = attention;
 	}
+
 
 
 	public String getInoutTime() {
@@ -209,9 +240,11 @@ public class House {
 	}
 
 
+
 	public void setInoutTime(String inoutTime) {
 		this.inoutTime = inoutTime;
 	}
+
 
 
 	public List getPeakDay1() {
@@ -219,9 +252,11 @@ public class House {
 	}
 
 
+
 	public void setPeakDay1(List peakDay1) {
 		this.peakDay1 = peakDay1;
 	}
+
 
 
 	public List getPeakDay2() {
@@ -229,9 +264,11 @@ public class House {
 	}
 
 
+
 	public void setPeakDay2(List peakDay2) {
 		this.peakDay2 = peakDay2;
 	}
+
 
 
 	public List getPeakDay3() {
@@ -239,9 +276,11 @@ public class House {
 	}
 
 
+
 	public void setPeakDay3(List peakDay3) {
 		this.peakDay3 = peakDay3;
 	}
+
 
 
 	public List getPeakDay4() {
@@ -249,9 +288,11 @@ public class House {
 	}
 
 
+
 	public void setPeakDay4(List peakDay4) {
 		this.peakDay4 = peakDay4;
 	}
+
 
 
 	public List getPeakDay5() {
@@ -259,9 +300,11 @@ public class House {
 	}
 
 
+
 	public void setPeakDay5(List peakDay5) {
 		this.peakDay5 = peakDay5;
 	}
+
 
 
 	public List getTotalPeak() {
@@ -269,9 +312,11 @@ public class House {
 	}
 
 
+
 	public void setTotalPeak(List totalPeak) {
 		this.totalPeak = totalPeak;
 	}
+
 
 
 	public int getPriceDay() {
@@ -279,9 +324,11 @@ public class House {
 	}
 
 
+
 	public void setPriceDay(int priceDay) {
 		this.priceDay = priceDay;
 	}
+
 
 
 	public int getPriceWeekend() {
@@ -289,9 +336,11 @@ public class House {
 	}
 
 
+
 	public void setPriceWeekend(int priceWeekend) {
 		this.priceWeekend = priceWeekend;
 	}
+
 
 
 	public int getPricePeakDay() {
@@ -299,9 +348,11 @@ public class House {
 	}
 
 
+
 	public void setPricePeakDay(int pricePeakDay) {
 		this.pricePeakDay = pricePeakDay;
 	}
+
 
 
 	public int getPricePeakWeekend() {
@@ -309,9 +360,23 @@ public class House {
 	}
 
 
+
 	public void setPricePeakWeekend(int pricePeakWeekend) {
 		this.pricePeakWeekend = pricePeakWeekend;
 	}
+
+
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 
 
 	public List getFilter() {
@@ -319,9 +384,11 @@ public class House {
 	}
 
 
+
 	public void setFilter(List filter) {
 		this.filter = filter;
 	}
+
 
 
 	public String[] getHousePicture() {
@@ -329,9 +396,11 @@ public class House {
 	}
 
 
+
 	public void setHousePicture(String[] housePicture) {
 		this.housePicture = housePicture;
 	}
+
 
 
 	public Double getAvgGrade() {
@@ -339,9 +408,11 @@ public class House {
 	}
 
 
+
 	public void setAvgGrade(Double avgGrade) {
 		this.avgGrade = avgGrade;
 	}
+
 
 
 	@Override
@@ -353,9 +424,10 @@ public class House {
 				+ inoutTime + ", peakDay1=" + peakDay1 + ", peakDay2=" + peakDay2 + ", peakDay3=" + peakDay3
 				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", totalPeak=" + totalPeak + ", priceDay="
 				+ priceDay + ", priceWeekend=" + priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend="
-				+ pricePeakWeekend + ", filter=" + filter + ", housePicture=" + Arrays.toString(housePicture)
-				+ ", avgGrade=" + avgGrade + "]";
+				+ pricePeakWeekend + ", totalPrice=" + totalPrice + ", filter=" + filter + ", housePicture="
+				+ Arrays.toString(housePicture) + ", avgGrade=" + avgGrade + "]";
 	}
+
 
 
 	@Override
@@ -389,8 +461,10 @@ public class House {
 		result = prime * result + priceWeekend;
 		result = prime * result + roomNum;
 		result = prime * result + ((totalPeak == null) ? 0 : totalPeak.hashCode());
+		result = prime * result + totalPrice;
 		return result;
 	}
+
 
 
 	@Override
@@ -510,10 +584,11 @@ public class House {
 				return false;
 		} else if (!totalPeak.equals(other.totalPeak))
 			return false;
+		if (totalPrice != other.totalPrice)
+			return false;
 		return true;
 	}
 
-	
 
 
 }
