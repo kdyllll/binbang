@@ -1,4 +1,3 @@
-하우스 디테일 jsp
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -8,6 +7,7 @@
 	House h=(House)request.getAttribute("house");
 	Member m2 =(Member)session.getAttribute("m");
 	List<Review> list=(List)request.getAttribute("list");
+	List filterList =(List) request.getAttribute("filterList");
 %>
 
 <%

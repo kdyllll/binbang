@@ -127,10 +127,7 @@
 
 							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"></a>
 
-							<a 
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
-
-								class="housePic"
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>" class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
 							<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
