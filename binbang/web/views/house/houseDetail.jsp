@@ -4,10 +4,14 @@
 <%@page
 	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
+
 	House h = (House) request.getAttribute("house");
-Member member = (Member) session.getAttribute("m");
+Member m2 = (Member) session.getAttribute("m");
 List<Review> list = (List) request.getAttribute("list");
 List filterList =(List) request.getAttribute("filterList");
+
+
+
 %>
 
 <%
@@ -47,6 +51,7 @@ List filterList =(List) request.getAttribute("filterList");
 <body class="body">
 	<div class="wrap">
 
+
 		<header class="header headerColor">
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
 			<div class="searchBox"></div>
@@ -62,6 +67,7 @@ List filterList =(List) request.getAttribute("filterList");
 			</div>
 			<%@ include file="/views/common/nav.jsp"%>
 		</header>
+
 		<section class="section">
 			<div class="mainBox">
 				<div class="swiper-container first">
@@ -101,7 +107,7 @@ List filterList =(List) request.getAttribute("filterList");
 					</div>
 					<div class="host">
 						<div class="hostInfo">
-							<a href="#">호스팅정보</a>
+							<a href="<%=request.getContextPath()%>/hostInfoPage?hostNo=<%=h.getHostNo()%>">호스트정보</a>
 						</div>
 					</div>
 					<br>
@@ -114,14 +120,24 @@ List filterList =(List) request.getAttribute("filterList");
 					<br> <br>
 					<div class="paybox">
 						<div class="pay">
+							<% if(m2 != null)  {%>
 							<a href="<%=request.getContextPath()%>/booking/booking">booking</a>
+							<%} else { %>
+								<a>로그인</a>
+							<%} %>
 						</div>
 					</div>
 				</div>
 
 			</div>
 
+
+
+
 			<div id="infoscroll"  class="houseinfobox">
+
+			<div class="houseinfobox">
+
 				<div class="houseinfo">
 					<div class="infoDetail">
 						<div><%=h.getHouseName()%></div>
@@ -248,17 +264,18 @@ List filterList =(List) request.getAttribute("filterList");
 			<div id="commentScroll" class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
-					<%if(member != null) { %>
+					<%if(m2 != null) { %>
 					<a
 						href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>">글쓰기</a>
 				<%} %>
 
 				</div>
+
 			</div>
 
 
-
-
+			</div>	
+			
 
 			<div class="comment">
 				<div class="swiper-container three">
@@ -316,6 +333,7 @@ List filterList =(List) request.getAttribute("filterList");
 
 
 <div  id="placeMapScroll" style="height: 80px;"></div>
+
 
 
 			<div class="place">

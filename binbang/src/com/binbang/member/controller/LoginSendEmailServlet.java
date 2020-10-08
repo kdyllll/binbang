@@ -17,8 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MemberCheckConfirmNumberServlet
@@ -45,10 +48,13 @@ public class LoginSendEmailServlet extends HttpServlet {
 		Member m=new MemberService().selectInfo(userId);
 //		email= new MemberService().emailCheck(userId);
 		System.out.println("서블릿"+userId);
-		   
-//		
-//		String mesg="";
-//		String loc="";
+		
+		JSONObject emailConfirm= new JSONObject();
+		
+		int result=0;
+		String mesg="";
+		String loc="";
+
 //		
 //		if(m==null||!m.getEmail().equals(userId)) {
 //			
@@ -70,92 +76,95 @@ public class LoginSendEmailServlet extends HttpServlet {
 			
 		if(m!=null && m.getEmail().equals(userId)) {	
 	
-		String host="smtp.naver.com";
-		String user="tnrud2668@naver.com";
-		String password="spdlqj7547";
-		
-		String sendEmail=m.getEmail();
-		
-		//smtp 서버 설정
-		Properties props = new Properties();
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", 465);
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.ssl.enable", "true");
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.ssl.trust", "smtp.naver.com"); 
-//        props.put("mail.debug", "true"); 
-        
-        StringBuffer temp =new StringBuffer();
-        Random rnd = new Random();
-        for(int i=0;i<10;i++)
-        {
-            int rIndex = rnd.nextInt(3);
-            switch (rIndex) {
-            case 0:
-                // a-z
-                temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-                break;
-            case 1:
-                // A-Z
-                temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-                break;
-            case 2:
-                // 0-9
-                temp.append((rnd.nextInt(10)));
-                break;
-            }
-        }
-        String AuthenticationKey = temp.toString();
-        System.out.println(AuthenticationKey);
-        
-        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user,password);
-            }
-        });
-        
-        try {
-            MimeMessage msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(user, "BINBANG"));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
-            
-            //메일 제목
-            msg.setSubject("빈방 인증 메일입니다.");
-            //메일 내용
-            msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
-            
-            Transport.send(msg);
-            System.out.println("이메일 전송");
-            
-        }catch (Exception e) {
-            e.printStackTrace();// TODO: handle exception
-        }
-        HttpSession saveKey = request.getSession();
-        saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-        
-        HttpSession saveId = request.getSession();
-        saveId.setAttribute("userId", userId);
-        
-//        request.setAttribute(name, o);
+			String host="smtp.naver.com";
+			String user="tnrud2668@naver.com";
+			String password="spdlqj7547";
+			
+			String sendEmail=m.getEmail();
+			
+			//smtp 서버 설정
+			Properties props = new Properties();
+	        props.put("mail.smtp.host", host);
+	        props.put("mail.smtp.port", 465);
+	        props.put("mail.smtp.auth", "true");
+	        props.put("mail.smtp.ssl.enable", "true");
+	        props.put("mail.smtp.starttls.enable","true");
+	        props.put("mail.smtp.ssl.trust", "smtp.naver.com"); 
+//  		props.put("mail.debug", "true"); 
+	        
+	        StringBuffer temp =new StringBuffer();
+	        Random rnd = new Random();
+	        for(int i=0;i<10;i++)
+	        {
+	            int rIndex = rnd.nextInt(3);
+	            switch (rIndex) {
+	            case 0:
+	                // a-z
+	                temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+	                break;
+	            case 1:
+	                // A-Z
+	                temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+	                break;
+	            case 2:
+	                // 0-9
+	                temp.append((rnd.nextInt(10)));
+	                break;
+	            }
+	        }
+	        String AuthenticationKey = temp.toString();
+	        System.out.println(AuthenticationKey);
+	        
+	        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication(user,password);
+	            }
+	        });
+	        
+	        try {
+	            MimeMessage msg = new MimeMessage(session);
+	            msg.setFrom(new InternetAddress(user, "BINBANG"));
+	            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
+	            
+	            //메일 제목
+	            msg.setSubject("빈방 인증 메일입니다.");
+	            //메일 내용
+	            msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
+	            
+	            Transport.send(msg);
+	            System.out.println("이메일 전송");
+	            
+	        }catch (Exception e) {
+	            e.printStackTrace();// TODO: handle exception
+	        }
+	        HttpSession saveKey = request.getSession();
+	        saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
+	        
+	        HttpSession saveId = request.getSession();
+	        saveId.setAttribute("userId", userId);
+	        
+	        System.out.println("인증번호 발송");
+	        mesg="인증번호가 발송되었습니다.";
+//			loc="/member/findPassword";
+			result=1;
+			emailConfirm.put("msg",mesg);
+			emailConfirm.put("result",result);
         
 		} else if((m==null||!m.getEmail().equals(userId))){
 			
 			System.out.println("아이디 일치하지않음");
-//			String mesg="";
-//			String loc="";
-//		
-//				
-//			mesg="아이디 정보가 일치하지 않습니다.";
+	
+			mesg="아이디 정보가 일치하지 않습니다.";
+			result=0;
 //			loc="/member/findPassword";
-//			
-			request.setAttribute("msg","아이디 정보가 일치하지 않습니다.");
-			request.setAttribute("loc", "/member/findPassword");
-			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-			
+			emailConfirm.put("msg",mesg);
+			emailConfirm.put("result",result);
 			
 		}
-//		request.getRequestDispatcher("/views/member.findPasswordAjax.jsp").forward(request, response);
+		
+		response.getWriter().print(emailConfirm);
+//		response.setContentType("application/json;charset=utf-8");
+//		new Gson().toJson(emailConfirm,response.getWriter());
 	}
 
 	/**

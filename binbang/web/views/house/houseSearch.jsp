@@ -123,8 +123,11 @@
 							for (House h : house) {
 						%>
 						<div class="house">
-							<a
+
+							<a 
 								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
+
+
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
