@@ -33,10 +33,21 @@ public class HouseRequestResultAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
-		Member m = (Member)session.getAttribute("m");
-		List<Booking> list = new BookingService().selectHouseRequestResultList(m.getHostNo());
+		Member m = (Member)session.getAttribute("m");	
+		
+		String type = request.getParameter("searchType");
+		String key = request.getParameter("searchKeyword");
+		System.out.println(type);
+		System.out.println(key);
+		
+		List<Booking> list = null;
+		if(!type.equals("") && !type.equals("")) {		
+			list = new BookingService().searchBookingList(type, key, m.getHostNo());
+		} else if(type.equals("") && type.equals("")) {
+			list = new BookingService().selectHouseRequestResultList(m.getHostNo());
+		}
+		System.out.println(list);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/ajax/house/houseRequestResult.jsp").forward(request, response);
 	}

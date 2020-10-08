@@ -231,9 +231,17 @@ ul.box {
     justify-content: space-between;
     align-items: center;
 }
-.contentBox{
+.box1{
     /* 숙소정보라인의 한 덩어리들 */
-    width:130px;
+    width:140px;
+    height:100%;
+    /* border:1px solid; */
+    display:flex;
+    align-items: center;
+}
+.box2{
+    /* 숙소정보라인의 한 덩어리들 */
+    width:120px;
     height:100%;
     /* border:1px solid; */
     display:flex;
@@ -242,7 +250,7 @@ ul.box {
 .houseLine2{
     /* 숙소정보라인을 나누는 선 */
     width: 280px;
-    height: 1px;
+    height: 0.8px;
     background-color: gray;
 }
 .contentBox > div{
@@ -254,7 +262,7 @@ ul.box {
 }
 .contentBox > p{
     /* 숙소정보의 글자들 */
-    font-size: 14px;
+    font-size: 12px;
     color:gray;
 }
 

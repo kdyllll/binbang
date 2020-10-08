@@ -31,6 +31,7 @@ public class MainMoveServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		request.getRequestDispatcher("/views/member/main.jsp").forward(request,response);
+		
 	}
 
 	/**

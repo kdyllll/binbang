@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.binbang.house.model.vo.House,com.binbang.booking.model.vo.Booking,com.binbang.member.model.vo.Member"%>
+    <%
+    	House h=(House)request.getAttribute("h");
+    	Booking b=(Booking)request.getAttribute("b");
+    %>
+
 <%@ include file="/views/common/commonLink.jsp" %>
 <title>booking</title>
 <link rel="stylesheet"
@@ -8,7 +14,7 @@
 
 <body>
    <div class="wrap">
-      <%@ include file="/views/common/bookingHeader.jsp"%>
+        <%@ include file="/views/common/bookingHeader.jsp" %>
       <section class="section">
 
          <div class="bookingInfo">
@@ -18,24 +24,25 @@
             </div>
             <div class="infoBox">
                <div class="info">
-                  <div>예약 번호 : 37394750</div>
-                  <div>숙소 명 : 써니 마인드 업</div>
-                  <div>숙박 기간 : 2020 년 09 월 23일 ~ 2020 년 09 월 24일</div>
-                  <div>예약자 이름 : 김다예</div>
-                  <div>예약자 번호 : 47502649</div>
-                  <div>인원 : 2 명</div>
-                  <div>결제 방법 : 신용카드</div>
+                  <div>예약 번호 : <%=b.getReservationNo() %></div>
+                  <div>숙소 명 : <%=h.getHouseName() %></div>
+                  <div>숙박 기간 : <%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></div>
+                  <div>예약자 이름 : <%=m.getMemberName() %></div>
+                  <div>예약자 번호 : <%=b.getReservationNo() %></div>
+                  <div>인원 : <%=b.getGuestPnum() %> 명</div>
+                  <div>결제 방법 : <%=b.getPaymentOption() %></div>
                   <div class="priceLine">
                      <div class="priceInfoBox">
-                        <div class="priceInfo">￦150,000 × 1박 → ￦150,000</div>
+                        <div class="priceInfo">￦ <%=b.getPrice() %></div>
                      </div>
                   </div>
                </div>
             </div>
             <div class="moveBox">
-               <a href="#" class="mainPage">
+               <a href="<%=request.getContextPath()%>/mainMove" class="mainPage">
                   <div class="main">메인페이지</div>
-               </a> <a href="#" class="myPage">
+               </a> 
+                <a href="<%=request.getContextPath()%>/member/myPage" class="myPage">
                   <div class="my">마이페이지</div>
                </a>
             </div>
