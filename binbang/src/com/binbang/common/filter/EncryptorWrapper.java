@@ -20,7 +20,7 @@ public class EncryptorWrapper extends HttpServletRequestWrapper{
 
 		String result = "";
 	      String ori = super.getParameter(name);
-	      if(name.equals("password")||name.equals("new_password")) {
+	      if(name.equals("password")||name.equals("new_password")||name.equals("new_pw")) {
 
 	    	  System.out.println("암호화 전 : " +ori);
 	          result = getSha512(ori);

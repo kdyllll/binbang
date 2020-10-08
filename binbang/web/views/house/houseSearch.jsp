@@ -9,13 +9,18 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
-<%@ page import="java.util.List,com.binbang.house.model.vo.House"%>
+<%@ page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
 	List<House> house = (List<House>) request.getAttribute("house");
 	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
+
+	List dayList = (List) request.getAttribute("dayList");
+	
+
 	int days=(int)request.getAttribute("days");
+
 %>
 
 
@@ -119,11 +124,13 @@
 						%>
 						<div class="house">
 
-							<a 
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
+
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
+							<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
+							<input type="text" name="houseNo" value="<%=total%>"> --%>
 
 								<div class="contentSection1">
 									<p class="houseName"><%=h.getHouseName()%></p>

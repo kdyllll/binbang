@@ -35,7 +35,7 @@ public class LoginChangePasswordEndServlet extends HttpServlet {
 		System.out.println(userId);
 	
 		
-		int result=new MemberService().findPassword(userId,newPassword);
+		int result=new MemberService().updatePassword(userId,newPassword);
 		System.out.println(result);
 		
 		String msg="";

@@ -85,4 +85,30 @@ public class HostDao {
 		}
 		return result;
 	}
+
+	public Host selectHostInfo(Connection conn, String hostNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Host h = null;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHostInfo"));
+			pstmt.setString(1, hostNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				h = new Host();
+				h.setHostName(rs.getString("member_name"));
+				h.setHostAcceptDate(rs.getDate("host_acceptdate"));
+				h.setHostEmail(rs.getString("email"));
+				h.setIntro(rs.getString("intro"));
+				h.setProfilePic(rs.getString("profile_pic"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return h;
+	}
 }
