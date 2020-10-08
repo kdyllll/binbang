@@ -50,12 +50,18 @@ public class BookingService {
 	
 	public List<Booking> reserveDoneList(String memberNo) {
 		Connection conn = getConnection();
-		List<Booking> list = dao.reserveDoneList(conn,memberNo);
+		List<Booking> list = dao.reserveDoneList(conn, memberNo);
 		close(conn);
 		return list;
 	}
 	
-	
-	
+	public int reserveCancel(String reserveNo) {
+		Connection conn = getConnection();
+		int result = dao.reserveCancel(conn,reserveNo);
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
 	
 }
