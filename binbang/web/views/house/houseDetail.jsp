@@ -6,7 +6,7 @@
 <%
 
 	House h=(House)request.getAttribute("house");
-
+	Member m2 =(Member)session.getAttribute("m");
 	List<Review> list=(List)request.getAttribute("list");
 %>
 
@@ -46,7 +46,23 @@
 
 <body class="body">
 	<div class="wrap">
-		<%@ include file="/views/common/houseHeader.jsp"%>
+			<header class="header headerColor">
+		<a href="<%=request.getContextPath() %>/mainMove" class="logo"></a>
+		<div class="searchBox"></div>
+		<div class="headerBox displayNone">
+			<a href="#test" class="infoFilter"> 정보 </a> 
+			<a href="#" class="reviewFilter"> 후기 </a> 
+			<a href="#" class="photoFilter"> 주변시설 </a>
+		</div>
+		<div class="headerBtn" id="headerBtn">
+		<div class="ham mainHamColor"></div>
+		<div class="ham mainHamColor"></div>
+		<div class="ham mainHamColor"></div>
+		
+	</div>
+		<%@ include file="/views/common/nav.jsp"%>
+	</header>
+
 		<section class="section">
 			<div class="mainBox">
 				<div class="swiper-container first">
@@ -83,7 +99,7 @@
 					</div>
 					<div class="host">
 						<div class="hostInfo">
-							<a href="#">호스팅정보</a>
+							<a href="<%=request.getContextPath()%>/hostInfoPage?hostNo=<%=h.getHostNo()%>">호스트정보</a>
 						</div>
 					</div>
 					<br>
@@ -94,16 +110,18 @@
 					<br> <br>
 					<div class="paybox">
 						<div class="pay">
+							<% if(m2 != null)  {%>
 							<a href="<%=request.getContextPath()%>/booking/booking">booking</a>
+							<%} else { %>
+								<a>로그인</a>
+							<%} %>
 						</div>
 					</div>
 				</div>
 
 			</div>
-			<div class="infoFilterScroll"></div>
+			<div class="test"></div>
 			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-
-
 
 			<div class="houseinfobox">
 				<div class="houseinfo">
@@ -217,9 +235,7 @@
 				<div class="writing">
 					<%-- <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a> --%>
 				</div>
-			</div>
-
-			
+			</div>	
 			
 			<div class="comment">
 				<div class="swiper-container three">
@@ -258,13 +274,9 @@
 			</div>
 			 
 
-
 			<div class="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-
-			
-
-
+		
 			<div class="place">
 				<div class="placeSection">
 					<div class="placeSort">

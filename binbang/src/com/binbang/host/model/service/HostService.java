@@ -36,4 +36,11 @@ public class HostService {
 		close(conn);
 		return result;
 	}
+	
+	public Host selectHostInfo(String hostNo) {
+		Connection conn =getConnection();
+		Host h = hdao.selectHostInfo(conn,hostNo);
+		close(conn);
+		return h;
+	}
 }

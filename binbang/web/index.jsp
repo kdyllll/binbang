@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
 	<a href="<%=request.getContextPath() %>/mainMove">메인으로이동</a>
