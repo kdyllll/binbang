@@ -71,7 +71,7 @@
 				
 				<div class="info">
 					<div class="title">
-						 <% if( h != null){ %> 
+						 <%-- <% if( h != null){ %>  --%>
 						<%=h.getHouseName()%>
 						
 						
@@ -218,7 +218,7 @@
 					<a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
 				</div>
 			</div>
-			<%} %>
+			<%-- <%} %> --%>
 			<%for(Review r : list) {%>
 			<div class="comment">
 				<div class="swiper-container three">

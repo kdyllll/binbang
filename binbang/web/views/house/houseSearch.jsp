@@ -166,8 +166,8 @@
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
-							<input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
-							<input type="text" name="houseNo" value="<%=total%>">
+							<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
+							<input type="text" name="houseNo" value="<%=total%>"> --%>
 
 								<div class="contentSection1">
 									<p class="houseName"><%=h.getHouseName()%></p>
