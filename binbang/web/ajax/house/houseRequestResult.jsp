@@ -59,7 +59,9 @@ tr>td {
 			<th>게스트인원</th>
 			<th>가격</th>
 			<th>결제정보</th>
-			<th>예약상태</th>
+			<th>적립금사용</th>
+			<th>적립금</th>
+			<th>예약상태</th>			
 		</tr>
 		<%
 			for (Booking b : list) {
@@ -73,8 +75,10 @@ tr>td {
 			<td><%=b.getCheckInDate()%></td>
 			<td><%=b.getCheckOutDate()%></td>
 			<td><%=b.getGuestPnum()%></td>
-			<td><%=b.getPrice()%></td>
+			<td><%=b.getPrice()%></td>	
 			<td><%=b.getPaymentOption()%></td>
+			<td>-<%=b.getPointMinus() %></td>
+			<td>+<%=b.getPointPlus() %></td>
 			<td><%=b.getHouseRequest() %></td>
 		</tr>
 		<%

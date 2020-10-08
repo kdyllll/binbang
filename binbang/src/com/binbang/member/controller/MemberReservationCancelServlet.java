@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.booking.model.service.BookingService;
+
 /**
- * Servlet implementation class MemberChangePasswordServlet
+ * Servlet implementation class MemberReservationCancelServlet
  */
-@WebServlet("/member/memberChangePassword")
-public class MemberChangePasswordServlet extends HttpServlet {
+@WebServlet("/member/reservationCancel")
+public class MemberReservationCancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberChangePasswordServlet() {
+    public MemberReservationCancelServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +28,11 @@ public class MemberChangePasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/member/changePassword.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		String reservNo = (String)request.getParameter("reservNo");
+		int result = new BookingService().reserveCancel(reservNo);
+		System.out.println(reservNo);
+		request.getRequestDispatcher("/member/myPage").forward(request, response);
 	}
 
 	/**

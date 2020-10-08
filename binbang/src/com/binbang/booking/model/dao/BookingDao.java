@@ -49,6 +49,8 @@ public class BookingDao {
 				b.setReservDate(rs.getDate("reserv_date"));
 				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
 				list.add(b);
 			}
 
@@ -84,6 +86,8 @@ public class BookingDao {
 				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
 				b.setHouseRequest(rs.getString("house_request"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
 				list.add(b);
 			}
 
@@ -126,29 +130,27 @@ public class BookingDao {
 		return result;
 	}
 	
-	public List<Booking> reserveDoneList(Connection conn,String memberNo) {
+	public List<Booking> reserveDoneList(Connection conn, String memberNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Booking> list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("reserveDoneList"));
+			pstmt = conn.prepareStatement(prop.getProperty("reserveDoneHouseList"));
 			pstmt.setString(1, memberNo);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Booking b = new Booking();
 				b.setReservationNo(rs.getString("reservation_no"));
-				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
-				b.setGuestName(rs.getString("guest_name"));
 				b.setCheckInDate(rs.getDate("checkin_date"));
 				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setGuestPnum(rs.getInt("guest_pnum"));
 				b.setPaymentOption(rs.getString("payment_option"));
 				b.setPrice(rs.getInt("price"));
 				b.setApprovalDate(rs.getDate("approval_date"));
-				b.setMemberEmail(rs.getString("email"));
 				b.setHouseName(rs.getString("house_name"));
 				b.setHouseRequest(rs.getString("house_request"));
+				b.setHouseMainPic(rs.getString("picture_name"));
 				list.add(b);
 			}
 		}catch(Exception e) {
@@ -157,6 +159,20 @@ public class BookingDao {
 			close(rs);
 			close(pstmt);
 		}return list;
+	}
+	
+	public int reserveCancel(Connection conn, String reservNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("reserveCancel"));
+			pstmt.setString(1, reservNo);
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		} return result;
 	}
 
 }
