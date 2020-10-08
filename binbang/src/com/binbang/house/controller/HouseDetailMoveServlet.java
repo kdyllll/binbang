@@ -62,16 +62,11 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				List<Review> list=new HouseService().ReviewDetail(no);
 				request.setAttribute("house",h);
 				request.setAttribute("list",list);
-					
-					path="/views/house/houseDetail.jsp";
-					
-					
-				
 				
 	
 				request.getRequestDispatcher(path).forward(request, response);
 
-			
+			System.out.println(list);
 	}
 
 	/**
