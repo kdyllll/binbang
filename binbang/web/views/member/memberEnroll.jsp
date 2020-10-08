@@ -11,7 +11,8 @@
 
 		<section class="section">				
 <!-- 1. 회원가입 -->
-			<form action="<%=request.getContextPath() %>/member/memberEnrollEnd" method="post" class="enroll">
+<%-- action="<%=request.getContextPath() %>/member/memberEnrollEnd" --%>
+			<form id="enrollComplite" method="post" class="enroll">
 				<div class="title">
 					<div class="titletxt">Sign Up</div>
 				</div>
@@ -20,8 +21,11 @@
 				<div class="enrollForm">
 					<div>
 						<input type="email" placeholder="Email" name="email" id="email_" required>
-						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();">
-
+						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">
+						
+						<!-- 중복확인 클릭시 회원가입완료 -->
+						<input type="text" name="checked_id" value="">
+						
 						<input type="password" name="password" placeholder="Password" id="pw" required>						 
 						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" onkeyup="pwCheck();" required>
 						
@@ -272,8 +276,8 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 					<div class="line2 line3"></div>
 
 					
-					<div class="Btn">
-						<button id="signBtn">Sign Up</button>
+					<div class="Btn">					
+						<input type="button" onclick="fn_complite();" id="signBtn" value="Sign Up"/>									
 					</div>
 			</form>
 			
@@ -319,7 +323,32 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     	checkEmailDuplicate.method="post";
     	checkEmailDuplicate.email.value=email;    	
     	checkEmailDuplicate.submit();
+    }        
+    
+    
+    
+    
+    /* 중복확인 버튼을 눌러야 회원가입 완료 */
+    $(".idcheck").click(function(){
+    	$("input[name=checked_id]").val('y');
+    });
+    
+
+    function fn_complite(){    	    
+    	
+    	if($("input[name='checked_id']").val()!=''){
+    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();    	    		
+    	}else{
+    		alert('아이디 중복을 확인해주세요');    		
+    	}
+    	
     }
+    
+    
+   
+    
+    
+    
 </script>
 	
 <%@ include file="/views/common/footer.jsp"%>

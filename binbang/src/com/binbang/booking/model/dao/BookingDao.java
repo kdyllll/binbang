@@ -174,5 +174,80 @@ public class BookingDao {
 			close(pstmt);
 		} return result;
 	}
+	//호스트 마이페이지에서 숙소현황 검색구문
+	public List<Booking> searchBookingList(Connection conn, String type, String key, String hNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			String sql = prop.getProperty("searchBookingList").replaceAll("@type", type);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, hNo);
+			pstmt.setString(2, "%"+key+"%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Booking b = new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setPaymentOption(rs.getString("payment_option"));
+				b.setPrice(rs.getInt("price"));
+				b.setApprovalDate(rs.getDate("approval_date"));
+				b.setMemberEmail(rs.getString("email"));
+				b.setHouseName(rs.getString("house_name"));
+				b.setHouseRequest(rs.getString("house_request"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
+				list.add(b);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	//호스트 마이페이지에서  숙소요청 검색구문
+	public List<Booking> searchBookingReqList(Connection conn, String type, String key, String hNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			String sql = prop.getProperty("searchBookingReqList").replaceAll("@type", type);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, hNo);
+			pstmt.setString(2, "%"+key+"%");
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Booking b = new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setPaymentOption(rs.getString("payment_option"));
+				b.setPrice(rs.getInt("price"));
+				b.setReservDate(rs.getDate("reserv_date"));
+				b.setMemberEmail(rs.getString("email"));
+				b.setHouseName(rs.getString("house_name"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
+				list.add(b);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
 
 }

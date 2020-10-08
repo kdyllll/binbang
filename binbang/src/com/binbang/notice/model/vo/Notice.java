@@ -8,13 +8,13 @@ public class Notice {
 	private String noticeCategory;
 	private String noticeTitle;
 	private Date noticeDate;
-	private long noticeContents;
+	private String noticeContents;
 
 	public Notice() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notice(String noticeNo, String noticeCategory, String noticeTitle, Date noticeDate, long noticeContents) {
+	private Notice(String noticeNo, String noticeCategory, String noticeTitle, Date noticeDate, String noticeContents) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeCategory = noticeCategory;
@@ -55,11 +55,11 @@ public class Notice {
 		this.noticeDate = noticeDate;
 	}
 
-	public long getNoticeContents() {
+	public String getNoticeContents() {
 		return noticeContents;
 	}
 
-	public void setNoticeContents(long noticeContents) {
+	public void setNoticeContents(String noticeContents) {
 		this.noticeContents = noticeContents;
 	}
 
@@ -68,6 +68,8 @@ public class Notice {
 		return "Notice [noticeNo=" + noticeNo + ", noticeCategory=" + noticeCategory + ", noticeTitle=" + noticeTitle
 				+ ", noticeDate=" + noticeDate + ", noticeContents=" + noticeContents + "]";
 	}
+
+	
 	
 	
 }

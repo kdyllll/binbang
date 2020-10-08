@@ -69,42 +69,16 @@ public class HouseDao {
 	}
 
 	// 여기는 숙소에 필터 내용들 출력해주는 다오
-
-	public List<House> HouseFilterList(Connection conn, int cPage, int numPerPage) {
+	public List selectFilterList(Connection conn,String houseNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<House> list = new ArrayList();
+		List list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty(""));
-			// cPage 1 : 1|5
-			// cPage 2 : 6|10
-			// cPage 3 : 11|15
-			// cPage 4 : 16|20
-			pstmt.setInt(1, (cPage - 1) * numPerPage + 1);
-			pstmt.setInt(2, cPage * numPerPage);
+			pstmt = conn.prepareStatement(prop.getProperty("selectFilterList"));
+			pstmt.setString(1,houseNo);		
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				House h = new House();
-				h = new House();
-				h.setHouseNo(rs.getString("house_no")); //숙소번호
-				h.setHostNo(rs.getString("host_no")); //숙소번호
-				h.setHouseName(rs.getNString("house_name")); //숙소이름
-				h.setHouseType(rs.getNString("house_type")); //숙소유형
-				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
-				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
-				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
-				h.setRoomNum(rs.getInt("room_num")); //방갯수
-				h.setBathNum(rs.getInt("bath_num")); //화장실 갯수
-				h.setBedNum(rs.getInt("bed_num")); //침대 갯수
-				h.setHouseComment(rs.getNString("House_comment")); //숙소소개
-				h.setHouseGemsung(rs.getNString("House_gemsung")); //감성글				
-				h.setAttention(rs.getNString("attention")); //주의사항
-				h.setInoutTime(rs.getString("inout_time")); // 체크인아웃 시간
-				h.setPriceDay(rs.getInt("price_day")); // 비수기 평일
-				h.setPriceWeekend(rs.getInt("price_weekend")); //비수기주말
-				h.setPricePeakDay(rs.getInt("price_peak_day")); //성수기평일
-				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); //성수기 주말
-				list.add(h);
+				list.add(rs.getString(1));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -141,11 +115,14 @@ public class HouseDao {
 		int result = 0;
 
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty(""));
-			pstmt.setDouble(1, r.getHouseGrade());
-			pstmt.setString(2, r.getCommentTitle());
-			pstmt.setNString(3, r.getCommentContents());
-			pstmt.setNString(4, r.getFilePath());
+			pstmt = conn.prepareStatement(prop.getProperty("insertReview"));
+		
+			pstmt.setString(1, r.getHouseNo());//숙소번호
+			pstmt.setString(2, r.getMemberNo());//회원번호
+			pstmt.setDouble(3, r.getHouseGrade());//숙소평점
+			pstmt.setString(4, r.getCommentTitle());//후기제목
+			pstmt.setNString(5, r.getCommentContents());//후기내용
+			pstmt.setNString(6, r.getFilePath());//후기사진
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -154,6 +131,9 @@ public class HouseDao {
 		}
 		return result;
 	}
+
+    
+    
 	
 	//숙소테이블에 인서트하는 다오
 	public int insertHouse(Connection conn,House h) {
@@ -244,13 +224,13 @@ public class HouseDao {
 		}return result;	
 	}
 
-	public House HouseDetail(Connection conn, int no) {
+	public House HouseDetail(Connection conn, String no) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		House h=null;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("houseDetail"));
-			pstmt.setInt(1, no);
+			pstmt.setString(1, no);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				h=new House();
@@ -282,29 +262,29 @@ public class HouseDao {
 		}return h;
 	}
 	//숙소 후기 조회화는 다오
-	public Review ReviewDetail(Connection conn, int no) {
+	public List<Review> ReviewDetail(Connection conn, String no) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		Review r=null;
+		List<Review> list=new ArrayList();
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("reviewDetail"));
-			pstmt.setInt(1, no);
+			pstmt.setString(1, no);
 			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				r=new Review();
-				r.setHouseGrade(rs.getDouble("houseGrade")); //숙소평점
-				r.setCommentTitle(rs.getString("commentTitle")); //후기제목
-				r.setCommentContents(rs.getNString("commentContents")); //후기내용
-				r.setFilePath(rs.getNString("filePath")); //후기사진
+			while(rs.next()) {
+				Review r=new Review();
+				r.setHouseGrade(Double.parseDouble(rs.getString("house_grade"))); //숙소평점
+				r.setCommentTitle(rs.getString("comment_title")); //후기제목
+				r.setCommentContents(rs.getNString("comment_contents")); //후기내용
+				r.setFilePath(rs.getNString("file_path")); //후기사진
 				r.setHouseNo(rs.getNString("house_no")); //숙소번호
-				
+				list.add(r);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rs);
 			close(pstmt);
-		}return r;
+		}return list;
 	}
 
 	//숙소사진 인서트하는 다오

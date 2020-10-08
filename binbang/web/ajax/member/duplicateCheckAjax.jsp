@@ -31,25 +31,17 @@
 		</div>
 
 
-
-
-
-		<p class="checkTitle">인증번호</p>
-		
+		<p class="checkTitle">인증번호</p>		
 		<form id="numberFrm">			
 				<input type="text" class="passNumber" name="num" id="num" placeholder="인증번호 입력"> 				 
 				<input type="button" id="numConfirm" value="인증확인">			
 		</form>				
-		
-
-
-
 
 		
 		<form>
 			<div id="resend">
 				<p id="timer"></p>
-				<input type="button" value="재전송"  onclick="resendNum();" id="resendBtn">
+				<input type="button" value="재전송" style="display:none;" onclick="resendNum();" id="resendBtn">
 			</div>
 		</form>
 
@@ -122,15 +114,13 @@
  	
  	function resendNum(){
  		clearInterval(x);
- 		time=300;
- 		
+ 		time=300; 		
  		sendNumber(); 		
  	};
  	
  	
  	function sendNumber(){
- 		document.getElementById("resendBtn").style.display="block";
- 		
+ 		document.getElementById("resendBtn").style.display="block"; 		
  		x=setInterval(function(){
  			min=parseInt(time/60);
  			sec=time%60;

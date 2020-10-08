@@ -1,3 +1,4 @@
+<%@page import="com.binbang.member.model.vo.Member"%>
 <%@page import="com.binbang.booking.model.vo.Booking"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
 
 <%
 	List<Booking> list = (List) request.getAttribute("list");
+
 %>
 <style>
 .myHouse>ul {
@@ -31,15 +33,10 @@ tr>td {
 	text-align: center;
 	height: 50px;
 	vertical-align: center;
-	s
+	
 }
 
-.houseReq input[type="submit"] {
-	background: none;
-	border: none;
-	outline: none;
-	cursor: pointer;
-}
+
 </style>
 
 
@@ -61,28 +58,29 @@ tr>td {
 			<th>결제정보</th>
 			<th>적립금사용</th>
 			<th>적립금</th>
-			<th>예약상태</th>			
+			<th>예약상태</th>
 		</tr>
 		<%
 			for (Booking b : list) {
-				if(b.getHouseRequest().equals("예약완료")) {
+				if (b.getHouseRequest().equals("예약완료")) {
 		%>
 		<tr>
 			<td><%=b.getApprovalDate()%></td>
 			<td><%=b.getMemberEmail()%></td>
 			<td><%=b.getGuestName()%></td>
-			<td><%=b.getHouseName().length() > 15 ? b.getHouseName().substring(0, 15) + "..." : b.getHouseName()%></td>
+			<td><%=b.getHouseName().length() > 15 ? b.getHouseName().substring(0, 15) + "..."
+							: b.getHouseName()%></td>
 			<td><%=b.getCheckInDate()%></td>
 			<td><%=b.getCheckOutDate()%></td>
 			<td><%=b.getGuestPnum()%></td>
-			<td><%=b.getPrice()%></td>	
+			<td><%=b.getPrice()%></td>
 			<td><%=b.getPaymentOption()%></td>
-			<td>-<%=b.getPointMinus() %></td>
-			<td>+<%=b.getPointPlus() %></td>
-			<td><%=b.getHouseRequest() %></td>
+			<td>-<%=b.getPointMinus()%></td>
+			<td>+<%=b.getPointPlus()%></td>
+			<td><%=b.getHouseRequest()%></td>
 		</tr>
 		<%
-				}
+			}
 			}
 		%>
 	</table>
@@ -106,10 +104,10 @@ tr>td {
 			<th>결제정보</th>
 			<th>예약상태</th>
 		</tr>
-		
-		<% 
+
+		<%
 			for (Booking b : list) {
-				if(b.getHouseRequest().equals("예약취소")) {
+				if (b.getHouseRequest().equals("예약취소")) {
 		%>
 		<tr>
 			<td><%=b.getApprovalDate()%></td>
@@ -121,12 +119,16 @@ tr>td {
 			<td><%=b.getGuestPnum()%></td>
 			<td><%=b.getPrice()%></td>
 			<td><%=b.getPaymentOption()%></td>
-			<td><%=b.getHouseRequest() %></td>
+			<td><%=b.getHouseRequest()%></td>
 		</tr>
 		<%
-				}
 			}
-		
+			}
 		%>
 	</table>
 </div>
+
+<script>
+
+
+</script>

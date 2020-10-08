@@ -9,13 +9,18 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
-<%@ page import="java.util.List,com.binbang.house.model.vo.House"%>
+<%@ page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
 	List<House> house = (List<House>) request.getAttribute("house");
 	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
+
 	List dayList = (List) request.getAttribute("dayList");
+	
+
+	int days=(int)request.getAttribute("days");
+
 %>
 
 
@@ -118,54 +123,18 @@
 							for (House h : house) {
 						%>
 						<div class="house">
-						<%	//총요금과 날짜 구하는 식(a태그로 같이 넘겨주기 위해서 상단으로 옮김)
-							int total=0;
-							int days=0;
-							int price=0;
-							//주말인지 평일인지 //성수기인지 비수기인지
-						for (Object o : dayList) {
-							String day = (String) o; //숙박 날짜 하루하루
-							//요일 구하기
-							SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
-							Date date = form.parse(day);
-							Calendar c = Calendar.getInstance();
-							c.setTime(date);
-							int dayNum = c.get(Calendar.DAY_OF_WEEK);//6,7이라면 금,토	
-							if (dayNum == 6 || dayNum == 7) {//주말(금토)이라면
-								for (Object o1 : h.getTotalPeak()) { //성수기
-									String pDay = "20"+(String) o1;
-									if (day.equals(pDay)) {//성수기(주말)라면
-										total+=h.getPricePeakWeekend();
-										days++;
-									}else{//비수기(주말)라면
-										total+=h.getPriceWeekend();
-										days++;
-									}
-								}							
-							}else{//평일이라면													
-								for (Object o1 : h.getTotalPeak()) { //성수기
-									String pDay = "20"+(String) o1;
-									if (day.equals(pDay)) {//성수기(평일)라면
-										total+=h.getPricePeakDay();
-										days++;
-									}else{//비수기(평일)라면
-										total+=h.getPriceDay();
-										days++;
-									}
-								}	
-							}
-						}	
-							
-							if(total!=0&&days!=0){
-								price=total/days;
-							}
-						%>
+
+
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=h.getTotalPrice()%>"></a>
 
 							<a 
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=total%>"
+								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=h.getTotalPrice()%>"
+
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
 							<div class="houseContents">
+							<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
+							<input type="text" name="houseNo" value="<%=total%>"> --%>
 
 								<div class="contentSection1">
 									<p class="houseName"><%=h.getHouseName()%></p>
@@ -193,14 +162,14 @@
 
 
 								<div class="contentSection2">
-									<div class="contentBox">
+									<div class="contentBox box1">
 										<div class="iconLocation"></div>
 										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
 									</div>
 
 									<div class="contentLine"></div>
 
-									<div class="contentBox">
+									<div class="contentBox box2">
 										<div class="iconGrade"></div>
 										<p class="gradeName">
 											<%=h.getAvgGrade()%>/5
@@ -209,18 +178,18 @@
 								</div>
 								<div class="houseLine2"></div>
 								<div class="contentSection3">
-									<div class="contentBox">
+									<div class="contentBox box1">
 										<div class="iconPrice"></div>
 										<p class="priceName">
-											<!-- 가격 : 총요금/날짜수-->
+											<!-- 가격 : 총요금/날짜수-->											
+											약 <span class="price"><%=h.getTotalPrice()%></span>원/1박
 											
-											약 <span class="price" value="<%=price%>"><%=price%></span>원/1박
 										</p>
 									</div>
 
 									<div class="contentLine"></div>
 
-									<div class="contentBox">
+									<div class="contentBox box2">
 										<div class="iconPeople"></div>
 										<p class="PeopleName"><%=h.getHousePnum()%>명
 										</p>
@@ -249,12 +218,18 @@
 	</div>
 
 	<script>
+	
 		let houseList =<%=request.getAttribute("houseJson")%>;
+		let days= <%=request.getAttribute("days")%>;
 		console.log(houseList);
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
-			let standard = $(e.target).val();
-		
+			let standard = $(e.target).text();
+			console.log(standard);
+			if(standard == "기본순") houseList.sort(basicSort); 
+			else if(standard == "추천순") houseList.sort(gradeSort); 
+			else if(standard == "가격낮은순") houseList.sort(priceLowSort); 
+			else if(standard == "가격높은순") houseList.sort(priceHighSort); 		
 			//기본순(최신순)=하우스넘버 내림차순
 			function basicSort(a, b) {
 				if (a.houseNo == b.houseNo) {
@@ -269,22 +244,32 @@
 				}
 				return a.avgGrade > b.avgGrade ? -1 : 1;
 			}
-			//가격 낮은순
-			$(".price").val()
-			//가격 높은순
-
-			houseList.sort(basicSort);
-
+			//가격 낮은순(오름차)
+			function priceLowSort(a, b){
+				if(a.totalPrice == b.totalPrice){
+					return 0
+				}
+				return a.totalPrice > b.totalPrice ? 1 : -1;
+			}
+			//가격 높은순(내림차)
+			function priceHighSort(a, b){
+				if(a.totalPrice == b.totalPrice){
+					return 0
+				}
+				return a.totalPrice > b.totalPrice ? -1 : 1;
+			}
 			console.dir("정렬 후" + JSON.stringify(houseList));
+			new Gson.fromJson(houseList)
 		});
 
 		//금액 검색 누를때
-		$("#filterBtn").on("click", function(e) {
-
+		$("#priceBtn").on("click", function(e) {
+			let pricelist=houseList.filter(val => val.getTotalPrice / days > 100000 );
+			console.log(pricelist);
 		});
 
 		//필터 검색 누를 때
-		$("#priceBtn").on("click", function(e) {
+		$("#filterBtn").on("click", function(e) {
 
 		});
 		

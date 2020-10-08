@@ -7,11 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -63,14 +65,16 @@ public class HouseReviewEndServlet extends HttpServlet {
 		
 		//multipartRequest 객체를 생성한후 파라미터값을 MultipartRequest로 가져롸야함
 		//HttpServletRequest를 사용하지 않음
-      
 		
 		
 		Review r=new Review();
+		r.setHouseNo(mr.getParameter("houseNo"));
+		r.setMemberNo(mr.getParameter("memberNo"));
 		r.setHouseGrade(Double.parseDouble(mr.getParameter("houseGrade")));
 		r.setCommentTitle(mr.getParameter("commentTitle"));
 		r.setCommentContents(mr.getParameter("commentContents"));
 		r.setFilePath(mr.getFilesystemName("upload"));
+		
 		int result=new HouseService().insertReview(r);
 		
 		
@@ -79,15 +83,13 @@ public class HouseReviewEndServlet extends HttpServlet {
       //결과에 따라 메세지를 출력하고 메인화면으로 이동
 
 		String msg="";
-		String loc="/house/houseDetailMove";
+		String loc="/house/review";
 		msg=result>0?"공지사항등록성공":"공지사항등록실패";
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc",loc);
 		request.getRequestDispatcher("/views/common/msg.jsp")
 		.forward(request, response);
 	}
-	
-	
 	
 	
 	

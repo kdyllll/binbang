@@ -38,7 +38,7 @@ public class EnrollDuplicateNumberCheckServlet extends HttpServlet {
 		
 		if(AuthenticationKey==null||num==null||!AuthenticationKey.equals(num)) {
 			msg="인증번호가 일치하지 않습니다";
-			loc="/member/memberEnroll";
+			loc="/member/checkEmailDuplicateAjax";
 			System.out.println("인증번호 일치x");
 			return;
 		}else {
@@ -49,6 +49,7 @@ public class EnrollDuplicateNumberCheckServlet extends HttpServlet {
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -53,15 +53,13 @@
     		url:"<%=request.getContextPath()%>/member/checkConfirmNumber",
     		type:"post",
     		data:{"email":$("#email").val()},
-    		dataType:"html",
+    		dataType:"json",
     		success:data => {
-    			if($("#email").val().trim().length==0){
-    				alert("아이디를 확인해주세요.");
-    				return;
-    			}else{
-    				alert("인증번호가 발송되었습니다.");
+    			console.log(data);
+    			alert(data["msg"]);
+    			if(data["result"]=='1'){
     				sendNumber();
-    			}
+    			} 
     			
     		},
     		error:(request,status,error)=>{
@@ -85,10 +83,9 @@
        let x = 0;
        /* 재전송 */
      function sendNumber2(){
-    	 clearInterval(x);
-        document.getElementById("timer").innerHTML="";
+    	   
+    	clearInterval(x);
         time=300;
-        
         sendNumber();
      }
      
@@ -97,13 +94,20 @@
        	document.getElementById("reNumberConfirm").style.display="block";
       
         x=setInterval(function(){
+        	
           min=parseInt(time/60);
           sec=time%60;
           document.getElementById("timer").innerHTML="인증 시간 : "+min+"분"+sec+"초";
           time--;
-          let test = document.getElementById("reNumberConfirm");
           
+			if(time<0){
+	          clearInterval(x);
+	          document.getElementById("timer").innerHTML="다시 인증해주세요.";
+	        }
+			
         },1000);
+        
+       
       };       
      
 

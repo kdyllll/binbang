@@ -38,7 +38,19 @@ public class HouseRequestAjaxServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("m");
-		List<Booking> list = new BookingService().selectHouseRequest(m.getHostNo());
+	
+		String type = request.getParameter("searchType");
+		String key = request.getParameter("searchKeyword");
+		System.out.println(type);
+		System.out.println(key);
+		
+		List<Booking> list = null;
+		if(!type.equals("") && !type.equals("")) {		
+			list = new BookingService().searchBookingReqList(type, key, m.getHostNo());
+		} else if(type.equals("") && type.equals("")) {
+			list = new BookingService().selectHouseRequest(m.getHostNo());
+		}
+		System.out.println(list);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/ajax/house/houseRequest.jsp").forward(request, response);
 	}

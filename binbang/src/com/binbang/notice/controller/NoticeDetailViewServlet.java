@@ -1,23 +1,27 @@
-package com.binbang.house.controller;
+package com.binbang.notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.notice.model.service.NoticeService;
+import com.binbang.notice.model.vo.Notice;
+
 /**
- * Servlet implementation class HouseReviewServlet
+ * Servlet implementation class NoticeDetailViewServlet
  */
-@WebServlet("/house/review")
-public class HouseReviewServlet extends HttpServlet {
+@WebServlet("/notice/noticeDetailView")
+public class NoticeDetailViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseReviewServlet() {
+    public NoticeDetailViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,14 +30,11 @@ public class HouseReviewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-			String houseNo=(request.getParameter("houseNo"));
-			String memberNo=(request.getParameter("memberNo"));
-			request.setAttribute("houseNo", houseNo);
-			request.setAttribute("memberNo", memberNo);
-		   request.getRequestDispatcher("/views/house/review.jsp").forward(request,response);
-	
+		int noticeNo=Integer.parseInt(request.getParameter("noticeNo"));
+		Notice n= new NoticeService().noticeDatailView(noticeNo);
+		request.setAttribute("notice",n);
+		request.getRequestDispatcher("/views/notice/noticeDetail.jsp").forward(request, response);
 	}
 
 	/**

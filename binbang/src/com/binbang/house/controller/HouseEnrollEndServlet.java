@@ -124,8 +124,11 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setPricePeakWeekend(Integer.parseInt(mr.getParameter("peakRest")));
 		// 필터
 		String[] filter = mr.getParameterValues("filter");
-//	    String filters=String.join(",", filter);
-		h.setFilter(filter);
+		List filterList=new ArrayList();
+		for(int i=0;i<filter.length;i++) {
+			filterList.add(filter[i]);
+		}
+		h.setFilter(filterList);
 
 		// 사진파일
 		String[] pic = new String[10];
