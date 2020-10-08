@@ -209,6 +209,7 @@
 	<script>
 	
 		let houseList =<%=request.getAttribute("houseJson")%>;
+		let days= <%=request.getAttribute("days")%>;
 		console.log(houseList);
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
@@ -246,19 +247,18 @@
 				}
 				return a.totalPrice > b.totalPrice ? -1 : 1;
 			}
-
-			 
-
 			console.dir("정렬 후" + JSON.stringify(houseList));
+			new Gson.fromJson(houseList)
 		});
 
 		//금액 검색 누를때
-		$("#filterBtn").on("click", function(e) {
-
+		$("#priceBtn").on("click", function(e) {
+			let pricelist=houseList.filter(val => val.getTotalPrice / days > 100000 );
+			console.log(pricelist);
 		});
 
 		//필터 검색 누를 때
-		$("#priceBtn").on("click", function(e) {
+		$("#filterBtn").on("click", function(e) {
 
 		});
 		
