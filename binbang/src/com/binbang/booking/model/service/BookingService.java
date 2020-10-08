@@ -64,4 +64,20 @@ public class BookingService {
 		return result;
 	}
 	
+	public List<Booking> searchBookingList(String type, String key, String hNo) {
+		Connection conn = getConnection();
+		List<Booking> list = dao.searchBookingList(conn, type, key , hNo);
+		close(conn);
+		return list;
+		
+	}
+	
+	public List<Booking> searchBookingReqList(String type, String key, String hNo) {
+		Connection conn = getConnection();
+		List<Booking> list = dao.searchBookingReqList(conn, type, key , hNo);
+		close(conn);
+		return list;
+		
+	}
+	
 }
