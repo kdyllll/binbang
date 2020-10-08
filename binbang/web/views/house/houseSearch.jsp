@@ -125,10 +125,10 @@
 						<div class="house">
 
 
-							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=h.getTotalPrice()%>"></a>
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"></a>
 
 							<a 
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>&total=<%=h.getTotalPrice()%>"
+								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
 
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
