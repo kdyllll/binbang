@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
+<%String houseNo=(String)request.getAttribute("houseNo");%>
 <title>booking</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/review.css" />
@@ -15,37 +16,52 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-<form action="<%=request.getContextPath()%>/house/houseDetailMove" method="post" >
 		<section class="section">
+<form action="<%=request.getContextPath()%>/review/reviewEnd?houseNo=<%=houseNo%>" method="post" enctype="multipart/form-data">
 			<div class="review">
 			
 				<div class="Writerating">후기 작성</div>
 				<div class="grade">평점</div>
 				<div class="gradebox">
 					<div class="star-box">
-						<input class="star star_left 0.5"> <input class="star star_right 1" >
+						<div class="star star_left" id="0.5"></div> <div class="star star_right 1" id="1"></div>
 
-						<input class="star star_left 1.5"> <input class="star star_right 2">
+						<div class="star star_left" id="1.5"></div> <div class="star star_right 2" id="2"></div>
 
-						<input class="star star_left 2.5"> <input class="star star_right 3">
+						<div class="star star_left" id="2.5"></div> <div class="star star_right 3" id="3"></div>
 
-						<input class="star star_left 3.5"> <input class="star star_right 4">
+						<div class="star star_left" id="3.5"></div> <div class="star star_right 4" id="4"></div>
 
-						<input class="star star_left 4.5"> <input class="star star_right 5">
+						<div class="star star_left" id="4.5"></div> <div class="star star_right 5" id="5"></div>
+						<input type="hidden" name="houseGrade" class="a">
 					</div>
 				</div>
 
 
 				<div class="title1">제목</div>
-				<input class="titleWrite" type="text" placeholder="제목을 입력하세요">
+				<input class="titleWrite" name="commentTitle" type="text" placeholder="제목을 입력하세요">
 				
 				<div class="file">첨부파일</div>
 
-				<input type="file" id="upload" multiple>
+				<input type="file" name="upload" id="upload" multiple>
 				<div id="imgContainer"></div>
 				
-				<script>
-         
+				
+
+				<div class="contents">내용</div>
+				<textarea class="contentsWrite" name="commentContents" rows="10" cols="40" placeholder="내용을 입력하세요"></textarea>
+
+				<div class="enrollment">
+					  <input type="submit" value="등록하기" onclick=>
+
+				</div>
+			</div>
+				</form>
+		</section>
+	
+		<script>
+		
+		
          $("#upload").change(e =>{
                let reader=new FileReader();
                reader.onload=e=>{
@@ -59,19 +75,13 @@
                reader.readAsDataURL($(e.target)[0].files[0]);
             });
          
+         $(".star").on("click",e=>{
+             let grade=$(e.target).attr("id");
+             $(".a").val(grade);
+         });
             </script>
-
-				<div class="contents">내용</div>
-				<input class="contentsWrite" type="text" placeholder="내용을 입력하세요">
-
-
-				<div class="enrollment">
-					  <input type="submit" value="등록하기" onclick=>
-
-				</div>
-			</div>
-		</section>
-		</form>
+		
+		
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
