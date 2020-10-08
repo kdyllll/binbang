@@ -1,4 +1,3 @@
-하우스 디테일 jsp
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -46,7 +45,22 @@ List<Review> list = (List) request.getAttribute("list");
 
 <body class="body">
 	<div class="wrap">
-		<%@ include file="/views/common/houseHeader.jsp"%>
+
+		<header class="header headerColor">
+			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
+			<div class="searchBox"></div>
+			<div class="headerBox displayNone">
+				<a href="#infoscroll" class="infoFilter"> 정보 </a> 
+				<a href="#commentScroll" class="reviewFilter"> 후기 </a> 
+				<a href="#placeMapScroll" class="photoFilter">주변시설 </a>
+			</div>
+			<div class="headerBtn" id="headerBtn">
+				<div class="ham mainHamColor"></div>
+				<div class="ham mainHamColor"></div>
+				<div class="ham mainHamColor"></div>
+			</div>
+			<%@ include file="/views/common/nav.jsp"%>
+		</header>
 		<section class="section">
 			<div class="mainBox">
 				<div class="swiper-container first">
@@ -82,8 +96,7 @@ List<Review> list = (List) request.getAttribute("list");
 						<%=h.getHouseComment()%>
 						<br> <br>
 						<%=h.getInoutTime()%>
-						<br>
-						<br>
+						<br> <br>
 					</div>
 					<div class="host">
 						<div class="hostInfo">
@@ -106,28 +119,16 @@ List<Review> list = (List) request.getAttribute("list");
 				</div>
 
 			</div>
-			<div class="infoFilterScroll"></div>
-			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
-
-
-			<div class="houseinfobox">
+			<div id="infoscroll"  class="houseinfobox">
 				<div class="houseinfo">
 					<div class="infoDetail">
 						<div><%=h.getHouseName()%></div>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
+						<br> <br> <br> <br> <br> <br> <br>
 						<div><%=h.getInoutTime()%></div>
-						<br>
-						<br>
+						<br> <br>
 						<div><%=h.getHouseLocation()%></div>
-						<br>
-						<br>
+						<br> <br>
 					</div>
 					<div class="infoDetail2">
 						<div>
@@ -241,49 +242,61 @@ List<Review> list = (List) request.getAttribute("list");
 				<div class="houseinfo2"></div>
 
 			</div>
-			<div class="reviewFilterScroll"></div>
-			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
-			<div class="gradeTitle">
+
+			<div id="commentScroll" class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
+
 					<a
 						href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
+
+
 				</div>
 			</div>
 
 
+
+
+
 			<div class="comment">
 				<div class="swiper-container three">
-					<%
-						for (Review r : list) {
-					%>
 					<div class="swiper-wrapper threeButton">
-						<div class="gradePhoto"><%=r.getFilePath()%></div>
-						<div class="customer">
-							<div class="gradeall">
-								<div class="gradeinfo">
+						<%
+							for (Review r : list) {
+						%>
+						<div class="swiper-slide">
+							<div class="gradePhoto">
+								<img
+									src="<%=request.getContextPath()%>/upload/review/<%=r.getFilePath()%>"
+									style="width: 100%; height: 100%;">
+							</div>
+							<div class="customer">
+								<div class="gradeall">
+									<div class="gradeinfo">
 
-									<div class="a">
-										평점 :
-										<%=r.getHouseGrade()%></div>
-									<br> <br>
-									<div class="b">
-										제목 :
-										<%=r.getCommentTitle()%>
+										<div class="a">
+											평점 :
+											<%=r.getHouseGrade()%></div>
+										<br> <br>
+										<div class="b">
+											제목 :
+											<%=r.getCommentTitle()%>
+										</div>
+										<br> <br>
+										<div class="c">
+											내용 :
+											<%=r.getCommentContents()%>
+										</div>
+										<div class="ex">댓글 등록하기</div>
+
 									</div>
-									<br> <br>
-									<div class="c">
-										내용 :
-										<%=r.getCommentContents()%>
-									</div>
-									<div class="ex">댓글 등록하기</div>
-									<%
-										}
-									%>
 								</div>
 							</div>
 						</div>
+						<%
+							}
+						%>
 					</div>
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
@@ -291,16 +304,17 @@ List<Review> list = (List) request.getAttribute("list");
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
 					<!-- <div class="swiper-pagination"></div> -->
+
 				</div>
+
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
+
 			</div>
 
 
 
-			<div class="photoFilterScroll"></div>
-			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
-
+<div  id="placeMapScroll" style="height: 80px;"></div>
 
 
 			<div class="place">
