@@ -24,13 +24,13 @@ import com.binbang.member.model.vo.Member;
  * Servlet implementation class MemberCheckConfirmNumberServlet
  */
 @WebServlet("/member/checkConfirmNumber")
-public class MemberCheckConfirmNumberServlet extends HttpServlet {
+public class LoginSendEmailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberCheckConfirmNumberServlet() {
+    public LoginSendEmailServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,24 +44,24 @@ public class MemberCheckConfirmNumberServlet extends HttpServlet {
 		String userId = request.getParameter("email");
 		Member m=new MemberService().selectInfo(userId);
 //		email= new MemberService().emailCheck(userId);
-		System.out.println(userId);
+		System.out.println("서블릿"+userId);
 		   
-		
-		String mesg="";
-		String loc="";
-		
+//		
+//		String mesg="";
+//		String loc="";
+//		
 //		if(m==null||!m.getEmail().equals(userId)) {
-			
-		
-			
+//			
 //			mesg="아이디 정보가 일치하지 않습니다.";
 //			loc="/member/findPassword";
+//			
 //			request.setAttribute("msg",mesg);
 //			request.setAttribute("loc", loc);
-////			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-//			return;
+//			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+//			System.out.println("아이디 일치하지않음");
 //		} 
 //		else {
+//			System.out.println("아이디 일치함");
 //			mesg="인증에 성공했습니다.";
 //			loc="/member/changePassword";
 //			request.setAttribute("msg",mesg);
@@ -134,8 +134,26 @@ public class MemberCheckConfirmNumberServlet extends HttpServlet {
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
         
+        HttpSession saveId = request.getSession();
+        saveId.setAttribute("userId", userId);
+        
 //        request.setAttribute(name, o);
         
+		} else if((m==null||!m.getEmail().equals(userId))){
+			
+			System.out.println("아이디 일치하지않음");
+//			String mesg="";
+//			String loc="";
+//		
+//				
+//			mesg="아이디 정보가 일치하지 않습니다.";
+//			loc="/member/findPassword";
+//			
+			request.setAttribute("msg","아이디 정보가 일치하지 않습니다.");
+			request.setAttribute("loc", "/member/findPassword");
+			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+			
+			
 		}
 //		request.getRequestDispatcher("/views/member.findPasswordAjax.jsp").forward(request, response);
 	}

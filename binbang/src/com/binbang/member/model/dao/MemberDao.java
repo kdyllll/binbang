@@ -126,7 +126,7 @@ public class MemberDao {
 	}
 	
 	//mypage 조회
-	public Member selecInfo(Connection conn, String email) {
+	public Member selectInfo(Connection conn, String email) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Member m=null;
@@ -185,7 +185,7 @@ public class MemberDao {
 	}
 	
 	
-	//mypage 비밀번호 수정
+
 	public int updatePassword(Connection conn,String email,String newPw) {
 		PreparedStatement pstmt=null;
 		int result=0;
@@ -204,7 +204,7 @@ public class MemberDao {
 	
 	
 	
-	//로그인화면 비밀번호 수정용(아이디 확인용)
+	//로그인화면 아이디 확인용
 	public Member selectMemberId(Connection conn,String email) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

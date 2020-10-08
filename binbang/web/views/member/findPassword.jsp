@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,25 +29,26 @@
      
      
         <p class="inputTitle">인증번호</p>
-        <div class="input">
-          <input type="text" class="setPassword" name="number" id="number" placeholder="인증번호 입력">
-          <input type="hidden" readonly="readonly" name="confirmNumber">
-          <button id="numberConfirm">인증확인</button>
-        </div>
+        <form id="numberForm" class="input">
+        	
+          	<input type="text" class="setPassword" name="number" id="number" placeholder="인증번호 입력">
+          	<input type="button" id="numberConfirm">인증확인</button>
+        </form>
       
 	
-	<form>
-        <div id="resend">
-          <p id="timer"></p>
-          <input type="button" value="재전송" style="display:none;" onclick="sendNumber2();" id="reNumberConfirm">
-        </div>
-         <input type="button" value="다음" class="next">
-      </form>
-      
-          
+		<form>
+	        <div id="resend">
+	          <p id="timer"></p>
+	          <input type="button" value="재전송" style="display:none;" onclick="sendNumber2();" id="reNumberConfirm">
+	        </div>
+	         <!-- <input type="button" value="다음" class="next"> -->
+      	</form>
+  
     </div>
         
     <script> 
+
+    
     $("#emailConfirm").click(e => {
     	$.ajax({
     		url:"<%=request.getContextPath()%>/member/checkConfirmNumber",
@@ -73,25 +75,10 @@
     	
     });
     
-    $("#numberConfirm").click(e => {
-    	$.ajax({
-    		url:"<%=request.getContextPath()%>/member/findPasswordAjax",
-    		type:"post",
-    		data:{"number":$("#number").val()},
-    		dataType:"html",
-    		success:data=>{
-    			console.log(data);
-    		},
-    		error:(request,status,error)=>{
-				console.log(request);
-				console.log(status);
-				console.log(error);
-			}
-    	});
+    $("#numberConfirm").on("click",e => {
+    	$("#numberForm").attr("action","<%=request.getContextPath()%>/member/checkEmailNumber").submit();
     });
-    
-    
-    
+      
     
        let time=300;
        let min=0;
