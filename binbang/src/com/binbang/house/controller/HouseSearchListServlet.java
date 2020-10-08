@@ -137,7 +137,7 @@ public class HouseSearchListServlet extends HttpServlet {
 			h.setTotalPeak(totalPeak);
 			
 			//필터
-			h.setFilter(new HouseService().HouseFilterList(h.getHouseNo()));
+			h.setFilter(new HouseService().selectFilterList(h.getHouseNo()));
 			
 		}
 		
