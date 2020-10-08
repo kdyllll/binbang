@@ -7,6 +7,7 @@
 	House h = (House) request.getAttribute("house");
 Member member = (Member) session.getAttribute("m");
 List<Review> list = (List) request.getAttribute("list");
+List filterList =(List) request.getAttribute("filterList");
 %>
 
 <%
@@ -247,10 +248,10 @@ List<Review> list = (List) request.getAttribute("list");
 			<div id="commentScroll" class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
-
+					<%if(member != null) { %>
 					<a
-						href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
-
+						href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>">글쓰기</a>
+				<%} %>
 
 				</div>
 			</div>
