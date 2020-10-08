@@ -10,7 +10,7 @@
 		<%@ include file="/views/common/header.jsp" %>
 
 		<section class="section">				
-			<!-- 1. 회원가입 -->
+<!-- 1. 회원가입 -->
 			<form action="<%=request.getContextPath() %>/member/memberEnrollEnd" method="post" class="enroll">
 				<div class="title">
 					<div class="titletxt">Sign Up</div>
@@ -34,7 +34,7 @@
 				</div>
 
 
-				<!-- 2. 약관동의 -->
+<!-- 2. 약관동의 -->
 				<div class="contract">
 					<div class="title1">
 						약관전체동의<input type="checkbox" id="allCheck" onclick="selectAll();">
