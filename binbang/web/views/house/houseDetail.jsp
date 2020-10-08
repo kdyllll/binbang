@@ -6,7 +6,7 @@
 <%
 
 	House h=(House)request.getAttribute("house");
-	Member member = (Member)session.getAttribute("m");
+
 	List<Review> list=(List)request.getAttribute("list");
 %>
 
@@ -215,31 +215,35 @@
 			<div class="gradeTitle">
 				★총 평점 후기()개
 				<div class="writing">
-					<a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a>
+					<%-- <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a> --%>
 				</div>
 			</div>
+
 			
 			
 			<div class="comment">
 				<div class="swiper-container three">
 					<div class="swiper-wrapper threeButton">
+				<%for(Review r : list) {%> 
+					<div class="swiper-slide">
 						<div class="gradePhoto"></div>
 						<div class="customer">
 							<div class="gradeall">
 								<div class="gradeinfo">
-								<%for(Review r : list) {%> 
+								
 									<div class="a">평점 : <%=r.getHouseGrade() %></div>
 									<br> <br>
 									<div class="b">제목 : <%=r.getCommentTitle()%> </div>
 									<br> <br>
 									<div class="c">내용 : <%=r.getCommentContents()%> </div>
 									<div class="ex">댓글 등록하기</div>
-								<% }%>  
+						
 								</div>
 							</div>
 						</div>
 					</div>
-
+				<% }%>  
+					</div>
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
