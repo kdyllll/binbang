@@ -33,9 +33,8 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
-		String oriPw=request.getParameter("ori_pw");//이전 비밀번호
-		String newPw=request.getParameter("new_pw");//변경할 비밀번호
+		String oriPw=request.getParameter("ori_pw");
+		String newPw=request.getParameter("new_pw");//변경할 비밀번호(입력)
 		String email=request.getParameter("email");
 		
 		int result=new MemberService().updatePassword(oriPw,newPw,email);
@@ -45,7 +44,7 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="Password 수정완료";
-			loc="/member/updatePassword?email="+email;			
+			loc="/member/myPage?email="+email;			
 		}else {
 			msg="Password 변경실패";
 			loc="/member/mypagePrivate";

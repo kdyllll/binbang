@@ -32,8 +32,8 @@ public class MypagePrivateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//입력한 password
-		String password = request.getParameter("password");
 		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		
 		//가져온 password
 		Member m=new MemberService().selectMember(email,password);

@@ -83,6 +83,21 @@ public class MemberService {
 		return result;
 	}
 	
+	//mypage 비밀번호 수정
+	public int updatePassword(String ori, String newPw , String email) {
+		Connection conn=getConnection();
+		int result=0;
+		Member m=dao.selectMember(conn, email, ori);
+		if(m!=null) {
+			result=dao.updatePassword(conn, newPw, email);
+			if(result>0) commit(conn);
+			else rollback(conn);
+		}
+		close(conn);
+		return result;		
+	}
+	
+	
 	//mypage 탈퇴
 	public int deleteMember(String email) {
 		Connection conn=getConnection();
@@ -93,21 +108,6 @@ public class MemberService {
 			close(conn);
 		}
 		return result;
-	}
-	
-	//mypage 비밀번호 수정
-	public int updatePassword(String oriPw,String newPw , String email) {
-		Connection conn=getConnection();
-		int result=dao.updatePassword(conn, newPw, email);
-		Member m=dao.selectMember(conn, email, oriPw);
-		
-		if(m!=null) {
-			result=dao.updatePassword(conn,email,newPw);
-			if(result>0) commit(conn);
-			else rollback(conn);
-		}
-		close(conn);
-		return result;		
 	}
 	
 	

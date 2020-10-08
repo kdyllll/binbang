@@ -186,7 +186,7 @@ public class MemberDao {
 	
 	
 	//mypage 비밀번호 수정
-	public int updatePassword(Connection conn,String newPw,String email) {
+	public int updatePassword(Connection conn,String email,String newPw) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
