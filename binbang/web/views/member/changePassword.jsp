@@ -31,7 +31,7 @@
         
       <div id="tt"></div>
         
-      <button class="next" onclick="self.close();">완료</button>
+      <button class="next" >완료</button>
           
     </div>
         
@@ -48,6 +48,19 @@
             $(".next").prop("disabled",true);
           }
       };
+      
+      $(".next").click(e=>{
+    	  $.ajax({
+    		  url:"<%=request.getContextPath()%>/member/changePassword",
+    		  type:"post",
+    		  data:{"password":$("#newPw").val()},
+    		  dataType:"html",
+    		  success:data=>{
+    			  self.close();
+    		  }
+    	  })
+      })
+     
       
     </script>
   

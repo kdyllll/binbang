@@ -1,58 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="com.binbang.booking.model.vo.Booking"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/views/common/commonLink.jsp"%>
+<%
+	List<Booking> list = (List) request.getAttribute("list");
+%>
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/mypage.css" />
+<style>
+	h2 {
+		margin-bottom: 50px;
+		font-weight:600;
+		font-size:18px;
+	}
+	
+	.house {
+		display:flex;
+		margin-bottom:50px;
+	}
+	
+	.house > .myReserve,
+	.house > .myReserved,
+	.house > .myCancel {
+		width:250px;
+		height:300px;
+		border:1px solid;
+		margin-right: 15px;
+	}
 
-		<!-- 숙소 -->
-		<!-- 1. 예약완료된 숙소 -->
-		<form class="house" method="post">
-			<div class="reserved">
-				<div class="line8">
-					<p>예약완료된 숙소</p>
-				</div>
-				<div class="reservedList">
-					<div>
-						<div class="recomPic1 recommon"></div>
-						<div class="reservedContents">
-							<table>
-								<tr>
-									<td>숙소이름</td>
-									<td>예약완료</td>
-								</tr>
-								<tr>
-									<td>2020-01-08 ~ 2020-05-08</td>
-									<td><button>예약취소</button></td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
+</style>
 
-			<!-- 2. 이용했던숙소 -->
-			<div class="stayed">
-				<div class="line8">
-					<p>이용했던 숙소</p>
-				</div>
-				<div class="stayedList">
-					<div>
-						<div class="recomPic1 recommon"></div>
-						<div class="stayedContents"></div>
-					</div>
-					<div>
-						<div class="recomPic2 recommon"></div>
-						<div class="stayedContents"></div>
-					</div>
-					<div>
-						<div class="recomPic3 recommon"></div>
-						<div class="stayedContents"></div>
-					</div>
-					<div>
-						<div class="recomPic4 recommon"></div>
-						<div class="stayedContents"></div>
-					</div>
-				</div>
-			</div>
+<!-- 숙소 -->
+<!-- 1. 예약완료된 숙소 -->
+<h2>예약완료된 숙소</h2>
+<div class="house">
+<% for(Booking b : list) { 
+	if(b.getHouseRequest().equals("예약완료"))  {%>
+	<form class="myReserve" method="post">
+		<img src="#" alt="사진"><%-- <%=b.getHouseMainPic() %> --%>
+		<table>
+			<tr>
+				<td><%=b.getHouseName() %></td>
+				<td><%=b.getHouseRequest() %></td>
+			</tr>
+			<tr>
+				<td><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></td>
+				<td>
+					<input type="text" name="reservNo" value="<%=b.getReservationNo() %>">
+					<input type="button" class="reservCancel" value="예약취소" onclick="test();">
+				</td>
+			</tr>
+		</table>
+	</form>
 
-		</form>
+	<% } 
+	}%>
+</div>
 
+<h2>이용완료 숙소</h2>
+<div class="house">
+<% for(Booking b : list) { %>
+	<form class="myReserved" method="post">
+		<img src="#" alt="사진"><%-- <%=b.getHouseMainPic() %> --%>
+		<table>
+			<tr>
+				<td><%=b.getHouseName() %></td>
+				<td><%=b.getHouseRequest() %></td>
+			</tr>
+			<tr>
+				<td><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></td>
+			</tr>
+		</table>
+	</form>
+
+	<% } %>
+</div>
+<h2>취소한 숙소</h2>
+<div class="house">
+<% for(Booking b : list) { 
+if(b.getHouseRequest().equals("예약취소")) {%>
+	<form class="myCancel" method="post">
+		<img src="#" alt="사진"><%-- <%=b.getHouseMainPic() %> --%>
+		<table>
+			<tr>
+				<td><%=b.getHouseName() %></td>
+				<td><%=b.getHouseRequest() %></td>
+			</tr>
+			<tr>
+				<td><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></td>
+			</tr>
+		</table>
+	</form>
+
+	<% } 
+	} %>
+</div>
+<script>
+	function test() {
+		$(".myReserve").attr("action","<%=request.getContextPath() %>/member/reservationCancel").submit();
+	};
+</script>

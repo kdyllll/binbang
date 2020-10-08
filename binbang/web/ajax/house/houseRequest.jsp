@@ -66,6 +66,8 @@ tr>td {
 			<th>게스트인원</th>
 			<th>가격</th>
 			<th>결제정보</th>
+			<th>적립금사용</th>
+			<th>적립금</th>
 			<th></th>
 		</tr>
 		<%
@@ -81,9 +83,15 @@ tr>td {
 			<td><%=b.getGuestPnum()%></td>
 			<td><%=b.getPrice()%></td>
 			<td><%=b.getPaymentOption()%></td>
+			<td>- <%=b.getPointMinus() %></td>
+			<td>+ <%=b.getPointPlus() %></td>
 			<td>
 				<form class="myHouseCon houseAll" method="post">
 					<input type="hidden" name="reservNo" value="<%=b.getReservationNo() %>">
+					<input type="hidden" name="houseName" value="<%=b.getHouseName() %>">
+					<input type="hidden" name="checkIn" value="<%=b.getCheckInDate() %>">
+					<input type="hidden" name="checkOut" value="<%=b.getCheckOutDate() %>">
+					<input type="hidden" name="email" value="<%=b.getMemberEmail()%>">
 					<input type="submit" class="acceptH" onclick="fn_houseAccept();" value="승인">
 					<input type="submit" class="denyH" onclick="fn_houseDeny();" value="거절">
 				</form>
