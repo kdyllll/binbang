@@ -42,7 +42,7 @@
 			<tr>
 				<td class="cell1"><%=h.getHostName()%></td>
 				<td class="cell3"><%=h.getMemberPhone()%></td>
-				<td class="cell3"><%=h.getProfilePic()%></td>
+				<td class="cell3"><a href="<%=request.getContextPath()%>/upload/host/<%=h.getProfilePic()%>"><%=h.getProfilePic()%></a></td>
 				<td class="cell3"><%=h.getIdCard()%></td>
 				<td class="cell2"><%=h.getHostEnrollDate()%></td>
 				<td class="cell2">
