@@ -123,13 +123,12 @@
 						%>
 						<div class="house">
 
-
-							<a
-								href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
-								class="housePic"
-								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
-							<div class="houseContents">
-								<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
+                     <a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>
+                        class="housePic"
+                        style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
+                     <div class="houseContents">
+                     <%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
                      <input type="text" name="houseNo" value="<%=total%>"> --%>
 
 								<div class="contentSection1">
@@ -261,11 +260,18 @@
          for(let h in houseList){
             let a = $("<a>");
             a.attr({
-              "class": "housePic",
-              "href": "<%=request.getContextPath()%>
-		/house/houseDetailMove?houseNo="
-													+ houseList[h].houseNo, /* 이거맞음 */
-										});
+
+              class: "housePic",
+              href: "<%=request.getContextPath()%>/house/houseDetailMove?houseNo="+houseList[h].houseNo,   /* 이거맞음 */           
+            });
+            
+         }
+         //for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)
+         //   for(var ele2 in i[ele]){  //ele2는 객체의 키값(name등)
+         //      console.log(i[ele][ele2]); // 배열이름/인덱스(객체순서)/키값 이 되는 것
+         //   } 
+         //}
+            
 
 							}
 							//for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)

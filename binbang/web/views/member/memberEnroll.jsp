@@ -21,10 +21,7 @@
 				<div class="enrollForm">
 					<div>
 						<input type="email" placeholder="Email" name="email" id="email_" required>
-						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">
-						
-						<!-- 중복확인 클릭시 회원가입완료 -->
-						<!-- <input type="text" name="checked_id" value=""> -->
+						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">						
 						
 						<input type="password" name="password" placeholder="Password" id="pw" required>						 
 						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" onkeyup="pwCheck();" required>
@@ -36,7 +33,8 @@
 						<input type="text" name="phone" placeholder="Phone" required>
 					</div>
 				</div>
-
+					<!-- 인증완료 -->
+					<input type="hidden" id="hidden">
 
 <!-- 2. 약관동의 -->
 				<div class="contract">
@@ -305,14 +303,22 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
       
     };
     
+    
+    
     /* 중복확인 */
     function fn_duplicateCheck(){
-    	let email=$("#email_").val();
+    	/* email정규표현 */
+        var email1 = document.getElementById("email_");     	
+    	var regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    	     	
+    	if (!regEmail.test(email1.value)) {
+              alert("이메일을 입력해주세요");
+              return false;
+          }
     	
-    	if(email.trim().length==0){
-    		alert("이메일을 입력하세요");
-    		return;
-    	}    		
+    	/* 값넘기기 및 창띄우기 */
+        var email=$("#email_").val();
+     		
     	const url="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax";    	
     	const title="checkEmailDuplicate";
     	const status="left=500px,top=100px, width=500px, height=400px";
@@ -327,26 +333,44 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     
     
     
-    
-    /* 중복확인 버튼을 눌러야 회원가입 완료 */
-   /*  $(".idcheck").click(function(){
-    	$("input[name=checked_id]").val('y');
-    }); */
-    
 
-    <%-- function fn_complite(){    	        	
-    	if($("input[name='checked_id']").val()!=''){
-    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();    	    		
-    	}else{
-    		alert('아이디 중복을 확인해주세요');    		
-    	}    	
-    } --%>
-    
+    /* 인증번호가 회원가입 로직에 찍히면 회원가입이 가능하게 구현 */
     function fn_complite(){
-    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();    	    		    	
+    	/*pw 정규표현*/  
+    	var pw = document.getElementById("pw");    	
+        var regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()]).*$/
+        	  if (!regPw.test(pw.value)) {
+                  alert("비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요");
+                  return false;
+              }
+        
+        /* 이름 정규표현 */
+            var name = document.getElementById("name");
+            var regName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+            if (!regName.test(name.value)) {
+                alert("한글은 2 ~ 4글자(공백 없음) , 영문은 Firstname(2 ~ 10글자) (space) Lastname(2 ~10글자)로 입력해 주세요.");
+                return false;
+            }
+        	
+        	
+        /* 전화번호 정규표현*/
+       	var phone=$("#phone").val();
+       	var regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
+			 if(!regPhone.test(phone.value)){
+				 alert("전화번호를 입력해주세요")
+			 }       
+    	  
+    	
+    	if($("#hidden").val()=="인증이 완료되었습니다."){
+    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
+    		}else{
+    			alert("중복확인을 해주세요.");
+    		}    	    	    	    	
     }
     
     
+	    	
+
    
     
     
