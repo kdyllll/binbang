@@ -38,8 +38,9 @@
 				<span col="30" row="50" readonly><%=h.getIntro() %></span>
 			</div>
 			<ul class="hostHouseAllInfo">
-				<%for(House ho : list) { %>
-				<li class="hostHouseOne">
+				<%for(int i = 0; i<list.size(); i++) {
+					House ho = (House)list.get(i);%>
+				<li class="hostHouseOne" id="house<%=i%>">
 					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=ho.getHouseNo()%>">
 						<img src="#">
 						<span><%=ho.getHouseNo() %></span>
@@ -47,8 +48,10 @@
 					</a>
 				</li>
 				<%} %>
-				<button id="addBtn" onclick="moreList();"><span>더보기</span></button>
 			</ul>
+				<button id="addBtn" onclick="moreList();">
+					<span>더보기</span>
+				</button>
 			
 			<div class="line">선</div>
 			
@@ -58,44 +61,19 @@
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
-		moreList(); //함수 호출
- 
- function moreList() {
-  
-	 var startNum = $(".hostHouseOne").length; 
-	 var addListHtml = "";  
-	 console.log("startNum", startNum); //콘솔로그로 startNum에 값이 들어오는지 확인
-  
-	  $.ajax({
-		 url : "/study/getfilmList",
-		 type : "post",
-		 dataType : "json",
-		 data : {"startNum":startNum},
-		 
-		 success : function(data) {
-			 if(data.length < 10){
-				 $("#addBtn").remove();   // 더보기 버튼을 div 클래스로 줘야 할 수도 있음
-			 }else{
-			 var addListHtml ="";
-			 if(data.length > 0){
-				 
-				 for(var i=0; i<data.length;i++) {
-					 var idx = Number(startNum)+Number(i)+1;   
-					 // 글번호 : startNum 이  10단위로 증가되기 때문에 startNum +i (+1은 i는 0부터 시작하므로 )
-					 addListHtml += "<tr>";
-					 addListHtml += "<td>"+ idx + "</td>";
-					 addListHtml += "<td>"+ data[i].title + "</td>";
-					 addListHtml += "<td>"+ data[i].description + "</td>";
-					 addListHtml += "</tr>";
-				 }
-				 $("#listBody").append(addListHtml);
-			 }
-			 }
-		 }
-	 });
-  
- }
-
+		let lengthSize = $(".hostHouseOne").length;
+		let startCnt = 3;
+		let endCnt = lengthSize;
+	 	for(let i=startCnt; i<lengthSize; i++) {
+			$("#house"+i).css("display","none")		
+		} 
+		console.log(lengthSize);
+		function moreList() {
+			for(let i=startCnt; i<startCnt + 3; i++) {
+				$("#house"+i).css("display","block");
+			} 
+			startCnt = startCnt + 3;
+		}
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 </body>
