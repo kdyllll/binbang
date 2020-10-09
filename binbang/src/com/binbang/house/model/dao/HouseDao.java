@@ -268,7 +268,7 @@ public class HouseDao {
 		House h=new House();
 		List l=new ArrayList();
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("filterDetail"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectFilterList"));
 			pstmt.setString(1, no);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -302,6 +302,7 @@ public class HouseDao {
 				r.setFilePath(rs.getNString("file_path")); //후기사진
 				r.setHouseNo(rs.getNString("house_no")); //숙소번호
 				list.add(r);
+				
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

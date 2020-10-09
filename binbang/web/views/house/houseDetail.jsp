@@ -9,6 +9,7 @@
    Member m2 =(Member)session.getAttribute("m");
    List<Review> list=(List)request.getAttribute("list");
    List filterList =(List) request.getAttribute("filterList");
+   System.out.println("");
 %>
 
 <%
@@ -230,7 +231,9 @@
          <div class="gradeTitle">
             ★총 평점 후기()개
             <div class="writing">
+            <%if(m2!=null){ %>
                <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=m2.getMemberNo()%>">글쓰기</a>
+            <%} %>
             </div>
          </div>   
          

@@ -42,31 +42,24 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				String no=request.getParameter("houseNo");
 				
 				House h=new HouseService().HouseDetail(no);
-		
+
 				String msg="";
 				String loc="";
-				String path="";
+				String path="/views/house/houseDetail.jsp";
 				if(h==null) {
 					msg="선택한 숙소가 존재하지 않습니다.";
 					loc="/house/houseSearch";
 					path="/views/common/msg.jsp";
 					request.setAttribute("msg",msg);
 					request.setAttribute("loc",loc);
-				}else {
-					
-					path="/views/house/houseDetail.jsp";
 				}
-				
-				
 				
 				House h2=new HouseService().FilterDetail(no);
 				List filterList=h2.getFilter();//여기에 숙소에대한 필터 이미지가 담겨온것임
-		
-				path="/views/house/houseDetail.jsp";
-				
+
 				//리뷰연결 
 				List<Review> list=new HouseService().ReviewDetail(no);
-				
+			
 				request.setAttribute("house",h);
 				request.setAttribute("filterList",filterList);
 				request.setAttribute("list",list);
@@ -74,7 +67,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	
 				request.getRequestDispatcher(path).forward(request, response);
 
-			System.out.println(list);
+			
 	}
 
 	/**
