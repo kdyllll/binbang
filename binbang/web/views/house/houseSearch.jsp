@@ -9,7 +9,8 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
-<%@ page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
+<%@ page
+	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
 	List<House> house = (List<House>) request.getAttribute("house");
 	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
@@ -69,7 +70,7 @@
 							for="60"> 50만원 이상 60만원 이하</label></li>
 						<li><input type="checkbox" name="price" value="70" id="70"><label
 							for="70"> 60만원 이상</label></li>
-						<li id="priceBtn" class="selectBtn"><div>해당숙소 00개</div></li>
+						<li id="priceBtn" class="selectBtn"><div onclick="fn_option();">해당숙소 <span><%=house.size() %></span>개</div></li>
 					</ul>
 				</form>
 
@@ -103,12 +104,12 @@
 							value="11"><label for="laundryRoom"> 세탁실</label></li>
 						<li><input type="checkbox" id="wifi" name="filter" value="12"><label
 							for="wifi"> 와이파이</label></li>
-						<li id="filterBtn" class="selectBtn"><div>해당숙소 00개</div></li>
+						<li id="filterBtn" class="selectBtn"><div onclick="fn_option();">해당숙소 <span><%=house.size() %></span>개</div></li>
 					</ul>
 				</form>
 
 			</div>
-
+			
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
 				<!-- 지도 -->
@@ -117,10 +118,7 @@
 				<div class="line"></div>
 				<!-- 숙소리스트 -->
 				<div class="listCon">
-					<div class="list">
-
-					
-					</div>
+					<div class="list"></div>
 					<div id="pageBar">
 						<%=pageBar%>
 					</div>
@@ -141,7 +139,7 @@
 		let favorite =<%=request.getAttribute("filterJson")%>;
 		let days= <%=request.getAttribute("days")%>;
 		console.log(houseList);
-		test();
+		listPrint();
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
 			
@@ -180,14 +178,25 @@
 				return a.totalPrice > b.totalPrice ? -1 : 1;
 			}
 			console.log("정렬 후" + JSON.stringify(houseList));
-			test();
+			listPrint();
+			fn_option();
 			
 		});
 		
-		function test(){
+		function listPrint(){
+			//for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)
+			//	for(var ele2 in i[ele]){  //ele2는 객체의 키값(name등)
+			//		console.log(i[ele][ele2]); // 배열이름/인덱스(객체순서)/키값 이 되는 것
+			//	} 
+			//}
 			let html="";
 			let list="";
 			for(let h in houseList){
+				let filterNames="";
+				for(let f in houseList[h].filter){
+					if(filterNames!="") filterNames=filterNames+","+f;
+					else filterNames=f;
+				}
 				list = `<div class="house">
 							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=`+houseList[h].houseNo+`"
 								class="housePic"
@@ -223,7 +232,7 @@
 										<div class="iconPrice"></div>
 										<p class="priceName">
 											<!-- 가격 : 총요금/날짜수-->											
-											약 <span class="price">`+houseList[h].totalGrade+`</span>원/1박
+											약 <span class="price">`+houseList[h].totalPrice+`</span>원/1박
 											
 										</p>
 									</div>
@@ -236,59 +245,81 @@
 										</p>
 									</div>
 								</div>
-
+								<input type="hidden" class="filterInput" value="`+filterNames+`">
 							</div>
 						</div> `;
-				html=html+list;		
-				
-				
+				html=html+list;	
+				for(let f in favorite){
+					if(favorite[f].houseNo == houseList[h].houseNo){
+						$(".heartCommon").removeClass(".heart");
+						$(".heartCommon").addClass(".fav");
+					}
+				}	
 			}
-			//for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)
-			//	for(var ele2 in i[ele]){  //ele2는 객체의 키값(name등)
-			//		console.log(i[ele][ele2]); // 배열이름/인덱스(객체순서)/키값 이 되는 것
-			//	} 
-			//}
-				
-
-			$(".list").children().remove();
-			$(".list").append(html);
 			
+			$(".list").children().remove();
+			$(".list").append(html);	
 		}
 
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
-		$("#priceBtn").on("click", function(e) {
-			let price=$(".price").text();
-			let hiddenPriceTag=$(".price").filter(function(i,v){
-				/* return $(v).text()< */
-			})
-			hiddenPriceTag.each(function(i,v){
-				$(v).parents("div.list").show
-				hide()
-			})
-			let result=true;
-			$("input[name=price]:checked").each(function() {
-				if($(this).val() == "10"){
-					if(price > 100000){
-						result=false;
-					}
-				} 
-				if($(this).val() == "20"){
-					/* if(price < 100000 && price >200000){
-						result=false;
-					} */
-				} 
-				
-			});
-			if(result==false){
-				$(".house").hide();
+		//필터 검색 누를때 두개 다
+		function fn_option(){
+			if($("input[name=price]:checked").length!=0&&$("input[name=filter]:checked").length!=0){
+				//금액이나 필터가 선택되어 있을때만 div 다 가리기
+			$("div.list").hide();
 			}
-		
-		});
 
-		//필터 검색 누를 때
-		$("#filterBtn").on("click", function(e) {
+			//금액 
+			//let price=$(".price").text(); //price는 집가격적힌 p태그
+			let showPriceTag=$(".price").filter(function(i,v){ //v는 filter앞에 적힌 태그, i는 순서(돌리는)
+				$("input[name=price]:checked").each(function() {
+					console.log($(this).val()); //체크박스 선택값 출력
+					// if($(this).val() == "10"){ //10만원 이하
+					// 	console.log($(v).text()); //p태그(숙소금액)에 적힌 값
+					// 	return $(v).text()<=100000; //해당이 안되면 끝나.. 이렇게 쓰면 안돼......
+					// 	//작으면 리턴해라 -> 크면 그냥 종료돼 함수가(let)자체가! 리턴도 없고... 이렇게 하면 안돼
+					// 	console.log("리턴후에는?");
+					// }
+					// return $(this).val()=="10"&&$(v).text()<=100000
+					// || $(this).val()=="20"&&$(v).text()>=100000 && $(v).text()<=200000
+					// || $(this).val()=="30"&&$(v).text()>=200000 && $(v).text()<=300000
+					// || $(this).val()=="40"&&$(v).text()>=300000 && $(v).text()<=400000
+					// || $(this).val()=="50"&&$(v).text()>=400000 && $(v).text()<=500000
+					// || $(this).val()=="60"&&$(v).text()>=500000 && $(v).text()<=600000
+					// || $(this).val()=="70"&&$(v).text()>=600000 ;
+					return $(v).text()=="500";
+				
+				});
+			});
+			console.log("프라이스태그");
+			console.log(showPriceTag);
 
-		});
+			showPriceTag.each(function(i,v){
+				console.log("프라이스 부모 div");
+				console.log($(v).parents("div.list"));
+				$(v).parents("div.list").show();
+			});		
+
+			//주변시설
+			let filterNo=$(".filterInput").val().split(); //숙소가 가지고 있는 필터 번호 하나씩 떼서 배열로 담음
+			let showFilterTag=$(".filterInput").filter(function(i,v){
+				$("input[name=filter]:checked").each(function() {
+					for(let f in filterNo){
+						if($(this).val()==filterNo[f]){ //this는 클릭된 체크박스
+							return $(v); //v는 히든인풋태그
+						}
+					}
+				});
+			});
+			console.log("필터 태그");
+			console.log(showFilterTag);
+
+			showFilterTag.each(function(i,v){
+				console.log("필터 부모 div");
+				console.log($(v).parents("div.list"));
+				$(v).parents("div.list").show();
+			});	
+		};
 		
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
