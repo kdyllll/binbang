@@ -39,8 +39,8 @@
 				</div>
 				<input type="button" class="searchBtn" value="검색" onclick="fn_search();">
 			</form>
-
 		</div>
+		
 		<section class="section">
 			<div class="section2">
 				<h2 class="recommendTitle">Recommend</h2>

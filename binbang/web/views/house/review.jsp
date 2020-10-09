@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
-<%String houseNo=(String)request.getAttribute("houseNo");%>
+<%String houseNo=(String)request.getAttribute("houseNo");
+	 Member m2=(Member)session.getAttribute("m");
+
+%>
 <title>booking</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/review.css" />
@@ -34,6 +37,7 @@
 
 						<div class="star star_left" id="4.5"></div> <div class="star star_right 5" id="5"></div>
 						<input type="hidden" name="houseGrade" class="a">
+						<input type="hidden" name="memberNo" value="<%=m2.getMemberNo()%>">
 					</div>
 				</div>
 

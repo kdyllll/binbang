@@ -1,26 +1,30 @@
-package com.binbang.member.controller;
+package com.binbang.host.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.member.model.service.MemberService;
-import com.binbang.member.model.vo.Member;
+import com.binbang.host.model.service.HostService;
+import com.binbang.host.model.vo.Host;
+import com.binbang.house.model.service.HouseService;
+import com.binbang.house.model.vo.House;
 
 /**
- * Servlet implementation class MemberUpdateServlet
+ * Servlet implementation class hostInfoPageServlet
  */
-@WebServlet("/member/memberUpdate")
-public class MemberUpdateServlet extends HttpServlet {
+@WebServlet("/hostInfoPage")
+public class hostInfoPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdateServlet() {
+    public hostInfoPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,28 +33,14 @@ public class MemberUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Member m=new Member();
-		m.setEmail(request.getParameter("email"));
-		m.setNickname(request.getParameter("nickname"));
-		m.setPhone(request.getParameter("phone"));
-		
-		int result=new MemberService().updateMember(m);
-		
-		String msg="";
-		String loc="";
-		
-		if(result>0) {
-			msg="회원수정 성공!";
-			loc="/views/member/myPagePrivate.jsp";
-		}else {
-			msg="회원수정 실패!";
-			loc="/member/mypagePrivate?email="+m.getEmail();			
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);		
+		// TODO Auto-generated method stub
+		String hostNo = request.getParameter("hostNo");
+		Host h = new HostService().selectHostInfo(hostNo);
+		List<House> list= new HouseService().selectHostHouse(hostNo);
+		System.out.println(list);
+		request.setAttribute("host", h);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/host/hostInfoPage.jsp").forward(request, response);
 	}
 
 	/**

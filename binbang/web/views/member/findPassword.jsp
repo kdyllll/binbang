@@ -13,8 +13,7 @@
      <script src="<%=request.getContextPath() %>/js/common/jquery-3.5.1.min.js"></script>
   </head>
 
-  <body>
-    
+  <body>    
     <div class="loginPopup">
       
       <p class="popupTitle">비밀번호 재설정</p>      
@@ -29,10 +28,9 @@
      
      
         <p class="inputTitle">인증번호</p>
-        <form id="numberForm" class="input">
-        	
+        
+        <form id="numberForm" class="input">        	
           	<input type="text" class="setPassword" name="number" id="number" placeholder="인증번호 입력">
-          	<!--  button id="numberConfirm">인증확인</button>-->
           	<input type="button" id="numberConfirm" value="인증확인">
         </form>
       
