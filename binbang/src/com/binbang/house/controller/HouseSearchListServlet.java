@@ -51,9 +51,7 @@ public class HouseSearchListServlet extends HttpServlet {
 		List dayList = dateCalculator(checkIn, checkOut); // 숙박 날짜들
 
 		String pNum = request.getParameter("peopleNum"); // 숙박 인원
-		request.setAttribute("checkIn", checkIn);
-		request.setAttribute("checkOut", checkOut);
-		request.setAttribute("pNum", pNum);
+
 
 		// paging처리하기
 		int cPage;
@@ -111,6 +109,7 @@ public class HouseSearchListServlet extends HttpServlet {
 				System.out.println("관심숙소:" + ff);
 			}
 			request.setAttribute("favorite", favorite);
+			request.setAttribute("favoriteJson", new Gson().toJson(favorite));
 		} catch (NullPointerException e) {
 
 		}

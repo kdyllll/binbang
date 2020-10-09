@@ -32,15 +32,17 @@ public class MypagePrivateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//입력한 password
-		String password = request.getParameter("password");		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
 		//가져온 password
-		String result=new MemberService().selectPassword(password);
-				
+		Member m=new MemberService().selectMember(email,password);
+	
 		String msg="";
 		String loc="";
 		
 		//비교구문
-		if(password.equals(result)) {
+		if(m!=null) {
 			request.getRequestDispatcher("/views/member/myPagePrivate.jsp").forward(request, response);							
 		}else{
 			msg = "패스워드가 일치하지 않습니다";

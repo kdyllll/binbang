@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class MemberEmailConfirmServlet
  */
+
 @WebServlet("/member/memberEmailConfirm")
 public class MemberEmailConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,16 +38,15 @@ public class MemberEmailConfirmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String userId = request.getParameter("email");				
-		//임시변수
-		String sendEmail=userId;
+		String email = request.getParameter("email");
+		System.out.println("servlet :"+email);
 		
 		
+		//email 인증
 		String host="smtp.naver.com";
 		String user="tnrud2668@naver.com";
 		String password="spdlqj7547";
-				
-		//smtp 서버 설정
+		
 		Properties props = new Properties();
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", 465);
@@ -54,56 +54,57 @@ public class MemberEmailConfirmServlet extends HttpServlet {
         props.put("mail.smtp.ssl.enable", "true");
         props.put("mail.smtp.starttls.enable","true");
         props.put("mail.smtp.ssl.trust", "smtp.naver.com"); 
+		
         
-        StringBuffer temp =new StringBuffer();
-        Random rnd = new Random();        
+        StringBuffer temp= new StringBuffer();
+        Random rnd = new Random();
         
-        for(int i=0;i<10;i++)
-        {
-            int rIndex = rnd.nextInt(3);
-            switch (rIndex) {
-            case 0:
-                // a-z
-                temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-                break;
-            case 1:
-                // A-Z
-                temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-                break;
-            case 2:
-                // 0-9
-                temp.append((rnd.nextInt(10)));
-                break;
-            }
+        for(int i=0;i<10;i++) {
+        	int r = rnd.nextInt(3);
+        	switch(r) {
+        	case 0:
+        		temp.append((char) ((int) (rnd.nextInt(26)) + 97 ));
+        		break;
+        	case 1:
+        		temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+        		break;
+        	case 2:
+        		temp.append((rnd.nextInt(10)));
+        		break;
+        	}
         }
-        String AuthenticationKey = temp.toString();
+        String AuthenticationKey =temp.toString();
         System.out.println(AuthenticationKey);
         
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user,password);
-            }
+        	protected PasswordAuthentication getPasswordAuthentication() {
+        		return new PasswordAuthentication(user,password);
+        	}
         });
         
         
-        //메일로 보낼 메세지
         try {
-            MimeMessage msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(user, "BINBANG"));
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
-                        
-            msg.setSubject("빈방 인증 메일입니다.");            
-            msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
-            
-            Transport.send(msg);            
-            
+        	 MimeMessage msg = new MimeMessage(session);
+        	 msg.setFrom(new InternetAddress(user, "BINBANG"));
+        	 msg.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+        
+        	 msg.setSubject("빈방 인증 메일입니다.");
+        	 msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
+        	 Transport.send(msg);
+        	 System.out.println("이메일 전송");
         }catch (Exception e) {
             e.printStackTrace();
         }
+
         HttpSession saveKey = request.getSession();
         saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-
-	}
+        
+        HttpSession saveId = request.getSession();
+        saveId.setAttribute("email", email);
+   
+   
+    
+}
 		
 		
 	
