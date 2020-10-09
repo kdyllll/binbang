@@ -31,3 +31,13 @@ section {
   display: block;
   margin: 25px 0;
 }
+.hostHouseAllInfo {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hostHouseOne {
+  display: block;
+  width: 100px;
+  height: 150px;
+  border: 1px solid;
+}
