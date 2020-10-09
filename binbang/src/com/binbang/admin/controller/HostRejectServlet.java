@@ -29,7 +29,7 @@ public class HostRejectServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("호스트 거절");
 		String memberNo = request.getParameter("memberNo");
 		int result=new AdminService().deleteHost(memberNo);
 		request.setAttribute("result", result);

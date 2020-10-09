@@ -11,7 +11,7 @@
 		<%@ include file="/views/common/header.jsp" %>
 		<section class="section">
         <div class="registImg">
-          <form class="registContainer" id="hostFrm" action="<%=request.getContextPath()%>/host/hostEnrollEnd" method="post" enctype="multipart/form-data">
+          <form class="registContainer" id="hostFrm" action="<%=request.getContextPath()%>/hostEnrollEnd" method="post" enctype="multipart/form-data">
             <h2><%=member.getMemberName() %>님 호스트가 되어 수입을 올려보세요.</h2>
             <div>
               <div>

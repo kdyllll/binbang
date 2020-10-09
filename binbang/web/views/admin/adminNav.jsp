@@ -22,11 +22,17 @@
     <li id="reserveAll"><a href="<%=request.getContextPath()%>/admin/reserveList">예약 현황</a></li>
     <li id="houseAll"><a href="<%=request.getContextPath() %>/admin/houseList">숙소 현황</a></li>
    
-  </ul>
+  </ul> 
+ 
 </div>
   
-  
+<style>
+	
+	
+</style>  
+
  <script>
+ 
  	$("#member").click(e=>{
  		$("#memberSubAll").slideToggle();	
  	});
@@ -35,21 +41,33 @@
 		$("#subAll").slideToggle();
 	});
 	
-	$("#memberAll, #reserveAll, #hostAll").on({
+	//클릭,호버 시 효과 주기
+	$("#member,#hostAll,#reserveAll,#houseAll").on({
 	    "click":function(e){
 	        let id = $(e.target).prop("id");
-	        if( id == "memberAll") {
+	        if( id == "member") {
 	            $("#reserveAll").removeClass("clickList");
 	            $("#hostAll").removeClass("clickList");
-	            $(e.target).addClass("clickList");
+	            $("#houseAll").removeClass("clickList");
+	            $("#member").addClass("clickList");
+	          
 	        } else if (id == "reserveAll" ) {
-	            $("#memberAll").removeClass("clickList");
+	            $("#member").removeClass("clickList");
 	            $("#hostAll").removeClass("clickList");
-	            $(e.target).addClass("clickList");
+	            $("#houseAll").removeClass("clickList");
+	            $("#reserveAll").addClass("clickList");
+	          
 	        } else if (id == "hostAll") {
 	            $("#reserveAll").removeClass("clickList");
-	            $("#memberAll").removeClass("clickList");
+	            $("#member").removeClass("clickList");
+	            $("#houseAll").removeClass("clickList");
 	            $(e.target).addClass("clickList");
+	           
+	        } else if (id == "hosueAll") {
+	            $("#reserveAll").removeClass("clickList");
+	            $("#member").removeClass("clickList");
+	            $("#hostAll").removeClass("clickList");
+	            $("#houseAll").addClass("clickList");
 	        }
 	    },
 	    "mouseover":function(e){
@@ -67,6 +85,6 @@
 	    "mouseleave":function(e){
 	        $(e.target).removeClass("subList")
 	    }
-	});
+	}); 
 
 </script>

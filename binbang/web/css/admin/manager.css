@@ -34,38 +34,27 @@
     margin-top: 20px;
 }
 
-/*#memberAll, #reserveAll, #hostAll,#hostList, #acceptList, #blackList*/
-#menuAll li{
+#menuAll > li > ul > li{
     padding : 20px 10px 20px 30px;
-    height : 20px;
     cursor: pointer;     
-}
+} 
 
-/*#memberAll, #reserveAll, #hostAll*/
+/* 큰 제목들만 */
 #menuAll>li{
     font-weight: bolder;
     font-size:18px;
     padding-left: 15%;
+    padding : 20px 10px 20px 30px;
+    cursor: pointer;
+    
 }
 
-#subAll, #memberSubAll{ 
-  background-color: none;
-  margin-top: 30px;
-  display:none;
-  color:black;
-  font-size:17px;
-}
-
-.hoverList{
-    color:gray;
-}
-
-/* 서브메뉴 펼치기 */
-#hostList, #acceptList, #blackList{
-    opacity:1;
-    position: static;
-    transition:height 0.5s;
-    background: none;
+#memberSubAll, #subAll {
+	display:none;
+	background-color: none;
+ 	margin-top: 30px;
+  	color:black;
+  	font-size:17px;
 }
 
 .clickList {
@@ -73,6 +62,10 @@
     border-top-right-radius: 40px;
     border-bottom-right-radius: 40px;
     color:black;
+}
+
+.hoverList{
+    color:gray;
 }
 
 .subList {
@@ -290,6 +283,14 @@ section {
     overflow-y:scroll;
     height:200px;
   }
+  
+ /* 호스트 승인 목록 버튼*/
+ .yes, .no{
+ 	border:none;
+    outline: none;
+    background: none;
+    cursor: pointer;  
+ }
 
  
 

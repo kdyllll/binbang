@@ -33,9 +33,9 @@ public class HostAcceptListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//호스트 목록을 출력해주는 서블릿
+		System.out.println("호스트 승인");
 		List<Host> list=new AdminService().hostList();
 		request.setAttribute("list", list);
-		
 		request.getRequestDispatcher("/views/admin/hostAcceptList.jsp").forward(request, response);
 	}
 

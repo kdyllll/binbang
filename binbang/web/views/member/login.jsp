@@ -3,6 +3,8 @@
 <%@ page import="com.binbang.member.model.vo.Member" %>
 <%@ include file="/views/common/commonLink.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/login.css" />
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<!-- <script src="https://nid.naver.com/oauth2.0/authorize?client_id={fmUx4brr6eqieHyPczqT}&response_type=code&redirect_uri={http://localhost:9090/binbang/mainMove}&state={$state}"></script> -->
 <%
 	
 	Member loginMember=(Member)session.getAttribute("loginMember");
@@ -67,6 +69,8 @@
 					</div>
 
 				</form>
+				
+				<div id="naverIdLogin"></div>
 
 			</div>
 		</section>
@@ -89,6 +93,23 @@
 	          
 	          
 	       });
+		
+		
+		
+		
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "fmUx4brr6eqieHyPczqT",
+				callbackUrl: "http://localhost:9090/binbang/views/member/naverCallback.jsp",
+				isPopup:true, /* 팝업을 통한 연동처리 여부 */
+				loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+			}
+		);
+		
+		/* 설정정보를 초기화하고 연동을 준비 */
+		naverLogin.init();
+		
+	
 			
 		</script>
 	</div>

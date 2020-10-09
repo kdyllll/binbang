@@ -42,8 +42,10 @@
 			<tr>
 				<td class="cell1"><%=h.getHostName()%></td>
 				<td class="cell3"><%=h.getMemberPhone()%></td>
-				<td class="cell3"><a href="<%=request.getContextPath()%>/upload/host/<%=h.getProfilePic()%>"><%=h.getProfilePic()%></a></td>
-				<td class="cell3"><%=h.getIdCard()%></td>
+				<td class="cell3 pro"><%=h.getProfilePic()%></td>
+				<input type="hidden" id="profilePic" value="<%=h.getProfilePic()%>">
+				<td class="cell3 idc"><%=h.getIdCard()%></td>
+				<input type="hidden" id="IdCardPic" value="<%=h.getIdCard()%>">
 				<td class="cell2"><%=h.getHostEnrollDate()%></td>
 				<td class="cell2">
 					<div class="acceptChoice">
@@ -98,4 +100,20 @@
 			 }
 		 });
 	 });
+	 
+	//프로필 사진 띄우기
+	let profilePic=$("#profilePic").val();
+ 	$(".pro").on("click",function(){
+        const url="<%=request.getContextPath()%>/upload/host/"+profilePic;
+        const status="width=500px,height=450px,top=150px,left=150px";
+        open(url,"",status);
+     });
+ 	
+ 	//신분증 사진 띄우기
+ 	let IdCardPic=$("#IdCardPic").val();
+ 	$(".idc").on("click",function(){
+        const url="<%=request.getContextPath()%>/upload/host/"+IdCardPic;
+        const status="width=500px,height=450px,top=150px,left=150px";
+        open(url,"",status);
+     });
 </script>
