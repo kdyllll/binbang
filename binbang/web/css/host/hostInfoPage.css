@@ -17,5 +17,17 @@ section {
 
 .hostHouseInfoCon {
   width: 950px;
-  border: 1px solid;
+  padding: 15px 50px;
+  margin-left: 50px;
+  box-sizing: border-box;
+}
+
+.hostHouseInfoCon > .hostIntroduction {
+  width: 100%;
+}
+
+.hostIntroduction span {
+  width: 100%;
+  display: block;
+  margin: 25px 0;
 }

@@ -34,8 +34,8 @@
 		</aside>
 		<aside class="hostHouseInfoCon">
 			<div class="hostIntroduction">
-				<p>안녕하세요.<%=h.getHostName() %>입니다</p>
-				<textarea><%=h.getIntro() %></textarea>
+				<h2>안녕하세요.<%=h.getHostName() %>입니다</h2>
+				<span col="30" row="50" readonly><%=h.getIntro() %></span>
 			</div>
 			<div class="hostHouseAllInfo">
 				<%for(House ho : list) { %>
