@@ -28,7 +28,7 @@
 						
 						<span id="pwCheck"></span>
 						
-						<input type="text" id="name" name="name" placeholder="Name" required> 
+						<input type="text" name="name" placeholder="Name" required> 
 						<input type="text" name="nickname" placeholder="Nickname" required> 
 						<input type="text" name="phone" placeholder="Phone" required>
 					</div>
@@ -303,15 +303,21 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
       
     };
     
+    
+    
     /* 중복확인 */
     function fn_duplicateCheck(){
-    	var email = document.getElementById("email_");     	
+    	/* email정규표현 */
+        var email1 = document.getElementById("email_");     	
     	var regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     	     	
-    	if (!regEmail.test(email.value)) {
+    	if (!regEmail.test(email1.value)) {
               alert("이메일을 입력해주세요");
               return false;
           }
+    	
+    	/* 값넘기기 및 창띄우기 */
+        var email=$("#email_").val();
      		
     	const url="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax";    	
     	const title="checkEmailDuplicate";
