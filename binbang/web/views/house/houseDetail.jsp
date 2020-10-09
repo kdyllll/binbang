@@ -9,6 +9,7 @@
    Member m2 =(Member)session.getAttribute("m");
    List<Review> list=(List)request.getAttribute("list");
    List filterList =(List) request.getAttribute("filterList");
+
 %>
 
 <%
@@ -187,6 +188,10 @@
                   </div>
                </div>
 
+<<<<<<< HEAD
+					<div>
+						<div class="test">
+=======
 
 
                <div class="test">
@@ -218,6 +223,7 @@
                </div>
             </div>
          </div>
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
          <div class="houseinfobox2">
             <div class="houseIntroduce2"><%=h.getHouseGemsung() %></div>

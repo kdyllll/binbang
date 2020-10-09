@@ -34,28 +34,47 @@
 		</aside>
 		<aside class="hostHouseInfoCon">
 			<div class="hostIntroduction">
-				<p>안녕하세요.<%=h.getHostName() %>입니다</p>
-				<textarea><%=h.getIntro() %></textarea>
+				<h2>안녕하세요.<%=h.getHostName() %>입니다</h2>
+				<span col="30" row="50" readonly><%=h.getIntro() %></span>
 			</div>
-			<div class="hostHouseAllInfo">
-				<%for(House ho : list) { %>
-				<a class="hostHouseOne" href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=ho.getHouseNo()%>">
-					<img src="#">
-					<span><%=ho.getHouseNo() %></span>
-					<span><%=ho.getHouseName() %></span>
-				</a>
+			<ul class="hostHouseAllInfo">
+				<%for(int i = 0; i<list.size(); i++) {
+					House ho = (House)list.get(i);%>
+				<li class="hostHouseOne" id="house<%=i%>">
+					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=ho.getHouseNo()%>">
+						<img src="#">
+						<span><%=ho.getHouseNo() %></span>
+						<span><%=ho.getHouseName() %></span>
+					</a>
+				</li>
 				<%} %>
-				
-			</div>
+			</ul>
+				<button id="addBtn" onclick="moreList();">
+					<span>더보기</span>
+				</button>
 			
 			<div class="line">선</div>
 			
 
 		</aside>
-
 	</section>
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
+	<script>
+		let lengthSize = $(".hostHouseOne").length;
+		let startCnt = 3;
+		let endCnt = lengthSize;
+	 	for(let i=startCnt; i<lengthSize; i++) {
+			$("#house"+i).css("display","none")		
+		} 
+		console.log(lengthSize);
+		function moreList() {
+			for(let i=startCnt; i<startCnt + 3; i++) {
+				$("#house"+i).css("display","block");
+			} 
+			startCnt = startCnt + 3;
+		}
+	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 </body>
 </html>

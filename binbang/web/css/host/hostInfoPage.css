@@ -17,5 +17,41 @@ section {
 
 .hostHouseInfoCon {
   width: 950px;
+  padding: 0 0 15px 50px;
+  margin-left: 50px;
+  box-sizing: border-box;
+}
+
+.hostHouseInfoCon > .hostIntroduction {
+  width: 100%;
+}
+
+.hostIntroduction span {
+  width: 100%;
+  display: block;
+  margin: 25px 0;
+}
+.hostHouseAllInfo {
+  width: 100%;
+}
+.hostHouseOne {
+  float: left;
+  margin-right: 25px;
+  width: calc((100% - 50px) / 3);
+  height: 250px;
   border: 1px solid;
+  margin-bottom: 25px;
+}
+.hostHouseOne:nth-child(3n) {
+  margin-right: 0;
+}
+
+#addBtn {
+  display: block;
+  background: none;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
 }
