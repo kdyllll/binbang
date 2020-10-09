@@ -35,6 +35,10 @@ public class EnrollDuplicateNumberCheckServlet extends HttpServlet {
 		
 		String num = request.getParameter("num");	
 		System.out.println("num");
+		String email = request.getParameter("email");
+		System.out.println("email");
+		
+		
 		
 		JSONObject emailConfirm= new JSONObject();
 		
@@ -47,14 +51,12 @@ public class EnrollDuplicateNumberCheckServlet extends HttpServlet {
 			mesg="인증번호가 일치하지 않습니다";
 			result=1;
 			emailConfirm.put("msg",mesg);
-			emailConfirm.put("result",result);			
-			
+			emailConfirm.put("result",result);						
 			System.out.println("인증번호 일치x");
-			/* loc="/member/checkEmailDuplicateAjax"; 
-			 return; */ 
 		}else {
 			mesg="인증이 완료되었습니다.";
 			result=0;
+			emailConfirm.put("email", email);
 			emailConfirm.put("msg",mesg);
 			emailConfirm.put("result", result);			
 			System.out.println("인증번호 일치o");
