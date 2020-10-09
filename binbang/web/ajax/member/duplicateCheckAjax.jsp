@@ -104,18 +104,27 @@
 <%-- 	$("#numConfirm").on("click",e =>{
 		$("#numberFrm").attr("action","<%=request.getContextPath()%>/member/duplicateNumberCheck").submit();
 	}); --%>
-
-	$("#numConfirm").click(e => {
+	
+	
+	
+	$("#numConfirm").click(e => {		
+		/* 인증번호 확인후 창닫기 */
 		$.ajax({
 			url:"<%=request.getContextPath()%>/member/duplicateNumberCheck",
 			type:"post",
 			data:{"num":$("#num").val()},
 			dataType:"json",
 			success:data => {
-				console.log(data);
+			/* 인증msg가 enroll jsp로 가도록 설정 */
+				console.log(data);																
 				alert(data["msg"]);
-				if(data["result"]=='0'){
-					self.close();
+				if(data["result"]=='0'){	
+					opener.document.getElementById("hidden").value=data["msg"];
+					
+					
+					
+					console.log(data["msg"]);
+				 	self.close(); 					
 				}
 			},
 			error:(request,status,error)=>{
@@ -124,8 +133,13 @@
 				console.log(error);
 			}
 		});
+		
+		
+	
+	
 	});
 	
+
 	
  	
  	/* 재전송 */ 
@@ -157,8 +171,8 @@
  	};
  	
 
-
-
+	
+	
 
 
 	

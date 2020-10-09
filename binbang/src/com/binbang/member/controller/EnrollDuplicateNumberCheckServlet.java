@@ -56,9 +56,10 @@ public class EnrollDuplicateNumberCheckServlet extends HttpServlet {
 			mesg="인증이 완료되었습니다.";
 			result=0;
 			emailConfirm.put("msg",mesg);
-			emailConfirm.put("result", result);
-			
+			emailConfirm.put("result", result);			
 			System.out.println("인증번호 일치o");
+			
+			
 			/* loc="/member/memberEnroll"; */
 		}
 		response.getWriter().print(emailConfirm);

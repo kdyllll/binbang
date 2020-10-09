@@ -21,10 +21,7 @@
 				<div class="enrollForm">
 					<div>
 						<input type="email" placeholder="Email" name="email" id="email_" required>
-						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">
-						
-						<!-- 중복확인 클릭시 회원가입완료 -->
-						<!-- <input type="text" name="checked_id" value=""> -->
+						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">						
 						
 						<input type="password" name="password" placeholder="Password" id="pw" required>						 
 						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" onkeyup="pwCheck();" required>
@@ -36,7 +33,8 @@
 						<input type="text" name="phone" placeholder="Phone" required>
 					</div>
 				</div>
-
+					<!-- 인증완료 -->
+					<input type="hidden" id="hidden">
 
 <!-- 2. 약관동의 -->
 				<div class="contract">
@@ -327,23 +325,14 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     
     
     
-    
-    /* 중복확인 버튼을 눌러야 회원가입 완료 */
-   /*  $(".idcheck").click(function(){
-    	$("input[name=checked_id]").val('y');
-    }); */
-    
 
-    <%-- function fn_complite(){    	        	
-    	if($("input[name='checked_id']").val()!=''){
-    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();    	    		
-    	}else{
-    		alert('아이디 중복을 확인해주세요');    		
-    	}    	
-    } --%>
-    
+    /* 인증번호가 회원가입 로직에 찍히면 회원가입이 가능하게 구현 */
     function fn_complite(){
-    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();    	    		    	
+    	if($("#hidden").val()=="인증이 완료되었습니다."){
+    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
+    		}else{
+    			alert("중복확인을 해주세요.");
+    		}    	    		    	
     }
     
     
