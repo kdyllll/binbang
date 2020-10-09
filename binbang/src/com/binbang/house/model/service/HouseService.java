@@ -23,6 +23,14 @@ public class HouseService {
 		 return h;
 	}
 	
+
+	public House FilterDetail(String no) {
+		Connection conn=getConnection();
+		House h=dao.FilterDetail(conn, no);
+		 close(conn);
+		 return h;
+	}
+	
 	public List<Review> ReviewDetail(String no) {
 		Connection conn=getConnection();
 		List<Review> list = dao.ReviewDetail(conn, no);

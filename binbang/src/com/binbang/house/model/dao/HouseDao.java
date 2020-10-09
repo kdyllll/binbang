@@ -261,6 +261,30 @@ public class HouseDao {
 			close(pstmt);
 		}return h;
 	}
+	
+	public House FilterDetail(Connection conn, String no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		House h=new House();
+		List l=new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("filterDetail"));
+			pstmt.setString(1, no);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				l.add(rs.getNString("filter_icon"));
+				//여기에서 파일이름이 리스트에 담김
+			}
+			h.setFilter(l);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return h;
+	}
+	
+	
 	//숙소 후기 조회화는 다오
 	public List<Review> ReviewDetail(Connection conn, String no) {
 		PreparedStatement pstmt=null;
