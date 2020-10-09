@@ -284,7 +284,7 @@
 		$("#priceBtn").on("click", function(e) {
 			let price=$(".price").text();
 			let hiddenPriceTag=$(".price").filter(function(i,v){
-				return $(v).text()<
+				/* return $(v).text()< */
 			})
 			hiddenPriceTag.each(function(i,v){
 				$(v).parents("div.list").show
@@ -298,9 +298,9 @@
 					}
 				} 
 				if($(this).val() == "20"){
-					if(price < 100000 && price >200000){
+					/* if(price < 100000 && price >200000){
 						result=false;
-					}
+					} */
 				} 
 				
 			});
