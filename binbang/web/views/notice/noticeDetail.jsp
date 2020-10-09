@@ -50,3 +50,10 @@
 <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
 </body>
 </html>
+
+<script>
+    var data = CKEDITOR.instances.editor1.getData();
+
+   
+    // Your code to save "data", usually through Ajax.
+</script>

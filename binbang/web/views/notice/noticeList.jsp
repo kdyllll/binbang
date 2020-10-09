@@ -44,9 +44,9 @@
         
         <!-- 관리자에게만 보이는 버튼 -->
         <div class="postBtn">
-           <% if(loginMember!=null&&loginMember.getEmail().equals("admin")) {%> 
+           <%-- <% if(loginMember!=null&&loginMember.getEmail().equals("admin")) {%> --%> 
            <button  class="postButton" onclick="location.assign('<%=request.getContextPath() %>/notice/noticeWrite')">게시글 등록</button>
-            <% } %>
+            <%-- } --%>
         </div>
      
         <!-- 페이징 처리하기-->

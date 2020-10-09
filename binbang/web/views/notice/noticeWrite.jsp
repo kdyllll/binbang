@@ -13,9 +13,8 @@
         <div class="line"></div>
 
         <div class="enrollNotice">
-         <form action="">
-
-          <p >게시글 제목</p>
+         <form action="<%=request.getContextPath() %>/notice/noticeWriteEnd" >
+          <p>게시글 제목</p>
 
           <div id="noticeCategoryDiv">
             <select class="noticeCategory" name="noticeCategory">
@@ -28,14 +27,15 @@
           </div>
 
 
-       <p >게시글 내용</p><br>
+       		<p>게시글 내용</p><br>
           <textarea id="noticeContent" name="noticeContent"></textarea>
-
-         </form>
-        </div>
-
-        <div class="enrollButton"><a href="<%=request.getContextPath() %>/notice/noticeWriteEnd" class="enroll">등록하기</a></div>
-
+		
+			<input type="submit" class="enroll" value="등록하기">
+         <%-- <div class="enrollButton"><a href="<%=request.getContextPath() %>/notice/noticeWriteEnd" class="enroll">등록하기</a></div> --%>
+	   	</form>
+	    </div>
+	
+		
         <div class="line"></div>
 
 

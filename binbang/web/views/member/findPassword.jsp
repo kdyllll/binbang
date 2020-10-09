@@ -23,7 +23,7 @@
         <p class="inputTitle">아이디(이메일)를 입력하세요</p>
         <div class="input">
           <input type="text" class="setPassword" name="email" id="email" placeholder="아이디(이메일) 입력"> 
-          <input type="button" value="인증하기" id="emailConfirm">
+          <input type="button" value="인증하기" class="sendEmail">
         </div>
      
      
@@ -40,7 +40,7 @@
 		<form>
 	        <div id="resend">
 	          <p id="timer"></p>
-	          <input type="button" value="재전송" style="display:none;" onclick="sendNumber2();" id="reNumberConfirm">
+	          <input type="button" value="재전송" style="display:none;" onclick="sendNumber2();" class="sendEmail" id="reNumberConfirm">
 	        </div>
 	         <!-- <input type="button" value="다음" class="next"> -->
       	</form>
@@ -49,8 +49,8 @@
         
     <script> 
 
-    
-    $("#emailConfirm").click(e => {
+    //인증하기 버튼 누르면 메일 전송
+    $(".sendEmail").click(e => {
     	$.ajax({
     		url:"<%=request.getContextPath()%>/member/checkConfirmNumber",
     		type:"post",
@@ -74,16 +74,40 @@
     	
     });
     
-    $("#numberConfirm").on("click",e => {
+    //인증번호 일치여부 확인
+    <%-- $("#numberConfirm").on("click",e => {
     	$("#numberForm").attr("action","<%=request.getContextPath()%>/member/checkEmailNumber").submit();
+    }); --%>
+    
+    $("#numberConfirm").click(e => {
+    	$.ajax({
+    		url:"<%=request.getContextPath()%>/member/checkEmailNumber",
+    		type:"post",
+    		data:{"number":$("#number").val()},
+    		dataType:"json",
+    		success:data => {
+    			console.log(data);
+    			alert(data["msg"]);
+    			if(data["result"]=='1'){
+    				location.href='<%=request.getContextPath()%>/member/memberChangePassword';
+    			} 
+    			
+    		},
+    		error:(request,status,error)=>{
+				console.log(request);
+				console.log(status);
+				console.log(error);
+			}
+    		
+    	});
+    	
     });
-      
     
        let time=300;
        let min=0;
        let sec=0;
        let x = 0;
-       /* 재전송 */
+     //재전송
      function sendNumber2(){
     	   
     	clearInterval(x);

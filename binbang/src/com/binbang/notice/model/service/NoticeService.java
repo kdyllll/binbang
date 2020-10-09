@@ -5,6 +5,8 @@ import java.util.List;
 
 import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.close;
+import static com.binbang.common.JDBCTemplate.commit;
+import static com.binbang.common.JDBCTemplate.rollback;
 import com.binbang.notice.model.dao.NoticeDao;
 import com.binbang.notice.model.vo.Notice;
 
@@ -32,4 +34,14 @@ public class NoticeService {
 		close(conn);
 		return n;
 	}
+	
+	public int insertNotice(Notice n) {
+		Connection conn=getConnection();
+		int result=dao.insertNotice(conn,n);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
 }
