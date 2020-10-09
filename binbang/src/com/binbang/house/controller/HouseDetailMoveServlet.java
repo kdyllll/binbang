@@ -41,7 +41,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 			
 				String no=request.getParameter("houseNo");
 				
-				House h=new HouseService().FilterDetail(no);
+				House h=new HouseService().HouseDetail(no);
 		
 				String msg="";
 				String loc="";
@@ -59,7 +59,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				
 				
 				
-				House h2=new HouseService().HouseDetail(no);
+				House h2=new HouseService().FilterDetail(no);
 				List filterList=h2.getFilter();//여기에 숙소에대한 필터 이미지가 담겨온것임
 		
 				path="/views/house/houseDetail.jsp";

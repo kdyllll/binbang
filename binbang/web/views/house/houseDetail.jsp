@@ -230,7 +230,7 @@
          <div class="gradeTitle">
             ★총 평점 후기()개
             <div class="writing">
-               <%-- <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=member.getMemberNo()%>">글쓰기</a> --%>
+               <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=m2.getMemberNo()%>">글쓰기</a>
             </div>
          </div>   
          
@@ -239,7 +239,7 @@
                <div class="swiper-wrapper threeButton">
             <%for(Review r : list) {%> 
                <div class="swiper-slide">
-                  <div class="gradePhoto"></div>
+                  <div class="gradePhoto"><img src="<%=request.getContextPath()%>/upload/review/<%=r.getFilePath() %>"  style="width: 100%; height: 100%;" ></div>
                   <div class="customer">
                      <div class="gradeall">
                         <div class="gradeinfo">
