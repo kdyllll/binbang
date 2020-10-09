@@ -119,86 +119,7 @@
 				<div class="listCon">
 					<div class="list">
 
-						<%
-							for (House h : house) {
-						%>
-						<div class="house">
-
-
-							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>
-								class="housePic"
-								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
-							<div class="houseContents">
-							<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
-							<input type="text" name="houseNo" value="<%=total%>"> --%>
-
-								<div class="contentSection1">
-									<p class="houseName"><%=h.getHouseName()%></p>
-									<div class="heartCommon heart">
-										<%
-											if (favorite != null) {
-											for (Favorite f : favorite) {
-												if (f.getHouseNo().equals(h.getHouseNo())) {
-											//이집이 관심숙소 리스트에 있는 집이면 heart
-										%>
-										<script>
-											$(".heartCommon").removeClass(
-													".heart");
-											$(".heartCommon").addClass(".fav");
-										</script>
-										<%
-											}
-										}
-										}
-										%>
-									</div>
-								</div>
-
-								<div class="houseLine"></div>
-
-
-								<div class="contentSection2">
-									<div class="contentBox box1">
-										<div class="iconLocation"></div>
-										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
-										
-									</div>
-
-									<div class="contentLine"></div>
-
-									<div class="contentBox box2">
-										<div class="iconGrade"></div>
-										<p class="gradeName">
-											<%=h.getAvgGrade()%>/5
-										</p>
-									</div>
-								</div>
-								<div class="houseLine2"></div>
-								<div class="contentSection3">
-									<div class="contentBox box1">
-										<div class="iconPrice"></div>
-										<p class="priceName">
-											<!-- 가격 : 총요금/날짜수-->											
-											약 <span class="price"><%=h.getTotalPrice()%></span>원/1박
-											
-										</p>
-									</div>
-
-									<div class="contentLine"></div>
-
-									<div class="contentBox box2">
-										<div class="iconPeople"></div>
-										<p class="PeopleName"><%=h.getHousePnum()%>명
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<%
-							}
-						%>
-
+					
 					</div>
 					<div id="pageBar">
 						<%=pageBar%>
@@ -219,13 +140,14 @@
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		let favorite =<%=request.getAttribute("filterJson")%>;
 		let days= <%=request.getAttribute("days")%>;
-		let main=<%=request.getContextPath()%>;
 		console.log(houseList);
+		test();
 		//정렬 버튼 누를때
 		$("#houseSort > li").on("click", function(e) {
+			
 			let standard = $(e.target).text();
 			console.log(standard);
-			if(standard == "기본순") houseList.sort(basicSort); 
+			if(standard == "기본순"||standard=="정렬") houseList.sort(basicSort); 
 			else if(standard == "추천순") houseList.sort(gradeSort); 
 			else if(standard == "가격낮은순") houseList.sort(priceLowSort); 
 			else if(standard == "가격높은순") houseList.sort(priceHighSort); 		
@@ -258,14 +180,67 @@
 				return a.totalPrice > b.totalPrice ? -1 : 1;
 			}
 			console.log("정렬 후" + JSON.stringify(houseList));
+			test();
 			
-			
+		});
+		
+		function test(){
+			let html="";
+			let list="";
 			for(let h in houseList){
-				let a = $("<a>");
-				a.attr({
-				  class: "housePic",
-				  href: "<%=request.getContextPath()%>/house/houseDetailMove?houseNo="+houseList[h].houseNo,	/* 이거맞음 */			  
-				});
+				list = `<div class="house">
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=`+houseList[h].houseNo+`"
+								class="housePic"
+								style="background-image : url('<%=request.getContextPath()%>/upload/house/`+houseList[h].housePicture[0]+`');"></a>
+							<div class="houseContents">
+
+								<div class="contentSection1">
+									<p class="houseName">`+houseList[h].houseName+`</p>
+									<div class="heartCommon heart"></div>
+								</div>
+
+								<div class="houseLine"></div>
+
+								<div class="contentSection2">
+									<div class="contentBox box1">
+										<div class="iconLocation"></div>
+										<p class="locationName">`+houseList[h].houseLocation+`</p>
+										
+									</div>
+
+									<div class="contentLine"></div>
+
+									<div class="contentBox box2">
+										<div class="iconGrade"></div>
+										<p class="gradeName">
+											`+houseList[h].avgGrade+`/5
+										</p>
+									</div>
+								</div>
+								<div class="houseLine2"></div>
+								<div class="contentSection3">
+									<div class="contentBox box1">
+										<div class="iconPrice"></div>
+										<p class="priceName">
+											<!-- 가격 : 총요금/날짜수-->											
+											약 <span class="price">`+houseList[h].totalGrade+`</span>원/1박
+											
+										</p>
+									</div>
+
+									<div class="contentLine"></div>
+
+									<div class="contentBox box2">
+										<div class="iconPeople"></div>
+										<p class="PeopleName">`+houseList[h].housePnum+`명
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div> `;
+				html=html+list;		
+				
 				
 			}
 			//for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)
@@ -276,9 +251,9 @@
 				
 
 			$(".list").children().remove();
+			$(".list").append(html);
 			
-			
-		});
+		}
 
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		$("#priceBtn").on("click", function(e) {

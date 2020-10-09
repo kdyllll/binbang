@@ -350,7 +350,7 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no")); //숙소번호
 				h.setHouseName(rs.getNString("house_name")); //숙소이름
 				h.setHouseType(rs.getNString("house_type")); //숙소유형
-				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
+				h.setHouseLocation(rs.getNString("house_location").substring(0, 2)); //숙소위치
 				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
 				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
 				h.setRoomNum(rs.getInt("room_num")); //방갯수
