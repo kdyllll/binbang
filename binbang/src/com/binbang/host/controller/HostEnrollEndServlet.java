@@ -18,7 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /**
  * Servlet implementation class HostEnrollEndServlet
  */
-@WebServlet("/host/hostEnrollEnd")
+@WebServlet("/hostEnrollEnd")
 public class HostEnrollEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
