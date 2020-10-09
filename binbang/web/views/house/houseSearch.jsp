@@ -119,12 +119,55 @@
             <div class="listCon">
                <div class="list">
 
-                  <%
-                     for (House h : house) {
-                  %>
-                  <div class="house">
+
+						<%
+							for (House h : house) {
+						%>
+						<div class="house">
 
 
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>
+								class="housePic"
+								style="background-image : url('<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[0]%>');"></a>
+							<div class="houseContents">
+							<%-- <input type="text" name="houseNo" value="<%=h.getHouseNo()%>">
+							<input type="text" name="houseNo" value="<%=total%>"> --%>
+
+								<div class="contentSection1">
+									<p class="houseName"><%=h.getHouseName()%></p>
+									<div class="heartCommon heart">
+										<%
+											if (favorite != null) {
+											for (Favorite f : favorite) {
+												if (f.getHouseNo().equals(h.getHouseNo())) {
+											//이집이 관심숙소 리스트에 있는 집이면 heart
+										%>
+										<script>
+											$(".heartCommon").removeClass(
+													".heart");
+											$(".heartCommon").addClass(".fav");
+										</script>
+										<%
+											}
+										}
+										}
+										%>
+									</div>
+								</div>
+
+								<div class="houseLine"></div>
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
+
+
+<<<<<<< HEAD
+=======
+								<div class="contentSection2">
+									<div class="contentBox box1">
+										<div class="iconLocation"></div>
+										<p class="locationName"><%=(h.getHouseLocation()).substring(0, 2)%></p>
+										
+									</div>
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
                      <a 
                         href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>"
@@ -157,8 +200,33 @@
                            </div>
                         </div>
 
+<<<<<<< HEAD
                         <div class="houseLine"></div>
 
+=======
+									<div class="contentBox box2">
+										<div class="iconPeople"></div>
+										<p class="PeopleName"><%=h.getHousePnum()%>명
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<%
+							}
+						%>
+
+					</div>
+					<div id="pageBar">
+						<%=pageBar%>
+					</div>
+				</div>
+
+			</div>
+	</div>
+	<div id="ttttest"></div>
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
                         <div class="contentSection2">
                            <div class="contentBox box1">
@@ -168,6 +236,7 @@
 
                            <div class="contentLine"></div>
 
+<<<<<<< HEAD
                            <div class="contentBox box2">
                               <div class="iconGrade"></div>
                               <p class="gradeName">
@@ -185,8 +254,107 @@
                                  
                               </p>
                            </div>
+=======
+	<script>
+	
+		let houseList =<%=request.getAttribute("houseJson")%>;
+		let favorite =<%=request.getAttribute("filterJson")%>;
+		let days= <%=request.getAttribute("days")%>;
+		let main=<%=request.getContextPath()%>;
+		console.log(houseList);
+		//정렬 버튼 누를때
+		$("#houseSort > li").on("click", function(e) {
+			let standard = $(e.target).text();
+			console.log(standard);
+			if(standard == "기본순") houseList.sort(basicSort); 
+			else if(standard == "추천순") houseList.sort(gradeSort); 
+			else if(standard == "가격낮은순") houseList.sort(priceLowSort); 
+			else if(standard == "가격높은순") houseList.sort(priceHighSort); 		
+			//기본순(최신순)=하우스넘버 내림차순
+			function basicSort(a, b) {
+				if (a.houseNo == b.houseNo) {
+					return 0
+				}
+				return a.houseNo > b.houseNo ? -1 : 1;
+			}
+			//추천순=총평점 내림차순
+			function gradeSort(a, b) {
+				if (a.avgGrade == b.avgGrade) {
+					return 0
+				}
+				return a.avgGrade > b.avgGrade ? -1 : 1;
+			}
+			//가격 낮은순(오름차)
+			function priceLowSort(a, b){
+				if(a.totalPrice == b.totalPrice){
+					return 0
+				}
+				return a.totalPrice > b.totalPrice ? 1 : -1;
+			}
+			//가격 높은순(내림차)
+			function priceHighSort(a, b){
+				if(a.totalPrice == b.totalPrice){
+					return 0
+				}
+				return a.totalPrice > b.totalPrice ? -1 : 1;
+			}
+			console.log("정렬 후" + JSON.stringify(houseList));
+			
+			
+			for(let h in houseList){
+				let a = $("<a>");
+				a.attr({
+				  class: "housePic",
+				  href: "<%=request.getContextPath()%>/house/houseDetailMove?houseNo="+houseList[h].houseNo,	/* 이거맞음 */			  
+				});
+				
+			}
+			//for(var ele in i){  //ele는 배열의 인덱스 값(0번이 첫번째 객체...)
+			//	for(var ele2 in i[ele]){  //ele2는 객체의 키값(name등)
+			//		console.log(i[ele][ele2]); // 배열이름/인덱스(객체순서)/키값 이 되는 것
+			//	} 
+			//}
+				
 
+			$(".list").children().remove();
+			
+			
+		});
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
+
+<<<<<<< HEAD
                            <div class="contentLine"></div>
+=======
+		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
+		$("#priceBtn").on("click", function(e) {
+			let price=$(".price").text();
+			let hiddenPriceTag=$(".price").filter(function(i,v){
+				return $(v).text()<
+			})
+			hiddenPriceTag.each(function(i,v){
+				$(v).parents("div.list").show
+				hide()
+			})
+			let result=true;
+			$("input[name=price]:checked").each(function() {
+				if($(this).val() == "10"){
+					if(price > 100000){
+						result=false;
+					}
+				} 
+				if($(this).val() == "20"){
+					if(price < 100000 && price >200000){
+						result=false;
+					}
+				} 
+				
+			});
+			if(result==false){
+				$(".house").hide();
+			}
+		
+		});
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
                            <div class="contentBox box2">
                               <div class="iconPeople"></div>
