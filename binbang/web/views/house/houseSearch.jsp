@@ -17,12 +17,7 @@
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
 	List dayList = (List) request.getAttribute("dayList");
-	
-
-	
-
 %>
-
 
 </head>
 <body>
