@@ -16,7 +16,6 @@
 	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
-
 	List dayList = (List) request.getAttribute("dayList");
 	
 
@@ -192,10 +191,12 @@
 			let html="";
 			let list="";
 			for(let h in houseList){
+				console.log("집들"+houseList[h]);
 				let filterNames="";
-				for(let f in houseList[h].filter){
-					if(filterNames!="") filterNames=filterNames+","+f;
-					else filterNames=f;
+				let filterList=houseList[h].filter;
+				for(let f in filterList){
+					if(filterNames!="") filterNames=filterNames+","+filterList[f];
+					else filterNames=filterList[f];
 				}
 				list = `<div class="house">
 							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=`+houseList[h].houseNo+`"
@@ -264,61 +265,51 @@
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		//필터 검색 누를때 두개 다
 		function fn_option(){
-			if($("input[name=price]:checked").length!=0&&$("input[name=filter]:checked").length!=0){
+			if($("input[name=price]:checked").length!=0||$("input[name=filter]:checked").length!=0){
 				//금액이나 필터가 선택되어 있을때만 div 다 가리기
-			$("div.list").hide();
+			$("div.house").hide();
 			}
-
 			//금액 
-			//let price=$(".price").text(); //price는 집가격적힌 p태그
-			let showPriceTag=$(".price").filter(function(i,v){ //v는 filter앞에 적힌 태그, i는 순서(돌리는)
-				$("input[name=price]:checked").each(function() {
-					console.log($(this).val()); //체크박스 선택값 출력
-					// if($(this).val() == "10"){ //10만원 이하
-					// 	console.log($(v).text()); //p태그(숙소금액)에 적힌 값
-					// 	return $(v).text()<=100000; //해당이 안되면 끝나.. 이렇게 쓰면 안돼......
-					// 	//작으면 리턴해라 -> 크면 그냥 종료돼 함수가(let)자체가! 리턴도 없고... 이렇게 하면 안돼
-					// 	console.log("리턴후에는?");
-					// }
-					// return $(this).val()=="10"&&$(v).text()<=100000
-					// || $(this).val()=="20"&&$(v).text()>=100000 && $(v).text()<=200000
-					// || $(this).val()=="30"&&$(v).text()>=200000 && $(v).text()<=300000
-					// || $(this).val()=="40"&&$(v).text()>=300000 && $(v).text()<=400000
-					// || $(this).val()=="50"&&$(v).text()>=400000 && $(v).text()<=500000
-					// || $(this).val()=="60"&&$(v).text()>=500000 && $(v).text()<=600000
-					// || $(this).val()=="70"&&$(v).text()>=600000 ;
-					return $(v).text()=="500";
-				
+			$("input[name=price]:checked").each(function(j,t) {
+				let showPriceTag=$(".price").filter(function(i,v){ //v는 filter앞에 적힌 태그, i는 순서(돌리는)			
+					if($(t).val() == "10"){ //10만원 이하
+						return $(v).text()<=100000;
+					}else if($(t).val() == "20"){ //10만원 이상 20만원 이하
+						return $(v).text()>=100000 && $(v).text()<=200000;
+					}else if($(t).val() == "30"){ //20만원 이상 30만원 이하
+						return $(v).text()>=200000 && $(v).text()<=300000;
+					}else if($(t).val() == "40"){ //30만원 이상 40만원 이하
+						return $(v).text()>=300000 && $(v).text()<=400000;
+					}else if($(t).val() == "50"){ //40만원 이상 50만원 이하
+						return $(v).text()>=400000 && $(v).text()<=500000;
+					}else if($(t).val() == "60"){ //50만원 이상 60만원 이하
+						return $(v).text()>=500000 && $(v).text()<=600000;
+					}else if($(t).val() == "70"){ //60만원 이상
+						return $(v).text()>=600000;
+					}
 				});
+				showPriceTag.each(function(i,v){
+					$(v).parents("div.house").show();
+				});	
 			});
-			console.log("프라이스태그");
-			console.log(showPriceTag);
-
-			showPriceTag.each(function(i,v){
-				console.log("프라이스 부모 div");
-				console.log($(v).parents("div.list"));
-				$(v).parents("div.list").show();
-			});		
+				
 
 			//주변시설
-			let filterNo=$(".filterInput").val().split(); //숙소가 가지고 있는 필터 번호 하나씩 떼서 배열로 담음
-			let showFilterTag=$(".filterInput").filter(function(i,v){
-				$("input[name=filter]:checked").each(function() {
+		
+			$("input[name=filter]:checked").each(function(j,t) {	
+				let showFilterTag=$(".filterInput").filter(function(i,v){
+					let filterNo=$(v).val().split(","); //숙소가 가지고 있는 필터 번호 하나씩 떼서 배열로 담음
 					for(let f in filterNo){
-						if($(this).val()==filterNo[f]){ //this는 클릭된 체크박스
+						if($(t).val()==filterNo[f]){ //this는 클릭된 체크박스
 							return $(v); //v는 히든인풋태그
 						}
 					}
 				});
+				showFilterTag.each(function(i,v){
+					$(v).parents("div.house").show();
+				});
 			});
-			console.log("필터 태그");
-			console.log(showFilterTag);
-
-			showFilterTag.each(function(i,v){
-				console.log("필터 부모 div");
-				console.log($(v).parents("div.list"));
-				$(v).parents("div.list").show();
-			});	
+				
 		};
 		
 	</script>

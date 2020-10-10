@@ -137,6 +137,7 @@ public class HouseSearchListServlet extends HttpServlet {
 
 			// 필터
 			h.setFilter(new HouseService().selectFilterList(h.getHouseNo()));
+			//System.out.println(h.getFilter());
 			
 			//총 요금
 			//총요금과 날짜 구하는 식(a태그로 같이 넘겨주기 위해서 상단으로 옮김)
