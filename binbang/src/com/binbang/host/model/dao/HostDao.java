@@ -134,6 +134,8 @@ public class HostDao {
 				r.setCommentTitle(rs.getString("comment_title"));
 				r.setCommentContents(rs.getString("comment_contents"));
 				r.setHouseGrade(rs.getDouble("house_grade"));
+				r.setHouseName(rs.getString("house_name"));
+				r.setCheckInDate(rs.getDate("checkin_date"));
 				list.add(r);
 			}	
 		}catch(Exception e){
@@ -145,56 +147,4 @@ public class HostDao {
 		return list;
 	}
 	
-	public List<Member> selectHostMember(Connection conn, String hostNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Member> list = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
-			pstmt.setString(1, hostNo);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {	
-				Member m = new Member();
-				m.setEmail(rs.getString("email"));
-				m.setMemberNo(rs.getString("member_no"));
-				m.setNickname(rs.getString("nickname"));
-				list.add(m);
-				
-			}	
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
-	
-	public List<Booking> selectHostBooking(Connection conn, String hostNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Booking> list = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
-			pstmt.setString(1, hostNo);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {	
-				Booking b = new Booking();
-				b.setReservationNo(rs.getString("reservation_no"));
-				b.setMemberNo(rs.getString("member_no"));
-				b.setHouseNo(rs.getString("house_no"));
-				b.setGuestPnum(rs.getInt("guest_pnum"));
-				b.setCheckInDate(rs.getDate("checkin_date"));
-				b.setCheckOutDate(rs.getDate("checkout_date"));
-				b.setHouseRequest(rs.getString("house_request"));
-				list.add(b);
-			}	
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
 }

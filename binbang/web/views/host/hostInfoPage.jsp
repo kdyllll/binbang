@@ -11,8 +11,6 @@
 	Host h = (Host)request.getAttribute("host");
 	List<House> list = (List)request.getAttribute("list");
 	List<Review> rList =(List)request.getAttribute("reviewList");
-	List<Member> mList =(List)request.getAttribute("hostMember");
-	List<Booking> bList =(List)request.getAttribute("hostReserv");
 	Member loginM = (Member)session.getAttribute("m");
 %>
 </head>
@@ -62,6 +60,8 @@
 					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=ho.getHouseNo()%>">
 					 	<img src="<%=request.getContextPath()%>/upload/house/<%=ho.getHouseMainPic()%>"> 
 						<span><%=ho.getHouseName() %></span>
+						<div class="hoverAction"></div>
+						<span class="houseLoc"><%=ho.getHouseLocation().length() > 7 ? ho.getHouseLocation().substring(0,6) : ho.getHouseLocation() %></span>
 					</a>
 				</li>
 				<%}  
@@ -69,31 +69,29 @@
 			</ul>
 			<button id="addBtn" onclick="moreList();">
 				<span>더보기</span>
-			</button>
-			
+			</button>			
 			<div class="line"></div>
-			
-			
 			<div id="hostCommentAll">
-				<ul>
-					<li>후기보기</li>
-
-					<!-- 이거의 house_no와 host가 가지고있는 house_no가 같을시 -->
-					<li><% if(loginM != null){ %>
-					<a>후기작성</a>
-					<%} else { %>
-					<a>후기작성(로그인)</a>
-					<%} %>
-					</li>
-				</ul>
-				<% if(rList != null) {
-					for(Review review : rList) {%>
-				<div><%=review.getCommentTitle() %></div>
+				<% int commentCnt = 0;%>
+				<% if(rList != null) { 
+					commentCnt = rList.size(); %>
+					<h2 >전체후기 <%=commentCnt %>개</h2>
+					<% 
+						for(int i=0; i<rList.size(); i++) {
+							Review review = (Review)rList.get(i);
+					%>	
+					<div id="comment<%=i%>">
+						<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=review.getHouseNo()%>">
+							<h3 class="houseName"><%=review.getHouseName() %></h3>
+						</a>
+						<p class="checkInDate"><%=review.getCheckInDate() %></p>
+						<h3><%=review.getCommentContents()%></h3>
+					</div>
 				<%} } %>
-				<div>
-					
-				</div>
 			</div>
+			<button id="addBtn2" onclick="moreList2();">
+				<span>더보기</span>
+			</button>
 
 		</aside>
 	</section>
@@ -102,11 +100,9 @@
 	<script>
 		let lengthSize = $(".hostHouseOne").length;
 		let startCnt = 3;
-		let endCnt = lengthSize;
 	 	for(let i=startCnt; i<lengthSize; i++) {
 			$("#house"+i).css("display","none")		
 		} 
-		console.log(lengthSize);
 		function moreList() {
 			for(let i=startCnt; i<startCnt + 3; i++) {
 				$("#house"+i).css("display","block");
@@ -116,6 +112,21 @@
 				$("#addBtn").css("display", "none");
 			}
 		}
+		let commentSize = $("#hostCommentAll > div").length;
+		let startCnt2 = 3;
+		for(let i=startCnt2; i<commentSize; i++) {
+			$("#comment"+i).css("display","none");
+		}
+		function moreList2() {
+			for(let i=startCnt2; i<startCnt2 + 3; i++) {
+				$("#comment"+i).css("display","block");
+			} 
+			startCnt2 = startCnt2 + 3;
+			if(startCnt2 > commentSize) {
+				$("#addBtn2").css("display", "none");
+			}
+		}
+
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 </body>

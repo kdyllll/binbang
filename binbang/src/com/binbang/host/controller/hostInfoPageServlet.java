@@ -44,16 +44,10 @@ public class hostInfoPageServlet extends HttpServlet {
 		List<House> list= new HouseService().selectHostHouse(hostNo);
 		//리뷰
 		List<Review> reviewList = new HostService().selectHostReview(hostNo);
-		//member
-		List<Member> hostMember = new HostService().selectHostMember(hostNo);
-		//reservation
-		List<Booking> hostReserv = new HostService().selectHostBooking(hostNo);
 		System.out.println(list);
 		request.setAttribute("host", h);
 		request.setAttribute("list", list);
 		request.setAttribute("reviewList", reviewList);
-		request.setAttribute("hostMember", hostMember);
-		request.setAttribute("hostReserv", hostReserv);
 		request.getRequestDispatcher("/views/host/hostInfoPage.jsp").forward(request, response);
 	}
 

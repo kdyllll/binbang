@@ -343,6 +343,7 @@ public class HouseDao {
 				h.setHouseName(rs.getString("house_name"));
 				h.setHouseNo(rs.getString("house_no"));
 				h.setHouseMainPic(rs.getString("picture_name"));
+				h.setHouseLocation(rs.getString("house_location"));
 				list.add(h);
 			}
 		}catch(Exception e) {

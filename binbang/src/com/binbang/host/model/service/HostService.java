@@ -54,16 +54,5 @@ public class HostService {
 		close(conn);
 		return list;
 	}
-	public List<Member> selectHostMember(String hostNo) {
-		Connection conn=getConnection();
-		List<Member> list = hdao.selectHostMember(conn, hostNo);
-		close(conn);
-		return list;
-	}
-	public List<Booking> selectHostBooking(String hostNo) {
-		Connection conn=getConnection();
-		List<Booking> list = hdao.selectHostBooking(conn, hostNo);
-		close(conn);
-		return list;
-	}
+
 }
