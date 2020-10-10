@@ -32,6 +32,7 @@ public class House {
 	private List filter;
 	private String[] housePicture;
 	private Double avgGrade;
+	private String houseMainPic;
 
 
 
@@ -40,12 +41,11 @@ public class House {
 	}
 
 
-
 	public House(String houseNo, String hostNo, String houseName, String houseType, String houseLocation, int housePnum,
 			String pObjects, int roomNum, int bathNum, int bedNum, String houseComment, String houseGemsung,
 			String attention, String inoutTime, List peakDay1, List peakDay2, List peakDay3, List peakDay4,
 			List peakDay5, List totalPeak, int priceDay, int priceWeekend, int pricePeakDay, int pricePeakWeekend,
-			int totalPrice, List filter, String[] housePicture, Double avgGrade) {
+			int totalPrice, List filter, String[] housePicture, Double avgGrade, String houseMainPic) {
 		super();
 		this.houseNo = houseNo;
 		this.hostNo = hostNo;
@@ -75,8 +75,19 @@ public class House {
 		this.filter = filter;
 		this.housePicture = housePicture;
 		this.avgGrade = avgGrade;
+		this.houseMainPic = houseMainPic;
 	}
 
+	
+
+	public String getHouseMainPic() {
+		return houseMainPic;
+	}
+
+
+	public void setHouseMainPic(String houseMainPic) {
+		this.houseMainPic = houseMainPic;
+	}
 
 
 	public String getHouseNo() {
@@ -425,7 +436,7 @@ public class House {
 				+ ", peakDay4=" + peakDay4 + ", peakDay5=" + peakDay5 + ", totalPeak=" + totalPeak + ", priceDay="
 				+ priceDay + ", priceWeekend=" + priceWeekend + ", pricePeakDay=" + pricePeakDay + ", pricePeakWeekend="
 				+ pricePeakWeekend + ", totalPrice=" + totalPrice + ", filter=" + filter + ", housePicture="
-				+ Arrays.toString(housePicture) + ", avgGrade=" + avgGrade + "]";
+				+ Arrays.toString(housePicture) + ", avgGrade=" + avgGrade + ", houseMainPic=" + houseMainPic + "]";
 	}
 
 

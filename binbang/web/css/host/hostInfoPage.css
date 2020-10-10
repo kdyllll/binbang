@@ -1,21 +1,115 @@
 section {
-  margin-top: 100px;
-}
-* {
+  margin-top: 150px;
   box-sizing: border-box;
-}
-.section {
   display: flex;
   justify-content: space-between;
 }
+
+/* 호스트정보 */
 .hostInfoCon {
   width: 350px;
-  height: 500px;
+  height: 400px;
   padding: 20px;
-  border: 1px solid;
+  border: 1px solid rgb(202, 202, 202);
+  position: relative;
+  font-size: 14px;
 }
+
+.hostInfoCon > * {
+  margin-bottom: 20px;
+}
+
+.hostInfoCon .hostName {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hostInfoCon .hostPic {
+  display: block;
+  width: 150px;
+  height: 180px;
+  margin: 0 auto;
+  background-color: rgba(245, 245, 220, 0.551);
+}
+
+.authenticate {
+  display: flex;
+  align-items: center;
+}
+.checkPic {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.reportHost {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: red;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+/* 호스트 숙소들 */
 
 .hostHouseInfoCon {
   width: 950px;
-  border: 1px solid;
+  padding: 0 0 15px 50px;
+  margin-left: 50px;
+  box-sizing: border-box;
+}
+
+.hostHouseInfoCon > .hostIntroduction {
+  width: 100%;
+}
+
+.hostIntroduction span {
+  width: 100%;
+  display: block;
+  margin: 25px 0;
+}
+.hostHouseAllInfo {
+  width: 100%;
+}
+.hostHouseOne {
+  float: left;
+  margin-right: 25px;
+  width: calc((100% - 50px) / 3);
+  height: 250px;
+  margin-bottom: 25px;
+}
+
+.hostHouseOne a {
+  width: 100%;
+  height: 100%;
+}
+.hostHouseOne:nth-child(3n) {
+  margin-right: 0;
+}
+
+.hostHouseOne img {
+  width: 100%;
+  height: 220px;
+  background-color: rgba(245, 245, 220, 0.551);
+}
+
+.hostCommentMove {
+  font-weight: 600;
+}
+
+#addBtn {
+  display: block;
+  background: none;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
+}
+.line {
+  clear: both;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  margin: 20px 0;
 }

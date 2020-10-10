@@ -1,8 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@page
+
 	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review,com.binbang.booking.model.vo.Booking"%>
+
+
 <%
 
    House h=(House)request.getAttribute("house");
@@ -118,7 +121,7 @@
                      <a href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>">booking</a>
                      <%} else { %>
                         <a href="<%=request.getContextPath()%>/member/moveLoginPage">로그인</a>
-                      
+
                      <%} %>
                   </div>
                </div>
@@ -157,14 +160,17 @@
                      <div class="service">
                         SERVICE
                         <div class="a">
-                           <div class="aserviceimg">
+                            <div class="aserviceimg">
                               <div class="swiper-container second">
                                  <div class="swiper-wrapper">
                                      <% for(Object o:h.getFilter()){
+
 		                                 String filtername=(String)o;%>   
 		                                <div class="swiper-slide"> <img src="<%=request.getContextPath()%>/image/house/filter/<%=filtername %>"  style="width: 60%; height: 60%;" ></div>
 		                              <%} %>
  		
+       
+
                                  </div>
                                  <!-- Add Arrows -->
                                  <div class="swiper-button-next "></div>
@@ -173,7 +179,7 @@
                                  <div class="swiper-pagination"></div>
                               </div>
 
-                           </div>
+                           </div> --%>
 
                         </div>
 
@@ -222,7 +228,9 @@
          <!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
          <div class="gradeTitle">
+
             	★평균 평점  (<%=grade %>)
+
             <div class="writing">
             <%if(m2!=null){ %>
                <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=m2.getMemberNo()%>">글쓰기</a>
@@ -241,6 +249,8 @@
                         <div class="gradeinfo">
                         
                            <div class="a">평점 : <%=r.getHouseGrade() %></div>
+                           <br> <br>
+                           <div class="a">숙박 기간 : </div>
                            <br> <br>
                            <div class="b">제목 : <%=r.getCommentTitle()%> </div>
                            <br> <br>
