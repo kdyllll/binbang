@@ -2,20 +2,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page
-	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
+	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review,com.binbang.booking.model.vo.Booking"%>
 <%
 
    House h=(House)request.getAttribute("house");
+   Booking b=(Booking)request.getAttribute("booking");
+   Double grade=(Double)request.getAttribute("grade");
    Member m2 =(Member)session.getAttribute("m");
    List<Review> list=(List)request.getAttribute("list");
-   List filterList =(List) request.getAttribute("filterList");
-   System.out.println("");
+
 %>
 
 <%
-   String[] filter = new String[] { "bathRoom.png", "bbq.png", "breakfast.png", "dog.png", "kitchen.png",
+  /*  String[] filter = new String[] { "bathRoom.png", "bbq.png", "breakfast.png", "dog.png", "kitchen.png",
       "laundrtRoom.png", "park.png", "parking.png", "projector.png", "refrigerator.png", "shower.png", "smoking.png",
-      "swimming.png", "terrace.png", "wifi.png" };
+      "swimming.png", "terrace.png", "wifi.png" }; */
 %>
 
 
@@ -26,6 +27,7 @@
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 <script
+
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 
 <script
@@ -97,7 +99,7 @@
                </div>
                <br> <br> <br>
                <div class="titleInfo">
-                  <%=h.getHouseComment()%> <br> <br>   <%=h.getInoutTime()%> <br><br>
+                  <%=h.getHouseComment()%> <br> <br>  <%=h.getInoutTime()%> <br><br>
                </div>
                <div class="host">
                   <div class="hostInfo">
@@ -113,9 +115,10 @@
                <div class="paybox">
                   <div class="pay">
                      <% if(m2 != null)  {%>
-                     <a href="<%=request.getContextPath()%>/booking/booking">booking</a>
+                     <a href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>">booking</a>
                      <%} else { %>
-                        <a>로그인</a>
+                        <a href="<%=request.getContextPath()%>/member/moveLoginPage">로그인</a>
+                      
                      <%} %>
                   </div>
                </div>
@@ -157,21 +160,11 @@
                            <div class="aserviceimg">
                               <div class="swiper-container second">
                                  <div class="swiper-wrapper">
-                                    <%--    <% for(String h : filter){ %> --%>
-                                    <!-- <div> -->
-                                    <div class="swiper-slide">Slide 1</div>
-                                    <div class="swiper-slide">Slide 2</div>
-                                    <div class="swiper-slide">Slide 3</div>
-                                    <div class="swiper-slide">Slide 4</div>
-
-                                    <!-- Add Pagination -->
-                                    <!-- <div class="swiper-pagination"></div> -->
-                                    <!-- Add Arrows -->
-
-                                    <%-- <img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20"> --%>
-                                    <!-- </div> -->
-                                    <%-- <%} %> --%>
-
+                                     <% for(Object o:h.getFilter()){
+		                                 String filtername=(String)o;%>   
+		                                <div class="swiper-slide"> <img src="<%=request.getContextPath()%>/image/house/filter/<%=filtername %>"  style="width: 60%; height: 60%;" ></div>
+		                              <%} %>
+ 		
                                  </div>
                                  <!-- Add Arrows -->
                                  <div class="swiper-button-next "></div>
@@ -229,7 +222,7 @@
          <!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
          <div class="gradeTitle">
-            ★총 평점 후기()개
+            	★평균 평점  (<%=grade %>)
             <div class="writing">
             <%if(m2!=null){ %>
                <a href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=m2.getMemberNo()%>">글쓰기</a>
@@ -238,7 +231,7 @@
          </div>   
          
          <div class="comment">
-            <div class="swiper-container three">
+            <div class="swiper-container three" >
                <div class="swiper-wrapper threeButton">
             <%for(Review r : list) {%> 
                <div class="swiper-slide">
