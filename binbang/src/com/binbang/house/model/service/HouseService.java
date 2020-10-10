@@ -8,6 +8,7 @@ import static com.binbang.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
+import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.dao.HouseDao;
 import com.binbang.house.model.vo.House;
 import com.binbang.house.model.vo.Review;
@@ -22,14 +23,23 @@ public class HouseService {
 		 close(conn);
 		 return h;
 	}
+	public Booking selectReservation(String no) {
+		Connection conn=getConnection();
+		Booking b=dao.selectReservation(conn, no);
+		 close(conn);
+		 return b;
+	}
+	
+	
 	
 
-	public House FilterDetail(String no) {
+	public List FilterDetail(String no) {
 		Connection conn=getConnection();
-		House h=dao.FilterDetail(conn, no);
+		List list=dao.FilterDetail(conn, no);
 		 close(conn);
-		 return h;
+		 return list;
 	}
+
 	
 	public List<Review> ReviewDetail(String no) {
 		Connection conn=getConnection();

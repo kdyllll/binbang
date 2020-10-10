@@ -19,6 +19,17 @@
 
 %>
 
+
+	<!-- google login -->
+       <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <script src="../firebase/init.js"></script>
+        <script src="js/index.js"></script>
+
+
+
+
 </head>
 <body>
 	<div class="wrap">
@@ -61,7 +72,7 @@
 							<span id="kakaoLogin">Kakao 로그인</span>
 						</a>
 						<a href="#" class="buttonDiv">
-							<div id="googleImage"></div>
+							<div id="googleImage"></div>		
 							<span id="googleLogin">Google 로그인</span>
 						</a>
 					</div>
@@ -84,12 +95,11 @@
 	             const url="<%=request.getContextPath()%>/member/findPassword";
 	             const status="width=500px,height=450px,top=150px,left=150px";
 	             open(url,"",status);
-	          });
-	          
-	          
-	          
+	          });	          	          	          
 	       });
-			
+		
+		
+
 		</script>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
