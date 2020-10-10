@@ -139,11 +139,11 @@
 
 /* 이게하트 */
 .heart{
-    background-image: url("../../image/houseReservation/heart1.png");
+    background-image: url("../../image/common/icon/heart0.png");
     background-size: cover;
 }
 .fav{
-    background-image: url("../../image/houseReservation/heart2.png");
+    background-image: url("../../image/common/icon/heart1.png");
     background-size: cover;
 }
 /* 숙소 간단정보 설정 */
@@ -545,9 +545,14 @@
 	height: 250px;
     display: flex;
     background-color: white ;
-    padding:10px;
+    padding-top:10px;
+    padding-left:20px;
     width: 80%;
+    text-align: left;
 
+}
+.gradeinfo{
+	width: 750px;
 }
 .gradeinfo .a{
 	margin-top: 1px;
