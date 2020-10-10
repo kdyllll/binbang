@@ -179,7 +179,7 @@
                                  <div class="swiper-pagination"></div>
                               </div>
 
-                           </div> --%>
+                           </div>
 
                         </div>
 
@@ -250,7 +250,7 @@
                         
                            <div class="a">평점 : <%=r.getHouseGrade() %></div>
                            <br> <br>
-                           <div class="a">숙박 기간 : </div>
+                           <div class="a">숙박 기간 : <%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></div>
                            <br> <br>
                            <div class="b">제목 : <%=r.getCommentTitle()%> </div>
                            <br> <br>
