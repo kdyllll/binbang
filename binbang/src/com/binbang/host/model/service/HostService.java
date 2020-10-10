@@ -1,13 +1,18 @@
 package com.binbang.host.model.service;
 
+import com.binbang.booking.model.vo.Booking;
 import com.binbang.host.model.dao.HostDao;
 import com.binbang.host.model.vo.Host;
+import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Member;
+
 import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.close;
 import static com.binbang.common.JDBCTemplate.rollback;
 import static com.binbang.common.JDBCTemplate.commit;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class HostService {
 	HostDao hdao = new HostDao();
@@ -42,5 +47,23 @@ public class HostService {
 		Host h = hdao.selectHostInfo(conn,hostNo);
 		close(conn);
 		return h;
+	}
+	public List<Review> selectHostReview(String hostNo) {
+		Connection conn=getConnection();
+		List<Review> list = hdao.selectHostReview(conn, hostNo);
+		close(conn);
+		return list;
+	}
+	public List<Member> selectHostMember(String hostNo) {
+		Connection conn=getConnection();
+		List<Member> list = hdao.selectHostMember(conn, hostNo);
+		close(conn);
+		return list;
+	}
+	public List<Booking> selectHostBooking(String hostNo) {
+		Connection conn=getConnection();
+		List<Booking> list = hdao.selectHostBooking(conn, hostNo);
+		close(conn);
+		return list;
 	}
 }
