@@ -337,16 +337,16 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     /* 인증번호가 회원가입 로직에 찍히면 회원가입이 가능하게 구현 */
     function fn_complite(){
     	/*pw 정규표현*/  
-    	var pw = document.getElementById("pw");    	
-        var regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()]).*$/
+    	let pw = document.getElementById("pw");    	
+        let regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()]).*$/
         	  if (!regPw.test(pw.value)) {
                   alert("비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요");
                   return false;
               }
         
         /* 이름 정규표현 */
-            var name = document.getElementById("name");
-            var regName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+            let name = document.getElementById("name");
+            let regName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
             if (!regName.test(name.value)) {
                 alert("한글은 2 ~ 4글자(공백 없음) , 영문은 Firstname(2 ~ 10글자) (space) Lastname(2 ~10글자)로 입력해 주세요.");
                 return false;
@@ -354,15 +354,15 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
         	
         	
         /* 전화번호 정규표현*/
-       	var phone = document.getElementById("phone");
-       	var regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
+       	let phone = document.getElementById("phone");
+       	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
 			 if(!regPhone.test(phone.value)){
 				 alert("전화번호를 입력해주세요")
 			 }       
 		
 		/* 약관동의와 인증이후 회원가입*/ 
     	if($("#hidden").val()!="인증이 완료되었습니다."){
-    			alert("중복확인을 해주세요.");
+    			alert("중복확인/인증확인을 해주세요.");
     		}else if($("#checkbox1").is(":checked") == false){
                 alert("모든 약관에 동의해주세요");
                 return;
@@ -375,8 +375,7 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
             }else{
     			$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
     		}    	    	    	    	
-    	  
-    	/* 약관동의 */                        
+    	      	           
     			
                 
         

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-        
 <%@ include file="/views/common/commonLink.jsp"%>
  
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/myPagePrivate.css" />
@@ -15,10 +14,8 @@
      <section class="section">     		
 		<form id="memberModify" method="post">
 			<div class="private">
-				<input type="hidden" value="<%=m.getEmail()%>" name="email" readonly>				
-				<div>
-					<p>개인정보변경</p>
-				</div>
+				<input type="hidden" value="<%=m.getEmail()%>" name="email_" readonly>				
+					<div><p>개인정보변경</p></div>
 					<div class="line6"></div>
 
 				<table>
@@ -38,7 +35,7 @@
 					</tr>
 					<tr class="tr2">
 						<td>새로운 닉네임</td>
-						<td><input type="text" name="nickname" placeholder="닉네임 입력"></td>
+						<td><input type="text" name="nickname_" placeholder="닉네임 입력"></td>
 						<td></td>
 					</tr>
 					<tr>
@@ -47,7 +44,7 @@
 					</tr>
 					<tr>
 						<td>새로운 전화번호</td>
-						<td><input type="text" name="phone" placeholder="전화번호 입력"></td>
+						<td><input type="text" name="phone_" placeholder="전화번호 입력" id="phone"></td>
 						<td><input type="button" onclick="fn_updateMember();"id="btn2" value="수정완료" /></td>
 					</tr>
 				</table>
@@ -58,7 +55,6 @@
 				</div>
 			</div>
 		</form>
-	</div>
 	</section>
 	
 	
@@ -77,26 +73,50 @@
 		             $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
 		          }		        
 		      };	
-			//비밀번호 변경
+		     
+			//비밀번호 변경			
 			function fn_updatePassword(){
-				$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberPasswordUpdate").submit();
-			}	
-			//정보수정(비밀번호 이외)
-			function fn_updateMember(){
-				 $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();			
+				alert("정말 비밀번호를 수정하시겠습니까?")	
+		    	let pw = document.getElementById("pw");    	
+		        let regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()]).*$/
+		        	  if (!regPw.test(pw.value)) {
+		                  alert("비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요");
+		                  return false;
+		              }else{
+		              }		         
+						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberPasswordUpdate").submit();		            	  
+			}
+			
+			//정보수정(비밀번호 이외)		
+			function fn_updateMember(){	
+				alert("정말 회원정보를 수정하시겠습니까?")	
+				let phone = document.getElementById("phone");
+		       	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
+					 if(!regPhone.test(phone.value)){
+						 alert("전화번호를 입력해주세요")
+					 }else{
+				 		$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();									 
+					 }   
+					 
 			}
 			//회원탈퇴
-			function fn_deleteMember(){
+			function fn_deleteMember(){		
+				alert("정말 탈퇴하시겠습니까?")
 		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
 		    }
 			
 			// 경고창
-			$("#btn1").click(e =>{
-			alert("정말 탈퇴하시겠습니까?")
-			})
-			$("#btn2").click(e =>{
-			alert("정말 수정하시겠습니까?")
-			})						
+
+	/* 		$("#btn1").click(e =>{
+				alert("정말 탈퇴하시겠습니까?")
+			})	 
+				$("#btn2").click(e =>{
+		  			alert("정말 회원정보를 수정하시겠습니까?")					
+				})	 
+					$("#btn3").click(e =>{
+		  			alert("정말 비밀번호를 수정하시겠습니까?")					
+				})	  */
+		
 		</script>
     
     
