@@ -19,7 +19,7 @@
 	List dayList = (List) request.getAttribute("dayList");
 	
 
-	int days=(int)request.getAttribute("days");
+	
 
 %>
 
@@ -132,11 +132,11 @@
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
 
-	<script>
-	
+	<script>	
 		let houseList =<%=request.getAttribute("houseJson")%>;
+		let dayList =<%=request.getAttribute("dayJson")%>;
+		let days=dayList.length;
 		let favorite =<%=request.getAttribute("filterJson")%>;
-		let days= <%=request.getAttribute("days")%>;
 		console.log(houseList);
 		listPrint();
 		//정렬 버튼 누를때
@@ -199,7 +199,7 @@
 					else filterNames=filterList[f];
 				}
 				list = `<div class="house">
-							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=`+houseList[h].houseNo+`"
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=`+houseList[h].houseNo+`&dayList=`+dayList+`&totalPrice=`+houseList[h].totalPrice+`"
 								class="housePic"
 								style="background-image : url('<%=request.getContextPath()%>/upload/house/`+houseList[h].housePicture[0]+`');"></a>
 							<div class="houseContents">
@@ -233,7 +233,7 @@
 										<div class="iconPrice"></div>
 										<p class="priceName">
 											<!-- 가격 : 총요금/날짜수-->											
-											약 <span class="price">`+houseList[h].totalPrice+`</span>원/1박
+											약 <span class="price">`+houseList[h].totalPrice / days+`</span>원/1박
 											
 										</p>
 									</div>

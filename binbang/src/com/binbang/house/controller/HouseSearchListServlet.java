@@ -49,7 +49,6 @@ public class HouseSearchListServlet extends HttpServlet {
 		String checkIn = (request.getParameter("checkIn")).trim();
 		String checkOut = (request.getParameter("checkOut")).trim();
 		List dayList = dateCalculator(checkIn, checkOut); // 숙박 날짜들
-
 		String pNum = request.getParameter("peopleNum"); // 숙박 인원
 
 
@@ -113,7 +112,7 @@ public class HouseSearchListServlet extends HttpServlet {
 		} catch (NullPointerException e) {
 
 		}
-		int days=0;
+
 		for (House h : house) {
 			// 사진 House객체에 넣기
 			h.setHousePicture(new HouseService().selectMainPicture(h));
@@ -140,11 +139,11 @@ public class HouseSearchListServlet extends HttpServlet {
 			//System.out.println(h.getFilter());
 			
 			//총 요금
-			//총요금과 날짜 구하는 식(a태그로 같이 넘겨주기 위해서 상단으로 옮김)
+			//총요금과 날짜 구하는 식
 			int total=0;
 			
 			//주말인지 평일인지 //성수기인지 비수기인지
-			for (Object o : dayList) {
+			money : for (Object o : dayList) {
 				String day = (String) o; //숙박 날짜 하루하루		
 				//요일 구하기
 				SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
@@ -159,14 +158,12 @@ public class HouseSearchListServlet extends HttpServlet {
 								String pDay = "20"+(String) o1;
 								if (pDay.equals(day)) {//성수기(주말)라면
 									total+=h.getPricePeakWeekend();
-									days++;
+									continue money;
 								}
 							}
 							total+=h.getPriceWeekend();//성수기 기간에 해당되지 않는다면
-							days++;
 						}else{
 							total+=h.getPriceWeekend();//성수기 기간이 없다면
-							days++;
 						}
 												
 					}else{//평일이라면	
@@ -175,26 +172,26 @@ public class HouseSearchListServlet extends HttpServlet {
 								String pDay = "20"+(String) o1;
 								if (pDay.equals(day)) {//성수기(평일)라면
 									total+=h.getPricePeakDay();
-									days++;
+									continue money;
 								}
 							}
 							total+=h.getPriceDay(); //성수기 기간에 해당되지 않는다면
-							days++;
 						}else{
 							total+=h.getPriceDay(); //성수기 기간이 없다면
-							days++;
 						}
 					}
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 			}	
-			h.setTotalPrice(total);			
+			h.setTotalPrice(total);		
+	
 			}
 		
-		request.setAttribute("days", days);
+
 		request.setAttribute("house", house);
 		request.setAttribute("houseJson", new Gson().toJson(house));
+		request.setAttribute("dayJson", new Gson().toJson(dayList));
 		request.getRequestDispatcher("/views/house/houseSearch.jsp").forward(request, response);
 	}
 
