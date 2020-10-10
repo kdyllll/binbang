@@ -131,6 +131,8 @@
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		let dayList =<%=request.getAttribute("dayJson")%>;
 		let days=dayList.length;
+		let checkIn=<%=request.getAttribute("checkIn")%>;
+		let checkOut=<%=request.getAttribute("checkOut")%>;
 		let favorite =<%=request.getAttribute("filterJson")%>;
 		console.log(houseList);
 		listPrint();
@@ -194,9 +196,9 @@
 					else filterNames=filterList[f];
 				}
 				list = `<div class="house">
-							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=`+houseList[h].houseNo+`&dayList=`+dayList+`&totalPrice=`+houseList[h].totalPrice+`"
+							<a onclick="fn_next();"
 								class="housePic"
-								style="background-image : url('<%=request.getContextPath()%>/upload/house/`+houseList[h].housePicture[0]+`');"></a>
+								style="cursor:pointer;background-image : url('<%=request.getContextPath()%>/upload/house/`+houseList[h].housePicture[0]+`');"></a>
 							<div class="houseContents">
 
 								<div class="contentSection1">
@@ -240,9 +242,15 @@
 										<p class="PeopleName">`+houseList[h].housePnum+`명
 										</p>
 									</div>
-								</div>
-								<input type="hidden" class="filterInput" value="`+filterNames+`">
+								</div>						
 							</div>
+							<input type="hidden" class="filterInput" value="`+filterNames+`">
+							<form class="go" action="<%=request.getContextPath()%>/house/houseDetailMove" method="post">
+									<input type="hidden" name="houseNo" value="`+houseList[h].houseNo+`">
+									<input type="hidden" name="checkIn" value="`+checkIn+`">
+									<input type="hidden" name="checkOut" value="`+checkOut+`">
+									<input type="hidden" name="totalPrice" value="`+houseList[h].totalPrice+`">
+							</form>
 						</div> `;
 				html=html+list;	
 				for(let f in favorite){
@@ -304,8 +312,15 @@
 					$(v).parents("div.house").show();
 				});
 			});
+
+		
 				
 		};
+
+			//사진 클릭하면 form태그 실행
+			function fn_next(e){
+				$(".go").submit();
+			}
 		
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
