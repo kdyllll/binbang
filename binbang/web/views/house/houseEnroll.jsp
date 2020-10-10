@@ -269,9 +269,28 @@
 						</div>
 					</div>
 
-
 					<div class="swiper-slide box">
 						<div class="slide6">
+							<div class="amenityBox"">
+								<p>AMENITY</p>
+								<div class="amenityCon">
+									<textarea name="amenity" id="amenity" cols="60" rows="3"
+										style="resize: none" placeholder=",로 구분하여 입력하세요.&#13;&#10;ex)샴푸,컨디셔너" ></textarea>
+								</div>
+							</div>
+							<div class="line6"></div>
+							<div class="equipmentBox">
+								<p>EQUIPMENT</p>
+								<div class="equipmentCon">
+									<textarea name="equipment" id="equipment" cols="60" rows="3"
+										style="resize: none" placeholder=",로 구분하여 입력하세요.&#13;&#10;ex)드라이기,냉장고,전기포트"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="slide7">
 							<div class="explainBox">
 								<p>숙소 설명</p>
 								<div class="explainCon">
@@ -290,7 +309,7 @@
 					</div>
 
 					<div class="swiper-slide box">
-						<div class="slide7">
+						<div class="slide8">
 							<div class="periodBox">
 								<p>성수기 기간 선택</p>
 								<div class="periodCon">
@@ -376,7 +395,7 @@
 					</div>
 
 					<div class="swiper-slide box">
-						<div class="slide8">
+						<div class="slide9">
 							<div class="moneyBox">
 								<p>요금 설정</p>
 								<div class="peakDayCon">
@@ -561,6 +580,12 @@
          }else if(!$("#picture2").val()||!$("#picture3").val()){
             alert("사진을 3장 이상 등록해주세요.");   
             return;
+         }else if($("#amenity").val().trim().length==0){
+             alert("amenity를 입력하세요.");   
+             return;
+         }else if($("#equipment").val().trim().length==0){
+              alert("equipment를 입력하세요.");   
+              return;
          }else if($("#explain").val().trim().length==0){
             alert("설명을 입력하세요.");   
             return;
