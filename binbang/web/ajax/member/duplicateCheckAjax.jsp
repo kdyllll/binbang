@@ -116,12 +116,9 @@
 			/* 인증(msg/email)이 enroll.jsp로 가도록 설정 */
 				console.log(data);																
 				alert(data["msg"]);
-				if(data["result"]=='0'){	
-						
+				if(data["result"]=='0'){							
 					opener.document.getElementById("hidden").value=data["msg"];					
-					opener.document.getElementById("email_").value=data["email"];
-					
-					
+					opener.document.getElementById("email_").value=data["email"];										
 				 	self.close(); 					
 				}
 			},
