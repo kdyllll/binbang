@@ -30,21 +30,28 @@ public class MemberUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
 		Member m = new Member();
-		m.setEmail(request.getParameter("email_"));
-		m.setNickname(request.getParameter("nickname_"));
-		m.setPhone(request.getParameter("phone_"));
-		
-		
-		int result=new MemberService().updateMember(m);
+		m.setEmail(request.getParameter("email2"));
+		m.setNickname(request.getParameter("nickname2"));
+		m.setPhone(request.getParameter("phone2"));
+
+		  String email2= request.getParameter("email2");
+		  System.out.println("넘어온 email:"+email2);
+		  String nickname2= request.getParameter("nickname2");
+		  System.out.println("넘어온 nickname:"+nickname2);
+		  String phone2= request.getParameter("phone2");
+		  System.out.println("넘어온 phone:"+phone2);
+		  
+		int rs=new MemberService().updateMember(m);
 		
 		String msg="";
 		String loc="";
 		
-		if(result>0) {
+		if(rs>0) {
 			msg="회원수정 성공!";
-			loc="/views/member/myPagePrivate.jsp";
+			loc="/views/member/myPage.jsp";
 		}else {
 			msg="회원수정 실패!";
 			loc="/member/mypagePrivate?email="+m.getEmail();			
@@ -52,7 +59,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);		
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);	
 	}
 
 	/**
