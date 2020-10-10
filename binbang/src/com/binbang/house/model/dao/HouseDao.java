@@ -300,6 +300,7 @@ public class HouseDao {
 		}finally {
 			close(rs);
 			close(pstmt);
+			
 		}return b;
 	}
 	

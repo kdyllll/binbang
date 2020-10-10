@@ -62,12 +62,10 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				
 				
 				
-//				for(Object o:h.getFilter()) {
-//					String name=(String)o;
-//					System.out.println("필터"+name);
-//				}
+
 				
 				Booking b =new HouseService().selectReservation(no);
+		
 				
 				//리뷰연결 
 				List<Review> list=new HouseService().ReviewDetail(no);
