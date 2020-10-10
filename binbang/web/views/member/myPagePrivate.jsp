@@ -35,7 +35,7 @@
 					</tr>
 					<tr class="tr2">
 						<td>새로운 닉네임</td>
-						<td><input type="text" placeholder="닉네임 입력" name="nickname2"></td>
+						<td><input type="text" placeholder="닉네임 입력" name="nickname2" id="nickname"></td>
 						<td></td>
 					</tr>
 					<tr>
@@ -74,8 +74,8 @@
 		          }		        
 		      };	
 		 
-		      
-		      
+		  				
+				      
 			//비밀번호 변경			
 			function fn_updatePassword(){
 		 		alert("정말 비밀번호를 수정하시겠습니까?")	
@@ -84,7 +84,7 @@
 		        	  if (!regPw.test(pw.value)) {
 		                  alert("비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요");
 		                  return false;
-		              }else{	 	            	  
+		              }else{	 	          
 						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberPasswordUpdate").submit();		            	  
 		              }	        
 			}
@@ -93,23 +93,25 @@
 	 		function fn_updateMember(){	
 			 alert("정말 회원정보를 수정하시겠습니까?")	
 				let phone = document.getElementById("phone");
-		       	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
+		       	let nickname = document.getElementById("nickname");
+		       	
+			 	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
 					 if(!regPhone.test(phone.value)){
 						 alert("전화번호를 입력해주세요")
 						 return false;
-					 }else{
-						 console.log(phone);
+					 }else{						
 						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();								 
-					 } 
-					 
+					 } 					 
 			} 
+			
+			
+			
+			
 			//회원탈퇴
 			function fn_deleteMember(){		
 				 alert("정말 탈퇴하시겠습니까?") 
 		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
-		    }
-			
-		
+		    }					
 		</script>
     
     

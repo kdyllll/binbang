@@ -19,21 +19,21 @@
 			<form id="memberFrm" method="post">
 				<!-- 회원정보 -->
 				<div class="lineList">
-					<div class="line1">
+					<div>
 						<p>회원이름</p>
-						<div class="memberName"><%=m.getMemberName()%></div>
+						<input class="memberName" value="<%=m.getMemberName()%>" id="name3" readonly>												
 					</div>
-					<div class="line2">
+					<div>
 						<p>이메일</p>
-						<div class="memberEmail"><%=m.getEmail()%></div>
+						<input class="memberEmail" value="<%=m.getEmail()%>" id="email3" readonly>						
 					</div>
-					<div class="line3">
+					<div>
 						<p>전화번호</p>
-						<div class="memberPhone"><%=m.getPhone()%></div>
+						<input class="memberPhone" value="<%=m.getPhone()%>" id="phone3" readonly>						
 					</div>
-					<div class="line4">
+					<div>
 						<p>닉네임</p>
-						<div class="memeberNickName"><%=m.getNickname()%></div>
+						<input class="memeberNickName" value="<%=m.getNickname()%>" id="nickname3" readonly>													
 					</div>
 				</div>
 			</form>

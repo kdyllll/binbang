@@ -11,7 +11,6 @@
 
 		<section class="section">				
 <!-- 1. 회원가입 -->
-<%-- action="<%=request.getContextPath() %>/member/memberEnrollEnd" --%>
 			<form id="enrollComplite" method="post" class="enroll">
 				<div class="title">
 					<div class="titletxt">Sign Up</div>
@@ -376,14 +375,6 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     			$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
     		}    	    	    	    	
     	      	           
-    			
-                
-        
-
-
-
-			  
-    	
     }
     
     

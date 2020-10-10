@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
 
@@ -37,12 +39,14 @@ public class MemberUpdateServlet extends HttpServlet {
 		m.setNickname(request.getParameter("nickname2"));
 		m.setPhone(request.getParameter("phone2"));
 
-		  String email2= request.getParameter("email2");
-		  System.out.println("넘어온 email:"+email2);
-		  String nickname2= request.getParameter("nickname2");
-		  System.out.println("넘어온 nickname:"+nickname2);
-		  String phone2= request.getParameter("phone2");
-		  System.out.println("넘어온 phone:"+phone2);
+		  String email= request.getParameter("email2");
+		  System.out.println("넘어온 email:"+email);
+		  String nickname= request.getParameter("nickname2");
+		  System.out.println("넘어온 nickname:"+nickname);
+		  String phone= request.getParameter("phone2");
+		  System.out.println("넘어온 phone:"+phone);
+		  
+		  JSONObject valueTranfer= new JSONObject();
 		  
 		int rs=new MemberService().updateMember(m);
 		
@@ -50,14 +54,20 @@ public class MemberUpdateServlet extends HttpServlet {
 		String loc="";
 		
 		if(rs>0) {
-			msg="회원수정 성공!";
-			loc="/views/member/myPage.jsp";
+			msg="회원수정 성공!";			
+			loc="/views/member/myPage.jsp";			
+			/*
+			 * request.setAttribute("phone", phone); request.setAttribute("nickname",
+			 * nickname);
+			 */
 		}else {
 			msg="회원수정 실패!";
 			loc="/member/mypagePrivate?email="+m.getEmail();			
 		}
+		
+		
 		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
+		request.setAttribute("loc", loc);				
 		
 		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);	
 	}
