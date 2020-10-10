@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.booking.model.vo.Booking;
 import com.binbang.host.model.service.HostService;
@@ -37,6 +38,8 @@ public class hostInfoPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session =request.getSession();
+		Member m = (Member)session.getAttribute("m");
 		String hostNo = request.getParameter("hostNo");
 		System.out.println(hostNo);
 		Host h = new HostService().selectHostInfo(hostNo);
@@ -44,9 +47,17 @@ public class hostInfoPageServlet extends HttpServlet {
 		List<House> list= new HouseService().selectHostHouse(hostNo);
 		//리뷰
 		List<Review> reviewList = new HostService().selectHostReview(hostNo);
+		//로그인한 멤버가 이 호스트의 숙소들 중 이용한 숙소
+		List<House> myHouse = null;
+		if(m!=null) {
+			myHouse = new HouseService().selectmyHouse(hostNo, m.getMemberNo());
+		}
+		System.out.println("h :"+h);
 		System.out.println(list);
 		request.setAttribute("host", h);
 		request.setAttribute("list", list);
+		request.setAttribute("myHouse", myHouse);
+		System.out.println(myHouse);
 		request.setAttribute("reviewList", reviewList);
 		request.getRequestDispatcher("/views/host/hostInfoPage.jsp").forward(request, response);
 	}

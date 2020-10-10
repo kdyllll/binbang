@@ -104,6 +104,7 @@ public class HostDao {
 			if(rs.next()) {
 				h = new Host();
 				h.setHostName(rs.getString("member_name"));
+				h.setMemberNo(rs.getString("member_no"));
 				h.setHostAcceptDate(rs.getDate("host_acceptdate"));
 				h.setHostEmail(rs.getString("email"));
 				h.setIntro(rs.getString("intro"));

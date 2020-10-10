@@ -12,6 +12,8 @@
 	List<House> list = (List)request.getAttribute("list");
 	List<Review> rList =(List)request.getAttribute("reviewList");
 	Member loginM = (Member)session.getAttribute("m");
+	
+	List<House> myHouse = (List)request.getAttribute("myHouse");
 %>
 </head>
 <body>
@@ -45,7 +47,7 @@
 				<img  class="checkPic" src="<%=request.getContextPath() %>/image/host/host_regist/icon/check.png">
 				<span>전화번호 인증</span>
 			</div>
-			<a class="reportHost" href="#">신고하기</a>
+			<p class="reportHost">신고하기</p>
 		</aside>
 		<aside class="hostHouseInfoCon">
 			<div class="hostIntroduction">
@@ -92,40 +94,69 @@
 			<button id="addBtn2" onclick="moreList2();">
 				<span>더보기</span>
 			</button>
+			
+			<form id="hostReport">
+				<input type="hidden" name="hostNo" value="<%=h.getHostNo()%>">
+			</form>
 
 		</aside>
 	</section>
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
-		let lengthSize = $(".hostHouseOne").length;
-		let startCnt = 3;
-	 	for(let i=startCnt; i<lengthSize; i++) {
-			$("#house"+i).css("display","none")		
-		} 
-		function moreList() {
-			for(let i=startCnt; i<startCnt + 3; i++) {
-				$("#house"+i).css("display","block");
+		//더보기 버튼 구현
+		$(document).ready(function() {
+			let lengthSize = $(".hostHouseOne").length;
+			let startCnt = 3;
+		 	for(let i=startCnt; i<lengthSize; i++) {
+				$("#house"+i).css("display","none")		
 			} 
-			startCnt = startCnt + 3;
-			if(startCnt > lengthSize) {
-				$("#addBtn").css("display", "none");
+			function moreList() {
+				for(let i=startCnt; i<startCnt + 3; i++) {
+					$("#house"+i).css("display","block");
+				} 
+				startCnt = startCnt + 3;
+				if(startCnt > lengthSize) {
+					$("#addBtn").css("display", "none");
+				}
 			}
-		}
-		let commentSize = $("#hostCommentAll > div").length;
-		let startCnt2 = 3;
-		for(let i=startCnt2; i<commentSize; i++) {
-			$("#comment"+i).css("display","none");
-		}
-		function moreList2() {
-			for(let i=startCnt2; i<startCnt2 + 3; i++) {
-				$("#comment"+i).css("display","block");
-			} 
-			startCnt2 = startCnt2 + 3;
-			if(startCnt2 > commentSize) {
-				$("#addBtn2").css("display", "none");
+			let commentSize = $("#hostCommentAll > div").length;
+			let startCnt2 = 3;
+			for(let i=startCnt2; i<commentSize; i++) {
+				$("#comment"+i).css("display","none");
 			}
-		}
+			function moreList2() {
+				for(let i=startCnt2; i<startCnt2 + 3; i++) {
+					$("#comment"+i).css("display","block");
+				} 
+				startCnt2 = startCnt2 + 3;
+				if(startCnt2 > commentSize) {
+					$("#addBtn2").css("display", "none");
+				}
+			}
+		})
+		
+		$(".reportHost").on("click", e => {
+			let login = '<%=loginM%>';
+			let loginNo = '<%=loginM.getMemberNo() %>';
+			let myHouse = '<%=myHouse %>';
+			let host = '<%=h.getMemberNo() %>';
+			console.log(loginNo);
+			console.log(host);
+			if(login == null) {
+				alert("로그인해주세요");
+			} else {
+				if(myHouse == null) {
+					alert("이 호스트의 숙소를 이용한적이 없습니다.");
+				} else if(loginNo === host) {
+					alert("현재 로그인한 사람과 호스트가 일치합니다.");
+				} else {
+					/* 여기서 신고페이지로 넘어가게 하기 */
+					alert("이 호스트의 숙소를 이용한적이 있습니다.");
+				}
+				
+			}
+		})	
 
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
