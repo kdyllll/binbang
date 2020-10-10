@@ -44,9 +44,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		  String nickname= request.getParameter("nickname2");
 		  System.out.println("넘어온 nickname:"+nickname);
 		  String phone= request.getParameter("phone2");
-		  System.out.println("넘어온 phone:"+phone);
-		  
-		  JSONObject valueTranfer= new JSONObject();
+		  System.out.println("넘어온 phone:"+phone);		  	
 		  
 		int rs=new MemberService().updateMember(m);
 		
@@ -55,11 +53,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		if(rs>0) {
 			msg="회원수정 성공!";			
-			loc="/views/member/myPage.jsp";			
-			/*
-			 * request.setAttribute("phone", phone); request.setAttribute("nickname",
-			 * nickname);
-			 */
+			loc="/member/myPage?email="+m.getEmail();			
 		}else {
 			msg="회원수정 실패!";
 			loc="/member/mypagePrivate?email="+m.getEmail();			
@@ -67,8 +61,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		
 		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);				
-		
+		request.setAttribute("loc", loc);						
 		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);	
 	}
 

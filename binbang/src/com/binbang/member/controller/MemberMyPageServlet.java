@@ -33,7 +33,9 @@ public class MemberMyPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
 		String email = request.getParameter("email");
+		System.out.println(email);
 		Member m = new MemberService().selectInfo(email);
+		System.out.println(m);
 
 		request.setAttribute("member", m);
 		request.getRequestDispatcher("/views/member/myPage.jsp").forward(request, response);
