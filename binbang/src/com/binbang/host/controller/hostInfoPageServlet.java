@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.booking.model.vo.Booking;
 import com.binbang.host.model.service.HostService;
 import com.binbang.host.model.vo.Host;
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
+import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Member;
 
 /**
  * Servlet implementation class hostInfoPageServlet
@@ -35,11 +38,22 @@ public class hostInfoPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String hostNo = request.getParameter("hostNo");
+		System.out.println(hostNo);
 		Host h = new HostService().selectHostInfo(hostNo);
+		//house
 		List<House> list= new HouseService().selectHostHouse(hostNo);
+		//리뷰
+		List<Review> reviewList = new HostService().selectHostReview(hostNo);
+		//member
+		List<Member> hostMember = new HostService().selectHostMember(hostNo);
+		//reservation
+		List<Booking> hostReserv = new HostService().selectHostBooking(hostNo);
 		System.out.println(list);
 		request.setAttribute("host", h);
 		request.setAttribute("list", list);
+		request.setAttribute("reviewList", reviewList);
+		request.setAttribute("hostMember", hostMember);
+		request.setAttribute("hostReserv", hostReserv);
 		request.getRequestDispatcher("/views/host/hostInfoPage.jsp").forward(request, response);
 	}
 

@@ -28,9 +28,9 @@
 						
 						<span id="pwCheck"></span>
 						
-						<input type="text" name="name" placeholder="Name" required> 
+						<input type="text" name="name" placeholder="Name" id="name" required> 
 						<input type="text" name="nickname" placeholder="Nickname" required> 
-						<input type="text" name="phone" placeholder="Phone" required>
+						<input type="text" name="phone" placeholder="Phone" id="phone" required>
 					</div>
 				</div>
 					<!-- 인증완료 -->
@@ -354,18 +354,37 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
         	
         	
         /* 전화번호 정규표현*/
-       	var phone=$("#phone").val();
+       	var phone = document.getElementById("phone");
        	var regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
 			 if(!regPhone.test(phone.value)){
 				 alert("전화번호를 입력해주세요")
 			 }       
-    	  
-    	
-    	if($("#hidden").val()=="인증이 완료되었습니다."){
-    		$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
-    		}else{
+		
+		/* 약관동의와 인증이후 회원가입*/ 
+    	if($("#hidden").val()!="인증이 완료되었습니다."){
     			alert("중복확인을 해주세요.");
+    		}else if($("#checkbox1").is(":checked") == false){
+                alert("모든 약관에 동의해주세요");
+                return;
+            }else if($("#checkbox2").is(":checked") == false){
+                alert("모든 약관에 동의해주세요");
+                return;
+            }else if($("#checkbox3").is(":checked") == false){
+                alert("모든 약관에 동의해주세요");
+                return;
+            }else{
+    			$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
     		}    	    	    	    	
+    	  
+    	/* 약관동의 */                        
+    			
+                
+        
+
+
+
+			  
+    	
     }
     
     

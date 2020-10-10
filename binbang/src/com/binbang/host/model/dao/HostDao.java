@@ -5,10 +5,17 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import com.binbang.booking.model.vo.Booking;
 import com.binbang.host.model.vo.Host;
 import com.binbang.house.model.dao.HouseDao;
+import com.binbang.house.model.vo.House;
+import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Member;
+
 import static com.binbang.common.JDBCTemplate.close;
 
 public class HostDao {
@@ -102,7 +109,6 @@ public class HostDao {
 				h.setIntro(rs.getString("intro"));
 				h.setProfilePic(rs.getString("profile_pic"));
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -110,5 +116,85 @@ public class HostDao {
 			close(pstmt);
 		}
 		return h;
+	}
+	
+	public List<Review> selectHostReview(Connection conn, String hostNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Review> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
+			pstmt.setString(1, hostNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {	
+				Review r = new Review();
+				r.setCommentNo(rs.getString("comment_no"));
+				r.setHouseNo(rs.getString("house_no"));
+				r.setMemberNo(rs.getString("member_no"));
+				r.setCommentTitle(rs.getString("comment_title"));
+				r.setCommentContents(rs.getString("comment_contents"));
+				r.setHouseGrade(rs.getDouble("house_grade"));
+				list.add(r);
+			}	
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public List<Member> selectHostMember(Connection conn, String hostNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Member> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
+			pstmt.setString(1, hostNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {	
+				Member m = new Member();
+				m.setEmail(rs.getString("email"));
+				m.setMemberNo(rs.getString("member_no"));
+				m.setNickname(rs.getString("nickname"));
+				list.add(m);
+				
+			}	
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public List<Booking> selectHostBooking(Connection conn, String hostNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
+			pstmt.setString(1, hostNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {	
+				Booking b = new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setHouseRequest(rs.getString("house_request"));
+				list.add(b);
+			}	
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
 	}
 }
