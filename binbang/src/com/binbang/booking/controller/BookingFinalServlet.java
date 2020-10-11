@@ -31,11 +31,14 @@ public class BookingFinalServlet extends HttpServlet {
 		String in=request.getParameter("checkIn");
 		String out1=request.getParameter("checkOut");
 		String price=request.getParameter("totalPrice");
+		String totalPoint=request.getParameter("totalPoint");
+		
 		
 		request.setAttribute("houseNo", no);
 		request.setAttribute("checkIn",in);
 		request.setAttribute("checkOut",out1);
 		request.setAttribute("totalPrice",price);
+		request.setAttribute("totalPoint",totalPoint);
 		request.getRequestDispatcher("/views/booking/pay.jsp?houseNo="+no).forward(request,response);
 
 	}
