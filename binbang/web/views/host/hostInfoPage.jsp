@@ -12,7 +12,6 @@
 	List<House> list = (List)request.getAttribute("list");
 	List<Review> rList =(List)request.getAttribute("reviewList");
 	Member loginM = (Member)session.getAttribute("m");
-	
 	List<House> myHouse = (List)request.getAttribute("myHouse");
 %>
 </head>
@@ -47,7 +46,10 @@
 				<img  class="checkPic" src="<%=request.getContextPath() %>/image/host/host_regist/icon/check.png">
 				<span>전화번호 인증</span>
 			</div>
-			<p class="reportHost">신고하기</p>
+			<form class="reportHost" name="reportHost" >
+				<input type="hidden" name="hostNo" value="<%=h.getHostNo()%>">
+				<a>신고하기</a>
+			</form>
 		</aside>
 		<aside class="hostHouseInfoCon">
 			<div class="hostIntroduction">
@@ -94,10 +96,7 @@
 			<button id="addBtn2" onclick="moreList2();">
 				<span>더보기</span>
 			</button>
-			
-			<form id="hostReport">
-				<input type="hidden" name="hostNo" value="<%=h.getHostNo()%>">
-			</form>
+
 
 		</aside>
 	</section>
@@ -105,7 +104,7 @@
 	</div>
 	<script>
 		//더보기 버튼 구현
-		$(document).ready(function() {
+		
 			let lengthSize = $(".hostHouseOne").length;
 			let startCnt = 3;
 		 	for(let i=startCnt; i<lengthSize; i++) {
@@ -134,29 +133,50 @@
 					$("#addBtn2").css("display", "none");
 				}
 			}
-		})
 		
-		$(".reportHost").on("click", e => {
-			let login = '<%=loginM%>';
-			let loginNo = '<%=loginM.getMemberNo() %>';
-			let myHouse = '<%=myHouse %>';
-			let host = '<%=h.getMemberNo() %>';
+
+		 $(".reportHost").on("click", e => {
+			 let login = "";
+			 let loginNo = "";
+			 let myHouse = "";
+			 let host = "";
+		 
+			<% if(loginM != null) {%>
+				login = '<%=loginM %>';
+				loginNo = '<%=loginM.getMemberNo() %>';
+			<% } %>
+			<% if(myHouse != null ) {%>
+			 	myHouse = '<%=myHouse %>';
+			<% } %>
+			host = '<%=h.getMemberNo() %>'; 
+			console.log(myHouse);
 			console.log(loginNo);
-			console.log(host);
-			if(login == null) {
-				alert("로그인해주세요");
-			} else {
-				if(myHouse == null) {
-					alert("이 호스트의 숙소를 이용한적이 없습니다.");
+			if(login == "") {
+				alert("로그인한 회원만 이용가능합니다.");
+			}  else {
+				if(myHouse == "[]") {				
+					alert("해당 호스트의 숙소를 이용한적이 없습니다.");
 				} else if(loginNo === host) {
 					alert("현재 로그인한 사람과 호스트가 일치합니다.");
 				} else {
 					/* 여기서 신고페이지로 넘어가게 하기 */
-					alert("이 호스트의 숙소를 이용한적이 있습니다.");
+					fn_reportPage();
 				}
-				
-			}
-		})	
+			}	
+		});
+		 //신고하기 팝업창으로 이동
+		 function fn_reportPage() {
+		   		const url = "<%=request.getContextPath()%>/hostReport";
+		   		const title = "hostReport";
+		   		const status = "left=500px, top=100px, width=500px, height=500px";
+		   		open("",title,status); 
+
+		   	 	reportHost.target = title;
+		   	 	reportHost.action = url;
+		   		reportHost.method = "post";
+
+		   	 	reportHost.submit();
+		 }
 
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
