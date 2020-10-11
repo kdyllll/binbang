@@ -11,8 +11,7 @@
 		<!-- 관심숙소 -->
 		<section class="section">
 			<div class="line1">
-				<p>관심숙소</p>
-				<br>
+				<p>관심숙소</p>				
 				<div class="listLine"></div>
 			</div>
 
@@ -20,34 +19,28 @@
 			<div class="favorite">
 
 				<!-- 목록만들기 팝업 -->
-				<button id="listBuildBtn">목록만들기</button>
+				<input type="button" id="listBuildBtn" value="목록만들기" >				
 
 				<div class="listPop listDisNone">
 					<div id="popupContent">
+					
 						<div class="popupHeader">
-							<p>목록만들기</p>
+							<p class="makingTitle">목록만들기</p>
 							<button class="xBtn">x</button>
 						</div>
 
-						<div class="line2"></div>
-
 						<div class="popupSection">
-							<input id="listName" type="text" placeholder="이름">
-						</div>
-
-						<div class="line2"></div>
-
-						<div class="popupFooter">
-							<button id="checkBtn">저장</button>
-						</div>
+							<input  type="text" id="listName" placeholder="이름">
+							<input type="button" id="checkBtn" value="저장"> 							
+						</div>												
+						
 
 					</div>
 				</div>
 
 				<div class="favoriteList">				
 					<a href="<%=request.getContextPath() %>/member/favoriteContents" class="eachList">
-						<div class="recomPic1 recommon"></div>
-						<div class="favoriteContents"></div>
+						<div class="recomPic1 recommon"></div>						
 					</a>
 				
 				</div>
