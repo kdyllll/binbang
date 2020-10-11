@@ -280,3 +280,7 @@ ul.box {
 .iconPeople{
     background-image: url("../../image/house/houseSearch/listicon/user.png");
 }
+
+.disnone{
+    display: none;
+}
