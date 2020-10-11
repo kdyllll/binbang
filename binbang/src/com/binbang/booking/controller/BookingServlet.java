@@ -36,7 +36,7 @@ public class BookingServlet extends HttpServlet {
 		
 		
 			String no=request.getParameter("houseNo");
-			System.out.println(no);
+		
 			House h=new HouseService().HouseDetail(no);
 			
 			String msg="";
@@ -49,9 +49,11 @@ public class BookingServlet extends HttpServlet {
 				request.setAttribute("msg",msg);
 				request.setAttribute("loc",loc);
 			}
+			System.out.println("하우스 no"+no);
+			System.out.println("하우스"+h);
 		
 		
-			System.out.println("booking"+h);
+			
 		
 			request.setAttribute("house",h);
 

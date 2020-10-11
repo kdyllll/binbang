@@ -27,6 +27,8 @@ public class BookingFinalServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String houseNo=request.getParameter("houseNo");
+		request.setAttribute("houseNo", houseNo);
 		request.getRequestDispatcher("/views/booking/pay.jsp").forward(request,response);
 
 	}
