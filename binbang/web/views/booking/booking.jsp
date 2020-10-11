@@ -127,7 +127,7 @@
 							</div>
 							<div class="payBox">
 								<div class="pay">
-									<a href="<%=request.getContextPath()%>/booking/bookingFinal">booking</a>
+									<a href="<%=request.getContextPath()%>/booking/bookingFinal?houseNo="+<%=h.getHouseNo() %>>booking</a>
 
 
 
