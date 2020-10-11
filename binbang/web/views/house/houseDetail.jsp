@@ -13,7 +13,9 @@
    Double grade=(Double)request.getAttribute("grade");
    Member m2 =(Member)session.getAttribute("m");
    List<Review> list=(List)request.getAttribute("list");
-
+   String in=(String) request.getAttribute("checkIn");
+   String out1=(String) request.getAttribute("checkOut");
+   String price=(String) request.getAttribute("totalPrice");
 %>
 
 <%
@@ -112,16 +114,17 @@
                <br>
 
                <div class="pricebox">
-                  <div class="price"><%=h.getPricePeakWeekend() %> won</div>
+                  <div class="price"><%=price%> won</div>
                </div>
                <br> <br>
                <div class="paybox">
                   <div class="pay">
                      <% if(m2 != null)  {%>
-                     <a href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>">booking</a>
+                     <a href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>">booking</a>
                      <%} else { %>
-                        <a href="<%=request.getContextPath()%>/member/moveLoginPage">로그인</a>
-
+                     <form name="loginPopUp">
+                        <input type="button" onclick="fn_loginPopUp();">
+					</form>
                      <%} %>
                   </div>
                </div>
@@ -378,6 +381,19 @@
       src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
    <script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
    <script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
-
+	<script>
+		function fn_loginPopUp() {
+		 	const url = "<%=request.getContextPath()%>/loginPopUp";
+	   		const title = "loginPopUp";
+	   		const status = "left=100px, top=100px, width=250px, height=250px";
+	   		open("",title,status); 
+	
+	   		loginPopUp.target = title;
+	   		loginPopUp.action = url;
+	   		loginPopUp.method = "post";
+	
+	   		loginPopUp.submit();
+	 }
+	</script>
 </body>
 </html>
