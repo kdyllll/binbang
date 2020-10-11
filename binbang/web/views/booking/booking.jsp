@@ -51,14 +51,13 @@ String price = (String) request.getAttribute("totalPrice");
 							for="card">유아</label> <input class="personnel1" type="number"
 							name="nval" min="0" max="10" step="1" value="0">
 					</div>
-					<br> <br>
-					<div>
-						총 포인트 :
-						<%=m.getPoint()%></div>
-					<br> <br>
-					<form
-						action="<%=request.getContextPath()%>/House/pointEnd?houseNo=<%=houseNo%>"
-						method="post" enctype="multipart/form-data" class="cuphone">
+
+					<br>
+					<br>
+					<div>총 포인트 : <%=m.getTotalPoint() %></div>
+					<br>
+					<br>
+					<div class="cuphone">
 
 						포인트사용 : <input class="pointWriter" name="point" type="text"
 							placeholder="사용할 포인트를 입력하세요"> <input class="personnel1"

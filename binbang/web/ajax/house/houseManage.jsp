@@ -15,22 +15,25 @@
 }
 
 .myHouseImgCon {
-	display: flex;
-	justify-content: stretch;
-	flex-wrap: wrap;
+	width:100%;
 }
 
 .houseImg {
-	width: 250px;
+	float:left;
+	width: calc((100% - 60px) / 4);
 	height: 350px;
 	padding-bottom: 30px;
 	margin-right:20px;
 }
 
+.houseImg:nth-child(4n) {
+	margin-right:0;
+}
+
 .houseImg img {
 	width: 100%;
 	height: 300px;
-	border: 1px solid;
+	background-color:#ffeaa7;
 }
 
  .houseImg>form {
@@ -50,7 +53,9 @@
 		%>
 	<div class="houseImg">	
 		<form class="houseAll" method="post">
-			<img> 
+			<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>">
+				<img src="<%=request.getContextPath() %>/upload/house/<%=h.getHouseMainPic() %>">
+			</a> 
 			<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>" /> 
 				<span><%=h.getHouseName().length() > 15 ? h.getHouseName().substring(0, 15) +"..." : h.getHouseName() %></span> 
 			<div>
@@ -62,6 +67,7 @@
 	<%
 			}
 		%>
+		<div style="clear:both;"></div>
 </div>
 <script>
 	$(".deleteH").on("click",e => {

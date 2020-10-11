@@ -8,11 +8,11 @@
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
 
-		<!-- 관심숙소 -->
+
+		<!-- 관심숙소content -->
 		<section class="section">
 			<div class="line1">
-				<p>폴더명</p>
-				<br>
+				<input type="text" value="관심폴더명" class="favTitle">
 				<div class="listLine"></div>
 			</div>
 
@@ -21,31 +21,27 @@
 			<div class="favorite">
 
 				<!-- 버튼 -->
-				<div class="backButton">
-					<button id="backBtn">뒤로가기</button>
-					<button id="modifyBtn">목록수정</button>
+				<div class="btnGroup">
+					<input type="button" id="backBtn" value="뒤로가기" class="Btn">
+					<input type="button" id="modifyBtn" value="목록수정" class="Btn">															
 				</div>
 
 
 				<div class="modifyPop ModDisNone">
-
 					<div id="popupContent">
+					
 						<div class="popupHeader">
-							<p>수정</p>
+							<p class="modifyTitle">목록수정</p>
 							<button class="xBtn">x</button>
 						</div>
-
-						<div class="line2"></div>
 
 						<div class="popupSection">
 							<input id="listName" type="text" placeholder="이름">
 						</div>
 
-						<div class="line2"></div>
-
 						<div class="popupFooter">
-							<button id="saveBtn">저장</button>
-							<button id="deleteBtn">목록삭제</button>
+							<input type="button" id="saveBtn" value="저장">
+							<input type="button" id="deleteBtn" value="목록삭제">														
 						</div>
 
 					</div>
@@ -55,8 +51,7 @@
 					<div class="eachList">
 						<div class="recomPic1 recommon">
 							<div class="heartButton fav"></div>
-						</div>
-						<div class="favoriteContents"></div>
+						</div>						
 					</div>
 				</div>
 			</div>

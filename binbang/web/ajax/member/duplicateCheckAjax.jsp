@@ -24,7 +24,7 @@
 		<p class="title">이메일 인증</p>
 		<div class="line"></div>
 
-		<div class="line1">
+		<div class="line2">
 			[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. 
 			<input type="button" value="인증하기" id="emailConfirm">
 		</div>
@@ -32,8 +32,8 @@
 
 		<p class="checkTitle">인증번호</p>		
 		<form id="numberFrm">							
-				<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>"> <!-- 중복이 아닌 email enroll input창에 띄어줌 -->
 				<input type="text"  name="num" id="num" class="passNumber" placeholder="인증번호 입력"> 				 
+				<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>"> <!-- 중복이 아닌 email enroll input창에 띄어줌 -->
 				<input type="button" id="numConfirm" value="인증확인">			
 		</form>				
 
@@ -52,11 +52,13 @@
 		<div class="line1">
 			[<span id="duplicated"><%=email%></span>]는 사용중입니다.
 		</div>
-
-		<form action="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax" method="post">
-			<input type="text" name="email" class="passDuplicate" placeholder="Email Retry"> 
-			<input type="submit" value="중복검사" onclick="return fn_validate();" id="duplicateRetry">
-		</form>
+		
+		<div class="popFooter">		
+			<form action="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax" method="post">
+				<input type="text" name="email" class="passDuplicate" placeholder="Email Retry"> 
+				<input type="submit" value="중복검사" onclick="return fn_validate();" id="duplicateRetry">
+			</form>
+		</div>
 		<% } %>
 	</div>	
 

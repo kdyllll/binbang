@@ -189,7 +189,12 @@ public class HouseService {
 		return count;
 	}
 
-	
+	public List<House> selectmyHouse(String hostNo, String memberNo ){
+		Connection conn = getConnection();
+		List<House> list = dao.selectmyHouse(conn, hostNo, memberNo);
+		close(conn);
+		return list;
+	}
 	
 
 

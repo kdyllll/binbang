@@ -19,7 +19,7 @@
 		<div class="point">
 			<div>
 				<div class="pointContents">
-					POINT : <%=m.getPoint()%>					
+					POINT : <%=m.getTotalPoint()%>					
 				</div>
 			</div>
 
