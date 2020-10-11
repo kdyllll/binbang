@@ -48,7 +48,7 @@
 					</div>
 					<br>
 					<br>
-					<div>총 포인트 : <%=m.getPoint() %></div>
+					<div>총 포인트 : <%=m.getTotalPoint() %></div>
 					<br>
 					<br>
 					<div class="cuphone">
@@ -127,7 +127,7 @@
 							</div>
 							<div class="payBox">
 								<div class="pay">
-									<a href="<%=request.getContextPath()%>/booking/bookingFinal">booking</a>
+									<a href="<%=request.getContextPath()%>/booking/bookingFinal?houseNo="+<%=h.getHouseNo() %>>booking</a>
 
 
 

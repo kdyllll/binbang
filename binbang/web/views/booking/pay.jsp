@@ -7,11 +7,10 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
-<%@page import="com.binbang.house.model.vo.House,com.binbang.member.model.vo.Member"%>
+<%@page import="java.util.List,com.binbang.house.model.vo.House,com.binbang.member.model.vo.Member"%>
 <%
-	 House h = (House) request.getAttribute("house");
-	Member m2 = (Member) session.getAttribute("m");
-	Member member = (Member) session.getAttribute("m");
+	 String houseNo = (String)request.getAttribute("houseNo");
+	
  	
 %>
 <div class="request_pay"></div>
@@ -43,7 +42,7 @@ IMP.request_pay({
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
-        location.assign("<%=request.getContextPath()%>/booking/reservation");//홈으로 가는구문 
+        location.assign("<%=request.getContextPath()%>/booking/booking?houseNo="<%=houseNo%>);//홈으로 가는구문 
        
 
        
