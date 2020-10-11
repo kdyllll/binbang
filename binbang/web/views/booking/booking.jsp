@@ -140,6 +140,7 @@ String price = (String) request.getAttribute("totalPrice");
 									<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
 									<input type="hidden" name="checkIn" value="<%=in%>">
 									<input type="hidden" name="checkOut" value="<%=out1%>">
+									<input type="hidden" name="totalPoint" >
 									<input type="hidden" class="totalPrice" name="totalPrice" value="<%=price%>">
 									<input type="submit" value="Booking">
 								</div>
@@ -200,10 +201,11 @@ String price = (String) request.getAttribute("totalPrice");
 		let price = $(".housePrice").html();
 		//결과는 기본값 - 포인터차감
 		let result = price - point;	
+		let totalPoint = result * 0.5;
 		//눈으로 확인하기위해
 		$(".housePrice").html(result);
 		$(".totalPrice").val(result);
-		console.log("")
+		$(".totalPoint").val(totalPoint);
 
 	}
 	
