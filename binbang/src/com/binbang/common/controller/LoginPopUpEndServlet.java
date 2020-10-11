@@ -16,7 +16,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class LoginPopUpEndServlet
  */
-@WebServlet(name="loginPopUp",urlPatterns="loginPopUpEnd")
+@WebServlet(name="loginPopUp",urlPatterns="/loginPopUpEnd")
 public class LoginPopUpEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -54,9 +54,11 @@ public class LoginPopUpEndServlet extends HttpServlet {
 	   String str="";
 	   str = "<script language='javascript'>";
 	   str += "alert('"+ msg + "');";  //오프너 새로고침
-	   str += "self.close();";   // 창닫기
+	   str += " window.opener.location.reload();";   // 창닫기
+	   str += "window.close();";   // 창닫기
 	   str += "</script>";
 	   out.print(str);
+
 	}
 
 	/**
