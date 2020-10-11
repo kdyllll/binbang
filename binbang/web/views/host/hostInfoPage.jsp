@@ -153,6 +153,7 @@
 			console.log(loginNo);
 			if(login == "") {
 				alert("로그인한 회원만 이용가능합니다.");
+				fn_loginPopUp();
 			}  else {
 				if(myHouse == "[]") {				
 					alert("해당 호스트의 숙소를 이용한적이 없습니다.");
@@ -164,6 +165,19 @@
 				}
 			}	
 		});
+		 
+		 function fn_loginPopUp() {
+			 	const url = "<%=request.getContextPath()%>/loginPopUp";
+		   		const title = "loginPopUp";
+		   		const status = "left=100px, top=100px, width=250px, height=250px";
+		   		open("",title,status); 
+
+		   	 	reportHost.target = title;
+		   	 	reportHost.action = url;
+		   		reportHost.method = "post";
+
+		   	 	reportHost.submit();
+		 }
 		 //신고하기 팝업창으로 이동
 		 function fn_reportPage() {
 		   		const url = "<%=request.getContextPath()%>/hostReport";
