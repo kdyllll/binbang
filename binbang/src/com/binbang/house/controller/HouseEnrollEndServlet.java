@@ -69,7 +69,9 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setHouseGemsung(mr.getParameter("gemsung"));// 감성글
 		h.setAttention(mr.getParameter("attention"));// 주의사항
 		h.setInoutTime(mr.getParameter("checkTime"));// 체크인아웃시간
-
+		h.setAmenity(mr.getParameter("amenity"));
+		h.setEquipment(mr.getParameter("equipment"));
+		
 		// 성수기 기간
 		String Day1 = mr.getParameter("startDay1");
 		String Day2 = mr.getParameter("endDay1");
@@ -141,7 +143,8 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		List<Integer> results = new ArrayList<Integer>();
 		results.add(new HouseService().insertHouse(h));
 		h.setHouseNo(new HouseService().selectHouseNo(h));
-
+		
+		
 		for (int i = 0; i < filter.length; i++) {
 			results.add(new HouseService().insertFilter(h, filter[i]));
 		}

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page import ="com.binbang.member.model.vo.Member"  %>
 <%@ include file="/views/common/commonLink.jsp"%>
+<% Member m1 = (Member)request.getAttribute("member"); %>
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/member/myPage.css" />
-
 </head>
 <body>
 	<div class="wrap">
@@ -19,21 +19,21 @@
 			<form id="memberFrm" method="post">
 				<!-- 회원정보 -->
 				<div class="lineList">
-					<div class="line1">
+					<div>
 						<p>회원이름</p>
-						<div class="memberName"><%=m.getMemberName()%></div>
+						<input class="memberName" value="<%=m1.getMemberName()%>" id="name3" readonly>												
 					</div>
-					<div class="line2">
+					<div>
 						<p>이메일</p>
-						<div class="memberEmail"><%=m.getEmail()%></div>
+						<input class="memberEmail" value="<%=m1.getEmail()%>" id="email3" readonly>						
 					</div>
-					<div class="line3">
+					<div>
 						<p>전화번호</p>
-						<div class="memberPhone"><%=m.getPhone()%></div>
+						<input class="memberPhone" value="<%=m1.getPhone()%>" id="phone3" readonly>						
 					</div>
-					<div class="line4">
+					<div>
 						<p>닉네임</p>
-						<div class="memeberNickName"><%=m.getNickname()%></div>
+						<input class="memeberNickName" value="<%=m1.getNickname()%>" id="nickname3" readonly>													
 					</div>
 				</div>
 			</form>

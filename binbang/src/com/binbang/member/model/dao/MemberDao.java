@@ -154,18 +154,18 @@ public class MemberDao {
 	//mypage 회원정보수정(비밀번호 이외)
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
-		int result=0;
+		int rs=0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("updateMember"));			
 			pstmt.setString(1, m.getNickname());
 			pstmt.setString(2, m.getPhone());
 			pstmt.setString(3, m.getEmail());	
-			result=pstmt.executeUpdate();
+			rs=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
-		}return result;
+		}return rs;
 	}
 	
 	

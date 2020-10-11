@@ -159,6 +159,8 @@ public class HouseDao {
 			pstmt.setInt(15, h.getPriceWeekend());
 			pstmt.setInt(16, h.getPricePeakDay());
 			pstmt.setInt(17, h.getPricePeakWeekend());
+			pstmt.setString(18, h.getAmenity());
+			pstmt.setString(19, h.getEquipment());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
