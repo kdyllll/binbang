@@ -52,7 +52,7 @@ public class AdminDao {
 					m.setStayDays(rs.getInt("stay_days"));
 					m.setHostBlack(rs.getString("host_black"));
 					m.setHostConfirm(rs.getString("host_confirm"));
-					m.setPoint(rs.getInt("point"));
+					m.setTotalPoint(rs.getInt("total_point"));
 					list.add(m);
 				}
 				
@@ -233,7 +233,7 @@ public class AdminDao {
 					m.setStayDays(rs.getInt("stay_days"));
 					m.setHostBlack(rs.getString("host_black"));
 					m.setHostConfirm(rs.getString("host_confirm"));
-					m.setPoint(rs.getInt("point"));
+					m.setTotalPoint(rs.getInt("total_point"));
 					list.add(m);
 					
 				}

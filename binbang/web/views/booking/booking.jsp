@@ -48,7 +48,7 @@
 					</div>
 					<br>
 					<br>
-					<div>총 포인트 : <%=m.getPoint() %></div>
+					<div>총 포인트 : <%=m.getTotalPoint() %></div>
 					<br>
 					<br>
 					<div class="cuphone">
