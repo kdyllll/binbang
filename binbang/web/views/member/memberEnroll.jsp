@@ -320,7 +320,7 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
      		
     	const url="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax";    	
     	const title="checkEmailDuplicate";
-    	const status="left=500px,top=100px, width=500px, height=400px";
+    	const status="left=370px,top=100px, width=500px, height=400px";
     	
     	open("",title,status);       	
     	checkEmailDuplicate.target=title;
