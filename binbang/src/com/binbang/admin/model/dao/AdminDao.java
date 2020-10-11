@@ -400,16 +400,16 @@ public class AdminDao {
 				b.setReservDate(rs.getDate("reserv_date"));
 				b.setPrice(rs.getInt("price"));
 				list.add(b);
-				
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}return list;
-	}
-	
+
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return list;
+		}
+		
 	//숙소 리스트 검색
 	public List<House> searchHouseList(Connection conn,String type,String key){
 		PreparedStatement pstmt=null;

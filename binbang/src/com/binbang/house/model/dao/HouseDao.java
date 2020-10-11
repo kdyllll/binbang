@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.vo.House;
 import com.binbang.house.model.vo.Review;
 
@@ -158,6 +159,8 @@ public class HouseDao {
 			pstmt.setInt(15, h.getPriceWeekend());
 			pstmt.setInt(16, h.getPricePeakDay());
 			pstmt.setInt(17, h.getPricePeakWeekend());
+			pstmt.setString(18, h.getAmenity());
+			pstmt.setString(19, h.getEquipment());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -231,11 +234,12 @@ public class HouseDao {
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("houseDetail"));
 			pstmt.setString(1, no);
+		
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				h=new House();
 				h.setHouseNo(rs.getString("house_no")); //숙소번호
-				h.setHostNo(rs.getString("host_no")); //숙소번호
+				h.setHostNo(rs.getString("host_no")); 
 				h.setHouseName(rs.getNString("house_name")); //숙소이름
 				h.setHouseType(rs.getNString("house_type")); //숙소유형
 				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
@@ -262,11 +266,54 @@ public class HouseDao {
 		}return h;
 	}
 	
-	public House FilterDetail(Connection conn, String no) {
+	
+
+	public Booking selectReservation(Connection conn, String no) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		House h=new House();
-		List l=new ArrayList();
+		Booking b=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectReservation"));
+			pstmt.setString(1, no);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				b=new Booking();
+				b.setReservationNo(rs.getString("reservation_No"));
+				b.setMemberNo(rs.getString("member_No"));
+				b.setHouseNo(rs.getString("house_no")); //숙소번호
+				b.setGuestName(rs.getString("guest_Name")); 
+				b.setCheckInDate(rs.getDate("checkIn_Date")); //숙소이름
+				b.setCheckOutDate(rs.getDate("checkOut_Date")); //숙소유형
+				b.setGuestPnum(rs.getInt("guest_Pnum")); //숙소위치
+				b.setPaymentOption(rs.getString("payment_Option")); //숙소최대인원
+				b.setHouseRequest(rs.getNString("house_Request")); //개인물건 유무
+				b.setApprovalDate(rs.getDate("approval_Date")); //개인물건 유무
+				b.setPrice(rs.getInt("price")); //개인물건 유무
+				b.setReservDate(rs.getDate("reserv_Date")); //개인물건 유무
+				b.setMemberEmail(rs.getNString("member_Email")); //개인물건 유무
+				b.setHouseName(rs.getNString("house_Name")); //개인물건 유무
+				b.setHouseMainPic(rs.getNString("house_MainPic")); //개인물건 유무
+				b.setPointPlus(rs.getInt("point_Plus")); //개인물건 유무
+				b.setPointMinus(rs.getInt("point_Minus")); //개인물건 유무
+
+			
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+			
+		}return b;
+	}
+	
+
+	
+	public List FilterDetail(Connection conn, String no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+	
+		List<String> l=new ArrayList();
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("filterDetail"));
 			pstmt.setString(1, no);
@@ -275,13 +322,13 @@ public class HouseDao {
 				l.add(rs.getNString("filter_icon"));
 				//여기에서 파일이름이 리스트에 담김
 			}
-			h.setFilter(l);
+
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rs);
 			close(pstmt);
-		}return h;
+		}return l;
 	}
 	
 	
@@ -302,6 +349,7 @@ public class HouseDao {
 				r.setFilePath(rs.getNString("file_path")); //후기사진
 				r.setHouseNo(rs.getNString("house_no")); //숙소번호
 				list.add(r);
+				
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -342,6 +390,8 @@ public class HouseDao {
 				House h = new House();
 				h.setHouseName(rs.getString("house_name"));
 				h.setHouseNo(rs.getString("house_no"));
+				h.setHouseMainPic(rs.getString("picture_name"));
+				h.setHouseLocation(rs.getString("house_location"));
 				list.add(h);
 			}
 		}catch(Exception e) {
@@ -374,7 +424,7 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no")); //숙소번호
 				h.setHouseName(rs.getNString("house_name")); //숙소이름
 				h.setHouseType(rs.getNString("house_type")); //숙소유형
-				h.setHouseLocation(rs.getNString("house_location")); //숙소위치
+				h.setHouseLocation(rs.getNString("house_location").substring(0, 2)); //숙소위치
 				h.setHousePnum(rs.getInt("house_pnum")); //숙소최대인원
 				h.setpObjects(rs.getNString("p_objects")); //개인물건 유무
 				h.setRoomNum(rs.getInt("room_num")); //방갯수
@@ -492,6 +542,31 @@ public class HouseDao {
 			close(rs);
 			close(pstmt);
 		}return count;
+	}
+	
+	public List<House> selectmyHouse(Connection conn, String hostNo, String memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<House> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectmyHouse"));
+			pstmt.setString(1, hostNo);
+			pstmt.setString(2, memberNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				House h = new House();
+				h.setHouseName(rs.getString("house_name"));
+				h.setHouseNo(rs.getString("house_no"));
+				list.add(h);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
 	}
 
 

@@ -22,6 +22,17 @@
 
 %>
 
+
+	<!-- google login -->
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <script src="../firebase/init.js"></script>
+        <script src="<%=request.getContextPath()%>/js/etc/google.js"></script>
+
+
+
+
 </head>
 <body>
 	<div class="wrap">
@@ -63,15 +74,17 @@
 							<div id="kakaoImage"></div>
 							<span id="kakaoLogin">Kakao 로그인</span>
 						</a>
-						<a href="#" class="buttonDiv">
-							<div id="googleImage"></div>
+						<!-- <a href="#" class="buttonDiv"> -->
+						<button onclick="signIn()">
+							<div id="googleImage"></div>		
 							<span id="googleLogin">Google 로그인</span>
-						</a>
+						</button>
+						<!-- </a> -->
 					</div>
-
 				</form>
-				
+
 				<div id="naverIdLogin"></div>
+
 
 			</div>
 		</section>
@@ -89,12 +102,8 @@
 	             const url="<%=request.getContextPath()%>/member/findPassword";
 	             const status="width=500px,height=450px,top=150px,left=150px";
 	             open(url,"",status);
-	          });
-	          
-	          
-	          
+	          });	          	          	          
 	       });
-		
 		
 		
 		
@@ -135,7 +144,7 @@
 		        }
 		        Kakao.Auth.login({
 		          success: (auth) => {
-		            console.log('정상적으로 로그인 되었습니다.', auth)
+		            console.log('정상적으로 로그인 되었습니다.', auth);
 		            this.setState({
 		              isLogin: true
 		            })
@@ -149,6 +158,7 @@
 		      console.error(err)
 		    }
 		  } 
+
 		</script>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

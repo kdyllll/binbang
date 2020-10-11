@@ -34,7 +34,7 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String newPw=request.getParameter("new_pw");//변경할 비밀번호(입력)
-		String email=request.getParameter("email");
+		String email=request.getParameter("email2");
 		System.out.println(newPw);
 		System.out.println(email);
 		

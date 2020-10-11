@@ -23,6 +23,7 @@ public class Complaint {
 	private Complaint(String complaintNo, String memberNo, String hostNo, String complaintCategory,
 			String complaintDetail, String complaintState, Date complaintDate, String complaintPic, String hostName,
 			String memberEmail, String houseNo) {
+
 		super();
 		this.complaintNo = complaintNo;
 		this.memberNo = memberNo;
@@ -132,6 +133,7 @@ public class Complaint {
 				+ ", complaintState=" + complaintState + ", complaintDate=" + complaintDate + ", complaintPic="
 				+ complaintPic + ", hostName=" + hostName + ", memberEmail=" + memberEmail + ", houseNo=" + houseNo
 				+ "]";
+
 	}
 	
 

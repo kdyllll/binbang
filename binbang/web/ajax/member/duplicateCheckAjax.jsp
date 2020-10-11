@@ -24,16 +24,16 @@
 		<p class="title">이메일 인증</p>
 		<div class="line"></div>
 
-		<div class="line1">
+		<div class="line2">
 			[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. 
 			<input type="button" value="인증하기" id="emailConfirm">
-			<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>">
 		</div>
 
 
 		<p class="checkTitle">인증번호</p>		
-		<form id="numberFrm">			
-				<input type="text" class="passNumber" name="num" id="num" placeholder="인증번호 입력"> 				 
+		<form id="numberFrm">							
+				<input type="text"  name="num" id="num" class="passNumber" placeholder="인증번호 입력"> 				 
+				<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>"> <!-- 중복이 아닌 email enroll input창에 띄어줌 -->
 				<input type="button" id="numConfirm" value="인증확인">			
 		</form>				
 
@@ -52,14 +52,13 @@
 		<div class="line1">
 			[<span id="duplicated"><%=email%></span>]는 사용중입니다.
 		</div>
-
-		<form
-			action="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax"
-			method="post">
-
-			<input type="text" name="email" class="passDuplicate" placeholder="Email Retry"> 
-			<input type="submit" value="중복검사" onclick="return fn_validate();" id="duplicateRetry">
-		</form>
+		
+		<div class="popFooter">		
+			<form action="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax" method="post">
+				<input type="text" name="email" class="passDuplicate" placeholder="Email Retry"> 
+				<input type="submit" value="중복검사" onclick="return fn_validate();" id="duplicateRetry">
+			</form>
+		</div>
 		<% } %>
 	</div>	
 
@@ -101,21 +100,28 @@
 	});	
 	
 
-<%-- 	$("#numConfirm").on("click",e =>{
-		$("#numberFrm").attr("action","<%=request.getContextPath()%>/member/duplicateNumberCheck").submit();
-	}); --%>
 
-	$("#numConfirm").click(e => {
+	
+	
+	
+	$("#numConfirm").click(e => {		
+		/* 인증번호 확인후 창닫기 */
 		$.ajax({
 			url:"<%=request.getContextPath()%>/member/duplicateNumberCheck",
 			type:"post",
-			data:{"num":$("#num").val()},
+			data:{
+				  "num":$("#num").val(),
+				  "email":$("#email").val()
+				  },
 			dataType:"json",
 			success:data => {
-				console.log(data);
+			/* 인증(msg/email)이 enroll.jsp로 가도록 설정 */
+				console.log(data);																
 				alert(data["msg"]);
-				if(data["result"]=='0'){
-					self.close();
+				if(data["result"]=='0'){							
+					opener.document.getElementById("hidden").value=data["msg"];					
+					opener.document.getElementById("email_").value=data["email"];										
+				 	self.close(); 					
 				}
 			},
 			error:(request,status,error)=>{
@@ -123,9 +129,10 @@
 				console.log(status);
 				console.log(error);
 			}
-		});
+		});	
 	});
 	
+
 	
  	
  	/* 재전송 */ 
@@ -157,8 +164,8 @@
  	};
  	
 
-
-
+	
+	
 
 
 	
