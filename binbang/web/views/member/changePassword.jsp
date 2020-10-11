@@ -14,8 +14,7 @@
 
   <body>
    
-    <div class="loginContainer">
-    
+    <div class="loginContainer">    
       <p class="passwordTitle">비밀번호 재설정</p>
       
       <div class="passwordLine"></div>

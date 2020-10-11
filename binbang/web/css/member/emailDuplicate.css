@@ -3,7 +3,7 @@
 
 #emailCheck {
 	text-align: center;
-	padding: 5%;
+	padding: 10%;
 }
 
 /* 중복된 이메일일떄 */
@@ -17,17 +17,28 @@ span#duplicated {
 }
 
 .passDuplicate{
-	width: 170px;
+	width: 70%;
 	height: 35px;
 	border: 0;
 	outline: 0;
-	border-bottom: 0.5px solid;
+	border-bottom: 0.5px solid;	
+}
+
+.popFooter form{
+	        display:flex;
+        justify-content: space-between;
 }
 
 
 
 
 /* 중복이 아닌 이메일일때 */
+.line2{
+	margin:10% 0;
+	display:flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
 div#emailCheck {
 	text-align: center;
 	padding-top: 50px;
@@ -48,13 +59,17 @@ div#emailCheck {
 	margin: 20px 0;
 	background-color: black;
 }
+#numberFrm{
+	display:flex;
+	justify-content: space-between;
+}
 
 
 
 /* 이메일,인증번호 입력창 */
 .checkTitle{
     text-align: left; 
-    margin:2% 7%;
+    margin:2% 0;
     margin-top:12%;
     font-size:15px;
 }
