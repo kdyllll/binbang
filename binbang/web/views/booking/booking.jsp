@@ -27,7 +27,7 @@ String price = (String) request.getAttribute("totalPrice");
 	<div class="wrap">
 		<%@ include file="/views/common/bookingHeader.jsp"%>
 		<section class="section">
-			<form>
+			<form action="<%=request.getContextPath()%>/booking/bookingFinal" method="post">
 				<div class="reservation">
 					<ul>
 						<li>예약자 이름 :<%=m2.getMemberName()%>
@@ -58,11 +58,11 @@ String price = (String) request.getAttribute("totalPrice");
 					<br>
 					<br>
 					<div class="cuphone">
-
+					
 						포인트사용 : <input class="pointWriter" name="point" type="text"
-							placeholder="사용할 포인트를 입력하세요"> <input class="personnel1"
-							type="submit" value="사용하기">
-					</form>
+							placeholder="사용할 포인트를 입력하세요"> 
+							<input class="personnel1" type="button" onclick="test();" value="사용하기">
+					</div>
 					<br>
 					<div class="payMent">
 						결제방법 :
@@ -120,7 +120,7 @@ String price = (String) request.getAttribute("totalPrice");
 								<div>[2020년 08월 29일 ~ 2020년 08월 30일]</div>
 							</div>
 							<br>
-							<div><%=price%></div>
+							<div class="housePrice"><%=price%></div>
 							<br>
 							<div class="payInfoBox">
 								<div class="payInfo" method="POST">
@@ -136,11 +136,12 @@ String price = (String) request.getAttribute("totalPrice");
 							</div>
 							<div class="payBox">
 								<div class="pay">
-									<a
-										href="<%=request.getContextPath()%>/booking/bookingFinal?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>">booking</a>
-
-
-
+									<%-- <a href="<%=request.getContextPath()%>/booking/bookingFinal?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>">booking</a> --%>
+									<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
+									<input type="hidden" name="checkIn" value="<%=in%>">
+									<input type="hidden" name="checkOut" value="<%=out1%>">
+									<input type="hidden" class="totalPrice" name="totalPrice" value="<%=price%>">
+									<input type="submit" value="Booking">
 								</div>
 							</div>
 
@@ -187,15 +188,27 @@ String price = (String) request.getAttribute("totalPrice");
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
-	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath()%>/js/booking/bookingPopup.js"></script>
-	<script src="<%=request.getContextPath()%>/js/booking/booking.js"></script>
-	<script src="<%=request.getContextPath()%>/js/booking/pay.js"></script>
-</body>
-<script>
+	<script>
 
-tt = price
-   
+	function test() {	
+
+		//housePrice에 초기값 넣어줌. 중복안되게
+		$(".housePrice").html('<%=price%>');
+		//point value를 가져옴 => 너거 text넣은 값
+		let point = $(".pointWriter").val();
+		//기본값
+		let price = $(".housePrice").html();
+		//결과는 기본값 - 포인터차감
+		let result = price - point;	
+		//눈으로 확인하기위해
+		$(".housePrice").html(result);
+		$(".totalPrice").val(result);
+		console.log("")
+
+	}
+	
+
+  /*  
 	tt = Number(price);
   
 	
@@ -225,7 +238,14 @@ tt = price
 	 $(".pay").on("click",e=>{
          let grade=$(e.target).attr("id");
          $(".a").val(grade);
-     });
+     }); */
+     
 </script>
+	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
+	<script src="<%=request.getContextPath()%>/js/booking/bookingPopup.js"></script>
+	<script src="<%=request.getContextPath()%>/js/booking/booking.js"></script>
+	<script src="<%=request.getContextPath()%>/js/booking/pay.js"></script>
+</body>
+
 
 </html>
