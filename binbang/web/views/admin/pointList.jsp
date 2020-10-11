@@ -60,34 +60,35 @@
                 <table class="tableAll">
                   
                   <tr class="fixed_top">
-                    <th class="cell1" >회원 번호</th>
-                    <th class="cell1" >숙소 번호</th>
-                    <th class="cell3" >분류</th>
-                    <th class="cell3" >금액</th>
+                    <th class="cell2" >회원 번호</th>
+                    <th class="cell2" >숙소 번호</th>
+                    <th class="cell2" >분류</th>
+                    <th class="cell2" >해당 금액</th>
                     <th class="cell3" >날짜</th>
-                    <th class="cell3" >총금액</th>
+                    <th class="cell3" >보유총금액</th>
                   </tr>
                   
                   <% for (Booking b : list) { %>
+                  <% if (b.getPointPlus()!=0 || b.getPointMinus()!=0) {%>
                  
          		<tr>
-		            <td class="cell1" ><%=b.getMemberNo() %></td>
-		           	<td class="cell1"><%=b.getHouseNo() %></td>
+		            <td class="cell2" ><%=b.getMemberNo() %></td>
+		           	<td class="cell2"><%=b.getHouseNo() %></td>
 		            <%
 		               if (b.getPointPlus()==0 && b.getPointMinus()!=0) {
 		            %> 
-		          		<td class="cell3">사용</td>
-		          		<td class="cell3">-<%=b.getPointMinus() %></td>
+		          		<td class="cell2">사용</td>
+		          		<td class="cell2">-<%=b.getPointMinus() %></td>
 		            <%
 		               } else if(b.getPointPlus()!=0 && b.getPointMinus()==0){
 		            %>
-		            	<td class="cell3">적립</td>
-		            	<td class="cell3">+<%=b.getPointPlus() %></td>
+		            	<td class="cell2">적립</td>
+		            	<td class="cell2">+<%=b.getPointPlus() %></td>
 		            <%
 		               }else if(b.getPointPlus()!=0 && b.getPointMinus()!=0){
 		           	%>
-		            	<td class="cell3">적립&사용</td>
-		            	<td class="cell3">+<%=b.getPointPlus() %>,-<%=b.getPointMinus() %></td>
+		            	<td class="cell2">적립&사용</td>
+		            	<td class="cell2">+<%=b.getPointPlus() %>,-<%=b.getPointMinus() %></td>
 		            <%
 		               }
 		            %> 
@@ -95,7 +96,9 @@
 		            <td class="cell3" ><%=b.getReservDate() %></td>
 		            <td class="cell3" ><%=b.getTotalPoint() %></td>
 		         </tr> 
-		         	
+		         	<%
+		            }
+		        	%>  
 		         <%
 		            }
 		        	%>  

@@ -4,6 +4,7 @@
 <%@ include file="/views/common/commonLink.jsp" %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/login.css" />
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- <script src="https://nid.naver.com/oauth2.0/authorize?client_id={fmUx4brr6eqieHyPczqT}&response_type=code&redirect_uri={http://localhost:9090/binbang/mainMove}&state={$state}"></script> -->
 <%
 	
@@ -58,7 +59,7 @@
 							<div id="naverImage"></div>
 							<span id="naverLogin">Naver 로그인</span>
 						</a>
-						<a href="#" class="buttonDiv">
+						<a href="#" class="buttonDiv" onclick="loginWithKakao();">
 							<div id="kakaoImage"></div>
 							<span id="kakaoLogin">Kakao 로그인</span>
 						</a>
@@ -109,8 +110,45 @@
 		/* 설정정보를 초기화하고 연동을 준비 */
 		naverLogin.init();
 		
-	
+		//카카오
+		Kakao.init('3d5c64870d68147d5b1ea344f9d2a634');
+		console.log(Kakao.isInitialized());
+		
+		/* Kakao.Auth.authorize({
+			  redirectUri: 'https://localhost:9090'
+			}); */
+		
+		Kakao.Auth.login({
 			
+			  success: (auth) => {
+			  },
+			  fail: (err) => {
+			    console.error(err)
+			  }
+			});
+		
+		loginWithKakao = () => {
+		    try {
+		      return new Promise((resolve, reject) => {
+		        if (!Kakao) {
+		          reject('Kakao 인스턴스가 존재하지 않습니다.')
+		        }
+		        Kakao.Auth.login({
+		          success: (auth) => {
+		            console.log('정상적으로 로그인 되었습니다.', auth)
+		            this.setState({
+		              isLogin: true
+		            })
+		          },
+		          fail: (err) => {
+		            console.error(err)
+		          }
+		        })
+		      })
+		    } catch (err) {
+		      console.error(err)
+		    }
+		  } 
 		</script>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

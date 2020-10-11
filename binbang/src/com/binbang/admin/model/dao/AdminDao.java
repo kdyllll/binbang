@@ -215,12 +215,12 @@ public class AdminDao {
 		}return list;
 	}
 	
-	//호스트 신고 승인
-	public int acceptHostComplain(Connection conn,String hostNo) {
+	//호스트 신고 승인 후 카운트 변경
+	public int acceptHostComplainCount(Connection conn,String hostNo) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("acceptComplain"));
+			pstmt=conn.prepareStatement(prop.getProperty("acceptComplainCount"));
 			pstmt.setString(1, hostNo);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
@@ -228,6 +228,49 @@ public class AdminDao {
 		}finally {
 			close(conn);
 		}return result;
+	}
+	
+	//호스트 신고 승인 후 상태 변경
+	public int acceptHostComplainState(Connection conn,String complaintNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("acceptComplainState"));
+			pstmt.setString(1, complaintNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
+	
+	//호스트 신고 리스트 관련 팝업
+	public Complaint hostComplainPopup(Connection conn,String complaintNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Complaint com=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("hostComplainPopup"));
+			pstmt.setString(1, complaintNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				com=new Complaint();
+				com.setComplaintNo(rs.getString("complaint_no"));
+				com.setHostName(rs.getString("member_name"));
+				com.setMemberEmail(rs.getString("email"));
+				com.setComplaintDate(rs.getDate("complaint_date"));
+				com.setComplaintCategory(rs.getString("complaint_category"));
+				com.setComplaintDetail(rs.getString("complaint_detail"));
+				com.setHouseNo(rs.getString("house_no"));
+				com.setHostNo(rs.getNString("host_no"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return com;
 	}
 	
 	//적립금 리스트

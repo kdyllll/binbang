@@ -83,15 +83,32 @@ private AdminDao dao=new AdminDao();
 		return list;
 	}
 	
-	//호스트 신고 승인
-	public int acceptHostComplain(String hostNo) {
+	//호스트 신고 승인-카운트 변경
+	public int acceptHostComplainCount(String hostNo) {
 		Connection conn=getConnection();
-		int result=dao.acceptHostComplain(conn, hostNo);
+		int result=dao.acceptHostComplainCount(conn, hostNo);
 		if(result>0) close(conn);
 		else rollback(conn);
 		return result;
 	}
 	
+	//호스트 신고 승인-상태 변경
+	public int acceptHostComplainState(String complaintNo) {
+		Connection conn=getConnection();
+		int result=dao.acceptHostComplainCount(conn, complaintNo);
+		if(result>0) close(conn);
+		else rollback(conn);
+		return result;
+	}
+	
+	//호스트 신고 팝업
+	public Complaint hostComplainPopup(String complaintNo) {
+		Connection conn=getConnection();
+		Complaint com=dao.hostComplainPopup(conn,complaintNo);
+		close(conn);
+		return com;
+	}
+		
 	//회원리스트 검색
 	public List<Member> searchMemberList(String type, String key){
 		Connection conn=getConnection();

@@ -1,6 +1,7 @@
 package com.binbang.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,19 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
+import com.binbang.member.model.vo.Complaint;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class HostComplainAcceptListServlet
+ * Servlet implementation class HostComplaintListPopup
  */
-@WebServlet( "/admin/hostComplainAccept")
-public class HostComplainAccepServlet extends HttpServlet {
+@WebServlet("/admin/hostComplaintListPopup")
+public class HostComplaintListPopupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostComplainAccepServlet() {
+    public HostComplaintListPopupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +31,14 @@ public class HostComplainAccepServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String hostNo=request.getParameter("hostNo");
 		String complaintNo=request.getParameter("complaintNo");
-		String msg="";
-		int result=new AdminService().acceptHostComplainCount(hostNo);
-		int result2=new AdminService().acceptHostComplainState(complaintNo);
-		if(result>0 && result2>0) msg="신고 승인되었습니다.";
-		else msg="신고 승인에 실패하였습니다.";
-		
+		System.out.println(complaintNo);
+		Complaint com=new AdminService().hostComplainPopup(complaintNo);
+		System.out.println(com);
+//		request.setAttribute("com", com);
+//		request.getRequestDispatcher("/views/admin/hostComplaintPopup.jsp").forward(request, response);
 		response.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(msg,response.getWriter());
+		new Gson().toJson(com,response.getWriter());
 	}
 
 	/**
