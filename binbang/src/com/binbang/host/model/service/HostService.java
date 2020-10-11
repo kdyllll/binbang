@@ -4,6 +4,7 @@ import com.binbang.booking.model.vo.Booking;
 import com.binbang.host.model.dao.HostDao;
 import com.binbang.host.model.vo.Host;
 import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Complaint;
 import com.binbang.member.model.vo.Member;
 
 import static com.binbang.common.JDBCTemplate.getConnection;
@@ -53,6 +54,14 @@ public class HostService {
 		List<Review> list = hdao.selectHostReview(conn, hostNo);
 		close(conn);
 		return list;
+	}
+	
+	public int insertComplaint(Complaint c) {
+		Connection conn = getConnection();
+		int result = hdao.insertComplaint(conn, c);
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		return result;
 	}
 
 }
