@@ -41,8 +41,12 @@ public class HouseDetailMoveServlet extends HttpServlet {
 
 			
 				String no=request.getParameter("houseNo");
+				String in=request.getParameter("checkIn");
+				String out1=request.getParameter("checkOut");
+				String price=request.getParameter("totalPrice");
 				
 				House h=new HouseService().HouseDetail(no);
+	
 				
 				String msg="";
 				String loc="";
@@ -73,6 +77,9 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				
 				
 				request.setAttribute("house",h);
+				request.setAttribute("checkIn",in);
+				request.setAttribute("checkOut",out1);
+				request.setAttribute("totalPrice",price);
 				request.setAttribute("grade",totalGrade);
 				request.setAttribute("booking",b);
 				request.setAttribute("list",list);

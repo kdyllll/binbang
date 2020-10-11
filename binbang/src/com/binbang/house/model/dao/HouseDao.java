@@ -234,6 +234,7 @@ public class HouseDao {
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("houseDetail"));
 			pstmt.setString(1, no);
+		
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				h=new House();

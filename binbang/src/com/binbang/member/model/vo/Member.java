@@ -15,15 +15,14 @@ public class Member {
 	private String hostBlack;
 	private String hostConfirm;
 	private String hostNo;
-	private int point;
+	private int totalPoint;
 
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	private Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
-			Date enrollDate, int stayDays, String hostBlack, String hostConfirm, String hostNo, int point) {
+	public Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
+			Date enrollDate, int stayDays, String hostBlack, String hostConfirm, String hostNo, int totalPoint) {
 		super();
 		this.memberNo = memberNo;
 		this.email = email;
@@ -36,7 +35,7 @@ public class Member {
 		this.hostBlack = hostBlack;
 		this.hostConfirm = hostConfirm;
 		this.hostNo = hostNo;
-		this.point = point;
+		this.totalPoint = totalPoint;
 	}
 
 	public String getMemberNo() {
@@ -127,12 +126,12 @@ public class Member {
 		this.hostNo = hostNo;
 	}
 
-	public int getPoint() {
-		return point;
+	public int getTotalPoint() {
+		return totalPoint;
 	}
 
-	public void setPoint(int point) {
-		this.point = point;
+	public void setTotalPoint(int totalPoint) {
+		this.totalPoint = totalPoint;
 	}
 
 	@Override
@@ -140,8 +139,9 @@ public class Member {
 		return "Member [memberNo=" + memberNo + ", email=" + email + ", password=" + password + ", memberName="
 				+ memberName + ", nickname=" + nickname + ", phone=" + phone + ", enrollDate=" + enrollDate
 				+ ", stayDays=" + stayDays + ", hostBlack=" + hostBlack + ", hostConfirm=" + hostConfirm + ", hostNo="
-				+ hostNo + ", point=" + point + "]";
+				+ hostNo + ", totalPoint=" + totalPoint + "]";
 	}
 
-
+	
+	
 }
