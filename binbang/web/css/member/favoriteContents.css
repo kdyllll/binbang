@@ -1,48 +1,49 @@
 @charset "UTF-8";
 
 .section {
-    padding:0;  
+    padding: 10% 20%; 
   }
  
     /* 관심숙소 */
-    .section .line1{
-      margin-top:130px;
-      width: 100%;
-      font-size: 20px;
+    .section .line1{	
+		width: 100%;
+		font-size: 20px;
     }
-    .section .line1 .listLine{
-      width: 80%;
-      height: 2px;
-      background-color: black;
-      margin-left: 10%;
-      margin-right: 10%;
+    
+    .favTitle{
+    	padding:2% 0;
+    	outline:0;
+    	border:0;
+    	font-size:20px;
+    	
     }
-    .section .line1>p{
-      margin-left: 10%;
+    
+    .listLine{
+		width: 100%;
+		height: 2px;
+		background-color: black;
     }
+  
   
     /* 폴더구분 */
     .section .favorite{
-      margin-right: 10%;
-      margin-left: 10%;
+		position: relative;
     } 
-    .backButton{
-      display: flex;
-      align-items: space-between;
-      margin-left: 80%;
+    
+    .btnGroup{     
+      float:right;          
     }
-    .backButton> button {
-      width: 110px;
-      height: 35px;
-      border: none;
-      text-decoration: none;
-      cursor: pointer;
-      outline:none;
-      background-color: white;
-      color: black;
-      font-size: 15px;
-      margin:2%; 
+    .Btn{
+    	width: 95px;
+		height: 35px;
+    	cursor: pointer;
+    	outline: none;
+		border: none;
+		background-color: white;
+		font-size: 15px;
     }
+    
+    
     .favoriteList{
       width: 100%;
       display: flex;
@@ -51,32 +52,24 @@
       z-index: 200;
     }
     .favoriteList div{
-      width: 250px;
-      height: 200px;
+	  width: 280px;
+	  height: 200px;
       position: relative;
       background-size: cover;
       box-shadow: 3px 5px 5px gray;
     }
+    
     .eachList{
       margin: 2%;
     }
-    .favoriteList .favoriteContents {
-      width: 100%;
-      height: 20%;
-      background-color: rgba(255, 255, 255, 0.836);
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      border-top-left-radius: 0px;
-      border-top-right-radius: 0px;
-    }
 
     /* 관심숙소 버튼 */
-    .favoriteList .heartButton {
-      width:  25px;
-      height: 25px;
-      margin-left:85%;
-      padding:1%;
+    .favoriteList .heartButton {     
+      position: absolute;
+      top:5px;
+      left:245px;
+	  width:  30px;
+      height: 30px;
       cursor: pointer;
     }
     .heart{
@@ -89,20 +82,16 @@
     }
   
     .recomPic1 {
-    	background-image: url("../../image/member/main/recommend/recommend1.jpg");
-      
+    	position : relative;
+    	background-image: url("../../image/member/main/recommend/recommend1.jpg");      
     }
-
-
-
-
 
 
     /* 목록수정 팝업창 */
     .modifyPop {
       position: absolute;
-      right: 220px;
-      top: 50px;
+      right: 270px;
+      top: 30px;
       z-index: 9999;
     }
       .ModDisNone {
@@ -111,72 +100,66 @@
       
       #popupContent {
         width: 300px;
-        height: 220px;
+        height: 140px;
         background: white;
         margin-left: 70%;
         z-index: 250;
         box-shadow: 3px 3px 5px 5px gray;
-      }
-      .line2{
-        width:100%;
-        height: 1px;
-        background-color: gray;
-        opacity: 90%;
+        padding : 0 10%;
       }
 
     /* 팝업header */
     /* 팝업x버튼 */
+    .modifyTitle{
+		margin-top: 5%;
+		font-size: 15px;
+	}
     .xBtn {
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      border:none;      
-      background-color: white;
-      position: absolute;
-      top: 10px;
-      right: 10px;  
+	  	width: 30px;
+		height: 30px;
+		cursor: pointer;
+		border: none;
+		outline:none;
+		background-color: white;
+		position: absolute;
+		top: 15px;
+		right: -260px;  
     }
     .popupHeader{
       display: flex;
-      justify-content: center;
-      padding: 5%;
+      margin: 4% 0;
     }
-    .popupHeader>p{
-      margin-top: 5%;
-    }
-
   
-    /* 팝업section */
-    
-    #listName{
-      width:200px;
-      height:30px;
-      background-color: rgb(199, 199, 199);
-      border:none;
-      opacity: 70%;
-      outline: none;
-    }
+    /* 팝업section */	    
+	  #listName {
+		width: 90%;
+		height: 30px;
+		background-color: none;
+		border: none;
+		outline: none;
+		border-bottom: 1px solid;	
+	}
+	
     .popupSection{
-      padding-top: 10%;
-      padding-bottom: 10%;
-      display: flex;
-      justify-content: center;
+    	display:flex;
+    	justify-content: center;
+   		margin: 6% 0;
     }
 
     /* 팝업footer */
     .popupFooter{
       display: flex;
-      justify-content: space-between;
-      padding-top: 2%;
+      justify-content: space-between;      
     }
+    
     #deleteBtn, #saveBtn{
-      width: 110px;
-      height: 35px;
-      border: none;
-      text-decoration: none;
-      cursor: pointer;
-      outline:none;
-      background-color: white;
-      color: black;
-      font-size: 15px;
+	 	width: 80px;
+		height: 30px;
+		border: none;
+		text-decoration: none;
+		cursor: pointer;
+		outline: none;
+		background-color: white;
+		color: black;
+		font-size: 12px;
     }

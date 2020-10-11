@@ -65,8 +65,7 @@ public class HouseRequestAcceptServlet extends HttpServlet {
         props.put("mail.smtp.starttls.enable","true");
         props.put("mail.smtp.ssl.trust", "smtp.naver.com"); 
         
-       
-        
+           
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(user,password);

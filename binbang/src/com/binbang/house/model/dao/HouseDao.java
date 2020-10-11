@@ -234,6 +234,7 @@ public class HouseDao {
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("houseDetail"));
 			pstmt.setString(1, no);
+		
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				h=new House();
@@ -390,6 +391,7 @@ public class HouseDao {
 				h.setHouseName(rs.getString("house_name"));
 				h.setHouseNo(rs.getString("house_no"));
 				h.setHouseMainPic(rs.getString("picture_name"));
+				h.setHouseLocation(rs.getString("house_location"));
 				list.add(h);
 			}
 		}catch(Exception e) {
@@ -540,6 +542,31 @@ public class HouseDao {
 			close(rs);
 			close(pstmt);
 		}return count;
+	}
+	
+	public List<House> selectmyHouse(Connection conn, String hostNo, String memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<House> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectmyHouse"));
+			pstmt.setString(1, hostNo);
+			pstmt.setString(2, memberNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				House h = new House();
+				h.setHouseName(rs.getString("house_name"));
+				h.setHouseNo(rs.getString("house_no"));
+				list.add(h);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
 	}
 
 

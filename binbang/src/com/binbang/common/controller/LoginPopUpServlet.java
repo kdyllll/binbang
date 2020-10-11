@@ -1,4 +1,4 @@
-package com.binbang.booking.controller;
+package com.binbang.common.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BookingFinalServlet
+ * Servlet implementation class LoginPopUpServlet
  */
-@WebServlet("/booking/bookingFinal")
-public class BookingFinalServlet extends HttpServlet {
+@WebServlet("/loginPopUp")
+public class LoginPopUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookingFinalServlet() {
+    public LoginPopUpServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +27,7 @@ public class BookingFinalServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String no=request.getParameter("houseNo");
-		String in=request.getParameter("checkIn");
-		String out1=request.getParameter("checkOut");
-		String price=request.getParameter("totalPrice");
-		
-		request.setAttribute("houseNo", no);
-		request.setAttribute("checkIn",in);
-		request.setAttribute("checkOut",out1);
-		request.setAttribute("totalPrice",price);
-		request.getRequestDispatcher("/views/booking/pay.jsp?houseNo="+no).forward(request,response);
-
+		request.getRequestDispatcher("/views/common/loginPopUp.jsp").forward(request, response);
 	}
 
 	/**

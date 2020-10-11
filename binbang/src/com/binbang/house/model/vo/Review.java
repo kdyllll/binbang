@@ -1,5 +1,7 @@
 package com.binbang.house.model.vo;
 
+import java.sql.Date;
+
 public class Review {
 	private String commentNo;
 	private String houseNo;
@@ -11,6 +13,8 @@ public class Review {
 	private String hostComment;
 	private String hostCommentDate;
 	private String filePath;
+	private String houseName;
+	private Date checkInDate;
 	
 
 	public Review() {
@@ -18,8 +22,12 @@ public class Review {
 	}
 
 
+	
+
+
 	public Review(String commentNo, String houseNo, String memberNo, double houseGrade, String commentTitle,
-			String commentContents, String commentDate, String hostComment, String hostCommentDate, String filePath) {
+			String commentContents, String commentDate, String hostComment, String hostCommentDate, String filePath,
+			String houseName) {
 		super();
 		this.commentNo = commentNo;
 		this.houseNo = houseNo;
@@ -31,7 +39,44 @@ public class Review {
 		this.hostComment = hostComment;
 		this.hostCommentDate = hostCommentDate;
 		this.filePath = filePath;
+		this.houseName = houseName;
 	}
+	
+
+
+
+
+
+	public Date getCheckInDate() {
+		return checkInDate;
+	}
+
+
+
+
+
+	public void setCheckInDate(Date checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+
+
+
+
+
+	public String getHouseName() {
+		return houseName;
+	}
+
+
+
+
+
+	public void setHouseName(String houseName) {
+		this.houseName = houseName;
+	}
+
+
+
 
 
 	public String getCommentNo() {

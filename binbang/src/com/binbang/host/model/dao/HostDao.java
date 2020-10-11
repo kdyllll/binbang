@@ -14,6 +14,7 @@ import com.binbang.host.model.vo.Host;
 import com.binbang.house.model.dao.HouseDao;
 import com.binbang.house.model.vo.House;
 import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Complaint;
 import com.binbang.member.model.vo.Member;
 
 import static com.binbang.common.JDBCTemplate.close;
@@ -104,10 +105,12 @@ public class HostDao {
 			if(rs.next()) {
 				h = new Host();
 				h.setHostName(rs.getString("member_name"));
+				h.setMemberNo(rs.getString("member_no"));
 				h.setHostAcceptDate(rs.getDate("host_acceptdate"));
 				h.setHostEmail(rs.getString("email"));
 				h.setIntro(rs.getString("intro"));
 				h.setProfilePic(rs.getString("profile_pic"));
+				h.setHostNo(rs.getString("host_no"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,6 +137,8 @@ public class HostDao {
 				r.setCommentTitle(rs.getString("comment_title"));
 				r.setCommentContents(rs.getString("comment_contents"));
 				r.setHouseGrade(rs.getDouble("house_grade"));
+				r.setHouseName(rs.getString("house_name"));
+				r.setCheckInDate(rs.getDate("checkin_date"));
 				list.add(r);
 			}	
 		}catch(Exception e){
@@ -145,56 +150,23 @@ public class HostDao {
 		return list;
 	}
 	
-	public List<Member> selectHostMember(Connection conn, String hostNo) {
+	public int insertComplaint(Connection conn, Complaint c) {
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Member> list = new ArrayList();
+		int result = 0;
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
-			pstmt.setString(1, hostNo);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {	
-				Member m = new Member();
-				m.setEmail(rs.getString("email"));
-				m.setMemberNo(rs.getString("member_no"));
-				m.setNickname(rs.getString("nickname"));
-				list.add(m);
-				
-			}	
-		}catch(Exception e){
+			pstmt =conn.prepareStatement(prop.getProperty("insertComplaint"));
+			pstmt.setString(1, c.getMemberNo());
+			pstmt.setString(2, c.getHostNo());
+			pstmt.setString(3, c.getComplaintCategory());
+			pstmt.setString(4, c.getComplaintPic());
+			pstmt.setString(5, c.getHouseNo());
+			pstmt.setString(6, c.getComplaintDetail());
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			close(rs);
+		} finally {
 			close(pstmt);
-		}
-		return list;
+		} return result;
 	}
 	
-	public List<Booking> selectHostBooking(Connection conn, String hostNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Booking> list = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectHostHouseMemberReview"));
-			pstmt.setString(1, hostNo);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {	
-				Booking b = new Booking();
-				b.setReservationNo(rs.getString("reservation_no"));
-				b.setMemberNo(rs.getString("member_no"));
-				b.setHouseNo(rs.getString("house_no"));
-				b.setGuestPnum(rs.getInt("guest_pnum"));
-				b.setCheckInDate(rs.getDate("checkin_date"));
-				b.setCheckOutDate(rs.getDate("checkout_date"));
-				b.setHouseRequest(rs.getString("house_request"));
-				list.add(b);
-			}	
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
 }
