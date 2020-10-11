@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.binbang.admin.model.service.AdminService;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class HostAcceptServlet
@@ -31,12 +34,20 @@ public class HostAcceptServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//호스트 승인해주는 서블릿
 		String memberNo = request.getParameter("memberNo");
-		System.out.println(memberNo);
+
+		String hostAccept="";
 		
 		int result=new AdminService().acceptHost(memberNo);
+		if(result>0) {
+			hostAccept="호스트 승인이 완료되었습니다.";
+		}else {
+			hostAccept="호스트 승인에 실패하였습니다.";
+		}
 		
-		request.setAttribute("result", result);
-		request.getRequestDispatcher("/views/admin/hostAcceptList.jsp").forward(request, response);
+		response.setContentType("application/json;charset=utf-8");
+		new Gson().toJson(hostAccept,response.getWriter());
+		
+
 	}
 
 	/**

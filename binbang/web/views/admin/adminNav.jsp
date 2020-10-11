@@ -4,10 +4,10 @@
 <div class="sidebar">
   <ul id="menuAll">
   
-  	<li id="member" class="clickList">회원 관리
+  	<li id="member" >회원 관리
   		<ul id="memberSubAll">
 	    	<li id="memberAll" ><a href="<%=request.getContextPath() %>/admin/newMoveAdminPage">회원 현황</a></li>
-	    	<li id="couponAll"><a href="">적립금 관리</a></li>
+	    	<li id="couponAll"><a href="<%=request.getContextPath() %>/admin/pointList">적립금 관리</a></li>
 	    </ul>
     </li>
     
@@ -33,58 +33,15 @@
 
  <script>
  
- 	$("#member").click(e=>{
+ 
+	$("#member").hover(e=>{
  		$("#memberSubAll").slideToggle();	
  	});
- 	
-	$("#hostAll").click(e=>{
+ 	 
+	$("#hostAll").hover(e=>{
 		$("#subAll").slideToggle();
 	});
 	
-	//클릭,호버 시 효과 주기
-	$("#member,#hostAll,#reserveAll,#houseAll").on({
-	    "click":function(e){
-	        let id = $(e.target).prop("id");
-	        if( id == "member") {
-	            $("#reserveAll").removeClass("clickList");
-	            $("#hostAll").removeClass("clickList");
-	            $("#houseAll").removeClass("clickList");
-	            $("#member").addClass("clickList");
-	          
-	        } else if (id == "reserveAll" ) {
-	            $("#member").removeClass("clickList");
-	            $("#hostAll").removeClass("clickList");
-	            $("#houseAll").removeClass("clickList");
-	            $("#reserveAll").addClass("clickList");
-	          
-	        } else if (id == "hostAll") {
-	            $("#reserveAll").removeClass("clickList");
-	            $("#member").removeClass("clickList");
-	            $("#houseAll").removeClass("clickList");
-	            $(e.target).addClass("clickList");
-	           
-	        } else if (id == "hosueAll") {
-	            $("#reserveAll").removeClass("clickList");
-	            $("#member").removeClass("clickList");
-	            $("#hostAll").removeClass("clickList");
-	            $("#houseAll").addClass("clickList");
-	        }
-	    },
-	    "mouseover":function(e){
-	        $(e.target).addClass("hoverList");
-	    },
-	    "mouseleave":function(e){
-	        $(e.target).removeClass("hoverList")
-	    }
-	});
 
-	$("#hostList, #acceptList, #blackList").on({
-	    "mouseover":function(e){
-	        $(e.target).addClass("subList")
-	    },
-	    "mouseleave":function(e){
-	        $(e.target).removeClass("subList")
-	    }
-	}); 
 
 </script>

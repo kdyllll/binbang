@@ -36,9 +36,14 @@
 
 #menuAll > li > ul > li{
     padding : 20px 10px 20px 30px;
-    cursor: pointer;     
+    cursor: pointer; 
+    
 } 
-
+#menuAll > li > ul > li>a{
+	 color : gray; 
+}
+  
+  
 /* 큰 제목들만 */
 #menuAll>li{
     font-weight: bolder;
@@ -57,20 +62,7 @@
   	font-size:17px;
 }
 
-.clickList {
-    background-color: rgb(228, 228, 228);
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    color:black;
-}
 
-.hoverList{
-    color:gray;
-}
-
-.subList {
-    color : gray;
-}
 
 /* 분류,검색 */
 .section > .searchCommon > form {
@@ -198,7 +190,6 @@ section {
     width: 100vw;
     height: 100vh;
     background: none;
-
     display: none;
     
   }
@@ -219,7 +210,7 @@ section {
         팝업창 크기의 반정도(-250px) 빼면 정가운데 정렬됨 */
     margin-left: -250px;
     margin-top: -250px;
-    box-shadow: 3px 3px 5px gray;
+    /* box-shadow: 3px 3px 5px gray; */
     background:white;
   }
 

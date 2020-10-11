@@ -8,7 +8,6 @@
 <%
 	
 	List<Host> list = (List) request.getAttribute("list");
-	//int result=(int)request.getAttribute("result");
 %>    
   </head>
 
@@ -43,9 +42,9 @@
 				<td class="cell1"><%=h.getHostName()%></td>
 				<td class="cell3"><%=h.getMemberPhone()%></td>
 				<td class="cell3 pro"><%=h.getProfilePic()%></td>
-				<input type="hidden" id="profilePic" value="<%=h.getProfilePic()%>">
+				<input type="hidden" class="profilePic" value="<%=h.getProfilePic()%>">
 				<td class="cell3 idc"><%=h.getIdCard()%></td>
-				<input type="hidden" id="IdCardPic" value="<%=h.getIdCard()%>">
+				<input type="hidden" class="IdCardPic" value="<%=h.getIdCard()%>">
 				<td class="cell2"><%=h.getHostEnrollDate()%></td>
 				<td class="cell2">
 					<div class="acceptChoice">
@@ -76,15 +75,10 @@
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/moveHostAcceptList",
 			data:{"memberNo" : $(".mNo").val() },
-			dataType:"html",
+			dataType:"json",
 			success: data => { 
-				
-				 if(data>0){ 
-					alert("승인되었습니다."); 
-				}else{
-					alert("승인을 실패하였습니다.") 
-				}  
-				console.log(data);
+				alert(data);
+				location.reload();
 			}
 	
 		}); 
@@ -94,26 +88,40 @@
 		 $.ajax({
 			 url:"<%=request.getContextPath()%>/admin/hostReject",
 			 data:{"memberNo" : $(".mNo").val() },
-			 dataType:"html",
+			 dataType:"json",
 			 success: data => { 
-			 	alert("승인 거절하였습니다.");
+				alert(data);
+				location.reload();
 			 }
 		 });
 	 });
 	 
 	//프로필 사진 띄우기
-	let profilePic=$("#profilePic").val();
+	
  	$(".pro").on("click",function(){
-        const url="<%=request.getContextPath()%>/upload/host/"+profilePic;
-        const status="width=500px,height=450px,top=150px,left=150px";
-        open(url,"",status);
+ 		let profilePic=$(".profilePic").val();
+        let url1="<%=request.getContextPath()%>/upload/host/"+profilePic;
+        let status1="width=500px,height=450px,top=150px,left=150px";
+        open(url1,"",status1);
+     }); 
+	 
+ <%-- 	$(".pro").on("click",function(){
+ 		let profilePic=$(".profilePic").val();
+ 		profilePic.each(function(index,item){
+ 			let url1="<%=request.getContextPath()%>/upload/host/"+profilePic;
+ 	        let status1="width=500px,height=450px,top=150px,left=150px";
+ 	        open(url1,"",status1);
+ 		});
+     });  --%>
+ 	
+     
+ 	//신분증 사진 띄우기
+ 	
+ 	$(".idc").on("click",function(){
+ 		let IdCardPic=$(".IdCardPic").val();
+        let url2="<%=request.getContextPath()%>/upload/host/"+IdCardPic;
+        let status2="width=500px,height=450px,top=150px,left=150px";
+        open(url2,"",status2);
      });
  	
- 	//신분증 사진 띄우기
- 	let IdCardPic=$("#IdCardPic").val();
- 	$(".idc").on("click",function(){
-        const url="<%=request.getContextPath()%>/upload/host/"+IdCardPic;
-        const status="width=500px,height=450px,top=150px,left=150px";
-        open(url,"",status);
-     });
 </script>

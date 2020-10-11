@@ -51,7 +51,7 @@ public class MemberDao {
 				m.setHostBlack(rs.getString("host_black"));				
 				m.setHostConfirm(rs.getString("host_confirm"));
 				m.setHostNo(rs.getString("host_no"));
-				m.setPoint(rs.getInt("point"));
+				m.setTotalPoint(rs.getInt("total_point"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class MemberDao {
 				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setPoint(rs.getInt("point"));
+				m.setTotalPoint(rs.getInt("total_point"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -224,7 +224,7 @@ public class MemberDao {
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
 				m.setHostBlack(rs.getString("host_Black"));				
-				m.setPoint(rs.getInt("point"));
+				m.setTotalPoint(rs.getInt("total_point"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();

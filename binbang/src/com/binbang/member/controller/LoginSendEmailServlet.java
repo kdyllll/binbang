@@ -43,10 +43,9 @@ public class LoginSendEmailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String email=null;
+
 		String userId = request.getParameter("email");
 		Member m=new MemberService().selectInfo(userId);
-//		email= new MemberService().emailCheck(userId);
 		System.out.println("서블릿"+userId);
 		
 		JSONObject emailConfirm= new JSONObject();
@@ -55,25 +54,6 @@ public class LoginSendEmailServlet extends HttpServlet {
 		String mesg="";
 		String loc="";
 
-//		
-//		if(m==null||!m.getEmail().equals(userId)) {
-//			
-//			mesg="아이디 정보가 일치하지 않습니다.";
-//			loc="/member/findPassword";
-//			
-//			request.setAttribute("msg",mesg);
-//			request.setAttribute("loc", loc);
-//			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-//			System.out.println("아이디 일치하지않음");
-//		} 
-//		else {
-//			System.out.println("아이디 일치함");
-//			mesg="인증에 성공했습니다.";
-//			loc="/member/changePassword";
-//			request.setAttribute("msg",mesg);
-//			request.setAttribute("loc", loc);
-//			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-			
 		if(m!=null && m.getEmail().equals(userId)) {	
 	
 			String host="smtp.naver.com";
@@ -145,10 +125,8 @@ public class LoginSendEmailServlet extends HttpServlet {
 	        
 	        System.out.println("인증번호 발송");
 	        mesg="인증번호가 발송되었습니다.";
-//			loc="/member/findPassword";
 			result=1;
-			emailConfirm.put("msg",mesg);
-			emailConfirm.put("result",result);
+			
         
 		} else if((m==null||!m.getEmail().equals(userId))){
 			
@@ -156,12 +134,10 @@ public class LoginSendEmailServlet extends HttpServlet {
 	
 			mesg="아이디 정보가 일치하지 않습니다.";
 			result=0;
-//			loc="/member/findPassword";
-			emailConfirm.put("msg",mesg);
-			emailConfirm.put("result",result);
 			
 		}
-		
+		emailConfirm.put("msg",mesg);
+		emailConfirm.put("result",result);
 		response.getWriter().print(emailConfirm);
 //		response.setContentType("application/json;charset=utf-8");
 //		new Gson().toJson(emailConfirm,response.getWriter());

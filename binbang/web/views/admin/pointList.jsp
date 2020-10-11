@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.binbang.member.model.vo.Member"%>
+<%@page import="com.binbang.booking.model.vo.Booking"%>
 <%@page import="java.util.List"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
 <%
-	List<Member> memberList=(List)request.getAttribute("list"); 
+	List<Booking> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
 %>
@@ -20,7 +20,7 @@
 
 
           <form id="memberAllContents" class="searchCommon">
-            <p class="pageTitle">회원 현황</p>
+            <p class="pageTitle">적립금 관리</p>
          
          <select class="searchCategory"  id="searchType">
 		      <option value="" selected disabled hidden>선택</option>
@@ -61,38 +61,44 @@
                   
                   <tr class="fixed_top">
                     <th class="cell1" >회원 번호</th>
-                    <th class="cell2" >회원 분류</th>
-                    <th class="cell2" >회원 이름</th>
-                    <th class="cell4" >이메일</th>
-                    <th class="cell2" >전화번호</th>
-                    <th class="cell3" >가입일</th>
+                    <th class="cell1" >숙소 번호</th>
+                    <th class="cell3" >분류</th>
+                    <th class="cell3" >금액</th>
+                    <th class="cell3" >날짜</th>
+                    <th class="cell3" >총금액</th>
                   </tr>
                   
-                 <% for (Member ml : memberList) { %>
-                 <% if(ml.getMemberNo()!="1") {%>
+                  <% for (Booking b : list) { %>
+                 
          		<tr>
-		            <td class="cell1" ><%=ml.getMemberNo() %></td>
-		           
+		            <td class="cell1" ><%=b.getMemberNo() %></td>
+		           	<td class="cell1"><%=b.getHouseNo() %></td>
 		            <%
-		               if (ml.getHostConfirm()!=null) {
+		               if (b.getPointPlus()==0 && b.getPointMinus()!=0) {
 		            %> 
-		          		<td class="cell2">호스트</td>
+		          		<td class="cell3">사용</td>
+		          		<td class="cell3">-<%=b.getPointMinus() %></td>
 		            <%
-		               } else {
+		               } else if(b.getPointPlus()!=0 && b.getPointMinus()==0){
 		            %>
-		            	<td class="cell2">일반</td>
+		            	<td class="cell3">적립</td>
+		            	<td class="cell3">+<%=b.getPointPlus() %></td>
+		            <%
+		               }else if(b.getPointPlus()!=0 && b.getPointMinus()!=0){
+		           	%>
+		            	<td class="cell3">적립&사용</td>
+		            	<td class="cell3">+<%=b.getPointPlus() %>,-<%=b.getPointMinus() %></td>
 		            <%
 		               }
 		            %> 
-		             <td class="cell2" ><%=ml.getMemberName() %></td>
-		            <td class="cell4" ><%=ml.getEmail() %></td>
-		            <td class="cell2" ><%=ml.getPhone() %></td>
-		            <td class="cell3" ><%=ml.getEnrollDate() %></td>
+		        
+		            <td class="cell3" ><%=b.getReservDate() %></td>
+		            <td class="cell3" ><%=b.getTotalPoint() %></td>
 		         </tr> 
-		         	<%} %>
+		         	
 		         <%
 		            }
-		        	%> 
+		        	%>  
          
         
                 </table>

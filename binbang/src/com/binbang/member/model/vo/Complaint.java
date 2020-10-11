@@ -8,20 +8,21 @@ public class Complaint {
 	private String memberNo;
 	private String hostNo;
 	private String complaintCategory;
-	private Long complaintDetail;
+	private String complaintDetail;
 	private String complaintState;
 	private Date complaintDate;
 	private String complaintPic;
 	private String hostName;
-	private String memberName;
+	private String memberEmail;
+	private String houseNo;
 	
 	public Complaint() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Complaint(String complaintNo, String memberNo, String hostNo, String complaintCategory,
-			Long complaintDetail, String complaintState, Date complaintDate, String complaintPic, String hostName,
-			String memberName) {
+	private Complaint(String complaintNo, String memberNo, String hostNo, String complaintCategory,
+			String complaintDetail, String complaintState, Date complaintDate, String complaintPic, String hostName,
+			String memberEmail, String houseNo) {
 		super();
 		this.complaintNo = complaintNo;
 		this.memberNo = memberNo;
@@ -32,7 +33,8 @@ public class Complaint {
 		this.complaintDate = complaintDate;
 		this.complaintPic = complaintPic;
 		this.hostName = hostName;
-		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.houseNo = houseNo;
 	}
 
 	public String getComplaintNo() {
@@ -67,11 +69,11 @@ public class Complaint {
 		this.complaintCategory = complaintCategory;
 	}
 
-	public Long getComplaintDetail() {
+	public String getComplaintDetail() {
 		return complaintDetail;
 	}
 
-	public void setComplaintDetail(Long complaintDetail) {
+	public void setComplaintDetail(String complaintDetail) {
 		this.complaintDetail = complaintDetail;
 	}
 
@@ -107,12 +109,20 @@ public class Complaint {
 		this.hostName = hostName;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
+	public String getHouseNo() {
+		return houseNo;
+	}
+
+	public void setHouseNo(String houseNo) {
+		this.houseNo = houseNo;
 	}
 
 	@Override
@@ -120,10 +130,9 @@ public class Complaint {
 		return "Complaint [complaintNo=" + complaintNo + ", memberNo=" + memberNo + ", hostNo=" + hostNo
 				+ ", complaintCategory=" + complaintCategory + ", complaintDetail=" + complaintDetail
 				+ ", complaintState=" + complaintState + ", complaintDate=" + complaintDate + ", complaintPic="
-				+ complaintPic + ", hostName=" + hostName + ", memberName=" + memberName + "]";
+				+ complaintPic + ", hostName=" + hostName + ", memberEmail=" + memberEmail + ", houseNo=" + houseNo
+				+ "]";
 	}
-
-	
 	
 
 }

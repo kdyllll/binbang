@@ -8,11 +8,11 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.binbang.admin.model.dao.AdminDao;
+import com.binbang.booking.model.vo.Booking;
 import com.binbang.host.model.vo.Host;
 import com.binbang.house.model.vo.House;
 import com.binbang.member.model.vo.Complaint;
 import com.binbang.member.model.vo.Member;
-import com.binbang.member.model.vo.Reservation;
 
 public class AdminService {
 	
@@ -53,9 +53,9 @@ private AdminDao dao=new AdminDao();
 	}
 	
 	//예약리스트
-	public List<Reservation> reserveList(){
+	public List<Booking> reserveList(){
 		Connection conn=getConnection();
-		List<Reservation> list=dao.reserveList(conn);
+		List<Booking> list=dao.reserveList(conn);
 		close(conn);
 		return list;
 	}
@@ -75,6 +75,22 @@ private AdminDao dao=new AdminDao();
 		close(conn);
 		return list;
 	}
+	//적립금 리스트
+	public List<Booking> pointList(){
+		Connection conn=getConnection();
+		List<Booking> list=dao.pointList(conn);
+		close(conn);
+		return list;
+	}
+	
+	//호스트 신고 승인
+	public int acceptHostComplain(String hostNo) {
+		Connection conn=getConnection();
+		int result=dao.acceptHostComplain(conn, hostNo);
+		if(result>0) close(conn);
+		else rollback(conn);
+		return result;
+	}
 	
 	//회원리스트 검색
 	public List<Member> searchMemberList(String type, String key){
@@ -92,9 +108,9 @@ private AdminDao dao=new AdminDao();
 	}
 	
 	//예약리스트 검색
-	public List<Reservation> searchReserveList(String type,String key){
+	public List<Booking> searchReserveList(String type,String key){
 		Connection conn=getConnection();
-		List<Reservation> list=dao.searchReserveList(conn,type,key);
+		List<Booking> list=dao.searchReserveList(conn,type,key);
 		close(conn);
 		return list;
 	}
@@ -103,6 +119,14 @@ private AdminDao dao=new AdminDao();
 	public List<House> searchHouseList(String type,String key){
 		Connection conn=getConnection();
 		List<House> list=dao.searchHouseList(conn,type,key);
+		close(conn);
+		return list;
+	}
+	
+	//호스트 신고리스트 검색
+	public List<Complaint> searchComplainList(String type,String key){
+		Connection conn=getConnection();
+		List<Complaint> list=dao.searchComplainList(conn,type,key);
 		close(conn);
 		return list;
 	}

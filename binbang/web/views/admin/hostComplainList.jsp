@@ -17,48 +17,80 @@
 	<%@ include file="/views/common/adminHeader.jsp"%>
       <section class="section">
         <%@ include file="/views/admin/adminNav.jsp"%>
+        
         <div id="blackListContents" class="searchCommon">
             <p class="pageTitle">호스트 신고 관리</p>
-            <form action="">
-              <select class="researchCategory" name="complainCategory">
-                <option value="" selected disabled hidden>선택</option>  
-                <option value="신고된 호스트">신고된 호스트</option>  
-                <option value="신고 날짜">신고 날짜</option>   
-              </select>
-              <div class="search">
-                <input type="text" class="searchinput">
-                <button class="inputButton"></button>
-                <!-- <button class="removeAll">처리완료 목록 삭제</button> -->
-              </div>
-            </form>
+           
+            <select class="searchCategory"  id="searchType">
+		      <option value="" selected disabled hidden>선택</option>
+		      <option value="email" <%=type!=null&&type.equals("email")?"selected":"" %>>신고 아이디</option>
+		      <option value="house_no" <%=type!=null&&type.equals("house_no")?"selected":"" %>>숙소 번호</option>
+		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>호스트 이름</option>
+   			</select>
+   		
+			<div class="search" id="search-email">
+	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
+	    			<input type="hidden" name="searchType" value="email">
+	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+	    				value="<%=key!=null&&type!=null&&type.equals("email")?key:""%>">
+	    			<button class="inputButton"></button>
+	    		</form>
+	    	</div>
+			
+	    	<div class="search" id="search-house_no">
+	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
+	    			<input type="hidden" name="searchType" value="house_no">
+	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+	    				value="<%=key!=null&&type!=null&&type.equals("house_no")?key:""%>">
+	    			<button class="inputButton"></button>
+	    		</form>
+	    	</div>
+	    	
+	    	<div class="search" id="search-member_name">
+	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
+	    			<input type="hidden" name="searchType" value="bl.member_name">
+	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+	    				value="<%=key!=null&&type!=null&&type.equals("bl.member_name")?key:""%>">
+	    			<button class="inputButton"></button>
+	    		</form>
+	    	</div>
+    	
+             
             
             <div class="tb_wrap">
               <div class="tableDiv" >
                 <table class="tableAll">
                   <tr class="fixed_top">
-                    <th class="cell1">신고자</th>
-                    <th colspan="2" class="cell5">신고사유</th>
-                    <th class="cell2">신고된 호스트</th>
+                    <th class="cell2">신고 아이디</th>
+                    <th colspan="2" class="cell4">신고사유</th>
+                    <th class="cell1">호스트 이름</th>
+                    <th class="cell1">숙소 번호</th>
                     <th class="cell2">신고날짜</th>
-                    <th class="cell4">신고처리상황</th>
+                    <th class="cell2">신고처리상황</th>
                   </tr>
+                  
+                  <%for(Complaint com : list) {%>
                   <tr>
-                    <td class="cell1">김다예</td>
-                    <td class="cell2 complainCategory">허위정보, 청결, 안전위협</td>
-                    <td class="cell3 complainReason">침대가 2개라고 하셨는데 하나는 침대가 아니라 소파더라구요</td>
-                    <td class="cell2">인하준</td>
-                    <td class="cell2">2020-09-09</td>
-                    <td class="complainCurrent cell4">
+                    <td class="cell2"><%=com.getMemberEmail() %></td>
+                    <td class="cell1 complainCategory"><%=com.getComplaintCategory() %></td>
+                    <td class="cell2 complainReason"><%=com.getComplaintDetail() %></td>
+                    <td class="cell1"><%=com.getHostName() %></td>
+                    <td class="cell1"><%=com.getHouseNo() %></td>
+                    <td class="cell2"><%=com.getComplaintDate() %></td>
+                    <td class="complainCurrent cell2">
                       <div class="complainChoice">
-                        <input type="checkbox" name="complain" value="신고" id="complain">신고
-                        <input type="checkbox" name="complain" value="취소" id="cancel">취소
-                        <!--  <input type="checkbox" name="complain" value="권한박탈" id="out">권한박탈-->
+                      	<input type="hidden" name="hostNo" class="hostNo" value="<%=com.getHostNo() %>">
+                        <input type="button" name="accept" value="승인" id="accept">
+                        <input type="button" name="cancle" value="거절" id="cancel">
+                        <input type="button" name="out" value="권한박탈" id="out">
                       </div>
                     </td>
                   </tr>
+                  <%} %>
                 </table>
               </div>
             </div>
+            
             <!-- 팝업 -->
             <div class="enrollbg">
               <div id="popup">
@@ -66,21 +98,18 @@
                 <div class="popupHead"><p class="popupTitle">신고 내역</p></div>
                 <div class="popupBtn">x</div>
               
+           	<%for(Complaint com : list) {%>
                 <div class="popupContent">
                     
-                    <p class="complainTitle">신고한 회원 아이디 :</p> 
-                    <p class="complainTitle">호스트 아이디 : </p>
-                    <p class="complainTitle">신고 날짜 : </p>
-                    <p class="complainTitle eachComplainReason">신고 사유 : </p>
-                    <p class="eachComplainCategory">허위 정보</p>
-                    <div class="reasonBox">
-                        침대가 2개라고 하셨는데 하나는 침대가 아니라 소파더라구요..
-                        그 외에도 오션뷰라고 하셨는데 창문 틈 사이로 희미하게 바다가 보인다든지
-                        화장실도 하나는 문을 막아놓으시는 등 허위정보들이 여러 개 있었습니다..
-                        호스트에게 직접 문의를 해도 답변이 없었던 부분이 제일 화가 났습니다ㅠㅠ 
-                    </div>
+                    <p class="complainTitle">신고한 회원 아이디 : <%=com.getMemberEmail() %></p> 
+                    <p class="complainTitle">호스트 이름 : <%=com.getHostName() %></p>
+                    <p class="complainTitle">신고 날짜 : <%=com.getComplaintDate() %></p>
+                    <p class="complainTitle eachComplainReason">신고 사유 : <%=com.getComplaintCategory() %></p>
+                    <p class="eachComplainCategory"><%=com.getComplaintCategory() %></p>
+                    <div class="reasonBox"><%=com.getComplaintDetail() %></div>
                 
               </div>
+              <%} %> 
         
               </div>
             </div>
@@ -96,12 +125,12 @@
 	$(function(){
 		let memberName=$("#search-member_name");
 		let hostNo=$("#search-host_no");
-		let hostBlack=$("#search-host_black");
+		let email=$("#search-email");
 		
 		$("#searchType").change(e => {
 			memberName.css("display","none");
 			hostNo.css("display","none");
-			hostBlack.css("display","none");
+			email.css("display","none");
 			let v=$(e.target).val(); 
 			$("#search-"+v).css("display","inline-block");
 		});
@@ -154,4 +183,17 @@
 	        } */
 	    }
 	});
+	
+	//신고 승인
+	$(".accept").click(e=>{
+		$.ajax({
+			url:"<%=request.getContextPath()%>/admin/moveHostComplainAccept",
+			data:{"hostNO":$("#hostNo").val()},
+			dataType:"json",
+			succecc:data => {
+				alert(data);
+			}
+			
+		})
+	})
 </script>
