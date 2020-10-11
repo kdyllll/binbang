@@ -4,8 +4,7 @@
 	padding: 10% 20%;
 }
 /* 관심숙소 */
-.section .line1 {
-	/* margin-top: 130px; */
+.section .line1 {	
 	width: 100%;
 	font-size: 20px;
 }
@@ -60,18 +59,6 @@
 	margin: 2%;
 }
 
-
-.eachList .favoriteContents {
-	width: 100%;
-	height: 30%;
-	background-color: rgba(255, 255, 255, 0.836);
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-}
-
 .recomPic1 {
 	background-image: url("../../image/member/main/recommend/recommend1.jpg");
 		
@@ -100,15 +87,16 @@
 
 /* 팝업header */
 /* 팝업x버튼 */
-.makingTitle{
-margin-top: 5%;
-font-size: 15px;
-}
+	.makingTitle{
+	margin-top: 5%;
+	font-size: 15px;
+	}
 .xBtn {
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
 	border: none;
+	outline:none;
 	background-color: white;
 	position: absolute;
 	top: 15px;
@@ -116,8 +104,7 @@ font-size: 15px;
 }
 
 .popupHeader {
-	 display: flex;
-	/* justify-content: space-between; */ 
+	display: flex;	
 	margin: 4% 0;
 }
 /* 팝업section */

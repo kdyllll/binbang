@@ -8,7 +8,8 @@
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-		<!-- 관심숙소 -->
+		
+		<!-- 관심숙소list -->
 		<section class="section">
 			<div class="line1">
 				<p>관심숙소</p>				
