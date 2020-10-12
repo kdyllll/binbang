@@ -50,7 +50,6 @@ public class HouseSearchListServlet extends HttpServlet {
 		String checkOut = (request.getParameter("checkOut")).trim();
 		List dayList = dateCalculator(checkIn, checkOut); // 숙박 날짜들
 		String pNum = request.getParameter("peopleNum"); // 숙박 인원
-		
 
 		// paging처리하기
 		int cPage;
@@ -184,10 +183,10 @@ public class HouseSearchListServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}	
-			h.setTotalPrice(total);		
+			h.setTotalPrice(total);	
 	
 			}
-		
+			
 
 		request.setAttribute("house", house);
 		request.setAttribute("checkIn", checkIn);
