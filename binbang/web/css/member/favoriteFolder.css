@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .section {
-	padding: 10% 20%;
+	padding: 10% 18%;
 }
 /* 관심숙소 */
 .section .line1 {	
@@ -108,7 +108,7 @@
 	margin: 4% 0;
 }
 /* 팝업section */
-#listName {
+#folderName {
 	width: 90%;
 	height: 30px;
 	background-color: none;

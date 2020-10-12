@@ -169,7 +169,7 @@
 		 function fn_loginPopUp() {
 			 	const url = "<%=request.getContextPath()%>/loginPopUp";
 		   		const title = "loginPopUp";
-		   		const status = "left=100px, top=100px, width=350px, height=350px";
+		   		const status = "left=100px, top=100px, width=500px, height=350px";
 		   		open("",title,status); 
 
 		   	 	reportHost.target = title;

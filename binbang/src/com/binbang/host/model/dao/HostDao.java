@@ -77,13 +77,14 @@ public class HostDao {
 		return host;
 	}
 
-	public int updateHostInfo(Connection conn, String hostInfo, String memberNo) {
+	public int updateHostInfo(Connection conn, String hostInfo,String profilePic, String memberNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(prop.getProperty("updateHostInfo"));
 			pstmt.setString(1, hostInfo);
-			pstmt.setString(2, memberNo);
+			pstmt.setString(2, profilePic);
+			pstmt.setString(3, memberNo);
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {

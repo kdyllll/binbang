@@ -103,9 +103,9 @@ public class HouseSearchListServlet extends HttpServlet {
 			Member m = (Member) session.getAttribute("m");
 			// 관심숙소 목록
 			List<Favorite> favorite = new MemberService().selectFavList(m);
-			for (Favorite ff : favorite) {
-				System.out.println("관심숙소:" + ff);
-			}
+			/*
+			 * for (Favorite ff : favorite) { System.out.println("관심숙소:" + ff); }
+			 */
 			request.setAttribute("favorite", favorite);
 			request.setAttribute("favoriteJson", new Gson().toJson(favorite));
 		} catch (NullPointerException e) {

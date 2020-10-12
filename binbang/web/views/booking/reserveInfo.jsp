@@ -16,7 +16,7 @@
 <title>booking</title>
 <link rel="stylesheet"
    href="<%=request.getContextPath()%>/css/booking/reserveInfo.css" />
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/bookingHeader.css" />
+ <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/bookingHeader.css" />
 
 <body>
    <div class="wrap">
