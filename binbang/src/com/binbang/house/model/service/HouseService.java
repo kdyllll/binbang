@@ -149,7 +149,8 @@ public class HouseService {
 		List<House> list = dao.selectHouseList(conn,location,checkIn,checkOut,pNum,cPage,numPerPage);
 		close(conn);
 		return list;
-	}
+	}	
+	
 	
 	public Double selectAvgGrade(String houseNo){
 		Connection conn = getConnection();

@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.house.model.service.HouseService;
-import com.binbang.house.model.vo.House;
 import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
 
@@ -32,24 +30,17 @@ public class FavoriteFolderServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {							
 		
 		
+		String memberNo = request.getParameter("memberNo");
+		System.out.println(memberNo);
 		
-		List<House> house = new HouseService().selectPictures();
-		for (House h : house) {
-			h.setHousePicture(new HouseService().selectMainPicture(h));
-		}
+		List<Favorite> list = new FavoriteService().viewFolder(memberNo);		
+		System.out.println(list);
 		
-		
-		Favorite f = new FavoriteService().viewFolder(memberNo);					
-		String memberNo = request.getParameter("member_no");
-		
-		request.setAttribute("favorite", f);
-		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);
-	
-
-	
+		request.setAttribute("list", list);		
+		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);	
 	}
 
 	/**

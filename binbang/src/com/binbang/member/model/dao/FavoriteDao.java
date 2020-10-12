@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.binbang.member.model.vo.Favorite;
@@ -26,26 +28,27 @@ public class FavoriteDao {
 	}
 	
 	//heart(관심) 누른 숙소 화면에 띄어줌
-	public Favorite viewFolder(Connection conn,String memberNo) {
+	public List<Favorite> viewFolder(Connection conn,String memberNo) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		Favorite f=null;
+		List<Favorite> list = new ArrayList();
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("viewFolder"));			
 			pstmt.setString(1, memberNo);			
 			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				f=new Favorite();
+			while(rs.next()) {
+				Favorite f=new Favorite();
 				f.setFolderNo(rs.getString("folder_no"));
 				f.setMemberNo(rs.getString("member_no"));
 				f.setFolderName(rs.getString("folder_name"));
+				list.add(f);
 			}			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rs);
 			close(pstmt);
-		}return f;
+		}return list;
 	}
 	
 	

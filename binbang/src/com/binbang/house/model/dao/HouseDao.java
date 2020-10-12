@@ -445,9 +445,9 @@ public class HouseDao {
 		} finally {
 			close(rs);
 			close(pstmt);
-		}
-		return list;
+		}return list;
 	}
+	
 
 	
 

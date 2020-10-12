@@ -150,6 +150,27 @@ public class MemberDao {
 		}return m;		
 	}
 	
+	//관심숙소
+	public Member selectMemberNo(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Member m=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberNo"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				m=new Member();
+				m.setMemberNo(rs.getString("member_no"));
+				m.setEmail(rs.getString("email"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
 	
 	//mypage 회원정보수정(비밀번호 이외)
 	public int updateMember(Connection conn, Member m) {
@@ -234,6 +255,12 @@ public class MemberDao {
 		}return m;
 	}
 	
+	//관심숙소
+	
+	
+	
+	
+	//관심숙소 리스트
 	public List<Favorite> selectFavList(Connection conn,Member m){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

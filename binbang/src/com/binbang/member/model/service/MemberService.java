@@ -63,6 +63,15 @@ public class MemberService {
 		return m;
 	}
 	
+
+	//관심숙소
+	public Member selectMemberNo(String email) {
+		Connection conn=getConnection();
+		Member m=dao.selectMemberNo(conn,email);
+		close(conn);
+		return m;
+	}
+	
 	//mypage 수정
 	public int updateMember(Member m) {
 		Connection conn=getConnection();
@@ -111,6 +120,8 @@ public class MemberService {
 		close(conn);
 		return fList;
 	}
+	
+	
 	
 	
 }
