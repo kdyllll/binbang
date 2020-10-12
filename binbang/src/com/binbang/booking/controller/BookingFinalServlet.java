@@ -1,6 +1,7 @@
 package com.binbang.booking.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,15 +33,22 @@ public class BookingFinalServlet extends HttpServlet {
 		String out1=request.getParameter("checkOut");
 		String price=request.getParameter("totalPrice");
 		String totalPoint=request.getParameter("totalPoint");
-		
-		
-		request.setAttribute("houseNo", no);
+		String oriPrice=request.getParameter("originalPrice");
+		String totalPoints = request.getParameter("totalPoints");
+		String memberNo=request.getParameter("m");
+		System.out.println(no);
+	
+		request.setAttribute("houseNo",no);
 		request.setAttribute("checkIn",in);
 		request.setAttribute("checkOut",out1);
 		request.setAttribute("totalPrice",price);
+		request.setAttribute("oriPrice",oriPrice);
 		request.setAttribute("totalPoint",totalPoint);
+		request.setAttribute("totalPoints",totalPoints);
+		request.setAttribute("m",memberNo);
 		request.getRequestDispatcher("/views/booking/pay.jsp?houseNo="+no).forward(request,response);
-
+		System.out.println("2번쨰"+no);
+		
 	}
 
 	/**

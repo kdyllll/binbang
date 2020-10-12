@@ -120,7 +120,7 @@
                <div class="paybox">
                   <div class="pay">
                      <% if(m2 != null)  {%>
-                     <a href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>">booking</a>
+                     <a href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>&m=<%=m2.getMemberNo()%>">booking</a>
                      <%} else { %>
                      <form name="loginPopUp">
                         <input type="button" onclick="fn_loginPopUp();">

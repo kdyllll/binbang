@@ -15,6 +15,7 @@ import java.util.Properties;
 import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.vo.House;
 import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Member;
 
 public class HouseDao {
 
@@ -279,22 +280,19 @@ public class HouseDao {
 			if(rs.next()) {
 				b=new Booking();
 				b.setReservationNo(rs.getString("reservation_No"));
-				b.setMemberNo(rs.getString("member_No"));
+				b.setMemberNo(rs.getString("member_No"));//멤버번호
 				b.setHouseNo(rs.getString("house_no")); //숙소번호
-				b.setGuestName(rs.getString("guest_Name")); 
-				b.setCheckInDate(rs.getDate("checkIn_Date")); //숙소이름
-				b.setCheckOutDate(rs.getDate("checkOut_Date")); //숙소유형
-				b.setGuestPnum(rs.getInt("guest_Pnum")); //숙소위치
-				b.setPaymentOption(rs.getString("payment_Option")); //숙소최대인원
-				b.setHouseRequest(rs.getNString("house_Request")); //개인물건 유무
-				b.setApprovalDate(rs.getDate("approval_Date")); //개인물건 유무
-				b.setPrice(rs.getInt("price")); //개인물건 유무
+				b.setGuestName(rs.getString("guest_Name")); //예약자 이름
+				b.setCheckInDate(rs.getDate("checkIn_Date")); //체크인 날짜
+				b.setCheckOutDate(rs.getDate("checkOut_Date")); //체크아웃 날짜
+				b.setGuestPnum(rs.getInt("guest_Pnum")); //예약인원
+				b.setPaymentOption(rs.getString("payment_Option")); //결제 방법
+				b.setHouseRequest(rs.getNString("house_Request")); //숙소 예약 상태
+				b.setApprovalDate(rs.getDate("approval_Date")); //승인날짜
+				b.setPrice(rs.getInt("price")); //총금액
 				b.setReservDate(rs.getDate("reserv_Date")); //개인물건 유무
-				b.setMemberEmail(rs.getNString("member_Email")); //개인물건 유무
-				b.setHouseName(rs.getNString("house_Name")); //개인물건 유무
-				b.setHouseMainPic(rs.getNString("house_MainPic")); //개인물건 유무
-				b.setPointPlus(rs.getInt("point_Plus")); //개인물건 유무
-				b.setPointMinus(rs.getInt("point_Minus")); //개인물건 유무
+				b.setPointPlus(rs.getInt("point_Plus")); //적립금 차감
+				b.setPointMinus(rs.getInt("point_Minus")); //
 
 			
 			}
@@ -306,6 +304,8 @@ public class HouseDao {
 			
 		}return b;
 	}
+	
+	
 	
 
 	
@@ -358,8 +358,27 @@ public class HouseDao {
 			close(pstmt);
 		}return list;
 	}
+	
+	//숙소 포인트 저장하는 다오
+	public int insertPoint(Connection conn, String memberNo, String lastPoint) {
+		PreparedStatement pstmt=null;
+		int result=0;	
+		try {
+			Member m= new Member();
+			pstmt=conn.prepareStatement(prop.getProperty("insertPoint"));
+			pstmt.setString(1, lastPoint);//포인트
+			pstmt.setString(2, memberNo);//회원 번호
 
-	//숙소사진 인서트하는 다오
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;	
+	}
+	
+
+
 	public int insertPicture(Connection conn,House h,String pic,String type) {
 		PreparedStatement pstmt=null;
 		int result=0;		

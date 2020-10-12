@@ -9,6 +9,7 @@
     	String out1=(String) request.getAttribute("checkOut");
     	String price=(String) request.getAttribute("totalPrice");
    	 	String totalPoint=(String) request.getAttribute("totalPoint");
+   	 	String totalPoints=(String) request.getAttribute("totalPoints");
     %>
 
 <%@ include file="/views/common/commonLink.jsp" %>

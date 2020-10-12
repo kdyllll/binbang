@@ -12,6 +12,7 @@ import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.dao.HouseDao;
 import com.binbang.house.model.vo.House;
 import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.vo.Member;
 
 public class HouseService {
 	private HouseDao dao = new HouseDao();
@@ -32,6 +33,18 @@ public class HouseService {
 		 close(conn);
 		 return b;
 	}
+	
+	public int insertPoint(String memberNo, String lastPoint) {
+		Connection conn=getConnection();
+		int result = dao.insertPoint(conn,memberNo,lastPoint);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+
 	
 	
 	

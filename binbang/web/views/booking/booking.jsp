@@ -5,12 +5,12 @@
 	import="com.binbang.house.model.vo.House,com.binbang.booking.model.vo.Booking"%>
 <%
 	House h = (House) request.getAttribute("house");
-Member m2 = (Member) session.getAttribute("m");
-Booking b = (Booking) request.getAttribute("b");
-String houseNo = (String) request.getAttribute("houseNo");
-String in = (String) request.getAttribute("checkIn");
-String out1 = (String) request.getAttribute("checkOut");
-String price = (String) request.getAttribute("totalPrice");
+	Member m2 = (Member) session.getAttribute("m");
+	Booking b = (Booking) request.getAttribute("b");
+	String houseNo = (String) request.getAttribute("houseNo");
+	String in = (String) request.getAttribute("checkIn");
+	String out1 = (String) request.getAttribute("checkOut");
+	String price = (String) request.getAttribute("totalPrice");
 %>
 
 
@@ -30,7 +30,7 @@ String price = (String) request.getAttribute("totalPrice");
 			<form action="<%=request.getContextPath()%>/booking/bookingFinal" method="post">
 				<div class="reservation">
 					<ul>
-						<li>예약자 이름 :<%=m2.getMemberName()%>
+						<li>예약자 이름 :<%=m2.getMemberName()%><%=m2.getMemberNo() %>
 						</li>
 						<br>
 						<br>
@@ -54,7 +54,7 @@ String price = (String) request.getAttribute("totalPrice");
 
 					<br>
 					<br>
-					<div>총 포인트 : <%=m.getTotalPoint() %></div>
+					<p class="point">총 포인트 : <div class="totalPoints"><%=m.getTotalPoint() %></div></p>
 					<br>
 					<br>
 					<div class="cuphone">
@@ -117,7 +117,7 @@ String price = (String) request.getAttribute("totalPrice");
 							<div><%=h.getHouseComment()%></div>
 							<br>
 							<div class="reservationDay">
-								<div>[2020년 08월 29일 ~ 2020년 08월 30일]</div>
+								<div>[ <%=in%> ~ <%=out1%> ]</div>
 							</div>
 							<br>
 							<div class="housePrice"><%=price%></div>
@@ -136,12 +136,14 @@ String price = (String) request.getAttribute("totalPrice");
 							</div>
 							<div class="payBox">
 								<div class="pay">
-									<%-- <a href="<%=request.getContextPath()%>/booking/bookingFinal?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>">booking</a> --%>
+								 <a href="<%=request.getContextPath()%>/booking/bookingFinal?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>">booking</a> 
 									<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
+									<input type="hidden" name="originalPrice" value="<%=price%>">
 									<input type="hidden" name="checkIn" value="<%=in%>">
 									<input type="hidden" name="checkOut" value="<%=out1%>">
-									<input type="hidden" name="totalPoint" >
-									<input type="hidden" class="totalPrice" name="totalPrice" value="<%=price%>">
+									<input type="hidden" class="totalPoint" name="totalPoint">
+									<input type="hidden" class="totalPrice" name="totalPrice" value="">
+									<input type="hidden" class="memberNo" name="memberNo" value="<%=m2%>">
 									<input type="submit" value="Booking">
 								</div>
 							</div>
@@ -200,48 +202,21 @@ String price = (String) request.getAttribute("totalPrice");
 		//기본값
 		let price = $(".housePrice").html();
 		//결과는 기본값 - 포인터차감
-		let result = price - point;	
-		let totalPoint = result * 0.5;
+		let result = <%=price%> - point;	
+		let totalPoint = result * 2;
+		let totalPoints = <%=m.getTotalPoint()%> - point;
 		//눈으로 확인하기위해
 		$(".housePrice").html(result);
 		$(".totalPrice").val(result);
 		$(".totalPoint").val(totalPoint);
+		$(".totalPoints").html(totalPoints);
+		console.log(result);
 
 	}
 	
+	
 
-  /*  
-	tt = Number(price);
   
-	
-	
-	var pay = require('pay');
-
-	var con = mysql.createConnection({
-		host : "@rclass.iptime.org:1521:xe",
-		user : "binbang",
-		password : "binbang",
-		database : "binbang"
-	});
-
-	con.connect(function(err) {
-				if (err)
-					throw err;
-				console.log("Connected!");
-				//Insert a record in the "customers" table:
-				var sql = "INSERT INTO MEMBER (TOTALPOINT) VALUES (price*0.5)";
-				con.query(sql, function(err, result) {
-					if (err)
-						throw err;
-					console.log("1 record inserted");
-				});
-			});
-	
-	 $(".pay").on("click",e=>{
-         let grade=$(e.target).attr("id");
-         $(".a").val(grade);
-     }); */
-     
 </script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/booking/bookingPopup.js"></script>
