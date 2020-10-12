@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import ="com.binbang.member.model.vo.Member"  %>
-<%@ include file="/views/common/commonLink.jsp"%>
 <% Member m1 = (Member)request.getAttribute("member"); %>
 
+<%@ include file="/views/common/commonLink.jsp"%>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/member/myPage.css" />
 </head>

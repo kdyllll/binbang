@@ -14,6 +14,15 @@ public class FavoriteService {
 
 	private FavoriteDao dao=new FavoriteDao();
 	
+	//heart(관심) 누른 숙소를 해당회원 화면에 띄어줌
+	public Favorite viewFolder(String memberNo) {
+		Connection conn=getConnection();
+		Favorite f=dao.viewFolder(conn,memberNo);
+		close(conn);
+		return f;		
+	}
+	
+	
 	//관심숙소 폴더 생성
 	public int createFolder(Favorite f) {
 		Connection conn=getConnection();
