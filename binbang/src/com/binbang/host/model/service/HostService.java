@@ -34,9 +34,9 @@ public class HostService {
 		return h;
 	}
 	
-	public int updateHostInfo(String hostInfo, String memberNo) {
+	public int updateHostInfo(String hostInfo,String profilePic, String memberNo) {
 		Connection conn = getConnection();
-		int result = hdao.updateHostInfo(conn, hostInfo,memberNo);
+		int result = hdao.updateHostInfo(conn, hostInfo,profilePic,memberNo);
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);

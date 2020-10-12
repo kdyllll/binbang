@@ -20,10 +20,10 @@
 			<!-- 호스트정보부분 -->
 			<form class="hostInfoContainer"
 				action="<%=request.getContextPath()%>/host/hostInfoUpdate"
-				method="post">
+				method="post" enctype="multipart/form-data">
 				<div class="hostInfoImg">
 					<img
-						src="<%=request.getContextPath()%>/image/host/host_regist/host_img/basic.jpg"
+						src="<%=request.getContextPath()%>/upload/host/<%=h.getProfilePic() %>"
 						alt="" /> <input type="file" name="uploadImg" id="uploadImg"
 						class="disnone"> <label for="uploadImg" class="disnone">변경</label>
 				</div>

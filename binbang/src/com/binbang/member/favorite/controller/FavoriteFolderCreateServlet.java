@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
@@ -29,16 +30,32 @@ public class FavoriteFolderCreateServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		
-		String folderName=request.getParameter("folder_name");
+		String memberNo=request.getParameter("memberNum");
+		System.out.println(memberNo);
+		String folderName=request.getParameter("folderName");
+		System.out.println(folderName);
 		
 		Favorite f=new Favorite();
+		f.setMemberNo(memberNo);
+		f.setFolderName(folderName);				
 		
-		f.setFolderName(folderName);
+		int result=new FavoriteService().createFolder(f);
 		
-		int result=new FavoriteService().createFolder(f);				
+		String msg="";
+		String loc="/";
 		
+		if(result>0) {
+			msg="폴더생성";
+			loc="/views/member/favoriteFolder.jsp";
+		}else {
+			msg="폴더생성 실패";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);				
 	}
 
 	/**
