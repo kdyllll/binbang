@@ -149,15 +149,7 @@ public class HouseService {
 		List<House> list = dao.selectHouseList(conn,location,checkIn,checkOut,pNum,cPage,numPerPage);
 		close(conn);
 		return list;
-	}
-	
-	//관심숙소로 보내는 service
-	public House selectPictures(String houseNo){
-		Connection conn = getConnection();
-		House h = dao.selectPictures(conn, houseNo);
-		close(conn);
-		return h;
-	}
+	}	
 	
 	
 	public Double selectAvgGrade(String houseNo){
@@ -204,7 +196,64 @@ public class HouseService {
 		close(conn);
 		return list;
 	}
+
+	//숙소 고치기
+	public House selectHouseOne(String houseNo) {
+		Connection conn = getConnection();
+		House h = dao.selectHouseOne(conn, houseNo);
+		close(conn);
+		return h;
+	}
+
 	
+	 public List selectPictures(String houseNo) { 
+		 Connection conn = getConnection(); 
+		 List h = dao.selectSubPictures(conn, houseNo); 
+		 close(conn);
+		 return h; 
+	} 
+	 
+	 public String[] selectMainPicture(String houseNo) {
+		Connection conn = getConnection();
+		String[] pictures = dao.selectMainPicture(conn,houseNo);
+		close(conn);
+		return pictures;
+	}
+	 
+	 public int deleteFilter(String houseNo) {
+		 Connection conn= getConnection();
+		 int result = dao.deletrFilter(conn, houseNo);
+		 if(result > 0) commit(conn);
+		 else rollback(conn);
+		 close(conn);
+		 return result;
+	 }
+	 public int deletePeakDay(String houseNo) {
+		 Connection conn= getConnection();
+		 int result = dao.deletePeakDay(conn, houseNo);
+		 if(result > 0) commit(conn);
+		 else rollback(conn);
+		 close(conn);
+		 return result;
+	 }
+	 public int deletePictures(String houseNo) {
+		 Connection conn= getConnection();
+		 int result = dao.deletePictures(conn, houseNo);
+		 if(result > 0) commit(conn);
+		 else rollback(conn);
+		 close(conn);
+		 return result;
+	 }
+	 
+	 public int updateHouse(House h) {
+		 Connection conn= getConnection();
+		 int result = dao.updateHouse(conn, h);
+		 if(result > 0) commit(conn);
+		 else rollback(conn);
+		 close(conn);
+		 return result;
+	 }
+	 
 
 
 }

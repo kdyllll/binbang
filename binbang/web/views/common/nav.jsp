@@ -20,7 +20,7 @@
 		<%} else if(m.getEmail()!=null && !m.getEmail().equals("admin")) {%>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/member/myPage?email=<%=m.getEmail()%>">마이페이지</a></li>
-			<li><a href="<%=request.getContextPath()%>/member/favoriteFolder">관심숙소</a></li>
+			<li><a href="<%=request.getContextPath()%>/member/favoriteFolder?memberNo=<%=m.getMemberNo()%>">관심숙소</a></li>
 			<% if(m != null && m.getHostConfirm() == null) {%>
 			<li><a href="<%=request.getContextPath()%>/hostEnroll">호스트등록</a></li>
 			<%} else if(m.getHostConfirm() != null && m.getHostConfirm().equals("승인")) { %>

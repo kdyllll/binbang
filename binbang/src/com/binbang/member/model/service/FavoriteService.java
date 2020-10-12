@@ -6,6 +6,7 @@ import static com.binbang.common.JDBCTemplate.getConnection;
 import static com.binbang.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.binbang.member.model.dao.FavoriteDao;
 import com.binbang.member.model.vo.Favorite;
@@ -15,11 +16,11 @@ public class FavoriteService {
 	private FavoriteDao dao=new FavoriteDao();
 	
 	//heart(관심) 누른 숙소를 해당회원 화면에 띄어줌
-	public Favorite viewFolder(String memberNo) {
+	public List<Favorite> viewFolder(String memberNo) {
 		Connection conn=getConnection();
-		Favorite f=dao.viewFolder(conn,memberNo);
+		List<Favorite> list=dao.viewFolder(conn,memberNo);
 		close(conn);
-		return f;		
+		return list;		
 	}
 	
 	
