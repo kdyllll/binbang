@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/views/common/commonLink.jsp"%>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/member/favoriteFolder.css" />
+	
+<%@ page import = "com.binbang.member.model.vo.Favorite" %>	
+<% Favorite f=(Favorite)request.getAttribute("favorite");  %>
 
+<%@ include file="/views/common/commonLink.jsp"%>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/favoriteFolder.css" />
 </head>
 <body>
 	<div class="wrap">
@@ -18,7 +20,6 @@
 
 			<!-- 관심숙소폴더 -->
 			<div class="favorite">
-
 				<!-- 목록만들기 팝업 -->
 				<input type="button" id="listBuildBtn" value="목록만들기" >				
 

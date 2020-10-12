@@ -1,7 +1,6 @@
 package com.binbang.member.favorite.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.house.model.service.HouseService;
-import com.binbang.house.model.vo.House;
 import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
 
 /**
- * Servlet implementation class MemberFavoriteFolderServlet
+ * Servlet implementation class FavoriteFolderCreateServlet
  */
-@WebServlet("/member/favoriteFolder")
-public class FavoriteFolderServlet extends HttpServlet {
+@WebServlet("/member/favoriteFolderCreate")
+public class FavoriteFolderCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FavoriteFolderServlet() {
+    public FavoriteFolderCreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,22 +31,14 @@ public class FavoriteFolderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String folderName=request.getParameter("folder_name");
 		
+		Favorite f=new Favorite();
 		
-		List<House> house = new HouseService().selectPictures();
-		for (House h : house) {
-			h.setHousePicture(new HouseService().selectMainPicture(h));
-		}
+		f.setFolderName(folderName);
 		
+		int result=new FavoriteService().createFolder(f);				
 		
-		Favorite f = new FavoriteService().viewFolder(memberNo);					
-		String memberNo = request.getParameter("member_no");
-		
-		request.setAttribute("favorite", f);
-		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);
-	
-
-	
 	}
 
 	/**

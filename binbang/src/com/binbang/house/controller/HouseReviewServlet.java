@@ -32,8 +32,7 @@ public class HouseReviewServlet extends HttpServlet {
 			String memberNo=(request.getParameter("memberNo"));
 			request.setAttribute("houseNo", houseNo);
 			request.setAttribute("memberNo", memberNo);
-		   request.getRequestDispatcher("/views/house/review.jsp").forward(request,response);
-	
+		    request.getRequestDispatcher("/views/house/review.jsp").forward(request,response);
 	}
 
 	/**
