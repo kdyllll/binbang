@@ -1,20 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.binbang.member.model.vo.Member" %>	
+<%@ include file="/views/common/commonLink.jsp"%>
 <%
 	Member m = (Member) session.getAttribute("m");
 %>
 
+<style>
+/* 5-1 비밀번호 확인 */
+.section {
+	padding: 6% 20%;			
+}
+.passwordCheck{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.passwordCheck .container{
+	width: 500px;
+	height:150px;
+	border: 1.5px solid; 
+}
+
+.passTitle{
+width: 21%;
+padding: 1%;
+margin : 4%;
+margin-left : 8%;
+ /* border-bottom: 1.4px solid; */ 
+}
+
+.passLine{
+display: flex;	
+margin : 3%;
+}
+.passLine input, .passLine button{
+margin : 5%;	
+}
+.passLine #passInput{
+border-bottom: 1px gray solid;	
+}
+
+.passwordCheck .checkBtn{
+	font-size: 14px;
+	cursor: pointer;
+	background-color: black;
+	color:white;
+	width:130px;
 	
-<%@ include file="/views/common/commonLink.jsp"%>
+}
+.passwordCheck input{
+	width: 100%;
+	height: 30px;
+	background-color: none;
+	outline: none;
+	border: none;
+	box-sizing: border-box;	
+}
+</style>
 
-<link rel="stylesheet"
-	href="<%=request.getContextPath() %>/css/member/mypage.css" />
-</head>
 
-
-<body>
 	<div class="wrap">
 					
 		<form  action="<%=request.getContextPath() %>/member/mypagePrivate" method="post" id="memberCheck">		
@@ -32,14 +76,3 @@
 		</form>
 		
 	</div>
-
-	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-	
-	<script>
-
-		//비밀번호 확인후 개인정보수정 페이지로 이동			
-		
-	</script>
-		
-</body>
-</html>

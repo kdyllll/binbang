@@ -103,9 +103,7 @@
 						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();								 
 					 } 					 
 			} 
-			
-			
-			
+									
 			
 			//회원탈퇴
 			function fn_deleteMember(){		

@@ -17,6 +17,8 @@
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
 	List dayList = (List) request.getAttribute("dayList");
+	String checkIn=(String)request.getAttribute("checkIn");
+	String checkOut=(String)request.getAttribute("checkOut");
 %>
 
 </head>
@@ -131,8 +133,7 @@
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		let dayList =<%=request.getAttribute("dayJson")%>;
 		let days=dayList.length;
-		let checkIn=<%=request.getAttribute("checkIn")%>;
-		let checkOut=<%=request.getAttribute("checkOut")%>;
+
 		let favorite =<%=request.getAttribute("filterJson")%>;
 		$(".houseNum").html(houseList.length);
 		listPrint();
@@ -246,8 +247,8 @@
 							<input type="hidden" class="filterInput" value="`+filterNames+`">
 							<form class="go" action="<%=request.getContextPath()%>/house/houseDetailMove" method="post">
 									<input type="hidden" name="houseNo" value="`+houseList[h].houseNo+`">
-									<input type="hidden" name="checkIn" value="`+checkIn+`">
-									<input type="hidden" name="checkOut" value="`+checkOut+`">
+									<input type="hidden" name="checkIn" value="<%=checkIn%>">
+									<input type="hidden" name="checkOut" value="<%=checkOut%>">
 									<input type="hidden" name="totalPrice" value="`+houseList[h].totalPrice+`">
 							</form>
 						</div> `;
@@ -263,7 +264,10 @@
 			$(".list").children().remove();
 			$(".list").append(html);	
 		}
-
+		console.log($("input[name=checkIn]").val());
+		console.log($("input[name=checkOut]").val());
+		console.log($("input[name=houseNo]").val());
+		console.log($("input[name=totalPrice]").val());
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		//필터 검색 누를때 두개 다
 		function fn_option(){

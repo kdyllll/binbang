@@ -42,6 +42,23 @@ margin: 0 10%;
 }
 
 /* 회원가입 */
+.enrollForm div p{
+	font-size:1px;
+	color:gray;
+	margin-top:-5%;
+	margin-bottom:1%;
+}
+.enrollInfo{
+	margin-left:25%;	
+}
+.enrollInfoPhone{
+	margin-left:70%;	
+}
+.enrollInfoPwc{
+	margin-left:51%;	
+}
+
+
  .enrollForm >div {
 	display:flex;
 	flex-direction : column;
@@ -58,7 +75,6 @@ margin: 0 10%;
     border:none;
     border-bottom:1px solid #c0c0c0;
     margin-bottom: 7%;
-    /* padding : 0 15px; */
     box-sizing:border-box;
   }
 
@@ -74,6 +90,16 @@ margin: 0 10%;
 	top:1%;
 	right:15px;
   }
+  
+#pwCheck{
+	position: absolute;
+	top:120px;
+	right:15px;
+	font-size:2px;	
+}  
+  
+  
+  
 
 /* 약관동의 */
 .contract{
