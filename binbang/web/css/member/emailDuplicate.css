@@ -67,15 +67,8 @@ div#emailCheck {
 
 
 /* 이메일,인증번호 입력창 */
-.checkTitle{
-    text-align: left; 
-    margin:2% 0;
-    margin-top:12%;
-    font-size:15px;
-}
-
 .passNumber {
-	width: 300px;
+	width: 350px;
 	height: 35px;
 	border: 0;
 	outline: 0;

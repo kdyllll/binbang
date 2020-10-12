@@ -2,26 +2,24 @@
 
 /*1. main section */
 .section {
-	margin-top: 5%;
+	padding: 6% 20%;			
 }
 
 /* logo */
 .section .myPageLogo>p {
-	padding-top: 5%;
-	padding-bottom: 5%;
-	margin-left: 5%;
+	padding : 20px 0;	
 	font-size: 20px;
 }
 
 /*2. 회원정보*/
 .section .lineList {
-	width: 90%;
-	border: 2px black solid;
+	width: 100%;
+	border: 2.2px black solid;
 	display: inline-flex;
-	padding: 5px;
-	margin-left: 5%;
-	margin-right: 5%;
+	padding: 5px; 	
 }
+
+
 /* 회원정보 */
 .lineList div {
 	width: 60%;
@@ -37,6 +35,8 @@
 	border: none;
 	box-sizing: border-box;	
 }
+
+
 /* 메뉴바 */
 .section .nav {
 	padding: 10%;
@@ -47,15 +47,13 @@
 }
 
 .section .line5 {
-	width: 80%;
+	width: 85%;
+	margin-left: 7%;
 	height: 2px;
-	background-color: black;
-	margin-left: 11%;
+	background-color: black;	
 }
 
-.section .nav>ul {
-	top: 100;
-	left: 0;
+.section .nav>ul {	
 	height: 0px;
 	display: flex;
 	justify-content: space-around;
@@ -70,231 +68,10 @@ button {
 	outline: none;
 	background-color: white;
 	color: black;
-	font-size: 15px;
-}
-
-/* 3. 숙소 */
-.section .house {
-	width: 100%;
-}
-
-.house .line8 {
-	width: 80%;
-	padding: 2%;
-}
-
-.house .line8>p {
-	padding-bottom: 1%;
-}
-
-.house .line8 .line9 {
-	width: 120%;
-	height: 2px;
-	background-color: black;
-}
-
-/* 3-1 예약완료된 숙소 */
-.stayed {
-	margin-top: 10%;
-}
-
-.reserved .reservedList {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.reserved .reservedList div {
-	width: 200px;
-	height: 200px;
-	position: relative;
-	background-size: cover;
-}
-
-.reserved .reservedList .reservedContents {
-	width: 150px;
-	height: 40px;
-	background-color: rgba(255, 255, 255, 0.836);
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	border-top-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
-
-.reservedContents td {
-	font-size: 11px;
-	border: 1px solid;
-}
-
-.reservedContents tr {
-	font-size: 11px;
-	border: 1px solid;
-}
-
-/* 3-2 이용했던숙소 */
-.stayed .stayedList {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.stayed .stayedList div {
-	width: 200px;
-	height: 200px;
-	position: relative;
-	background-size: cover;
-}
-
-.stayed .stayedList .stayedContents {
-	width: 150px;
-	height: 40px;
-	background-color: rgba(255, 255, 255, 0.836);
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	border-top-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
-
-/* 이용했던 숙소 사진*/
-.recomPic1 {
-	background-image:
-		url("../../image/member/main/recommend/recommend1.jpg");
-}
-
-.recomPic2 {
-	background-image:
-		url("../../image/member/main/recommend/recommend2.jpg");
-}
-
-.recomPic3 {
-	background-image:
-		url("../../image/member/main/recommend/recommend3.png");
-}
-
-.recomPic4 {
-	background-image:
-		url("../../image/member/main/recommend/recommend4.jpg");
-}
-
-.recomPic5 {
-	background-image:
-		url("../../image/member/main/recommend/recommend5.png");
+	font-size: 15px;	
 }
 
 
 
 
 
-
-/* 4. POINT 사용내역 */
-.section .point {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-bottom: 10%;
-}
-
-.point>div {
-	width: 50%;
-}
-
-
-.pointSum .pointContents {
-	font-size: 15px;
-	font-weight: 400;
-	color: black;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 15px;
-}
-
-.addContent {
-	padding-right: 2%;
-	padding-left: 2%;
-}
-
-/* POINT변화유무 */
-.pointCount .line6 {
-	width: 100%;
-	height: 2px;
-	background-color: black;
-	margin: 2% 0;
-}
-
-.pointCount .line7 {
-	width: 100%;
-	height: 1px;
-	background-color: black;
-	opacity: 40%;
-	margin-top: 2%;
-}
-
-.section .pointCount {
-	margin-top: 1%;
-}
-
-.section .pointCount>ul {
-	display: flex;
-	justify-content: space-between;
-	font-size: 12px;
-	margin: 1% 0;
-}
-
-
-
-
-
-
-
-/* 5-1 비밀번호 확인 */
-.passwordCheck{
-	width: 100%;
-	display: flex;
-	justify-content: center;
-}
-.passwordCheck .container{
-	width: 500px;
-	height:150px;
-	border: 1.5px solid; 
-}
-
-.passTitle{
-width: 21%;
-padding: 1%;
-margin : 4%;
-margin-left : 8%;
- /* border-bottom: 1.4px solid; */ 
-}
-
-.passLine{
-display: flex;	
-margin : 3%;
-}
-.passLine input, .passLine button{
-margin : 5%;	
-}
-.passLine #passInput{
-border-bottom: 1px gray solid;	
-}
-
-.passwordCheck .checkBtn{
-	font-size: 14px;
-	cursor: pointer;
-	background-color: black;
-	color:white;
-	width:130px;
-	
-}
-.passwordCheck input{
-	width: 100%;
-	height: 30px;
-	background-color: none;
-	outline: none;
-	border: none;
-	box-sizing: border-box;	
-}

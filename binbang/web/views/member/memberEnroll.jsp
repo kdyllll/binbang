@@ -20,16 +20,17 @@
 				<div class="enrollForm">
 					<div>
 						<input type="email" placeholder="Email" name="email" id="email_" required>
-						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">						
-						
-						<input type="password" name="password" placeholder="Password" id="pw" required>						 
-						<input type="password" name="passwordCheck" placeholder="Password" id="pwck" onkeyup="pwCheck();" required>
-						
-						<span id="pwCheck"></span>
-						
-						<input type="text" name="name" placeholder="Name" id="name" required> 
-						<input type="text" name="nickname" placeholder="Nickname" required> 
+						<input type="button" id="duplicateBtn" value="중복검사" onclick="fn_duplicateCheck();" class=".idcheck">												
+						<input type="password" name="password" placeholder="Password" id="pw" required>	
+						<p class="enrollInfo">비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요</p>					 
+						<input type="password" name="passwordCheck" placeholder="Password Check" id="pwck" onkeyup="pwCheck();" required>						
+						<p class="enrollInfoPwc">비밀번호를 한번 더 입력해주세요</p>
+						<span id="pwCheck"></span>						
+						<input type="text" name="name" placeholder="Name" id="name" required>
+						<p class="enrollInfo">이름이 영문일 경우 first/last를 space로 구분지어 주세요</p> 
+						<input type="text" name="nickname" placeholder="Nickname" required>						 
 						<input type="text" name="phone" placeholder="Phone" id="phone" required>
+						<p class="enrollInfoPhone">'-'를 포함해주세요</p>						
 					</div>
 				</div>
 					<!-- 인증완료 -->
@@ -320,7 +321,7 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
      		
     	const url="<%=request.getContextPath()%>/member/checkEmailDuplicateAjax";    	
     	const title="checkEmailDuplicate";
-    	const status="left=370px,top=100px, width=500px, height=400px";
+    	const status="left=370px,top=100px, width=500px, height=300px";
     	
     	open("",title,status);       	
     	checkEmailDuplicate.target=title;
@@ -373,15 +374,9 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
                 return;
             }else{
     			$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
-    		}    	    	    	    	
-    	      	           
+    		}    	    	    	    	    	      	           
     }
-    
-    
-	    	
-
-   
-    
+ 
     
     
 </script>
