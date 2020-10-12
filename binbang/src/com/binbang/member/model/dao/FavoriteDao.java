@@ -27,11 +27,11 @@ public class FavoriteDao {
 	//관심숙소 폴더 생성
 	public int createFolder(Connection conn,Favorite f) {
 		PreparedStatement pstmt=null;
-		int result=0;
-		
+		int result=0;		
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("createFolder"));
-			
+			pstmt.setString(1,f.getMemberNo());
+			pstmt.setString(2, f.getFolderName());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();

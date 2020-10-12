@@ -11,9 +11,9 @@
 <script
 	src="<%=request.getContextPath()%>/js/common/jquery-3.5.1.min.js"></script>
 <%
-	String memberNo=(String)request.getAttribute("memberNo");
-	String houseNo=(String)request.getAttribute("houseNo");
-	List<Favorite> favorite=(List)request.getAttribute("favorite");
+	String memberNo = (String) request.getAttribute("memberNo");
+String houseNo = (String) request.getAttribute("houseNo");
+List<Favorite> favorite = (List) request.getAttribute("favorite");
 %>
 
 </head>
@@ -22,8 +22,6 @@
 	padding: 5%;
 }
 /* header */
-
-
 .headerLine {
 	width: 100%;
 	height: 2px;
@@ -37,23 +35,28 @@
 	align-items: center;
 	border: none;
 }
+
 .favLine {
 	width: 100%;
 	height: 1px;
 	background-color: gray;
 }
-.firstContent{
-	width:100%;
+
+.firstContent {
+	width: 100%;
 }
-.makeFolder{
-	height:0;
+
+.makeFolder {
+	height: 0;
 }
-.show{
-	height:50px;
+
+.show {
+	height: 50px;
 }
+
 #plusBtn {
-	margin-left:50px;
-	margin-top:30px;
+	margin-left: 50px;
+	margin-top: 30px;
 	margin-right: 300px;
 	width: 300px;
 	height: 50px;
@@ -64,13 +67,15 @@
 	border: none;
 	outline: none;
 }
-.folderName{
+
+.folderName {
 	margin-right: 180px;
 	border: none;
 	outline: none;
-	text-aligh:center;
+	text-aligh: center;
 }
-#folderPlusBtn{
+
+#folderPlusBtn {
 	margin: 10px 0;
 	float: right;
 	width: 70px;
@@ -82,10 +87,11 @@
 	cursor: pointer;
 }
 /* second content */
-.favoriteForm{
-	width:100%;
+.favoriteForm {
+	width: 100%;
 }
-.secondContent {
+
+.folder {
 	display: flex;
 	justify-content: space-between;
 	margin: 20px 0;
@@ -135,19 +141,34 @@
 		<div class="popContent">
 			<div class="firstContent">
 				<div id="plusBtn">+ 폴더만들기</div>
-				<form class="makeFolder" method="post"> 
+				<form class="makeFolder" method="post">
 					<div class="favLine"></div>
-					<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요.">
-					<input type="submit" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();">
+					<input type="text" name="folderName" class="folderName"
+						placeholder="폴더 명을 입력하세요."> <input type="submit"
+						value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> <input
+						type="hidden" name="memberNo" value="<%=memberNo%>">
 				</form>
 			</div>
 			<div class="favLine"></div>
 			<form class="favoriteForm" method="post">
-			<div class="secondContent">
-				<input type="text" class="folderTitle" value="폴더1" readonly>
-				<div class="heartCommon heart"></div>
-			</div>
-			<div class="favLine"></div>
+				<%
+					for (Favorite f : favorite) {
+				%>
+				<div class="secondContent">
+					<div class="folder">
+						<input type="text" class="folderTitle"
+							value="<%=f.getFolderName()%>" readonly>
+						<%if (f.getHouseNo() != null && f.getHouseNo() == houseNo) {%>
+							<div class="heartCommon fav"></div>
+						<%} else {%>
+							<div class="heartCommon heart"></div>
+						<%}%>
+					</div>
+					<div class="favLine"></div>
+				</div>
+				<%
+					}
+				%>
 			</form>
 
 		</div>
@@ -166,9 +187,8 @@
             alert("폴더 이름을 입력하세요.");   
             return;
          }else{      
-         $(".makeFolder").attr("action", "<%=request.getContextPath()%>/favFolderPopUpAdd").submit();
-         }
-		
+         	$(".makeFolder").attr("action", "<%=request.getContextPath()%>/favFolderPopUpAdd").submit();
+         }		
 	}
 	</script>
 </body>

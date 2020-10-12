@@ -1,11 +1,17 @@
 package com.binbang.common.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.binbang.member.model.dao.FavoriteDao;
+import com.binbang.member.model.service.FavoriteService;
+import com.binbang.member.model.vo.Favorite;
 
 /**
  * Servlet implementation class FavFolderPopUpAddServlet
@@ -27,8 +33,26 @@ public class FavFolderPopUpAddServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getParameter("folderName");
 		
+		Favorite f=new Favorite();
+		f.setMemberNo(request.getParameter("memberNo"));
+		f.setFolderName(request.getParameter("folderName"));
+		int result=new FavoriteService().createFolder(f);
+		String msg="";
+		if(result>0) {
+			msg="폴더가 추가되었습니다.";
+		}else {
+			msg="폴더 추가에 실패했습니다.";
+		}
+		response.setContentType("text/html; charset=euc-kr"); //한글이 인코딩
+		PrintWriter out = response.getWriter(); //선언
+		   
+	   String str="";
+	   str = "<script language='javascript'>";
+	   str += "alert('"+ msg + "');";  
+	   str += " window.opener.location.reload();"; //오프너 새로고침 
+	   str += "</script>";
+	   out.print(str);
 	}
 
 	/**
