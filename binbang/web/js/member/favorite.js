@@ -14,8 +14,7 @@ $(document).ready(function () {
     //목록추가기능
     $("#checkBtn").click( e =>{
       $(".listPop").addClass("listDisNone");
-      var addDiv='<div class="eachList">'+'<div class="recomPic1 recommon"></div>'
-      + '<div class="favoriteContents"></div>' +'</div>';
+      var addDiv='<div class="eachList">'+'<div class="recomPic1 recommon"></div>'+'</div>';
       var lastDiv=$("div[class=favoriteList]");
       lastDiv.append(addDiv);
     })

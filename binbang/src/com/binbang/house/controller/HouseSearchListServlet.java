@@ -50,7 +50,6 @@ public class HouseSearchListServlet extends HttpServlet {
 		String checkOut = (request.getParameter("checkOut")).trim();
 		List dayList = dateCalculator(checkIn, checkOut); // 숙박 날짜들
 		String pNum = request.getParameter("peopleNum"); // 숙박 인원
-		
 
 		// paging처리하기
 		int cPage;
@@ -104,9 +103,9 @@ public class HouseSearchListServlet extends HttpServlet {
 			Member m = (Member) session.getAttribute("m");
 			// 관심숙소 목록
 			List<Favorite> favorite = new MemberService().selectFavList(m);
-			for (Favorite ff : favorite) {
-				System.out.println("관심숙소:" + ff);
-			}
+			/*
+			 * for (Favorite ff : favorite) { System.out.println("관심숙소:" + ff); }
+			 */
 			request.setAttribute("favorite", favorite);
 			request.setAttribute("favoriteJson", new Gson().toJson(favorite));
 		} catch (NullPointerException e) {
@@ -184,10 +183,10 @@ public class HouseSearchListServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}	
-			h.setTotalPrice(total);		
+			h.setTotalPrice(total);	
 	
 			}
-		
+			
 
 		request.setAttribute("house", house);
 		request.setAttribute("checkIn", checkIn);

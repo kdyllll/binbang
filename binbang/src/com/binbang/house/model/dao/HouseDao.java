@@ -449,8 +449,14 @@ public class HouseDao {
 		return list;
 	}
 
-	// 한 숙소의 평균평점
-	public Double selectAvgGrade(Connection conn, String houseNo) {
+	
+
+	
+	
+	
+	//한 숙소의 평균평점
+	public Double selectAvgGrade(Connection conn,String houseNo){
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Double avg = 0.0;

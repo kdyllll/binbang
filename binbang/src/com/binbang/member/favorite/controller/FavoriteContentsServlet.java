@@ -1,4 +1,4 @@
-package com.binbang.house.controller;
+package com.binbang.member.favorite.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HouseReviewServlet
+ * Servlet implementation class MemberFavoriteContentsServlet
  */
-@WebServlet("/house/review")
-public class HouseReviewServlet extends HttpServlet {
+@WebServlet("/member/favoriteContents")
+public class FavoriteContentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HouseReviewServlet() {
+    public FavoriteContentsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,12 +27,7 @@ public class HouseReviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-			String houseNo=(request.getParameter("houseNo"));
-			String memberNo=(request.getParameter("memberNo"));
-			request.setAttribute("houseNo", houseNo);
-			request.setAttribute("memberNo", memberNo);
-		    request.getRequestDispatcher("/views/house/review.jsp").forward(request,response);
+		request.getRequestDispatcher("/views/member/favoriteContents.jsp").forward(request, response);
 	}
 
 	/**

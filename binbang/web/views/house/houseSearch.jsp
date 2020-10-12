@@ -17,6 +17,8 @@
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
 	List dayList = (List) request.getAttribute("dayList");
+	String checkIn=(String)request.getAttribute("checkIn");
+	String checkOut=(String)request.getAttribute("checkOut");
 %>
 
 </head>
@@ -131,8 +133,7 @@
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		let dayList =<%=request.getAttribute("dayJson")%>;
 		let days=dayList.length;
-		let checkIn=<%=request.getAttribute("checkIn")%>;
-		let checkOut=<%=request.getAttribute("checkOut")%>;
+
 		let favorite =<%=request.getAttribute("filterJson")%>;
 		$(".houseNum").html(houseList.length);
 		listPrint();
@@ -200,10 +201,11 @@
 								style="cursor:pointer;background-image : url('<%=request.getContextPath()%>/upload/house/`+houseList[h].housePicture[0]+`');"></a>
 							<div class="houseContents">
 
-								<div class="contentSection1">
-									<p class="houseName">`+houseList[h].houseName+`</p>
-									<div class="heartCommon heart"></div>
-								</div>
+								<form class="contentSection1">
+									<p class="houseName">`+houseList[h].houseName+`</p>							
+									<a class="heartCommon heart"></a>
+									<input type="hidden" name="houseNo" value="`+houseList[h].houseNo+`">
+								</form>
 
 								<div class="houseLine"></div>
 
@@ -246,8 +248,8 @@
 							<input type="hidden" class="filterInput" value="`+filterNames+`">
 							<form class="go" action="<%=request.getContextPath()%>/house/houseDetailMove" method="post">
 									<input type="hidden" name="houseNo" value="`+houseList[h].houseNo+`">
-									<input type="hidden" name="checkIn" value="`+checkIn+`">
-									<input type="hidden" name="checkOut" value="`+checkOut+`">
+									<input type="hidden" name="checkIn" value="<%=checkIn%>">
+									<input type="hidden" name="checkOut" value="<%=checkOut%>">
 									<input type="hidden" name="totalPrice" value="`+houseList[h].totalPrice+`">
 							</form>
 						</div> `;
@@ -263,7 +265,6 @@
 			$(".list").children().remove();
 			$(".list").append(html);	
 		}
-
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		//필터 검색 누를때 두개 다
 		function fn_option(){
@@ -464,6 +465,39 @@
 		function fn_next(e){
 			$(".go").submit();
 		};
+		
+		//관심숙소 버튼눌렀을때
+		 $(".heartCommon").on("click", e => {
+			 let login = "";
+			 let loginNo = "";
+
+			<% if(member != null) {%>
+				login = '<%=member %>';
+				loginNo = '<%=member.getMemberNo() %>';
+			<% } %>
+			if(login == "") {
+				alert("로그인한 회원만 이용가능합니다.");
+				fn_loginPopUp();
+			}  else {
+				//관심숙소 고르는 팝업으로 넘어가기
+			}	
+		});
+		//로그인 안되어있다면 로그인팝업 호출
+		function fn_loginPopUp() {
+		 	const url = "<%=request.getContextPath()%>/loginPopUp";
+	   		const title = "loginPopUp";
+	   		const status = "left=100px, top=100px, width=350px, height=350px";
+	   		open(url,title,status); 
+
+	   		<%-- heartCommon.target = title;
+	   		heartCommon.href = url;
+
+	   		heartCommon.submit();
+	   		
+	   	   const url="<%=request.getContextPath()%>/member/findId";
+           const status="width=500px,height=450px,top=150px,left=150px";
+           open(url,"",status); --%>
+		 }
 		
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
