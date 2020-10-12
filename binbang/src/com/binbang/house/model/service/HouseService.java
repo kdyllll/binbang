@@ -151,6 +151,15 @@ public class HouseService {
 		return list;
 	}
 	
+	//관심숙소로 보내는 service
+	public House selectPictures(String houseNo){
+		Connection conn = getConnection();
+		House h = dao.selectPictures(conn, houseNo);
+		close(conn);
+		return h;
+	}
+	
+	
 	public Double selectAvgGrade(String houseNo){
 		Connection conn = getConnection();
 		Double avg = dao.selectAvgGrade(conn, houseNo);

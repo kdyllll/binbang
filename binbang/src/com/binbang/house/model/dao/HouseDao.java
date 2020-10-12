@@ -449,14 +449,20 @@ public class HouseDao {
 	}
 	
 	//관심숙소로 보내는 dao
-	public List<House> selectPictures(){
+	public House selectPictures(Connection conn,String houseNo){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<House> list = new ArrayList();
+		House h = null;
 		try {
 			pstmt = conn.prepareStatement(prop.getProperty("selectPictures"));
-			
-		}
+			pstmt.setString(1,houseNo);
+			rs = pstmt.executeQuery();			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return h;
 	}
 	
 	

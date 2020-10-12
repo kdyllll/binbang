@@ -8,11 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
-import com.binbang.member.model.service.FavoriteService;
-import com.binbang.member.model.vo.Favorite;
 
 /**
  * Servlet implementation class MemberFavoriteFolderServlet
@@ -35,14 +34,16 @@ public class FavoriteFolderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		
-		List<House> house = new HouseService().selectPictures();
-		for (House h : house) {
-			h.setHousePicture(new HouseService().selectMainPicture(h));
-		}
+		HttpSession session = request.getSession(false);
 		
 		
-		Favorite f = new FavoriteService().viewFolder(memberNo);					
+		House house = new HouseService().selectPictures(h);
+		
+		/* setHousePicture(new HouseService().selectMainPicture(house)); */
+		
+		
+		
+		/* Favorite f = new FavoriteService().viewFolder(memberNo); */					
 		String memberNo = request.getParameter("member_no");
 		
 		request.setAttribute("favorite", f);
