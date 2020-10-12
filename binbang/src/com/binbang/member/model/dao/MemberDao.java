@@ -238,12 +238,13 @@ public class MemberDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List<Favorite> fList=new ArrayList<Favorite>();
+		Favorite f=null;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("selectFavList"));
 			pstmt.setString(1,m.getMemberNo());
 			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				Favorite f=new Favorite();
+			while(rs.next()) {
+				f=new Favorite();
 				f.setFolderNo(rs.getString("folder_no"));
 				f.setMemberNo(rs.getString("member_no"));
 				f.setFolderName(rs.getString("folder_name"));

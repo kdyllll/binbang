@@ -448,17 +448,6 @@ public class HouseDao {
 		}return list;
 	}
 	
-	//관심숙소로 보내는 dao
-	public List<House> selectPictures(){
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<House> list = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectPictures"));
-			
-		}
-	}
-	
 	
 	
 	//한 숙소의 평균평점
