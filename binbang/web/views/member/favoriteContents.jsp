@@ -11,6 +11,8 @@
 
 		<!-- 관심숙소content -->
 		<section class="section">
+		
+			<form id="favHouse" method="post">
 			<div class="line1">
 				<input type="text" value="관심폴더명" class="favTitle">
 				<div class="listLine"></div>
@@ -22,7 +24,7 @@
 
 				<!-- 버튼 -->
 				<div class="btnGroup">
-					<input type="button" id="backBtn" value="뒤로가기" class="Btn">
+					<input type="button" id="backBtn" value="뒤로가기" class="Btn" onclick="fn_back();">
 					<input type="button" id="modifyBtn" value="목록수정" class="Btn">															
 				</div>
 
@@ -55,15 +57,20 @@
 					</div>
 				</div>
 			</div>
-
+			
+			</form>
 		</section>
-
-
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
+	
+	<script>
+	function fn_back(){					 
+		         $("#favHouse").attr("action","<%=request.getContextPath()%>/member/favoriteFolder").submit();
+		    }	
+	</script>
+	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/member/favorite.js"></script>
-
 </body>
 </html>
