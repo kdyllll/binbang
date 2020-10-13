@@ -463,9 +463,9 @@
 		};
 
 		//사진 클릭하면 form태그 실행
-		/* function fn_next(e){
+		 function fn_next(e){
 			$(".go").submit();
-		}; */
+		}; 
 		
 		//관심숙소 버튼눌렀을때
 		 $(".heartCommon").on("click", e => {
