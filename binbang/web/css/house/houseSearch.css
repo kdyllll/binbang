@@ -20,14 +20,7 @@
     border: 0.5px solid rgba(223, 222, 222, 0.685);
 }
 
-.section2{
-    /* 검색 리스트 구역 크기 */
-    width:100%;
-    margin-top:20px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
+
 
 /* 정렬구역 */
 ul.box {
@@ -108,7 +101,12 @@ ul.box {
     background-color: #74b1bf;
 }
 
-
+.section2{
+    /* 검색 리스트 구역 크기 */
+    width:100%;
+    margin-top:50px;
+    position: relative;
+}
 
 
 .box{
@@ -126,6 +124,7 @@ ul.box {
 .map{
     width: 400px;
     height: 500px;
+    display:inline-block;
   /*   border: 1px solid; */
 }
 
@@ -135,8 +134,9 @@ ul.box {
 
 /* 숙소 리스트 영역 */
 .listCon{
-    display:flex;
-    flex-direction: column;
+    margin-left: 50px;
+    width:calc(100% - 500px);
+    display:inline-block;
     /* border:1px solid; */
    
 }
@@ -150,7 +150,6 @@ ul.box {
     width:1000px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     
 }
 .list > div{
@@ -171,7 +170,7 @@ ul.box {
     height: 280px;
     border: none;
     outline:0;
-    background-color: rgba(245, 255, 240, 0);
+    background-color: rgba(255, 255, 255, 0);
 }
 .housePic{
 	width:100%;
