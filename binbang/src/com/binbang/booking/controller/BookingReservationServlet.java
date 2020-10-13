@@ -47,13 +47,14 @@ public class BookingReservationServlet extends HttpServlet {
 		
 		
 		Booking b=new Booking();
-		b.setHouseNo(request.getParameter("houseNo"));
+		b.setMemberNo(memberNo);
+		b.setHouseNo(no);
 		b.setGuestName(request.getParameter("guestName"));
-		b.setCheckInDate(request.getParameter("checkInDate"));
+		b.setCheckInDate(in);
 		b.setCheckOutDate(out1);
 		b.setGuestPnum(Integer.parseInt(request.getParameter("guestPnum")));
 		b.setPaymentOption(request.getParameter("paymentOption"));
-		b.setPrice(Integer.parseInt(request.getParameter("price")));
+		b.setPrice(Integer.parseInt(price));
 		b.setPointPlus(Integer.parseInt(request.getParameter("pointPlus")));
 		b.setPointMinus(Integer.parseInt(request.getParameter("pointMinus")));
 		int result =new HouseService().insertReservation(no,b);
