@@ -195,6 +195,7 @@
 			for(let h in houseList){
 				let filterNames="";
 				let filterList=houseList[h].filter;
+				let location=houseList[h].houseLocation.substring(0,2);
 				for(let f in filterList){
 					if(filterNames!="") filterNames=filterNames+","+filterList[f];
 					else filterNames=filterList[f];
@@ -217,7 +218,7 @@
 								<div class="contentSection2">
 									<div class="contentBox box1">
 										<div class="iconLocation"></div>
-										<p class="locationName">`+houseList[h].houseLocation+`</p>
+										<p class="locationName">`+location+`</p>
 										
 									</div>
 
@@ -516,7 +517,7 @@
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		mapOption = {
 		   center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-		   level : 5// 지도의 확대 레벨
+		   level : 3// 지도의 확대 레벨
 		}; 		
 		var map = new daum.maps.Map(mapContainer, mapOption); 	// 지도를 생성합니다    
 		var geocoder = new daum.maps.services.Geocoder();// 주소-좌표 변환 객체를 생성합니다
