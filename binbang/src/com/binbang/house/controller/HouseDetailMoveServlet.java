@@ -45,7 +45,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				String out1=request.getParameter("checkOut");
 				String price=request.getParameter("totalPrice");
 				System.out.println(no);
-				
+
 				House h=new HouseService().HouseDetail(no);
 	
 				
