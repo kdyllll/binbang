@@ -113,10 +113,18 @@ public class MemberService {
 	
 	
 	
-	//관심숙소 리스트
+	//관심숙소 리스트(하우스번호만)
 	public List<Favorite> selectFavList(Member m){
 		Connection conn=getConnection();
 		List<Favorite> fList=dao.selectFavList(conn,m);
+		close(conn);
+		return fList;
+	}
+	
+	//관심숙소 리스트
+	public List<Favorite> selectFavAllList(Member m){
+		Connection conn=getConnection();
+		List<Favorite> fList=dao.selectFavAllList(conn,m);
 		close(conn);
 		return fList;
 	}
