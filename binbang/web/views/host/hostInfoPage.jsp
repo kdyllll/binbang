@@ -125,7 +125,7 @@
 			let commentSize = $("#hostCommentAll > div").length;
 			let startCnt2 = 3;
 			if(commentSize < startCnt2) {
-				$("#addBtn").css("display", "none");
+				$("#addBtn2").css("display", "none");
 			}
 			for(let i=startCnt2; i<commentSize; i++) {
 				$("#comment"+i).css("display","none");
