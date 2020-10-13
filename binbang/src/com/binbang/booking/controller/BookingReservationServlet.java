@@ -55,14 +55,11 @@ public class BookingReservationServlet extends HttpServlet {
 		b.setGuestPnum(Integer.parseInt(request.getParameter("guestPnum")));
 		b.setPaymentOption(request.getParameter("paymentOption"));
 		b.setPrice(Integer.parseInt(price));
-		b.setPointPlus(Integer.parseInt(request.getParameter("pointPlus")));
+		b.setPointPlus(Integer.parseInt(finalPoint));
 		b.setPointMinus(Integer.parseInt(request.getParameter("pointMinus")));
 		int result =new HouseService().insertReservation(no,b);
 		String lastPoint = totalPoint + totalPoints;
-		/*
-		 * Member m3 = new Member(); m3.setMemberNo(request.getParameter("m"));
-		 * m3.setTotalPoint(Integer.parseInt(request.getParameter("finalPoint")));
-		 */
+		
 		int m=new HouseService().insertPoint(memberNo, lastPoint);
 		System.out.println("이건 m 이야"+lastPoint);
 		System.out.println("레저베이션 서블릿"+memberNo);
