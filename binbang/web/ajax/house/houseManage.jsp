@@ -73,5 +73,8 @@
 	$(".deleteH").on("click",e => {
 		$(".houseAll").attr("action","<%=request.getContextPath()%>/host/houseDelete").submit();
 	})
+	$(".updateH").on("click", e => {
+		$(".houseAll").attr("action","<%=request.getContextPath()%>/host/houseChangePage").submit();
+	})
 </script>
 

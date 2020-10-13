@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+.section {
+	margin-top:80px;
+}
 * {
 	box-sizing: border-box;
 }
@@ -28,7 +30,6 @@
 .hostInfoImg>img {
 	width: 150px;
 	height: 180px;
-	border: 0.5px black solid;
 	margin-bottom: 15px;
 }
 

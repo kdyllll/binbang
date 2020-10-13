@@ -28,9 +28,6 @@
 			[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. 
 			<input type="button" value="인증하기" id="emailConfirm">
 		</div>
-
-
-		<p class="checkTitle">인증번호</p>		
 		<form id="numberFrm">							
 				<input type="text"  name="num" id="num" class="passNumber" placeholder="인증번호 입력"> 				 
 				<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>"> <!-- 중복이 아닌 email enroll input창에 띄어줌 -->

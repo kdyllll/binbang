@@ -1,23 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.binbang.booking.model.vo.Booking"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 <%
 	List<Booking> list = (List) request.getAttribute("list");
 %>
 
 <style>
-	h2 {
+	.section {
+		padding: 6% 20%;			
+	}
+	.reservedTitle {
 		margin-bottom: 50px;
 		font-weight:600;
-		font-size:18px;
-	}
-	
+		font-size:15px;
+	}	
 	.house {
+		padding: 6% 20%;
 		display:flex;
 		margin-bottom:50px;
-	}
-	
+	}	
 	.house > .myReserve,
 	.house > .myReserved,
 	.house > .myCancel {
@@ -26,12 +28,11 @@
 		border:1px solid;
 		margin-right: 15px;
 	}
-
 </style>
 
 <!-- 숙소 -->
 <!-- 1. 예약완료된 숙소 -->
-<h2>예약완료된 숙소</h2>
+<p class="reservedTitle">예약완료된 숙소<p>
 <div class="house">
 <% for(Booking b : list) { 
 	if(b.getHouseRequest().equals("예약완료"))  {%>
@@ -56,7 +57,7 @@
 	}%>
 </div>
 
-<h2>이용완료 숙소</h2>
+<p class="reservedTitle">이용완료 숙소</p>
 <div class="house">
 <% for(Booking b : list) { %>
 	<form class="myReserved" method="post">
@@ -71,10 +72,10 @@
 			</tr>
 		</table>
 	</form>
-
 	<% } %>
 </div>
-<h2>취소한 숙소</h2>
+
+<p class="reservedTitle">취소한 숙소<p>
 <div class="house">
 <% for(Booking b : list) { 
 if(b.getHouseRequest().equals("예약취소")) {%>
@@ -94,6 +95,7 @@ if(b.getHouseRequest().equals("예약취소")) {%>
 	<% } 
 	} %>
 </div>
+
 <script>
 	function test() {
 		$(".myReserve").attr("action","<%=request.getContextPath() %>/member/reservationCancel").submit();

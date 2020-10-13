@@ -9,13 +9,14 @@
     	String out1=(String) request.getAttribute("checkOut");
     	String price=(String) request.getAttribute("totalPrice");
    	 	String totalPoint=(String) request.getAttribute("totalPoint");
+   	 	String totalPoints=(String) request.getAttribute("totalPoints");
     %>
 
 <%@ include file="/views/common/commonLink.jsp" %>
 <title>booking</title>
 <link rel="stylesheet"
    href="<%=request.getContextPath()%>/css/booking/reserveInfo.css" />
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/bookingHeader.css" />
+ <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/bookingHeader.css" />
 
 <body>
    <div class="wrap">
