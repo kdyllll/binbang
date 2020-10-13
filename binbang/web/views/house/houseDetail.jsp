@@ -7,13 +7,13 @@
 
 <%
 	House h = (House) request.getAttribute("house");
-Booking b = (Booking) request.getAttribute("booking");
-Double grade = (Double) request.getAttribute("grade");
-Member m2 = (Member) session.getAttribute("m");
-List<Review> list = (List) request.getAttribute("list");
-String in = (String) request.getAttribute("checkIn");
-String out1 = (String) request.getAttribute("checkOut");
-String price = (String) request.getAttribute("totalPrice");
+	Booking b = (Booking) request.getAttribute("booking");
+	Double grade = (Double) request.getAttribute("grade");
+	Member m2 = (Member) session.getAttribute("m");
+	List<Review> list = (List) request.getAttribute("list");
+	String in = (String) request.getAttribute("checkIn");
+	String out1 = (String) request.getAttribute("checkOut");
+	String price = (String) request.getAttribute("totalPrice");
 %>
 
 <%
@@ -135,8 +135,8 @@ String price = (String) request.getAttribute("totalPrice");
 							<%
 								} else {
 							%>
-							<form name="loginPopUp">
-								<input type="button" onclick="fn_loginPopUp();">
+							<form name="loginPopUp" >
+								<input value="로그인" style="cursor:pointer;width:100%; height:100%; color:white; background:none; border:none; outline:none;" type="button" onclick="fn_loginPopUp();">
 							</form>
 							<%
 								}
@@ -470,10 +470,9 @@ String price = (String) request.getAttribute("totalPrice");
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
 	<script>
 		function fn_loginPopUp() {
-		 	const url = "<%=request.getContextPath()%>
-		/loginPopUp";
+		 	const url = "<%=request.getContextPath()%>/loginPopUp";
 			const title = "loginPopUp";
-			const status = "left=100px, top=100px, width=250px, height=250px";
+			const status = "left=100px, top=100px, width=500px, height=300px";
 			open("", title, status);
 
 			loginPopUp.target = title;

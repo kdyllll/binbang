@@ -21,6 +21,7 @@ public class Booking {
 	private int pointPlus;
 	private int pointMinus;
 	private int totalPoint;
+
 	
 
 	public Booking() {
@@ -52,6 +53,8 @@ public class Booking {
 		this.pointMinus = pointMinus;
 		this.totalPoint = totalPoint;
 	}
+	
+
 
 
 	public String getReservationNo() {

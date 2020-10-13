@@ -53,8 +53,6 @@ IMP.request_pay({
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
         location.assign("<%=request.getContextPath()%>/booking/booking?houseNo=<%=no%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=oriPrice%>&totalPoint=<%=totalPoint%>");//부킹으로 가는구문 
-       
-
     }
 
     alert(msg);
