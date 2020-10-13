@@ -21,7 +21,7 @@
 	<section class="section">
 					<form id="folderCreate" method="post">
 						<div class="line1">
-							<input type="text" value="<%=m.getMemberNo()%>" name="memberNum">																																		
+							<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNum">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
 						</div>
@@ -49,15 +49,16 @@
 
 					<div class="favoriteList">
 						<% for(Favorite f : list){%>
-							<form id="folderContents" method="post">														
-									<div class="eachList" id="eachList" onclick="fn_toContent();">																												
-										<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
+							<form id="folderContents" method="post">
+									
+										<input type="button" class="eachList" id="eachList" value="<%=f.getFolderNo() %>,<%=f.getFolderName() %>" onclick="fn_toContent();" name="folderNo">
 										<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
-									</div>
+										<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
+																							
+									<%-- <div class="eachList" id="eachList" onclick="fn_toContent();">																												
+									</div> --%>
 							</form>				
-						<%}%>
-						
-						
+						<%}%>												
 					</div>
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
