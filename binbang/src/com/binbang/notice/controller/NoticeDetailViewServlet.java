@@ -31,8 +31,9 @@ public class NoticeDetailViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int noticeNo=Integer.parseInt(request.getParameter("noticeNo"));
+		String noticeNo=request.getParameter("noticeNo");
 		Notice n= new NoticeService().noticeDatailView(noticeNo);
+		
 		request.setAttribute("notice",n);
 		request.getRequestDispatcher("/views/notice/noticeDetail.jsp").forward(request, response);
 	}

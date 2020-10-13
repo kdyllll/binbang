@@ -332,6 +332,35 @@ public class HouseDao {
 		}
 		return l;
 	}
+	
+	
+	public String[] housePicture(Connection conn, String no) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String[] housePictur = new String[10];
+		int su=0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("housePicture"));
+			pstmt.setString(1, no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				
+				housePictur[su]=(rs.getNString("picture_name"));
+				su++;
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return housePictur;
+	}
+	
+
 
 	// 숙소 후기 조회화는 다오
 	public List<Review> ReviewDetail(Connection conn, String no) {

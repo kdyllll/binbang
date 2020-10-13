@@ -65,20 +65,21 @@
 }
 
 /* 게시글 등록 버튼 */
-.enrollButton  {
-    text-align: center;
-    margin:20px 0;
+#btnDiv  {
+   text-align: center;
     
 }
 
 .enroll{
+	
+    margin:40px 0 20px 0;
     width: 100px;
     height: 30px;
-    text-align: center;
     line-height: 30px;
     font-size: 15px;
     color:black;
-    
+    border:none;
+    background:none;
 }
 
    

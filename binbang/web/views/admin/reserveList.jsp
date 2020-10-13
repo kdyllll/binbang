@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.binbang.member.model.vo.Reservation" %>
+<%@page import="com.binbang.booking.model.vo.Booking" %>
 <%@page import="java.util.List"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
 <%
-	List<Reservation> list=(List)request.getAttribute("list");
+	List<Booking> list=(List)request.getAttribute("list");
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
 %>
@@ -75,14 +75,14 @@
                     <th class="cell6" >예약 날짜</th>
                     
                   </tr>
-                  <%for(Reservation r : list) {%>
+                  <%for(Booking b : list) {%>
                   <tr>
-                    <td class="cell1"><%=r.getReservationNo() %></td>
-                    <td class="cell1"><%=r.getHouseNo() %></td>
-                    <td class="cell3"><%=r.getGuestName() %></td>
-                    <td class="cell3"><%=r.getHouseRequest() %></td>
-                    <td class="cell1"><%=r.getPrice() %></td>
-                    <td class="cell6"><%=r.getCheckinDate() %>~<%=r.getCheckoutDate() %></td>
+                    <td class="cell1"><%=b.getReservationNo() %></td>
+                    <td class="cell1"><%=b.getHouseNo() %></td>
+                    <td class="cell3"><%=b.getGuestName() %></td>
+                    <td class="cell3"><%=b.getHouseRequest() %></td>
+                    <td class="cell1"><%=b.getPrice() %></td>
+                    <td class="cell6"><%=b.getCheckInDate() %>~<%=b.getCheckOutDate() %></td>
                     
                   </tr>
                <%} %>

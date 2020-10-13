@@ -1,7 +1,6 @@
 <%@page import="com.binbang.member.model.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.binbang.member.model.vo.Member" %>
 <%
 	Member m = (Member)session.getAttribute("m");
 %>

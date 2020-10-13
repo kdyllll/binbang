@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.member.model.vo.Reservation;
+import com.binbang.booking.model.vo.Booking;
 
 /**
  * Servlet implementation class ReserveList
@@ -31,7 +31,7 @@ public class ReserveListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Reservation> list=new AdminService().reserveList();
+		List<Booking> list=new AdminService().reserveList();
 		request.setAttribute("list",list);
 		request.getRequestDispatcher("/views/admin/reserveList.jsp").forward(request, response);
 	}

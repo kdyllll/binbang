@@ -13,16 +13,17 @@ public class Complaint {
 	private Date complaintDate;
 	private String complaintPic;
 	private String hostName;
-	private String memberName;
+	private String memberEmail;
 	private String houseNo;
 	
 	public Complaint() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Complaint(String complaintNo, String memberNo, String hostNo, String complaintCategory,
+	private Complaint(String complaintNo, String memberNo, String hostNo, String complaintCategory,
 			String complaintDetail, String complaintState, Date complaintDate, String complaintPic, String hostName,
-			String memberName, String houseNo) {
+			String memberEmail, String houseNo) {
+
 		super();
 		this.complaintNo = complaintNo;
 		this.memberNo = memberNo;
@@ -33,7 +34,7 @@ public class Complaint {
 		this.complaintDate = complaintDate;
 		this.complaintPic = complaintPic;
 		this.hostName = hostName;
-		this.memberName = memberName;
+		this.memberEmail = memberEmail;
 		this.houseNo = houseNo;
 	}
 
@@ -109,12 +110,12 @@ public class Complaint {
 		this.hostName = hostName;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
 
 	public String getHouseNo() {
@@ -130,11 +131,10 @@ public class Complaint {
 		return "Complaint [complaintNo=" + complaintNo + ", memberNo=" + memberNo + ", hostNo=" + hostNo
 				+ ", complaintCategory=" + complaintCategory + ", complaintDetail=" + complaintDetail
 				+ ", complaintState=" + complaintState + ", complaintDate=" + complaintDate + ", complaintPic="
-				+ complaintPic + ", hostName=" + hostName + ", memberName=" + memberName + ", houseNo=" + houseNo + "]";
+				+ complaintPic + ", hostName=" + hostName + ", memberEmail=" + memberEmail + ", houseNo=" + houseNo
+				+ "]";
+
 	}
-	
-	
-	
 	
 
 }

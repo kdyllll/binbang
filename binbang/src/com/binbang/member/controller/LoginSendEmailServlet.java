@@ -9,6 +9,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,6 @@ import org.json.simple.JSONObject;
 
 import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MemberCheckConfirmNumberServlet
@@ -43,10 +43,9 @@ public class LoginSendEmailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String email=null;
+
 		String userId = request.getParameter("email");
 		Member m=new MemberService().selectInfo(userId);
-//		email= new MemberService().emailCheck(userId);
 		System.out.println("서블릿"+userId);
 		
 		JSONObject emailConfirm= new JSONObject();
@@ -55,25 +54,6 @@ public class LoginSendEmailServlet extends HttpServlet {
 		String mesg="";
 		String loc="";
 
-//		
-//		if(m==null||!m.getEmail().equals(userId)) {
-//			
-//			mesg="아이디 정보가 일치하지 않습니다.";
-//			loc="/member/findPassword";
-//			
-//			request.setAttribute("msg",mesg);
-//			request.setAttribute("loc", loc);
-//			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-//			System.out.println("아이디 일치하지않음");
-//		} 
-//		else {
-//			System.out.println("아이디 일치함");
-//			mesg="인증에 성공했습니다.";
-//			loc="/member/changePassword";
-//			request.setAttribute("msg",mesg);
-//			request.setAttribute("loc", loc);
-//			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-			
 		if(m!=null && m.getEmail().equals(userId)) {	
 	
 			String host="smtp.naver.com";
@@ -129,7 +109,7 @@ public class LoginSendEmailServlet extends HttpServlet {
 	            //메일 제목
 	            msg.setSubject("빈방 인증 메일입니다.");
 	            //메일 내용
-	            msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
+	            msg.setText("안녕하세요 빈방입니다.\n\r 비밀번호 찾기 인증 번호는 "+temp+"입니다.");
 	            
 	            Transport.send(msg);
 	            System.out.println("이메일 전송");
@@ -145,10 +125,8 @@ public class LoginSendEmailServlet extends HttpServlet {
 	        
 	        System.out.println("인증번호 발송");
 	        mesg="인증번호가 발송되었습니다.";
-//			loc="/member/findPassword";
 			result=1;
-			emailConfirm.put("msg",mesg);
-			emailConfirm.put("result",result);
+			
         
 		} else if((m==null||!m.getEmail().equals(userId))){
 			
@@ -156,12 +134,10 @@ public class LoginSendEmailServlet extends HttpServlet {
 	
 			mesg="아이디 정보가 일치하지 않습니다.";
 			result=0;
-//			loc="/member/findPassword";
-			emailConfirm.put("msg",mesg);
-			emailConfirm.put("result",result);
 			
 		}
-		
+		emailConfirm.put("msg",mesg);
+		emailConfirm.put("result",result);
 		response.getWriter().print(emailConfirm);
 //		response.setContentType("application/json;charset=utf-8");
 //		new Gson().toJson(emailConfirm,response.getWriter());
