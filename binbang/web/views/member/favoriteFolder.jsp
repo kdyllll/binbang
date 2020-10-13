@@ -24,8 +24,7 @@
 							<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNum">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
-						</div>
-				
+						</div>				
 						
 						<!-- 관심숙소폴더 -->
 						<div class="favorite">
@@ -49,13 +48,11 @@
 
 					<div class="favoriteList">
 						<% for(Favorite f : list){%>
-							<form id="folderContents" method="post">									
-									<input type="button" class="eachList" id="eachList" value="<%=f.getFolderNo() %>,<%=f.getFolderName() %>" onclick="fn_toContent();">
-									<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
+							<form class="folderContents" method="post">									
+									<input type="button" class="eachList" id="eachList" onclick="fn_toContent();">
 									<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
+									<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
 							</form>																											
-									<%-- <div class="eachList" id="eachList" onclick="fn_toContent();">																												
-									</div> --%>
 						<%}%>												
 					</div>
 		</section>
@@ -76,7 +73,7 @@
 		  });
 		
 		function fn_toContent(){
-			$("#folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
+			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
 		}
 				
 		function fn_createFolder(){
