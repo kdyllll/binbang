@@ -21,7 +21,7 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
+	private Member(String memberNo, String email, String password, String memberName, String nickname, String phone,
 			Date enrollDate, int stayDays, String hostBlack, String hostConfirm, String hostNo, int totalPoint) {
 		super();
 		this.memberNo = memberNo;

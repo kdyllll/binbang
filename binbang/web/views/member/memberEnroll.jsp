@@ -357,7 +357,8 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
        	let phone = document.getElementById("phone");
        	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
 			 if(!regPhone.test(phone.value)){
-				 alert("전화번호를 입력해주세요")
+				 alert("전화번호를 입력해주세요");
+				 return false;
 			 }       
 		
 		/* 약관동의와 인증이후 회원가입*/ 

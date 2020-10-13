@@ -72,13 +72,13 @@ public class NoticeDao {
 		
 	}
 	
-	public Notice noticeDatailView(Connection conn, int noticeNo){
+	public Notice noticeDatailView(Connection conn, String noticeNo){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Notice n=null;
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("detailNotice"));
-			pstmt.setInt(1, noticeNo);
+			pstmt=conn.prepareStatement(prop.getProperty("noticeDetail"));
+			pstmt.setString(1, noticeNo);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				n=new Notice();
@@ -87,6 +87,113 @@ public class NoticeDao {
 				n.setNoticeTitle(rs.getString("notice_title"));
 				n.setNoticeDate(rs.getDate("notice_date"));
 				n.setNoticeContents(rs.getString("notice_contents"));
+
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return n;
+	}
+	
+	public int insertNotice(Connection conn, Notice n) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("noticeInsert"));
+			pstmt.setString(1, n.getNoticeCategory());
+			pstmt.setString(2, n.getNoticeTitle());
+			pstmt.setString(3, n.getNoticeContents());
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+		
+	}
+	
+	//공지사항 수정
+	public int noticeUpdate(Connection conn,Notice n) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("noticeUpdate"));
+			pstmt.setString(1, n.getNoticeCategory());
+			pstmt.setString(2, n.getNoticeTitle());
+			pstmt.setString(3, n.getNoticeContents());
+			pstmt.setString(4, n.getNoticeNo());
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	public int noticeDelete(Connection conn,String noticeNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("noticeDelete"));
+			pstmt.setString(1, noticeNo);
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	//이전글
+	public Notice prevNotice(Connection conn,String noticeNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Notice n=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("prevNotice"));
+			pstmt.setString(1, noticeNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				n=new Notice();
+				n.setNoticeNo(rs.getString("prev_notice_no"));
+				n.setNoticeCategory(rs.getString("prev_notice_category"));
+				n.setNoticeTitle(rs.getString("prev_notice_title"));
+				n.setNoticeDate(rs.getDate("prev_notice_date"));
+				n.setNoticeContents(rs.getString("prev_notice_contents"));
+
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return n;
+	}
+	
+	//다음글
+	public Notice nextNotice(Connection conn,String noticeNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Notice n=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("nextNotice"));
+			pstmt.setString(1, noticeNo);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				n=new Notice();
+				n.setNoticeNo(rs.getString("next_notice_no"));
+				n.setNoticeCategory(rs.getString("next_notice_category"));
+				n.setNoticeTitle(rs.getString("next_notice_title"));
+				n.setNoticeDate(rs.getDate("next_notice_date"));
+				n.setNoticeContents(rs.getString("next_notice_contents"));
 
 			}
 		}catch(SQLException e) {

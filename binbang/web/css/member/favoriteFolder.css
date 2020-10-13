@@ -47,7 +47,7 @@
 	z-index: 200;
 }
 
-.favoriteList div{
+.favoriteList form div{
 	width: 230px;
 	height: 150px;
 	position: relative;
@@ -55,13 +55,15 @@
 	box-shadow: 3px 5px 5px gray;
 }
 
-.eachList {
+.eachList{
 	margin: 2%;
+	width: 230px;
+	height: 150px;
+	cursor: pointer;
 }
 
 .recomPic1 {
-	background-image: url("../../image/member/main/recommend/recommend1.jpg");
-		
+	background-image: url("../../image/member/main/recommend/recommend1.jpg");		
 }
 
 /* 목록만들기 팝업창 */

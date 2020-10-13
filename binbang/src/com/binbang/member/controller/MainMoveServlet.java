@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.vo.Member;
 
@@ -29,7 +30,9 @@ public class MainMoveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		HttpSession session =request.getSession();
+		Member m = (Member)session.getAttribute("m");
+		System.out.println(m);
 		request.getRequestDispatcher("/views/member/main.jsp").forward(request,response);
 		
 	}

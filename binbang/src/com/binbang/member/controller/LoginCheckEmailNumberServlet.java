@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 /**
  * Servlet implementation class FindPasswordAjaxServlet
  */
@@ -29,27 +31,28 @@ public class LoginCheckEmailNumberServlet extends HttpServlet {
 		
 		String AuthenticationKey = (String)request.getSession().getAttribute("AuthenticationKey");
         String number = request.getParameter("number");
-
+        
         String msg="";
-		String loc="";
+		int result=0;
+		
+		JSONObject checkNumber= new JSONObject();
        
-        if(AuthenticationKey==null||number==null||!AuthenticationKey.equals(number)){
-        	
-            msg="인증번호가 일치하지 않습니다";
-            loc="/member/findPassword";
-            System.out.println("인증번호 일치하지 않음");
-            return;
-            
-        }else {
+		if(AuthenticationKey!=null&&number!=null&&AuthenticationKey.equals(number)){	
+        	System.out.println("인증번호 일치함"); 
         	msg="인증이 완료되었습니다";
-        	loc="/member/memberChangePassword";
-        	System.out.println("인증번호 일치함");
-        }
-        request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-        request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);        
-	}
+            result=1;
+		
+        }else {
+        	System.out.println("인증번호 일치하지 않음");
+        	msg="인증번호가 일치하지 않습니다";
 
+        }
+		
+		checkNumber.put("msg", msg);
+        checkNumber.put("result", result);
+        response.getWriter().print(checkNumber);
+	}
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
