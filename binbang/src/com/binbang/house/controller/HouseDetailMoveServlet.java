@@ -81,7 +81,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				List<Review> list=new HouseService().ReviewDetail(no);
 				
 				
-			
+			 System.out.println(list);
 				request.setAttribute("house",h);
 				request.setAttribute("checkIn",in);
 				request.setAttribute("checkOut",out1);
