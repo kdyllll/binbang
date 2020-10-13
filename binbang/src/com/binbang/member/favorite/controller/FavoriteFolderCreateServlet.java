@@ -48,9 +48,12 @@ public class FavoriteFolderCreateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="폴더생성";
-			loc="/member/favoriteFolder";
+			loc="/member/favoriteFolder?memberNo="+f.getMemberNo();
+			
+			/* loc="/member/myPage?email="+m.getEmail(); */
 		}else {
 			msg="폴더생성 실패";
+			/* loc="/member/mypagePrivate?email="+m.getEmail(); */
 		}
 		
 		request.setAttribute("msg", msg);
