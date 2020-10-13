@@ -42,6 +42,8 @@ public class HostEnrollEndServlet extends HttpServlet {
 			return;
 		}
 		String path = getServletContext().getRealPath("/upload/host");
+		File dir= new File(path);
+		if(!dir.exists()) dir.mkdirs();
 		String encode = "UTF-8";
 		int maxSize = 1024*1024*50;
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
