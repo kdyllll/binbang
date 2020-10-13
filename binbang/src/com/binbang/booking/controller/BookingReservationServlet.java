@@ -43,15 +43,19 @@ public class BookingReservationServlet extends HttpServlet {
 		String price=request.getParameter("totalPrice");
 		String totalPoint=request.getParameter("totalPoint");
 		String totalPoints=request.getParameter("totalPoints");
-
+		SimpleDateFormat dt1 = new SimpleDateFormat("yyyyy/mm/dd");
 		House h=new HouseService().HouseDetail(no);
-
 		Booking b=new Booking();
+		Date dateIn = (Date)dt1.parse(in);
+		Date dateOut = (Date)dt1.parse(out1);
+		System.out.println(dateIn);
+		System.out.println(dateOut);
+		
 		b.setMemberNo(memberNo);
 		b.setHouseNo(no);
 		b.setGuestName(request.getParameter("guestName"));
-		b.setCheckInDate(in);
-		b.setCheckOutDate(out1);
+		b.setCheckInDate(dateIn);
+		b.setCheckOutDate(dateOut);
 		b.setGuestPnum(Integer.parseInt(request.getParameter("guestPnum")));
 		b.setPaymentOption(request.getParameter("paymentOption"));
 		b.setPrice(Integer.parseInt(price));

@@ -245,11 +245,8 @@
 						<div class="amienity">
 							AMIENITY
 							<div class="all">
-								<div>와이파이</div>
-								<div>옷장</div>
-								<div>타월</div>
-								<div>샴푸</div>
-								<div>컨디셔너</div>
+								<div><%=h.getAmenity() %></div>
+								
 							</div>
 						</div>
 					</div>
@@ -258,13 +255,8 @@
 						<div class="eqiipment">
 							EQUIPMENT
 							<div class="all">
-								<div>헤어드라이기</div>
-								<div>냉장고</div>
-								<div>전기포트</div>
-								<div>와인냉장고</div>
-								<div>전자레인지</div>
-								<div>토스트</div>
-								<div>TV</div>
+								<div><%=h.getEquipment()%></div>
+								
 							</div>
 						</div>
 					</div>
@@ -469,6 +461,21 @@
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
 	<script>
+	
+		let amenity = '<%=h.getAmenity()%>';
+		
+		const words = amenity.split(',');
+	    console.log(words);
+	    let a = $("<div>");
+	    $(".amienity > .all ").html("");
+	    for(let i = 0; i<words.length; i++) {   
+	    	$(".amienity > .all").append($("<div>").html(words[i]));
+	    }
+	    
+
+    
+   
+
 		function fn_loginPopUp() {
 		 	const url = "<%=request.getContextPath()%>/loginPopUp";
 			const title = "loginPopUp";

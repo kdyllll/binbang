@@ -42,15 +42,13 @@
 						<br>
 
 					</ul>
+					
 					<div class="personnel">
-						인원: <label class="personnel1" for="card">성인</label> <input
-							class="personnel1" type="number" name="nval" min="0" max="10"
-							step="1" value="0"> <label class="personnel1" for="card">소아</label>
-						<input class="personnel1" type="number" name="nval" min="0"
-							max="10" step="1" value="0"> <label class="personnel1"
-							for="card">유아</label> <input class="personnel1" type="number"
-							name="nval" min="0" max="10" step="1" value="0">
+						숙박인원: <label class="personnel1" for="card"> </label> 
+							<input id="pNum" class="personnel1" type="number" name="nval" min="0" max="10" step="1" value="0"> 
+							
 					</div>
+				
 
 					<br>
 					<br>
@@ -192,8 +190,19 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
+	$("#pNum").change(function() {
+		let cnt = $("#pNum").val();
+		let total = '<%=h.getHousePnum()%>';
+		if(cnt > total) {
+			alert("최대인원을 초과했습니다");
+		}
+	})
+
+
+
 
 	function test() {	
+		
 
 		//housePrice에 초기값 넣어줌. 중복안되게
 		$(".housePrice").html('<%=price%>');
