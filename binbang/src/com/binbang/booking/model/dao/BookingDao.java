@@ -41,8 +41,8 @@ public class BookingDao {
 				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
 				b.setGuestName(rs.getString("guest_name"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setGuestPnum(rs.getInt("guest_pnum"));
 				b.setPaymentOption(rs.getString("payment_option"));
 				b.setPrice(rs.getInt("price"));
@@ -77,8 +77,8 @@ public class BookingDao {
 				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
 				b.setGuestName(rs.getString("guest_name"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setGuestPnum(rs.getInt("guest_pnum"));
 				b.setPaymentOption(rs.getString("payment_option"));
 				b.setPrice(rs.getInt("price"));
@@ -142,8 +142,8 @@ public class BookingDao {
 				Booking b = new Booking();
 				b.setReservationNo(rs.getString("reservation_no"));
 				b.setHouseNo(rs.getString("house_no"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setGuestPnum(rs.getInt("guest_pnum"));
 				b.setPaymentOption(rs.getString("payment_option"));
 				b.setPrice(rs.getInt("price"));
@@ -191,8 +191,8 @@ public class BookingDao {
 				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
 				b.setGuestName(rs.getString("guest_name"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setGuestPnum(rs.getInt("guest_pnum"));
 				b.setPaymentOption(rs.getString("payment_option"));
 				b.setPrice(rs.getInt("price"));
@@ -229,8 +229,8 @@ public class BookingDao {
 				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
 				b.setGuestName(rs.getString("guest_name"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setGuestPnum(rs.getInt("guest_pnum"));
 				b.setPaymentOption(rs.getString("payment_option"));
 				b.setPrice(rs.getInt("price"));
