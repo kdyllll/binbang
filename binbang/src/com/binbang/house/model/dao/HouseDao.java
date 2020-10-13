@@ -325,6 +325,7 @@ public class HouseDao {
 			pstmt.setInt(8, b.getPrice());// 총금액
 			pstmt.setInt(9, b.getPointPlus());// 적립금 적립
 			pstmt.setInt(10, b.getPointMinus());// 적립금 차감
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
