@@ -8,6 +8,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/common/cal.css"
 	type="text/css" />
+
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 </head>
@@ -172,6 +173,10 @@
     		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList").submit();
 			}
 		} 
+		
+		
+		
+		
 	</script>
 </body>
 </html>

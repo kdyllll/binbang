@@ -8,7 +8,6 @@
 <%
 	
 	List<Host> list = (List) request.getAttribute("list");
-	//int result=(int)request.getAttribute("result");
 %>    
   </head>
 
@@ -42,12 +41,19 @@
 			<tr>
 				<td class="cell1"><%=h.getHostName()%></td>
 				<td class="cell3"><%=h.getMemberPhone()%></td>
-				<td class="cell3"><%=h.getProfilePic()%></td>
-				<td class="cell3"><%=h.getIdCard()%></td>
+				<td class="cell3">
+					<a href="#" onclick="window.open('<%=request.getContextPath()%>/upload/host/<%=h.getProfilePic() %>','','width=500px,height=450px')">
+					<%=h.getProfilePic()%></a>
+				</td>
+				<td class="cell3">
+					<a href="#" onclick="window.open('<%=request.getContextPath()%>/upload/host/<%=h.getIdCard() %>','','width=500px,height=450px')">
+					<%=h.getIdCard()%></a>
+				</td>
 				<td class="cell2"><%=h.getHostEnrollDate()%></td>
 				<td class="cell2">
 					<div class="acceptChoice">
 						<input type="hidden" name="memberNo" class="mNo" value="<%=h.getMemberNo()%>">
+						<input type="hidden" name="memberId" class="mId" value="<%=h.getHostEmail()%>">
 						<input type="button" name="acceptY" value="승인" class="yes">
 						<input type="button" name="acceptN" value="거절" class="no">
 					</div>
@@ -73,16 +79,11 @@
 	 $(".yes").on("click",e=>{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/moveHostAcceptList",
-			data:{"memberNo" : $(".mNo").val() },
-			dataType:"html",
+			data:{"memberNo" : $(".mNo").val(),"memberId":$(".mId").val() },
+			dataType:"json",
 			success: data => { 
-				
-				 if(data>0){ 
-					alert("승인되었습니다."); 
-				}else{
-					alert("승인을 실패하였습니다.") 
-				}  
-				console.log(data);
+				alert(data);
+				location.reload();
 			}
 	
 		}); 
@@ -91,11 +92,14 @@
 	 $(".no").on("click",e=>{
 		 $.ajax({
 			 url:"<%=request.getContextPath()%>/admin/hostReject",
-			 data:{"memberNo" : $(".mNo").val() },
-			 dataType:"html",
+			 data:{"memberNo" : $(".mNo").val(),"memberId":$(".mId").val() },
+			 dataType:"json",
 			 success: data => { 
-			 	alert("승인 거절하였습니다.");
+				alert(data);
+				location.reload();
 			 }
 		 });
 	 });
+	 
+ 	
 </script>

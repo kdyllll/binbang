@@ -67,6 +67,7 @@ public class HostDao {
 				host.setProfilePic(rs.getString("profile_pic"));
 				host.setComplaintCount(rs.getInt("complaint_count"));
 				host.setMemberNo(rs.getString("member_no"));
+				host.setHostConfirm(rs.getString("host_confirm"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

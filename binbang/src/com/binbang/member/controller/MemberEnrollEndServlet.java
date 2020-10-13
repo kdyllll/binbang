@@ -55,7 +55,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="회원등록 성공";
-			loc="/mainMove";
+			loc="/member/moveLoginPage";
 		}else {
 			msg="회원등록 실패";
 		}

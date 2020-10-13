@@ -2,5 +2,5 @@
 	pageEncoding="UTF-8"%>
 <header class="header headerColor">
 	<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
-	
+
 </header>
