@@ -42,7 +42,8 @@ public class BookingReservationServlet extends HttpServlet {
 		String totalPoints=request.getParameter("totalPoints");
 		String finalPoint=request.getParameter("finalPoint");
 		House h=new HouseService().HouseDetail(no);
-		Booking b=new HouseService().selectReservation(no);
+		
+		Booking b=new HouseService().insertReservation(no);
 		String lastPoint = totalPoint + totalPoints;
 		/*
 		 * Member m3 = new Member(); m3.setMemberNo(request.getParameter("m"));

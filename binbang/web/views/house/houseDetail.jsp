@@ -298,6 +298,9 @@ String price = (String) request.getAttribute("totalPrice");
 			</div>
 
 			<div class="comment">
+			<%if(list == null) { %>
+			<span>후기없음</span>
+			<%} else {%>
 				<div class="swiper-container three">
 					<div class="swiper-wrapper threeButton">
 						<%
@@ -350,7 +353,7 @@ String price = (String) request.getAttribute("totalPrice");
 					<!-- <div class="swiper-pagination"></div> -->
 
 				</div>
-
+				<%} %>
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 
 			</div>

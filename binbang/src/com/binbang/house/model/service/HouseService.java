@@ -34,6 +34,17 @@ public class HouseService {
 		 return b;
 	}
 	
+	public int insertReservation(String no, Booking b) {
+		Connection conn=getConnection();
+		int result = dao.insertReservation(conn,no,b);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
+	
 	public int insertPoint(String memberNo, String lastPoint) {
 		Connection conn=getConnection();
 		int result = dao.insertPoint(conn,memberNo,lastPoint);
