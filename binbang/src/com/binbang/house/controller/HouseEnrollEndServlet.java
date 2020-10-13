@@ -43,10 +43,10 @@ public class HouseEnrollEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("서블릿 실행");
+
 		String path = getServletContext().getRealPath("/upload/house");
 		File dir=new File(path);
-		if(dir.exists()) dir.mkdirs();
+		if(!dir.exists()) dir.mkdirs();
 		int maxSize = 1024 * 1024 * 50;
 		String encode = "UTF-8";
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
