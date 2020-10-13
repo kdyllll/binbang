@@ -1,5 +1,6 @@
 package com.binbang.house.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -44,12 +45,12 @@ public class HouseReviewEndServlet extends HttpServlet {
 			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 			return;
 		}
-      
-      
-      
+   
       
       String path=getServletContext().getRealPath("/upload/review"); //이러면 프로젝트가 저장되어있는 경로로 지정됨 업로드폴더로
 		//2.업로드 파일의 최대 크기를 설정함
+      	File dir = new File(path);
+      	if(!dir.exists()) dir.mkdirs();
 		int maxSize=1024*1024*10;//10메가 바이트가됨
 		//3.파일에 대한 인코딩값 설정(UTF-8)
 		String encode="UTF-8";
