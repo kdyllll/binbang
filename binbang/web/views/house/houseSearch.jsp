@@ -112,7 +112,7 @@
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
 				<!-- 지도 -->
-				<div id="map" class="map">지도</div>
+				<div id="map" class="map"></div>
 				<!-- 선 -->
 				<div class="line"></div>
 				<!-- 숙소리스트 -->
@@ -134,6 +134,7 @@
 	
 	<script>	
 		let houseList =<%=request.getAttribute("houseJson")%>;
+		console.log(houseList);
 		let dayList =<%=request.getAttribute("dayJson")%>;
 		let days=dayList.length;
 
