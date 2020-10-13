@@ -1,9 +1,9 @@
 <%@page import="java.text.Normalizer.Form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>	
+<%@ include file="/views/common/commonLink.jsp"%>
 <%@ page import = "com.binbang.member.model.vo.Favorite, com.binbang.member.model.vo.Member" %>
 <%@page import="java.util.List"%>	
-<%@ include file="/views/common/commonLink.jsp"%>
 
 <% 
 	List<Favorite> list = (List) request.getAttribute("list");  		
@@ -21,7 +21,7 @@
 	<section class="section">
 					<form id="folderCreate" method="post">
 						<div class="line1">
-							<input type="text" value="<%=m.getMemberNo()%>" name="memberNum">						
+							<input type="text" value="<%=m.getMemberNo()%>" name="memberNum">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
 						</div>
@@ -50,12 +50,14 @@
 					<div class="favoriteList">
 						<% for(Favorite f : list){%>
 							<form class="" method="post">														
-									<div class="eachList" id="eachList" onclick="fn_toContent();">																		
-										<%=f.getFolderNo() %>
-										<%=f.getFolderName() %>									
+									<div class="eachList" id="eachList" onclick="fn_toContent();">																												
+										<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
+										<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
 									</div>
 							</form>				
 						<%}%>
+						
+						
 					</div>
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
@@ -75,12 +77,11 @@
 		  });
 		
 		function fn_toContent(){
-			$("#folderCreate").attr("action","<%=request.getContextPath() %>/member/favoriteContents").submit();
+			$("#folderCreate").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
 		}
-		
-		<%-- <a href="<%=request.getContextPath() %>/member/favoriteContents" > --%>
+				
 		function fn_createFolder(){
-			$("#folderCreate").attr("action","<%=request.getContextPath()%>/member/favoriteFolderCreate").submit();
+			$("#folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
 		}	
 	</script>
 	

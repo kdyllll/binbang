@@ -68,6 +68,48 @@ public class FavoriteDao {
 		}return result;		
 	}
 	
+	//해당 폴더 선택
+	public List<Favorite> selectFolder(Connection conn, String folderNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Favorite> list = new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectFolder"));			
+			pstmt.setString(1, folderNo);			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Favorite f=new Favorite();
+				f.setFolderName(rs.getString("folder_no"));
+				f.setFolderName(rs.getString("member_no"));
+				f.setFolderName(rs.getString("folder_name"));
+				f.setFolderName(rs.getString("house_no"));
+				list.add(f);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	
+	
+	//관심숙소 폴더 삭제
+	public int deleteFolder(Connection conn, String folderNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteFolder"));
+			pstmt.setString(1, folderNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 	
 }
