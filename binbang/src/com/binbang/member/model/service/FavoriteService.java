@@ -55,4 +55,36 @@ public class FavoriteService {
 		return result;
 	}
 	
+	//관심숙소 하나 조회(숙소번호와 폴더번호로)
+	public Favorite selectContent(String houseNo,String folderNo,String memberNo) {
+		Connection conn=getConnection();
+		Favorite f=dao.selectContent(conn,houseNo,folderNo,memberNo);
+		close(conn);
+		return f;		
+	}
+	
+	//관심숙소 삭제
+	public int deleteContent(String houseNo,String folderNo) {
+		Connection conn=getConnection();
+		int result=dao.deleteContent(conn,houseNo,folderNo);
+		if(result>0) commit(conn);
+		else {
+			rollback(conn);
+			close(conn);
+		}
+		return result;
+	}
+	
+	//관심숙소 삽입
+		public int insertContent(String houseNo,String folderNo) {
+			Connection conn=getConnection();
+			int result=dao.insertContent(conn,houseNo,folderNo);
+			if(result>0) commit(conn);
+			else {
+				rollback(conn);
+				close(conn);
+			}
+			return result;
+		}
+	
 }

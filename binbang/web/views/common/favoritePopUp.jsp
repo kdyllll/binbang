@@ -151,31 +151,30 @@
 			</div>
 			<div class="favLine"></div>
 			<form class="favoriteForm" method="post" action="<%=request.getContextPath()%>/favorite/favConPopUp">
+				<input type="hidden" name="houseNo" value="<%=houseNo%>">
+				
 				<%
 					for (Favorite f : favorite) {
 				%>
 				<div class="secondContent">
 					<div class="folder">
-						<input type="text" class="folderTitle"
-							value="<%=f.getFolderName()%>" readonly>
-							<input type="hidden" name="houseNo" value="<%=houseNo%>">
-						<%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo() == houseNo) {%>
+						<input type="text" class="folderTitle" value="<%=f.getFolderName()%>" readonly>					
+						<input type="hidden" class="check 0" value="<%=f.getFolderNo()%>">
+						<%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo().equals(houseNo)) {%>
 							<div class="heartCommon fav"></div>
 							
 						<%} else {%>
 							<div class="heartCommon heart"></div>
 												
 						<%}%>
-						<input type="hidden" class="check 0" value="<%=f.getFolderNo()%>">
+						
 					</div>
 					<div class="favLine"></div>
 				</div>
 				<%
 					}
 				%>
-				<input type="hidden" name="addFolderNo" value="">
-				<input type="hidden" name="delFolderNo" value="">	
-				<input type="button" onclick="fn_check();" value="확인" id="closeBtn">
+				<input type="submit" onclick="fn_check();" value="확인" id="closeBtn">
 			</form>
 
 		</div>
@@ -200,21 +199,14 @@
 	$(".heartCommon").on("click",function(e){
 	    $(e.target).toggleClass("heart");
 	    $(e.target).toggleClass("fav");
-	    console.log($(e.target).next(".check"));
-	    $(e.target).next(".check").toggleClass("0");
-	    $(e.target).next(".check").toggleClass("1");
+	    console.log($(e.target).prev(".check"));
+	    $(e.target).prev(".check").toggleClass("0");
+	    $(e.target).prev(".check").toggleClass("1");
 	});
 	
 	function fn_check(){
 		//안돌아....
-		let onoff=[];
-		onoff.push($(".check").attr("class"));
-		console.log(onoff);
-		if(onoff=="check 1"){
-			console.log($(this));
-			$(this).attr("name","folderNo");
-			console.log($(this));
-		}
+		$(".1").attr("name","folderNo");
 		
 	}
 	</script>

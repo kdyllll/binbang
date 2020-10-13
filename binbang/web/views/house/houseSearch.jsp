@@ -262,7 +262,9 @@
 						</div> `;
 				html=html+list;	
 				for(let f in favorite){
-					if(favorite[f].houseNo == houseList[h].houseNo){
+					console.log(favorite[f].houseNo);
+					console.log(houseList[h].houseNo);
+					if(favorite[f].houseNo.equals(houseList[h].houseNo)){
 						$(".heartCommon").removeClass(".heart");
 						$(".heartCommon").addClass(".fav");
 					}
@@ -497,16 +499,8 @@
 	   		const status = "left=100px, top=100px, width=500px, height=500px";
 	   		open(url,title,status); 
 		 }
-		
+		//로그인 되어있다면 관심숙소 팝업 호출
 		function fn_favoritePopUp(e) {
-			
-			/* <div class="contentSection1" name="contentSection1">
-					<p class="houseName">`+houseList[h].houseName+`</p>		
-					<form class="heartForm">
-						<div class="heartCommon heart"></div>
-						<input type="hidden" class="houseNoPopUp" name="houseNo" value="`+houseList[h].houseNo+`">
-					</form>
-				</div> */
 		 	const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
 	   		const title = "favoritePopUp";
 	   		const status = "left=100px, top=100px, width=500px, height=500px";
