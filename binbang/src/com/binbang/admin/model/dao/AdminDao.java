@@ -143,8 +143,8 @@ public class AdminDao {
 				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
 				b.setGuestName(rs.getString("guest_name"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setHouseRequest(rs.getString("house_request"));
 				b.setReservDate(rs.getDate("reserv_date"));
 				b.setPrice(rs.getInt("price"));
@@ -394,8 +394,8 @@ public class AdminDao {
 				b.setMemberNo(rs.getString("member_no"));
 				b.setHouseNo(rs.getString("house_no"));
 				b.setGuestName(rs.getString("guest_name"));
-				b.setCheckInDate(rs.getString("checkin_date"));
-				b.setCheckOutDate(rs.getString("checkout_date"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
 				b.setHouseRequest(rs.getString("house_request"));
 				b.setReservDate(rs.getDate("reserv_date"));
 				b.setPrice(rs.getInt("price"));

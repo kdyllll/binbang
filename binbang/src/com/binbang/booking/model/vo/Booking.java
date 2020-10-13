@@ -7,8 +7,8 @@ public class Booking {
 	private String memberNo;
 	private String houseNo;
 	private String guestName;
-	private String checkInDate;
-	private String checkOutDate;
+	private Date checkInDate;
+	private Date checkOutDate;
 	private int guestPnum;
 	private String paymentOption;
 	private String houseRequest;
@@ -28,11 +28,8 @@ public class Booking {
 	}
 
 
-	
-
-
-	public Booking(String reservationNo, String memberNo, String houseNo, String guestName, String checkInDate,
-			String checkOutDate, int guestPnum, String paymentOption, String houseRequest, Date approvalDate, int price,
+	public Booking(String reservationNo, String memberNo, String houseNo, String guestName, Date checkInDate,
+			Date checkOutDate, int guestPnum, String paymentOption, String houseRequest, Date approvalDate, int price,
 			Date reservDate, String memberEmail, String houseName, String houseMainPic, int pointPlus, int pointMinus,
 			int totalPoint) {
 		super();
@@ -57,15 +54,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public String getReservationNo() {
 		return reservationNo;
 	}
-
-
-
 
 
 	public void setReservationNo(String reservationNo) {
@@ -73,15 +64,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public String getMemberNo() {
 		return memberNo;
 	}
-
-
-
 
 
 	public void setMemberNo(String memberNo) {
@@ -89,15 +74,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public String getHouseNo() {
 		return houseNo;
 	}
-
-
-
 
 
 	public void setHouseNo(String houseNo) {
@@ -105,15 +84,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public String getGuestName() {
 		return guestName;
 	}
-
-
-
 
 
 	public void setGuestName(String guestName) {
@@ -121,39 +94,24 @@ public class Booking {
 	}
 
 
-
-
-
-	public String getCheckInDate() {
+	public Date getCheckInDate() {
 		return checkInDate;
 	}
 
 
-
-
-
-	public void setCheckInDate(String checkInDate) {
+	public void setCheckInDate(Date checkInDate) {
 		this.checkInDate = checkInDate;
 	}
 
 
-
-
-
-	public String getCheckOutDate() {
+	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
 
 
-
-
-
-	public void setCheckOutDate(String checkOutDate) {
+	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
-
-
-
 
 
 	public int getGuestPnum() {
@@ -161,15 +119,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setGuestPnum(int guestPnum) {
 		this.guestPnum = guestPnum;
 	}
-
-
-
 
 
 	public String getPaymentOption() {
@@ -177,15 +129,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setPaymentOption(String paymentOption) {
 		this.paymentOption = paymentOption;
 	}
-
-
-
 
 
 	public String getHouseRequest() {
@@ -193,15 +139,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setHouseRequest(String houseRequest) {
 		this.houseRequest = houseRequest;
 	}
-
-
-
 
 
 	public Date getApprovalDate() {
@@ -209,15 +149,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setApprovalDate(Date approvalDate) {
 		this.approvalDate = approvalDate;
 	}
-
-
-
 
 
 	public int getPrice() {
@@ -225,15 +159,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-
-
 
 
 	public Date getReservDate() {
@@ -241,15 +169,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setReservDate(Date reservDate) {
 		this.reservDate = reservDate;
 	}
-
-
-
 
 
 	public String getMemberEmail() {
@@ -257,15 +179,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
-
-
-
 
 
 	public String getHouseName() {
@@ -273,15 +189,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setHouseName(String houseName) {
 		this.houseName = houseName;
 	}
-
-
-
 
 
 	public String getHouseMainPic() {
@@ -289,15 +199,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setHouseMainPic(String houseMainPic) {
 		this.houseMainPic = houseMainPic;
 	}
-
-
-
 
 
 	public int getPointPlus() {
@@ -305,15 +209,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setPointPlus(int pointPlus) {
 		this.pointPlus = pointPlus;
 	}
-
-
-
 
 
 	public int getPointMinus() {
@@ -321,15 +219,9 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setPointMinus(int pointMinus) {
 		this.pointMinus = pointMinus;
 	}
-
-
-
 
 
 	public int getTotalPoint() {
@@ -337,12 +229,10 @@ public class Booking {
 	}
 
 
-
-
-
 	public void setTotalPoint(int totalPoint) {
 		this.totalPoint = totalPoint;
 	}
+
 
 	@Override
 	public String toString() {
@@ -353,5 +243,12 @@ public class Booking {
 				+ ", memberEmail=" + memberEmail + ", houseName=" + houseName + ", houseMainPic=" + houseMainPic
 				+ ", pointPlus=" + pointPlus + ", pointMinus=" + pointMinus + ", totalPoint=" + totalPoint + "]";
 	}
+	
+	
+
+	
+
+
+	
 	
 }
