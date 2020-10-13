@@ -55,6 +55,12 @@ public class HouseService {
 		 close(conn);
 		 return list;
 	}
+	public String[] housePicture(String no) {
+		Connection conn=getConnection();
+		String[] list=dao.housePicture(conn, no);
+		 close(conn);
+		 return list;
+	}
 
 	
 	public List<Review> ReviewDetail(String no) {

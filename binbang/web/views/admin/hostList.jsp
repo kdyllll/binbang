@@ -14,7 +14,7 @@
   <body>
   
     <div class="wrap">
-
+	<%@ include file="/views/common/adminHeader.jsp"%>
       <section class="section">
           <%@ include file="/views/admin/adminNav.jsp"%>
         

@@ -30,7 +30,7 @@
             </div>
             <div class="infoBox">
                <div class="info">
-                  <div>예약 번호 : <%=b.getReservationNo() %> </div>
+                  <div>예약 번호 : <%=b.getReservationNo()%> </div>
                   <div>숙소 명 :  <%=h.getHouseName()%></div>
                   <div>숙박 기간 : <%=in%> ~ <%=out1%></div>
                   <div>예약자 이름 : <%=m2.getMemberName() %></div>

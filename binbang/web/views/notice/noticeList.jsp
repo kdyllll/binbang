@@ -5,7 +5,6 @@
 <%@ page import= "java.util.List"%>
 <%
    String pageBar=(String)request.getAttribute("pageBar");
-	Member loginMember=(Member)session.getAttribute("loginMember");
 	List<Notice> list=(List)request.getAttribute("list");
 %>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/notice/notice.css" />
@@ -44,9 +43,9 @@
         
         <!-- 관리자에게만 보이는 버튼 -->
         <div class="postBtn">
-           <% if(loginMember!=null&&loginMember.getEmail().equals("admin")) {%> 
-           <button  class="postButton" onclick="location.assign('<%=request.getContextPath() %>/notice/noticeWrite')">게시글 등록</button>
-            <% } %>
+           <% if(m!=null && m.getEmail().equals("admin@naver.com")) {%> 
+           	<button  class="postButton" onclick="location.assign('<%=request.getContextPath() %>/notice/noticeWrite')">게시글 등록</button>
+           <% } %>
         </div>
      
         <!-- 페이징 처리하기-->
@@ -61,3 +60,7 @@
    <script src="<%=request.getContextPath() %>/js/common/header.js"></script>
   </body>
 </html>
+<script>
+	/* let ck=CKEDITOR.instances.noticeContent.getData();
+	console.log(ck); */
+</script>

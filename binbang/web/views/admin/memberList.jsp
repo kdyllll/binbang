@@ -68,9 +68,8 @@
                     <th class="cell3" >가입일</th>
                   </tr>
                   
-                 <%
-            		for (Member ml : memberList) {
-        		 %>
+                 <% for (Member ml : memberList) { %>
+                 <% if(ml.getEmail()!="admin") {%>
          		<tr>
 		            <td class="cell1" ><%=ml.getMemberNo() %></td>
 		           
@@ -90,6 +89,7 @@
 		            <td class="cell2" ><%=ml.getPhone() %></td>
 		            <td class="cell3" ><%=ml.getEnrollDate() %></td>
 		         </tr> 
+		         	<%} %>
 		         <%
 		            }
 		        	%> 
