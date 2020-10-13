@@ -1,7 +1,6 @@
 package com.binbang.member.favorite.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.member.model.service.FavoriteService;
-import com.binbang.member.model.vo.Favorite;
 
 /**
- * Servlet implementation class MemberFavoriteFolderServlet
+ * Servlet implementation class FavoriteFolderDeleteServlet
  */
-@WebServlet("/member/favoriteFolder")
-public class FavoriteFolderServlet extends HttpServlet {
+@WebServlet("/favorite/favoriteFolderDelete")
+public class FavoriteFolderDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FavoriteFolderServlet() {
+    public FavoriteFolderDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,17 +28,24 @@ public class FavoriteFolderServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {							
-				
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String memberNo = request.getParameter("memberNo");
-		System.out.println(memberNo);
+		String folderNo=request.getParameter("folderNo");
+		int result=new FavoriteService().deleteFolder(folderNo);
+		String msg="";
+		String loc="";
 		
-		List<Favorite> list = new FavoriteService().viewFolder(memberNo);		
-		System.out.println(list);
+		if(result>0) {
+			msg="삭제완료";
+			loc="/favorite/favoriteFolderCreate";
+		}else {
+			msg="삭제실패";
+			loc="/favorite/favoriteContents";			
+		}
+		request.setAttribute("msg",msg);
+		request.setAttribute("loc",loc);
 		
-		request.setAttribute("list", list);		
-		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);	
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 	}
 
 	/**
