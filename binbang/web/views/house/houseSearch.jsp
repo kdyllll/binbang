@@ -113,8 +113,6 @@
 				<!-- 지도와 숙소들 영역 -->
 				<!-- 지도 -->
 				<div id="map" class="map"></div>
-				<!-- 선 -->
-				<div class="line"></div>
 				<!-- 숙소리스트 -->
 				<div class="listCon">
 					<div class="list"></div>
