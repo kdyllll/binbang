@@ -146,12 +146,11 @@
 				<form class="makeFolder" method="post">
 					<div class="favLine"></div>
 					<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
-					<input type="hidden" class="houseNo" name="houseNo" value="<%=houseNo%>">
 					<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
 				</form>
 			</div>
 			<div class="favLine"></div>
-			<form class="favoriteForm" method="post">
+			<form class="favoriteForm" method="post" action="<%=request.getContextPath()%>/favorite/favConPopUp">
 				<%
 					for (Favorite f : favorite) {
 				%>
@@ -159,10 +158,13 @@
 					<div class="folder">
 						<input type="text" class="folderTitle"
 							value="<%=f.getFolderName()%>" readonly>
+							<input type="hidden" name="houseNo" value="<%=houseNo%>">
 						<%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo() == houseNo) {%>
 							<div class="heartCommon fav"></div>
+							<input type="hidden" name="addFolderNo" value="<%=f.getFolderNo()%>">
 						<%} else {%>
 							<div class="heartCommon heart"></div>
+							<input type="hidden" name="delFolderNo" value="<%=f.getFolderNo()%>">						
 						<%}%>
 					</div>
 					<div class="favLine"></div>
@@ -170,13 +172,13 @@
 				<%
 					}
 				%>
+				<input type="submit" value="확인" id="closeBtn">
 			</form>
 
 		</div>
-		<input type="button" value="확인" id="closeBtn">
+		
 	</div>
 
-	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 	<script>
 	$("#plusBtn").on("click", e => {
 		$(".makeFolder").toggleClass("show");
@@ -188,9 +190,16 @@
             alert("폴더 이름을 입력하세요.");   
             return;
          }else{  
-         	$(".makeFolder").attr("action", "<%=request.getContextPath()%>/favFolderPopUpAdd").submit();
+         	$(".makeFolder").attr("action", "<%=request.getContextPath()%>/favorite/favFolderPopUpAdd").submit();
          }		
 	}
+	
+	$(".heartCommon").on("click",function(e){
+	    $(e.target).toggleClass("heart");
+	    $(e.target).toggleClass("fav");
+	});
+
+	
 	</script>
 </body>
 </html>
