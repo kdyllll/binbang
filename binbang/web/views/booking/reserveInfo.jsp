@@ -30,14 +30,14 @@
             </div>
             <div class="infoBox">
                <div class="info">
-                  <div>예약 번호 : <%=b.getReservationNo()%> </div>
+                  <div>예약 번호 : <%-- <%=b.getReservationNo()%> --%> </div>
                   <div>숙소 명 :  <%=h.getHouseName()%></div>
                   <div>숙박 기간 : <%=in%> ~ <%=out1%></div>
                   <div>예약자 이름 : <%=m2.getMemberName() %></div>
-               	  <div>예약자 번호 : <%=b.getReservationNo()%></div>
-                  <div>인원 : <%=b.getGuestPnum() %> 명</div>
+               	  <div>예약자 번호 : <%-- <%=b.getReservationNo()%> --%></div>
+                  <div>인원 : <%-- <%=b.getGuestPnum() %> 명 --%></div>
                   <div>적립금 : <%=totalPoint %> point</div>
-                  <div>결제 방법 : <%=b.getPaymentOption() %></div>
+                  <div>결제 방법 : <%-- <%=b.getPaymentOption() %> --%></div>
                   <div class="priceLine">
                      <div class="priceInfoBox">
                         <div class="priceInfo">￦ <%=price%> </div>

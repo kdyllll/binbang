@@ -54,7 +54,7 @@
 
 					<br>
 					<br>
-					<p class="point">총 포인트 : <div class="totalPoints"><%=m.getTotalPoint() %></div></p>
+					<p class="point">총 포인트 : <div class="totalPointsShow"><%=m.getTotalPoint() %></div></p>
 					<br>
 					<br>
 					<div class="cuphone">
@@ -136,7 +136,7 @@
 							</div>
 							<div class="payBox">
 								
-								
+									<input type="hidden" name="totalPoints" class="totalPoints">
 									<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
 									<input type="hidden" name="originalPrice" value="￦ <%=price%>">
 									<input type="hidden" name="checkIn" value="<%=in%>">
@@ -204,12 +204,13 @@
 		//결과는 기본값 - 포인터차감
 		let result = <%=price%> - point;	
 		let totalPoint = result * 2;
-		let totalPoints = <%=m.getTotalPoint()%> - point;
+		let totalPoints = <%=m2.getTotalPoint()%> - point;
 		//눈으로 확인하기위해
 		$(".housePrice").html(result);
 		$(".totalPrice").val(result);
 		$(".totalPoint").val(totalPoint);
-		$(".totalPoints").html(totalPoints);
+		$(".totalPointsShow").html(totalPoints);
+		$(".totalPoints").val(totalPoints);
 		console.log(result);
 
 	}

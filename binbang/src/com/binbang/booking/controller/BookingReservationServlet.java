@@ -1,6 +1,9 @@
 package com.binbang.booking.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,14 +43,22 @@ public class BookingReservationServlet extends HttpServlet {
 		String price=request.getParameter("totalPrice");
 		String totalPoint=request.getParameter("totalPoint");
 		String totalPoints=request.getParameter("totalPoints");
-		String finalPoint=request.getParameter("finalPoint");
+
 		House h=new HouseService().HouseDetail(no);
-		Booking b=new HouseService().selectReservation(no);
+
+		Booking b=new Booking();
+		b.setMemberNo(memberNo);
+		b.setHouseNo(no);
+		b.setGuestName(request.getParameter("guestName"));
+		b.setCheckInDate(in);
+		b.setCheckOutDate(out1);
+		b.setGuestPnum(Integer.parseInt(request.getParameter("guestPnum")));
+		b.setPaymentOption(request.getParameter("paymentOption"));
+		b.setPrice(Integer.parseInt(price));
+		b.setPointMinus(Integer.parseInt(request.getParameter("pointMinus")));
+		int result =new HouseService().insertReservation(no,b);
 		String lastPoint = totalPoint + totalPoints;
-		/*
-		 * Member m3 = new Member(); m3.setMemberNo(request.getParameter("m"));
-		 * m3.setTotalPoint(Integer.parseInt(request.getParameter("finalPoint")));
-		 */
+		
 		int m=new HouseService().insertPoint(memberNo, lastPoint);
 		System.out.println("이건 m 이야"+lastPoint);
 		System.out.println("레저베이션 서블릿"+memberNo);

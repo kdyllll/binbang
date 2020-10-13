@@ -2,6 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 
+<%@ page import = "com.binbang.member.model.vo.Favorite, com.binbang.member.model.vo.Member" %>
+<%@page import="java.util.List"%>	
+
+<% 
+	List<Favorite> list = (List) request.getAttribute("list");
+	Favorite f = (Favorite) request.getAttribute("folderName");
+%>
+
+
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/favoriteContents.css" />
 </head>
 <body>
@@ -14,7 +24,7 @@
 		
 			<form id="favHouse" method="post">
 			<div class="line1">
-				<input type="text" value="관심폴더명" class="favTitle">
+				<input type="text" value="<%=f.getFolderName()%>" class="favTitle">
 				<div class="listLine"></div>
 			</div>
 
@@ -42,8 +52,8 @@
 						</div>
 
 						<div class="popupFooter">
-							<input type="button" id="saveBtn" value="저장">
-							<input type="button" id="deleteBtn" value="목록삭제">														
+							<input type="button" id="saveBtn" value="저장" onclick="fn_moifyName();">
+							<input type="button" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">														
 						</div>
 
 					</div>
@@ -68,6 +78,10 @@
 	function fn_back(){					 
 		         $("#favHouse").attr("action","<%=request.getContextPath()%>/member/favoriteFolder").submit();
 		    }	
+	function fn_folderDelete(){
+		 		$("#favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteFolder").submit();
+		}
+	
 	</script>
 	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

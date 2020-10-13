@@ -15,7 +15,7 @@ import com.binbang.member.model.vo.Favorite;
 /**
  * Servlet implementation class FavoriteFolderCreateServlet
  */
-@WebServlet("/member/favoriteFolderCreate")
+@WebServlet("/favorite/favoriteFolderCreate")
 public class FavoriteFolderCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,9 +48,12 @@ public class FavoriteFolderCreateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="폴더생성";
-			loc="/views/member/favoriteFolder.jsp";
+			loc="/member/favoriteFolder?memberNo="+f.getMemberNo();
+			
+			/* loc="/member/myPage?email="+m.getEmail(); */
 		}else {
 			msg="폴더생성 실패";
+			/* loc="/member/mypagePrivate?email="+m.getEmail(); */
 		}
 		
 		request.setAttribute("msg", msg);

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.binbang.host.model.service.HostService;
+import com.binbang.host.model.vo.Host;
 import com.binbang.member.model.vo.Member;
 
 /**
@@ -32,14 +34,17 @@ public class HostEnrollServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session =request.getSession();
 		Member m = (Member)session.getAttribute("m");
-		if(m.getHostNo() != null) {
+		Host h = new HostService().selectHostOne(m.getMemberNo());
+		System.out.println(h);
+		if(h.getHostConfirm() !=null) {
 			request.setAttribute("msg", "관리자의 승인을 대기중입니다.");
 			request.setAttribute("loc", "/mainMove");
 			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 			return;
-		}
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/host/hostRegist.jsp").forward(request, response);
+		}  
+			request.setAttribute("member", m);
+			request.getRequestDispatcher("/views/host/hostRegist.jsp").forward(request, response);			
+		
 	}
 
 	/**

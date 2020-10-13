@@ -39,12 +39,13 @@ public class HouseDetailMoveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			
+	
 				String no=request.getParameter("houseNo");
 				String in=request.getParameter("checkIn");
 				String out1=request.getParameter("checkOut");
 				String price=request.getParameter("totalPrice");
-				
+				System.out.println(no);
+
 				House h=new HouseService().HouseDetail(no);
 	
 				
@@ -81,7 +82,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				List<Review> list=new HouseService().ReviewDetail(no);
 				
 				
-			
+			 System.out.println(list);
 				request.setAttribute("house",h);
 				request.setAttribute("checkIn",in);
 				request.setAttribute("checkOut",out1);

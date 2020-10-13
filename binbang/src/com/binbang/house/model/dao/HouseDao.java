@@ -308,6 +308,33 @@ public class HouseDao {
 		}return b;
 	}
 	
+	
+	public int insertReservation(Connection conn, String no, Booking b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("insertReservation"));
+			
+			pstmt.setString(1, b.getMemberNo());// 회원번호
+			pstmt.setString(2, b.getHouseNo());// 숙소 번호
+			pstmt.setString(3, b.getGuestName());// 예약자 이름
+			pstmt.setDate(4, b.getCheckInDate());// 일실날짜
+			pstmt.setDate(5, b.getCheckOutDate());// 퇴실 날짜
+			pstmt.setInt(6, b.getGuestPnum());// 예약인원
+			pstmt.setString(7, b.getPaymentOption());// 결제 방법
+			pstmt.setInt(8, b.getPrice());// 총금액
+			pstmt.setInt(9, b.getPointPlus());// 적립금 적립
+			pstmt.setInt(10, b.getPointMinus());// 적립금 차감
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 
 
 	public List FilterDetail(Connection conn, String no) {
@@ -480,7 +507,7 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no")); // 숙소번호
 				h.setHouseName(rs.getNString("house_name")); // 숙소이름
 				h.setHouseType(rs.getNString("house_type")); // 숙소유형
-				h.setHouseLocation(rs.getNString("house_location").substring(0, 2)); // 숙소위치
+				h.setHouseLocation(rs.getNString("house_location")); // 숙소위치
 				h.setHousePnum(rs.getInt("house_pnum")); // 숙소최대인원
 				h.setpObjects(rs.getNString("p_objects")); // 개인물건 유무
 				h.setRoomNum(rs.getInt("room_num")); // 방갯수
