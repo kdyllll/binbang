@@ -62,6 +62,12 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				List filterList=new HouseService().FilterDetail(no); //필터 리스트를 생성
 				h.setFilter(filterList); // 필터리스트에 있는 아이콘을 하우스에 넣어줌 그래야 하우스 번호랑 맵핑 되서 하우스번호에 등록된 필터 아이콘들이 들어옴
 				
+				
+				String[] housePicture =new HouseService().housePicture(no); //사진 리스트를 생성
+				
+				h.setHousePicture(housePicture); 
+				
+				
 				Double totalGrade = new HouseService().selectAvgGrade(no); //숙소 평균 내주는 기능
 				
 				
@@ -75,7 +81,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				List<Review> list=new HouseService().ReviewDetail(no);
 				
 				
-				System.out.println(price);
+			
 				request.setAttribute("house",h);
 				request.setAttribute("checkIn",in);
 				request.setAttribute("checkOut",out1);
