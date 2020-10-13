@@ -49,7 +49,7 @@
 
 					<div class="favoriteList">
 						<% for(Favorite f : list){%>
-							<form class="" method="post">														
+							<form id="folderContents" method="post">														
 									<div class="eachList" id="eachList" onclick="fn_toContent();">																												
 										<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
 										<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
@@ -77,7 +77,7 @@
 		  });
 		
 		function fn_toContent(){
-			$("#folderCreate").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
+			$("#folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
 		}
 				
 		function fn_createFolder(){
