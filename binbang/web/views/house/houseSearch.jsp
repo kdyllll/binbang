@@ -113,8 +113,6 @@
 				<!-- 지도와 숙소들 영역 -->
 				<!-- 지도 -->
 				<div id="map" class="map"></div>
-				<!-- 선 -->
-				<div class="line"></div>
 				<!-- 숙소리스트 -->
 				<div class="listCon">
 					<div class="list"></div>
@@ -534,7 +532,7 @@
 				            position: coords
 				        });
 				     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
-				        var iwContent = '<div style="padding:5px;">'+houseList[h].houseName+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				        var iwContent = '<div style="padding:5px; border:0px; background-color: rgba(255, 255, 255, 0.5);">'+houseList[h].houseName+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 				            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다		        
 				        var infowindow = new kakao.maps.InfoWindow({// 인포윈도우를 생성합니다
 				            content : iwContent,
@@ -544,7 +542,7 @@
 				              infowindow.open(map, marker);  // 마커 위에 인포윈도우를 표시합니다 
 				        });		
 				        map.setCenter(coords);  // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				    } 
+				    }
 				});
 			}; 
  	
