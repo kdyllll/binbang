@@ -258,6 +258,8 @@ public class HouseDao {
 				h.setPriceWeekend(rs.getInt("price_weekend")); // 비수기주말
 				h.setPricePeakDay(rs.getInt("price_peak_day")); // 성수기평일
 				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); // 성수기 주말
+				h.setAmenity(rs.getString("amenity"));//
+				h.setEquipment(rs.getString("equipment"));//
 
 			}
 		} catch (SQLException e) {
