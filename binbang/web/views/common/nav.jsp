@@ -16,7 +16,7 @@
 			<li><a href="<%=request.getContextPath()%>/admin/newMoveAdminPage">관리자페이지</a></li>
 			<li><a href="<%=request.getContextPath()%>/member/moveLoginPage">로그아웃</a></li>
 		</ul>
-		<%} else if(m.getEmail()!=null && !m.getEmail().equals("admin")) {%>
+		<%} else if(m.getEmail()!=null && !m.getEmail().equals("admin@naver.com")) {%>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/member/myPage?email=<%=m.getEmail()%>">마이페이지</a></li>
 			<li><a href="<%=request.getContextPath()%>/member/favoriteFolder?memberNo=<%=m.getMemberNo()%>">관심숙소</a></li>
