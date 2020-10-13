@@ -284,8 +284,8 @@ public class HouseDao {
 				b.setMemberNo(rs.getString("member_No"));//멤버번호
 				b.setHouseNo(rs.getString("house_no")); //숙소번호
 				b.setGuestName(rs.getString("guest_Name")); //예약자 이름
-				b.setCheckInDate(rs.getDate("checkIn_Date")); //체크인 날짜
-				b.setCheckOutDate(rs.getDate("checkOut_Date")); //체크아웃 날짜
+				b.setCheckInDate(rs.getString("checkIn_Date")); //체크인 날짜
+				b.setCheckOutDate(rs.getString("checkOut_Date")); //체크아웃 날짜
 				b.setGuestPnum(rs.getInt("guest_Pnum")); //예약인원
 				b.setPaymentOption(rs.getString("payment_Option")); //결제 방법
 				b.setHouseRequest(rs.getNString("house_Request")); //숙소 예약 상태
@@ -318,8 +318,8 @@ public class HouseDao {
 			pstmt.setString(1, b.getMemberNo());// 회원번호
 			pstmt.setString(2, b.getHouseNo());// 숙소 번호
 			pstmt.setString(3, b.getGuestName());// 예약자 이름
-			pstmt.setDate(5, b.getCheckInDate());// 일실날짜
-			pstmt.setDate(6, b.getCheckOutDate());// 퇴실 날짜
+			pstmt.setString(5, b.getCheckInDate());// 일실날짜
+			pstmt.setString(6, b.getCheckOutDate());// 퇴실 날짜
 			pstmt.setInt(7, b.getGuestPnum());// 예약인원
 			pstmt.setString(8, b.getPaymentOption());// 결제 방법
 			pstmt.setInt(11, b.getPrice());// 총금액
