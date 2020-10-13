@@ -1,4 +1,4 @@
-package com.binbang.common.controller;
+package com.binbang.member.favorite.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class FavoritePopUpServlet
  */
-@WebServlet("/favoritePopUp")
+@WebServlet("/favorite/favoritePopUp")
 public class FavoritePopUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

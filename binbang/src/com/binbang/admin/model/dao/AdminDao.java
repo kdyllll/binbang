@@ -215,6 +215,26 @@ public class AdminDao {
 		}return list;
 	}
 	
+	//호스트 이메일
+	public String selectHostEmail(Connection conn,String hostNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String email="";
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectEmail"));
+			pstmt.setString(1, hostNo);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				email=rs.getString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return email;
+	}
+	
 	//호스트 신고 승인 후 카운트 변경
 	public int acceptHostComplainCount(Connection conn,String hostNo) {
 		PreparedStatement pstmt=null;

@@ -507,7 +507,7 @@
 						<input type="hidden" class="houseNoPopUp" name="houseNo" value="`+houseList[h].houseNo+`">
 					</form>
 				</div> */
-		 	const url = "<%=request.getContextPath()%>/favoritePopUp?houseNo="+$(e.target).next().val();
+		 	const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
 	   		const title = "favoritePopUp";
 	   		const status = "left=100px, top=100px, width=500px, height=500px";
 	   		open(url,title,status);   
@@ -549,7 +549,6 @@
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>
-	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 
 
 </body>
