@@ -9,6 +9,9 @@
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseSearch.css" />
+<!-- 지도 api -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c98adfd52f6b697ce8e033c4b2ff215a&libraries=services"></script>
 <%@ page
 	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
@@ -109,7 +112,7 @@
 			<div class="section2">
 				<!-- 지도와 숙소들 영역 -->
 				<!-- 지도 -->
-				<div class="map">지도</div>
+				<div id="map" class="map">지도</div>
 				<!-- 선 -->
 				<div class="line"></div>
 				<!-- 숙소리스트 -->
@@ -128,7 +131,7 @@
 
 	<%@ include file="/views/common/footer.jsp"%>
 	</div>
-
+	
 	<script>	
 		let houseList =<%=request.getAttribute("houseJson")%>;
 		let dayList =<%=request.getAttribute("dayJson")%>;
@@ -463,7 +466,7 @@
 		};
 
 		//사진 클릭하면 form태그 실행
-		 function fn_next(e){
+		 function fn_next(e){			
 			$(".go").submit();
 		}; 
 		
@@ -508,6 +511,38 @@
 			 
 		 }
 		
+		//지도
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+		   center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+		   level : 5// 지도의 확대 레벨
+		}; 		
+		var map = new daum.maps.Map(mapContainer, mapOption); 	// 지도를 생성합니다    
+		var geocoder = new daum.maps.services.Geocoder();// 주소-좌표 변환 객체를 생성합니다
+		
+		 for(let h in houseList) {	    	
+				geocoder.addressSearch(houseList[h].houseLocation, function(result, status) {// 주소로 좌표를 검색합니다
+						if (status === daum.maps.services.Status.OK) { // 정상적으로 검색이 완료됐으면 
+				        var coords = new daum.maps.LatLng(result[0].y, result[0].x);	
+				        var marker = new daum.maps.Marker({ // 결과값으로 받은 위치를 마커로 표시합니다
+				            map: map,
+				            position: coords
+				        });
+				     // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
+				        var iwContent = '<div style="padding:5px;">'+houseList[h].houseName+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				            iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다		        
+				        var infowindow = new kakao.maps.InfoWindow({// 인포윈도우를 생성합니다
+				            content : iwContent,
+				            removable : iwRemoveable
+				        });
+				        kakao.maps.event.addListener(marker, 'click', function() {// 마커에 클릭이벤트를 등록합니다	             
+				              infowindow.open(map, marker);  // 마커 위에 인포윈도우를 표시합니다 
+				        });		
+				        map.setCenter(coords);  // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				    } 
+				});
+			}; 
+ 	
 	</script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseSearch.js"></script>
