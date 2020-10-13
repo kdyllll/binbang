@@ -107,6 +107,9 @@
 		
 			let lengthSize = $(".hostHouseOne").length;
 			let startCnt = 3;
+			if(lengthSize < startCnt) {
+				$("#addBtn").css("display", "none");
+			}
 		 	for(let i=startCnt; i<lengthSize; i++) {
 				$("#house"+i).css("display","none")		
 			} 
@@ -121,6 +124,9 @@
 			}
 			let commentSize = $("#hostCommentAll > div").length;
 			let startCnt2 = 3;
+			if(commentSize < startCnt2) {
+				$("#addBtn").css("display", "none");
+			}
 			for(let i=startCnt2; i<commentSize; i++) {
 				$("#comment"+i).css("display","none");
 			}
