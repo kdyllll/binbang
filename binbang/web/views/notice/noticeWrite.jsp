@@ -30,8 +30,8 @@
        		<p>게시글 내용</p><br>
           <textarea id="noticeContent" name="noticeContent"></textarea>
 		
-			<input type="submit" class="enroll" value="등록하기">
-         <%-- <div class="enrollButton"><a href="<%=request.getContextPath() %>/notice/noticeWriteEnd" class="enroll">등록하기</a></div> --%>
+			<div id="btnDiv"><input type="submit" class="enroll" value="등록하기"></div>
+         
 	   	</form>
 	    </div>
 	
@@ -45,7 +45,20 @@
    
     </div>
    <script>
-      CKEDITOR.replace( 'noticeContent' );     
+      CKEDITOR.replace( 'noticeContent' );
+    var data = CKEDITOR.instances.noticeContent.getData();
+	console.log(data);
+      <%-- $.ajax({
+		url:"<%=request.getContextPath()%>/notice/noticeDetailView"
+	}); 
+      
+      var formId = '<?=$getFormId?>';    //해당 폼 id 값 가져온다
+      console.log("formId:"+formId);
+      $.get("appr-form/form_"+formId+".html").done(function (data) {    //id값이 포함된 html형식 가져오면 해당내용 셋팅
+       CKEDITOR.instances["noticeContent"].setData(data);
+      });
+       --%>
+      // Your code to save "data", usually through Ajax.
    </script>
    
 </body>

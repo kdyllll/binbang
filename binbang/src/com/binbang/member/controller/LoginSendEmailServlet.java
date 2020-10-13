@@ -109,7 +109,7 @@ public class LoginSendEmailServlet extends HttpServlet {
 	            //메일 제목
 	            msg.setSubject("빈방 인증 메일입니다.");
 	            //메일 내용
-	            msg.setText("안녕하세요 빈방입니다. 인증 번호는 "+temp+"입니다.");
+	            msg.setText("안녕하세요 빈방입니다.\n"+ "인증 번호는 "+temp+"입니다.");
 	            
 	            Transport.send(msg);
 	            System.out.println("이메일 전송");

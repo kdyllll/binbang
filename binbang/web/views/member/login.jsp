@@ -74,12 +74,11 @@
 							<div id="kakaoImage"></div>
 							<span id="kakaoLogin">Kakao 로그인</span>
 						</a>
-						<!-- <a href="#" class="buttonDiv"> -->
-						<button onclick="signIn()">
+						<a href="#" class="buttonDiv" onclick="signIn()">
 							<div id="googleImage"></div>		
 							<span id="googleLogin">Google 로그인</span>
-						</button>
-						<!-- </a> -->
+						</a>
+						
 					</div>
 				</form>
 

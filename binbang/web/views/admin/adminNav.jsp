@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import="com.binbang.member.model.vo.Member" %>
+<%
+	Member m = (Member)session.getAttribute("m");
+%>	
 <div class="sidebar">
   <ul id="menuAll">
   
@@ -34,11 +37,11 @@
  <script>
  
  
-	$("#member").hover(e=>{
+	$("#member").click(e=>{
  		$("#memberSubAll").slideToggle();	
  	});
  	 
-	$("#hostAll").hover(e=>{
+	$("#hostAll").click(e=>{
 		$("#subAll").slideToggle();
 	});
 	

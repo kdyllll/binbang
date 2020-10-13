@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.member.model.vo.Reservation;
+import com.binbang.booking.model.vo.Booking;
 
 /**
  * Servlet implementation class SearchReserveListServlet
@@ -35,7 +35,7 @@ public class SearchReserveListServlet extends HttpServlet {
 		String type=request.getParameter("searchType");
 		String key=request.getParameter("searchKeyword");
 		
-		List<Reservation> list=new AdminService().searchReserveList(type, key);
+		List<Booking> list=new AdminService().searchReserveList(type, key);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/admin/reserveList.jsp").forward(request, response);
 		

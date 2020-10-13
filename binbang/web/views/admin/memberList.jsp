@@ -69,7 +69,7 @@
                   </tr>
                   
                  <% for (Member ml : memberList) { %>
-                 <% if(ml.getMemberNo()!="1") {%>
+                 <% if(ml.getEmail()!="admin") {%>
          		<tr>
 		            <td class="cell1" ><%=ml.getMemberNo() %></td>
 		           

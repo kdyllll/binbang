@@ -70,56 +70,37 @@
                   </tr>
                   
                   <%for(Complaint com : list) {%>
+                  
+                  
                   <tr>
                     <td class="cell2"><%=com.getMemberEmail() %></td>
                     <td class="cell1"><%=com.getComplaintCategory() %></td>
-                    <td class="cell2 complaintDetail" onclick="test();">
-                    <%=com.getComplaintDetail().length() > 9 ? com.getComplaintDetail().substring(0,8) +"..." : com.getComplaintDetail() %></td>
+                    <td class="cell2 complaintDetail">
+                    	<a href="" onclick="window.open('<%=request.getContextPath() %>/admin/hostComplainPopup?complaintNo=<%=com.getComplaintNo() %>','','width=500px,height=450px')">
+                    	<%=com.getComplaintDetail().length() > 9 ? com.getComplaintDetail().substring(0,8) +"..." : com.getComplaintDetail() %>
+                    	</a>
+                    </td>
                     <td class="cell1"><%=com.getHostName() %></td>
                     <td class="cell1"><%=com.getHouseNo() %></td>
                     <td class="cell2"><%=com.getComplaintDate() %></td>
                     <td class="complainCurrent cell2">
                       <div class="complainChoice">
-                      <form class="testtttttt">
-                      	<input type="hidden" name="hostNo" class="hostNo" value="<%=com.getHostNo() %>">
-                      	<input type="hidden" name="complaintNo" class="complaintNo" value="<%=com.getComplaintNo() %>">
-                        <input type="button" name="accept" value="승인">
-                        <input type="button" name="cancle" value="거절">
-                        <input type="button" name="out" value="권한박탈" >
-                        </form>
+                    
+                        <input type="button" name="accept" class="accept" value="승인">
+                        <input type="button" name="cancle" class="cancle" value="거절">
+                        <input type="button" name="out" class="out" value="권한박탈" >
+                       
                       </div>
                     </td>
                   </tr>
+                  
+                  </form>
                   <%} %>
                 </table>
               </div>
             </div>
             
-            <!-- 팝업 -->
-            <div class="enrollbg">
-              <div id="popup">
-               
-                <div class="popupHead"><p class="popupTitle">신고 내역</p></div>
-                <div class="popupBtn">x</div>
-              
-          <%--  	<%for(Complaint com : list) {%> --%>
-           		<div class="popupContentWrap"></div>
-               <!--  <div class="popupContent" > -->
-              <%--       
-                    <p class="complainTitle">신고한 회원 아이디 : <%=com.getMemberEmail() %></p> 
-                    <p class="complainTitle">호스트 이름 : <%=com.getHostName() %></p>
-                    <p class="complainTitle">신고 날짜 : <%=com.getComplaintDate() %></p>
-                    <p class="complainTitle eachComplainReason">신고 사유 : <%=com.getComplaintCategory() %></p>
-                    <p class="eachComplainCategory"><%=com.getComplaintCategory() %></p>
-                    <div class="reasonBox"><%=com.getComplaintDetail() %></div> --%>
-                
-             <!--  </div> -->
-              <%-- <%} %> --%> 
-        
-              </div>
-            </div>
-
-          </div>
+         
       </section>
       
        </body>
@@ -178,16 +159,44 @@
 	}); --%>
 	
 	
-	//팝업
-	/*  $(document).ready(function () {
+<%-- 	//팝업
+	  $(document).ready(function () {
 	    $(".complaintDetail").on("click", function () {
 	      $(".enrollbg").addClass("active");
+	      $.ajax({
+				url:"<%=request.getContextPath()%>/admin/hostComplaintListPopup",
+				data:{"complaintNo":$(".complaintNo").val()},
+				success:data=>{
+					console.log(data);
+					$(".popupContentWrap").children().remove();
+					let div2=$("<div class='popupContent'>");
+					let p=$("<p class='complainTitle'>신고한 회원 아이디 : ").html(data.memberEmail);
+					let p2=$("<p class='complainTitle'>호스트 이름 : ").html(data.hostName);
+					let p3=$("<p class='complainTitle'>신고 날짜 : ").html(data.complaintDate);
+					let p4=$("<p class='complainTitle'>숙소 번호 : ").html(data.houseNo);
+					let p5=$("<p class='complainTitle eachComplainReason'>신고 사유 : ").html(data.complaintCategory);
+					/* console.log(data.memberEmail);
+					console.log(data.hostName);
+					console.log(p3);
+					console.log(p4);
+					console.log(p5); */
+				 	let div=$("<div class='reasonBox'>").html(data.complaintDetail); 
+					div2.append(p);
+					div2.append(p2);
+					div2.append(p3);
+					div2.append(p4);
+					div2.append(p5);
+					div2.append(div);
+					$(".popupContentWrap").html(div2);
+				}
+				});
+					
 	    });
 	    $(".popupBtn").on("click", function (e) {
 	      $(e.target).parent().parent().removeClass("active");
 	    });
-	  }); 
- */
+	  });  --%>
+ 
 	$("#complain, #cancel, #out").on({
 	    "click":function(e){
 	        let id = $(e.target).prop("id");
@@ -215,6 +224,7 @@
 				alert(data);
 			}
 			
-		})
-	})
+		});
+	});
+
 </script>
