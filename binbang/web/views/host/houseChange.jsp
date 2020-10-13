@@ -432,6 +432,7 @@
 	
       //  스와이퍼
       var swiper = new Swiper('.first', {
+    	 touchRatio: 0,
          pagination : {
             el : '.swiper-pagination',
             type : 'progressbar',
