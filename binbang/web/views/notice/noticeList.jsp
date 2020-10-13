@@ -43,7 +43,7 @@
         
         <!-- 관리자에게만 보이는 버튼 -->
         <div class="postBtn">
-           <% if(m!=null && m.getEmail().equals("admin")) {%> 
+           <% if(m!=null && m.getEmail().equals("admin@naver.com")) {%> 
            	<button  class="postButton" onclick="location.assign('<%=request.getContextPath() %>/notice/noticeWrite')">게시글 등록</button>
            <% } %>
         </div>

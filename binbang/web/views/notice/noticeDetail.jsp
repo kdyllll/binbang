@@ -17,7 +17,7 @@
         
         <div class="allBtns">
           <div class="modifyBtns">
-          <% if(m!=null && m.getEmail().equals("admin")) {%>
+          <% if(m!=null && m.getEmail().equals("admin@naver.com")) {%>
               <div class="modifyNotice"><a href="<%=request.getContextPath() %>/notice/noticeUpdate?noticeNo=<%=n.getNoticeNo() %>">수정</a></div>
               <div class="deleteNotice"><a href="<%=request.getContextPath() %>/notice/noticeDelete?noticeNo=<%=n.getNoticeNo() %>">삭제</a></div>
           <%} %>

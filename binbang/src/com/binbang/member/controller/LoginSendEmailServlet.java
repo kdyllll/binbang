@@ -9,6 +9,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,6 @@ import org.json.simple.JSONObject;
 
 import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Member;
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MemberCheckConfirmNumberServlet
@@ -109,7 +109,7 @@ public class LoginSendEmailServlet extends HttpServlet {
 	            //메일 제목
 	            msg.setSubject("빈방 인증 메일입니다.");
 	            //메일 내용
-	            msg.setText("안녕하세요 빈방입니다.\n"+ "인증 번호는 "+temp+"입니다.");
+	            msg.setText("안녕하세요 빈방입니다.\n\r 비밀번호 찾기 인증 번호는 "+temp+"입니다.");
 	            
 	            Transport.send(msg);
 	            System.out.println("이메일 전송");

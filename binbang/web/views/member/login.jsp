@@ -82,7 +82,8 @@
 					</div>
 				</form>
 
-				<div id="naverIdLogin"></div>
+			<!--네이버 로그인 버튼 
+				<div id="naverIdLogin"></div> -->
 
 
 			</div>

@@ -53,6 +53,7 @@
 				<td class="cell2">
 					<div class="acceptChoice">
 						<input type="hidden" name="memberNo" class="mNo" value="<%=h.getMemberNo()%>">
+						<input type="hidden" name="memberId" class="mId" value="<%=h.getHostEmail()%>">
 						<input type="button" name="acceptY" value="승인" class="yes">
 						<input type="button" name="acceptN" value="거절" class="no">
 					</div>
@@ -78,7 +79,7 @@
 	 $(".yes").on("click",e=>{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/moveHostAcceptList",
-			data:{"memberNo" : $(".mNo").val() },
+			data:{"memberNo" : $(".mNo").val(),"memberId":$(".mId").val() },
 			dataType:"json",
 			success: data => { 
 				alert(data);
@@ -91,7 +92,7 @@
 	 $(".no").on("click",e=>{
 		 $.ajax({
 			 url:"<%=request.getContextPath()%>/admin/hostReject",
-			 data:{"memberNo" : $(".mNo").val() },
+			 data:{"memberNo" : $(".mNo").val(),"memberId":$(".mId").val() },
 			 dataType:"json",
 			 success: data => { 
 				alert(data);
