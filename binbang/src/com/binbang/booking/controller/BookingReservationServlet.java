@@ -1,6 +1,8 @@
 package com.binbang.booking.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +45,18 @@ public class BookingReservationServlet extends HttpServlet {
 		String finalPoint=request.getParameter("finalPoint");
 		House h=new HouseService().HouseDetail(no);
 		
-		Booking b=new HouseService().insertReservation(no);
+		
+		Booking b=new Booking();
+		b.setHouseNo(request.getParameter("houseNo"));
+		b.setGuestName(request.getParameter("guestName"));
+		b.setCheckInDate(request.getParameter("checkInDate"));
+		b.setCheckOutDate(out1);
+		b.setGuestPnum(Integer.parseInt(request.getParameter("guestPnum")));
+		b.setPaymentOption(request.getParameter("paymentOption"));
+		b.setPrice(Integer.parseInt(request.getParameter("price")));
+		b.setPointPlus(Integer.parseInt(request.getParameter("pointPlus")));
+		b.setPointMinus(Integer.parseInt(request.getParameter("pointMinus")));
+		int result =new HouseService().insertReservation(no,b);
 		String lastPoint = totalPoint + totalPoints;
 		/*
 		 * Member m3 = new Member(); m3.setMemberNo(request.getParameter("m"));

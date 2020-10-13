@@ -314,20 +314,17 @@ public class HouseDao {
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(prop.getProperty("insertReservation"));
-			pstmt.setString(1, b.getReservationNo());//예약 번호
-			pstmt.setString(2, b.getMemberNo());// 회원번호
-			pstmt.setString(3, b.getHouseNo());// 숙소 번호
-			pstmt.setString(4, b.getGuestName());// 예약자 이름
+			
+			pstmt.setString(1, b.getMemberNo());// 회원번호
+			pstmt.setString(2, b.getHouseNo());// 숙소 번호
+			pstmt.setString(3, b.getGuestName());// 예약자 이름
 			pstmt.setDate(5, b.getCheckInDate());// 일실날짜
 			pstmt.setDate(6, b.getCheckOutDate());// 퇴실 날짜
 			pstmt.setInt(7, b.getGuestPnum());// 예약인원
 			pstmt.setString(8, b.getPaymentOption());// 결제 방법
-			pstmt.setString(9, b.getHouseRequest());// 숙소 예약 현황
-			pstmt.setDate(10, b.getApprovalDate());// 승인날짜
 			pstmt.setInt(11, b.getPrice());// 총금액
-			pstmt.setDate(12, b.getReservDate());// 
-			pstmt.setInt(13, b.getPointPlus());// 적립금 차감
-			pstmt.setInt(14, b.getPointMinus());// 
+			pstmt.setInt(13, b.getPointPlus());// 적립금 적립
+			pstmt.setInt(14, b.getPointMinus());// 적립금 차감
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
