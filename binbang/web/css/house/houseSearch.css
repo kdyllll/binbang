@@ -122,20 +122,21 @@ ul.box {
 /* 지도 */
 
 .map{
+
     width: 400px;
     height: 500px;
     display:inline-block;
-    /* position:absolute;
-    top:10px;
-    left:0px; */
-  /*   border: 1px solid; */
+    vertical-align: top;
+
 }
 
 .listCon{
+
     margin-left: 50px;
     width:calc(100% - 480px);
     display:inline-block;
-    /* border:1px solid; */
+    align-items: flex-start;
+  
    
 }
 #pageBar{
