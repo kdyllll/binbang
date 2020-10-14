@@ -44,7 +44,7 @@ public class HouseSearchListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
+		
 		String location = request.getParameter("search"); // 검색 장소
 		String checkIn = (request.getParameter("checkIn")).trim();
 		String checkOut = (request.getParameter("checkOut")).trim();
@@ -98,14 +98,11 @@ public class HouseSearchListServlet extends HttpServlet {
 			pageBar += "<a href='" + request.getContextPath() + "/notice/noticeList?cPage=" + pageNo + "'> ▶ </a>";
 		}
 		request.setAttribute("pageBar", pageBar);
-
+		HttpSession session = request.getSession(false);
 		try {
 			Member m = (Member) session.getAttribute("m");
-			// 관심숙소 목록
-			List<Favorite> favorite = new MemberService().selectFavList(m);
-			/*
-			 * for (Favorite ff : favorite) { System.out.println("관심숙소:" + ff); }
-			 */
+			List<Favorite> favorite = new MemberService().selectFavList(m);			
+//			  for (Favorite ff : favorite) { System.out.println("관심숙소:" + ff); }			 
 			request.setAttribute("favorite", favorite);
 			request.setAttribute("favoriteJson", new Gson().toJson(favorite));
 		} catch (NullPointerException e) {

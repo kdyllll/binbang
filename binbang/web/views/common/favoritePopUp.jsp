@@ -45,7 +45,7 @@
 	width: 100%;
 }
 
-.makeFolder {
+.plusDiv {
 	height: 0;
 }
 
@@ -143,43 +143,51 @@
 		<div class="popContent">
 			<div class="firstContent">
 				<div id="plusBtn">+ 폴더만들기</div>
-				<form class="makeFolder" method="post">
-					<div class="favLine"></div>
-					<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
-					<input type="hidden" class="houseNo" name="houseNo" value="<%=houseNo%>">
-					<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
-				</form>
+				<div class="plusDiv">
+					<form class="makeFolder" method="post">
+						<div class="favLine"></div>
+						<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
+						<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
+					</form>
+				</div>
 			</div>
 			<div class="favLine"></div>
-			<form class="favoriteForm" method="post">
+			<div>
+			<form class="favoriteForm" method="post" action="<%=request.getContextPath()%>/favorite/favConPopUp">
+				<input type="hidden" name="houseNo" value="<%=houseNo%>">
+				
 				<%
 					for (Favorite f : favorite) {
 				%>
 				<div class="secondContent">
 					<div class="folder">
-						<input type="text" class="folderTitle"
-							value="<%=f.getFolderName()%>" readonly>
-						<%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo() == houseNo) {%>
+						<input type="text" class="folderTitle" value="<%=f.getFolderName()%>" readonly>					
+						<input type="hidden" class="check 0" value="<%=f.getFolderNo()%>">
+						<%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo().equals(houseNo)) {%>
 							<div class="heartCommon fav"></div>
+							
 						<%} else {%>
 							<div class="heartCommon heart"></div>
+												
 						<%}%>
+						
 					</div>
 					<div class="favLine"></div>
 				</div>
 				<%
 					}
 				%>
+				<input type="submit" onclick="fn_check();" value="확인" id="closeBtn">
 			</form>
+			</div>
 
 		</div>
-		<input type="button" value="확인" id="closeBtn">
+		
 	</div>
 
-	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 	<script>
 	$("#plusBtn").on("click", e => {
-		$(".makeFolder").toggleClass("show");
+		$(".plusDiv").toggleClass("show");
 		
 	});
 	
@@ -188,8 +196,22 @@
             alert("폴더 이름을 입력하세요.");   
             return;
          }else{  
-         	$(".makeFolder").attr("action", "<%=request.getContextPath()%>/favFolderPopUpAdd").submit();
+         	$(".makeFolder").attr("action", "<%=request.getContextPath()%>/favorite/favFolderPopUpAdd").submit();
          }		
+	}
+	
+	$(".heartCommon").on("click",function(e){
+	    $(e.target).toggleClass("heart");
+	    $(e.target).toggleClass("fav");
+	    console.log($(e.target).prev(".check"));
+	    $(e.target).prev(".check").toggleClass("0");
+	    $(e.target).prev(".check").toggleClass("1");
+	});
+	
+	function fn_check(){
+		//안돌아....
+		$(".1").attr("name","folderNo");
+		
 	}
 	</script>
 </body>

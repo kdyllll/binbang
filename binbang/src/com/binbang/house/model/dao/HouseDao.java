@@ -258,6 +258,8 @@ public class HouseDao {
 				h.setPriceWeekend(rs.getInt("price_weekend")); // 비수기주말
 				h.setPricePeakDay(rs.getInt("price_peak_day")); // 성수기평일
 				h.setPricePeakWeekend(rs.getInt("price_peak_Weekend")); // 성수기 주말
+				h.setAmenity(rs.getString("amenity"));//
+				h.setEquipment(rs.getString("equipment"));//
 
 			}
 		} catch (SQLException e) {
@@ -308,35 +310,6 @@ public class HouseDao {
 		}return b;
 	}
 	
-	
-	public int insertReservation(Connection conn, String no, Booking b) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("insertReservation"));
-			
-			pstmt.setString(1, b.getMemberNo());// 회원번호
-			pstmt.setString(2, b.getHouseNo());// 숙소 번호
-			pstmt.setString(3, b.getGuestName());// 예약자 이름
-			pstmt.setDate(4, b.getCheckInDate());// 일실날짜
-			pstmt.setDate(5, b.getCheckOutDate());// 퇴실 날짜
-			pstmt.setInt(6, b.getGuestPnum());// 예약인원
-			pstmt.setString(7, b.getPaymentOption());// 결제 방법
-			pstmt.setInt(8, b.getPrice());// 총금액
-			pstmt.setInt(9, b.getPointPlus());// 적립금 적립
-			pstmt.setInt(10, b.getPointMinus());// 적립금 차감
-
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
-	
-
-
 	public List FilterDetail(Connection conn, String no) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -417,24 +390,7 @@ public class HouseDao {
 		return list;
 	}
 	
-	//숙소 포인트 저장하는 다오
-	public int insertPoint(Connection conn, String memberNo, String lastPoint) {
-		PreparedStatement pstmt=null;
-		int result=0;	
-		try {
-			Member m= new Member();
-			pstmt=conn.prepareStatement(prop.getProperty("insertPoint"));
-			pstmt.setString(1, lastPoint);//포인트
-			pstmt.setString(2, memberNo);//회원 번호
 
-
-			result=pstmt.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}return result;	
-	}
 	
 
 
