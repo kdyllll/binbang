@@ -25,7 +25,8 @@
 			<form class="searchBox">
 				<div class="searchLoc">
 					<p>위치</p>
-					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요">
+					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요" list="locationData">
+					<datalist id="locationData"></datalist>
 				</div>
 				<div class="checkInDate">
 					<p>체크인</p>
@@ -157,8 +158,26 @@
     		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList").submit();
 			}
 		} 
-		
-		
+		/* <input type="text" name="search" id="search" placeholder="여행지를 입력해주세요">
+		<datalist id="locationData"></datalist> */
+		$("#search").keyup(e=>{
+			$.ajax({
+                url:"<%=request.getContextPath()%>/house/autoCompleteAjax",
+                data:{"key":$(e.target).val()},
+                success:data => {
+                    let keys=data.split(",");
+                    keys = keys.filter(function(i, pos, self) {
+						return self.indexOf(i) == pos;
+					});//중복값 제거
+                    console.log(keys);
+					
+                    $("#locationData").html("");
+                    for(let i=0;i<keys.length;i++){
+                    	$("#locationData").append($("<option>").html(keys[i]));
+                    }
+                }
+            });
+		});
 		
 		
 	</script>
