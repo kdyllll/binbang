@@ -1,13 +1,11 @@
 <%@page import="java.text.Normalizer.Form"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>	
 <%@ include file="/views/common/commonLink.jsp"%>
 <%@ page import = "com.binbang.member.model.vo.Favorite, com.binbang.member.model.vo.Member" %>
 <%@page import="java.util.List"%>	
 
 <% 
-	List<Favorite> list = (List) request.getAttribute("list");  		
-	Favorite fav= (Favorite) request.getAttribute("favorite");
+	List<Favorite> list = (List) request.getAttribute("list");  			
 %>
 
 
@@ -20,9 +18,9 @@
 		
 		<!-- 관심숙소list -->
 	<section class="section">
-					<form id="folderCreate" method="post">
+					<form class="folderCreate" method="post">
 						<div class="line1">
-							<input type="text" value="<%=m.getMemberNo()%>" name="memberNum">																																		
+							<input type="text" value="<%=m.getMemberNo()%>" name="memberNo">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
 						</div>				
@@ -44,7 +42,9 @@
 											<input type="button" id="checkBtn" value="저장" onclick="fn_createFolder();"> 							
 										</div>																									
 									</div>											
-							</div>				
+							</div>
+								
+						</div>			
 					</form>
 
 					<div class="favoriteList">
@@ -62,10 +62,9 @@
 	</div>
 	
 	<script>
-		//목록만들기버튼
-		$(document).ready(
-		function () {
+		//목록만들기버튼		
 		  //x버튼, 팝업버튼
+		  $(document).ready(function () {
 			  $("#listBuildBtn").on("click",function(e){
 			    	$(".listPop").removeClass("listDisNone");
 			 	});
@@ -73,14 +72,14 @@
 			      $(".listPop").addClass("listDisNone");
 			    });   		    		 		    		    
 		  });
+		function fn_createFolder(){
+			$(".folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
+		}	
 		
 		function fn_toContent(){			
 			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();									
 		}
 				
-		function fn_createFolder(){
-			$("#folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
-		}	
 	</script>
 	
 	

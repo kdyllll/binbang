@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
 
 /**
@@ -29,14 +30,12 @@ public class FavoriteBackServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memberNo = request.getParameter("memberNo");
-		String loc="/";
-		Favorite f=new Favorite();
-		f.setMemberNo(memberNo);
-		loc="/member/favoriteFolder?memberNo="+f.getMemberNo();
 		
-		request.setAttribute("loc",loc);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);		
+		String memberNo = request.getParameter("memberNo");				
+		Favorite f = new FavoriteService().selectMemberNo(memberNo);
+				
+		request.setAttribute("favorite", f);
+		request.getRequestDispatcher("/favorite/favoriteFolder").forward(request, response);		
 	}
 
 	/**

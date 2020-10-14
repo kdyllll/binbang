@@ -33,15 +33,6 @@
     .btnGroup{     
       float:right;          
     }
-    .Btn{
-    	width: 95px;
-		height: 35px;
-    	cursor: pointer;
-    	outline: none;
-		border: none;
-		background-color: white;
-		font-size: 15px;
-    }
     
     
     .favoriteList{
@@ -150,6 +141,15 @@
     .popupFooter{
       display: flex;
       justify-content: space-between;      
+    }
+    #backBtn,#modifyBtn11{
+       	width: 95px;
+		height: 35px;
+    	cursor: pointer;
+    	outline: none;
+		border: none;
+		background-color: white;
+		font-size: 15px;
     }
     
     #deleteBtn, #saveBtn{
