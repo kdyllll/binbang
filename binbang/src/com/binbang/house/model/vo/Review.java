@@ -15,6 +15,7 @@ public class Review {
 	private String filePath;
 	private String houseName;
 	private Date checkInDate;
+	private Date checkOutDate;
 	
 
 	public Review() {
@@ -42,6 +43,22 @@ public class Review {
 		this.houseName = houseName;
 	}
 	
+
+
+
+
+
+	public Date getCheckOutDate() {
+		return checkOutDate;
+	}
+
+
+
+
+
+	public void setCheckOutDate(Date checkOutDate) {
+		this.checkOutDate = checkOutDate;
+	}
 
 
 
