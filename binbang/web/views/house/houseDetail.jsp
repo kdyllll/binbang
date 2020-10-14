@@ -325,15 +325,10 @@
 
 										<div class="a">
 											평점 :<%=r.getHouseGrade()%></div>
-										<br>
-										<div>
-											숙박 기간 :
-											<%=r.getCheckInDate()%>
-											~
- 
-											 <%=r.getCheckOutDate()%> 
-										</div>
 
+										<br> 
+										<div>
+											
 
 										<div class="b">
 											제목 :<%=r.getCommentTitle()%>

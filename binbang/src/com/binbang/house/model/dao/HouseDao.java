@@ -296,6 +296,7 @@ public class HouseDao {
 				b.setReservDate(rs.getDate("reserv_Date")); //개인물건 유무
 				b.setPointPlus(rs.getInt("point_Plus")); //적립금 차감
 				b.setPointMinus(rs.getInt("point_Minus")); //
+				System.out.println("테스트"+b.getCheckInDate());
 
 			
 
