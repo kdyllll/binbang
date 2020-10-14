@@ -157,8 +157,7 @@
 				%>
 				<div class="secondContent">
 					<div class="folder">
-						<input type="text" class="folderTitle"
-							value="<%=f.getFolderName()%>" readonly>
+						<input type="text" class="folderTitle" value="<%=f.getFolderName()%>" readonly>
 						<%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo() == houseNo) {%>
 							<div class="heartCommon fav"></div>
 						<%} else {%>

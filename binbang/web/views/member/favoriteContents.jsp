@@ -24,7 +24,7 @@
 		
 			<form id="favHouse" method="post">
 			<div class="line1">
-				<input type="text" value="<%=f.getFolderName()%>" class="favTitle">
+				<%-- <input type="text" value="<%=f.getFolderName()%>" class="favTitle"> --%>
 				<div class="listLine"></div>
 			</div>
 
@@ -76,7 +76,7 @@
 	
 	<script>
 	function fn_back(){					 
-		         $("#favHouse").attr("action","<%=request.getContextPath()%>/member/favoriteFolder").submit();
+		         $("#favHouse").attr("action","<%=request.getContextPath()%>/favorite/favoriteBack").submit();
 		    }	
 	function fn_folderDelete(){
 		 		$("#favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteFolder").submit();

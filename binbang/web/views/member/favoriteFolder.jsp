@@ -7,6 +7,7 @@
 
 <% 
 	List<Favorite> list = (List) request.getAttribute("list");  		
+	Favorite fav= (Favorite) request.getAttribute("favorite");
 %>
 
 
@@ -21,7 +22,7 @@
 	<section class="section">
 					<form id="folderCreate" method="post">
 						<div class="line1">
-							<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNum">																																		
+							<input type="text" value="<%=m.getMemberNo()%>" name="memberNum">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
 						</div>				
@@ -47,13 +48,14 @@
 					</form>
 
 					<div class="favoriteList">
-						<% for(Favorite f : list){%>
-							<form class="folderContents" method="post">									
-									<input type="button" class="eachList" id="eachList" onclick="fn_toContent();">
-									<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
-									<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
-							</form>																											
-						<%}%>												
+								<% for(Favorite f : list){%>
+										<form class="folderContents" method="post">		
+ 														<%-- <input type="text" value="<%=f.getFolderNo() %>" name="folderNum" readonly> --%>
+														<%-- <input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly> --%>
+ 														<input type="text" value="<%=m.getMemberNo()%>" name="memberNum">																
+														<input type="submit" class="eachList" id="eachList" onclick="fn_toContent();">								
+										</form>																											
+								<%}%>											
 					</div>
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
@@ -72,8 +74,8 @@
 			    });   		    		 		    		    
 		  });
 		
-		function fn_toContent(){
-			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
+		function fn_toContent(){			
+			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();									
 		}
 				
 		function fn_createFolder(){
