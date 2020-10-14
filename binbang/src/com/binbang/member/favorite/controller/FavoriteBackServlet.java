@@ -12,16 +12,16 @@ import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
 
 /**
- * Servlet implementation class FavoriteFolderDeleteServlet
+ * Servlet implementation class FavoriteBackServlet
  */
-@WebServlet("/favorite/deleteFolder")
-public class FavoriteFolderDeleteServlet extends HttpServlet {
+@WebServlet("/favorite/favoriteBack")
+public class FavoriteBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FavoriteFolderDeleteServlet() {
+    public FavoriteBackServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +31,11 @@ public class FavoriteFolderDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String folderNo=request.getParameter("folderNo");	
-		System.out.println(folderNo);
-		String memberNo=request.getParameter("memberNo");
-		System.out.println(memberNo);	
-		
-		Favorite f = new Favorite();
-		f.setFolderNo(folderNo);
-		f.setFolderName(memberNo);
-		
-		int result=new FavoriteService().deleteFolder(f);
-
-		String msg="";
-		String loc="";
-						
-		if(result>0) {
-			msg="삭제완료";
-			loc="/favorite/favoriteFolder?memberNo="+memberNo;
-		}else {
-			msg="삭제실패";
-			loc="/favorite/favoriteContents";			
-		}
-		request.setAttribute("msg",msg);
-		request.setAttribute("loc",loc);		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		String memberNo = request.getParameter("memberNo");				
+		Favorite f = new FavoriteService().selectMemberNo(memberNo);
+				
+		request.setAttribute("favorite", f);
+		request.getRequestDispatcher("/favorite/favoriteFolder").forward(request, response);		
 	}
 
 	/**

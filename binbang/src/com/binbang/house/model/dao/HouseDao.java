@@ -296,7 +296,7 @@ public class HouseDao {
 				b.setReservDate(rs.getDate("reserv_Date")); //개인물건 유무
 				b.setPointPlus(rs.getInt("point_Plus")); //적립금 차감
 				b.setPointMinus(rs.getInt("point_Minus")); //
-				System.out.println("테스트"+b.getCheckInDate());
+				
 
 			
 
@@ -379,8 +379,7 @@ public class HouseDao {
 				r.setCommentContents(rs.getNString("comment_contents")); // 후기내용
 				r.setFilePath(rs.getNString("file_path")); // 후기사진
 				r.setHouseNo(rs.getNString("house_no")); // 숙소번호
-				r.setCheckInDate(rs.getDate("checkIn_Date")); //체크인 날짜
-				r.setCheckOutDate(rs.getDate("checkOut_Date")); 
+				
 				list.add(r);
 
 			}

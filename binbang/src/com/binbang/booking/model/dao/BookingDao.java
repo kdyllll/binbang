@@ -52,6 +52,7 @@ public class BookingDao {
 				b.setHouseName(rs.getString("house_name"));
 				b.setPointPlus(rs.getInt("point_plus"));
 				b.setPointMinus(rs.getInt("point_minus"));
+				b.setHousePrice(rs.getInt("price_day"));
 				list.add(b);
 			}
 
