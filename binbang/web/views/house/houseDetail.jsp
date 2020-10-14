@@ -55,9 +55,9 @@
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
 
 			<div class="headerBox">
-				<a href="#info" class="infoFilter"> 정보 </a> <a href="#grade"
-					class="reviewFilter"> 후기 </a> <a href="#photoFilterScroll"
-					class="photoFilter">주변시설 </a>
+				<a href="#info" class="infoFilter"> 정보 </a> 
+				<a href="#grade"class="reviewFilter"> 후기 </a> 
+			    <a href="#nearbyfacilities"class="photoFilter">주변시설 </a>
 			</div>
 			<div class="headerBtn" id="headerBtn">
 				<div class="ham mainHamColor"></div>
@@ -363,7 +363,7 @@
 
 
 		
-
+		<div id="nearbyfacilities"></div>
 			<div class="map_wrap">
 				<div id="map"
 					style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
