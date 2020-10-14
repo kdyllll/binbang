@@ -259,7 +259,20 @@ public class HouseService {
 		 return result;
 	 }
 	 
-
+	 public List selectLocation(String key){
+			Connection conn = getConnection();
+			List list = dao.selectLocation(conn,key);
+			close(conn);
+			return list;
+	}	
+	 
+	 public List<House> mainHouse() {
+		 Connection conn = getConnection();
+		 List<House> list= dao.mainHouse(conn);
+		 close(conn);
+		 return list;
+	 }
+	 
 
 }
 

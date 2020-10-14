@@ -85,7 +85,13 @@ public class HouseReviewEndServlet extends HttpServlet {
 
 		String msg="";
 		String loc = "";
-		if(result > 0) {msg =  "공지사항등록성공"; loc="house/houseDetailMove?houseNo=" + mr.getParameter("houseNo");} else { msg="공지사항등록실패"; loc="/house/review";}
+		if(result > 0) {
+			msg =  "공지사항등록성공"; 
+			loc="/house/houseDetailMove?houseNo=" + mr.getParameter("houseNo");
+		} else { 
+			msg="공지사항등록실패"; 
+			loc="/house/review";
+			}
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc",loc);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);

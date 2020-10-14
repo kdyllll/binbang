@@ -1,6 +1,7 @@
-package com.binbang.member.controller;
+package com.binbang.house.ajax.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,23 +9,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.binbang.house.model.service.HouseService;
-import com.binbang.house.model.vo.House;
-import com.binbang.member.model.vo.Member;
 
 /**
- * Servlet implementation class MainMoveServlet
+ * Servlet implementation class AutoCompleteAjaxServlet
  */
-@WebServlet("/mainMove")
-public class MainMoveServlet extends HttpServlet {
+@WebServlet("/house/autoCompleteAjax")
+public class AutoCompleteAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainMoveServlet() {
+    public AutoCompleteAjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +32,23 @@ public class MainMoveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session =request.getSession();
-		Member m = (Member)session.getAttribute("m");
-		System.out.println(m);
+		String key=request.getParameter("key");
+		List list=new HouseService().selectLocation(key);
+		//csv방식으로 전송
+		String csv="";
 		
-		List<House> h = new HouseService().mainHouse();
-		request.setAttribute("mainHouse", h);
-		request.getRequestDispatcher("/views/member/main.jsp").forward(request,response);
+		for(int i=0;i<list.size();i++) {
+			String address=(String)list.get(i); //경기도 군포시 군포로00길 00-00
+			List addList=new ArrayList();
+			addList.add(address.substring(0,address.indexOf(" ",address.indexOf(" ")+1)));
+			//String[] loArr=address.split("\\s"); //[경기도,군포시,...]
+			if(i!=0) csv+=",";
+				for(Object o:addList) { //세번째 묶음까지만 인식하자
+					csv+=(String)o;
+				}	
+		}
+		response.setContentType("text/csv;charset=utf-8");
+		response.getWriter().print(csv);
 		
 	}
 

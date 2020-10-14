@@ -38,6 +38,13 @@ public class BookingServlet extends HttpServlet {
 			String in=request.getParameter("checkIn");
 			String out1=request.getParameter("checkOut");
 			String price=request.getParameter("totalPrice");
+			System.out.println(in);
+			System.out.println(out1);
+			if(in.equals("null") || out1.equals("null")) {
+				request.setAttribute("msg", "메인화면에서 날짜검색을 해주세요");
+				request.setAttribute("loc", "/mainMove");
+				request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+			}
 			
 			House h=new HouseService().HouseDetail(no);
 			
@@ -51,10 +58,6 @@ public class BookingServlet extends HttpServlet {
 				request.setAttribute("msg",msg);
 				request.setAttribute("loc",loc);
 			}
-	
-		
-		
-			
 		
 			request.setAttribute("house",h);
 			request.setAttribute("checkIn",in);
