@@ -32,26 +32,31 @@ public class FavoriteContentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//해당 폴더의 파일을 찾는 logic
+		//해당 폴더의 파일을 찾는 logic				 
+		String folderNo = request.getParameter("folderNo");
+		System.out.println(folderNo);
+		 
+		//해당 폴더의 이름 					
+		String folderName = request.getParameter("folderName");
+		System.out.println(folderName);
 		
-		 String folderNum = request.getParameter("folderNum");
-		 System.out.println(folderNum);
+		//해당회원번호
+		String memberNo = request.getParameter("memberNo");
+		System.out.println(memberNo);
+	
+		
+		//해당 폴더의 관심숙소 			
+		 List<Favorite> list = new FavoriteService().selectFolder(folderNo);
+		 System.out.println(list);		
+		
+		 
 		 
 		
-		//해당 폴더의 관심숙소 
-		/*
-		 * List<Favorite> list = new FavoriteService().selectFolder(folderNo);
-		 * System.out.println(list);
-		 */
-		
-		//해당 폴더의 이름 		
-		/*
-		 * String folderName = request.getParameter("folderName");
-		 * System.out.println(folderName); request.setAttribute("folderName",
-		 * folderName);
-		 */ 
-			/* request.setAttribute("list",list); */
-		request.setAttribute("folderNum", folderNum); 
+			
+		request.setAttribute("list",list);
+		request.setAttribute("memberNo", memberNo);
+		request.setAttribute("folderName",folderName);
+		request.setAttribute("folderNo", folderNo); 
 		request.getRequestDispatcher("/views/member/favoriteContents.jsp").forward(request, response);
 	}
 

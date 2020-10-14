@@ -7,7 +7,9 @@
 
 <% 
 	List<Favorite> list = (List) request.getAttribute("list");
-	Favorite f = (Favorite) request.getAttribute("folderName");
+	String na = (String)request.getAttribute("folderName"); 
+	String no = (String)request.getAttribute("folderNo");  
+	String mno = (String)request.getAttribute("memberNo");
 %>
 
 
@@ -22,13 +24,12 @@
 		<!-- 관심숙소content -->
 		<section class="section">
 		
-			<form id="favHouse" method="post">
+		<form id="favHouse" method="post">
+			<input type="hidden" value="<%=no%>" name="folderNo">
 			<div class="line1">
-				<%-- <input type="text" value="<%=f.getFolderName()%>" class="favTitle"> --%>
+				<input type="text" value="<%=na%>" class="favTitle">
 				<div class="listLine"></div>
-			</div>
-
-
+			</div>			
 			<!-- 관심숙소폴더 -->
 			<div class="favorite">
 
@@ -38,7 +39,8 @@
 					<input type="button" id="modifyBtn" value="목록수정" class="Btn">															
 				</div>
 
-
+					<input type="text" value="<%=mno%>" name="memberNo">
+				
 				<div class="modifyPop ModDisNone">
 					<div id="popupContent">
 					
@@ -60,11 +62,12 @@
 				</div>
 
 				<div class="favoriteList">
-					<div class="eachList">
-						<div class="recomPic1 recommon">
-							<div class="heartButton fav"></div>
-						</div>						
-					</div>
+					<% for(Favorite f : list){%>
+									<form class="folderContents" method="post">	
+											<input type="text" value="<%=f.getHouseNo() %>">	 																						
+ 											<input type="submit" class="eachList" id="eachList" onclick="fn_toContent();">								
+									</form>																											
+						<%}%>	
 				</div>
 			</div>
 			

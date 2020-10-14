@@ -13,7 +13,7 @@ import com.binbang.member.model.service.FavoriteService;
 /**
  * Servlet implementation class FavoriteFolderDeleteServlet
  */
-@WebServlet("/favorite/favoriteFolderDelete")
+@WebServlet("/favorite/deleteFolder")
 public class FavoriteFolderDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,7 +37,7 @@ public class FavoriteFolderDeleteServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="삭제완료";
-			loc="/favorite/favoriteFolderCreate";
+			loc="/favorite/favoriteFolder";
 		}else {
 			msg="삭제실패";
 			loc="/favorite/favoriteContents";			

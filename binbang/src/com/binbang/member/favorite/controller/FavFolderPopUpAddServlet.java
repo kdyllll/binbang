@@ -1,4 +1,4 @@
-package com.binbang.common.controller;
+package com.binbang.member.favorite.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +18,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class FavFolderPopUpAddServlet
  */
-@WebServlet("/favFolderPopUpAdd")
+@WebServlet("/favorite/favFolderPopUpAdd")
 public class FavFolderPopUpAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

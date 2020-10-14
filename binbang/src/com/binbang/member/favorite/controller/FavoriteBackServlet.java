@@ -29,7 +29,7 @@ public class FavoriteBackServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memberNo = request.getParameter("memberNum");
+		String memberNo = request.getParameter("memberNo");
 		String loc="/";
 		Favorite f=new Favorite();
 		f.setMemberNo(memberNo);
