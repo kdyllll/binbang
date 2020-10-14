@@ -30,7 +30,7 @@
 			<form action="<%=request.getContextPath()%>/booking/bookingFinal" method="post">
 				<div class="reservation">
 					<ul>
-						<li><input type="text" name="guestName">
+						<li>게스트이름 : <input type="text" name="guestName">
 						</li>
 						<br>
 						<br>
@@ -42,13 +42,10 @@
 						<br>
 
 					</ul>
-					
 					<div class="personnel">
-						숙박인원: <label class="personnel1" for="card"> </label> 
-							<input id="pNum" class="personnel1" type="number" name="nval" min="0" max="10" step="1" value="0"> 
-							
-					</div>
-				
+                  		숙박인원: <label class="personnel1" for="card"> </label> 
+                     	<input id="pNum" class="personnel1" type="number" name="pNum" min="0" max="10" step="1" value="0"> 
+               </div>
 
 					<br>
 					<br>
@@ -136,12 +133,12 @@
 								
 									<input type="hidden" name="totalPoints" class="totalPoints">
 									<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
-									<input type="hidden" name="originalPrice" value="￦ <%=price%>">
+									<input type="hidden" name="originalPrice" value="<%=price%>">
 									<input type="hidden" name="checkIn" value="<%=in%>">
 									<input type="hidden" name="checkOut" value="<%=out1%>">
 									<input type="hidden" class="totalPoint" name="totalPoint">
 									<input type="hidden" class="totalPrice" name="totalPrice" value="">
-									<input type="hidden" class="memberNo" name="memberNo" value="<%=m2%>">
+									<input type="hidden" class="memberNo" name="memberNo" value="<%=m2.getMemberNo()%>">
 									<input type="submit" value="Booking" class="lastPay">
 								
 							</div>
@@ -190,20 +187,17 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script>
+	
 	$("#pNum").change(function() {
-		let cnt = $("#pNum").val();
-		let total = '<%=h.getHousePnum()%>';
-		if(cnt > total) {
-			alert("최대인원을 초과했습니다");
-		}
-	})
+	      let cnt = $("#pNum").val();
+	      let total = '<%=h.getHousePnum()%>';
+	      if(cnt > total) {
+	         alert("최대인원을 초과했습니다");
+	      }
+	      
+	   })
 
-
-
-
-	function test() {	
-		
-
+	function test() {
 		//housePrice에 초기값 넣어줌. 중복안되게
 		$(".housePrice").html('<%=price%>');
 		//point value를 가져옴 => 너거 text넣은 값
@@ -212,15 +206,26 @@
 		let price = $(".housePrice").html();
 		//결과는 기본값 - 포인터차감
 		let result = <%=price%> - point;	
-		let totalPoint = result * 2;
+		let totalPoint = result * 0.5;
 		let totalPoints = <%=m2.getTotalPoint()%> - point;
+		if(parseInt(point)>parseInt(<%=price %>)) {
+			alert("결제금액보다 큽니다. 결제금액보다 적게 입력해주세요.");
+			$(".pointWriter").val("");
+		} else if(parseInt(point) > parseInt(<%=m2.getTotalPoint() %>)) {
+			alert("보유한 포인트보다 큽니다. 보유한 포인트보다 적게 입력해주세요.");
+			$(".pointWriter").val("");
+		} else  { 
+			$(".housePrice").html(result);
+			$(".totalPrice").val(result);
+			$(".totalPoint").val(totalPoint);
+			$(".totalPointsShow").html(totalPoints);
+			$(".totalPoints").val($(".pointWriter").val());
+		}
+		
 		//눈으로 확인하기위해
-		$(".housePrice").html(result);
-		$(".totalPrice").val(result);
-		$(".totalPoint").val(totalPoint);
-		$(".totalPointsShow").html(totalPoints);
-		$(".totalPoints").val(totalPoints);
-		console.log(result);
+
+		
+		
 
 	}
 	
