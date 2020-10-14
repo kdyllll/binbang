@@ -15,7 +15,7 @@ import com.binbang.member.model.vo.Favorite;
 /**
  * Servlet implementation class MemberFavoriteFolderServlet
  */
-@WebServlet("/member/favoriteFolder")
+@WebServlet("/favorite/favoriteFolder")
 public class FavoriteFolderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
