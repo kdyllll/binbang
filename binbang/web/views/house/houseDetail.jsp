@@ -315,25 +315,22 @@
 									<div class="gradeinfo">
 
 										<div class="a">
-											평점 :
-											<%=r.getHouseGrade()%></div>
-										<br> <br>
-										<%-- <div>
+											평점 :<%=r.getHouseGrade()%></div>
+										<br> 
+										<div>
 											숙박 기간 :
-											<%=b.getCheckInDate()%>
+											<%-- <%=b.getCheckInDate()%> --%>
 											~
 
-											<%=b.getCheckOutDate()%></div> --%>
-										<br> <br> 
+											<%-- <%=b.getCheckOutDate()%> --%></div>
+										
 
 										<div class="b">
-											제목 :
-											<%=r.getCommentTitle()%>
+											제목 :<%=r.getCommentTitle()%>
 										</div>
-										<br> <br>
+										<br> 
 										<div class="c">
-											내용 :
-											<%=r.getCommentContents()%>
+											내용 :<%=r.getCommentContents()%>
 										</div>
 										<!-- <div class="ex">댓글 등록하기</div> -->
 
