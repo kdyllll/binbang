@@ -6,10 +6,10 @@
 	    String houseName = (String)request.getAttribute("houseName");
 	    String in = (String)request.getAttribute("in");
 	    String out1 = (String)request.getAttribute("out1");
-	    String pnum = (String)request.getAttribute("pnum");
+	    int pnum = (int)request.getAttribute("pnum");
 	    String pay = (String)request.getAttribute("pay");
-	    String price = (String)request.getAttribute("price");
-	    String totalPoint = (String)request.getAttribute("totalPoint");
+	    int price = (int)request.getAttribute("price");
+	    int totalPoint = (int)request.getAttribute("totalPoint");
     %>
 
 <%@ include file="/views/common/commonLink.jsp" %>
@@ -38,7 +38,7 @@
                   <div>결제 방법 : <%=pay %></div>
                   <div class="priceLine">
                      <div class="priceInfoBox">
-                        <div class="priceInfo">￦ <%=price %> </div>
+                        <div class="priceInfo">￦<%=price %> </div>
                      </div>
                   </div>
                </div>
