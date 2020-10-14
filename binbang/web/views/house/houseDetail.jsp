@@ -49,11 +49,7 @@
 	<div class="wrap">
 		<header class="header headerColor">
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 			<div class="headerBox">
 				<a href="#info" class="infoFilter" > 정보 </a>
 				<a href="#grade"class="reviewFilter"> 후기 </a>
