@@ -49,8 +49,8 @@
 	<div class="wrap">
 		<header class="header headerColor">
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
-			<div class="searchBox"></div>
-			<div class="headerBox displayNone">
+
+			<div class="headerBox">
 				<a href="#info" class="infoFilter" > 정보 </a>
 				<a href="#grade"class="reviewFilter"> 후기 </a>
 				<a href="#photoFilterScroll" class="photoFilter">주변시설 </a>
@@ -59,7 +59,6 @@
 				<div class="ham mainHamColor"></div>
 				<div class="ham mainHamColor"></div>
 				<div class="ham mainHamColor"></div>
-
 			</div>
 			<%@ include file="/views/common/nav.jsp"%>
 		</header>
@@ -465,7 +464,6 @@
 	<%-- <script src="<%=request.getContextPath()%>/js/common/heart.js"></script> --%>
 
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
-	<script src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
