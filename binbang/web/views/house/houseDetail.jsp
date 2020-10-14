@@ -51,9 +51,9 @@
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
 			<div class="searchBox"></div>
 			<div class="headerBox displayNone">
-				<a href=".houseinfobox" class="infoFilter"> 정보 </a>
-				<a href="#"class="reviewFilter"> 후기 </a>
-				<a href=".photoFilterScroll" class="photoFilter">주변시설 </a>
+				<a href="#info" class="infoFilter" > 정보 </a>
+				<a href="#grade"class="reviewFilter"> 후기 </a>
+				<a href="#photoFilterScroll" class="photoFilter">주변시설 </a>
 			</div>
 			<div class="headerBtn" id="headerBtn">
 				<div class="ham mainHamColor"></div>
@@ -151,6 +151,7 @@
 				</div>
 
 			</div>
+			<div id="info"></div>
 
 
 			<div class="houseinfobox">
@@ -275,9 +276,8 @@
 				</div>
 
 			</div>
-			<div class="reviewFilterScroll"></div>
-			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-
+			
+			<div id="grade"></div>
 			<div class="gradeTitle">
 
 				★평균 평점 (<%=grade%>)
@@ -304,6 +304,7 @@
 							for (Review r : list) {
 						%>
 						<div class="swiper-slide">
+						
 							<div class="gradePhoto">
 								<img
 									src="<%=request.getContextPath()%>/upload/review/<%=r.getFilePath()%>"
@@ -358,7 +359,7 @@
 			</div>
 
 
-			<div class="photoFilterScroll"></div>
+			<div id="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
 			<div class="place">

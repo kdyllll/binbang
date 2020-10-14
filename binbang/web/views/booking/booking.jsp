@@ -62,9 +62,8 @@
 					<div class="payMent">
 						결제방법 :
 						<div class="payments">
-							<label><input type="radio" name="pay" value="card"
-								id="card">신용카드</label> <label><input type="radio"
-								name="pay" value="bankTransfer" id="bankTransfer">무통장입금</label>
+							<label><input type="radio" name="pay" value="card"id="card">신용카드</label> 
+							<label><input type="radio"name="pay" value="bankTransfer" id="bankTransfer">무통장입금</label>
 						</div>
 					</div>
 					<br> <br>
@@ -194,7 +193,6 @@
 	      if(cnt > total) {
 	         alert("최대인원을 초과했습니다");
 	      }
-	      
 	   })
 
 	function test() {
