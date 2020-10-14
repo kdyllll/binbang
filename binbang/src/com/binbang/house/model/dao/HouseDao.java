@@ -823,5 +823,24 @@ public class HouseDao {
 		return result;
 	}
 	
+	public List selectLocation(Connection conn,String key) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectLocation"));
+			pstmt.setString(1, "%"+key+"%");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 }

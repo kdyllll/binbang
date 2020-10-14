@@ -284,7 +284,13 @@ public class HouseService {
 		 return result;
 	 }
 	 
-
+	 public List selectLocation(String key){
+			Connection conn = getConnection();
+			List list = dao.selectLocation(conn,key);
+			close(conn);
+			return list;
+	}	
+	 
 
 }
 
