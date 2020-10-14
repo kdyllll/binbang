@@ -348,10 +348,10 @@
 				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
 
 			</div>
+			</div>
 
 
-			<div id="photoFilterScroll"></div>
-			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
+		
 
 			<div class="place">
 				<div class="placeSection">
