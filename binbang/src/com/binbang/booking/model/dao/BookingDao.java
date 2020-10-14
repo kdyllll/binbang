@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -248,6 +249,48 @@ public class BookingDao {
 			close(rs);
 			close(pstmt);
 		}return list;
+	}
+	
+	public int insertReservation(Connection conn, Booking b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("insertReservation"));
+			
+			pstmt.setString(1, b.getMemberNo());// 회원번호
+			pstmt.setString(2, b.getHouseNo());// 숙소 번호
+			pstmt.setString(3, b.getGuestName());// 예약자 이름
+			pstmt.setString(4, b.getInsertCheckInDate());// 일실날짜
+			pstmt.setString(5, b.getInsertCheckOutDate());// 퇴실 날짜
+			pstmt.setInt(6, b.getGuestPnum());// 예약인원
+			pstmt.setString(7, b.getPaymentOption());// 결제 방법
+			pstmt.setInt(8, b.getPrice());// 총금액
+			pstmt.setInt(9, b.getPointPlus());// 적립금 적립
+			pstmt.setInt(10, b.getPointMinus());// 적립금 차감
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertPoint(Connection conn, String memberNo,  int totalPoint, int totalPoints) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("insertPoint"));
+			pstmt.setInt(1,  totalPoint);
+			pstmt.setInt(2,  totalPoints);
+			pstmt.setString(3, memberNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 }

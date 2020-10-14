@@ -289,7 +289,7 @@
 				</div>
 			</div>
 
-			<div class="comment">
+			 <div class="comment">
 			<%if(list == null) { %>
 			<span>후기없음</span>
 			<%} else {%>
@@ -312,12 +312,12 @@
 											평점 :
 											<%=r.getHouseGrade()%></div>
 										<br> <br>
-										<div class="a">
+										<%-- <div class="a">
 											숙박 기간 :
 											<%=b.getCheckInDate()%>
 											~
 											<%=b.getCheckOutDate()%></div>
-										<br> <br>
+										<br> <br> --%>
 										<div class="b">
 											제목 :
 											<%=r.getCommentTitle()%>
@@ -336,7 +336,7 @@
 						<%
 							}
 						%>
-					</div>
+					</div> 
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -454,10 +454,8 @@
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
 	<script>
