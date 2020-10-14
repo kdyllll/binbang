@@ -135,8 +135,8 @@
 									<input type="hidden" name="originalPrice" value="<%=price%>">
 									<input type="hidden" name="checkIn" value="<%=in%>">
 									<input type="hidden" name="checkOut" value="<%=out1%>">
-									<input type="hidden" class="totalPoint" name="totalPoint">
-									<input type="hidden" class="totalPrice" name="totalPrice" value="">
+									<input type="hidden" class="totalPoint" name="totalPoint" value="0">
+									<input type="hidden" class="totalPrice" name="totalPrice" value="<%=price%>">
 									<input type="hidden" class="memberNo" name="memberNo" value="<%=m2.getMemberNo()%>">
 									<input type="submit" value="Booking" class="lastPay">
 								
