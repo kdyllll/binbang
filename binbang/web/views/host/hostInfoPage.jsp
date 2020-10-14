@@ -61,7 +61,7 @@
 				<%for(int i = 0; i<list.size(); i++) {
 					House ho = (House)list.get(i);%>
 				<li class="hostHouseOne" id="house<%=i%>">
-					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=ho.getHouseNo()%>">
+					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=ho.getHouseNo()%>&totalPrice=<%=ho.getPriceDay()%>">
 					 	<img src="<%=request.getContextPath()%>/upload/house/<%=ho.getHouseMainPic()%>"> 
 						<span><%=ho.getHouseName() %></span>
 						<div class="hoverAction"></div>

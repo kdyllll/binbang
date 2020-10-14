@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 <%
+
 	List<House> list = (List) request.getAttribute("list");
 %>
 
@@ -53,7 +54,7 @@
 		%>
 	<div class="houseImg">	
 		<form class="houseAll" method="post">
-			<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo()%>">
+			<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo() %>&totalPrice=<%=h.getPriceDay()%>">
 				<img src="<%=request.getContextPath() %>/upload/house/<%=h.getHouseMainPic() %>">
 			</a> 
 			<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>" /> 

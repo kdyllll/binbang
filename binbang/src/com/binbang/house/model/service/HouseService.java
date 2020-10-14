@@ -33,32 +33,7 @@ public class HouseService {
 		 close(conn);
 		 return b;
 	}
-	
-	public int insertReservation(String no, Booking b) {
-		Connection conn=getConnection();
-		int result = dao.insertReservation(conn,no,b);
-		if (result > 0)
-			commit(conn);
-		else
-			rollback(conn);
-		close(conn);
-		return result;
-	}
-	
-	public int insertPoint(String memberNo, String lastPoint) {
-		Connection conn=getConnection();
-		int result = dao.insertPoint(conn,memberNo,lastPoint);
-		if (result > 0)
-			commit(conn);
-		else
-			rollback(conn);
-		close(conn);
-		return result;
-	}
 
-	
-	
-	
 
 	public List FilterDetail(String no) {
 		Connection conn=getConnection();
@@ -284,7 +259,20 @@ public class HouseService {
 		 return result;
 	 }
 	 
-
+	 public List selectLocation(String key){
+			Connection conn = getConnection();
+			List list = dao.selectLocation(conn,key);
+			close(conn);
+			return list;
+	}	
+	 
+	 public List<House> mainHouse() {
+		 Connection conn = getConnection();
+		 List<House> list= dao.mainHouse(conn);
+		 close(conn);
+		 return list;
+	 }
+	 
 
 }
 

@@ -56,8 +56,8 @@ public class HouseEnrollEndServlet extends HttpServlet {
 		h.setHostNo(mr.getParameter("loginHost"));// 호스트번호
 		h.setHouseName(mr.getParameter("hName"));// 숙소이름
 		h.setHouseType(mr.getParameter("hType"));// 숙소타입
-		
-		String location = mr.getParameter("roadAddress") + " " + mr.getParameter("detailAddress");
+		String location ="";
+		location = mr.getParameter("roadAddress") + ", " + mr.getParameter("detailAddress");
 		h.setHouseLocation(location);// 숙소 위치
 		
 		h.setHousePnum(Integer.parseInt(mr.getParameter("pNum")));// 숙소 최대인원

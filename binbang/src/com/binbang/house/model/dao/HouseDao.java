@@ -282,7 +282,6 @@ public class HouseDao {
 			if (rs.next()) {
 				b = new Booking();
 				b.setReservationNo(rs.getString("reservation_No"));
-
 				b.setMemberNo(rs.getString("member_No"));//멤버번호
 				b.setHouseNo(rs.getString("house_no")); //숙소번호
 				b.setGuestName(rs.getString("guest_Name")); //예약자 이름
@@ -296,6 +295,7 @@ public class HouseDao {
 				b.setReservDate(rs.getDate("reserv_Date")); //개인물건 유무
 				b.setPointPlus(rs.getInt("point_Plus")); //적립금 차감
 				b.setPointMinus(rs.getInt("point_Minus")); //
+				System.out.println("테스트"+b.getCheckInDate());
 
 			
 
@@ -310,35 +310,6 @@ public class HouseDao {
 		}return b;
 	}
 	
-	
-	public int insertReservation(Connection conn, String no, Booking b) {
-		PreparedStatement pstmt = null;
-		int result = 0;
-		try {
-			pstmt = conn.prepareStatement(prop.getProperty("insertReservation"));
-			
-			pstmt.setString(1, b.getMemberNo());// 회원번호
-			pstmt.setString(2, b.getHouseNo());// 숙소 번호
-			pstmt.setString(3, b.getGuestName());// 예약자 이름
-			pstmt.setDate(4, b.getCheckInDate());// 일실날짜
-			pstmt.setDate(5, b.getCheckOutDate());// 퇴실 날짜
-			pstmt.setInt(6, b.getGuestPnum());// 예약인원
-			pstmt.setString(7, b.getPaymentOption());// 결제 방법
-			pstmt.setInt(8, b.getPrice());// 총금액
-			pstmt.setInt(9, b.getPointPlus());// 적립금 적립
-			pstmt.setInt(10, b.getPointMinus());// 적립금 차감
-
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
-		return result;
-	}
-	
-
-
 	public List FilterDetail(Connection conn, String no) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -419,24 +390,7 @@ public class HouseDao {
 		return list;
 	}
 	
-	//숙소 포인트 저장하는 다오
-	public int insertPoint(Connection conn, String memberNo, String lastPoint) {
-		PreparedStatement pstmt=null;
-		int result=0;	
-		try {
-			Member m= new Member();
-			pstmt=conn.prepareStatement(prop.getProperty("insertPoint"));
-			pstmt.setString(1, lastPoint);//포인트
-			pstmt.setString(2, memberNo);//회원 번호
 
-
-			result=pstmt.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}return result;	
-	}
 	
 
 
@@ -476,6 +430,7 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no"));
 				h.setHouseMainPic(rs.getString("picture_name"));
 				h.setHouseLocation(rs.getString("house_location"));
+				h.setPriceDay(rs.getInt("price_Day"));
 				list.add(h);
 			}
 		} catch (Exception e) {
@@ -509,7 +464,10 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no")); // 숙소번호
 				h.setHouseName(rs.getNString("house_name")); // 숙소이름
 				h.setHouseType(rs.getNString("house_type")); // 숙소유형
-				h.setHouseLocation(rs.getNString("house_location")); // 숙소위치
+				 // 숙소위치
+				String oriAdd=rs.getNString("house_location");		
+				h.setHouseLocation(oriAdd.substring(0,oriAdd.indexOf(",")) );
+				
 				h.setHousePnum(rs.getInt("house_pnum")); // 숙소최대인원
 				h.setpObjects(rs.getNString("p_objects")); // 개인물건 유무
 				h.setRoomNum(rs.getInt("room_num")); // 방갯수
@@ -823,5 +781,50 @@ public class HouseDao {
 		return result;
 	}
 	
+	public List selectLocation(Connection conn,String key) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectLocation"));
+			pstmt.setString(1, "%"+key+"%");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+			
+	public List<House> mainHouse(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		List<House> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("mainHouse"));
+			rs= pstmt.executeQuery();
+			while(rs.next()) {
+				House h = new House();
+				h.setHouseMainPic(rs.getString("picture_name"));
+				h.setHouseName(rs.getString("house_name"));
+				h.setHouseLocation(rs.getString("house_location"));
+				h.setHouseNo(rs.getString("house_no"));
+				h.setPriceDay(rs.getInt("price_day"));
+				list.add(h);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 }

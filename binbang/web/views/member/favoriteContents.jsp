@@ -18,8 +18,8 @@
 		<%@ include file="/views/common/header.jsp"%>
 
 		<!-- 관심숙소content -->
-<section class="section">
 		
+<section class="section">		
 		<form class="favHouse" method="post">
 			<div>
 				<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">

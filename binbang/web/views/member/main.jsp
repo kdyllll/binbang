@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.binbang.house.model.vo.House"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -11,6 +13,10 @@
 
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
+<%
+	List<House> list = (List)request.getAttribute("mainHouse");
+%>
+
 </head>
 <body>
 	<div class="wrap">
@@ -19,7 +25,8 @@
 			<form class="searchBox">
 				<div class="searchLoc">
 					<p>위치</p>
-					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요">
+					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요" list="locationData">
+					<datalist id="locationData"></datalist>
 				</div>
 				<div class="checkInDate">
 					<p>체크인</p>
@@ -46,48 +53,26 @@
 			<div class="section2">
 				<h2 class="recommendTitle">Recommend</h2>
 				<div class="recommend">
-					<div>
-						<div class="recomPic1 recommon"></div>
+				<% if(list.size() > 6) {
+					for(int i =0; i < 6; i++) {%>
+					<% House h = (House)list.get(i); %> 
+					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo() %>&totalPrice=<%=h.getPriceDay()%>">
+						<img src="<%=request.getContextPath() %>/upload/house/<%=h.getHouseMainPic() %>" class="recomPic1 recommon">
 						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
+							<p><%=h.getHouseName() %></p>
+							<p><%=h.getHouseLocation().length() > 10 ? h.getHouseLocation().substring(0,9) + "..." : h.getHouseLocation() %></p>
 						</div>
-					</div>
-					<div>
-						<div class="recomPic2 recommon"></div>
+					</a>
+				<%} } else {
+					for(House h : list) {%>
+					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo() %>&totalPrice=<%=h.getPriceDay()%>">
+						<img src="<%=request.getContextPath() %>/upload/house/<%=h.getHouseMainPic() %>" class="recomPic1 recommon">
 						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
+							<p><%=h.getHouseName() %></p>
+							<p><%=h.getHouseLocation().length() > 10 ? h.getHouseLocation().substring(0,9) + "..." : h.getHouseLocation() %></p>
 						</div>
-					</div>
-					<div>
-						<div class="recomPic3 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
-					<div>
-						<div class="recomPic4 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
-					<div>
-						<div class="recomPic5 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
-					<div>
-						<div class="recomPic6 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
+					</a>
+				<%} }%>
 				</div>
 			</div>
 			<div class="section3">
@@ -173,8 +158,26 @@
     		$(".searchBox").attr("action", "<%=request.getContextPath()%>/house/houseSearchList").submit();
 			}
 		} 
-		
-		
+		/* <input type="text" name="search" id="search" placeholder="여행지를 입력해주세요">
+		<datalist id="locationData"></datalist> */
+		$("#search").keyup(e=>{
+			$.ajax({
+                url:"<%=request.getContextPath()%>/house/autoCompleteAjax",
+                data:{"key":$(e.target).val()},
+                success:data => {
+                    let keys=data.split(",");
+                    keys = keys.filter(function(i, pos, self) {
+						return self.indexOf(i) == pos;
+					});//중복값 제거
+                    console.log(keys);
+					
+                    $("#locationData").html("");
+                    for(let i=0;i<keys.length;i++){
+                    	$("#locationData").append($("<option>").html(keys[i]));
+                    }
+                }
+            });
+		});
 		
 		
 	</script>

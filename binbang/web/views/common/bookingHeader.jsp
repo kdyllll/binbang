@@ -8,5 +8,8 @@
 		<div id="ham"></div>
 		<div id="ham"></div>
 	</div>
+	
+	
+	
 	<%@ include file="/views/common/nav.jsp" %>
 </header>

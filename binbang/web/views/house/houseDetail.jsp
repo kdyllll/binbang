@@ -1,4 +1,5 @@
 
+<%@page import="com.binbang.member.model.vo.Favorite"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page
@@ -6,6 +7,7 @@
 
 
 <%
+	List<Favorite> favoriteList = (List<Favorite>) request.getAttribute("favorite");
 	House h = (House) request.getAttribute("house");
 	Booking b = (Booking) request.getAttribute("booking");
 	Double grade = (Double) request.getAttribute("grade");
@@ -15,13 +17,6 @@
 	String out1 = (String) request.getAttribute("checkOut");
 	String price = (String) request.getAttribute("totalPrice");
 %>
-
-<%
-	/*  String[] filter = new String[] { "bathRoom.png", "bbq.png", "breakfast.png", "dog.png", "kitchen.png",
-    "laundrtRoom.png", "park.png", "parking.png", "projector.png", "refrigerator.png", "shower.png", "smoking.png",
-    "swimming.png", "terrace.png", "wifi.png" }; */
-%>
-
 
 
 <%@ include file="/views/common/commonLink.jsp"%>
@@ -54,11 +49,11 @@
 	<div class="wrap">
 		<header class="header headerColor">
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
-			<div class="searchBox"></div>
-			<div class="headerBox displayNone">
-				<a href="#test" class="infoFilter"> 정보 </a> <a href="#"
-					class="reviewFilter"> 후기 </a> <a href="#" class="photoFilter">
-					주변시설 </a>
+			
+			<div class="headerBox">
+				<a href="#info" class="infoFilter" > 정보 </a>
+				<a href="#grade"class="reviewFilter"> 후기 </a>
+				<a href="#photoFilterScroll" class="photoFilter">주변시설 </a>
 			</div>
 			<div class="headerBtn" id="headerBtn">
 				<div class="ham mainHamColor"></div>
@@ -100,8 +95,18 @@
 
 						<%=h.getHouseName()%>
 
-
-						<div class="heartCommon heart"></div>
+						<% if(favoriteList!=null){
+								for(Favorite f:favoriteList){ 
+									if(f.getHouseNo()!=null&& f.getHouseNo().equals(h.getHouseNo())){%>
+									<div class="heartCommon fav"></div>
+								<%	}else{%>
+									<div class="heartCommon heart"></div>
+								<%	} 
+								  }
+						  }else{%>
+						  <div class="heartCommon heart"></div>
+						  <%} %>
+						<input type="hidden" class="houseNoPopUp" name="houseNo" value="<%=h.getHostNo()%>">
 					</div>
 					<br> <br> <br>
 					<div class="titleInfo">
@@ -146,6 +151,7 @@
 				</div>
 
 			</div>
+			<div id="info"></div>
 
 
 			<div class="houseinfobox">
@@ -254,7 +260,7 @@
 					<div class="test">
 						<div class="eqiipment">
 							EQUIPMENT
-							<div class="all">
+							<div class="all1">
 								<div><%=h.getEquipment()%></div>
 								
 							</div>
@@ -270,9 +276,8 @@
 				</div>
 
 			</div>
-			<div class="reviewFilterScroll"></div>
-			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-
+			
+			<div id="grade"></div>
 			<div class="gradeTitle">
 
 				★평균 평점 (<%=grade%>)
@@ -289,7 +294,7 @@
 				</div>
 			</div>
 
-			<div class="comment">
+			 <div class="comment">
 			<%if(list == null) { %>
 			<span>후기없음</span>
 			<%} else {%>
@@ -299,6 +304,7 @@
 							for (Review r : list) {
 						%>
 						<div class="swiper-slide">
+						
 							<div class="gradePhoto">
 								<img
 									src="<%=request.getContextPath()%>/upload/review/<%=r.getFilePath()%>"
@@ -309,25 +315,18 @@
 									<div class="gradeinfo">
 
 										<div class="a">
-											평점 :
-											<%=r.getHouseGrade()%></div>
-										<br> <br>
-										<div class="a">
-											숙박 기간 :
-											<%=b.getCheckInDate()%>
-											~
-											<%=b.getCheckOutDate()%></div>
-										<br> <br>
+											평점 :<%=r.getHouseGrade()%></div>
+										<br> 
+										<div>
+											
 										<div class="b">
-											제목 :
-											<%=r.getCommentTitle()%>
+											제목 :<%=r.getCommentTitle()%>
 										</div>
-										<br> <br>
+										<br> 
 										<div class="c">
-											내용 :
-											<%=r.getCommentContents()%>
+											내용 :<%=r.getCommentContents()%>
 										</div>
-										<div class="ex">댓글 등록하기</div>
+										<!-- <div class="ex">댓글 등록하기</div> -->
 
 									</div>
 								</div>
@@ -336,7 +335,7 @@
 						<%
 							}
 						%>
-					</div>
+					</div> 
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -351,7 +350,7 @@
 			</div>
 
 
-			<div class="photoFilterScroll"></div>
+			<div id="photoFilterScroll"></div>
 			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
 
 			<div class="place">
@@ -453,25 +452,35 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
+
+	<%-- <script src="<%=request.getContextPath()%>/js/common/heart.js"></script> --%>
+
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
 	<script>
-	
-		let amenity = '<%=h.getAmenity()%>';
-		
-		const words = amenity.split(',');
-	    console.log(words);
-	    let a = $("<div>");
-	    $(".amienity > .all ").html("");
-	    for(let i = 0; i<words.length; i++) {   
-	    	$(".amienity > .all").append($("<div>").html(words[i]));
-	    }
-	    
+	//amenity 숙소에 split를 통해서 , 기준으로 자르는 js
+	let amenity = '<%=h.getAmenity()%>';
+    
+    const words = amenity.split(',');
+     
+     let a = $("<div>");
+     $(".amienity > .all ").html("");
+     for(let i = 0; i<words.length; i++) {   
+        $(".amienity > .all").append($("<div>").html(words[i]));
+     }
+     
+ 	//eqiipment 숙소에 split를 통해서 , 기준으로 자르는 js
+     let eqiipment = '<%=h.getEquipment()%>';
+     
+     const words1 = eqiipment.split(',');
+     
+      let a1 = $("<div>");
+      $(".eqiipment > .all1 ").html("");
+      for(let i = 0; i<words1.length; i++) {   
+         $(".eqiipment > .all1").append($("<div>").html(words1[i]));
+      }
 
     
    
@@ -488,6 +497,45 @@
 
 			loginPopUp.submit();
 		}
+		
+		//관심숙소 버튼눌렀을때
+	       $(".heartCommon").on("click", e => {
+	          let login = "";
+	          let loginNo = "";
+
+	         <% if(m2 != null) {%>
+	            login = '<%=m2 %>';
+	            loginNo = '<%=m2.getMemberNo() %>';
+	         <% } %>
+	         if(login == "") {
+	            alert("로그인한 회원만 이용가능합니다.");
+	            fn_loginPopUp();
+	         }  else {
+	            //관심숙소 고르는 팝업으로 넘어가기
+	            fn_favoritePopUp(e);
+	         }   
+	      });
+	      //로그인 안되어있다면 로그인팝업 호출
+	      function fn_loginPopUp() {
+	          const url = "<%=request.getContextPath()%>/loginPopUp";
+	            const title = "loginPopUp";
+	            const status = "left=100px, top=100px, width=500px, height=500px";
+	            open(url,title,status); 
+	       }
+	      //로그인 되어있다면 관심숙소 팝업 호출
+	      function fn_favoritePopUp(e) {
+	          const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
+	            const title = "favoritePopUp";
+	            const status = "left=100px, top=100px, width=500px, height=500px";
+	            open(url,title,status);   
+	          
+	       }
+	      
+	      
+	          
+
+
+
 	</script>
 </body>
 </html>

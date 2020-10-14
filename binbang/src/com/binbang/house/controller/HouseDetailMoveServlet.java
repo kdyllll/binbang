@@ -8,11 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.booking.model.vo.Booking;
 import com.binbang.house.model.service.HouseService;
 import com.binbang.house.model.vo.House;
 import com.binbang.house.model.vo.Review;
+import com.binbang.member.model.service.MemberService;
+import com.binbang.member.model.vo.Favorite;
+import com.binbang.member.model.vo.Member;
 
 
 
@@ -39,7 +43,17 @@ public class HouseDetailMoveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+		HttpSession session = request.getSession(false);
+	      try {
+	         Member m = (Member) session.getAttribute("m");
+	         List<Favorite> favorite = new MemberService().selectFavList(m);         
+ 
+	         request.setAttribute("favorite", favorite);
+
+	      } catch (NullPointerException e) {
+
+	      }
+	      
 				String no=request.getParameter("houseNo");
 				String in=request.getParameter("checkIn");
 				String out1=request.getParameter("checkOut");
@@ -90,6 +104,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				request.setAttribute("booking",b);
 				request.setAttribute("list",list);
 				request.getRequestDispatcher(path).forward(request, response);
+				System.out.println("여기서?"+b);
 				
 				
 

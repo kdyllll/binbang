@@ -23,8 +23,13 @@
 	String checkIn=(String)request.getAttribute("checkIn");
 	String checkOut=(String)request.getAttribute("checkOut");
 %>
-
+<style>
+.header{
+	z-index:1000;
+}
+</style>
 </head>
+
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
