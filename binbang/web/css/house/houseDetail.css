@@ -47,6 +47,7 @@
     height: 430px;
     background-size: cover;
     margin-right: 30px;
+    border: none;
    
     }
 .second{
@@ -241,17 +242,17 @@
 }
 /* 체크 인 아웃, 수용인원 정보  */
 .section .houseinfobox .houseinfo{
-    
+    border:none;
     width: 36%;
     height: 400px;
     border : 1px solid black;
-     padding-top: 120px;
+    padding-top: 120px;
+    border: none;
    
    
 }
 .infoDetail{
    text-align: center;
-
 }
 .infoDetail2{
    text-align:left;
@@ -426,7 +427,7 @@
 }
 
 /* 이건 숙소 전자기기에 대한 정보 */
-.section .eqiipment .all {
+.section .eqiipment .all1 {
     
     font-size: 8px;
     padding: 1px 5px;
@@ -434,7 +435,7 @@
     display: flex;
 }
 
-.section .eqiipment .all  > * {
+.section .eqiipment .all1  > * {
     margin-right: 10px;
 
 }
@@ -444,7 +445,6 @@
 
 .section .houseinfobox2{
     width: 100%;
-    height: 220px;
     justify-content: center;
     background-color: white ;
     color:black;
@@ -458,11 +458,9 @@
    margin-top:10px;
    width:100%;
    height: 220px;
-    line-height: 30px;
-    color: black;
-    border: solid;
-    margin-left: auto;
-   margin-right: auto;
+   line-height: 30px;
+   color: black;
+   padding-top: 5%;
 }
 
 /* 숙소 갬성글에대한 이미지, 이런 이지미가 없을 경우 로고와 전하고 싶은 단어 몇가지 입력 */
@@ -485,7 +483,7 @@
 /* 이미지 */
 /* 글씨를 감싸는 박스 */
 .section  .comment {
-    width: 1500px;;
+    width: 100%;;
     display: flex;
     margin-top: 30px;
     height: 300px;
@@ -496,16 +494,13 @@
    margin-top:20px;
    margin-left:80px;
    margin-right:10px;
-    width: 17%;
+    width: 30%;
     height: 250px;
-    background-image: url("/image/.jpg");
+
     background-size: cover;
     background-position: center;
-    border: solid;
+   
     
-}
-.ex{
-   text-align: right;
 }
 
 
@@ -513,7 +508,7 @@
 /* 박스 사이즈 설정 및 박스안에 들어가는 글씨들 색설정 */
 
 .three{
-   width: 67%;
+   width: 100%;
    height: 100%;
    margin-left: 5px;
    border: 0px;
@@ -527,7 +522,7 @@
    margin-top:20px;
     flex-direction: column;
     color: black;
-    margin-right: -40px;
+    
     
 
    
@@ -540,7 +535,7 @@
     background-color: white ;
     padding-top:10px;
     padding-left:20px;
-    width: 80%;
+    width: 70%;
     text-align: left;
 
 }
@@ -548,7 +543,7 @@
    width: 750px;
 }
 .gradeinfo .a{
-   margin-top: 1px;
+   margin-top: 25px;
    
 }
 .gradeinfo .b{
@@ -557,8 +552,8 @@
 }
 .gradeinfo .c{
    height: 50px;
-   padding-bottom:15px;
-   border-bottom: 1px black solid;
+   
+  
 
 }
 

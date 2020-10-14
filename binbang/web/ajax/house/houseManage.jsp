@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 <%
+
 	List<House> list = (List) request.getAttribute("list");
 %>
 
