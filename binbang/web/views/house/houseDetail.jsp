@@ -18,13 +18,6 @@
 	String price = (String) request.getAttribute("totalPrice");
 %>
 
-<%
-	/*  String[] filter = new String[] { "bathRoom.png", "bbq.png", "breakfast.png", "dog.png", "kitchen.png",
-    "laundrtRoom.png", "park.png", "parking.png", "projector.png", "refrigerator.png", "shower.png", "smoking.png",
-    "swimming.png", "terrace.png", "wifi.png" }; */
-%>
-
-
 
 <%@ include file="/views/common/commonLink.jsp"%>
 
@@ -58,9 +51,9 @@
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
 			<div class="searchBox"></div>
 			<div class="headerBox displayNone">
-				<a href="#test" class="infoFilter"> 정보 </a> <a href="#"
-					class="reviewFilter"> 후기 </a> <a href="#" class="photoFilter">
-					주변시설 </a>
+				<a href=".houseinfobox" class="infoFilter"> 정보 </a>
+				<a href="#"class="reviewFilter"> 후기 </a>
+				<a href=".photoFilterScroll" class="photoFilter">주변시설 </a>
 			</div>
 			<div class="headerBtn" id="headerBtn">
 				<div class="ham mainHamColor"></div>
@@ -324,13 +317,12 @@
 											평점 :
 											<%=r.getHouseGrade()%></div>
 										<br> <br>
-
-
+										<%-- <div>
 											숙박 기간 :
 											<%=b.getCheckInDate()%>
 											~
 
-											<%=b.getCheckOutDate()%></div>
+											<%=b.getCheckOutDate()%></div> --%>
 										<br> <br> 
 
 										<div class="b">
@@ -468,21 +460,16 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-<<<<<<< HEAD
+
 	<%-- <script src="<%=request.getContextPath()%>/js/common/heart.js"></script> --%>
-	<script
-		src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
-=======
+
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
 	<script>
-	
+	//amenity 숙소에 split를 통해서 , 기준으로 자르는 js
 	let amenity = '<%=h.getAmenity()%>';
     
     const words = amenity.split(',');
@@ -493,6 +480,7 @@
         $(".amienity > .all").append($("<div>").html(words[i]));
      }
      
+ 	//eqiipment 숙소에 split를 통해서 , 기준으로 자르는 js
      let eqiipment = '<%=h.getEquipment()%>';
      
      const words1 = eqiipment.split(',');
@@ -551,6 +539,12 @@
 	            open(url,title,status);   
 	          
 	       }
+	      
+	      
+	          
+
+
+
 	</script>
 </body>
 </html>
