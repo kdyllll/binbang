@@ -125,12 +125,15 @@ ul.box {
     width: 400px;
     height: 500px;
     display:inline-block;
+    /* position:absolute;
+    top:10px;
+    left:0px; */
   /*   border: 1px solid; */
 }
 
 .listCon{
     margin-left: 50px;
-    width:calc(100% - 500px);
+    width:calc(100% - 480px);
     display:inline-block;
     /* border:1px solid; */
    
@@ -142,8 +145,10 @@ ul.box {
 /* 숙소리스트 */
 .list{
     /* border:1px solid red;  */
-    width:1000px;
+    width:100%;
+   /*  display:inline-block; */
     display: flex;
+    flex-flow:wrap; 
     /* justify-content: space-between; */
     
     
