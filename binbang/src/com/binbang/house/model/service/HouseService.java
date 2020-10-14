@@ -259,6 +259,13 @@ public class HouseService {
 		 return result;
 	 }
 	 
+	 public List<House> mainHouse() {
+		 Connection conn = getConnection();
+		 List<House> list= dao.mainHouse(conn);
+		 close(conn);
+		 return list;
+	 }
+	 
 
 
 }
