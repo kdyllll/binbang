@@ -52,7 +52,8 @@
 				<td class="cell2"><%=h.getHostEnrollDate()%></td>
 				<td class="cell2">
 					<div class="acceptChoice">
-	
+						<input type="hidden" name="memberNo" value="<%=h.getMemberNo() %>">
+						<input type="hidden" name="memberId" value="<%=h.getHostEmail() %>">
 						<input type="button" class="acceptY" name="acceptY" value="승인" class="yes" onclick="fn_accept();">
 						<input type="button" class="acceptN" name="acceptN" value="거절" class="no" onclick="fn_reject();">
 					</div>
