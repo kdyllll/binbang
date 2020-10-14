@@ -42,7 +42,7 @@ public class FavFolderPopUpAddServlet extends HttpServlet {
 		f.setFolderName(request.getParameter("folderName"));
 		
 		String houseNo=request.getParameter("houseNo");
-		
+		System.out.println(houseNo);
 		int result=new FavoriteService().createFolder(f);
 		String msg="";
 		if(result>0) {
@@ -60,6 +60,9 @@ public class FavFolderPopUpAddServlet extends HttpServlet {
 	    str+="location.replace('favoritePopUp?houseNo=";
 	    str+=houseNo;
 	    str+="');";
+	  //  str+="history.back();";
+	  //  str += " window.opener.location.reload();";
+	   // str += "location.reload(true);";
 	    str += "</script>";
 	    out.print(str);
 	} 
