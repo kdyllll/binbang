@@ -65,11 +65,21 @@ public class BookingReservationServlet extends HttpServlet {
 		int result =new BookingService().insertReservation(b);
 		//멤버에 적립금 너기
 		int m=new BookingService().insertPoint(memberNo, totalPoint, totalPoints);
+		//숙소이름
 		
-		 /* 
-		 * request.getRequestDispatcher("/views/booking/reserveInfo.jsp").forward(
-		 * request, response);
-		 */
+		House houseName = new HouseService().selectHouseOne(no);
+
+		request.setAttribute("guestName", guestName);
+		request.setAttribute("houseName", houseName.getHouseName());
+		request.setAttribute("in", in);
+		request.setAttribute("out1", out1);
+		request.setAttribute("pnum", pnum);
+		request.setAttribute("pay", pay);
+		request.setAttribute("price", price);
+		request.setAttribute("totalPoint", totalPoint);
+
+		request.getRequestDispatcher("/views/booking/reserveInfo.jsp").forward(request, response);
+
 	   
 
 		

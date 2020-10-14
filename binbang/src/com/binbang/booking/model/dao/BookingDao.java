@@ -292,5 +292,38 @@ public class BookingDao {
 		}
 		return result;
 	}
+	/*
+	 * 예약 번호 숙소 명 숙박 기간 예약자 이름 예약자 번호 인원 적립금 결제 방법 가격
+	 */
+	
+	public Booking selectBooking(Connection conn, String memberNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		Booking b = null;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectBooking"));
+			pstmt.setString(1, memberNo);
+			rs= pstmt.executeQuery();
+			while(rs.next() ) {
+				b= new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setHouseName(rs.getString("house_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setGuestPnum(rs.getInt("guest_pnum"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
+				b.setPaymentOption(rs.getString("payment_option"));
+				b.setPrice(rs.getInt("price"));
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		} return b;
+	}
 
 }
