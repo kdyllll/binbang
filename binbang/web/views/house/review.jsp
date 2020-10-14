@@ -56,8 +56,9 @@
 				<textarea class="contentsWrite" name="commentContents" rows="10" cols="40" placeholder="내용을 입력하세요"></textarea>
 
 				<div class="enrollment">
-					  <input type="submit" value="등록하기" onclick=>
-
+				<form>
+					  <input type="submit" value="등록하기" onclick="uploadBack();">
+				</form>
 				</div>
 			</div>
 				</form>
@@ -83,12 +84,23 @@
              let grade=$(e.target).attr("id");
              $(".a").val(grade);
          });
+         
+         function uploadBack() {
+        	<%--  const url = "<%=request.getContextPath()%>/views/house/houseDetail";
+        	 open("");
+        	 upload.action = url;
+        	 upload.method = "post";	
+        	 upload.submit(); --%>
+        	 location.href = "/views/house/houseDetail.jsp";
+         }
+         
             </script>
 		
 		
 
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
+	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/review.js"></script>
 </body>

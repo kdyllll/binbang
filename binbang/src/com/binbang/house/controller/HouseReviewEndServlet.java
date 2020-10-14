@@ -84,12 +84,17 @@ public class HouseReviewEndServlet extends HttpServlet {
       //결과에 따라 메세지를 출력하고 메인화면으로 이동
 
 		String msg="";
-		String loc="/house/review";
-		msg=result>0?"공지사항등록성공":"공지사항등록실패";
+		String loc = "";
+		if(result > 0) {
+			msg =  "공지사항등록성공"; 
+			loc="/house/houseDetailMove?houseNo=" + mr.getParameter("houseNo");
+		} else { 
+			msg="공지사항등록실패"; 
+			loc="/house/review";
+			}
 		request.setAttribute("msg",msg);
 		request.setAttribute("loc",loc);
-		request.getRequestDispatcher("/views/common/msg.jsp")
-		.forward(request, response);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 	
 	

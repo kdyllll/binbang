@@ -80,4 +80,22 @@ public class BookingService {
 		
 	}
 	
+	public int insertReservation(Booking b) {
+		Connection conn= getConnection();
+		int result = dao.insertReservation(conn,b);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	public int insertPoint(String memberNo, int totalPoint, int totalPoints) {
+		Connection conn= getConnection();
+		int result = dao.insertPoint(conn,memberNo, totalPoint ,totalPoints);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+
 }
