@@ -38,18 +38,15 @@ public class FavoritePopUpServlet extends HttpServlet {
 		String houseNo=request.getParameter("houseNo");
 		request.setAttribute("houseNo", houseNo);
 		HttpSession session = request.getSession(false);
-		//try {
-			Member m = (Member) session.getAttribute("m");;
+		Member m = (Member) session.getAttribute("m");
 			// 관심숙소 목록
-			List<Favorite> favorite = new MemberService().selectFavList(m);
+		List<Favorite> favorite = new MemberService().selectFavAllList(m);
 //			for(Favorite f:favorite) {
 //				System.out.println("관심숙소 :"+f);
 //			}
-			request.setAttribute("member", m.getMemberNo());
-			request.setAttribute("favorite", favorite);
-		/*} catch (NullPointerException e) {
-		
-		}*/
+		request.setAttribute("member", m.getMemberNo());
+		request.setAttribute("favorite", favorite);
+
 		request.getRequestDispatcher("/views/common/favoritePopUp.jsp").forward(request, response);
 	}
 

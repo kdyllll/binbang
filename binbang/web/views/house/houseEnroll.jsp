@@ -27,7 +27,9 @@
 		<section class="section">
 			<!-- Swiper -->
 			<form id="enrollForm"
-				class="swiper-container first" method="post"
+				class="swiper-container first" 
+				onsubmit="return fn_complete();" method="post"
+				action="<%=request.getContextPath()%>/house/houseEnrollEnd"
 				enctype="multipart/form-data">
 
 				<div class="swiper-wrapper">
@@ -421,7 +423,7 @@
 							</div>
 						</div>
 						<div class="submitBox">
-							<input type="submit" value="완료" class="submit" name="submit" onclick="fn_complete();">
+							<input type="submit" value="완료" class="submit" name="submit" >
 						</div>
 					</div>
 
@@ -547,72 +549,72 @@
       function fn_complete(){
          if($("#hName").val().trim().length==0){
             alert("숙소 이름을 입력하세요.");
-            return;
+            return false;
          }else if($("input[name=hType]:checked").length==0){
             alert("숙소 유형을 선택하세요.");   
-            return;
+            return false;
          }else if($("#roadAddress").val().trim().length==0||$("#detailAddress").val().trim().length==0){
             alert("숙소 위치를 입력하세요.");   
-            return;
+            return false;
          }else if($("#pNum").val().trim().length==0){
             alert("숙소 최대 인원을 입력하세요.");   
-            return;
+            return false;
          }else if($("input[name=personal]:checked").length==0){
             alert("개인물건 유무를 선택하세요.");   
-            return;
+            return false;
          }else if($("#roomNum").val().trim().length==0){
             alert("방 갯수를 입력하세요.");   
-            return;
+            return false;
          }else if($("#bedNum").val().trim().length==0){
             alert("침대 갯수를 입력하세요.");   
-            return;
+            return false;
          }else if($("#bathNum").val().trim().length==0){
             alert("욕실 갯수를 입력하세요.");   
-            return;
+            return false;
          }else if($("#checkTime").val().trim().length==0){
             alert("체크인/체크아웃 시간을 입력하세요.");   
-            return;
+            return false;
          }else if($("#attention").val().trim().length==0){
             alert("주의사항을 입력하세요.");   
-            return;
+            return false;
          }else if(!$("#picture1").val()){
             alert("메인 사진을 등록하세요.");   
-            return;
+            return false;
          }else if(!$("#picture2").val()||!$("#picture3").val()){
             alert("사진을 3장 이상 등록해주세요.");   
-            return;
+            return false;
          }else if($("#amenity").val().trim().length==0){
              alert("amenity를 입력하세요.");   
-             return;
+             return false;
          }else if($("#equipment").val().trim().length==0){
               alert("equipment를 입력하세요.");   
-              return;
+              return false;
          }else if($("#explain").val().trim().length==0){
             alert("설명을 입력하세요.");   
-            return;
+            return false;
          }else if($("#gemsung").val().trim().length==0){
             alert("감성글을 입력하세요.");   
-            return;
+            return false;
          }else if($("#gemsung").val().trim().length==0){
             alert("감성글을 입력하세요.");   
-            return;
+            return false;
          }else if($("#startDay1").val().trim().length==0||$("#endDay1").val().trim().length==0){
             alert("성수기 기간을 하나 이상 입력하세요.");   
-            return;
+            return false;
          }else if($("#peakDay").val().trim().length==0){
             alert("성수기 평일 요금을 입력하세요.");   
-            return;
+            return false;
          }else if($("#peakRest").val().trim().length==0){
             alert("성수기 휴일 요금을 입력하세요.");   
-            return;
+            return false;
          }else if($("#nonPeakDay").val().trim().length==0){
             alert("비성수기 평일 요금을 입력하세요.");   
-            return;
+            return false;
          }else if($("#nonPeakRest").val().trim().length==0){
             alert("비성수기 휴일 요금을 입력하세요.");   
-            return;
+            return false;
          }else{      
-         $("#enrollForm").attr("action", "<%=request.getContextPath()%>/house/houseEnrollEnd").submit();
+		 return true;
          }
       }
    </script>
