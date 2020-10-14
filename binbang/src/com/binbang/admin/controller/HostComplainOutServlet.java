@@ -15,22 +15,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.admin.model.service.AdminService;
 import com.binbang.member.model.vo.Complaint;
-import com.google.gson.Gson;
 
 /**
- * Servlet implementation class HostComplainAcceptListServlet
+ * Servlet implementation class HostComplainOutServlet
  */
-@WebServlet( "/admin/hostComplainAccept")
-public class HostComplainAccepServlet extends HttpServlet {
+@WebServlet("/admin/hostComplainOut")
+public class HostComplainOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostComplainAccepServlet() {
+    public HostComplainOutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,12 +39,11 @@ public class HostComplainAccepServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memberEmail=request.getParameter("memberEmail");
+	
 		String hostNo=request.getParameter("hostNo");
-		String complaintNo=request.getParameter("complaintNo");
+		int result=new AdminService().hostOut(hostNo);
 		
-		int result=new AdminService().acceptHostComplainCount(hostNo);
-		
+		String memberEmail=request.getParameter("memberEmail");
 		String hostEmail=new AdminService().selectHostEmail(hostNo);
 		
 		if(result>0) {
@@ -94,10 +93,11 @@ public class HostComplainAccepServlet extends HttpServlet {
 	            e.printStackTrace();
 	        }
 		}
-		String msg="신고";
+		
+		String complaintNo=request.getParameter("complaintNo");
+		String msg="권한박탈";
 		int result2=new AdminService().acceptHostComplainState(complaintNo,msg);
-
-		//업데이트한 리스트를 다시 보냄
+		
 		List<Complaint> list = new AdminService().complainList();
 		request.setAttribute("list",list);
 		request.getRequestDispatcher("/views/admin/hostComplainList.jsp").forward(request, response);

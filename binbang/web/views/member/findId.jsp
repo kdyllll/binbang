@@ -25,7 +25,7 @@
 			<input type="text" id="userName" name="userName" placeholder="이름 입력">
 
 			<p class="inputTitle">전화번호를 입력하세요</p>
-			<input type="text" id="userPhone" name="userPhone" placeholder="전화번호 입력"> 
+			<input type="text" id="userPhone" name="userPhone" placeholder="전화번호 입력( - 구분자 사용)"> 
 			<input type="button" class="next" value="다음" onclick="findId();">
 		</form>
 		
@@ -35,8 +35,12 @@
 </html>
 <script>
 	function findId(){
-		if($("#userName").val()!==""&&$("#userPhone").val()!==""){
+		let phone = document.getElementById("userPhone");
+	 	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
+		if($("#userName").val()!="" && $("#userPhone").val()!="" && regPhone.test(phone.value)){
 			$("#enterNamePhone").attr("action","<%=request.getContextPath()%>/member/findIdInfo").submit();
+		}else if(!regPhone.test(phone.value)){
+			alert("전화번호를 -로 구분하여 입력해주세요.");
 		}else{
 			alert("이름과 전화번호를 입력해주세요.");
 		}

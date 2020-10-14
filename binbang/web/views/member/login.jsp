@@ -47,8 +47,8 @@
 					<div class="loginLine"></div>
 
 					<input type="text" class="login" name="userId"
-						placeholder="아이디(이메일) 입력해주세요" value='<%=saveId!=null?saveId:"" %>'> 
-					<input type="password" class="login" name="password" placeholder="비밀번호 입력해주세요">
+						placeholder="아이디(이메일) 입력" value='<%=saveId!=null?saveId:"" %>'> 
+					<input type="password" class="login" name="password" placeholder="비밀번호 입력">
 					<div class="saveIdDiv">
 						<input type="checkbox" name="saveId" id="saveId" checked>
 						<label for="saveId">아이디 저장</label>

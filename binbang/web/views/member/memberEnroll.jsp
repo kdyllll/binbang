@@ -370,9 +370,6 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
             }else if($("#checkbox2").is(":checked") == false){
                 alert("모든 약관에 동의해주세요");
                 return;
-            }else if($("#checkbox3").is(":checked") == false){
-                alert("모든 약관에 동의해주세요");
-                return;
             }else{
     			$("#enrollComplite").attr("action","<%=request.getContextPath() %>/member/memberEnrollEnd").submit();
     		}    	    	    	    	    	      	           

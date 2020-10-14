@@ -1,12 +1,11 @@
 <%@page import="java.text.Normalizer.Form"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>	
 <%@ include file="/views/common/commonLink.jsp"%>
 <%@ page import = "com.binbang.member.model.vo.Favorite, com.binbang.member.model.vo.Member" %>
 <%@page import="java.util.List"%>	
 
 <% 
-	List<Favorite> list = (List) request.getAttribute("list");  		
+	List<Favorite> list = (List) request.getAttribute("list");  			
 %>
 
 
@@ -19,13 +18,12 @@
 		
 		<!-- 관심숙소list -->
 	<section class="section">
-					<form id="folderCreate" method="post">
+					<form class="folderCreate" method="post">
 						<div class="line1">
-							<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNum">																																		
+							<input type="text" value="<%=m.getMemberNo()%>" name="memberNo">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
-						</div>
-				
+						</div>				
 						
 						<!-- 관심숙소폴더 -->
 						<div class="favorite">
@@ -44,29 +42,29 @@
 											<input type="button" id="checkBtn" value="저장" onclick="fn_createFolder();"> 							
 										</div>																									
 									</div>											
-							</div>				
+							</div>
+								
+						</div>			
 					</form>
 
 					<div class="favoriteList">
-						<% for(Favorite f : list){%>
-							<form id="folderContents" method="post">									
-									<input type="button" class="eachList" id="eachList" value="<%=f.getFolderNo() %>,<%=f.getFolderName() %>" onclick="fn_toContent();">
-									<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>																	
-									<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly>	
-							</form>																											
-									<%-- <div class="eachList" id="eachList" onclick="fn_toContent();">																												
-									</div> --%>
-						<%}%>												
+								<% for(Favorite f : list){%>
+										<form class="folderContents" method="post">		
+ 														<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly> 
+														<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>
+ 														<input type="text" value="<%=m.getMemberNo()%>" name="memberNo">															
+														<input type="submit" class="eachList" id="eachList" onclick="fn_toContent();">								
+										</form>																											
+								<%}%>											
 					</div>
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	
 	<script>
-		//목록만들기버튼
-		$(document).ready(
-		function () {
+		//목록만들기버튼		
 		  //x버튼, 팝업버튼
+		  $(document).ready(function () {
 			  $("#listBuildBtn").on("click",function(e){
 			    	$(".listPop").removeClass("listDisNone");
 			 	});
@@ -74,14 +72,14 @@
 			      $(".listPop").addClass("listDisNone");
 			    });   		    		 		    		    
 		  });
+		function fn_createFolder(){
+			$(".folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
+		}	
 		
-		function fn_toContent(){
-			$("#folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();
+		function fn_toContent(){			
+			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();									
 		}
 				
-		function fn_createFolder(){
-			$("#folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
-		}	
 	</script>
 	
 	

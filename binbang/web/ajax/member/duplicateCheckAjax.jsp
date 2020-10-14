@@ -26,7 +26,7 @@
 
 		<div class="line2">
 			[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. 
-			<input type="button" value="인증하기" id="emailConfirm">
+			<input type="button" value="인증하기" class="emailConfirm">
 		</div>
 		<form id="numberFrm">							
 				<input type="text"  name="num" id="num" class="passNumber" placeholder="인증번호 입력"> 				 
@@ -38,7 +38,7 @@
 		<form>
 			<div id="resend">
 				<p id="timer"></p>
-				<input type="button" value="재전송" style="display:none;" onclick="resendNum();" id="resendBtn">
+				<input type="button" value="재전송" style="display:none;" onclick="resendNum();" id="resendBtn" class="emailConfirm">
 			</div>
 		</form>
 
@@ -73,7 +73,7 @@
 	}
 
 /* 2. email 인증 logic */
-  	$("#emailConfirm").click( e => {
+  	$(".emailConfirm").click( e => {
 		$.ajax({
 			url:"<%=request.getContextPath()%>/member/memberEmailConfirm",
 			type:"post",

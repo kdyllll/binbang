@@ -26,14 +26,17 @@
 			if (email != null) {
 		%>
 		<p class="resultId"><%=email%></p>
+		<button class="finishFindId" onclick="self.close();">확인</button>
 		<%
 			} else {
 		%>
-		<span class="resultId">일치하는 정보가 없습니다.</span>
+		<p class="resultId">일치하는 정보가 없습니다.</p>
+		<button class="finishFindId" onclick="location.href='<%=request.getContextPath()%>/views/member/findId.jsp'">뒤로</button>
+		<button class="finishFindId" onclick="self.close();">확인</button>
 		<%
 			}
 		%>
-		<button class="finishFindId" onclick="self.close()">확인</button>
+		
 	</div>
 
 

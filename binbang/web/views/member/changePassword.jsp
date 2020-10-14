@@ -21,11 +21,11 @@
 
       <form id="newPassword">
         <p class="inputTitle">새로운 비밀번호를 입력하세요</p>
-        <input type="password" id="newPw" name="new_password" placeholder="비밀번호 입력"> 
+        <input type="password" id="newPw" name="new_password" placeholder="비밀번호 8~15글자 입력(숫자,문자,특수기호 포함)"> 
       </form>
         
        <p class="inputTitle">새로운 비밀번호를 다시 입력하세요</p>
-       <input type="password" id="newPw_" name="new_password_" onkeyup="checkPw();" placeholder="비밀번호 입력">
+       <input type="password" id="newPw_" name="new_password_" onkeyup="checkPw();" placeholder="비밀번호 8~15글자 입력(숫자,문자,특수기호 포함)">
        <div id="checkPw" align="left"></div>
         
       <button class="next" >완료</button>
@@ -37,29 +37,38 @@
       function checkPw() {
    	  	let pw1=$("#newPw").val().trim();
         let pw2=$("#newPw_").val().trim();
+        
         if(pw1==pw2){
             $("#checkPw").css("color","green").html("비밀번호가 동일합니다.");
             $(".next").prop("disabled",false);
-          }else if(pw1!=pw2){
+          }else {
           	$("#checkPw").css("color","red").html("동일한 비밀번호를 입력하세요.");
             $(".next").prop("disabled",true);
-          }
-      };
+        
+      		}
+      }
       
     
       $(".next").click(e=>{
+    	  let pw = document.getElementById("newPw");    	
+    	  let regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()]).*$/
+			if (!regPw.test(pw.value)) {
+          		alert("비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요");
+                return false;
+            }else{
+		    	$.ajax({
+		    		url:"<%=request.getContextPath()%>/member/changePassword",
+		    		type:"post",
+		    		data:{"password":$("#newPw").val().trim()},
+		    		dataType:"html",
+		    		success:data=>{
+		    			self.close();
+		    		}
+		    	});
+           	}
     	  
-    	  $.ajax({
-    		  url:"<%=request.getContextPath()%>/member/changePassword",
-    		  type:"post",
-    		  data:{"password":$("#newPw").val()},
-    		  dataType:"html",
-    		  success:data=>{
-    			  self.close();
-    		  }
-    	  })
-      })
-     
+      });
+        
       
     </script>
   

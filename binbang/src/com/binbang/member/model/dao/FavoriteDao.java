@@ -51,6 +51,29 @@ public class FavoriteDao {
 		}return list;
 	}
 	
+	//해당 폴더 선택
+	public List<Favorite> selectFolder(Connection conn, String folderNo) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Favorite> list = new ArrayList();
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectFolder"));			
+			pstmt.setString(1, folderNo);			
+			rs=pstmt.executeQuery();			
+			while(rs.next()) {
+				Favorite f=new Favorite();
+				f.setHouseNo(rs.getString("house_no"));
+				f.setFolderNo(rs.getString("folder_no"));																				
+				list.add(f);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	
 	
 	//관심숙소 폴더 생성
 	public int createFolder(Connection conn,Favorite f) {
@@ -68,40 +91,13 @@ public class FavoriteDao {
 		}return result;		
 	}
 	
-	//해당 폴더 선택
-	public List<Favorite> selectFolder(Connection conn, String folderNo) {
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Favorite> list = new ArrayList();
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectFolder"));			
-			pstmt.setString(1, folderNo);			
-			rs=pstmt.executeQuery();
-			
-			while(rs.next()) {
-				Favorite f=new Favorite();
-				f.setFolderName(rs.getString("folder_no"));
-				f.setFolderName(rs.getString("member_no"));
-				f.setFolderName(rs.getString("folder_name"));
-				f.setFolderName(rs.getString("house_no"));
-				list.add(f);
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}return list;
-	}
-	
-	
 	//관심숙소 폴더 삭제
-	public int deleteFolder(Connection conn, String folderNo) {
+	public int deleteFolder(Connection conn, Favorite f) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("deleteFolder"));
-			pstmt.setString(1, folderNo);
+			pstmt.setString(1, f.getFolderNo());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -166,6 +162,50 @@ public class FavoriteDao {
 				close(pstmt);
 			}return result;
 		}
+		
+	//폴더 이름	수정
+		public int modifyFolder (Connection conn,Favorite f) {
+			PreparedStatement pstmt=null;
+			int rs=0;
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("modifyFolder"));
+				pstmt.setString(1, f.getFolderName());
+				pstmt.setString(2, f.getFolderNo());
+				rs=pstmt.executeUpdate();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}return rs;			
+		}
+		
+	//뒤로가기
+		public Favorite selectMemberNo(Connection conn, String memberNo) {
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			Favorite f=new Favorite();
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("selectMemberNo"));
+				pstmt.setString(1, memberNo);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					f.setFolderNo(rs.getString("folder_no"));
+					f.setMemberNo(rs.getString("member_no"));
+					f.setFolderName(rs.getString("folder_name"));
+					f.setHouseNo(rs.getString("house_no"));
+				}		
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return f;
+		}
+		
 
+		
+
+		
+		
 	
 }

@@ -1,7 +1,6 @@
-package com.binbang.admin.controller;
+package com.binbang.member.favorite.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.binbang.admin.model.service.AdminService;
-import com.binbang.host.model.vo.Host;
+import com.binbang.member.model.service.FavoriteService;
+import com.binbang.member.model.vo.Favorite;
 
 /**
- * Servlet implementation class SearchHostListServlet
+ * Servlet implementation class FavoriteBackServlet
  */
-@WebServlet("/admin/searchHostList")
-public class SearchHostListServlet extends HttpServlet {
+@WebServlet("/favorite/favoriteBack")
+public class FavoriteBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchHostListServlet() {
+    public FavoriteBackServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +30,12 @@ public class SearchHostListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("호스트 검색");
-		String type=request.getParameter("searchType");
-		String keyword=request.getParameter("searchKeyword");
-		List<Host> list= new AdminService().searchHostList(type, keyword);
-		for(Host h:list) {
-			System.out.println(h);
-		}
 		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/admin/hostList.jsp").forward(request, response);
+		String memberNo = request.getParameter("memberNo");				
+		Favorite f = new FavoriteService().selectMemberNo(memberNo);
+				
+		request.setAttribute("favorite", f);
+		request.getRequestDispatcher("/favorite/favoriteFolder").forward(request, response);		
 	}
 
 	/**
