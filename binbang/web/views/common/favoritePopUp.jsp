@@ -45,7 +45,7 @@
 	width: 100%;
 }
 
-.makeFolder {
+.plusDiv {
 	height: 0;
 }
 
@@ -143,13 +143,16 @@
 		<div class="popContent">
 			<div class="firstContent">
 				<div id="plusBtn">+ 폴더만들기</div>
-				<form class="makeFolder" method="post">
-					<div class="favLine"></div>
-					<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
-					<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
-				</form>
+				<div class="plusDiv">
+					<form class="makeFolder" method="post">
+						<div class="favLine"></div>
+						<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
+						<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
+					</form>
+				</div>
 			</div>
 			<div class="favLine"></div>
+			<div>
 			<form class="favoriteForm" method="post" action="<%=request.getContextPath()%>/favorite/favConPopUp">
 				<input type="hidden" name="houseNo" value="<%=houseNo%>">
 				
@@ -176,6 +179,7 @@
 				%>
 				<input type="submit" onclick="fn_check();" value="확인" id="closeBtn">
 			</form>
+			</div>
 
 		</div>
 		
@@ -183,7 +187,7 @@
 
 	<script>
 	$("#plusBtn").on("click", e => {
-		$(".makeFolder").toggleClass("show");
+		$(".plusDiv").toggleClass("show");
 		
 	});
 	
