@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.binbang.house.model.vo.House"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -10,6 +12,10 @@
 	type="text/css" />
 
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<%
+	List<House> list = (List)request.getAttribute("mainHouse");
+%>
 
 </head>
 <body>
@@ -46,48 +52,26 @@
 			<div class="section2">
 				<h2 class="recommendTitle">Recommend</h2>
 				<div class="recommend">
-					<div>
-						<div class="recomPic1 recommon"></div>
+				<% if(list.size() > 6) {
+					for(int i =0; i < 6; i++) {%>
+					<% House h = (House)list.get(i); %> 
+					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo() %>&totalPrice=<%=h.getPriceDay()%>">
+						<img src="<%=request.getContextPath() %>/upload/house/<%=h.getHouseMainPic() %>" class="recomPic1 recommon">
 						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
+							<p><%=h.getHouseName() %></p>
+							<p><%=h.getHouseLocation().length() > 10 ? h.getHouseLocation().substring(0,9) + "..." : h.getHouseLocation() %></p>
 						</div>
-					</div>
-					<div>
-						<div class="recomPic2 recommon"></div>
+					</a>
+				<%} } else {
+					for(House h : list) {%>
+					<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=h.getHouseNo() %>&totalPrice=<%=h.getPriceDay()%>">
+						<img src="<%=request.getContextPath() %>/upload/house/<%=h.getHouseMainPic() %>" class="recomPic1 recommon">
 						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
+							<p><%=h.getHouseName() %></p>
+							<p><%=h.getHouseLocation().length() > 10 ? h.getHouseLocation().substring(0,9) + "..." : h.getHouseLocation() %></p>
 						</div>
-					</div>
-					<div>
-						<div class="recomPic3 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
-					<div>
-						<div class="recomPic4 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
-					<div>
-						<div class="recomPic5 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
-					<div>
-						<div class="recomPic6 recommon"></div>
-						<div class="recomContents">
-							<p>lorem</p>
-							<p>lorem</p>
-						</div>
-					</div>
+					</a>
+				<%} }%>
 				</div>
 			</div>
 			<div class="section3">

@@ -39,6 +39,7 @@ public class MainMoveServlet extends HttpServlet {
 		System.out.println(m);
 		
 		List<House> h = new HouseService().mainHouse();
+		request.setAttribute("mainHouse", h);
 		request.getRequestDispatcher("/views/member/main.jsp").forward(request,response);
 		
 	}
