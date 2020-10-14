@@ -23,10 +23,21 @@ public class Booking {
 	private int totalPoint;
 	private String insertCheckInDate;
 	private String insertCheckOutDate;
+	private int housePrice;
 	
 	
 
 	
+
+	public int getHousePrice() {
+		return housePrice;
+	}
+
+
+	public void setHousePrice(int housePrice) {
+		this.housePrice = housePrice;
+	}
+
 
 	public String getInsertCheckInDate() {
 		return insertCheckInDate;

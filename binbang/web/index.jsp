@@ -57,9 +57,7 @@ body {
 </style>
 </head>
 <body>
-   <video id="videoBg"
-      src="<%=request.getContextPath()%>/video/v7.mp4" autoplay="true"
-      loop="loop" muted="muted"></video>
+   <video id="videoBg" src="<%=request.getContextPath()%>/video/Abandoned - 49338.mp4" autoplay="true" style="width: 100%; height: 120%;" loop="loop" muted="muted"></video>
 
    <div class="moveMain"><a href="<%=request.getContextPath()%>/mainMove">메인으로이동</a></div>
 </body>
