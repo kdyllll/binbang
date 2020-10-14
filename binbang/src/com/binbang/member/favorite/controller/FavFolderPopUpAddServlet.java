@@ -57,7 +57,6 @@ public class FavFolderPopUpAddServlet extends HttpServlet {
 	    str += "alert('"+ msg + "');";  
 	    //str += " window.opener.location.reload();"; //부모창 새로고침 
 	    //str += " location.reload();"; // 새로고침 
-	    //location.replace('<%request.getContextPath()%>/favoritePopUp?houseNo=81'); 
 	    str+="location.replace('favoritePopUp?houseNo=";
 	    str+=houseNo;
 	    str+="');";
