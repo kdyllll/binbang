@@ -49,7 +49,11 @@
 	<div class="wrap">
 		<header class="header headerColor">
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 			<div class="headerBox">
 				<a href="#info" class="infoFilter" > 정보 </a>
 				<a href="#grade"class="reviewFilter"> 후기 </a>
@@ -314,25 +318,22 @@
 									<div class="gradeinfo">
 
 										<div class="a">
-											평점 :
-											<%=r.getHouseGrade()%></div>
-										<br> <br>
-										<%-- <div>
+											평점 :<%=r.getHouseGrade()%></div>
+										<br> 
+										<div>
 											숙박 기간 :
 											<%=b.getCheckInDate()%>
 											~
 
-											<%=b.getCheckOutDate()%></div> --%>
-										<br> <br> 
+											<%-- <%=b.getCheckOutDate()%> --%></div>
+										
 
 										<div class="b">
-											제목 :
-											<%=r.getCommentTitle()%>
+											제목 :<%=r.getCommentTitle()%>
 										</div>
-										<br> <br>
+										<br> 
 										<div class="c">
-											내용 :
-											<%=r.getCommentContents()%>
+											내용 :<%=r.getCommentContents()%>
 										</div>
 										<!-- <div class="ex">댓글 등록하기</div> -->
 
@@ -530,14 +531,7 @@
 	            const status = "left=100px, top=100px, width=500px, height=500px";
 	            open(url,title,status); 
 	       }
-	      //로그인 되어있다면 관심숙소 팝업 호출
-	      function fn_favoritePopUp(e) {
-	          const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
-	            const title = "favoritePopUp";
-	            const status = "left=100px, top=100px, width=500px, height=500px";
-	            open(url,title,status);   
-	          
-	       }
+
 	      
 	      
 	          
