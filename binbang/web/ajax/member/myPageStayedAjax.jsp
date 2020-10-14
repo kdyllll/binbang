@@ -59,7 +59,7 @@
 <% for(Booking b : list) { 
 	if(b.getHouseRequest().equals("예약완료"))  {%>
 	<form class="myReserve" method="post">
-	<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>">
+	<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>&totalPrice=<%=b.getHousePrice()%>">
 		<img src="<%=request.getContextPath() %>/upload/house/<%=b.getHouseMainPic() %>" style="width:100%; height:90%;"  alt="사진">
 		<table id="houseContent">
 			<tr>
