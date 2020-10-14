@@ -32,7 +32,7 @@ public class FavoriteFolderCreateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		
-		String memberNo=request.getParameter("memberNum");
+		String memberNo=request.getParameter("memberNo");
 		System.out.println(memberNo);
 		String folderName=request.getParameter("folderName");
 		System.out.println(folderName);
@@ -48,7 +48,7 @@ public class FavoriteFolderCreateServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="폴더생성";
-			loc="/member/favoriteFolder?memberNo="+f.getMemberNo();
+			loc="/favorite/favoriteFolder?memberNo="+f.getMemberNo();
 			
 			/* loc="/member/myPage?email="+m.getEmail(); */
 		}else {

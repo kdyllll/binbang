@@ -17,20 +17,22 @@
 
 <body>
 
-	<div class="findIdPopup">
+	<div class="complainPopup">
 
 		<p class="popupTitle">호스트 신고</p>
 
-		<div class="findIdLine"></div>
+		<div class="line"></div>
 
-		<form id="enterNamePhone" method="post">
-			<p class="complainTitle">신고한 회원 아이디 : <%=com.getMemberEmail() %></p> 
-           	<p class="complainTitle">호스트 이름 : <%=com.getHostName() %></p>
-           	<p class="complainTitle">숙소 번호 : <%=com.getHouseNo() %></p>
-           	<p class="complainTitle">신고 날짜 : <%=com.getComplaintDate() %></p>
-           	<p class="complainTitle eachComplainReason">신고 사유 : <%=com.getComplaintCategory() %></p>
-           	<div class="reasonBox"><%=com.getComplaintDetail() %></div>
-		</form>
+		<div class="picDiv">
+			<img class="pic" src="<%=request.getContextPath() %>/upload/complaint/<%=com.getComplaintPic() %>">
+		</div>
+		<p class="complainTitle">신고한 회원 아이디 : <%=com.getMemberEmail() %></p> 
+        <p class="complainTitle">호스트 이름 : <%=com.getHostName() %></p>
+        <p class="complainTitle">숙소 번호 : <%=com.getHouseNo() %></p>
+        <p class="complainTitle">신고 날짜 : <%=com.getComplaintDate() %></p>
+        <p class="complainTitle eachComplainReason">신고 사유 : <%=com.getComplaintCategory() %></p>
+        <div class="reasonBox"><%=com.getComplaintDetail() %></div>
+	
 		
 	</div>
 

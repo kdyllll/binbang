@@ -12,16 +12,16 @@ import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
 
 /**
- * Servlet implementation class FavoriteFolderDeleteServlet
+ * Servlet implementation class FavoriteFolderModifyServlet
  */
-@WebServlet("/favorite/deleteFolder")
-public class FavoriteFolderDeleteServlet extends HttpServlet {
+@WebServlet("/favorite/modifyFolder")
+public class FavoriteFolderModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FavoriteFolderDeleteServlet() {
+    public FavoriteFolderModifyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +31,36 @@ public class FavoriteFolderDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String folderNo=request.getParameter("folderNo");	
+		String folderNo=request.getParameter("folderNo");
 		System.out.println(folderNo);
+		String folderName=request.getParameter("folderName");
+		System.out.println(folderName);		
 		String memberNo=request.getParameter("memberNo");
-		System.out.println(memberNo);	
-		
-		Favorite f = new Favorite();
-		f.setFolderNo(folderNo);
-		f.setFolderName(memberNo);
-		
-		int result=new FavoriteService().deleteFolder(f);
 
+		Favorite f = new Favorite();
+		f.setFolderNo(request.getParameter("folderNo"));
+		f.setFolderName(request.getParameter("folderName"));		
+		f.setMemberNo(request.getParameter("memberNo"));
+		
+		int rs=new FavoriteService().modifyFolder(f);
+		
 		String msg="";
 		String loc="";
-						
-		if(result>0) {
-			msg="삭제완료";
+		
+		if(rs>0) {
+			msg="폴더수정 성공";
 			loc="/favorite/favoriteFolder?memberNo="+memberNo;
 		}else {
-			msg="삭제실패";
-			loc="/favorite/favoriteContents";			
+			msg="폴더수정 실패";
+			loc="/favorite/favoriteContents";
 		}
-		request.setAttribute("msg",msg);
-		request.setAttribute("loc",loc);		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);						
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);	
+		
+		
+		
 	}
 
 	/**

@@ -30,8 +30,8 @@ public class MemberFindIdInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String name=request.getParameter("userName");
-		String phone=request.getParameter("userPhone");
+		String name=request.getParameter("userName").trim();
+		String phone=request.getParameter("userPhone").trim();
 		
 		String email=new MemberService().findId(name, phone);
 		

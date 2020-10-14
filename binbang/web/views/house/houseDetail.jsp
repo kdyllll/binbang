@@ -286,6 +286,7 @@
 			<div class="gradeTitle">
 
 				★평균 평점 (<%=grade%>)
+				
 
 				<div class="writing">
 					<%
@@ -298,7 +299,8 @@
 					%>
 				</div>
 			</div>
-
+			
+	
 			<div class="comment">
 				<%
 					if (list == null) {
@@ -313,7 +315,6 @@
 							for (Review r : list) {
 						%>
 						<div class="swiper-slide">
-
 							<div class="gradePhoto">
 								<img
 									src="<%=request.getContextPath()%>/upload/review/<%=r.getFilePath()%>"
@@ -327,8 +328,6 @@
 											평점 :<%=r.getHouseGrade()%></div>
 
 										<br> 
-										<div>
-											
 
 										<div class="b">
 											제목 :<%=r.getCommentTitle()%>
@@ -337,7 +336,7 @@
 										<div class="c">
 											내용 :<%=r.getCommentContents()%>
 										</div>
-										<!-- <div class="ex">댓글 등록하기</div> -->
+										
 
 									</div>
 								</div>
@@ -352,19 +351,18 @@
 					<div class="swiper-button-prev"></div>
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
-					<!-- <div class="swiper-pagination"></div> -->
+					
 
 				</div>
 				<%
 					}
 				%>
-				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
-
+			
 			</div>
+			
 
 
-			<div id="photoFilterScroll"></div>
-			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
+		
 
 			<div class="map_wrap">
 				<div id="map"

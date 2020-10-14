@@ -52,7 +52,7 @@
     	$.ajax({
     		url:"<%=request.getContextPath()%>/member/checkConfirmNumber",
     		type:"post",
-    		data:{"email":$("#email").val()},
+    		data:{"email":$("#email").val().trim()},
     		dataType:"json",
     		success:data => {
     			console.log(data);
@@ -73,15 +73,12 @@
     });
     
     //인증번호 일치여부 확인
-    <%-- $("#numberConfirm").on("click",e => {
-    	$("#numberForm").attr("action","<%=request.getContextPath()%>/member/checkEmailNumber").submit();
-    }); --%>
     
     $("#numberConfirm").click(e => {
     	$.ajax({
     		url:"<%=request.getContextPath()%>/member/checkEmailNumber",
     		type:"post",
-    		data:{"number":$("#number").val()},
+    		data:{"number":$("#number").val().trim()},
     		dataType:"json",
     		success:data => {
     			console.log(data);
@@ -108,13 +105,13 @@
      //재전송
      function sendNumber2(){
     	   
-    	clearInterval(x);
-        time=300;
+    	clearInterval(x); 
+        time=300; 
         sendNumber();
      }
      
       function sendNumber() {
-    	
+    	clearInterval(x);
        	document.getElementById("reNumberConfirm").style.display="block";
       
         x=setInterval(function(){

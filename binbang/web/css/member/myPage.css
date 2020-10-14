@@ -13,20 +13,15 @@
 
 /*2. 회원정보*/
 .lineList {
-
-   width: 100%;
-   border: 2.2px black solid;
-   display: inline-flex;  
+   	 width: 100%;
+   	 border: 2.2px black solid;
+  	 display: inline-flex;  
      flex-wrap: wrap;
      justify-content:space-around; 
-     padding: 5px; 
-
+     padding: 5px;  
 }
 
-
 /* 회원정보 */
-
-
 .lineList div input {
    opacity: 50%;   
    font-size : 18px;
@@ -34,8 +29,7 @@
    margin-top : 2%;
    background-color: none;
    outline: none;
-   border: none;
-   /* box-sizing: border-box; */   
+   border: none;      
 }
 
 /* 메뉴바 */

@@ -8,6 +8,8 @@
 	List<Complaint> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
+ 	/* int result3=(int)request.getAttribute("result3");   */
+
 %>
 
   </head>
@@ -65,37 +67,54 @@
                     <th colspan="2" class="cell4">신고사유</th>
                     <th class="cell1">호스트 이름</th>
                     <th class="cell1">숙소 번호</th>
-                    <th class="cell2">신고날짜</th>
-                    <th class="cell2">신고처리상황</th>
+                    <th class="cell1">신고날짜</th>
+                    <th class="cell3">신고처리상황</th>
                   </tr>
-                  
+                
+                <form id="form">
                   <%for(Complaint com : list) {%>
-                  
-                  
+                
                   <tr>
                     <td class="cell2"><%=com.getMemberEmail() %></td>
                     <td class="cell1"><%=com.getComplaintCategory() %></td>
                     <td class="cell2 complaintDetail">
-                    	<a href="" onclick="window.open('<%=request.getContextPath() %>/admin/hostComplainPopup?complaintNo=<%=com.getComplaintNo() %>','','width=500px,height=450px')">
+                    	<a href="" onclick="window.open('<%=request.getContextPath() %>/admin/hostComplainPopup?complaintNo=<%=com.getComplaintNo() %>','','width=800px,height=550px')">
                     	<%=com.getComplaintDetail().length() > 9 ? com.getComplaintDetail().substring(0,8) +"..." : com.getComplaintDetail() %>
                     	</a>
                     </td>
                     <td class="cell1"><%=com.getHostName() %></td>
                     <td class="cell1"><%=com.getHouseNo() %></td>
-                    <td class="cell2"><%=com.getComplaintDate() %></td>
-                    <td class="complainCurrent cell2">
+                    <td class="cell1"><%=com.getComplaintDate() %></td>
+                    <td class="complainCurrent cell3">
                       <div class="complainChoice">
-                    
-                        <input type="button" name="accept" class="accept" value="승인">
-                        <input type="button" name="cancle" class="cancle" value="거절">
-                        <input type="button" name="out" class="out" value="권한박탈" >
-                       
+                    <%-- 	<input type="hidden" name="hostNo" value="<%=com.getHostNo() %>">
+                    	<input type="hidden" name="complaintNo" value="<%=com.getComplaintNo() %>">
+                    	<input type="hidden" name="memberEmail" value="<%=com.getMemberEmail() %>">
+                    	
+                    	<input type="button" class="accept" value="승인" >
+                    	<input type="button" name="cancle" class="cancle" value="거절" > --%>
+                    <%if(com.getComplaintState().equals("대기")||com.getComplaintState()==null||com.getComplaintState()=="") {%>
+                        	<input type="button" class="accept" value="승인" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainAccept?hostNo=<%=com.getHostNo() %>&complaintNo=<%=com.getComplaintNo()%>&memberEmail=<%=com.getMemberEmail()%>'">
+                        	<input type="button" name="cancle" class="cancle" value="거절" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainReject?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
+                        	<input type="button" name="out" class="out" value="권한박탈" style="color:red" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainOut?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
+                    <%} else if(com.getComplaintState().equals("신고")){ %>
+                    	<p>신고 완료</p>  
+                    <%} else if(com.getComplaintState().equals("거절")) {%>
+                    	<p>거절 완료</p>
+                    <%} else if(com.getComplaintState().equals("권한박탈")) {%>
+                    	<p style='color:red'>권한박탈</p> 
+                    <%} %> 
+                      
+                      
                       </div>
                     </td>
                   </tr>
                   
-                  </form>
                   <%} %>
+                  
+                  </form>  
+                  
+                  
                 </table>
               </div>
             </div>
@@ -108,6 +127,15 @@
 
 
 <script>
+
+/* $(function(){
+	$(".accept").click(e=>{
+		console.log(e);
+        e.target.style.color="red";
+	})
+	
+}); */
+
 	
 	//검색
 	$(function(){
@@ -126,98 +154,29 @@
 		
 	});
 		
-	//팝업 ajax
-	<%-- $(".complaintDetail").click(e=>{
-		
-		$.ajax({
-			url:"<%=request.getContextPath()%>/admin/hostComplaintListPopup",
-			data:{"complaintNo":$(".complaintNo").val()},
-			success:data=>{
-				console.log(data);
-				$(".popupContentWrap").children().remove();
-				let div2=$("<div class='popupContent'>");
-				let p=$("<p class='complainTitle'>신고한 회원 아이디 : ").html(data.memberEmail);
-				let p2=$("<p class='complainTitle'>호스트 이름 : ").html(data.hostName);
-				let p3=$("<p class='complainTitle'>신고 날짜 : ").html(data.complaintDate);
-				let p4=$("<p class='complainTitle'>숙소 번호 : ").html(data.houseNo);
-				let p5=$("<p class='complainTitle eachComplainReason'>신고 사유 : ").html(data.complaintCategory);
-				/* console.log(data.memberEmail);
-				console.log(data.hostName);
-				console.log(p3);
-				console.log(p4);
-				console.log(p5); */
-			 	let div=$("<div class='reasonBox'>").html(data.complaintDetail); 
-				div2.append(p);
-				div2.append(p2);
-				div2.append(p3);
-				div2.append(p4);
-				div2.append(p5);
-				div2.append(div);
-				$(".popupContentWrap").html(div2); 
-			}
+	
+ 	$(function(){
+		$(".accept, .cancel, .out").on({
+		    "click":function(e){
+		        let id = $(e.target).val();
+		        
+		        console.log(id);
+		        let msg='';
+		        if( id == "accept") {
+		        	msg='승인완료';
+		        } else if (id == "cancel" ) {
+		        	msg='거절완료';
+		        }  else if (id == "out") {
+		        	msg='권한박탈';
+		        } 
+		        $(e.target).parent().html($("<span>").text(text));
+		    }
 		});
-	}); --%>
-	
-	
-<%-- 	//팝업
-	  $(document).ready(function () {
-	    $(".complaintDetail").on("click", function () {
-	      $(".enrollbg").addClass("active");
-	      $.ajax({
-				url:"<%=request.getContextPath()%>/admin/hostComplaintListPopup",
-				data:{"complaintNo":$(".complaintNo").val()},
-				success:data=>{
-					console.log(data);
-					$(".popupContentWrap").children().remove();
-					let div2=$("<div class='popupContent'>");
-					let p=$("<p class='complainTitle'>신고한 회원 아이디 : ").html(data.memberEmail);
-					let p2=$("<p class='complainTitle'>호스트 이름 : ").html(data.hostName);
-					let p3=$("<p class='complainTitle'>신고 날짜 : ").html(data.complaintDate);
-					let p4=$("<p class='complainTitle'>숙소 번호 : ").html(data.houseNo);
-					let p5=$("<p class='complainTitle eachComplainReason'>신고 사유 : ").html(data.complaintCategory);
-					/* console.log(data.memberEmail);
-					console.log(data.hostName);
-					console.log(p3);
-					console.log(p4);
-					console.log(p5); */
-				 	let div=$("<div class='reasonBox'>").html(data.complaintDetail); 
-					div2.append(p);
-					div2.append(p2);
-					div2.append(p3);
-					div2.append(p4);
-					div2.append(p5);
-					div2.append(div);
-					$(".popupContentWrap").html(div2);
-				}
-				});
-					
-	    });
-	    $(".popupBtn").on("click", function (e) {
-	      $(e.target).parent().parent().removeClass("active");
-	    });
-	  });  --%>
- 
-	$("#complain, #cancel, #out").on({
-	    "click":function(e){
-	        let id = $(e.target).prop("id");
-	        if( id == "complain") {
-	            $(".complainChoice").remove().children();
-	            $(".complainCurrent").append($("<span>").text("신고완료"));
-	        } else if (id == "cancel" ) {
-	            $(".complainChoice").remove().children();
-	            $(".complainCurrent").append($("<span>").text("취소완료"));
-	        } 
-	       /*  else if (id == "out") {
-	            $(".complainChoice").remove().children();
-	            $(".complainCurrent").append($("<span>").text("권한박탈완료"));
-	        } */
-	    }
-	});
-	
+ 	});
 	//신고 승인
-	$(".accept").click(e=>{
+	<%--  $(".accept").click(e=>{
 		$.ajax({
-			url:"<%=request.getContextPath()%>/admin/moveHostComplainAccept",
+			url:"<%=request.getContextPath()%>/admin/hostComplainAccept",
 			data:{"hostNo":$(".hostNo").val(),"complaintNo":$(".complaintNo").val()},
 			dataType:"json",
 			succecc:data => {
@@ -225,6 +184,6 @@
 			}
 			
 		});
-	});
+	});  --%>
 
 </script>

@@ -33,9 +33,9 @@ public class MemberLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		String userPw = request.getParameter("password");
-		String saveId=request.getParameter("saveId");
+		String userId = request.getParameter("userId").trim();
+		String userPw = request.getParameter("password").trim();
+		String saveId=request.getParameter("saveId").trim();
 		
 		//Id저장
 		if(saveId!=null) {
