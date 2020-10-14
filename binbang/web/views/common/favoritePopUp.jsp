@@ -45,20 +45,26 @@
 	width: 100%;
 }
 
-.plusDiv {
-	height: 0;
+.makeFolder{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	height:0px;
 }
-
+.showFolder{
+	display:flex;
+	align-items:center;
+}
 .show {
 	height: 50px;
 }
 
 #plusBtn {
 	margin-left: 50px;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-right: 300px;
 	width: 300px;
-	height: 50px;
+	height: 40px;
 	font-size: 15px;
 	color: gray;
 	background-color: white;
@@ -68,22 +74,28 @@
 }
 
 .folderName {
-	margin-right: 180px;
+	margin-right: 110px;
+	margin-left:30px;
 	border: none;
 	outline: none;
 	text-aligh: center;
 }
 
 #folderPlusBtn {
-	margin: 10px 0;
+	margin: 10px 20px;
 	float: right;
 	width: 70px;
 	height: 30px;
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
 	border: none;
 	outline: none;
 	cursor: pointer;
+}
+
+.folderList{
+	width:100%;
+	background-color:white;
 }
 /* second content */
 .favoriteForm {
@@ -100,7 +112,7 @@
 	/* 관심숙소 버튼 */
 	width: 23px;
 	height: 23px;
-	margin-right: 5px;
+	margin-right: 20px;
 	cursor: pointer;
 
 }
@@ -118,6 +130,7 @@
 }
 
 .folderTitle {
+	margin-left:20px;
 	margin-right: 180px;
 	border: none;
 	outline: none;
@@ -143,16 +156,18 @@
 		<div class="popContent">
 			<div class="firstContent">
 				<div id="plusBtn">+ 폴더만들기</div>
-				<div class="plusDiv">
+			
 					<form class="makeFolder" method="post">
 						<div class="favLine"></div>
-						<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
-						<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
+						<div class="showFolder">
+							<input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
+							<input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
+						</div>
 					</form>
-				</div>
+		
 			</div>
 			<div class="favLine"></div>
-			<div>
+			<div class="folderList">
 			<form class="favoriteForm" method="post" action="<%=request.getContextPath()%>/favorite/favConPopUp">
 				<input type="hidden" name="houseNo" value="<%=houseNo%>">
 				
@@ -187,7 +202,9 @@
 
 	<script>
 	$("#plusBtn").on("click", e => {
-		$(".plusDiv").toggleClass("show");
+		$(".makeFolder").toggleClass("show");
+		$("#plusBtn").attr("style","color:black;");
+		
 		
 	});
 	
@@ -209,7 +226,6 @@
 	});
 	
 	function fn_check(){
-		//안돌아....
 		$(".1").attr("name","folderNo");
 		
 	}
