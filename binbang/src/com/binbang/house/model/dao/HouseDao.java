@@ -244,7 +244,8 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no"));
 				h.setHouseName(rs.getNString("house_name")); // 숙소이름
 				h.setHouseType(rs.getNString("house_type")); // 숙소유형
-				h.setHouseLocation(rs.getNString("house_location")); // 숙소위치
+				String oriAdd=rs.getNString("house_location");      
+				h.setHouseLocation(oriAdd.substring(0,oriAdd.indexOf(","))); // 숙소위치
 				h.setHousePnum(rs.getInt("house_pnum")); // 숙소최대인원
 				h.setpObjects(rs.getNString("p_objects")); // 개인물건 유무
 				h.setRoomNum(rs.getInt("room_num")); // 방갯수
@@ -282,7 +283,6 @@ public class HouseDao {
 			if (rs.next()) {
 				b = new Booking();
 				b.setReservationNo(rs.getString("reservation_No"));
-
 				b.setMemberNo(rs.getString("member_No"));//멤버번호
 				b.setHouseNo(rs.getString("house_no")); //숙소번호
 				b.setGuestName(rs.getString("guest_Name")); //예약자 이름
@@ -378,6 +378,8 @@ public class HouseDao {
 				r.setCommentContents(rs.getNString("comment_contents")); // 후기내용
 				r.setFilePath(rs.getNString("file_path")); // 후기사진
 				r.setHouseNo(rs.getNString("house_no")); // 숙소번호
+				r.setCheckInDate(rs.getDate("checkIn_Date")); //체크인 날짜
+				r.setCheckOutDate(rs.getDate("checkOut_Date")); 
 				list.add(r);
 
 			}

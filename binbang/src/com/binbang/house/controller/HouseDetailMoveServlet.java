@@ -85,12 +85,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				
 				Double totalGrade = new HouseService().selectAvgGrade(no); //숙소 평균 내주는 기능
 				
-				
-				
-
-				
 				Booking b =new HouseService().selectReservation(no);
-		
 				
 				//리뷰연결 
 				List<Review> list=new HouseService().ReviewDetail(no);
