@@ -33,7 +33,14 @@ public class HostListServelet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Host> list=new AdminService().hostList();
-		request.setAttribute("list", list);
+		for(Host h:list) {
+			if(h.getComplaintCount()==10) {
+				new AdminService().checkBlack(h.getMemberNo());
+				new AdminService().deleteHost(h.getMemberNo());
+			}
+		}
+		List<Host> list2=new AdminService().hostList();
+		request.setAttribute("list", list2);
 		request.getRequestDispatcher("/views/admin/hostList.jsp").forward(request, response);
 		
 	}

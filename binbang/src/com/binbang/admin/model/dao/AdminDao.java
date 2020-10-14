@@ -129,6 +129,36 @@ public class AdminDao {
 		}return result;
 	}
 	
+	//호스트 신분증 사진 삭제
+	public int changeHostIdPic(Connection conn, String memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("changeHostIdPic"));
+			pstmt.setString(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
+	
+	//호스트 블랙리스트로 전환
+	public int checkBlack(Connection conn, String memberNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("checkBlack"));
+			pstmt.setString(1, memberNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
+	
 	//예약 리스트 
 	public List<Booking> reserveList(Connection conn){
 		PreparedStatement pstmt=null;

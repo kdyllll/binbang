@@ -52,6 +52,24 @@ private AdminDao dao=new AdminDao();
 		return result;
 	}
 	
+	//호스트 사진 삭제
+	public int changeHostIdPic(String memberNo) {
+		Connection conn=getConnection();
+		int result=dao.changeHostIdPic(conn,memberNo);
+		if(result>0) close(conn);
+		else rollback(conn);
+		return result;
+	}
+	
+	//블랙리스트로 전환
+	public int checkBlack(String memberNo) {
+		Connection conn=getConnection();
+		int result=dao.checkBlack(conn,memberNo);
+		if(result>0) close(conn);
+		else rollback(conn);
+		return result;
+	}
+	
 	//예약리스트
 	public List<Booking> reserveList(){
 		Connection conn=getConnection();

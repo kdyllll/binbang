@@ -182,8 +182,9 @@ th{
     display: block;
   }
 
- /* 호스트 승인 목록 버튼*/
- .accept, .cancle, .out{
+
+ /* 호스트 승인 및 신고 버튼*/
+ .acceptY, .acceptN, .accept, .cancle, .out{
  	border:none;
     outline: none;
     background: none;

@@ -25,7 +25,6 @@
          <select class="searchCategory"  id="searchType">
 		      <option value="" selected disabled hidden>선택</option>
 		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>이름</option>
-		      <option value="host_confirm" <%=type!=null&&type.equals("host_confirm")?"selected":"" %>>분류</option>
 		      <option value="email" <%=type!=null&&type.equals("email")?"selected":"" %>>이메일</option>
    		</select>
    		
@@ -37,14 +36,7 @@
     			<button class="inputButton"></button>
     		</form>
     	</div>
-    	<div class="search" id="search-host_confirm">
-    		<form action="<%=request.getContextPath()%>/admin/searchMemberList">
-    			<input type="hidden" name="searchType" value="host_confirm">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-    				value="<%=key!=null&&type!=null&&type.equals("host_confirm")?key:""%>">
-    			<button class="inputButton"></button>
-    		</form>
-    	</div>
+    	
     	<div class="search" id="search-email">
     		<form action="<%=request.getContextPath()%>/admin/searchMemberList">
     			<input type="hidden" name="searchType" value="email">
@@ -111,12 +103,10 @@
 <script>
 $(function(){
 	let memberName=$("#search-member_name");
-	let hostConfirm=$("#search-host_confirm");
 	let email=$("#search-email");
 	
 	$("#searchType").change(e => {
 		memberName.css("display","none");
-		hostConfirm.css("display","none");
 		email.css("display","none");
 		let v=$(e.target).val(); 
 		$("#search-"+v).css("display","inline-block");
