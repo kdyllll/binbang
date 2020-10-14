@@ -104,6 +104,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				request.setAttribute("booking",b);
 				request.setAttribute("list",list);
 				request.getRequestDispatcher(path).forward(request, response);
+				System.out.println("여기서?"+b);
 				
 				
 

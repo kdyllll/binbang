@@ -282,7 +282,6 @@ public class HouseDao {
 			if (rs.next()) {
 				b = new Booking();
 				b.setReservationNo(rs.getString("reservation_No"));
-
 				b.setMemberNo(rs.getString("member_No"));//멤버번호
 				b.setHouseNo(rs.getString("house_no")); //숙소번호
 				b.setGuestName(rs.getString("guest_Name")); //예약자 이름
@@ -296,6 +295,7 @@ public class HouseDao {
 				b.setReservDate(rs.getDate("reserv_Date")); //개인물건 유무
 				b.setPointPlus(rs.getInt("point_Plus")); //적립금 차감
 				b.setPointMinus(rs.getInt("point_Minus")); //
+				System.out.println("테스트"+b.getCheckInDate());
 
 			
 

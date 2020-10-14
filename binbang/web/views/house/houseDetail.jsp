@@ -318,13 +318,7 @@
 											평점 :<%=r.getHouseGrade()%></div>
 										<br> 
 										<div>
-											숙박 기간 :
-											<%=b.getCheckInDate()%>
-											~
-
-											<%-- <%=b.getCheckOutDate()%> --%></div>
-										
-
+											
 										<div class="b">
 											제목 :<%=r.getCommentTitle()%>
 										</div>
