@@ -30,7 +30,7 @@
 			<form action="<%=request.getContextPath()%>/booking/bookingFinal" method="post">
 				<div class="reservation">
 					<ul>
-						<li>예약자 이름 :<%=m2.getMemberName()%><%=m2.getMemberNo() %>
+						<li><input type="text" name="guestName">
 						</li>
 						<br>
 						<br>

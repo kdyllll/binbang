@@ -21,8 +21,32 @@ public class Booking {
 	private int pointPlus;
 	private int pointMinus;
 	private int totalPoint;
+	private String insertCheckInDate;
+	private String insertCheckOutDate;
+	
+	
 
 	
+
+	public String getInsertCheckInDate() {
+		return insertCheckInDate;
+	}
+
+
+	public void setInsertCheckInDate(String insertCheckInDate) {
+		this.insertCheckInDate = insertCheckInDate;
+	}
+
+
+	public String getInsertCheckOutDate() {
+		return insertCheckOutDate;
+	}
+
+
+	public void setInsertCheckOutDate(String insertCheckOutDate) {
+		this.insertCheckOutDate = insertCheckOutDate;
+	}
+
 
 	public Booking() {
 		// TODO Auto-generated constructor stub
