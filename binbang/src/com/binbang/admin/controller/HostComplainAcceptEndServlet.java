@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.host.model.vo.Host;
+import com.binbang.member.model.vo.Complaint;
 
 /**
- * Servlet implementation class SearchHostListServlet
+ * Servlet implementation class HostComplainAcceptEndServelt
  */
-@WebServlet("/admin/searchHostList")
-public class SearchHostListServlet extends HttpServlet {
+@WebServlet("/admin/hostComplainAcceptEnd")
+public class HostComplainAcceptEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchHostListServlet() {
+    public HostComplainAcceptEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +31,13 @@ public class SearchHostListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("호스트 검색");
-		String type=request.getParameter("searchType");
-		String keyword=request.getParameter("searchKeyword");
-		List<Host> list= new AdminService().searchHostList(type, keyword);
-		for(Host h:list) {
-			System.out.println(h);
-		}
 		
+		List<Complaint> list = new AdminService().complainList();
+		
+		int result3=(int)request.getAttribute("result3");
+		request.setAttribute("result3",result3);
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/admin/hostList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/admin/hostComplainList.jsp").forward(request, response);
 	}
 
 	/**

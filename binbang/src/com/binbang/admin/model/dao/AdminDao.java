@@ -205,6 +205,7 @@ public class AdminDao {
 				com.setComplaintDetail(rs.getString("complaint_detail"));
 				com.setHouseNo(rs.getString("house_no"));
 				com.setHostNo(rs.getNString("host_no"));
+				com.setComplaintPic(rs.getString("complaint_pic"));
 				list.add(com);
 			}
 		}catch(SQLException e) {
@@ -221,7 +222,7 @@ public class AdminDao {
 		ResultSet rs=null;
 		String email="";
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectEmail"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectHostEmail"));
 			pstmt.setString(1, hostNo);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -284,6 +285,7 @@ public class AdminDao {
 				com.setComplaintDetail(rs.getString("complaint_detail"));
 				com.setHouseNo(rs.getString("house_no"));
 				com.setHostNo(rs.getNString("host_no"));
+				com.setComplaintPic(rs.getString("complaint_pic"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -319,7 +321,21 @@ public class AdminDao {
 			close(conn);
 		}return list;
 	}
-
+	
+	//호스트 권한박탈
+	public int hostOut(Connection conn,String hostNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("hostOut"));
+			pstmt.setString(1, hostNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
 	
 	//회원리스트 검색
 	public List<Member> searchMemberList(Connection conn, String type, String key){

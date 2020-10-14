@@ -5,7 +5,7 @@
 <%@ include file="/views/common/commonLink.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
 <%
-	List<Member> memberList=(List)request.getAttribute("list"); 
+	List<Member> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
 %>
@@ -30,7 +30,7 @@
    		</select>
    		
 		<div class="search" id="search-member_name">
-     		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+     		<form action="<%=request.getContextPath()%>/admin/searchMemberList">
     			<input type="hidden" name="searchType" value="member_name">
     			<input type="text"  class="searchinput" name="searchKeyword" size="25"
     				value="<%=key!=null&&type!=null&&type.equals("member_name")?key:""%>">
@@ -38,7 +38,7 @@
     		</form>
     	</div>
     	<div class="search" id="search-host_confirm">
-    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    		<form action="<%=request.getContextPath()%>/admin/searchMemberList">
     			<input type="hidden" name="searchType" value="host_confirm">
     			<input type="text"  class="searchinput" name="searchKeyword" size="25"
     				value="<%=key!=null&&type!=null&&type.equals("host_confirm")?key:""%>">
@@ -46,7 +46,7 @@
     		</form>
     	</div>
     	<div class="search" id="search-email">
-    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    		<form action="<%=request.getContextPath()%>/admin/searchMemberList">
     			<input type="hidden" name="searchType" value="email">
     			<input type="text"  class="searchinput" name="searchKeyword" size="25"
     				value="<%=key!=null&&type!=null&&type.equals("email")?key:""%>">
@@ -68,7 +68,7 @@
                     <th class="cell3" >가입일</th>
                   </tr>
                   
-                 <% for (Member ml : memberList) { %>
+                 <% for (Member ml : list) { %>
                  <% if(!ml.getEmail().equals("admin@naver.com")) {%>
          		<tr>
 		            <td class="cell1" ><%=ml.getMemberNo() %></td>

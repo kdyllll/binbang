@@ -83,6 +83,14 @@ private AdminDao dao=new AdminDao();
 		return list;
 	}
 	
+	//호스트 이메일
+	public String selectHostEmail(String hostNo) {
+		Connection conn=getConnection();
+		String email=dao.selectHostEmail(conn, hostNo);
+		close(conn);
+		return email;
+	}
+	
 	//호스트 신고 승인-카운트 변경
 	public int acceptHostComplainCount(String hostNo) {
 		Connection conn=getConnection();
@@ -95,7 +103,16 @@ private AdminDao dao=new AdminDao();
 	//호스트 신고 승인-상태 변경
 	public int acceptHostComplainState(String complaintNo) {
 		Connection conn=getConnection();
-		int result=dao.acceptHostComplainCount(conn, complaintNo);
+		int result=dao.acceptHostComplainState(conn, complaintNo);
+		if(result>0) close(conn);
+		else rollback(conn);
+		return result;
+	}
+	
+	//호스트 권한 박탈
+	public int hostOut(String hostNo) {
+		Connection conn=getConnection();
+		int result=dao.hostOut(conn, hostNo);
 		if(result>0) close(conn);
 		else rollback(conn);
 		return result;
