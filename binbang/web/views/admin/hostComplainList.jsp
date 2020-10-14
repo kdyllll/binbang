@@ -8,7 +8,7 @@
 	List<Complaint> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
-	int result3=(int)request.getAttribute("result3"); 
+ 	/* int result3=(int)request.getAttribute("result3");   */
 
 %>
 
@@ -93,10 +93,19 @@
                     	
                     	<input type="button" class="accept" value="승인" >
                     	<input type="button" name="cancle" class="cancle" value="거절" > --%>
-                        <input type="button" class="accept" value="승인" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainAccept?hostNo=<%=com.getHostNo() %>&complaintNo=<%=com.getComplaintNo()%>&memberEmail=<%=com.getMemberEmail()%>'">
-                        <input type="button" name="cancle" class="cancle" value="거절" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainReject?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>'">
-                        <input type="button" name="out" class="out" value="권한박탈" style="color:red" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainOut?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>'">
-                        
+                    <%if(com.getComplaintState().equals("대기")||com.getComplaintState()==null||com.getComplaintState()=="") {%>
+                        	<input type="button" class="accept" value="승인" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainAccept?hostNo=<%=com.getHostNo() %>&complaintNo=<%=com.getComplaintNo()%>&memberEmail=<%=com.getMemberEmail()%>'">
+                        	<input type="button" name="cancle" class="cancle" value="거절" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainReject?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
+                        	<input type="button" name="out" class="out" value="권한박탈" style="color:red" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainOut?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
+                    <%} else if(com.getComplaintState().equals("신고")){ %>
+                    	<p>신고 완료</p>  
+                    <%} else if(com.getComplaintState().equals("거절")) {%>
+                    	<p>거절 완료</p>
+                    <%} else if(com.getComplaintState().equals("권한박탈")) {%>
+                    	<p style='color:red'>권한박탈</p> 
+                    <%} %> 
+                      
+                      
                       </div>
                     </td>
                   </tr>
@@ -118,6 +127,15 @@
 
 
 <script>
+
+/* $(function(){
+	$(".accept").click(e=>{
+		console.log(e);
+        e.target.style.color="red";
+	})
+	
+}); */
+
 	
 	//검색
 	$(function(){
@@ -136,24 +154,25 @@
 		
 	});
 		
- 
-	$(".accept, .cancel, .out").on({
-	    "click":function(e){
-	        let id = $(e.target).prop("class");
-	        console.log(id);
-	        if( id == "accept") {
-	            $(".complainChoice").remove().children();
-	            $(".complainCurrent").append($("<span>").text("신고완료"));
-	        } else if (id == "cancel" ) {
-	            $(".complainChoice").remove().children();
-	            $(".complainCurrent").append($("<span>").text("거절완료"));
-	        }  else if (id == "out") {
-	            $(".complainChoice").remove().children();
-	            $(".complainCurrent").append($("<span style='color:red'>").text("권한박탈완료"));
-	        } 
-	    }
-	});
 	
+ 	$(function(){
+		$(".accept, .cancel, .out").on({
+		    "click":function(e){
+		        let id = $(e.target).val();
+		        
+		        console.log(id);
+		        let msg='';
+		        if( id == "accept") {
+		        	msg='승인완료';
+		        } else if (id == "cancel" ) {
+		        	msg='거절완료';
+		        }  else if (id == "out") {
+		        	msg='권한박탈';
+		        } 
+		        $(e.target).parent().html($("<span>").text(text));
+		    }
+		});
+ 	});
 	//신고 승인
 	<%--  $(".accept").click(e=>{
 		$.ajax({

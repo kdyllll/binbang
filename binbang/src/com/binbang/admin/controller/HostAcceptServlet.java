@@ -43,12 +43,13 @@ public class HostAcceptServlet extends HttpServlet {
 		String memberNo = request.getParameter("memberNo");
 		String memberId = request.getParameter("memberId");
 
-		String hostAccept="";
+		String msgg=""; 
 		
 		int result=new AdminService().acceptHost(memberNo);
 		if(result>0) {
-			hostAccept="호스트 승인이 완료되었습니다.";
 			
+			 msgg="호스트 승인이 완료되었습니다.";
+			 
 			String host="smtp.naver.com";
 			String user="tnrud2668@naver.com";
 			String password="spdlqj7547";
@@ -75,7 +76,7 @@ public class HostAcceptServlet extends HttpServlet {
 	            msg.setFrom(new InternetAddress(user, "BINBANG"));
 	            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
 	            
-	            msg.setSubject("빈방 인증 메일입니다.");
+	            msg.setSubject("빈방입니다. 호스트 승인 완료 안내드립니다.");
 	            msg.setText("안녕하세요 빈방입니다.\n\r 호스트 승인이 완료되었습니다. \n\r 지금 바로 숙소 등록을 해보세요! ");
 	            
 	            Transport.send(msg);
@@ -86,11 +87,16 @@ public class HostAcceptServlet extends HttpServlet {
 	        }
 			
 		}else {
-			hostAccept="호스트 승인에 실패하였습니다.";
+			msgg="호스트 승인에 실패하였습니다.";
 		}
 		
-		response.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(hostAccept,response.getWriter());
+		request.setAttribute("msg", msgg);
+		request.setAttribute("loc", "/admin/hostAcceptList");
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		/*
+		 * response.setContentType("application/json;charset=utf-8"); new
+		 * Gson().toJson(hostAccept,response.getWriter());
+		 */
 		
 
 	}

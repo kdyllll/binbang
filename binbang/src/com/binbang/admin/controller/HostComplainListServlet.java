@@ -33,8 +33,6 @@ public class HostComplainListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Complaint> list = new AdminService().complainList();
-		int result3=0;
-		request.setAttribute("result3", result3);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/admin/hostComplainList.jsp").forward(request, response);
 	}

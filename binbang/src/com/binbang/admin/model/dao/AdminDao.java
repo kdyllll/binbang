@@ -204,8 +204,9 @@ public class AdminDao {
 				com.setComplaintCategory(rs.getString("complaint_category"));
 				com.setComplaintDetail(rs.getString("complaint_detail"));
 				com.setHouseNo(rs.getString("house_no"));
-				com.setHostNo(rs.getNString("host_no"));
+				com.setHostNo(rs.getString("host_no"));
 				com.setComplaintPic(rs.getString("complaint_pic"));
+				com.setComplaintState(rs.getString("complaint_state"));
 				list.add(com);
 			}
 		}catch(SQLException e) {
@@ -252,12 +253,13 @@ public class AdminDao {
 	}
 	
 	//호스트 신고 승인 후 상태 변경
-	public int acceptHostComplainState(Connection conn,String complaintNo) {
+	public int acceptHostComplainState(Connection conn,String complaintNo,String msg) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("acceptComplainState"));
-			pstmt.setString(1, complaintNo);
+			pstmt.setString(1, msg );
+			pstmt.setString(2, complaintNo);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

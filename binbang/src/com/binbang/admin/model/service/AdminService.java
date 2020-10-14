@@ -101,9 +101,9 @@ private AdminDao dao=new AdminDao();
 	}
 	
 	//호스트 신고 승인-상태 변경
-	public int acceptHostComplainState(String complaintNo) {
+	public int acceptHostComplainState(String complaintNo,String msg) {
 		Connection conn=getConnection();
-		int result=dao.acceptHostComplainState(conn, complaintNo);
+		int result=dao.acceptHostComplainState(conn, complaintNo, msg);
 		if(result>0) close(conn);
 		else rollback(conn);
 		return result;

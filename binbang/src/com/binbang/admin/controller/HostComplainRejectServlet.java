@@ -1,6 +1,7 @@
 package com.binbang.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
+import com.binbang.member.model.vo.Complaint;
 
 /**
  * Servlet implementation class HostComplainRejectServlet
@@ -88,10 +90,12 @@ public class HostComplainRejectServlet extends HttpServlet {
             e.printStackTrace();
         }
         
-        request.setAttribute("msg", "거절 완료");
-        request.setAttribute("loc", "/admin/hostComplainList");
-        request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
-		
+        String complaintNo=request.getParameter("complaintNo");
+        String msg="거절";
+    	int result2=new AdminService().acceptHostComplainState(complaintNo,msg);
+    	List<Complaint> list = new AdminService().complainList();
+		request.setAttribute("list",list);
+		request.getRequestDispatcher("/views/admin/hostComplainList.jsp").forward(request, response);
 	
 	}
 

@@ -17,7 +17,7 @@
       <section class="section">
         <%@ include file="/views/admin/adminNav.jsp"%>
  
- <form id="acceptListContents" class="searchCommon">
+
             <p class="pageTitle">호스트 승인</p>
             
             <div class="tb_wrap">
@@ -31,13 +31,13 @@
                     <th class="cell2">요청날짜</th>
                     <th class="cell2">승인 여부</th>
                   </tr>
-              	<%
-				for (Host h : list) {
-			%>
-
-			<%
-				if (h.getHostAcceptDate() == null) {
-			%>
+           
+       
+            <%for (Host h : list) {%>
+	  	 
+			<%if (h.getHostAcceptDate() == null) {%>
+			 <form class="form">
+			 
 			<tr>
 				<td class="cell1"><%=h.getHostName()%></td>
 				<td class="cell3"><%=h.getMemberPhone()%></td>
@@ -52,23 +52,26 @@
 				<td class="cell2"><%=h.getHostEnrollDate()%></td>
 				<td class="cell2">
 					<div class="acceptChoice">
-						<input type="hidden" name="memberNo" class="mNo" value="<%=h.getMemberNo()%>">
-						<input type="hidden" name="memberId" class="mId" value="<%=h.getHostEmail()%>">
-						<input type="button" name="acceptY" value="승인" class="yes">
-						<input type="button" name="acceptN" value="거절" class="no">
+	
+						<input type="button" class="acceptY" name="acceptY" value="승인" class="yes" onclick="fn_accept();">
+						<input type="button" class="acceptN" name="acceptN" value="거절" class="no" onclick="fn_reject();">
 					</div>
 				</td>
 			</tr>
+			</form>
 				<%
 					}
 				%>
+				
 			<%
 				}
 			%>
+			
+			
                 </table>
               </div>
             </div>
-          </form>
+          
     </section>
     </div>
 
@@ -76,7 +79,17 @@
 </html>
 
 <script>
-	 $(".yes").on("click",e=>{
+
+function fn_accept(){         
+    $(".form").attr("action","<%=request.getContextPath() %>/admin/moveHostAcceptList").submit();                           
+ }
+ 
+ function fn_reject(){
+	 $(".form").attr("action","<%=request.getContextPath() %>/admin/hostReject").submit();                           
+ }
+ 
+	
+	<%--  $(".yes").on("click",e=>{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/admin/moveHostAcceptList",
 			data:{"memberNo" : $(".mNo").val(),"memberId":$(".mId").val() },
@@ -99,7 +112,7 @@
 				location.reload();
 			 }
 		 });
-	 });
+	 }); --%>
 	 
  	
 </script>
