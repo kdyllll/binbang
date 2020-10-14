@@ -31,10 +31,14 @@ public class SearchHostListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("호스트 검색");
 		String type=request.getParameter("searchType");
 		String keyword=request.getParameter("searchKeyword");
 		List<Host> list= new AdminService().searchHostList(type, keyword);
+		for(Host h:list) {
+			System.out.println(h);
+		}
+		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/admin/hostList.jsp").forward(request, response);
 	}

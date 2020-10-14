@@ -122,17 +122,21 @@ ul.box {
 /* 지도 */
 
 .map{
+
     width: 400px;
     height: 500px;
     display:inline-block;
-  /*   border: 1px solid; */
+    vertical-align: top;
+
 }
 
 .listCon{
+
     margin-left: 50px;
-    width:calc(100% - 500px);
+    width:calc(100% - 480px);
     display:inline-block;
-    /* border:1px solid; */
+    align-items: flex-start;
+  
    
 }
 #pageBar{
@@ -142,8 +146,10 @@ ul.box {
 /* 숙소리스트 */
 .list{
     /* border:1px solid red;  */
-    width:1000px;
+    width:100%;
+   /*  display:inline-block; */
     display: flex;
+    flex-flow:wrap; 
     /* justify-content: space-between; */
     
     

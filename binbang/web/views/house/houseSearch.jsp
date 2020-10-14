@@ -115,6 +115,7 @@
 			</div>
 			
 			<div class="section2">
+				
 				<!-- 지도와 숙소들 영역 -->
 				<!-- 지도 -->
 				<div id="map" class="map"></div>

@@ -39,12 +39,14 @@ public class HostRejectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memberNo = request.getParameter("memberNo");
+		System.out.println("거절" + memberNo);
 		String memberId = request.getParameter("memberId");
+		System.out.println("거절" + memberId);
 		
-		String hostReject="";
+		String msgg="";
 		int result=new AdminService().deleteHost(memberNo);
 		if(result>0) {
-			hostReject="호스트 승인 거절이 완료되었습니다.";
+			msgg="호스트 승인 거절이 완료되었습니다.";
 			
 			String host="smtp.naver.com";
 			String user="tnrud2668@naver.com";
@@ -72,7 +74,7 @@ public class HostRejectServlet extends HttpServlet {
 	            msg.setFrom(new InternetAddress(user, "BINBANG"));
 	            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
 	            
-	            msg.setSubject("빈방 인증 메일입니다.");
+	            msg.setSubject("빈방입니다. 호스트 승인 거절 안내드립니다.");
 	            msg.setText("안녕하세요 빈방입니다.\n\r 아쉽지만 호스트 승인이 거절되었습니다. 다음과 같은 항목을 확인해주세요. \n\r \n\r "
 	            		+ "- 적절하지 않은 신분증 사진 또는 프로필 사진 입력  \n\r - 이전에 호스트 블랙리스트가 된 이력이 있을 경우  \n\r \n\r "
 	            		+ "블랙리스트가 아닌 경우 다시 호스트 등록 신청이 가능합니다.");
@@ -84,11 +86,12 @@ public class HostRejectServlet extends HttpServlet {
 	            e.printStackTrace();
 	        }
 		}else {
-			hostReject="호스트 승인 거절에 실패하였습니다.";
+			msgg="호스트 승인 거절에 실패하였습니다.";
 		}
 		
-		response.setContentType("application/json;charset=utf-8");
-		new Gson().toJson(hostReject,response.getWriter());
+		request.setAttribute("msg", msgg);
+		request.setAttribute("loc", "/admin/hostAcceptList");
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 	}
 
 	/**

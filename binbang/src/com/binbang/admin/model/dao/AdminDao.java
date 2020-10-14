@@ -204,7 +204,9 @@ public class AdminDao {
 				com.setComplaintCategory(rs.getString("complaint_category"));
 				com.setComplaintDetail(rs.getString("complaint_detail"));
 				com.setHouseNo(rs.getString("house_no"));
-				com.setHostNo(rs.getNString("host_no"));
+				com.setHostNo(rs.getString("host_no"));
+				com.setComplaintPic(rs.getString("complaint_pic"));
+				com.setComplaintState(rs.getString("complaint_state"));
 				list.add(com);
 			}
 		}catch(SQLException e) {
@@ -221,7 +223,7 @@ public class AdminDao {
 		ResultSet rs=null;
 		String email="";
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectEmail"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectHostEmail"));
 			pstmt.setString(1, hostNo);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
@@ -251,12 +253,13 @@ public class AdminDao {
 	}
 	
 	//호스트 신고 승인 후 상태 변경
-	public int acceptHostComplainState(Connection conn,String complaintNo) {
+	public int acceptHostComplainState(Connection conn,String complaintNo,String msg) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("acceptComplainState"));
-			pstmt.setString(1, complaintNo);
+			pstmt.setString(1, msg );
+			pstmt.setString(2, complaintNo);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -284,6 +287,7 @@ public class AdminDao {
 				com.setComplaintDetail(rs.getString("complaint_detail"));
 				com.setHouseNo(rs.getString("house_no"));
 				com.setHostNo(rs.getNString("host_no"));
+				com.setComplaintPic(rs.getString("complaint_pic"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -319,7 +323,21 @@ public class AdminDao {
 			close(conn);
 		}return list;
 	}
-
+	
+	//호스트 권한박탈
+	public int hostOut(Connection conn,String hostNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("hostOut"));
+			pstmt.setString(1, hostNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
 	
 	//회원리스트 검색
 	public List<Member> searchMemberList(Connection conn, String type, String key){

@@ -15,7 +15,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class SearchServlet
  */
-@WebServlet("/admin/adminSearch")
+@WebServlet("/admin/searchMemberList")
 public class SearchMemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,12 +31,14 @@ public class SearchMemberListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("찾기 서블릿 실행");
 		String type=request.getParameter("searchType");
 		String key=request.getParameter("searchKeyword");
 		
 		List<Member> list=new AdminService().searchMemberList(type,key);
-		
+		for(Member m : list) {
+			System.out.println(m);
+		}
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("/views/admin/memberList.jsp").forward(request, response);

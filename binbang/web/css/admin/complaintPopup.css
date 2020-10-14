@@ -1,11 +1,8 @@
 @charset "UTF-8";
 
-/* 비밀번호 재설정 */
-
   /* 팝업창 */
-  .findIdPopup {
-   
-    padding:5%;
+  .complainPopup {
+    padding:2% 5%;
   }
 
   /* 팝업 타이틀 */
@@ -18,61 +15,11 @@
   }
  
 /* 팝업 제목과 버튼 사이 선  */
-.findIdLine{
+.line{
     width: 100%;
     height: 2px;
     margin: 20px 0;
     background-color: black;
-}
-
-/* 선 밑으로 */
-#enterNamePhone{
-    margin-top: 20px;
-     
-}
-
-.inputTitle{
-    margin:5% 0;
-    font-size:15px;
-    text-align: left;
-    padding-left:10px;
-}
-
-/* 아이디,인증번호 입력창 */
-#userName, #userPhone{
-    width:90%;
-    height: 35px;
-    border:0;
-    outline:0;
-    border-bottom:0.5px solid;
-   padding-left:10px;
-
-}
-
-/* 인증하기, 인증확인 버튼 */
-#emailConfirm, #numberConfirm{
-    
-    height: 35px;
-    background-color: black;
-    color:white;
-    border:0;
-    outline:0;
-    cursor: pointer;
-    padding-left:10%;
-   
-}
-
-/* 다음 버튼 */
-.next{
-  height: 35px;
-  width:100px;
-  border:0;
-  outline:0;
-  background-color: black;
-  color:white;
-  cursor: pointer;
-  margin-top: 40px;
-
 }
 
 .reasonBox{
@@ -80,5 +27,30 @@
     padding: 5%;
     margin-top:20px;
     overflow-y:scroll;
-    height:200px;
+    height:120px;
+ }
+ 
+ /*항목들*/
+ .complainTitle{
+ 	padding:5px 0;
+ 	font-weight: bolder;
+ }
+ 
+ /*사진*/
+ .picDiv{
+ 	float:right;
+/* 	border:1px solid black; */ 
+ 	width:350px;
+ 	height:220px;
+ 	overflow: hidden;
+    display: flex;
+    align-items: center;
+   	justify-content:center; 
+            
+ }
+ 
+ .pic{
+    max-width: 350px;
+    max-height: 220px;
+}
  }
