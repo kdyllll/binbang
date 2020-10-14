@@ -16,7 +16,7 @@
 	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review"%>
 <%
 	List<House> house = (List<House>) request.getAttribute("house");
-	List<Favorite> favorite = (List<Favorite>) request.getAttribute("favorite");
+	List<Favorite> favoriteList = (List<Favorite>) request.getAttribute("favorite");
 	Member member = (Member) session.getAttribute("m");
 	String pageBar = (String) request.getAttribute("pageBar");
 	List dayList = (List) request.getAttribute("dayList");
@@ -132,11 +132,10 @@
 	
 	<script>	
 		let houseList =<%=request.getAttribute("houseJson")%>;
-		console.log(houseList);
 		let dayList =<%=request.getAttribute("dayJson")%>;
 		let days=dayList.length;
 
-		let favorite =<%=request.getAttribute("filterJson")%>;
+		let favorite =<%=request.getAttribute("favoriteJson")%>;
 		$(".houseNum").html(houseList.length);
 		listPrint();
 		//정렬 버튼 누를때
@@ -261,18 +260,21 @@
 							
 						</div> `;
 				html=html+list;	
-				for(let f in favorite){
-					console.log(favorite[f].houseNo);
-					console.log(houseList[h].houseNo);
-					if(favorite[f].houseNo.equals(houseList[h].houseNo)){
-						$(".heartCommon").removeClass(".heart");
-						$(".heartCommon").addClass(".fav");
-					}
-				}	
+					
 			}
-			
 			$(".list").children().remove();
 			$(".list").append(html);	
+			
+			for(let f in favorite){
+				let hNo=($(".houseNoPopUp"));
+				for(let i=0;i<hNo.length;i++){		
+					if(favorite[f].houseNo==hNo[i].value){	
+						console.log(hNo[i].previousSibling.previousSibling);
+						hNo[i].previousSibling.previousSibling.className="heartCommon fav";
+						/* hNo[i].prev(".heartCommon").addClass(".fav"); */
+					} 
+				}
+			}
 		}
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		//필터 검색 누를때 두개 다
