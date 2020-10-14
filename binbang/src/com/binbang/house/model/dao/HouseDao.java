@@ -430,6 +430,7 @@ public class HouseDao {
 				h.setHostNo(rs.getString("host_no"));
 				h.setHouseMainPic(rs.getString("picture_name"));
 				h.setHouseLocation(rs.getString("house_location"));
+				h.setPriceDay(rs.getInt("price_Day"));
 				list.add(h);
 			}
 		} catch (Exception e) {
@@ -794,6 +795,32 @@ public class HouseDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+			
+	public List<House> mainHouse(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		List<House> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("mainHouse"));
+			rs= pstmt.executeQuery();
+			while(rs.next()) {
+				House h = new House();
+				h.setHouseMainPic(rs.getString("picture_name"));
+				h.setHouseName(rs.getString("house_name"));
+				h.setHouseLocation(rs.getString("house_location"));
+				h.setHouseNo(rs.getString("house_no"));
+				h.setPriceDay(rs.getInt("price_day"));
+				list.add(h);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
 			close(rs);
 			close(pstmt);
 		}

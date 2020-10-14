@@ -49,8 +49,8 @@
 	<div class="wrap">
 		<header class="header headerColor">
 			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
-			<div class="searchBox"></div>
-			<div class="headerBox displayNone">
+			
+			<div class="headerBox">
 				<a href="#info" class="infoFilter" > 정보 </a>
 				<a href="#grade"class="reviewFilter"> 후기 </a>
 				<a href="#photoFilterScroll" class="photoFilter">주변시설 </a>
@@ -315,25 +315,22 @@
 									<div class="gradeinfo">
 
 										<div class="a">
-											평점 :
-											<%=r.getHouseGrade()%></div>
-										<br> <br>
-										<%-- <div>
+											평점 :<%=r.getHouseGrade()%></div>
+										<br> 
+										<div>
 											숙박 기간 :
 											<%=b.getCheckInDate()%>
 											~
 
-											<%=b.getCheckOutDate()%></div> --%>
-										<br> <br> 
+											<%-- <%=b.getCheckOutDate()%> --%></div>
+										
 
 										<div class="b">
-											제목 :
-											<%=r.getCommentTitle()%>
+											제목 :<%=r.getCommentTitle()%>
 										</div>
-										<br> <br>
+										<br> 
 										<div class="c">
-											내용 :
-											<%=r.getCommentContents()%>
+											내용 :<%=r.getCommentContents()%>
 										</div>
 										<!-- <div class="ex">댓글 등록하기</div> -->
 
@@ -465,7 +462,6 @@
 	<%-- <script src="<%=request.getContextPath()%>/js/common/heart.js"></script> --%>
 
 	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
-	<script src="<%=request.getContextPath()%>/js/house/houseDetailHeader.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
