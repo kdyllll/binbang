@@ -63,13 +63,21 @@
 
 				<div class="favoriteList">
 					<% for(Favorite f : list){%>
-									<form class="folderContents" method="post">	
-											<input type="text" value="<%=f.getHouseNo() %>">	 																						
- 											<input type="submit" class="eachList" id="eachList" onclick="fn_toContent();">								
-									</form>																											
-						<%}%>	
+					<form class="favHouse" method="post">					
+						<div>
+							<input type="button" class="heartButton fav">
+							
+							<input type="hidden" value="<%=na%>" name="folderName">
+							<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">						
+							<input type="hidden" class="check 0" value="<%=f.getFolderNo()%>">
+							<input type="text" value="<%=f.getHouseNo()%>" name="houseNo">															
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=f.getHouseNo()%>">	
+							<img src="<%=request.getContextPath() %>/upload/house/<%=f.getPictureName()%>" style="width:100%; height:90%;"  alt="사진">												 																						 																																																				
+						</div>
+					</form>	
+					<%}%>	
 				</div>	
-			
+							
 		</section>
 
 		<%@ include file="/views/common/footer.jsp"%>
@@ -79,9 +87,7 @@
 	
 	function fn_back11(){					 
 		         $(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/favoriteBack").submit();
-		    }	
-	
-	
+		    }			
 	//x버튼, 팝업버튼
 	  $(document).ready(function () {   
 		   $("#modifyBtn11").on("click",function(e){
@@ -99,17 +105,22 @@
 	function fn_modify(){
 			$(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/modifyFolder").submit();
 	}
-
-	  //하트버튼
-	  $(".heartButton").on("click",function(e){
-	      $(e.target).toggleClass("heart");
-	      $(e.target).toggleClass("fav");
-	  });
 	  
 	  // 경고창
 	  $("#deleteBtn").click(e =>{
 	    alert("정말 삭제하시겠습니까?")
 	    })
+	    
+	    
+	  //하트버튼
+	  $(".heartButton").on("click",function(e){				  
+	      $(e.target).toggleClass("heart");
+	      $(e.target).toggleClass("fav");
+	      
+	      alert("관심숙소 삭제");
+	      $(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteContent").submit();	      	      
+	      
+	  });
 	</script>
 	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

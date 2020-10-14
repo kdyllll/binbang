@@ -8,20 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.startup.SetAllPropertiesRule;
+
 import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
 
 /**
- * Servlet implementation class FavoriteFolderDeleteServlet
+ * Servlet implementation class FavoriteContentDeleteServlet
  */
-@WebServlet("/favorite/deleteFolder")
-public class FavoriteFolderDeleteServlet extends HttpServlet {
+@WebServlet("/favorite/deleteContent")
+public class FavoriteContentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FavoriteFolderDeleteServlet() {
+    public FavoriteContentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +33,34 @@ public class FavoriteFolderDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String folderNo=request.getParameter("folderNo");	
+		String folderName=request.getParameter("folderName");
+		System.out.println(folderName);
+		String houseNo=request.getParameter("houseNo");										
+		System.out.println(houseNo);
+		String folderNo=request.getParameter("folderNo");
 		System.out.println(folderNo);
-		String memberNo=request.getParameter("memberNo");
-		System.out.println(memberNo);	
 		
-		Favorite f = new Favorite();
+		Favorite f=new Favorite();		
+		f.setHouseNo(houseNo);
 		f.setFolderNo(folderNo);
-		f.setFolderName(memberNo);
 		
-		int result=new FavoriteService().deleteFolder(f);
-
+		
+		int result=new FavoriteService().removeContent(f);						
+		
 		String msg="";
 		String loc="";
-						
+		
 		if(result>0) {
-			msg="삭제완료";		
-			loc="/favorite/favoriteFolder?memberNo="+memberNo;
+			msg="삭제완료";
+			loc="/mainMove";
 		}else {
 			msg="삭제실패";
 			loc="/favorite/favoriteContents";			
 		}
-		request.setAttribute("msg",msg);
-		request.setAttribute("loc",loc);		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc",loc);	
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);				
 	}
 
 	/**
