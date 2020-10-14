@@ -36,7 +36,11 @@ public class BookingFinalServlet extends HttpServlet {
 		String oriPrice=request.getParameter("originalPrice");
 		String totalPoints = request.getParameter("totalPoints");
 		String memberNo=request.getParameter("m");
-		System.out.println(no);
+		String guestName = request.getParameter("guestName");
+		String pNum = request.getParameter("pNum");
+		String pay = request.getParameter("pay");
+		
+
 	
 		request.setAttribute("houseNo",no);
 		request.setAttribute("checkIn",in);
@@ -45,9 +49,12 @@ public class BookingFinalServlet extends HttpServlet {
 		request.setAttribute("oriPrice",oriPrice);
 		request.setAttribute("totalPoint",totalPoint);
 		request.setAttribute("totalPoints",totalPoints);
+		request.setAttribute("guestName", guestName);
 		request.setAttribute("m",memberNo);
+		request.setAttribute("pNum", pNum);
+		request.setAttribute("pay", pay);
 		request.getRequestDispatcher("/views/booking/pay.jsp?houseNo="+no).forward(request,response);
-		System.out.println("2번쨰"+no);
+
 		
 	}
 
