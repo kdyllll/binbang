@@ -38,9 +38,10 @@
                   <div>결제 방법 : <%=pay %></div>
                   <div class="priceLine">
                      <div class="priceInfoBox">
-                        <div class="priceInfo">￦<%=price %> </div>
+                        <div class="priceInfo">￦<%=price %></div>
                      </div>
                   </div>
+                  <div> 무통장 입금의 경우 1~3일 정도의 승인기간이 필요합니다. 추후 마이페이지 에서 확인하세요 </div>
                </div>
             </div>
             <div class="moveBox">
