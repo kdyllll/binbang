@@ -16,21 +16,17 @@
 <body>
 <div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-
-		<!-- 관심숙소content -->
-		
+		<!-- 관심숙소content -->		
 <section class="section">		
 		<form class="favHouse" method="post">
 			<div>
 				<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">
 				<input type="hidden" value="<%=mno%>" name="memberNo">
-			</div>
-			
+			</div>			
 			<div class="line1">
 				<input type="text" value="<%=na%>" name="folderName" class="favTitle">
 				<div class="listLine"></div>
-			</div>			
-			
+			</div>						
 			<!-- 관심숙소폴더 -->
 			<div class="favorite">
 
@@ -39,9 +35,7 @@
 					<input type="button" id="backBtn" value="뒤로가기" onclick="fn_back11();"> 						
 					<input type="button" id="modifyBtn11" value="목록수정" >
 																	
-				</div>
-
-				
+				</div>				
 				<div class="modifyPop ModDisNone">
 					<div id="popupContent">					
 						<div class="popupHeader">
@@ -61,7 +55,6 @@
 				</div>			
 			</div>
 			</form>
-
 				<div class="favoriteList1">
 						<% for(Favorite f : list){%>
 								<form class="favHouse" method="post">					
@@ -82,15 +75,11 @@
 											</div>
 								</form>	
 						<%}%>	
-				</div>	
-							
+				</div>								
 		</section>
-
 		<%@ include file="/views/common/footer.jsp"%>
-	</div>
-	
-	<script>
-	
+	</div>	
+	<script>	
 	function fn_back11(){					 
 		         $(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/favoriteBack").submit();
 		    }			
@@ -102,25 +91,18 @@
 		   $(".xBtn").on("click",function(e){
 		     	   $(".modifyPop").addClass("ModDisNone");
 		      });    
- 	 });
-	
-	
-	
+ 	 });			
 	function fn_modify(){
 			$(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/modifyFolder").submit();
-	}
-	  
+	}	  
 	  // 경고창
 	  $("#deleteBtn").click(e =>{
 	    	alert("정말 삭제하시겠습니까?")
-	    })
-	    
-	    
+	    })	    	    
 	  //하트버튼
 	  $(".heartButton").on("click",function(e){				  
 	      $(e.target).toggleClass("heart");
-	      $(e.target).toggleClass("fav");
-	      
+	      $(e.target).toggleClass("fav");	      
 	      alert("관심숙소 삭제");
 	      $(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteContent").submit();	      	      	      
 	  });
