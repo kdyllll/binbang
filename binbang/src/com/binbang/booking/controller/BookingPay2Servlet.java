@@ -46,20 +46,19 @@ public class BookingPay2Servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 
-		
 		String memberNo=request.getParameter("m");
 		String no=request.getParameter("houseNo");	
 		String in=request.getParameter("checkIn");
 		String out1=request.getParameter("checkOut");
 		int price=Integer.parseInt(request.getParameter("totalPrice").trim());
 		int totalPoint=Integer.parseInt(request.getParameter("totalPoint"));
-//		내가 사용한 포인트
+
+		
 		int totalPoints=Integer.parseInt(request.getParameter("totalPoints"));
 		String guestName = request.getParameter("guestName");
 		int pnum = Integer.parseInt(request.getParameter("pNum").trim());
 		Member m = (Member) request.getSession().getAttribute("m");
-	    String pay = request.getParameter("pay").equals("card") ? "신용카드" : "무통장입금";
- 
+	    String pay = request.getParameter("pay");
 	    Booking b=new Booking();
 		
 		b.setMemberNo(memberNo);
@@ -104,8 +103,8 @@ public class BookingPay2Servlet extends HttpServlet {
 	               msg.addRecipient(Message.RecipientType.TO, new InternetAddress(sendEmail));
 	               
 	               msg.setSubject("무통장 입금 결제 안내메일입니다.");
-	               msg.setText("안녕하세요 빈방입니다.\n\r 무통장 입금 계좌 안내입니다 \n\r예금주 : 인하준\n\r하나은행 207-910269-75307\n\r 총 결제 금액은 ￦"+price+"원 입니다" );
-	               
+	               msg.setText("안녕하세요 빈방입니다.\n\r 무통장 입금 계좌 안내입니다 \n\r예금주 : 인하준\n\r하나은행 207-910269-75307\n\r 총 결제 금액은 ￦"+price+"원 입니다\n\r 환불규정 \n\r환불 시 아래의 기준일에 따른 환불 금액을 드립니다.\n\r이용 10일전까지 총 결제금액의 100% 환불\n\r 이용 9일전까지 총 결제금액의 90% 환불\n\r이용 8일전까지 총 결제금액의 80% 환불\n\r이용 7일전까지 총 결제금액의 70% 환불\n\r이용 6일전까지 총 결제금액의 60% 환불\n\r이용 5일전까지 총 결제금액의 50% 환불\n\r이용 4일전까지 총 결제금액의 40% 환불\n\r이용 3일전부터 변경 / 환불 불가");
+	                 
 	               Transport.send(msg);
 	               System.out.println("이메일 전송");
 	               

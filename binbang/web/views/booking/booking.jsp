@@ -202,7 +202,7 @@
 
 	 function test() {
 		//housePrice에 초기값 넣어줌. 중복안되게
-		$(".housePrice").html('<%=price%>');
+		$(".housePrice").html('<%=price%>'); 
 		//point value를 가져옴 => 너거 text넣은 값
 		let point = $(".pointWriter").val();
 		//기본값
@@ -256,7 +256,6 @@
 				alert("숙박인원을 설정해 주세요");
 				return false;
 			}else{
-				console.log($(".bookingTest"));
 				return true;
 			}
 		};
