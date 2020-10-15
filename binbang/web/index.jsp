@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,29 +8,15 @@
 <title>Insert title here</title>
 <style>
 @font-face {
-<<<<<<< HEAD
-	font-family: 'IBMPlexSansKR-Light';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-=======
    font-family: 'IBMPlexSansKR-Light';
    src:
       url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
       format('woff');
    font-weight: normal;
    font-style: normal;
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 }
 
 body {
-<<<<<<< HEAD
-	font-family: 'IBMPlexSansKR-Light';
-	padding: 0px;
-	margin: 0px;
-=======
    font-family: 'IBMPlexSansKR-Light';
    padding: 0px;
    margin: 0px;
@@ -42,17 +28,8 @@ body {
    overflow: hidden;
    margin: 0px auto;
    position: relative;
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 }
 
-<<<<<<< HEAD
-.jb-box {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	margin: 0px auto;
-	position: relative;
-=======
 video {
    width: 100%;
 }
@@ -61,19 +38,8 @@ video {
    position: absolute;
    top: 50%;
    width: 100%;
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 }
 
-<<<<<<< HEAD
-video {
-	width: 100%;
-}
-
-.jb-text {
-	position: absolute;
-	top: 50%;
-	width: 100%;
-=======
 .jb-text a {
 display:block;
    margin-top: -70px;
@@ -81,37 +47,12 @@ display:block;
    font-size: 20px;
    color: #ffffff;
    text-decoration:none;
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 }
 
-<<<<<<< HEAD
-.jb-text a {
-display:block;
-	margin-top: -70px;
-	text-align: center;
-	font-size: 20px;
-	color: #ffffff;
-	text-decoration:none;
-}
-
-=======
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 </style>
 
 </head>
 <body>
-<<<<<<< HEAD
-	<div class="jb-box">
-		<video muted autoplay loop>
-			<source
-				src="<%=request.getContextPath()%>/video/Abandoned - 49338.mp4"
-				type="video/mp4">
-		</video>
-		<div class="jb-text">
-			<a href="<%=request.getContextPath()%>/mainMove">메인으로이동</a>
-		</div>
-	</div>
-=======
    <div class="jb-box">
       <video muted autoplay loop>
          <source
@@ -122,7 +63,6 @@ display:block;
          <a href="<%=request.getContextPath()%>/mainMove">메인으로이동</a>
       </div>
    </div>
->>>>>>> branch 'develop' of https://github.com/kdyllll/binbang.git
 
 </body>
 </html>
