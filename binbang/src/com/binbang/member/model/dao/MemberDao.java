@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import com.binbang.member.model.vo.Favorite;
 import com.binbang.member.model.vo.Member;
 
 
@@ -45,10 +48,10 @@ public class MemberDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("host_black"));				
 				m.setHostConfirm(rs.getString("host_confirm"));
 				m.setHostNo(rs.getString("host_no"));
+				m.setTotalPoint(rs.getInt("total_point"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -58,14 +61,14 @@ public class MemberDao {
 		}return m;
 	}
 	
+	
 	//회원가입
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));
-			
+			pstmt=conn.prepareStatement(prop.getProperty("insertMember"));			
 			pstmt.setString(1, m.getEmail());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getMemberName());
@@ -120,25 +123,25 @@ public class MemberDao {
 			close(rs);
 			close(pstmt);
 		}return result;		
-	}	
-	
+	}
 	
 	//mypage 조회
-	public Member selecInf(Connection conn, String email) {
+	public Member selectInfo(Connection conn, String email) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Member m=null;
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectMemberInf"));
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberInfo"));
 			pstmt.setString(1, email);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				m=new Member();				
+				m=new Member();
+				m.setMemberNo(rs.getString("member_no"));
 				m.setEmail(rs.getString("email"));				
 				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));
 				m.setPhone(rs.getString("phone"));
-				m.setCoupon(rs.getInt("coupon"));
+				m.setTotalPoint(rs.getInt("total_point"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -148,22 +151,43 @@ public class MemberDao {
 		}return m;		
 	}
 	
+	//관심숙소
+	public Member selectMemberNo(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		Member m=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectMemberNo"));
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				m=new Member();
+				m.setMemberNo(rs.getString("member_no"));
+				m.setEmail(rs.getString("email"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
 	
 	//mypage 회원정보수정(비밀번호 이외)
 	public int updateMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
-		int result=0;
+		int rs=0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("updateMember"));			
 			pstmt.setString(1, m.getNickname());
 			pstmt.setString(2, m.getPhone());
 			pstmt.setString(3, m.getEmail());	
-			result=pstmt.executeUpdate();
+			rs=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
-		}return result;
+		}return rs;
 	}
 	
 	
@@ -182,9 +206,9 @@ public class MemberDao {
 		}return result;
 	}
 	
-	
-	//mypage 비밀번호 수정
-	public int updatePassword(Connection conn,String newPw,String email) {
+
+	//비밀번호 수정
+	public int updatePassword(Connection conn,String email,String newPw) {
 		PreparedStatement pstmt=null;
 		int result=0;
 		try {
@@ -202,7 +226,7 @@ public class MemberDao {
 	
 	
 	
-	//로그인화면 비밀번호 수정용(아이디 확인용)
+	//로그인화면 아이디 확인용
 	public Member selectMemberId(Connection conn,String email) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -221,8 +245,8 @@ public class MemberDao {
 				m.setPhone(rs.getString("phone"));
 				m.setEnrollDate(rs.getDate("enroll_Date"));				
 				m.setStayDays(rs.getInt("stay_Days"));
-				m.setCoupon(rs.getInt("coupon"));
 				m.setHostBlack(rs.getString("host_Black"));				
+				m.setTotalPoint(rs.getInt("total_point"));
 			}		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -231,6 +255,73 @@ public class MemberDao {
 			close(pstmt);
 		}return m;
 	}
+	
+	//관심숙소
+	
+	
+	
+	
+	//관심숙소 리스트(하우스번호만 담음)
+	public List<Favorite> selectFavList(Connection conn,Member m){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Favorite> fList=new ArrayList<Favorite>();
+		Favorite f=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectFavList"));
+			pstmt.setString(1,m.getMemberNo());
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				f=new Favorite();
+				f.setHouseNo(rs.getString("house_no"));
+				fList.add(f);
+			}		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return fList;
+	}
+	//폴더 리스트만 받아옴
+	public List<Favorite> selectFavAllList(Connection conn,Member m){
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Favorite> fList=new ArrayList<Favorite>();
+		Favorite f=null;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectFavAllList"));
+			pstmt.setString(1,m.getMemberNo());
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				f=new Favorite();
+				f.setMemberNo(m.getMemberNo());
+				f.setFolderNo(rs.getString("folder_no"));
+				fList.add(f);
+			}		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return fList;
+	}
+	
+	public int updateMemberPoint(Connection conn,int total,String mNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateMemberPoint"));
+			pstmt.setInt(1,total);
+			pstmt.setString(2, mNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 	
 	

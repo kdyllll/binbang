@@ -1,34 +1,34 @@
+
+<%@page import="com.binbang.member.model.vo.Favorite"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.List,com.binbang.house.model.vo.House"%>
-	<%
-  /*  List<House> list = (List)request.getAttribute("list"); */
+<%@page
+	import="java.util.List,com.binbang.house.model.vo.House,com.binbang.house.model.vo.Review,com.binbang.booking.model.vo.Booking"%>
 
-	int numPerPage;
-	try{
-		numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
-	}catch(NumberFormatException e){
-		numPerPage=5;
-	}
 
-	%>
-	
-	<% String[] filter = new String[] {"bathRoom.png","bbq.png","breakfast.png","dog.png","kitchen.png","laundrtRoom.png","park.png",
-								"parking.png","projector.png","refrigerator.png","shower.png","smoking.png","swimming.png","terrace.png","wifi.png"};%>
-							
-	
+<%
+	House h = (House) request.getAttribute("house");
+	Booking b = (Booking) request.getAttribute("booking");
+	Double grade = (Double) request.getAttribute("grade");
+	Member m2 = (Member) session.getAttribute("m");
+	List<Review> list = (List) request.getAttribute("list");
+	String in = (String) request.getAttribute("checkIn");
+	String out1 = (String) request.getAttribute("checkOut");
+	String price = (String) request.getAttribute("totalPrice");
+%>
+
 
 <%@ include file="/views/common/commonLink.jsp"%>
-  
+
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-	
-<script 
+
+<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper-bundle.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/common/jquery-3.5.1.min.js"></script>
+
 
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/searchBox.css" />
@@ -39,25 +39,50 @@
 <title>house_regist</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/house/houseDetail.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/house/housePopup.css" />
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/house/map.css">
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c98adfd52f6b697ce8e033c4b2ff215a&libraries=services"></script>
 </head>
 
 <body class="body">
 	<div class="wrap">
-		<%@ include file="/views/common/houseHeader.jsp"%>
+		<header class="header headerColor">
+			<a href="<%=request.getContextPath()%>/mainMove" class="logo"></a>
+
+			<div class="headerBox">
+				<a href="#info" class="infoFilter"> 정보 </a> 
+				<a href="#grade"class="reviewFilter"> 후기 </a> 
+			    <a href="#nearbyfacilities"class="photoFilter">주변시설 </a>
+			</div>
+			<div class="headerBtn" id="headerBtn">
+				<div class="ham mainHamColor"></div>
+				<div class="ham mainHamColor"></div>
+				<div class="ham mainHamColor"></div>
+			</div>
+			<%@ include file="/views/common/nav.jsp"%>
+		</header>
+
 		<section class="section">
 			<div class="mainBox">
 				<div class="swiper-container first">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">Slide 1</div>
-						<div class="swiper-slide">Slide 2</div>
-						<div class="swiper-slide">Slide 3</div>
-						<div class="swiper-slide">Slide 4</div>
-						<div class="swiper-slide">Slide 5</div>
-						<div class="swiper-slide">Slide 6</div>
-						<div class="swiper-slide">Slide 7</div>
-						<div class="swiper-slide">Slide 8</div>
-						<div class="swiper-slide">Slide 9</div>
-						<div class="swiper-slide">Slide 10</div>
+						<%
+							for (int i = 0; i < h.getHousePicture().length; i++) {
+								if (h.getHousePicture()[i] != null) {
+						%>
+						<div class="swiper-slide">
+							<img
+								src="<%=request.getContextPath()%>/upload/house/<%=h.getHousePicture()[i]%>"
+								style="width: 100%; height: 100%;">
+						</div>
+						<%
+							}
+						}
+						%>
 					</div>
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
@@ -65,93 +90,134 @@
 					<!-- Add Pagination -->
 					<div class="swiper-pagination"></div>
 				</div>
+
 				<div class="info">
 					<div class="title">
-						써니 사이드업
+						<%=h.getHouseName()%>						
 						<div class="heartCommon heart"></div>
+						<input type="hidden" class="houseNoPopUp" name="houseNo" value="<%=h.getHouseNo()%>">
 					</div>
 					<br> <br> <br>
 					<div class="titleInfo">
-						밤과 음악사이는 청춘남녀들을 위한 청춘 숙소입니다 <br> <br> check in 15:00 <br>
-						check out 11:00 <br>
+						<%=h.getHouseComment()%>
+						<br> <br>
+						<%=h.getInoutTime()%>
+						<br> <br>
 					</div>
 					<div class="host">
 						<div class="hostInfo">
-							<a href="#">호스팅정보</a>
+							<a href="<%=request.getContextPath()%>/hostInfoPage?hostNo=<%=h.getHostNo()%>">호스트정보</a>
 						</div>
 					</div>
 					<br>
 
 					<div class="pricebox">
-						<div class="price">$ 150,000 WON</div>
+						<div class="price"><%=price%>
+							won
+						</div>
 					</div>
 					<br> <br>
 					<div class="paybox">
 						<div class="pay">
-							<a href="<%=request.getContextPath()%>/booking/booking">booking</a>
+							<%
+								if (m2 != null) {
+							%>
+							<a
+								href="<%=request.getContextPath()%>/booking/booking?houseNo=<%=h.getHouseNo()%>&checkIn=<%=in%>&checkOut=<%=out1%>&totalPrice=<%=price%>&m=<%=m2.getMemberNo()%>">booking</a>
+							<%
+								} else {
+							%>
+							<form name="loginPopUp">
+								<input value="로그인"
+									style="cursor: pointer; width: 100%; height: 100%; color: white; background: none; border: none; outline: none;"
+									type="button" onclick="fn_loginPopUp();">
+							</form>
+							<%
+								}
+							%>
 						</div>
 					</div>
 				</div>
-						
+
 			</div>
-		<div class="infoFilterScroll"></div>
-			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-			
-			
+			<div id="info"></div>
+
 
 			<div class="houseinfobox">
 				<div class="houseinfo">
-					<div>
-						201호 <br> <br> 체크인 16:00/체크아웃 <br> <br> <br>
-						기준 인원 2명 / 최대인원 4명 <br> <br> 객식면적 10㎡<br> <br>
-						더블배드 1
+					<div class="infoDetail">
+						<div><%=h.getHouseName()%></div>
+						<br> <br> <br> <br> <br> <br> <br>
+						<div><%=h.getInoutTime()%></div>
+						<br> <br>
+						<div><%=h.getHouseLocation()%></div>
+						<br> <br>
 					</div>
+					<div class="infoDetail2">
+						<div>
+							숙박허용인원
+							<%=h.getHousePnum()%>
+							명
+						</div>
+						<br>
+						<div>
+							숙소 유형
+							<%=h.getHouseType()%></div>
+						<br>
+						<div>
+							숙소 방 갯수
+							<%=h.getRoomNum()%></div>
+						<br>
+						<div>
+							숙소 화장실 갯수<%=h.getBathNum()%></div>
+						<br>
+						<div>
+							숙소 침대 갯수<%=h.getBedNum()%></div>
+						<br>
+					</div>
+					<br> <br>
+
+
+
 				</div>
 				<div class="houseIntroduce">
 					<div>
-						오픈플랜으로 구성된 정수리 아파트 4개의 객실중, 201호애는 욕조가 마련되어있습니다. <br> 여행의 피로를
-						풀며 편안한 휴식을 취할수 있습니다
+						<%=h.getHouseComment()%>
 					</div>
-					
-					
-					
- 
 					<div>
-						<div class="test"> 
-						
+						<div class="test">
+
 							<div class="service">
-								SERVICE 
+								SERVICE
 								<div class="a">
 									<div class="aserviceimg">
-									<div class="swiper-container second">
-									<div class="swiper-wrapper">
-								<%-- 	<% for(String h : filter){ %> --%>
-										<!-- <div> -->
-										 	  <div class="swiper-slide">Slide 1</div>
-										      <div class="swiper-slide">Slide 2</div>
-										      <div class="swiper-slide">Slide 3</div>
-										      <div class="swiper-slide">Slide 4</div>
-										 
-										<!-- Add Pagination -->
-										    <!-- <div class="swiper-pagination"></div> -->
-										    <!-- Add Arrows -->
-										   
-												<%-- <img src="<%=request.getContextPath()%>/views/images/filter"width="20" height="20"> --%>
-										 <!-- </div> -->
-										 <%-- <%} %> --%>
-										
-									</div>
+										<div class="swiper-container second">
+											<div class="swiper-wrapper">
+												<%
+													for (Object o : h.getFilter()) {
+
+														String filtername = (String) o;
+												%>
+												<div class="swiper-slide">
+													<img
+														src="<%=request.getContextPath()%>/image/house/filter/<%=filtername%>"
+														style="width: 60%; height: 60%;">
+												</div>
+												<%
+													}
+												%>
+											</div>
 											<!-- Add Arrows -->
-										<div class="swiper-button-next "></div>
-										<div class="swiper-button-prev "></div>
-										<!-- Add Pagination -->
-										<div class="swiper-pagination"></div>
+											<div class="swiper-button-next "></div>
+											<div class="swiper-button-prev "></div>
+											<!-- Add Pagination -->
+											<div class="swiper-pagination"></div>
 										</div>
-									
+
 									</div>
-									
+
 								</div>
-									  
+
 							</div>
 						</div>
 					</div>
@@ -162,11 +228,8 @@
 						<div class="amienity">
 							AMIENITY
 							<div class="all">
-								<div>와이파이</div>
-								<div>옷장</div>
-								<div>타월</div>
-								<div>샴푸</div>
-								<div>컨디셔너</div>
+								<div><%=h.getAmenity()%></div>
+
 							</div>
 						</div>
 					</div>
@@ -174,14 +237,9 @@
 					<div class="test">
 						<div class="eqiipment">
 							EQUIPMENT
-							<div class="all">
-								<div>헤어드라이기</div>
-								<div>냉장고</div>
-								<div>전기포트</div>
-								<div>와인냉장고</div>
-								<div>전자레인지</div>
-								<div>토스트</div>
-								<div>TV</div>
+							<div class="all1">
+								<div><%=h.getEquipment()%></div>
+
 							</div>
 						</div>
 					</div>
@@ -189,144 +247,462 @@
 			</div>
 
 			<div class="houseinfobox2">
-				<div class="houseIntroduce2">바다와 하나가 된 듯한 느낌이 드는 인피니티풀은 여름을
-					제외한 4월~11월 기간 미온수 신청도 가능하여 쌀쌀한 봄, 가을날도 춥지 않게 수영을 즐길 수 있다. 또한 모든
-					객실에서 바베큐 그릴을 이용할 수 있다고 하니, 소중한 사람들과 함께 온전한 휴식을 즐기는데에 최적의 환경이 아닐까.
-					각박한 현실에서 벗어나 숨 돌릴 여유가 필요한 지금, 하늘과 바다를 품은 풀빌라에서의 황홀한 휴식이 기다리고 있다.</div>
-				<div class="houseinfo2"></div>				
-				
+				<div>
+					전하고 싶은말
+					<div class="houseIntroduce2"><%=h.getHouseGemsung()%></div>
+				</div>
+
 			</div>
-			<div class="reviewFilterScroll"></div>
-			<!-- 이건 상단바에서 후기 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-			
+
+			<div id="grade"></div>
 			<div class="gradeTitle">
-				★총 평점 후기()개
+
+				★평균 평점 (<%=grade%>)
 				<div class="writing">
-					<a href="<%=request.getContextPath()%>/house/review">글쓰기</a>
+					<%
+						if (m2 != null) {
+					%>
+					<a
+						href="<%=request.getContextPath()%>/house/review?houseNo=<%=h.getHouseNo()%>&memberNo=<%=m2.getMemberNo()%>">글쓰기</a>
+					<%
+						}
+					%>
 				</div>
 			</div>
-
 			<div class="comment">
-			<div class="swiper-container three">
-			<div class="swiper-wrapper threeButton">
-			<div class="gradePhoto"></div>
-				<div class="customer">
-					<div class="gradeall">
-						<div class="gradeinfo">
-							<div class="a">평점 :</div>
-							<br> <br> 
-							<div class="b">제목 :</div>
-							<br> <br> 
-							<div class="c">내용 :</div>
+				<%
+					if (list == null) {
+				%>
+				<span>후기없음</span>
+				<%
+					} else {
+				%>
+				<div class="swiper-container three">
+					<div class="swiper-wrapper threeButton">
+						<%
+							for (Review r : list) {
+						%>
+						<div class="swiper-slide">
+							<div class="gradePhoto">
+								<img
+									src="<%=request.getContextPath()%>/upload/review/<%=r.getFilePath()%>"
+									style="width: 100%; height: 100%;">
+							</div>
+							<div class="customer">
+								<div class="gradeall">
+									<div class="gradeinfo">
+
+										<div class="a">
+											평점 :<%=r.getHouseGrade()%></div>
+
+										<br> 
+										<div class="b">
+											제목 :<%=r.getCommentTitle()%>
+										</div>
+										<br>
+										<div class="c">
+											내용 :<%=r.getCommentContents()%>
+										</div>
+										
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+							}
+						%>
+					</div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
 					
-						</div>
-					</div>
-					
+
 				</div>
-						<div class="ex">댓글 등록하기</div>
-	
-			</div>
-  
-			
-			
-			<!-- Add Arrows -->
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-			<!-- Add Pagination -->
-			<div class="swiper-pagination"></div>
-			<!-- <div class="swiper-pagination"></div> -->
+				<%
+					}
+				%>
 			
 			</div>
 			
-				<!--  <div class="graderoom">트윈룸/유야동반(투숙객 정보)</div> -->
-			
+
+
+		
+		<div id="nearbyfacilities"></div>
+			<div class="map_wrap">
+				<div id="map"
+					style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+				<ul id="category">
+					<li id="BK9" data-order="0"><span class="category_bg bank"></span>
+						은행</li>
+					<li id="MT1" data-order="1"><span class="category_bg mart"></span>
+						마트</li>
+					<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
+						약국</li>
+					<li id="OL7" data-order="3"><span class="category_bg oil"></span>
+						주유소</li>
+					<li id="CE7" data-order="4"><span class="category_bg cafe"></span>
+						카페</li>
+					<li id="CS2" data-order="5"><span class="category_bg store"></span>
+						편의점</li>
+				</ul>
 			</div>
-			
-			
-			<div class="photoFilterScroll"></div>
-			<!-- 이건 상단바에서 주변시설 눌렀을때 해당 위치로 오라고 만들어준 DIV -->
-	
 
-			<div class="place">
-				<div class="placeSection">
-					<div class="placeSort">
-						<div class="placeinfo">
-							<div class="placename">
-								이름: <span> 인하준꽃집</span>
-							</div>
-							<div class="placeContents">
-								내용: <span>누가 꽃이게 알겠어? 욕하지마</span>
-							</div>
-							<div class="placeClassification">
-								분류: <span>기타</span>
-							</div>
+
+
+			<aside class="enrollbg active">
+
+				<div id="popup">
+					<div class="color"></div>
+					<div class="popupBtn">x</div>
+					<div class="popupContent">
+						<p class="popupTitle">게스트에게 답변해주기</p>
+						<div class="reasonBox">
+							<form action="<%=request.getContextPath()%>/board/boardWriteEnd"
+								method="post" enctype="multipart/form-data">
+								<table id='tbl-board'>
+									<div>
+										<div>제목 :</div>
+										<div>
+											<%-- <%=r.getCommentTitle()%>  --%>
+										</div>
+										<br>
+									</div>
+									<div>
+										<div>작성자 :</div>
+										<div>
+											<%-- <%=m.getNickName()%>  --%>
+										</div>
+										<br>
+									</div>
+
+									<div>
+										<div>내용</div>
+										<div>
+											<textarea rows="5" cols="45" name="content"></textarea>
+										</div>
+									</div>
+									<div>
+										<div colspan="2">
+											<input type="submit" value="등록하기" onclick="">
+										</div>
+									</div>
+								</table>
+							</form>
 						</div>
 					</div>
 
-					<div class="placeSort">
-						<div class="placeinfo">
-							<div class="placename">
-								이름: <span> hajun coffee</span>
-							</div>
-							<div class="placeContents">
-								내용: <span>밤에 잠안와 너무 잠이 안와 이건 하준 커피때문 하준이네 커피 중독적이야</span>
-							</div>
-							<div class="placeClassification">
-								분류: <span>일반음식점</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="placeSort">
-						<div class="placeinfo">
-							<div class="placename">
-								이름: <span> 하준이네 포차</span>
-							</div>
-							<div class="placeContents">
-								내용: <span>꽐라꽐라 그거 알아? 코알라가 술취한 사람들 같다고 해서 코알라 꼬알라 꽐라 꽐라 </span>
-							</div>
-							<div class="placeClassification">
-								분류: <span>음식점</span>
-							</div>
-						</div>
-					</div>
 				</div>
-				<div class="placemap"></div>
-			</div>
-			
-			
-			
-<div class="enrollbg">
-  <div id="popup">
-    <div class="color"></div>
-    <div class="popupBtn">x</div>
-    <div class="popupContent">
-        <p class="popupTitle">자세히 보기</p>
-        <div class="reasonBox">
-          제 1조 (총칙) 개인정보란 생존하는 개인에 관한 정보로서 당해 정보에 포함되어 있는 성명, 주민등록번호 등의 사항에 의하여 당해 개인을 식별할 수 있는 정보 (당해 정보만으로는 특정 개인을 식별할 수 없더라도 다른 정보와 용이하게 결합하여 식별할 수 있는 것을 포함합니다.) 를 말합니다. <br><br>
-          빈방은 귀하의 개인정보 보호를 매우 중요시하며, ‘정보통신망 이용촉진 및 정보보호에 관한 법률’ 상의 개인정보 보호규정 및 정보통신부가 제정한 ‘개인정보 보호지침’을 준수하고 있습니다. 빈방은 개인정보취급방침을 정하고 이를 귀하께서 언제나 쉽게 확인할 수 있게 공개하도록 하고 있습니다. <br><br><br>         
-          빈방은 개인정보 처리방침의 지속적인 개선을 위하여 개정하는데 필요한 절차를 정하고 있으며, 개인정보 처리방침을 회사의 필요한 사회적 변화에 맞게 변경할 수 있습니다. <br><br>
-           그리고 개인정보처리방침을 개정하는 경우 버전번호 등을 부여하여 개정된 사항을 귀하께서 쉽게 알아볼 수 있도록 하고 있습니다. <br><br>
-           제 2조 (수집하는 개인정보 항목 및 수집방법) 빈방은 별도의 회원가입 절차 없이 대부분의 컨텐츠에 자유롭게 접근할 수 있습니다. <br><br>
-           빈방에서 예약 및 프로모션. 이벤트 서비스를 이용하시고자 할 경우 다음의 정보를 입력해주셔야 합니다.<br> <br>
-           입력항목 : 희망ID, 비밀번호, 성명, 이메일주소 또한 서비스 이용과정이나 사업 처리 과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다. <br><br>
-           최근접속일, 접속 IP 정보, 쿠키, 구매로그, 이벤트로그 회원가입 시 회원이 원하시는 경우에 한하여 추가 정보를 선택, 제공하실 수 있도록 되어있으며, 일부 재화 또는 용역 상품에 대한 주문 및 예약 시 회원이 원하는 정확한 주문 내용 파악을 통한 원활한 고객 응대 및 예약 처리를 위하여 추가적인 정보를 요구하고 있습니다. <br><br>
-           빈방은 다음과 같은 방법으로 개인정보를 수집합니다.
-        </div>
-    </div>
 
-  </div>
-</div>
+			</aside>
 
 		</section>
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
-	<script src="<%=request.getContextPath() %>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath() %>/js/common/heart.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/houseDetailHeader.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/houseDetailSwiper.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/filter.js"></script>
-	<script src="<%=request.getContextPath() %>/js/house/housePopup.js"></script>
+	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
+	<script src="<%=request.getContextPath()%>/js/house/housePopup.js"></script>
+	<script>
+	//amenity 숙소에 split를 통해서 , 기준으로 자르는 js
+	let amenity = '<%=h.getAmenity()%>';
+    
+    const words = amenity.split(',');
+     
+     let a = $("<div>");
+     $(".amienity > .all ").html("");
+     for(let i = 0; i<words.length; i++) {   
+        $(".amienity > .all").append($("<div>").html(words[i]));
+     }
+     
+ 	//eqiipment 숙소에 split를 통해서 , 기준으로 자르는 js
+     let eqiipment = '<%=h.getEquipment()%>';
+     
+     const words1 = eqiipment.split(',');
+     
+      let a1 = $("<div>");
+      $(".eqiipment > .all1 ").html("");
+      for(let i = 0; i<words1.length; i++) {   
+         $(".eqiipment > .all1").append($("<div>").html(words1[i]));
+      }
 
+    
+   
+
+		function fn_loginPopUp() {
+		 	const url = "<%=request.getContextPath()%>/loginPopUp";
+			const title = "loginPopUp";
+			const status = "left=100px, top=100px, width=500px, height=300px";
+			open("", title, status);
+
+			loginPopUp.target = title;
+			loginPopUp.action = url;
+			loginPopUp.method = "post";
+
+			loginPopUp.submit();
+		}
+		//관심숙소 있으면 하트아이콘 켜기
+<%-- 		<div class="heartCommon heart"></div>
+						<input type="hidden" class="houseNoPopUp" name="houseNo" value="<%=h.getHouseNo()%>"> --%>
+		let favorite=<%=request.getAttribute("favoriteJson")%>
+		let hNo=$(".houseNoPopUp").val();
+		for(let f in favorite){
+			if(favorite[f].houseNo==hNo){
+				$(".heartCommon").addClass("fav");
+				$(".heartCommon").removeClass("heart");
+			}
+			
+		}
+		
+		//관심숙소 버튼눌렀을때
+	       $(".heartCommon").on("click", e => {
+	          let login = "";
+	          let loginNo = "";
+
+	         <%if (m2 != null) {%>
+	            login = '<%=m2%>';
+	            loginNo = '<%=m2.getMemberNo()%>';
+	         <%}%>
+	         if(login == "") {
+	            alert("로그인한 회원만 이용가능합니다.");
+	            fn_loginPopUp();
+	         }  else {
+	            //관심숙소 고르는 팝업으로 넘어가기
+	            fn_favoritePopUp(e);
+	         }   
+	      });
+	      //로그인 안되어있다면 로그인팝업 호출
+	      function fn_loginPopUp() {
+	          const url = "<%=request.getContextPath()%>/loginPopUp";
+	            const title = "loginPopUp";
+	            const status = "left=100px, top=100px, width=500px, height=500px";
+	            open(url,title,status); 
+	       }
+	    //로그인 되어있다면 관심숙소 팝업 호출
+			function fn_favoritePopUp(e) {
+				const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
+		   		const title = "favoritePopUp";
+		   		const status = "left=100px, top=100px, width=500px, height=500px";
+		   		open(url,title,status);  				 
+			 }
+
+	</script>
+	<!-- 지도 -->
+	<script>
+		// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+		var placeOverlay = new kakao.maps.CustomOverlay({zIndex:1}), 
+		    contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
+		    markers = [], // 마커를 담을 배열입니다
+		    currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+		 
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+		        level: 5 // 지도의 확대 레벨
+		    };  
+		
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		//주소-좌표 변환 객체를 생성
+		var geocoder = new daum.maps.services.Geocoder();
+		//주소부분만 바꿔주면 됨
+		geocoder.addressSearch("<%=h.getHouseLocation()%>", function(results,
+				status) {
+			// 정상적으로 검색이 완료됐으면
+			if (status === daum.maps.services.Status.OK) {
+				var result = results[0]; //첫번째 결과의 값을 활용
+				console.log(result);
+		
+				// 해당 주소에 대한 좌표를 받아서
+				var coords = new daum.maps.LatLng(result.y,
+						result.x);
+		
+				// 지도 중심을 변경한다.
+				map.setCenter(coords);
+				// 마커를 결과값으로 받은 위치로 옮긴다.
+				marker.setPosition(coords)
+			}
+		});
+		
+		// 장소 검색 객체를 생성합니다
+		var ps = new kakao.maps.services.Places(map); 
+		
+		// 지도에 idle 이벤트를 등록합니다
+		kakao.maps.event.addListener(map, 'idle', searchPlaces);
+		
+		// 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다 
+		contentNode.className = 'placeinfo_wrap';
+		
+		// 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
+		// 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 kakao.maps.event.preventMap 메소드를 등록합니다 
+		addEventHandle(contentNode, 'mousedown', kakao.maps.event.preventMap);
+		addEventHandle(contentNode, 'touchstart', kakao.maps.event.preventMap);
+		
+		// 커스텀 오버레이 컨텐츠를 설정합니다
+		placeOverlay.setContent(contentNode);  
+		
+		// 각 카테고리에 클릭 이벤트를 등록합니다
+		addCategoryClickEvent();
+		
+		// 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
+		function addEventHandle(target, type, callback) {
+		    if (target.addEventListener) {
+		        target.addEventListener(type, callback);
+		    } else {
+		        target.attachEvent('on' + type, callback);
+		    }
+		}
+		
+		// 카테고리 검색을 요청하는 함수입니다
+		function searchPlaces() {
+		    if (!currCategory) {
+		        return;
+		    }
+		    
+		    // 커스텀 오버레이를 숨깁니다 
+		    placeOverlay.setMap(null);
+		
+		    // 지도에 표시되고 있는 마커를 제거합니다
+		    removeMarker();
+		    
+		    ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
+		}
+		
+		// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+		function placesSearchCB(data, status, pagination) {
+		    if (status === kakao.maps.services.Status.OK) {
+		
+		        // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+		        displayPlaces(data);
+		    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+		        // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
+		
+		    } else if (status === kakao.maps.services.Status.ERROR) {
+		        // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
+		        
+		    }
+		}
+		
+		// 지도에 마커를 표출하는 함수입니다
+		function displayPlaces(places) {
+		
+		    // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+		    // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+		    var order = document.getElementById(currCategory).getAttribute('data-order');
+		
+		    
+		
+		    for ( var i=0; i<places.length; i++ ) {
+		
+		            // 마커를 생성하고 지도에 표시합니다
+		            var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order);
+		
+		            // 마커와 검색결과 항목을 클릭 했을 때
+		            // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+		            (function(marker, place) {
+		                kakao.maps.event.addListener(marker, 'click', function() {
+		                    displayPlaceInfo(place);
+		                });
+		            })(marker, places[i]);
+		    }
+		}
+		
+		// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+		function addMarker(position, order) {
+		    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+		        imageSize = new kakao.maps.Size(27, 28),  // 마커 이미지의 크기
+		        imgOptions =  {
+		            spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
+		            spriteOrigin : new kakao.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+		            offset: new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+		        },
+		        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+		            marker = new kakao.maps.Marker({
+		            position: position, // 마커의 위치
+		            image: markerImage 
+		        });
+		
+		    marker.setMap(map); // 지도 위에 마커를 표출합니다
+		    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+		
+		    return marker;
+		}
+		
+		// 지도 위에 표시되고 있는 마커를 모두 제거합니다
+		function removeMarker() {
+		    for ( var i = 0; i < markers.length; i++ ) {
+		        markers[i].setMap(null);
+		    }   
+		    markers = [];
+		}
+		
+		// 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
+		function displayPlaceInfo (place) {
+		    var content = '<div class="placeinfo">' +
+		                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+		
+		    if (place.road_address_name) {
+		        content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
+		                    '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+		    }  else {
+		        content += '    <span title="' + place.address_name + '">' + place.address_name + '</span>';
+		    }                
+		   
+		    content += '    <span class="tel">' + place.phone + '</span>' + 
+		                '</div>' + 
+		                '<div class="after"></div>';
+		
+		    contentNode.innerHTML = content;
+		    placeOverlay.setPosition(new kakao.maps.LatLng(place.y, place.x));
+		    placeOverlay.setMap(map);  
+		}
+		
+		
+		// 각 카테고리에 클릭 이벤트를 등록합니다
+		function addCategoryClickEvent() {
+		    var category = document.getElementById('category'),
+		        children = category.children;
+		
+		    for (var i=0; i<children.length; i++) {
+		        children[i].onclick = onClickCategory;
+		    }
+		}
+		
+		// 카테고리를 클릭했을 때 호출되는 함수입니다
+		function onClickCategory() {
+		    var id = this.id,
+		        className = this.className;
+		
+		    placeOverlay.setMap(null);
+		
+		    if (className === 'on') {
+		        currCategory = '';
+		        changeCategoryClass();
+		        removeMarker();
+		    } else {
+		        currCategory = id;
+		        changeCategoryClass(this);
+		        searchPlaces();
+		    }
+		}
+		
+		// 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+		function changeCategoryClass(el) {
+		    var category = document.getElementById('category'),
+		        children = category.children,
+		        i;
+		
+		    for ( i=0; i<children.length; i++ ) {
+		        children[i].className = '';
+		    }
+		
+		    if (el) {
+		        el.className = 'on';
+		    } 
+		} 
+		</script>
 </body>
 </html>

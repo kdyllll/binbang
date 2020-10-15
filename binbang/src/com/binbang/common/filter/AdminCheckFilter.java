@@ -42,7 +42,7 @@ public class AdminCheckFilter implements Filter {
 		HttpServletRequest rq = (HttpServletRequest) request;
 		HttpSession session = rq.getSession(false);
 		Member m = (Member) session.getAttribute("m");
-		if (m == null || !m.getEmail().equals("admin")) {
+		if (m == null || !m.getEmail().equals("admin@naver.com")) {
 			rq.setAttribute("msg", "관리자만 접근가능합니다.");
 			rq.setAttribute("loc", "/mainMove");
 			rq.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);

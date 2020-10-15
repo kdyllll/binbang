@@ -20,14 +20,7 @@
     border: 0.5px solid rgba(223, 222, 222, 0.685);
 }
 
-.section2{
-    /* 검색 리스트 구역 크기 */
-    width:100%;
-    margin-top:20px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
+
 
 /* 정렬구역 */
 ul.box {
@@ -108,7 +101,12 @@ ul.box {
     background-color: #74b1bf;
 }
 
-
+.section2{
+    /* 검색 리스트 구역 크기 */
+    width:100%;
+    margin-top:50px;
+    position: relative;
+}
 
 
 .box{
@@ -116,33 +114,44 @@ ul.box {
     display: none;
 }
 
-
+#pageBar{
+    height:20px;
+    text-align:center;
+}
 /* 검색구역 */
 /* 지도 */
+
 .map{
+
     width: 400px;
     height: 500px;
-    border: 1px solid;
-    bottom: 20px;
-    position: fixed;
+    display:inline-block;
+    vertical-align: top;
+
 }
 
-.map.on {
-    position: absolute;
-    
-  }
+.listCon{
 
-
-
-
+    margin-left: 50px;
+    width:calc(100% - 480px);
+    display:inline-block;
+    align-items: flex-start;
+  
+   
+}
+#pageBar{
+    height:30px;
+    margin-top:10px;
+}
 /* 숙소리스트 */
 .list{
-    
-    width:1000px;
-    /* height:590px; */
+    /* border:1px solid red;  */
+    width:100%;
+   /*  display:inline-block; */
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-flow:wrap; 
+    /* justify-content: space-between; */
+    
     
 }
 .list > div{
@@ -155,13 +164,21 @@ ul.box {
     flex-direction: column;
     align-items: center;
     background-color: rgba(255,255,255,0.5);
+    margin-right:20px;
 }
 
-.list > div > a{
+.housePicBtn{
     /* 숙소리스트의 사진 */
-    width: 100%;
+    width: 300px;
     height: 280px;
-    background-size:cover;
+    border: none;
+    outline:0;
+    background-color: rgba(255, 255, 255, 0);
+}
+.housePic{
+	width:100%;
+	height:100%;
+	 background-size:cover;
 }
 
 .contentSection1{
@@ -179,12 +196,13 @@ ul.box {
     /* 숙소이름 */
     font-size: 20px;
     font-weight: bolder;
+    width:220px;
 }
+
 .heartCommon{
     /* 관심숙소 버튼 */
-    width: 25px;
+    width:25px;
     height:25px;
-    
     margin-right:5px;
     cursor: pointer;
 }
@@ -217,9 +235,17 @@ ul.box {
     justify-content: space-between;
     align-items: center;
 }
-.contentBox{
+.box1{
     /* 숙소정보라인의 한 덩어리들 */
-    width:130px;
+    width:140px;
+    height:100%;
+    /* border:1px solid; */
+    display:flex;
+    align-items: center;
+}
+.box2{
+    /* 숙소정보라인의 한 덩어리들 */
+    width:120px;
     height:100%;
     /* border:1px solid; */
     display:flex;
@@ -228,7 +254,7 @@ ul.box {
 .houseLine2{
     /* 숙소정보라인을 나누는 선 */
     width: 280px;
-    height: 1px;
+    height: 0.8px;
     background-color: gray;
 }
 .contentBox > div{
@@ -240,7 +266,7 @@ ul.box {
 }
 .contentBox > p{
     /* 숙소정보의 글자들 */
-    font-size: 14px;
+    font-size: 12px;
     color:gray;
 }
 
@@ -251,33 +277,7 @@ ul.box {
     margin-right: 10px;
 }
 
-.housePic1{
-    background-image:  url("../../image/house/houseSearch/house/house1.jpg");
-}
-.housePic2{
-    background-image:  url("../../image/house/houseSearch/house/house2.jpg");
-}
-.housePic3{
-    background-image:  url("../../image/house/houseSearch/house/house3.png");
-}
-.housePic4{
-    background-image:  url("../../image/house/houseSearch/house/house4.jpg");
-}
-.housePic5{
-    background-image:  url("../../image/house/houseSearch/house/house5.webp");
-}
-.housePic6{
-    background-image:  url("../../image/house/houseSearch/house/house6.png");
-}
-.housePic7{
-    background-image:  url("../../image/house/houseSearch/house/house7.jpg");
-}
-.housePic8{
-    background-image:  url("../../image/house/houseSearch/house/house8.webp");
-}
-.housePic9{
-    background-image:  url("../../image/house/houseSearch/house/house9.jpg");
-}
+
 .iconLocation{
     background-image: url("../../image/house/houseSearch/listicon/pin.png");
 }
@@ -289,4 +289,8 @@ ul.box {
 }
 .iconPeople{
     background-image: url("../../image/house/houseSearch/listicon/user.png");
+}
+
+.disnone{
+    display: none;
 }

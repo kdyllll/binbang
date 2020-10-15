@@ -18,7 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /**
  * Servlet implementation class HostEnrollEndServlet
  */
-@WebServlet("/host/hostEnrollEnd")
+@WebServlet("/hostEnrollEnd")
 public class HostEnrollEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,11 +37,13 @@ public class HostEnrollEndServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			request.setAttribute("msg", "요청정보가 이상합니다. 관리자에게 문의하세요");
-			request.setAttribute("loc", "/host/hostEnroll");
+			request.setAttribute("loc", "/hostEnroll");
 			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);;
 			return;
 		}
 		String path = getServletContext().getRealPath("/upload/host");
+		File dir= new File(path);
+		if(!dir.exists()) dir.mkdirs();
 		String encode = "UTF-8";
 		int maxSize = 1024*1024*50;
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();

@@ -33,19 +33,20 @@ public class MemberLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String userId = request.getParameter("userId");
-		String userPw = request.getParameter("password");
-		String saveId=request.getParameter("saveId");
+		String userId = request.getParameter("userId").trim();
+		String userPw = request.getParameter("password").trim();
+		String saveId=request.getParameter("saveId").trim();
 		
+		//Id저장
 		if(saveId!=null) {
 			Cookie c= new Cookie("saveId",userId);
 			c.setMaxAge(24*60*60);
 			response.addCookie(c);
-		}else {
+		}else{
 			Cookie c= new Cookie("saveId","");
 			c.setMaxAge(0);
 			response.addCookie(c);
-		}
+		}		
 		
 		Member m= new MemberService().selectMember(userId,userPw);
 		
@@ -57,6 +58,7 @@ public class MemberLoginServlet extends HttpServlet {
 			session.setAttribute("m", m);
 	        response.sendRedirect(request.getContextPath()+"/mainMove");
 		}else {
+			System.out.println("아이디나 패스워드 일치하지 않음");
 			msg = "아이디나 패스워드가 일치하지 않습니다";
 			loc="/member/moveLoginPage";
 			request.setAttribute("msg", msg);

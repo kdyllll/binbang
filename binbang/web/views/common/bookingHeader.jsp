@@ -2,11 +2,14 @@
 	pageEncoding="UTF-8"%>
 <header class="header headerColor">
 	<a href="#" class="logo"></a>
-	<div class="bookingPage">booking</div>
+	<a href="<%=request.getContextPath() %>/mainMove" class="bookingPage">booking</a>
 	<div class="headerBtn" id="headerBtn">
 		<div id="ham"></div>
 		<div id="ham"></div>
 		<div id="ham"></div>
 	</div>
+	
+	
+	
 	<%@ include file="/views/common/nav.jsp" %>
 </header>

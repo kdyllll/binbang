@@ -7,8 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
 import com.binbang.host.model.service.HostService;
 import com.binbang.host.model.vo.Host;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class HostInfoChange
@@ -30,9 +34,28 @@ public class HostInfoUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String hostIntro = request.getParameter("hostIntro");
-		String memberNo = request.getParameter("memberNo");
-		int result = new HostService().updateHostInfo(hostIntro, memberNo);
+		
+		if(!ServletFileUpload.isMultipartContent(request)) {
+			request.setAttribute("msg", "요청정보가 이상합니다. 관리자에게 문의하세요");
+			request.setAttribute("loc", "/hostEnroll");
+			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);;
+			return;
+		}
+		String path = getServletContext().getRealPath("/upload/host");
+		String encode = "UTF-8";
+		int maxSize = 1024*1024*50;
+		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+		MultipartRequest mr = new MultipartRequest(request,path,maxSize,encode,rename);
+		
+		String hostIntro = mr.getParameter("hostIntro");
+		String memberNo = mr.getParameter("memberNo");
+		String profilePic = mr.getFilesystemName("uploadImg");
+		System.out.println(profilePic);
+		if(profilePic == null) {
+			profilePic = mr.getParameter("profilePicOri");
+			System.out.println(profilePic);
+		}
+		int result = new HostService().updateHostInfo(hostIntro,profilePic, memberNo);
 		
 		String msg = "";
 

@@ -1,61 +1,92 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="java.text.Normalizer.Form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>	
 <%@ include file="/views/common/commonLink.jsp"%>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/member/favoriteFolder.css" />
+<%@ page import = "com.binbang.member.model.vo.Favorite, com.binbang.member.model.vo.Member" %>
+<%@page import="java.util.List"%>	
 
+<% 
+	List<Favorite> list = (List) request.getAttribute("list");  			
+%>
+
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/favoriteFolder.css" />
 </head>
 <body>
 	<div class="wrap">
 		<%@ include file="/views/common/header.jsp"%>
-		<!-- 관심숙소 -->
-		<section class="section">
-			<div class="line1">
-				<p>관심숙소</p>
-				<br>
-				<div class="listLine"></div>
-			</div>
+		
+		
+		<!-- 관심숙소list -->
+	<section class="section">
+					<form class="folderCreate" method="post">
+						<div class="line1">
+							<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">																																		
+							<p>관심숙소</p>				
+							<div class="listLine"></div>
+						</div>				
+						
+						<!-- 관심숙소폴더 -->
+						<div class="favorite">
+							<!-- 목록만들기 팝업 -->
+							<input type="button" id="listBuildBtn" value="목록만들기" >				
+			
+							<div class="listPop listDisNone">										
+									<div id="popupContent">						
+										<div class="popupHeader">
+											<p class="makingTitle">목록만들기</p>
+											<button class="xBtn">x</button>
+										</div>
+											
+										<div class="popupSection">
+											<input  type="text" id="folderName" placeholder="이름" name="folderName">
+											<input type="button" id="checkBtn" value="저장" onclick="fn_createFolder();"> 							
+										</div>																									
+									</div>											
+							</div>
+								
+						</div>			
+					</form>
 
-			<!-- 관심숙소폴더 -->
-			<div class="favorite">
-
-				<!-- 목록만들기 팝업 -->
-				<button id="listBuildBtn">목록만들기</button>
-
-				<div class="listPop listDisNone">
-					<div id="popupContent">
-						<div class="popupHeader">
-							<p>목록만들기</p>
-							<button class="xBtn">x</button>
-						</div>
-
-						<div class="line2"></div>
-
-						<div class="popupSection">
-							<input id="listName" type="text" placeholder="이름">
-						</div>
-
-						<div class="line2"></div>
-
-						<div class="popupFooter">
-							<button id="checkBtn">저장</button>
-						</div>
-
+					<div class="favoriteList">
+								<% for(Favorite f : list){%>
+										<form class="folderContents" method="post">													
+ 														<input type="hidden" value="<%=f.getFolderNo() %>" name="folderNo" readonly> 
+														<input type="hidden" value="<%=f.getFolderName() %>" name="folderName" readonly>
+ 														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
+														<input type="submit" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
+														<p class="folderName"><%=f.getFolderName() %> Folder</p>
+														<input type="submit" id="deleteBtn" value="폴더삭제" onclick="fn_folderDelete();">																																																														
+										</form>																											
+								<%}%>											
 					</div>
-				</div>
-
-				<div class="favoriteList">
-					<a href="<%=request.getContextPath() %>/member/favoriteContents" class="eachList">
-						<div class="recomPic1 recommon"></div>
-						<div class="favoriteContents"></div>
-					</a>
-				</div>
-			</div>
-
 		</section>
-
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
+	
+	<script>
+		//목록만들기버튼		
+		  //x버튼, 팝업버튼
+		  $(document).ready(function () {
+			  $("#listBuildBtn").on("click",function(e){
+			    	$(".listPop").removeClass("listDisNone");
+			 	});
+			  $(".xBtn").on("click",function(e){
+			      $(".listPop").addClass("listDisNone");
+			    });   		    		 		    		    
+		  });
+		function fn_createFolder(){
+			$(".folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
+		}			
+		function fn_toContent(){			
+			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();									
+		}
+		function fn_folderDelete(){
+		 	$(".folderContents").attr("action","<%=request.getContextPath()%>/favorite/deleteFolder").submit();
+		}
+				
+	</script>
+	
+	
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
 	<script src="<%=request.getContextPath()%>/js/member/favorite.js"></script>
 </body>

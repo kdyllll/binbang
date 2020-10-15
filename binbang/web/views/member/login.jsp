@@ -5,8 +5,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/login.css" />
 <%
 	
-	Member loginMember=(Member)session.getAttribute("loginMember");
-	
 	Cookie[] cookies=request.getCookies();
 	String saveId=null;
 	if(cookies!=null){
@@ -19,6 +17,7 @@
 
 %>
 
+
 </head>
 <body>
 	<div class="wrap">
@@ -27,15 +26,14 @@
 		<section class="section">
 
 			<div class="loginContainer">
+			
 				<form id="loginFrm" method="post" action="<%=request.getContextPath() %>/member/login">
 					<p class="loginTitle">LogIn</p>
 					<div class="loginLine"></div>
 
 					<input type="text" class="login" name="userId"
-						placeholder="아이디(이메일) 입력해주세요" value='<%=saveId!=null?saveId:"" %>'> 
-					<input type="password"
-						class="login" name="password" placeholder="비밀번호 입력해주세요">
-
+						placeholder="아이디(이메일) 입력하세요" value='<%=saveId!=null?saveId:"" %>'> 
+					<input type="password" class="login" name="password" placeholder="비밀번호 입력하세요">
 					<div class="saveIdDiv">
 						<input type="checkbox" name="saveId" id="saveId" checked>
 						<label for="saveId">아이디 저장</label>
@@ -51,21 +49,6 @@
 					</div>
 
 					<div class="loginLine2"></div>
-
-					<div class="loginBtns">
-						<a href="#" class="buttonDiv">
-							<div id="naverImage"></div>
-							<span id="naverLogin">Naver 로그인</span>
-						</a>
-						<a href="#" class="buttonDiv">
-							<div id="kakaoImage"></div>
-							<span id="kakaoLogin">Kakao 로그인</span>
-						</a>
-						<a href="#" class="buttonDiv">
-							<div id="googleImage"></div>
-							<span id="googleLogin">Google 로그인</span>
-						</a>
-					</div>
 
 				</form>
 
@@ -85,12 +68,9 @@
 	             const url="<%=request.getContextPath()%>/member/findPassword";
 	             const status="width=500px,height=450px,top=150px,left=150px";
 	             open(url,"",status);
-	          });
-	          
-	          
-	          
+	          });	          	          	          
 	       });
-			
+
 		</script>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

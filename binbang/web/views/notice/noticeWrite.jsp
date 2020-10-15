@@ -13,9 +13,8 @@
         <div class="line"></div>
 
         <div class="enrollNotice">
-         <form action="">
-
-          <p >게시글 제목</p>
+         <form action="<%=request.getContextPath() %>/notice/noticeWriteEnd" >
+          <p>게시글 제목</p>
 
           <div id="noticeCategoryDiv">
             <select class="noticeCategory" name="noticeCategory">
@@ -28,14 +27,15 @@
           </div>
 
 
-       <p >게시글 내용</p><br>
+       		<p>게시글 내용</p><br>
           <textarea id="noticeContent" name="noticeContent"></textarea>
-
-         </form>
-        </div>
-
-        <div class="enrollButton"><a href="<%=request.getContextPath() %>/notice/noticeWriteEnd" class="enroll">등록하기</a></div>
-
+		
+			<div id="btnDiv"><input type="submit" class="enroll" value="등록하기"></div>
+         
+	   	</form>
+	    </div>
+	
+		
         <div class="line"></div>
 
 
@@ -45,7 +45,34 @@
    
     </div>
    <script>
-      CKEDITOR.replace( 'noticeContent' );     
+       CKEDITOR.replace( 'noticeContent' ); 
+      
+   
+    
+      <%--  var content=CKEDITOR.instances.noticeContent.getData();
+      $(".enroll").click(e => {
+      $.ajax({
+ 		url:"<%=request.getContextPath()%>/notice/noticeWriteEnd",
+ 		type:"post",
+ 		dataType:"html",
+ 		data:{"noticeContent":content},
+ 		success:data => {
+ 			console.log(data);
+ 		}
+ 	}); 
+      });  --%>
+    
+      <%-- $.ajax({
+		url:"<%=request.getContextPath()%>/notice/noticeDetailView"
+	}); 
+      
+      var formId = '<?=$getFormId?>';    //해당 폼 id 값 가져온다
+      console.log("formId:"+formId);
+      $.get("appr-form/form_"+formId+".html").done(function (data) {    //id값이 포함된 html형식 가져오면 해당내용 셋팅
+       CKEDITOR.instances["noticeContent"].setData(data);
+      });
+       --%>
+    
    </script>
    
 </body>

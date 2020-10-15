@@ -45,7 +45,7 @@
     text-align: center;
     border-left-style: none;
     border-right-style: none;
-    border-top: 5px double black;
+  /*   border-top: 5px double black; */
     
 }
 
@@ -84,5 +84,9 @@
 /* 테이블에서 '등록일' */
 .postDate{
     width:130px;
+}
+
+.pageBar{
+	text-align:center;
 }
 

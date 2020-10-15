@@ -14,7 +14,9 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MemberPasswordUpdate
  */
-@WebServlet(name="updatePassword" ,urlPatterns="/member/memberPasswordUpdate")
+
+/* mypage 비밀번호 변경 */
+@WebServlet(name="updatePassword" ,urlPatterns="/mypage/memberPasswordUpdate")
 public class MemberPasswordUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,22 +33,22 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
-		String oriPw=request.getParameter("ori_pw");
-		String newPw=request.getParameter("new_pw");
-		String email=request.getParameter("email");
+		String newPw=request.getParameter("new_pw");//변경할 비밀번호(입력)
+		String email=request.getParameter("email2");
+		System.out.println(newPw);
+		System.out.println(email);
 		
-		int result=new MemberService().updatePassword(oriPw,newPw,email);
+		
+		int result=new MemberService().updatePassword(email,newPw);
+		System.out.println(result);
 		
 		String msg="";
-		String loc="";
+		String loc="/mypage/myPage?email="+email;	
 		
 		if(result>0) {
-			msg="Password 수정완료";
-			loc="/member/updatePassword?email="+email;			
+			msg="Password 수정완료";						
 		}else {
-			msg="Password 변경실패";
-			loc="/member/myPage";
+			msg="Password 변경실패";			
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

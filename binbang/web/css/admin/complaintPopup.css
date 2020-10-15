@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+  /* 팝업창 */
+  .complainPopup {
+    padding:2% 5%;
+  }
+
+  /* 팝업 타이틀 */
+  .popupTitle{
+   margin: 0 10%;
+    font-size:25px;
+    color:black;
+    text-align: right;
+    font-weight:700;
+  }
+ 
+/* 팝업 제목과 버튼 사이 선  */
+.line{
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+    background-color: black;
+}
+
+.reasonBox{
+    border:1px solid black;
+    padding: 5%;
+    margin-top:20px;
+    overflow-y:scroll;
+    height:120px;
+ }
+ 
+ /*항목들*/
+ .complainTitle{
+ 	padding:5px 0;
+ 	font-weight: bolder;
+ }
+ 
+ /*사진*/
+ .picDiv{
+ 	float:right;
+/* 	border:1px solid black; */ 
+ 	width:350px;
+ 	height:220px;
+ 	overflow: hidden;
+    display: flex;
+    align-items: center;
+   	justify-content:center; 
+            
+ }
+ 
+ .pic{
+    max-width: 350px;
+    max-height: 220px;
+}
+ }

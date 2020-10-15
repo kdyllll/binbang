@@ -5,9 +5,6 @@ $(".picture").on("change",function(e){
     var fileValue = $(e.target).val().split("\\");
     var fileName = fileValue[fileValue.length-1]; // 파일명
     $(e.target).prev().children("p").html(fileName);
-    
-    
-
 });
 //메인사진 미리보기
 $("#picture1").on("change",function(e){ 
@@ -39,3 +36,4 @@ $(".deleteDate").on("click",function(e){
 	console.log($(e.target));
     $(e.target).siblings().children("input").val("");
 });
+

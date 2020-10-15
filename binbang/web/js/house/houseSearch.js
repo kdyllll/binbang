@@ -9,9 +9,9 @@ $(".btnText").on("click", function (e) {
 });
 
 //정렬에서 선택하면 부모칸에 선택한 항목 이름 나옴
-$(".btnCon li").on("click", function (e) {
+$("#houseSort > li").on("click", function (e) {
 let a = $(e.target).html();
-$(e.target).parent().prev().children("p").html(a);
+$(".pSort").html(a);
 $(e.target).parent().addClass("box");
 });
 
@@ -20,19 +20,3 @@ $(".selectBtn").on("click", function(e){
 $(e.target).parent().parent().toggleClass("box");
 });
 
-
-
-//지도 움직임
-$(function () {
-    var w = $(window);
-    let footerHei = $(".footer").outerHeight();
-    let banner = $(".map");
-
-    w.on("scroll", function () {
-      var sT = w.scrollTop();
-      var val = $(document).height() - w.height() - footerHei;
-
-      if (sT >= val) banner.addClass("on");
-      else banner.removeClass("on");
-    });
-  });

@@ -27,7 +27,12 @@ public class HouseReviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		   request.getRequestDispatcher("/views/house/review.jsp").forward(request,response);
+		
+			String houseNo=(request.getParameter("houseNo"));
+			String memberNo=(request.getParameter("memberNo"));
+			request.setAttribute("houseNo", houseNo);
+			request.setAttribute("memberNo", memberNo);
+		    request.getRequestDispatcher("/views/house/review.jsp").forward(request,response);
 	}
 
 	/**

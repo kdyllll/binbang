@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+
+#emailCheck {
+	text-align: center;
+	padding: 10%;
+}
+
+/* 중복된 이메일일떄 */
+span#duplicated {
+	color: red;
+	font-weight: bolder;
+}
+.line1{
+	margin: 10% 0;
+	align-items: flex-end;
+}
+
+.passDuplicate{
+	width: 70%;
+	height: 35px;
+	border: 0;
+	outline: 0;
+	border-bottom: 0.5px solid;	
+}
+
+.popFooter form{
+	        display:flex;
+        justify-content: space-between;
+}
+
+
+
+
+/* 중복이 아닌 이메일일때 */
+.line2{
+	margin:10% 0;
+	display:flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+div#emailCheck {
+	text-align: center;
+	padding-top: 50px;
+}
+
+
+.title {
+	margin: 0 10%;
+	font-size: 25px;
+	color: black;
+	text-align: right;
+	font-weight: 700;
+}
+
+#emailCheck .line {
+	width: 100%;
+	height: 2px;
+	margin: 20px 0;
+	background-color: black;
+}
+#numberFrm{
+	display:flex;
+	justify-content: space-between;
+}
+
+
+
+/* 이메일,인증번호 입력창 */
+.passNumber {
+	width: 350px;
+	height: 35px;
+	border: 0;
+	outline: 0;
+	border-bottom: 0.5px solid;
+}
+
+
+
+/* 인증하기, 인증확인 버튼 */
+#resendBtn, #numConfirm, .emailConfirm {
+	width: 80px;
+	height: 35px;
+	background-color: black;
+	color: white;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	float:right;
+}
+/* 중복재확인 버튼 */
+ #duplicateRetry{
+ 	width: 80px;
+	height: 35px;
+	background-color: black;
+	color: white;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+ }
+ 
+ /* email재전송 */
+ #resend{
+  display: flex;
+  justify-content: space-between;
+}
+#timer{
+  margin-top : 15px;
+    text-align: left;
+    font-size : 15px;
+    color:rgb(253, 94, 94);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

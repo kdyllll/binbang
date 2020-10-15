@@ -1,6 +1,7 @@
 package com.binbang.booking.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +28,34 @@ public class BookingFinalServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/booking/reserveInfo.jsp").forward(request,response);
+		String no=request.getParameter("houseNo");
+		String in=request.getParameter("checkIn");
+		String out1=request.getParameter("checkOut");
+		String price=request.getParameter("totalPrice");
+		String totalPoint=request.getParameter("totalPoint");
+		String oriPrice=request.getParameter("originalPrice");
+		String totalPoints = request.getParameter("totalPoints");
+		String memberNo=request.getParameter("m");
+		String guestName = request.getParameter("guestName");
+		String pNum = request.getParameter("pNum");
+		String pay = request.getParameter("pay");
+		
 
+	
+		request.setAttribute("houseNo",no);
+		request.setAttribute("checkIn",in);
+		request.setAttribute("checkOut",out1);
+		request.setAttribute("totalPrice",price);
+		request.setAttribute("oriPrice",oriPrice);
+		request.setAttribute("totalPoint",totalPoint);
+		request.setAttribute("totalPoints",totalPoints);
+		request.setAttribute("guestName", guestName);
+		request.setAttribute("m",memberNo);
+		request.setAttribute("pNum", pNum);
+		request.setAttribute("pay", pay);
+		request.getRequestDispatcher("/views/booking/pay.jsp?houseNo="+no).forward(request,response);
+
+		
 	}
 
 	/**

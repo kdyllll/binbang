@@ -34,63 +34,53 @@
     margin-top: 20px;
 }
 
-#memberAll, #reserveAll, #hostAll,#hostList, #acceptList, #blackList{
+#menuAll > li > ul > li{
     padding : 20px 10px 20px 30px;
-    height : 20px;
-    cursor: pointer;     
+    cursor: pointer; 
+    
+} 
+#menuAll > li > ul > li>a{
+	 color : gray; 
 }
-
-#memberAll, #reserveAll, #hostAll{
+  
+  
+/* 큰 제목들만 */
+#menuAll>li{
     font-weight: bolder;
     font-size:18px;
     padding-left: 15%;
+    padding : 20px 10px 20px 30px;
+    cursor: pointer;
+    
 }
 
-#subAll{ 
-  background-color: none;
-  margin-top: 30px;
-  display:none;
-  color:black;
-  font-size:17px;
+#memberSubAll, #subAll {
+	display:none;
+	background-color: none;
+ 	margin-top: 30px;
+  	color:black;
+  	font-size:17px;
 }
 
-.hoverList{
-    color:gray;
-}
 
-/* 서브메뉴 펼치기 */
-#hostList, #acceptList, #blackList{
-    opacity:1;
-    position: static;
-    transition:height 0.5s;
-    background: none;
-}
-
-.clickList {
-    background-color: rgb(228, 228, 228);
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    color:black;
-}
-
-.subList {
-    color : gray;
-}
 
 /* 분류,검색 */
-.section > .searchCommon > form {
+/* .section > .searchCommon > form, .div {
     display: flex;
     margin: 0 0 50px 50px;
 
-}
+} */
 
 .searchCategory, .search{
     width: 300px;
     position: relative;
+    
+   
 }
 
 .search {
     margin-left: 20px;
+    
 }
 
 .searchCategory{
@@ -186,106 +176,21 @@ th{
 .cell5 {
     width:35%;
 }
+.cell6 {
+    width:30%;
+}
 
-
-/* 팝업 */
-section {
-    height: 100vh;
-  }
-
-  .enrollbg {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: none;
- 
-    display: none;
-    
-  }
-
-  /* 팝업창 */
-  #popup {
-    /* 포지션 fixed로 하고 */
-    position: fixed;
-    /* 크기주고 */
-    width: 500px;
-    height: 550px;
-    /* 왼쪽에서 50% 위에서 50% */
-    left: 50%;
-    top: 50%;
-    /* 테두리 좀 둥글게 */
-    border-radius: 15px;
-    /* positon으로 왼쪽 50% 위에서 50% 해놓은거에 
-        팝업창 크기의 반정도(-250px) 빼면 정가운데 정렬됨 */
-    margin-left: -250px;
-    margin-top: -250px;
-    box-shadow: 3px 3px 5px gray;
-    background:white;
-  }
-
- .popupHead{
-    position: absolute;
-    top:0;
-    height:60px;
-    width:100%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom:1px solid;
-    text-align:center;
-    
-  }
-  
-  /* x 버튼 */
-  .popupBtn {
-    width: 30px;
-    height: 30px;
-    outline:none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size:25px;
-    float:left;
-    
-  }
-  
-   /* '신고내역' 팝업 타이틀 */
-  .popupTitle{
-    font-weight: bolder;
-    margin: 20px 0;
-    font-size:20px;
-  }
 
   .active {
     display: block;
   }
 
-  /* 버튼 제외한 팝업 전체 내용 */
-  .popupContent{
-    padding: 10%;
-    margin-top:30px;
-  }
-    
-  /* 신고내역 각 타이틀 */
-  .complainTitle{
-    font-weight: bolder;
-    padding:10px; 
-  }
 
-  .eachComplainReason, .eachComplainCategory{
-      display:inline-block;
-  }
-
-  .reasonBox{
-    border:1px solid black;
-    padding: 5%;
-    margin-top:20px;
-    overflow-y:scroll;
-    height:200px;
-  }
-
- 
-
+ /* 호스트 승인 및 신고 버튼*/
+ .acceptY, .acceptN, .accept, .cancle, .out{
+ 	border:none;
+    outline: none;
+    background: none;
+  	cursor:pointer;
+ }
  

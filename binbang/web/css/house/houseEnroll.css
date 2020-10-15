@@ -57,7 +57,7 @@ body {
 }
 
  /* 스와이프 박스 안에서, 내용이 출력될 영역들 */
-.slide1, .slide2,.slide3,.slide4,.slide5,.slide6,.slide7,.slide8{
+.slide1, .slide2,.slide3,.slide4,.slide5,.slide6,.slide7,.slide8,.slide9{
   width: 90%;
   height: 90%;
   /* border:1px solid; */
@@ -69,7 +69,7 @@ body {
 }
 
 /* ----------------------------------- */
- /* 1/8 */
+ /* 1/9 */
 .slide1 > * {
   margin: 10px 20px;
 }
@@ -136,7 +136,7 @@ body {
 
 
 /* ----------------------------------- */
- /* 2/8 */
+ /* 2/9 */
 .slide2 > * {
   margin: 10px 20px;
   font-size: 13px;
@@ -224,7 +224,7 @@ body {
 }
 
 /* ----------------------------------- */
- /* 3/8 */
+ /* 3/9 */
 .slide3 > * {
   margin: 10px 15px;
 }
@@ -276,7 +276,7 @@ body {
 }
 
 /* ----------------------------------- */
- /* 4/8 */
+ /* 4/9 */
 /* 전체 화면 */
 .slide4{
   display: flex;
@@ -302,11 +302,14 @@ body {
   padding-top:10px;
 }
 /* 숙소 사진등록 글씨 */
-.slide3 > div > p {
+.slide4 > div > p {
   text-align: left;
-  /* margin-bottom: 50px; */
-  margin-top:10px;
+  margin-bottom: 15px;
   font-size:20px;
+}
+ /* 사진 선택하세요 글씨 */
+.picName{
+  font-size:13px;
 }
 /* 사진리스트 1번영역(margin용) */
 .photo1{
@@ -333,20 +336,23 @@ body {
   margin-left: 20px;
 }
 /* +버튼 라벨 */
-.uploadPic>img{
+.uploadPic{
   /* src: url("/web/image/house/houseEnroll/icon/plus.png"); */
   width: 20px;
   height: 20px;
-  font-size:50px;
-  margin-left:5px;
+  font-size: 30px;
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 /* -버튼 라벨 */
-.deletePic>img{
+.deletePic{
   /* src: url("/web/image/house/houseEnroll/icon/minus.png"); */
   width: 20px;
   height: 20px;
-  font-size:50px;
-  margin-left:15px;
+  font-size: 30px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 /* 사진미리보기 전체영역 */
 .photoPrevBox{
@@ -364,7 +370,7 @@ body {
 }
 
  /* ----------------------------------- */
- /* 5/8 */
+ /* 5/9 */
 .slide5 > * {
   margin: 10px 20px;
 }
@@ -398,11 +404,48 @@ body {
   margin-bottom:25px;
   padding-left:20px;
 }
-
-
  /* ----------------------------------- */
- /* 6/8 */
-.slide6 > * {
+ /* 6/9 */
+ .slide6 > * {
+  margin: 10px 20px;
+}
+/* 요소들 */
+.amenityBox, .equipmentBox{
+  /* border:1px solid; */
+  display: flex;
+  flex-direction: column;
+  width:50%;
+  height: 150px;
+  margin-bottom: 20px;
+}
+/* 항목들 사이의 경계선 */
+.line6{
+  width:50%;
+  height: 1px;
+  background-color: black;
+}
+.slide6 > div > p {
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top:10px;
+  font-size:20px;
+}
+/* 설명 입력 전체 영역 */
+.amenityCon,.equipmentCon{
+  width:100%;
+  height:100px;
+  padding-left: 20px;
+  /* border:1px solid; */
+  text-align: left;
+}
+/* 설명 입력 textarea */
+#amenity,#equipment{
+  border:1px solid rgb(32, 32, 32);
+  outline:none;
+}
+ /* ----------------------------------- */
+ /* 7/9 */
+.slide7 > * {
   margin: 10px 20px;
 }
 /* 요소들 */
@@ -410,11 +453,11 @@ body {
   /* border:1px solid; */
   display: flex;
   flex-direction: column;
-  width:50%;
+  width:40%;
   height: 350px;
   margin-bottom: 20px;
 }
-.slide6 > div > p {
+.slide7 > div > p {
   text-align: left;
   margin-bottom: 20px;
   margin-top:10px;
@@ -435,9 +478,10 @@ body {
 }
 
 
+
  /* ----------------------------------- */
- /* 7/8 */
- .slide7 > * {
+ /* 8/9 */
+ .slide8 > * {
   margin: 10px 20px;
 }
 /* 요소들 */
@@ -449,7 +493,7 @@ body {
   margin-bottom: 20px;
 }
 /* 기간선택 글씨 */
-.slide7 > div > p {
+.slide8 > div > p {
   text-align: left;
   margin-bottom: 25px;
   margin-top:10px;
@@ -508,11 +552,11 @@ body {
 
 
  /* ----------------------------------- */
- /* 8/8 */
-.slide8{
+ /* 9/9 */
+.slide9{
   position: relative;
 }
-.slide8 > * {
+.slide9 > * {
   margin: 10px 20px;
 }
 /* 요소들 */
@@ -525,7 +569,7 @@ body {
   margin-bottom: 20px;
 }
 /* 요금 설정 글씨 */
-.slide8 > div > p {
+.slide9 > div > p {
   text-align: left;
   margin-bottom: 20px;
   margin-top:10px;

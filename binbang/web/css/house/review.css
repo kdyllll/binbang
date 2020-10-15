@@ -35,20 +35,28 @@
 }
 
 .star_left {
-	background: url(http://gahyun.wooga.kr/main/img/testImg/star.png)
-		no-repeat 0 0;
-	background-size: 40px;
-	margin-right: -3px;
+	background-image: url("../../image/review/star.png");
+	background-size: 41.5px;
+	margin-right: -9px;
+	border: none;
+
 }
 
 .star_right {
-	background: url(http://gahyun.wooga.kr/main/img/testImg/star.png)
-		no-repeat -20px 0;
-	background-size: 40px;
-	margin-left: -3px;
+	background-image: url("../../image/review/star.png");
+	background-size: 41.5px;
+	margin-left: 2px;
+  	transform:rotate(90deg);
+   	-moz-transform: scaleX(-1); 
+    -o-transform: scaleX(-1); 
+	-webkit-transform: scaleX(-1); 
+    transform: scaleX(-1);   
+    filter: FlipH;
+  	-ms-filter: "FlipH";
+	border: none;
 }
 .star.on{
-  background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
+  background-image: url("../../image/review/staron.png");
 }
 
 
