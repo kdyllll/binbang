@@ -309,6 +309,21 @@ public class MemberDao {
 		}return fList;
 	}
 	
+	public int updateMemberPoint(Connection conn,int total,String mNo) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateMemberPoint"));
+			pstmt.setInt(1,total);
+			pstmt.setString(2, mNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 	
 	

@@ -92,6 +92,9 @@ tr>td {
 					<input type="hidden" name="checkIn" value="<%=b.getCheckInDate() %>">
 					<input type="hidden" name="checkOut" value="<%=b.getCheckOutDate() %>">
 					<input type="hidden" name="email" value="<%=b.getMemberEmail()%>">
+					<input type="hidden" name="pointPlus" value="<%=b.getPointPlus()%>">
+					<input type="hidden" name="pointMinus" value="<%=b.getPointMinus()%>">
+					<input type="hidden" name="memberNo" value="<%=b.getMemberNo()%>">
 					<input type="submit" class="acceptH" onclick="fn_houseAccept();" value="승인">
 					<input type="submit" class="denyH" onclick="fn_houseDeny();" value="거절">
 				</form>

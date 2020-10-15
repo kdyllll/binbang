@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.booking.model.service.BookingService;
+import com.binbang.member.model.service.MemberService;
 
 /**
  * Servlet implementation class HouseRequestServlet
@@ -40,6 +41,14 @@ public class HouseRequestDenyServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String reservNo = request.getParameter("reservNo");
+		int pPlus = Integer.parseInt(request.getParameter("pointPlus"));
+		int pMinus = Integer.parseInt(request.getParameter("pointMinus"));
+		int total = pMinus- pPlus;
+		System.out.println(total);
+		String mNo = request.getParameter("memberNo");
+		System.out.println(mNo);
+		int update = new MemberService().updateMemberPoint(total,mNo);
+		System.out.println("update: " + update);
 		System.out.println(reservNo);
 		int result = new BookingService().deleteBooking(reservNo);
 		String houseName = request.getParameter("houseName");

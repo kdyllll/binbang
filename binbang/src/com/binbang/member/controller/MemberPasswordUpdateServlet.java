@@ -16,7 +16,7 @@ import com.binbang.member.model.vo.Member;
  */
 
 /* mypage 비밀번호 변경 */
-@WebServlet(name="updatePassword" ,urlPatterns="/member/memberPasswordUpdate")
+@WebServlet(name="updatePassword" ,urlPatterns="/mypage/memberPasswordUpdate")
 public class MemberPasswordUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
