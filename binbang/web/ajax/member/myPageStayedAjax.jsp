@@ -29,25 +29,28 @@
 	}
 	#houseResv{
 		font-size: 14px;
-		padding:10px;
+		padding:6px;
 		padding-left: 40px;		
 	}
-	.reservCancel{	
-		margin-top:;
-		font-size: 14px;
+	.hr{
+		margin-top:1%;
+	}
+	.reservCancel{		
+		font-size: 14px;		
 		width:100px;
-		height:20px;
+		height:15px;
 		outline:none;
 		cursor:pointer;
 		border:none;
 		background-color: rgba(255, 255, 255, 0.836);
 	}
-	#houseContent{
-		/* border: 1px solid; */		
+	.houseContent{		
+		display:flex;
+		flex-direction: column;			
 		width:250px;
 		background-color: rgba(255, 255, 255, 0.836);
 		position: absolute;
-	  	bottom: 25px;
+	  	top: 220px;
 	  	left: 0;
 	}
 	.houseInfo{
@@ -56,8 +59,16 @@
 		margin-top:6px;	
 	}
 	.houseReq{
+		width:260px;
+		display:flex;
+		justify-content:space-between;
 		margin-top:2px;
-		font-size: 14px;
+		font-size: 12px;		
+	}
+	.houseReq input{
+		border:none;
+		outLine:none;
+		font-size: 11px;
 	}
 	
 </style>
@@ -70,42 +81,38 @@
 <% for(Booking b : list) { 
 	if(b.getHouseRequest().equals("예약완료"))  {%>
 	<form class="myReserve" method="post">
-	<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>&totalPrice=<%=b.getHousePrice()%>">
-		<img src="<%=request.getContextPath() %>/upload/house/<%=b.getHouseMainPic() %>" style="width:100%; height:90%;"  alt="사진">
-		<table id="houseContent">
-			<tr>
-				<td id="houseResv"><%=b.getHouseName() %></td>
-			</tr>
-			<tr>
-				<td id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></td>
-			</tr>
-		</table>
-		</a>	
-		<div class="houseInfo">	
-			<div class="houseReq"><%=b.getHouseRequest() %></div>
-			<input type="button"  class="reservCancel" value="예약취소" onclick="test();">
-		</div>
-		<div><input type="hidden"  class="reservNo" name="reservNo" value="<%=b.getReservationNo() %>"></div>
+							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>&totalPrice=<%=b.getHousePrice()%>">
+									<img src="<%=request.getContextPath() %>/upload/house/<%=b.getHouseMainPic() %>" style="width:100%; height:90%;"  alt="사진">
+									<div class="houseContent">										
+											<div id="houseResv"><%=b.getHouseName() %></div>										
+											<div id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></div>										
+									</div>
+							</a>	
+							
+							<div class="houseReq">
+								<div> <input type="text" value="<%=b.getHouseRequest() %>" class="hr">					 	</div>				
+								<div> <input type="button"  class="reservCancel" value="예약취소" onclick="test();"></div>
+							</div>
+						
+				<div><input type="hidden"  class="reservNo" name="reservNo" value="<%=b.getReservationNo() %>"></div>
 	</form>
 
 	<% } 
 	}%>
 </div>
 
+
+
 <p class="reservedTitle">이용완료 숙소</p>
 <div class="house">
 <% for(Booking b : list) { %>
 	<form class="myReserved" method="post">
-	<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>">
-		<img src="<%=request.getContextPath() %>/upload/house/<%=b.getHouseMainPic() %>" style="width:100%; height:90%;"  alt="사진">
-		<table id="houseContent">
-			<tr>
-				<td id="houseResv"><%=b.getHouseName() %></td>
-			</tr>
-			<tr>
-				<td id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></td>
-			</tr>
-		</table>
+				<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>">
+					<img src="<%=request.getContextPath() %>/upload/house/<%=b.getHouseMainPic() %>" style="width:100%; height:90%;"  alt="사진">
+					<div class="houseContent">
+						<div id="houseResv"><%=b.getHouseName() %></div>					
+						<div id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></div>						
+					</div>
 				</a>	
 				<div class="houseReq"><%=b.getHouseRequest() %></div>
 	</form>
@@ -119,15 +126,11 @@ if(b.getHouseRequest().equals("예약취소")) {%>
 	<form class="myCancel" method="post">
 		<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=b.getHouseNo()%>">	
 		<img src="<%=request.getContextPath() %>/upload/house/<%=b.getHouseMainPic() %>" style="width:100%; height:90%;"  alt="사진">
-		<table id="houseContent">
-			<tr>
-				<td id="houseResv"><%=b.getHouseName() %></td>
-			</tr>
-			<tr>
-				<td id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></td>
-			</tr>
-		</table>
-				</a>	
+					<div class="houseContent">
+						<div id="houseResv"><%=b.getHouseName() %></div>												
+						<div id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></div>						
+					</div>
+		</a>	
 				<div class="houseReq"><%=b.getHouseRequest() %></div>
 	</form>
 

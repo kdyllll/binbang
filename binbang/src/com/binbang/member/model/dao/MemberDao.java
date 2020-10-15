@@ -135,7 +135,8 @@ public class MemberDao {
 			pstmt.setString(1, email);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				m=new Member();				
+				m=new Member();
+				m.setMemberNo(rs.getString("member_no"));
 				m.setEmail(rs.getString("email"));				
 				m.setMemberName(rs.getString("member_Name"));
 				m.setNickname(rs.getString("nickname"));

@@ -7,18 +7,23 @@ public class Favorite {
 	private String folderName;
 	private String houseNo;
 	private String pictureName;
+	private String HouseName;
+	private String HouseLocation;
 	
 	public Favorite() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Favorite(String folderNo, String memberNo, String folderName, String houseNo, String pictureName) {
+	public Favorite(String folderNo, String memberNo, String folderName, String houseNo, String pictureName,
+			String houseName, String houseLocation) {
 		super();
 		this.folderNo = folderNo;
 		this.memberNo = memberNo;
 		this.folderName = folderName;
 		this.houseNo = houseNo;
 		this.pictureName = pictureName;
+		this.HouseName = houseName;
+		this.HouseLocation = houseLocation;
 	}
 
 	public String getFolderNo() {
@@ -61,11 +66,35 @@ public class Favorite {
 		this.pictureName = pictureName;
 	}
 
+	public String getHouseName() {
+		return HouseName;
+	}
+
+	public void setHouseName(String houseName) {
+		HouseName = houseName;
+	}
+
+	public String getHouseLocation() {
+		return HouseLocation;
+	}
+
+	public void setHouseLocation(String houseLocation) {
+		HouseLocation = houseLocation;
+	}
+
 	@Override
 	public String toString() {
 		return "Favorite [folderNo=" + folderNo + ", memberNo=" + memberNo + ", folderName=" + folderName + ", houseNo="
-				+ houseNo + ", pictureName=" + pictureName + "]";
+				+ houseNo + ", pictureName=" + pictureName + ", HouseName=" + HouseName + ", HouseLocation="
+				+ HouseLocation + "]";
 	}
+
+	
+	
+
+	
+
+	
 	
 	
 	

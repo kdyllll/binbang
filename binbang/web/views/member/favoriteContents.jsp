@@ -61,21 +61,27 @@
 			</div>
 			</form>
 
-				<div class="favoriteList">
-					<% for(Favorite f : list){%>
-					<form class="favHouse" method="post">					
-						<div>
-							<input type="button" class="heartButton fav">
-							
-							<input type="hidden" value="<%=na%>" name="folderName">
-							<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">						
-							<input type="hidden" class="check 0" value="<%=f.getFolderNo()%>">
-							<input type="text" value="<%=f.getHouseNo()%>" name="houseNo">															
-							<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=f.getHouseNo()%>">	
-							<img src="<%=request.getContextPath() %>/upload/house/<%=f.getPictureName()%>" style="width:100%; height:90%;"  alt="사진">												 																						 																																																				
-						</div>
-					</form>	
-					<%}%>	
+				<div class="favoriteList1">
+						<% for(Favorite f : list){%>
+								<form class="favHouse" method="post">					
+									<div class="eachContent">
+										<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=f.getHouseNo()%>" class="eachContent">	
+												<input type="hidden" value="<%=na%>" name="folderName">
+												<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">						
+												<input type="hidden" value="<%=f.getHouseNo()%>" name="houseNo">															
+												<img src="<%=request.getContextPath() %>/upload/house/<%=f.getPictureName()%>" style="width:100%; height:100%;"  alt="사진">												 																						 																																																											
+												<%-- <input type="hidden" value="<%=f.getFolderNo()%>"> --%>
+										</a>							
+									</div>
+											<div class="houseContent">
+												<input type="button" class="heartButton fav">
+												<div>
+													<p><%=f.getHouseName()%></p>
+													<p><%=f.getHouseLocation().length() > 10 ? f.getHouseLocation().substring(0,9) + "..." : f.getHouseLocation() %></p>
+												</div>								
+											</div>
+								</form>	
+						<%}%>	
 				</div>	
 							
 		</section>
@@ -108,7 +114,7 @@
 	  
 	  // 경고창
 	  $("#deleteBtn").click(e =>{
-	    alert("정말 삭제하시겠습니까?")
+	    	alert("정말 삭제하시겠습니까?")
 	    })
 	    
 	    
@@ -118,12 +124,10 @@
 	      $(e.target).toggleClass("fav");
 	      
 	      alert("관심숙소 삭제");
-	      $(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteContent").submit();	      	      
-	      
+	      $(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteContent").submit();	      	      	      
 	  });
-	</script>
+	</script>	
 	
-	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-	<script src="<%=request.getContextPath()%>/js/member/favorite.js"></script>	
+	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>	
 </body>
 </html>

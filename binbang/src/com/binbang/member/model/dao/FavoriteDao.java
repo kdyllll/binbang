@@ -195,6 +195,9 @@ public class FavoriteDao {
 					f.setFolderNo(rs.getString("folder_no"));																				
 					f.setHouseNo(rs.getString("house_no"));
 					f.setPictureName(rs.getString("picture_name"));
+					f.setHouseName(rs.getString("house_name"));
+					f.setHouseLocation(rs.getString("house_location"));
+					
 					list.add(f);
 				}
 			}catch(SQLException e) {

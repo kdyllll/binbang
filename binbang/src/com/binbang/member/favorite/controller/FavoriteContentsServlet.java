@@ -49,9 +49,7 @@ public class FavoriteContentsServlet extends HttpServlet {
 		List<Favorite> list = new FavoriteService().selectFolder(folderNo);
 		System.out.println(list);							 		
 					
-		request.setAttribute("list",list);
-		
-		
+		request.setAttribute("list",list);				
 		
 		request.setAttribute("memberNo", memberNo);
 		request.setAttribute("folderName",folderName);

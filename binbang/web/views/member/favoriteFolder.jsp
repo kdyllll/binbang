@@ -49,11 +49,12 @@
 
 					<div class="favoriteList">
 								<% for(Favorite f : list){%>
-										<form class="folderContents" method="post">		
+										<form class="folderContents" method="post">													
  														<input type="hidden" value="<%=f.getFolderNo() %>" name="folderNo" readonly> 
 														<input type="hidden" value="<%=f.getFolderName() %>" name="folderName" readonly>
  														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
-														<input type="submit" value="<%=f.getFolderName() %>" class="eachList" id="eachList" onclick="fn_toContent();">								
+														<input type="button" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
+														<p class="folderName"> <%=f.getFolderName() %> Folder</p>																																	
 										</form>																											
 								<%}%>											
 					</div>
