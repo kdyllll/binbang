@@ -33,12 +33,13 @@ public class FavoriteFolderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {											
 		
 		String memberNo = request.getParameter("memberNo");
-		System.out.println(memberNo);
+		System.out.println("ddddd" +memberNo);
 		
 		List<Favorite> list = new FavoriteService().viewFolder(memberNo);		
 		System.out.println(list);
 		
 		request.setAttribute("list", list);		
+		request.setAttribute("memberNo", memberNo);
 		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);	
 	}
 

@@ -36,9 +36,9 @@ public class FavoriteService {
 	
 	
 	//관심숙소 폴더삭제 
-	public int deleteFolder(Favorite f) {
+	public int deleteFolder(String fNo) {
 		Connection conn=getConnection();
-		int result=dao.deleteFolder(conn,f);
+		int result=dao.deleteFolder(conn,fNo);
 		if(result>0) commit(conn);
 		else {
 			rollback(conn);

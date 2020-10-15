@@ -7,9 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
+import com.binbang.member.model.vo.Member;
 
 /**
  * Servlet implementation class FavoriteFolderDeleteServlet
@@ -30,17 +32,15 @@ public class FavoriteFolderDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		 HttpSession session = request.getSession(false); 
+		  Member m = (Member)session.getAttribute("m");
 		String folderNo=request.getParameter("folderNo");	
 		System.out.println(folderNo);
 		String memberNo=request.getParameter("memberNo");
-		System.out.println(memberNo);	
+		System.out.println("구분"+m.getMemberNo());	
 		
-		Favorite f = new Favorite();
-		f.setFolderNo(folderNo);
-		f.setFolderName(memberNo);
 		
-		int result=new FavoriteService().deleteFolder(f);
+		int result=new FavoriteService().deleteFolder(folderNo);
 
 		String msg="";
 		String loc="";
