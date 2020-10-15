@@ -54,8 +54,8 @@
 														<input type="hidden" value="<%=f.getFolderName() %>" name="folderName" readonly>
  														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
 														<input type="submit" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
-														<p class="folderName"> <%=f.getFolderName() %> Folder</p>
-														<input type="submit" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">																																																														
+														<p class="folderName"><%=f.getFolderName() %> Folder</p>
+														<input type="submit" id="deleteBtn" value="폴더삭제" onclick="fn_folderDelete();">																																																														
 										</form>																											
 								<%}%>											
 					</div>

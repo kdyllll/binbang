@@ -123,6 +123,7 @@
 			if(time<0){
 	          clearInterval(x);
 	          document.getElementById("timer").innerHTML="다시 인증해주세요.";
+	          
 	        }
 			
         },1000);

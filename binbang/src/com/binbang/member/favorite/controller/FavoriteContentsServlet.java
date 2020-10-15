@@ -40,8 +40,8 @@ public class FavoriteContentsServlet extends HttpServlet {
 		System.out.println(f.getFolderName());
 		
 		//해당회원번호
-		String memberNo = request.getParameter("memberNo");
-		System.out.println("이거맞니?"+memberNo);								
+		String memberNo = request.getParameter("memberNo");		
+									
 		
 		//해당 폴더의 관심숙소 번호		
 		

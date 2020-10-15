@@ -16,8 +16,8 @@
 	}	
 	.house {
 		padding: 6% 2%;
-		display:flex;
-		margin-bottom:50px;
+		display:flex;		
+		margin-bottom:50px;			
 	}	
 	.house > .myReserve,
 	.house > .myReserved,
@@ -25,7 +25,7 @@
 		position:relative;
 		width:250px;
 		height:300px;
-		margin : 3%;
+		margin : 3%;		
 	}
 	#houseResv{
 		font-size: 14px;
@@ -140,6 +140,6 @@ if(b.getHouseRequest().equals("예약취소")) {%>
 
 <script>
 	function test() {
-		$(".myReserve").attr("action","<%=request.getContextPath() %>/member/reservationCancel").submit();
+		$(".myReserve").attr("action","<%=request.getContextPath() %>/mypage/reservationCancel").submit();
 	};
 </script>

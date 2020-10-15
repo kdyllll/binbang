@@ -53,10 +53,10 @@ public class MemberUpdateServlet extends HttpServlet {
 		
 		if(rs>0) {
 			msg="회원수정 성공!";			
-			loc="/member/myPage?email="+m.getEmail();			
+			loc="/mypage/myPage?email="+m.getEmail();			
 		}else {
 			msg="회원수정 실패!";
-			loc="/member/mypagePrivate?email="+m.getEmail();			
+			loc="/mypage/mypagePrivate?email="+m.getEmail();			
 		}
 		
 		

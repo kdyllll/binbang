@@ -31,8 +31,7 @@ public class FavoriteService {
 		else rollback(conn);
 		close(conn);
 		return result;
-	}
-	
+	}	
 	
 	//관심숙소 폴더삭제 
 	public int deleteFolder(String fNo) {

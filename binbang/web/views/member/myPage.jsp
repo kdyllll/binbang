@@ -64,7 +64,7 @@
 	//myPagePCKAjax로 이동
 		$("#changeModify").click(e=>{
 			$.ajax({
-				url:"<%=request.getContextPath()%>/member/myPagePCKAjax",				
+				url:"<%=request.getContextPath()%>/mypage/myPagePCKAjax",				
 				dataType:"html",				
 				success:data=>{
 					$("#AllContents").children().remove();
@@ -81,7 +81,7 @@
 	//myPagePointAjax로 이동
 		$("#changePoint").click(e=>{
 			$.ajax({
-				url:"<%=request.getContextPath()%>/member/mypagePointAjax",
+				url:"<%=request.getContextPath()%>/mypage/mypagePointAjax",
 				dataType:"html",
 				data :{"memberNo" : "<%=m1.getMemberNo() %>"} ,
 				success:data=>{
@@ -100,7 +100,7 @@
 	//myPageMainAjax로 이동
 		$("#changeStayed").click(e=>{
 			$.ajax({
-				url:"<%=request.getContextPath()%>/member/mypageStayedAjax",
+				url:"<%=request.getContextPath()%>/mypage/mypageStayedAjax",
 				dataType:"html",
 				success:data=>{
 					$("#AllContents").children().remove();

@@ -18,7 +18,7 @@
 		</ul>
 		<%} else if(m.getEmail()!=null && !m.getEmail().equals("admin@naver.com")) {%>
 		<ul>
-			<li><a href="<%=request.getContextPath()%>/member/myPage?email=<%=m.getEmail()%>">마이페이지</a></li>
+			<li><a href="<%=request.getContextPath()%>/mypage/myPage?email=<%=m.getEmail()%>">마이페이지</a></li>
 			<li><a href="<%=request.getContextPath()%>/favorite/favoriteFolder?memberNo=<%=m.getMemberNo()%>">관심숙소</a></li>
 			<% if(m != null && m.getHostBlack().equals("N")) {%>
 				<% if (m.getHostConfirm() == null || m.getHostConfirm().equals("대기")) {%>

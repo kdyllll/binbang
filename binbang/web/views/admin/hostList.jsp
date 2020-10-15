@@ -3,7 +3,7 @@
 <%@page import="com.binbang.host.model.vo.Host"%>
 <%@page import="java.util.List"%>
 <%@ include file="/views/common/commonLink.jsp"%>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/manager.css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/admin/hostList.css" />
 <%
 	List<Host> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
@@ -25,13 +25,13 @@
             <select class="searchCategory"  id="searchType">
 		      <option value="" selected disabled hidden>선택</option>
 		      <option value="host_no" <%=type!=null&&type.equals("host_no")?"selected":"" %>>호스트 번호</option>
-		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>이름</option>
+		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>호스트 이름</option>
    			</select>
 			
 	    	<div class="search" id="search-host_no">
 	    		<form action="<%=request.getContextPath()%>/admin/searchHostList">
 	    			<input type="hidden" name="searchType" value="host_no">
-	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+	    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="호스트 번호"
 	    				value="<%=key!=null&&type!=null&&type.equals("host_no")?key:""%>">
 	    			<button class="inputButton"></button>
 	    		</form>
@@ -40,7 +40,7 @@
 	    	<div class="search" id="search-member_name">
 	     		<form action="<%=request.getContextPath()%>/admin/searchHostList">
 	    			<input type="hidden" name="searchType" value="member_name">
-	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+	    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="호스트 이름"
 	    				value="<%=key!=null&&type!=null&&type.equals("member_name")?key:""%>">
 	    			<button class="inputButton"></button>
 	    		</form>
@@ -76,26 +76,28 @@
          </div>
         
          </section>
- </div>
+ 	</div>
   
   </body>
 </html>
 
 
 <script>
-$(function(){
-	let memberName=$("#search-member_name");
-	let hostNo=$("#search-host_no");
-	
-	
-	$("#searchType").change(e => {
-		memberName.css("display","none");
-		hostNo.css("display","none");
+
+
+	$(function(){
+		let memberName=$("#search-member_name");
+		let hostNo=$("#search-host_no");
 		
-		let v=$(e.target).val(); 
-		$("#search-"+v).css("display","inline-block");
+		
+		$("#searchType").change(e => {
+			memberName.css("display","none");
+			hostNo.css("display","none");
+			
+			let v=$(e.target).val(); 
+			$("#search-"+v).css("display","inline-block");
+		});
+		$("#searchType").change(); 
+		
 	});
-	$("#searchType").change(); 
-	
-});
 </script>

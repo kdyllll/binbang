@@ -12,7 +12,7 @@ import com.binbang.booking.model.service.BookingService;
 /**
  * Servlet implementation class MemberReservationCancelServlet
  */
-@WebServlet("/member/reservationCancel")
+@WebServlet("/mypage/reservationCancel")
 public class MemberReservationCancelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class MemberReservationCancelServlet extends HttpServlet {
 		String reservNo = (String)request.getParameter("reservNo");
 		int result = new BookingService().reserveCancel(reservNo);
 		System.out.println(reservNo);
-		request.getRequestDispatcher("/member/myPage").forward(request, response);
+		request.getRequestDispatcher("/mypage/myPage").forward(request, response);
 	}
 
 	/**

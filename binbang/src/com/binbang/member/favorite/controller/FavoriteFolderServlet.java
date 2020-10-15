@@ -32,9 +32,7 @@ public class FavoriteFolderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {											
 		
-		String memberNo = request.getParameter("memberNo");
-		System.out.println("ddddd" +memberNo);
-		
+		String memberNo = request.getParameter("memberNo");				
 		List<Favorite> list = new FavoriteService().viewFolder(memberNo);		
 		System.out.println(list);
 		
