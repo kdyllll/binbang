@@ -33,16 +33,19 @@ public class FavoriteContentDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String memberNo = request.getParameter("memberNo");
+		System.out.println(memberNo);
+		
 		String folderName=request.getParameter("folderName");
 		System.out.println(folderName);
-		String houseNo=request.getParameter("houseNo");										
-		System.out.println(houseNo);
+		String houseNo=request.getParameter("houseNo");												
 		String folderNo=request.getParameter("folderNo");
-		System.out.println(folderNo);
+		
 		
 		Favorite f=new Favorite();		
 		f.setHouseNo(houseNo);
 		f.setFolderNo(folderNo);
+		f.setMemberNo(memberNo);
 		
 		
 		int result=new FavoriteService().removeContent(f);						
@@ -52,7 +55,7 @@ public class FavoriteContentDeleteServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="삭제완료";
-			loc="/mainMove";
+			loc="/favorite/favoriteFolder?memberNo="+memberNo;
 		}else {
 			msg="삭제실패";
 			loc="/favorite/favoriteContents";			

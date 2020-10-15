@@ -302,11 +302,14 @@ body {
   padding-top:10px;
 }
 /* 숙소 사진등록 글씨 */
-.slide3 > div > p {
+.slide4 > div > p {
   text-align: left;
-  /* margin-bottom: 50px; */
-  margin-top:10px;
+  margin-bottom: 15px;
   font-size:20px;
+}
+ /* 사진 선택하세요 글씨 */
+.picName{
+  font-size:13px;
 }
 /* 사진리스트 1번영역(margin용) */
 .photo1{
@@ -333,20 +336,23 @@ body {
   margin-left: 20px;
 }
 /* +버튼 라벨 */
-.uploadPic>img{
+.uploadPic{
   /* src: url("/web/image/house/houseEnroll/icon/plus.png"); */
   width: 20px;
   height: 20px;
-  font-size:50px;
-  margin-left:5px;
+  font-size: 30px;
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 /* -버튼 라벨 */
-.deletePic>img{
+.deletePic{
   /* src: url("/web/image/house/houseEnroll/icon/minus.png"); */
   width: 20px;
   height: 20px;
-  font-size:50px;
-  margin-left:15px;
+  font-size: 30px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 /* 사진미리보기 전체영역 */
 .photoPrevBox{
@@ -447,7 +453,7 @@ body {
   /* border:1px solid; */
   display: flex;
   flex-direction: column;
-  width:50%;
+  width:40%;
   height: 350px;
   margin-bottom: 20px;
 }
