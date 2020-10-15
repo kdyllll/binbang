@@ -161,6 +161,7 @@
                   <div class="favLine"></div>
                   <div class="showFolder">
                      <input type="text" name="folderName" class="folderName" placeholder="폴더 명을 입력하세요."> 
+                     <input type="hidden" name="houseNo" value="<%=houseNo%>">
                      <input type="button" value="추가" id="folderPlusBtn" onclick="fn_folderAdd();"> 
                   </div>
                </form>

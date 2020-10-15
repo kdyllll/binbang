@@ -25,7 +25,7 @@
 			<form class="searchBox">
 				<div class="searchLoc">
 					<p>위치</p>
-					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요" list="locationData">
+					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요" list="locationData" autocomplete="off">
 					<datalist id="locationData"></datalist>
 				</div>
 				<div class="checkInDate">
