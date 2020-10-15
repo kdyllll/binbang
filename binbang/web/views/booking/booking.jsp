@@ -71,7 +71,7 @@
 							<label><input type="radio"name="pay" value="bankTransfer" id="bankTransfer" >무통장입금</label>
 						</div>
 					</div>
-					<br> <br>
+					<br> <br><br>
 					<div class="guidanceBox">
 						<div class="guidanceLine">
 							한 번 더 확인해주세요! <br>
@@ -97,7 +97,7 @@
 							성냥, 라이터, 초 등 화기 사용은 제한됩니다. <br> <br>위의 사항은 엄격히 관리하고
 							있습니다. 위반 시, 강제퇴실과 위약금이 발생하니 소중하게 사용해주세요.
 						</div>
-					</div>
+					</div><br><br><br><br>
 					<div class="refund">
 						환불규정 <br> 환불 시 아래의 기준일에 따른 환불 금액을 드립니다. <br>이용 10일전까지 총
 						결제금액의 100% 환불 <br>이용 9일전까지 총 결제금액의 90% 환불 <br>이용 8일전까지 총
@@ -209,7 +209,7 @@
 		let price = $(".housePrice").html();
 		//결과는 기본값 - 포인터차감
 		let result = <%=price%> - point;	
-		let totalPoint = result * 0.5;
+		let totalPoint = result * 0.05;
 		let totalPoints = <%=m2.getTotalPoint()%> - point;
 		if(parseInt(point)>parseInt(<%=price %>)) {
 			alert("결제금액보다 큽니다. 결제금액보다 적게 입력해주세요.");
