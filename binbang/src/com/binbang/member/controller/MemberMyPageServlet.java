@@ -14,7 +14,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MemberMyPageServlet
  */
-@WebServlet(name = "mypage", urlPatterns = "/member/myPage")
+@WebServlet(name = "mypage", urlPatterns = "/mypage/myPage")
 public class MemberMyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

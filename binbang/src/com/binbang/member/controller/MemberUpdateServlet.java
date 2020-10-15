@@ -16,7 +16,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet("/member/memberUpdate")
+@WebServlet("/mypage/memberUpdate")
 public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

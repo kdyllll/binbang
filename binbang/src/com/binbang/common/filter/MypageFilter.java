@@ -16,7 +16,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet Filter implementation class MypageFilter
  */
-@WebFilter("/member/*")
+@WebFilter("/mypage/*")
 public class MypageFilter implements Filter {
 
     /**
