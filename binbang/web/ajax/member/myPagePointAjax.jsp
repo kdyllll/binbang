@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.binbang.member.model.vo.Member"%>
+<%@ page import="com.binbang.member.model.vo.Member,com.binbang.booking.model.vo.Booking"%>
+<%@page import="java.util.List"%>
 <%@ include file="/views/common/commonLink.jsp"%>
 <%
 	Member m = (Member) session.getAttribute("m");
+	List<Booking> list =(List) request.getAttribute("list");
 %>
 <style>
 /* 4. POINT 사용내역 */
@@ -59,16 +61,28 @@ justify-content:center;
 			</div>
 		</div>
 	
-		<!-- 포인트사용/추가시 마다 추가되는 로직 -->
 		<div class="pointCount">
 			<div class="line6"></div>
-			<ul>
-				<li class="addDate">2020-09-05</li>
-				<li class="addContent">이나주니 집사용</li>
-				<li class="addpoint">100,000,000 point 사용</li>
-			</ul>
-			<div class="line7"></div>
-		</div>
+				<%for(Booking b : list) { %>
+					<!-- 포인트사용시 마다 추가/적립-->
+							<%if(b.getPointMinus()!=0){ %>
+								<ul>
+									<li class="addDate"><%=b.getApprovalDate()%></li>
+									<li class="addContent"><%=b.getHouseName()%>이용</li>												
+									<li class="addpoint"><%=b.getPointMinus()%> point 사용</li>
+								</ul>
+							<div class="line7"></div>
+							<%}else if(b.getPointPlus()!=0){ %>
+								<ul>
+									<li class="addDate"><%=b.getApprovalDate()%></li>																
+									<li class="addpoint"><%=b.getPointPlus()%> point 적립</li>
+								</ul>
+							<div class="line7"></div>
+						<%}else{ %>				
+						<%} %>
+					<%}%>	
+			</div>
+		
 	</div>
 </div>
 

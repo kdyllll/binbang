@@ -461,7 +461,7 @@
 		let favorite=<%=request.getAttribute("favoriteJson")%>
 		let hNo=$(".houseNoPopUp").val();
 		for(let f in favorite){
-			if(favorite[f].houseNo=hNo){
+			if(favorite[f].houseNo==hNo){
 				$(".heartCommon").addClass("fav");
 				$(".heartCommon").removeClass("heart");
 			}

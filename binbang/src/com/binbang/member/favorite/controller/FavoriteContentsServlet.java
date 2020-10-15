@@ -42,15 +42,15 @@ public class FavoriteContentsServlet extends HttpServlet {
 		
 		//해당회원번호
 		String memberNo = request.getParameter("memberNo");
-		System.out.println(memberNo);								
+		System.out.println("이거맞니?"+memberNo);								
 		
 		//해당 폴더의 관심숙소 번호		
-		List<Favorite> list = new FavoriteService().selectFolder(folderNo);
-		System.out.println(list);						 						
 		
-		 		
-			
-		request.setAttribute("list",list);
+		List<Favorite> list = new FavoriteService().selectFolder(folderNo);
+		System.out.println(list);							 		
+					
+		request.setAttribute("list",list);				
+		
 		request.setAttribute("memberNo", memberNo);
 		request.setAttribute("folderName",folderName);
 		request.setAttribute("folderNo", folderNo); 

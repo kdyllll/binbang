@@ -6,17 +6,24 @@ public class Favorite {
 	private String memberNo;
 	private String folderName;
 	private String houseNo;
+	private String pictureName;
+	private String HouseName;
+	private String HouseLocation;
 	
 	public Favorite() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Favorite(String folderNo, String memberNo, String folderName, String houseNo) {
+	public Favorite(String folderNo, String memberNo, String folderName, String houseNo, String pictureName,
+			String houseName, String houseLocation) {
 		super();
 		this.folderNo = folderNo;
 		this.memberNo = memberNo;
 		this.folderName = folderName;
 		this.houseNo = houseNo;
+		this.pictureName = pictureName;
+		this.HouseName = houseName;
+		this.HouseLocation = houseLocation;
 	}
 
 	public String getFolderNo() {
@@ -51,54 +58,44 @@ public class Favorite {
 		this.houseNo = houseNo;
 	}
 
+	public String getPictureName() {
+		return pictureName;
+	}
+
+	public void setPictureName(String pictureName) {
+		this.pictureName = pictureName;
+	}
+
+	public String getHouseName() {
+		return HouseName;
+	}
+
+	public void setHouseName(String houseName) {
+		HouseName = houseName;
+	}
+
+	public String getHouseLocation() {
+		return HouseLocation;
+	}
+
+	public void setHouseLocation(String houseLocation) {
+		HouseLocation = houseLocation;
+	}
+
 	@Override
 	public String toString() {
 		return "Favorite [folderNo=" + folderNo + ", memberNo=" + memberNo + ", folderName=" + folderName + ", houseNo="
-				+ houseNo + "]";
+				+ houseNo + ", pictureName=" + pictureName + ", HouseName=" + HouseName + ", HouseLocation="
+				+ HouseLocation + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((folderName == null) ? 0 : folderName.hashCode());
-		result = prime * result + ((folderNo == null) ? 0 : folderNo.hashCode());
-		result = prime * result + ((houseNo == null) ? 0 : houseNo.hashCode());
-		result = prime * result + ((memberNo == null) ? 0 : memberNo.hashCode());
-		return result;
-	}
+	
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Favorite other = (Favorite) obj;
-		if (folderName == null) {
-			if (other.folderName != null)
-				return false;
-		} else if (!folderName.equals(other.folderName))
-			return false;
-		if (folderNo == null) {
-			if (other.folderNo != null)
-				return false;
-		} else if (!folderNo.equals(other.folderNo))
-			return false;
-		if (houseNo == null) {
-			if (other.houseNo != null)
-				return false;
-		} else if (!houseNo.equals(other.houseNo))
-			return false;
-		if (memberNo == null) {
-			if (other.memberNo != null)
-				return false;
-		} else if (!memberNo.equals(other.memberNo))
-			return false;
-		return true;
-	}
+	
+
+	
+	
 	
 	
 }
