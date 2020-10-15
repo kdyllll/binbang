@@ -73,21 +73,21 @@ public class HostComplainOutServlet extends HttpServlet {
 	            msg3.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
 	            
 	            msg3.setSubject("신고 처리에 대해 안내드립니다.");
-	            msg3.setText("안녕하세요 빈방입니다.\n\r 신고 처리에 대해 해당 호스트에게 연락 및 경고 조치를 취했습니다. \n\r 기타 문의사항이 있으시면 관리자(TEL.1234-5678)에게 연락바랍니다.\n\r 보다 더 나은 빈방이 되도록 노력하겠습니다. 감사합니다. ");
+	            msg3.setText("안녕하세요 빈방입니다.\n\r 신고 처리에 대해 해당 호스트의 권한이 박탈 되었음을 알려드립니다. \n\r 불편을 끼쳐드려 죄송합니다.\n\r기타 문의사항이 있으시면 관리자(TEL.1234-5678)에게 연락바랍니다.\n\r 보다 더 나은 빈방이 되도록 노력하겠습니다. 감사합니다. ");
 	            
 	            Transport.send(msg3);
-	            System.out.println("회원에게 신고 승인 이메일 전송");
+	            System.out.println("회원에게 신고  이메일 전송");
 	            
 	            //호스트에게
 	            MimeMessage msg2 = new MimeMessage(session);
 	            msg2.setFrom(new InternetAddress(user, "BINBANG"));
 	            msg2.addRecipient(Message.RecipientType.TO, new InternetAddress(hostEmail));
 	            
-	            msg2.setSubject("신고 접수에 대해 안내드립니다.");
-	            msg2.setText("안녕하세요 빈방입니다.\n\r 호스트님께 신고가 접수되어 안내드립니다. \n\r 해당 신고사항은 신고 처리가 되었음을 알려드립니다.\n\r 기타 문의사항이 있으시면 관리자(TEL.1234-5678)에게 연락바랍니다.\n\r 호스트님과 함께 더 나은 빈방을 만들어 나가길 바랍니다. 감사합니다. ");
+	            msg2.setSubject("호스트 권한이 박탈됨을 안내드립니다.");
+	            msg2.setText("안녕하세요 빈방입니다.\n\r 호스트님께 신고가 접수되어 안내드립니다. \n\r\n\r 신고 내용에 따라 호스트 권한 박털 처리가 되었음을 알려드립니다.\n\r\n\r 권한 박탈 처리 기준은 다음과 같습니다.\n\r-총 신고 횟수가 10번이 된 경우 \n\r -숙소 이용객에게 큰 피해를 주거나 범죄 등과 관련된 경우  \n\r -허위 정보로 가입된 사실이 적발된 경우 등 \n\r호스트 권한이 박탈 된 경우 호스트 재등록은 불가능하나 회원으로 이용은 가능합니다. 기타 문의사항이 있으시면 관리자(TEL.1234-5678)에게 연락바랍니다.\n\r");
 	            
 	            Transport.send(msg2);
-	            System.out.println("호스트에게 신고 승인 이메일 전송");
+	            System.out.println("호스트 권한 박탈 이메일 전송");
 	            
 	        }catch (Exception e) {
 	            e.printStackTrace();

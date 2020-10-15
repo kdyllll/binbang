@@ -182,5 +182,12 @@ private AdminDao dao=new AdminDao();
 		close(conn);
 		return list;
 	}
-
+	
+	//적립금 검색
+	public List<Booking> searchPointList(String type,String key){
+		Connection conn=getConnection();
+		List<Booking> list=dao.searchPointList(conn,type,key);
+		close(conn);
+		return list;
+	}
 }

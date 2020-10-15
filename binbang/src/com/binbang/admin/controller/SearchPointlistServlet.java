@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.binbang.admin.model.service.AdminService;
-import com.binbang.host.model.vo.Host;
+import com.binbang.booking.model.vo.Booking;
 
 /**
- * Servlet implementation class HostListServelet
+ * Servlet implementation class SearchPointlistServlet
  */
-@WebServlet("/admin/hostList")
-public class HostListServelet extends HttpServlet {
+@WebServlet("/admin/searchPointlist")
+public class SearchPointlistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HostListServelet() {
+    public SearchPointlistServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,19 +32,12 @@ public class HostListServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Host> list=new AdminService().hostList();
-		for(Host h:list) {
-			if(h.getComplaintCount()>=10) {
-				
-				new AdminService().checkBlack(h.getMemberNo()); 
-				new AdminService().deleteHost(h.getMemberNo());
-				return;
-			}
-		}
-		List<Host> list2=new AdminService().hostList();
-		request.setAttribute("list", list2);
-		request.getRequestDispatcher("/views/admin/hostList.jsp").forward(request, response);
+		String type=request.getParameter("searchType");
+		String key=request.getParameter("searchKeyword");
 		
+		List<Booking> list=new AdminService().searchPointList(type,key);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/pointList.jsp").forward(request, response);
 	}
 
 	/**

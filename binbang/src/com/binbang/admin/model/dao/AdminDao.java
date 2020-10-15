@@ -530,13 +530,52 @@ public class AdminDao {
 				Complaint com=new Complaint();
 				com.setComplaintNo(rs.getString("complaint_no"));
 				com.setHostName(rs.getString("member_name"));
+				com.setMemberNo(rs.getString("member_no"));
 				com.setMemberEmail(rs.getString("email"));
 				com.setComplaintDate(rs.getDate("complaint_date"));
 				com.setComplaintCategory(rs.getString("complaint_category"));
 				com.setComplaintDetail(rs.getString("complaint_detail"));
 				com.setHouseNo(rs.getString("house_no"));
 				com.setHostNo(rs.getNString("host_no"));
+				com.setComplaintPic(rs.getString("complaint_pic"));
+				com.setComplaintState(rs.getString("complaint_state"));
+				
 				list.add(com);
+				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+	}
+	
+	//포인트 리스트 검색
+	public List<Booking> searchPointList(Connection conn, String type, String key) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Booking> list=new ArrayList();
+		try {
+			System.out.println("변경 전 : " +prop.getProperty("searchPointList"));
+			String sql=prop.getProperty("searchPointList").replaceAll("@type", type);
+			System.out.println("변경 후 : " + sql);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+key+"%");
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Booking b=new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setMemberNo(rs.getString("member_no"));
+				b.setHouseNo(rs.getString("house_no"));
+				b.setGuestName(rs.getString("guest_name"));
+				b.setCheckInDate(rs.getDate("checkin_date"));
+				b.setCheckOutDate(rs.getDate("checkout_date"));
+				b.setHouseRequest(rs.getString("house_request"));
+				b.setReservDate(rs.getDate("reserv_date"));
+				b.setPrice(rs.getInt("price"));
+				list.add(b);
 				
 			}
 		}catch(SQLException e) {

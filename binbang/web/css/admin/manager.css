@@ -65,11 +65,11 @@
 
 
 /* 분류,검색 */
-.section > .searchCommon > form {
+/* .section > .searchCommon > form, .div {
     display: flex;
     margin: 0 0 50px 50px;
 
-}
+} */
 
 .searchCategory, .search{
     width: 300px;

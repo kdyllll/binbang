@@ -45,24 +45,9 @@
    
     </div>
    <script>
- /*   $(document).ready(function () {  
-       // You can define it before replacing the editor
-       CKEDITOR.on('instanceReady', function(evt){
-           // Do your bindings and other actions here for example
-           // You can access each editor that this event has fired on from the event
-           var editor = evt.editor;
-       });
-
-      // replace editor
-       var editorShort = CKEDITOR.replace('noticeContent');
-}); */
        CKEDITOR.replace( 'noticeContent' ); 
       
-     /*   if(CKEDITOR.instances.noticeContent.getData()==""){
-    	  alert("내용을 입력해주세요.");
-    	  CKEDITOR.instances.noticeContent.focus();
-    	  
-      }  */
+   
     
       <%--  var content=CKEDITOR.instances.noticeContent.getData();
       $(".enroll").click(e => {
@@ -87,7 +72,7 @@
        CKEDITOR.instances["noticeContent"].setData(data);
       });
        --%>
-      // Your code to save "data", usually through Ajax.
+    
    </script>
    
 </body>
