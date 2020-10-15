@@ -27,7 +27,7 @@
 	<div class="wrap">
 		<%@ include file="/views/common/bookingHeader.jsp"%>
 		<section class="section">
-			<form action="<%=request.getContextPath()%>/booking/bookingFinal" method="post">
+			<form action="<%=request.getContextPath()%>/booking/bookingFinal" class="bookingTest" method="post">
 				<div class="reservation">
 					<ul>
 						<li>게스트이름 : <input type="text" name="guestName">
@@ -55,8 +55,8 @@
 					<div class="cuphone">
 					
 						포인트사용 : <input class="pointWriter" name="point" type="text"
-							placeholder="사용할 포인트를 입력하세요"> 
-							<input class="personnel1" type="button" onclick="test();" value="사용하기">
+							placeholder="사용할 포인트를 입력하세요" value="0"> 
+							<input type="button" class="personnel1" onclick="test();" value="사용하기">
 					</div>
 					<br>
 					<div class="payMent">
@@ -130,13 +130,13 @@
 							</div>
 							<div class="payBox">
 								
-									<input type="hidden" name="totalPoints" class="totalPoints">
+									<input type="hidden" name="totalPoints" class="totalPoints" value="0">
 									<input type="hidden" name="houseNo" value="<%=h.getHouseNo()%>">
 									<input type="hidden" name="originalPrice" value="<%=price%>">
 									<input type="hidden" name="checkIn" value="<%=in%>">
 									<input type="hidden" name="checkOut" value="<%=out1%>">
-									<input type="hidden" class="totalPoint" name="totalPoint">
-									<input type="hidden" class="totalPrice" name="totalPrice" value="">
+									<input type="hidden" class="totalPoint" name="totalPoint" value="0">
+									<input type="hidden" class="totalPrice" name="totalPrice" value="<%=price%>">
 									<input type="hidden" class="memberNo" name="memberNo" value="<%=m2.getMemberNo()%>">
 									<input type="submit" value="Booking" class="lastPay">
 								
@@ -195,7 +195,7 @@
 	      }
 	   })
 
-	function test() {
+	 function test() {
 		//housePrice에 초기값 넣어줌. 중복안되게
 		$(".housePrice").html('<%=price%>');
 		//point value를 가져옴 => 너거 text넣은 값
@@ -218,18 +218,11 @@
 			$(".totalPoint").val(totalPoint);
 			$(".totalPointsShow").html(totalPoints);
 			$(".totalPoints").val($(".pointWriter").val());
-		}
-		
-		//눈으로 확인하기위해
+		} 
 
-		
-		
+		//눈으로 확인하기위해	
 
 	}
-	
-	
-	
-
   
 </script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
