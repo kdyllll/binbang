@@ -46,7 +46,7 @@ public class MypagePrivateServlet extends HttpServlet {
 			request.getRequestDispatcher("/views/member/myPagePrivate.jsp").forward(request, response);							
 		}else{
 			msg = "패스워드가 일치하지 않습니다";
-			loc="/member/myPage";
+			loc="/mypage/myPage";
 			request.setAttribute("msg", msg);
 			request.setAttribute("loc", loc);
 			request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);

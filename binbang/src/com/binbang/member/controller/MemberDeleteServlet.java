@@ -37,14 +37,14 @@ public class MemberDeleteServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="탈퇴완료";
-			loc="/views/mypage/main.jsp";
+			loc="/mainMove";
 			HttpSession session=request.getSession(false);
 			if(session!=null) {
 				session.invalidate();
 			}
 		}else {
 			msg="탈퇴실패";
-			loc="/views/mypage/myPage";
+			loc="/mypage/myPage";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
