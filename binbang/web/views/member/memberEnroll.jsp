@@ -297,17 +297,6 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
 <script src="<%=request.getContextPath()%>/js/member/memberEnroll.js"></script>
 <script>
 
-	/* password 일치 */
-    function pwCheck() {
-      let pw=$("#pw").val().trim();
-      let pwck=$("#pwck").val().trim();
-      if(pw==pwck){
-          $("#pwCheck").css("color","green").html("비밀번호가 동일합니다.");            
-        }else if(pw!=pwck){
-           $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
-        }
-      
-    };
     
     
     
@@ -338,6 +327,17 @@ CRM팀의 연락처는 다음과 같습니다. [스테이폴리오 CRM팀]
     }        
     
     
+	/* password 일치 */
+    function pwCheck() {
+      let pw=$("#pw").val().trim();
+      let pwck=$("#pwck").val().trim();
+      if(pw==pwck){
+          $("#pwCheck").css("color","green").html("비밀번호가 동일합니다.");            
+        }else if(pw!=pwck){
+           $("#pwCheck").css("color","red").html("동일한 비밀번호를 입력하세요.");           
+        }
+      
+    };
     
 
     /* 인증번호가 회원가입 로직에 찍히면 회원가입이 가능하게 구현 */
