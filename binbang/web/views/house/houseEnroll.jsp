@@ -150,7 +150,7 @@
 										<p class="picName" id="picName2">사진은 최소 3장 등록해주세요</p>
 									</div>
 									<input type="file" name="picture2" id="picture2"
-										class="picture" accept="images/*" > <label
+										class="picture sub" accept="images/*" > <label
 										class="uploadPic" for="picture2">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -159,7 +159,7 @@
 										<p class="picName" id="picName3">사진은 최소 3장 등록해주세요</p>
 									</div>
 									<input type="file" name="picture3" id="picture3"
-										class="picture" accept="images/*" > <label
+										class="picture sub" accept="images/*" > <label
 										class="uploadPic" for="picture3">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -168,7 +168,7 @@
 										<p class="picName" id="picName4"></p>
 									</div>
 									<input type="file" name="picture4" id="picture4"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture4">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -177,7 +177,7 @@
 										<p class="picName" id="picName5"></p>
 									</div>
 									<input type="file" name="picture5" id="picture5"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture5">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -186,7 +186,7 @@
 										<p class="picName" id="picName6"></p>
 									</div>
 									<input type="file" name="picture6" id="picture6"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture6">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -195,7 +195,7 @@
 										<p class="picName" id="picName7"></p>
 									</div>
 									<input type="file" name="picture7" id="picture7"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture7">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -204,7 +204,7 @@
 										<p class="picName" id="picName8"></p>
 									</div>
 									<input type="file" name="picture8" id="picture8"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture8">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -213,7 +213,7 @@
 										<p class="picName" id="picName9"></p>
 									</div>
 									<input type="file" name="picture9" id="picture9"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture9">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -222,7 +222,7 @@
 										<p class="picName" id="picName10"></p>
 									</div>
 									<input type="file" name="picture10" id="picture10"
-										class="picture" accept="images/*"> <label
+										class="picture sub" accept="images/*"> <label
 										class="uploadPic" for="picture10">+</label> <label
 										class="deletePic" for="">-</label>
 								</div>
@@ -297,7 +297,7 @@
 							<div class="explainBox">
 								<p>숙소 설명</p>
 								<div class="explainCon">
-									<textarea name="explain" id="explain" cols="60" rows="10"
+									<textarea name="explain" id="explain" cols="60" rows="6"
 										style="resize: none" placeholder="2줄 이내로 작성해주세요" ></textarea>
 								</div>
 							</div>
@@ -516,11 +516,45 @@
                      }
                   }
                }).open();
-      }
+	  }
+	$("#pNum").focusout(function(){
+		if($(this).val()>9){
+			alert("인원은 9명까지 입력 가능합니다.");
+			$(this).val("9");
+		}
+	});
 
-      $(function() {
-         $(".date1").datepicker(
-               {
+	//달력 기간 제한(시작날짜,끝날짜) 함수
+	function fn_minMaxDate(s,e){
+		s.datepicker("option", "maxDate", e.val());
+		s.datepicker("option", "onClose", function (selectedDate){
+			e.datepicker( "option", "minDate", selectedDate );
+		});
+		e.datepicker();
+		e.datepicker("option", "minDate", s.val());
+		e.datepicker("option", "onClose", function (selectedDate){
+			s.datepicker( "option", "maxDate", selectedDate );
+		});
+	};
+	//성수기 중복 입력 불가능 함수
+	function disableDay(date){
+		let day1=[];
+		let day2=[];
+		$(".date1").each(function(i,v){
+			day1.push(new Date($(v).val()));
+		});
+		$(".date2").each(function(i,v){
+			day2.push(new Date($(v).val()));
+		});
+		for(let i=0;i<5;i++){
+			if(date>=day1[i]&&date<=day2[i]){
+				return [false];
+			}else return [true];
+		};		
+	};
+	//성수기 선택 달력
+    $(function() {
+         $(".date1").datepicker({
                   dateFormat : "yy/mm/dd",
                   dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
                   monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
@@ -535,16 +569,17 @@
 						setTimeout(function(){
 							$('#ui-datepicker-div').css({'top':i_offset});  
 						});
-				  }
+				  },
+				  beforeShowDay : disableDay
+
 		});
 
-         $(".date2").datepicker(
-               {
+         $(".date2").datepicker({
                   dateFormat : "yy/mm/dd",
                   dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
                   monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
                         "7월", "8월", "9월", "10월", "11월", "12월" ],
-                  onSelect : function(d) {
+			      onSelect : function(d) {
                      $(this).val(d);
                      var week = new Array("일", "월", "화", "수", "목", "금",
                            "토");
@@ -554,12 +589,27 @@
 						setTimeout(function(){
 							$('#ui-datepicker-div').css({'top':i_offset});  
 						});
-				  }
-               });
-      });
-      
+				  },
+				  beforeShowDay : disableDay
+         });
+	  
+		fn_minMaxDate($('#startDay1'),$('#endDay1'));
+		fn_minMaxDate($('#startDay2'),$('#endDay2'));
+		fn_minMaxDate($('#startDay3'),$('#endDay3'));
+		fn_minMaxDate($('#startDay4'),$('#endDay4'));
+		fn_minMaxDate($('#startDay5'),$('#endDay5'));
+		$("#startDay2").datepicker("option","beforeShowDay",disableDay);
+		
+	});
+  
       //입력항목 유효성검사
       function fn_complete(){
+		  let cnt=0;
+		$(".sub").each(function(i,v){
+			if($(v).val()){
+				cnt++;
+			}
+		});
          if($("#hName").val().trim().length==0){
             alert("숙소 이름을 입력하세요.");
             return false;
@@ -593,7 +643,7 @@
          }else if(!$("#picture1").val()){
             alert("메인 사진을 등록하세요.");   
             return false;
-         }else if(!$("#picture2").val()||!$("#picture3").val()){
+         }else if(cnt<2){
             alert("사진을 3장 이상 등록해주세요.");   
             return false;
          }else if($("#amenity").val().trim().length==0){
@@ -631,16 +681,6 @@
          }
       }
 
-	  //성수기 기간 중복 입력 방지
-	  $("#startDay1").on("change",function(e){
-		let sDayArr=$(e.target).val().split("/");
-		let sDay="";
-		console.log(sDay);
-		for(let s in sDayArr){
-			sDay+=sDayArr[s];
-		}
-		console.log(sDay);
-	  });
 
    </script>
 
