@@ -18,13 +18,13 @@
   	 display: inline-flex;  
      flex-wrap: wrap;
      justify-content:space-around; 
-     padding: 5px;  
+     padding: 12px;  
 }
 
 /* 회원정보 */
 .lineList div input {
    opacity: 50%;   
-   font-size : 18px;
+   font-size : 15px;
    font-weight:300;
    margin-top : 2%;
    background-color: none;

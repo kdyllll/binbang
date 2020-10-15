@@ -47,6 +47,7 @@ public class FavoriteService {
 		return result;
 	}
 	
+	
 	//관심숙소 하나 조회(숙소번호와 폴더번호로)
 	public Favorite selectContent(String houseNo,String folderNo,String memberNo) {
 		Connection conn=getConnection();
@@ -79,13 +80,6 @@ public class FavoriteService {
 			return result;
 		}
 	
-		//해당 폴더 선택
-		public List<Favorite> selectFolder(String folderNo) {
-			Connection conn=getConnection();
-			List<Favorite> list=dao.selectFolder(conn,folderNo);
-			close(conn);
-			return list;		
-		}
 		
 		//폴더 이름 수정
 		public int modifyFolder(Favorite f) {
@@ -107,11 +101,28 @@ public class FavoriteService {
 		}
 		
 		
-		/*
-		 * public Favorite selectContent(String houseNo,String folderNo,String memberNo)
-		 * { Connection conn=getConnection(); Favorite
-		 * f=dao.selectContent(conn,houseNo,folderNo,memberNo); close(conn); return f; }
-		 */
+		//해당 폴더 선택
+		public List<Favorite> selectFolder(String folderNo) {
+			Connection conn=getConnection();
+			List<Favorite> list=dao.selectFolder(conn,folderNo);
+			close(conn);
+			return list;		
+		}
+		
+		
+		
+		//관심숙소 내용삭제
+		public int removeContent(Favorite f) {
+			Connection conn=getConnection();
+			int result=dao.removeContent(conn,f);
+			if(result>0) commit(conn);
+			else {
+				rollback(conn);
+				close(conn);
+			}
+			return result;
+		}
+		
 		
 		
 }

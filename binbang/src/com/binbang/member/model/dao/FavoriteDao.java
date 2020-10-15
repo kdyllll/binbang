@@ -51,29 +51,6 @@ public class FavoriteDao {
 		}return list;
 	}
 	
-	//해당 폴더 선택
-	public List<Favorite> selectFolder(Connection conn, String folderNo) {
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Favorite> list = new ArrayList();
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectFolder"));			
-			pstmt.setString(1, folderNo);			
-			rs=pstmt.executeQuery();			
-			while(rs.next()) {
-				Favorite f=new Favorite();
-				f.setHouseNo(rs.getString("house_no"));
-				f.setFolderNo(rs.getString("folder_no"));																				
-				list.add(f);
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}return list;
-	}
-	
 	
 	//관심숙소 폴더 생성
 	public int createFolder(Connection conn,Favorite f) {
@@ -105,6 +82,8 @@ public class FavoriteDao {
 			close(pstmt);
 		}return result;
 	}
+	
+		
 	
 	//관심숙소 하나 조회(숙소번호와 폴더번호로)
 	public Favorite selectContent(Connection conn,String houseNo,String folderNo,String memberNo) {
@@ -202,9 +181,48 @@ public class FavoriteDao {
 			}return f;
 		}
 		
-
+		//해당 폴더 선택
+		public List<Favorite> selectFolder(Connection conn, String folderNo) {
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			List<Favorite> list = new ArrayList();
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("selectFolder"));			
+				pstmt.setString(1, folderNo);			
+				rs=pstmt.executeQuery();			
+				while(rs.next()) {
+					Favorite f=new Favorite();
+					f.setFolderNo(rs.getString("folder_no"));																				
+					f.setHouseNo(rs.getString("house_no"));
+					f.setPictureName(rs.getString("picture_name"));
+					f.setHouseName(rs.getString("house_name"));
+					f.setHouseLocation(rs.getString("house_location"));
+					
+					list.add(f);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return list;
+		}
 		
-
+		//관심숙소 삭제
+		public int removeContent(Connection conn, Favorite f) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("removeContent"));
+				pstmt.setString(1, f.getHouseNo());
+				result=pstmt.executeUpdate();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}return result;
+			
+		}
 		
 		
 	

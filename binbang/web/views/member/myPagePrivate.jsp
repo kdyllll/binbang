@@ -97,7 +97,7 @@
 		       	
 			 	let regPhone =/^\d{2,3}-\d{3,4}-\d{4}$/;
 					 if(!regPhone.test(phone.value)){
-						 alert("전화번호를 입력해주세요")
+						 alert("전화번호 형식으로 입력해주세요 (xxx-xxx-xxx)")
 						 return false;
 					 }else{						
 						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();								 
