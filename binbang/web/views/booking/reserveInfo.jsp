@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.binbang.house.model.vo.House,com.binbang.booking.model.vo.Booking,com.binbang.member.model.vo.Member"%>
     <%
+    	Member m2 = (Member)session.getAttribute("m");
 	    String guestName = (String)request.getAttribute("guestName");
 	    String houseName = (String)request.getAttribute("houseName");
 	    String in = (String)request.getAttribute("in");
@@ -47,7 +48,7 @@
                <a href="<%=request.getContextPath()%>/mainMove" class="mainPage">
                   <div class="main">메인페이지</div>
                </a> 
-                <a href="<%=request.getContextPath()%>/member/myPage" class="myPage">
+                <a href="<%=request.getContextPath()%>/member/myPage?email=<%=m2.getEmail() %>" class="myPage">
                   <div class="my">마이페이지</div>
                </a>
             </div>
