@@ -46,7 +46,6 @@ public class LoginSendEmailServlet extends HttpServlet {
 
 		String userId = request.getParameter("email");
 		Member m=new MemberService().selectInfo(userId);
-		System.out.println("서블릿"+userId);
 		
 		JSONObject emailConfirm= new JSONObject();
 		
@@ -70,7 +69,6 @@ public class LoginSendEmailServlet extends HttpServlet {
 	        props.put("mail.smtp.ssl.enable", "true");
 	        props.put("mail.smtp.starttls.enable","true");
 	        props.put("mail.smtp.ssl.trust", "smtp.naver.com"); 
-//  		props.put("mail.debug", "true"); 
 	        
 	        StringBuffer temp =new StringBuffer();
 	        Random rnd = new Random();
@@ -115,7 +113,7 @@ public class LoginSendEmailServlet extends HttpServlet {
 	            System.out.println("이메일 전송");
 	            
 	        }catch (Exception e) {
-	            e.printStackTrace();// TODO: handle exception
+	            e.printStackTrace();
 	        }
 	        HttpSession saveKey = request.getSession();
 	        saveKey.setAttribute("AuthenticationKey", AuthenticationKey);

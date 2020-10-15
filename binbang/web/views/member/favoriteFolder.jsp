@@ -55,9 +55,7 @@
  														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
 														<input type="submit" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
 														<p class="folderName"> <%=f.getFolderName() %> Folder</p>
-														<input type="submit" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">	
-															
-																																														
+														<input type="submit" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">																																																														
 										</form>																											
 								<%}%>											
 					</div>
@@ -78,8 +76,7 @@
 		  });
 		function fn_createFolder(){
 			$(".folderCreate").attr("action","<%=request.getContextPath()%>/favorite/favoriteFolderCreate").submit();
-		}	
-		
+		}			
 		function fn_toContent(){			
 			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();									
 		}

@@ -24,33 +24,24 @@
          
          <select class="searchCategory"  id="searchType">
 		      <option value="" selected disabled hidden>선택</option>
-		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>이름</option>
-		      <option value="host_confirm" <%=type!=null&&type.equals("host_confirm")?"selected":"" %>>분류</option>
-		      <option value="email" <%=type!=null&&type.equals("email")?"selected":"" %>>이메일</option>
+		      <option value="member_no" <%=type!=null&&type.equals("member_no")?"selected":"" %>>회원번호</option>
+		      <option value="house_no" <%=type!=null&&type.equals("house_no")?"selected":"" %>>숙소번호</option>
    		</select>
    		
-		<div class="search" id="search-member_name">
+		<div class="search" id="search-member_no">
      		<form action="<%=request.getContextPath()%>/admin/adminSearch">
-    			<input type="hidden" name="searchType" value="member_name">
+    			<input type="hidden" name="searchType" value="member_no">
     			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-    				value="<%=key!=null&&type!=null&&type.equals("member_name")?key:""%>">
+    				value="<%=key!=null&&type!=null&&type.equals("member_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
     	</div>
-    	<div class="search" id="search-host_confirm">
+    	<div class="search" id="search-house_no">
     		<form action="<%=request.getContextPath()%>/admin/adminSearch">
-    			<input type="hidden" name="searchType" value="host_confirm">
+    			<input type="hidden" name="searchType" value="house_no">
     			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-    				value="<%=key!=null&&type!=null&&type.equals("host_confirm")?key:""%>">
+    				value="<%=key!=null&&type!=null&&type.equals("house_no")?key:""%>">
     			<button class="inputButton"></button>
-    		</form>
-    	</div>
-    	<div class="search" id="search-email">
-    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
-    			<input type="hidden" name="searchType" value="email">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-    				value="<%=key!=null&&type!=null&&type.equals("email")?key:""%>">
-  				<button class="inputButton"></button>  			
     		</form>
     	</div>
             
@@ -119,14 +110,12 @@
 
 <script>
 $(function(){
-	let memberName=$("#search-member_name");
-	let hostConfirm=$("#search-host_confirm");
-	let email=$("#search-email");
+	let memberNo=$("#search-member_no");
+	let houseNo=$("#search-house_no");
 	
 	$("#searchType").change(e => {
-		memberName.css("display","none");
-		hostConfirm.css("display","none");
-		email.css("display","none");
+		memberNo.css("display","none");
+		houseNo.css("display","none");
 		let v=$(e.target).val(); 
 		$("#search-"+v).css("display","inline-block");
 	});

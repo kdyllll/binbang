@@ -5,24 +5,8 @@
 .section{
     margin-top: 150px;
     padding : 0 20%;
-    
 
 }
-    
-/* 사이 선 */
-.selectNoticeline{
-    width: 100%;
-    height: 0.5px;
-    margin: 20px 0;
-    background-color: black;
-} 
-
-.selectNoticeline2{
-    width: 100%;
-    height: 0.2px;
-    margin: 20px 0;
-    background-color: black;
-} 
 
 /* 버튼들 */
 .allBtns {
@@ -41,12 +25,24 @@
     margin : 5px;
 
 }
+    
+/* 첫 번 째 사이 선 */
+.selectNoticeline{
+    width: 100%;
+    height: 0.5px;
+    margin: 30px 0 20px 0;
+    background-color: black;
+} 
+
+
+
+
 
 /* 게시글 제목,내용 전체*/
 .selectNoticeContent{
    width:90%;
    display:block;
-   margin:50px auto;
+   margin:10px auto;
    
 }
 
@@ -55,7 +51,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding-top:20px;
     margin:0 3%;
 }
 
@@ -69,10 +64,16 @@
     color : darkgrey;
 }
 
+/*두 번째 사이 선*/
+.selectNoticeline2{
+    width: 100%;
+    height: 0.2px;
+    margin: 10px 0 20px 0;
+    background-color: black;
+} 
+
 /* 내용 */
 .postingContent{
-    width:100%;
-    height: 300px;
-
-    
+    width:90%;
+    margin:0px auto
 }

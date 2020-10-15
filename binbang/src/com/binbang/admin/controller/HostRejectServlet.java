@@ -1,5 +1,6 @@
 package com.binbang.admin.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -39,14 +40,26 @@ public class HostRejectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memberNo = request.getParameter("memberNo");
-		System.out.println("거절" + memberNo);
 		String memberId = request.getParameter("memberId");
-		System.out.println("거절" + memberId);
-		
+		String fileName= request.getParameter("idPic");
+	
+		String path = getServletContext().getRealPath("/upload/host/"+fileName);
 		String msgg="";
+		
 		int result=new AdminService().deleteHost(memberNo);
+		
 		if(result>0) {
-			msgg="호스트 승인 거절이 완료되었습니다.";
+			
+			File file = new File(path);
+			if( file.exists() ){ 
+				if(file.delete()){ 
+					System.out.println("파일삭제 성공"); 
+				}else{ 
+					System.out.println("파일삭제 실패"); 
+				} 
+			}else{ 
+				System.out.println("파일이 존재하지 않습니다."); 
+			}
 			
 			String host="smtp.naver.com";
 			String user="tnrud2668@naver.com";
@@ -85,6 +98,7 @@ public class HostRejectServlet extends HttpServlet {
 	        }catch (Exception e) {
 	            e.printStackTrace();
 	        }
+	        msgg="호스트 승인 거절이 완료되었습니다.";
 		}else {
 			msgg="호스트 승인 거절에 실패하였습니다.";
 		}

@@ -12,7 +12,14 @@
 .line1>p {
 	padding:2% 0;
 }
-
+#deleteBtn{
+	position: absolute;
+	bottom: 45px;
+	right:-45px;
+	border:none;
+	outline:none;
+	background-color: #ff9d6f;	
+	}
 .listLine {
 	width: 100%;
 	height: 2px;
@@ -64,7 +71,7 @@
 .folderName{
 	position: absolute;
 	right: 15px;
-	top: 180px;
+	top: 150px;
 	width:100px;
 	height:20px;
 	color:black;

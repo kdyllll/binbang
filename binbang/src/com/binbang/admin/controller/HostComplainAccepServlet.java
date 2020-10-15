@@ -44,7 +44,7 @@ public class HostComplainAccepServlet extends HttpServlet {
 		String complaintNo=request.getParameter("complaintNo");
 		
 		int result=new AdminService().acceptHostComplainCount(hostNo);
-		
+		System.out.println(result);
 		String hostEmail=new AdminService().selectHostEmail(hostNo);
 		
 		if(result>0) {
@@ -96,7 +96,7 @@ public class HostComplainAccepServlet extends HttpServlet {
 		}
 		String msg="신고";
 		int result2=new AdminService().acceptHostComplainState(complaintNo,msg);
-
+		System.out.println(result2);
 		//업데이트한 리스트를 다시 보냄
 		List<Complaint> list = new AdminService().complainList();
 		request.setAttribute("list",list);
