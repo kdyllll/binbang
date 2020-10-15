@@ -34,10 +34,13 @@ public class FavConPopUpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("서블릿 실행");
 		HttpSession session = request.getSession(false);
 		Member m = (Member) session.getAttribute("m");
 		String houseNo=request.getParameter("houseNo");
+		System.out.println("숙소번호"+houseNo);
 		String[] folder=request.getParameterValues("folderNo");
+		System.out.println("폴더번호"+folder);
 		if(folder!=null) {
 			int result=0;
 			//폴더 번호와 하우스번호 가지고, 조회해서 이미 있으면 -삭제 / 없으면 -삽입
