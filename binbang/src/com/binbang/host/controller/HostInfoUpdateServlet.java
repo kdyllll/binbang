@@ -50,6 +50,11 @@ public class HostInfoUpdateServlet extends HttpServlet {
 		String hostIntro = mr.getParameter("hostIntro");
 		String memberNo = mr.getParameter("memberNo");
 		String profilePic = mr.getFilesystemName("uploadImg");
+		System.out.println(profilePic);
+		if(profilePic == null) {
+			profilePic = mr.getParameter("profilePicOri");
+			System.out.println(profilePic);
+		}
 		int result = new HostService().updateHostInfo(hostIntro,profilePic, memberNo);
 		
 		String msg = "";
