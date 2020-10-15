@@ -223,6 +223,27 @@ public class FavoriteDao {
 			}return result;
 			
 		}
+		
+		public Favorite selectFolderName(Connection conn, String no) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			Favorite f = null;
+			
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("selectFolderName"));
+				pstmt.setNString(1, no);
+				rs= pstmt.executeQuery();
+				if(rs.next()) {
+					f = new Favorite();
+					f.setFolderName(rs.getNString("folder_name"));
+				}				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return f;
+		}
 
 		
 	
