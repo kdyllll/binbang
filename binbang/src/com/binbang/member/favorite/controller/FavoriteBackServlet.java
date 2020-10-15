@@ -29,6 +29,7 @@ public class FavoriteBackServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* String folderName=request.getParameterValues("folderName") */
 		
 		String memberNo = request.getParameter("memberNo");				
 		Favorite f = new FavoriteService().selectMemberNo(memberNo);
