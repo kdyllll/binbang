@@ -204,9 +204,7 @@
    <script>
    $("#plusBtn").on("click", e => {
       $(".makeFolder").toggleClass("show");
-      $("#plusBtn").attr("style","color:black;");
-      
-      
+      $("#plusBtn").attr("style","color:black;"); 
    });
    
    function fn_folderAdd(e){
