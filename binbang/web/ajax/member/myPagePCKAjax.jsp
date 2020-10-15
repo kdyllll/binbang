@@ -61,7 +61,7 @@ border-bottom: 1px gray solid;
 
 	<div class="wrap">
 					
-		<form  action="<%=request.getContextPath() %>/member/mypagePrivate" method="post" id="memberCheck">		
+		<form  action="<%=request.getContextPath() %>/mypage/mypagePrivate" method="post" id="memberCheck">		
 			<div class="passwordCheck">								
 				
 				<input type="hidden" value="<%=m.getEmail()%>" name="email" readonly>

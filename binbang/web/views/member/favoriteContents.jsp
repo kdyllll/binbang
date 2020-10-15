@@ -21,7 +21,7 @@
 		<form class="favHouse" method="post">
 			<div>
 				<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">
-				<input type="hidden" value="<%=mno%>" name="memberNo">
+				<input type="text" value="<%=mno%>" name="memberNo">
 			</div>			
 			<div class="line1">
 				<input type="text" value="폴더이름 : <%=na%>" name="folderName" class="favTitle">

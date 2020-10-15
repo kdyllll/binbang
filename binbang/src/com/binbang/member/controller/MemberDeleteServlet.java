@@ -13,7 +13,7 @@ import com.binbang.member.model.service.MemberService;
 /**
  * Servlet implementation class MemberDeleteServlet
  */
-@WebServlet("/member/memberDelete")
+@WebServlet("/mypage/memberDelete")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,14 +37,14 @@ public class MemberDeleteServlet extends HttpServlet {
 		
 		if(result>0) {
 			msg="탈퇴완료";
-			loc="/views/member/main.jsp";
+			loc="/views/mypage/main.jsp";
 			HttpSession session=request.getSession(false);
 			if(session!=null) {
 				session.invalidate();
 			}
 		}else {
 			msg="탈퇴실패";
-			loc="/views/member/myPage";
+			loc="/views/mypage/myPage";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

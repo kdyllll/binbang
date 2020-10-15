@@ -43,7 +43,7 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 		System.out.println(result);
 		
 		String msg="";
-		String loc="/member/myPage?email="+email;	
+		String loc="/mypage/myPage?email="+email;	
 		
 		if(result>0) {
 			msg="Password 수정완료";						

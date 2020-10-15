@@ -149,7 +149,7 @@ public class FavoriteDao {
 			try {
 				pstmt=conn.prepareStatement(prop.getProperty("modifyFolder"));
 				pstmt.setString(1, f.getFolderName());
-				pstmt.setString(2, f.getFolderNo());
+				pstmt.setString(2, f.getFolderNo());				
 				rs=pstmt.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();

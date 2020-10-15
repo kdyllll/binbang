@@ -85,7 +85,7 @@
 		                  alert("비밀번호 8~15글자 (숫자,문자,특수기호)를 포함해주세요");
 		                  return false;
 		              }else{	 	          
-						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberPasswordUpdate").submit();		            	  
+						$("#memberModify").attr("action","<%=request.getContextPath()%>/mypage/memberPasswordUpdate").submit();		            	  
 		              }	        
 			}
 			
@@ -100,7 +100,7 @@
 						 alert("전화번호 형식으로 입력해주세요 (xxx-xxx-xxx)")
 						 return false;
 					 }else{						
-						$("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberUpdate").submit();								 
+						$("#memberModify").attr("action","<%=request.getContextPath()%>/mypage/memberUpdate").submit();								 
 					 } 					 
 			} 
 									
@@ -108,7 +108,7 @@
 			//회원탈퇴
 			function fn_deleteMember(){		
 				 alert("정말 탈퇴하시겠습니까?") 
-		         $("#memberModify").attr("action","<%=request.getContextPath()%>/member/memberDelete").submit();
+		         $("#memberModify").attr("action","<%=request.getContextPath()%>/mypage/memberDelete").submit();
 		    }					
 		</script>
     
