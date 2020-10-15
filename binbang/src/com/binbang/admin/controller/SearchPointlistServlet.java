@@ -1,23 +1,28 @@
-package com.binbang.member.controller;
+package com.binbang.admin.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.binbang.admin.model.service.AdminService;
+import com.binbang.booking.model.vo.Booking;
+
 /**
- * Servlet implementation class MemberEnrollChoice
+ * Servlet implementation class SearchPointlistServlet
  */
-@WebServlet("/member/memberEnrollChoice")
-public class MemberEnrollChoiceServlet extends HttpServlet {
+@WebServlet("/admin/searchPointlist")
+public class SearchPointlistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberEnrollChoiceServlet() {
+    public SearchPointlistServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +31,13 @@ public class MemberEnrollChoiceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/views/member/memberEnrollChoice.jsp").forward(request, response);
+		
+		String type=request.getParameter("searchType");
+		String key=request.getParameter("searchKeyword");
+		
+		List<Booking> list=new AdminService().searchPointList(type,key);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("/views/admin/pointList.jsp").forward(request, response);
 	}
 
 	/**

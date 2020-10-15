@@ -33,14 +33,14 @@ public class FavoriteFolderModifyServlet extends HttpServlet {
 		
 		String folderNo=request.getParameter("folderNo");
 		System.out.println(folderNo);
-		String folderName=request.getParameter("folderName");
+		String folderName=request.getParameterValues("folderName")[1];
 		System.out.println(folderName);		
 		String memberNo=request.getParameter("memberNo");
 
 		Favorite f = new Favorite();
-		f.setFolderNo(request.getParameter("folderNo"));
-		f.setFolderName(request.getParameter("folderName"));		
-		f.setMemberNo(request.getParameter("memberNo"));
+		f.setFolderNo(folderNo);
+		f.setFolderName(folderName);		
+		f.setMemberNo(memberNo);
 		
 		int rs=new FavoriteService().modifyFolder(f);
 		System.out.println("찍히니?!?!!?!?!?!?"+folderNo);
@@ -50,7 +50,7 @@ public class FavoriteFolderModifyServlet extends HttpServlet {
 		
 		if(rs>0) {
 			msg="폴더수정 성공";
-			loc="/favorite/favoriteContents";
+			loc="/favorite/favoriteContents?folderNo="+folderNo;
 		}else {
 			msg="폴더수정 실패";
 			loc="/favorite/favoriteContents";

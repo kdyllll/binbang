@@ -45,9 +45,23 @@
    
     </div>
    <script>
-      CKEDITOR.replace( 'noticeContent' );
-    var data = CKEDITOR.instances.noticeContent.getData();
-	console.log(data);
+       CKEDITOR.replace( 'noticeContent' ); 
+      
+   
+    
+      <%--  var content=CKEDITOR.instances.noticeContent.getData();
+      $(".enroll").click(e => {
+      $.ajax({
+ 		url:"<%=request.getContextPath()%>/notice/noticeWriteEnd",
+ 		type:"post",
+ 		dataType:"html",
+ 		data:{"noticeContent":content},
+ 		success:data => {
+ 			console.log(data);
+ 		}
+ 	}); 
+      });  --%>
+    
       <%-- $.ajax({
 		url:"<%=request.getContextPath()%>/notice/noticeDetailView"
 	}); 
@@ -58,7 +72,7 @@
        CKEDITOR.instances["noticeContent"].setData(data);
       });
        --%>
-      // Your code to save "data", usually through Ajax.
+    
    </script>
    
 </body>

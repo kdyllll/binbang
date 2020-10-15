@@ -1,5 +1,6 @@
 package com.binbang.admin.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -23,7 +24,7 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class HostAcceptServlet
  */
-@WebServlet("/admin/moveHostAcceptList")
+@WebServlet("/admin/hostAccept")
 public class HostAcceptServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,14 +42,32 @@ public class HostAcceptServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//호스트 승인해주는 서블릿
 		String memberNo = request.getParameter("memberNo");
+		System.out.println("회원번호"+memberNo);
 		String memberId = request.getParameter("memberId");
-
+		String fileName= request.getParameter("idPic");
 		String msgg=""; 
+		
+		String path = getServletContext().getRealPath("/upload/host/"+fileName);
+
 		
 		int result=new AdminService().acceptHost(memberNo);
 		if(result>0) {
 			
-			 msgg="호스트 승인이 완료되었습니다.";
+			//파일 삭제
+			File file = new File(path);
+			if( file.exists() ){ 
+				if(file.delete()){ 
+					System.out.println("파일삭제 성공"); 
+					int result5=new AdminService().changeHostIdPic(memberNo);
+					System.out.println(result5);
+				}else{ 
+					System.out.println("파일삭제 실패"); 
+				} 
+			}else{ 
+				System.out.println("파일이 존재하지 않습니다."); 
+			}
+			
+			
 			 
 			String host="smtp.naver.com";
 			String user="tnrud2668@naver.com";
@@ -86,6 +105,8 @@ public class HostAcceptServlet extends HttpServlet {
 	            e.printStackTrace();
 	        }
 			
+	        msgg="호스트 승인이 완료되었습니다.";
+	        
 		}else {
 			msgg="호스트 승인에 실패하였습니다.";
 		}

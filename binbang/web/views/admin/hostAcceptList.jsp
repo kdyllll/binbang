@@ -54,6 +54,7 @@
 					<div class="acceptChoice">
 						<input type="hidden" name="memberNo" value="<%=h.getMemberNo() %>">
 						<input type="hidden" name="memberId" value="<%=h.getHostEmail() %>">
+						<input type="hidden" name="idPic" value="<%=h.getIdCard() %>">
 						<input type="button" class="acceptY" name="acceptY" value="승인" class="yes" onclick="fn_accept();">
 						<input type="button" class="acceptN" name="acceptN" value="거절" class="no" onclick="fn_reject();">
 					</div>
@@ -82,7 +83,7 @@
 <script>
 
 function fn_accept(){         
-    $(".form").attr("action","<%=request.getContextPath() %>/admin/moveHostAcceptList").submit();                           
+    $(".form").attr("action","<%=request.getContextPath() %>/admin/hostAccept").submit();                           
  }
  
  function fn_reject(){

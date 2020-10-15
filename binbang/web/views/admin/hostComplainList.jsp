@@ -8,7 +8,6 @@
 	List<Complaint> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
- 	/* int result3=(int)request.getAttribute("result3");   */
 
 %>
 
@@ -23,18 +22,18 @@
         <div id="blackListContents" class="searchCommon">
             <p class="pageTitle">호스트 신고 관리</p>
            
-            <select class="searchCategory"  id="searchType">
+          <%--   <select class="searchCategory"  id="searchType">
 		      <option value="" selected disabled hidden>선택</option>
-		      <option value="email" <%=type!=null&&type.equals("email")?"selected":"" %>>신고 아이디</option>
+		      <option value="c.email" <%=type!=null&&type.equals("c.email")?"selected":"" %>>신고 아이디</option>
 		      <option value="house_no" <%=type!=null&&type.equals("house_no")?"selected":"" %>>숙소 번호</option>
-		      <option value="member_name" <%=type!=null&&type.equals("member_name")?"selected":"" %>>호스트 이름</option>
+		      <option value="bl.member_name" <%=type!=null&&type.equals("bl.member_name")?"selected":"" %>>호스트 이름</option>
    			</select>
    		
-			<div class="search" id="search-email">
+			<div class="search" id="search-c.email">
 	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
-	    			<input type="hidden" name="searchType" value="email">
+	    			<input type="hidden" name="searchType" value="c.email">
 	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-	    				value="<%=key!=null&&type!=null&&type.equals("email")?key:""%>">
+	    				value="<%=key!=null&&type!=null&&type.equals("c.email")?key:""%>">
 	    			<button class="inputButton"></button>
 	    		</form>
 	    	</div>
@@ -48,14 +47,14 @@
 	    		</form>
 	    	</div>
 	    	
-	    	<div class="search" id="search-member_name">
+	    	<div class="search" id="search-bl.member_name">
 	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
 	    			<input type="hidden" name="searchType" value="bl.member_name">
 	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
 	    				value="<%=key!=null&&type!=null&&type.equals("bl.member_name")?key:""%>">
 	    			<button class="inputButton"></button>
 	    		</form>
-	    	</div>
+	    	</div> --%>
     	
              
             
@@ -93,7 +92,7 @@
                     	
                     	<input type="button" class="accept" value="승인" >
                     	<input type="button" name="cancle" class="cancle" value="거절" > --%>
-                    <%if(com.getComplaintState().equals("대기")||com.getComplaintState()==null||com.getComplaintState()=="") {%>
+                    <%if(com.getComplaintState().equals("대기")||com.getComplaintState()==null||com.getComplaintState().equals("")) {%>
                         	<input type="button" class="accept" value="승인" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainAccept?hostNo=<%=com.getHostNo() %>&complaintNo=<%=com.getComplaintNo()%>&memberEmail=<%=com.getMemberEmail()%>'">
                         	<input type="button" name="cancle" class="cancle" value="거절" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainReject?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
                         	<input type="button" name="out" class="out" value="권한박탈" style="color:red" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainOut?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
@@ -127,21 +126,12 @@
 
 
 <script>
-
-/* $(function(){
-	$(".accept").click(e=>{
-		console.log(e);
-        e.target.style.color="red";
-	})
-	
-}); */
-
 	
 	//검색
 	$(function(){
-		let memberName=$("#search-member_name");
+		let memberName=$("#search-bl.member_name");
 		let hostNo=$("#search-host_no");
-		let email=$("#search-email");
+		let email=$("#search-c.email");
 		
 		$("#searchType").change(e => {
 			memberName.css("display","none");
@@ -155,7 +145,7 @@
 	});
 		
 	
- 	$(function(){
+/*  	$(function(){
 		$(".accept, .cancel, .out").on({
 		    "click":function(e){
 		        let id = $(e.target).val();
@@ -172,7 +162,7 @@
 		        $(e.target).parent().html($("<span>").text(text));
 		    }
 		});
- 	});
+ 	}); */
 	//신고 승인
 	<%--  $(".accept").click(e=>{
 		$.ajax({

@@ -70,8 +70,7 @@
 												<input type="hidden" value="<%=na%>" name="folderName">
 												<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">						
 												<input type="hidden" value="<%=f.getHouseNo()%>" name="houseNo">															
-												<img src="<%=request.getContextPath() %>/upload/house/<%=f.getPictureName()%>" style="width:100%; height:100%;"  alt="사진">												 																						 																																																											
-												<%-- <input type="hidden" value="<%=f.getFolderNo()%>"> --%>
+												<img src="<%=request.getContextPath() %>/upload/house/<%=f.getPictureName()%>" style="width:100%; height:100%;"  alt="사진">												 																						 																																																																							
 										</a>							
 									</div>
 											<div class="houseContent">

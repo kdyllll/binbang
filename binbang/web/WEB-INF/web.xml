@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SearchPointListServlet</display-name>
+    <servlet-name>SearchPointListServlet</servlet-name>
+    <servlet-class>com.binbang.admin.controller.SearchHostComplainList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchPointListServlet</servlet-name>
+    <url-pattern>/admin/searchPointList</url-pattern>
+  </servlet-mapping>
 </web-app>
