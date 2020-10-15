@@ -1,5 +1,7 @@
 package com.binbang.member.model.vo;
 
+import java.util.List;
+
 public class Favorite {
 
 	private String folderNo;
@@ -9,21 +11,23 @@ public class Favorite {
 	private String pictureName;
 	private String HouseName;
 	private String HouseLocation;
+	private List houseList;
 	
 	public Favorite() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Favorite(String folderNo, String memberNo, String folderName, String houseNo, String pictureName,
-			String houseName, String houseLocation) {
+			String houseName, String houseLocation, List houseList) {
 		super();
 		this.folderNo = folderNo;
 		this.memberNo = memberNo;
 		this.folderName = folderName;
 		this.houseNo = houseNo;
 		this.pictureName = pictureName;
-		this.HouseName = houseName;
-		this.HouseLocation = houseLocation;
+		HouseName = houseName;
+		HouseLocation = houseLocation;
+		this.houseList = houseList;
 	}
 
 	public String getFolderNo() {
@@ -82,20 +86,22 @@ public class Favorite {
 		HouseLocation = houseLocation;
 	}
 
+	public List getHouseList() {
+		return houseList;
+	}
+
+	public void setHouseList(List houseList) {
+		this.houseList = houseList;
+	}
+
 	@Override
 	public String toString() {
 		return "Favorite [folderNo=" + folderNo + ", memberNo=" + memberNo + ", folderName=" + folderName + ", houseNo="
 				+ houseNo + ", pictureName=" + pictureName + ", HouseName=" + HouseName + ", HouseLocation="
-				+ HouseLocation + "]";
+				+ HouseLocation + ", houseList=" + houseList + "]";
 	}
 
-	
-	
-
-	
-
-	
-	
+		
 	
 	
 }

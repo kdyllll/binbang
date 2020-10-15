@@ -199,10 +199,16 @@
 				let filterNames="";
 				let filterList=houseList[h].filter;
 				let location=houseList[h].houseLocation.substring(0,2);
+				let price=Math.ceil(houseList[h].totalPrice / days);
 				for(let f in filterList){
 					if(filterNames!="") filterNames=filterNames+","+filterList[f];
 					else filterNames=filterList[f];
 				}
+				let hName=houseList[h].houseName;
+					if(hName.length>11){
+					hName=hName.text().substring(0,11)+"..";
+				}
+				console.log(houseList[h].houseName);
 				list = `<div class="house">
 							<form class="go" action="<%=request.getContextPath()%>/house/houseDetailMove" method="post">
 								<input type="hidden" class="houseNo1" name="houseNo" value="`+houseList[h].houseNo+`">
@@ -218,7 +224,7 @@
 							<div class="houseContents">
 
 								<div class="contentSection1" name="contentSection1">
-									<p class="houseName">`+houseList[h].houseName+`</p>
+									<p class="houseName">`+hName+`</p>
 									<a class="heartCommon heart"></a>
 									<input type="hidden" class="houseNoPopUp" name="houseNo" value="`+houseList[h].houseNo+`">
 									
@@ -248,7 +254,7 @@
 										<div class="iconPrice"></div>
 										<p class="priceName">
 											<!-- 가격 : 총요금/날짜수-->											
-											약 <span class="price">`+houseList[h].totalPrice / days+`</span>원/1박
+											약 <span class="price">`+price+`</span>원/1박
 											
 										</p>
 									</div>
@@ -281,12 +287,7 @@
 					} 
 				}
 			}
-			let hName=$(".houseName");
-			if(hName.text().length>11){
-				let newName=hName.text().substring(0,11)+"..";
-				console.log(newName);
-				$(".houseName").text(newName);
-			}
+			
 		}
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		//필터 검색 누를때 두개 다

@@ -245,6 +245,24 @@ public class FavoriteDao {
 			}return f;
 		}
 
+		public List selectConList(Connection conn, String no) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List list=new ArrayList();
+			try {
+				pstmt=conn.prepareStatement(prop.getProperty("selectConList"));
+				pstmt.setNString(1, no);
+				rs= pstmt.executeQuery();
+				while(rs.next()) {
+					list.add(rs.getNString("house_no"));
+				}				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}return list;
+		}
 		
 	
 }

@@ -170,7 +170,7 @@
          <div class="favLine"></div>
          <div class="folderList">
          <form class="favoriteForm" method="post" action="<%=request.getContextPath()%>/favorite/favConPopUp">
-            <input type="hidden" name="houseNo" value="<%=houseNo%>">
+            <input type="hidden" class="houseNo" name="houseNo" value="<%=houseNo%>">
             
             <%
                for (Favorite f : favorite) {
@@ -179,14 +179,18 @@
                <div class="folder">
                   <input type="text" class="folderTitle" value="<%=f.getFolderName()%>" readonly>               
                   <input type="hidden" class="check 0" value="<%=f.getFolderNo()%>">
-                  <%if (f.getHouseNo()!=null&&f.getHouseNo().length()!=0 && f.getHouseNo().equals(houseNo)) {%>
-                     <div class="heartCommon fav"></div>
-                     
-                  <%} else {%>
-                     <div class="heartCommon heart"></div>
-                                    
-                  <%}%>
-                  
+                  <%boolean result=false;
+                     for(Object o:f.getHouseList()){
+                    	 String hNo=(String)o;
+                    	 if(hNo.equals(houseNo)){
+                    		 result=true;
+                    	 }                 	 
+                     }   
+                     if(result){%>   
+                  <div class="heartCommon fav"></div> 
+                  <%}else{ %>   
+                  <div class="heartCommon heart"></div>     
+                  <%} %>                              
                </div>
                <div class="favLine"></div>
             </div>
@@ -202,6 +206,7 @@
    </div>
 
    <script>
+
    $("#plusBtn").on("click", e => {
       $(".makeFolder").toggleClass("show");
       $("#plusBtn").attr("style","color:black;"); 
@@ -226,8 +231,9 @@
    
    function fn_check(){
       $(".1").attr("name","folderNo");
-      
+   
    }
+   
    </script>
 </body>
 </html>
