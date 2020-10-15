@@ -117,6 +117,7 @@ public class LoginSendEmailServlet extends HttpServlet {
 	        }
 	        HttpSession saveKey = request.getSession();
 	        saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
+	        saveKey.setMaxInactiveInterval(5*60);
 	        
 	        HttpSession saveId = request.getSession();
 	        saveId.setAttribute("userId", userId);

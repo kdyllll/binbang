@@ -19,7 +19,7 @@
           <%@ include file="/views/admin/adminNav.jsp"%>
 
 
-          <form id="memberAllContents" class="searchCommon">
+          <div id="memberAllContents" class="searchCommon">
             <p class="pageTitle">회원 현황</p>
          
          <select class="searchCategory"  id="searchType">
@@ -99,7 +99,7 @@
                 </table>
               </div>
             </div>
-          </form>
+          </div>
 
           
  </section>

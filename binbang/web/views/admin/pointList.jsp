@@ -19,7 +19,7 @@
           <%@ include file="/views/admin/adminNav.jsp"%>
 
 
-          <form id="memberAllContents" class="searchCommon">
+          <div id="memberAllContents" class="searchCommon">
             <p class="pageTitle">적립금 관리</p>
          
          <select class="searchCategory"  id="searchType">
@@ -29,17 +29,17 @@
    		</select>
    		
 		<div class="search" id="search-member_no">
-     		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+     		<form action="<%=request.getContextPath()%>/admin/searchPointlist">
     			<input type="hidden" name="searchType" value="member_no">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="회원번호"
     				value="<%=key!=null&&type!=null&&type.equals("member_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
     	</div>
     	<div class="search" id="search-house_no">
-    		<form action="<%=request.getContextPath()%>/admin/adminSearch">
+    		<form action="<%=request.getContextPath()%>/admin/searchPointlist">
     			<input type="hidden" name="searchType" value="house_no">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="숙소번호"
     				value="<%=key!=null&&type!=null&&type.equals("house_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
@@ -98,7 +98,7 @@
                 </table>
               </div>
             </div>
-          </form>
+          </div>
 
           
  </section>

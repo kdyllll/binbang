@@ -18,7 +18,7 @@
       <section class="section">
         <%@ include file="/views/admin/adminNav.jsp"%>
 
-          <form id="reserveAllContents" class="searchCommon">
+          <div id="reserveAllContents" class="searchCommon">
             <p class="pageTitle">예약 현황</p>
 	            
 		<select class="searchCategory"  id="searchType">
@@ -32,7 +32,7 @@
 		<div class="search" id="search-reservation_no">
      		<form action="<%=request.getContextPath()%>/admin/searchReserveList">
     			<input type="hidden" name="searchType" value="reservation_no">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="예약 번호"
     				value="<%=key!=null&&type!=null&&type.equals("reservation_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
@@ -40,7 +40,7 @@
     	<div class="search" id="search-house_no">
     		<form action="<%=request.getContextPath()%>/admin/searchReserveList">
     			<input type="hidden" name="searchType" value="house_no">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="숙소 번호"
     				value="<%=key!=null&&type!=null&&type.equals("house_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
@@ -48,7 +48,7 @@
     	<div class="search" id="search-guest_name">
     		<form action="<%=request.getContextPath()%>/admin/searchReserveList">
     			<input type="hidden" name="searchType" value="guest_name">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="예약자 이름"
     				value="<%=key!=null&&type!=null&&type.equals("guest_name")?key:""%>">
   				<button class="inputButton"></button>  			
     		</form>
@@ -56,7 +56,7 @@
     	<div class="search" id="search-house_request">
     		<form action="<%=request.getContextPath()%>/admin/searchReserveList">
     			<input type="hidden" name="searchType" value="house_request">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="예약 상태"
     				value="<%=key!=null&&type!=null&&type.equals("house_request")?key:""%>">
   				<button class="inputButton"></button>  			
     		</form>
@@ -89,7 +89,7 @@
                 </table>
              </div>
             </div>
-          </form>
+          </div>
 </section>
 </div>
 </body>

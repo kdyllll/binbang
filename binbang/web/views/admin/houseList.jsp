@@ -16,7 +16,7 @@
       <section class="section">
        <%@ include file="/views/admin/adminNav.jsp"%>
 
-          <form id="houseAllContents" class="searchCommon">
+          <div id="houseAllContents" class="searchCommon">
             <p class="pageTitle">숙소 현황</p>
 	            
 		<select class="searchCategory"  id="searchType">
@@ -31,7 +31,7 @@
     	<div class="search" id="search-house_no">
     		<form action="<%=request.getContextPath()%>/admin/searchHouseList">
     			<input type="hidden" name="searchType" value="house_no">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="숙소 번호"
     				value="<%=key!=null&&type!=null&&type.equals("house_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
@@ -39,7 +39,7 @@
     	<div class="search" id="search-host_no">
      		<form action="<%=request.getContextPath()%>/admin/searchHouseList">
     			<input type="hidden" name="searchType" value="host_no">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="호스트 번호"
     				value="<%=key!=null&&type!=null&&type.equals("host_no")?key:""%>">
     			<button class="inputButton"></button>
     		</form>
@@ -47,7 +47,7 @@
     	<div class="search" id="search-house_type">
     		<form action="<%=request.getContextPath()%>/admin/searchHouseList">
     			<input type="hidden" name="searchType" value="house_type">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="숙소 유형"
     				value="<%=key!=null&&type!=null&&type.equals("house_type")?key:""%>">
   				<button class="inputButton"></button>  			
     		</form>
@@ -55,7 +55,7 @@
     	<div class="search" id="search-house_location">
     		<form action="<%=request.getContextPath()%>/admin/searchHouseList">
     			<input type="hidden" name="searchType" value="house_location">
-    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
+    			<input type="text"  class="searchinput" name="searchKeyword" size="25" placeholder="숙소 위치"
     				value="<%=key!=null&&type!=null&&type.equals("house_location")?key:""%>">
   				<button class="inputButton"></button>  			
     		</form>
@@ -88,7 +88,7 @@
                 </table>
              </div>
             </div>
-          </form>
+          </div>
 </section>
 </div>
 </body>

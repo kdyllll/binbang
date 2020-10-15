@@ -43,6 +43,7 @@ public class HostComplainOutServlet extends HttpServlet {
 		String hostNo=request.getParameter("hostNo");
 		int result=new AdminService().hostOut(hostNo);
 		
+		
 		String memberEmail=request.getParameter("memberEmail");
 		String hostEmail=new AdminService().selectHostEmail(hostNo);
 		
