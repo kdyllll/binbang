@@ -81,9 +81,8 @@
 						</div>
 						<%
 							}
-							}
+						}
 						%>
-
 					</div>
 					<!-- Add Arrows -->
 					<div class="swiper-button-next"></div>
@@ -107,8 +106,7 @@
 					</div>
 					<div class="host">
 						<div class="hostInfo">
-							<a
-								href="<%=request.getContextPath()%>/hostInfoPage?hostNo=<%=h.getHostNo()%>">호스트정보</a>
+							<a href="<%=request.getContextPath()%>/hostInfoPage?hostNo=<%=h.getHostNo()%>">호스트정보</a>
 						</div>
 					</div>
 					<br>
@@ -186,7 +184,6 @@
 					<div>
 						<%=h.getHouseComment()%>
 					</div>
-
 					<div>
 						<div class="test">
 
@@ -209,9 +206,6 @@
 												<%
 													}
 												%>
-
-
-
 											</div>
 											<!-- Add Arrows -->
 											<div class="swiper-button-next "></div>
@@ -264,8 +258,6 @@
 			<div class="gradeTitle">
 
 				★평균 평점 (<%=grade%>)
-				
-
 				<div class="writing">
 					<%
 						if (m2 != null) {
@@ -277,8 +269,6 @@
 					%>
 				</div>
 			</div>
-			
-	
 			<div class="comment">
 				<%
 					if (list == null) {
@@ -306,7 +296,6 @@
 											평점 :<%=r.getHouseGrade()%></div>
 
 										<br> 
-
 										<div class="b">
 											제목 :<%=r.getCommentTitle()%>
 										</div>

@@ -60,10 +60,8 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				String out1=request.getParameter("checkOut");
 				String price=request.getParameter("totalPrice");
 				
-
 				House h=new HouseService().HouseDetail(no);
 	
-				
 				String msg="";
 				String loc="";
 				String path="/views/house/houseDetail.jsp";
@@ -80,9 +78,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 				
 				
 				String[] housePicture =new HouseService().housePicture(no); //사진 리스트를 생성
-				
 				h.setHousePicture(housePicture); 
-				
 				
 				Double totalGrade = new HouseService().selectAvgGrade(no); //숙소 평균 내주는 기능
 				
