@@ -44,9 +44,10 @@ public class FavoriteFolderDeleteServlet extends HttpServlet {
 
 		String msg="";
 		String loc="";
-						
+		
+		System.out.println(memberNo);
 		if(result>0) {
-			msg="삭제완료";		
+			msg="삭제완료";								
 			loc="/favorite/favoriteFolder?memberNo="+memberNo;
 		}else {
 			msg="삭제실패";

@@ -54,7 +54,8 @@
 														<input type="hidden" value="<%=f.getFolderName() %>" name="folderName" readonly>
  														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
 														<input type="button" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
-														<p class="folderName"> <%=f.getFolderName() %> Folder</p>																																	
+														<p class="folderName"> <%=f.getFolderName() %> Folder</p>
+																																														
 										</form>																											
 								<%}%>											
 					</div>

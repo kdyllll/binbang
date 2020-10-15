@@ -37,7 +37,8 @@
 				<!-- 버튼  class="Btn"-->
 				<div class="btnGroup">
 					<input type="button" id="backBtn" value="뒤로가기" onclick="fn_back11();"> 						
-					<input type="button" id="modifyBtn11" value="목록수정" >															
+					<input type="button" id="modifyBtn11" value="목록수정" >
+					<input type="button" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">														
 				</div>
 
 				
@@ -54,7 +55,7 @@
 
 						<div class="popupFooter">
 							<input type="button" id="saveBtn" value="저장" onclick="fn_modify();">
-							<input type="button" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">														
+																				
 						</div>
 					</div>										
 				</div>			
