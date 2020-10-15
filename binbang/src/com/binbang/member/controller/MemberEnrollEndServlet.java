@@ -37,16 +37,13 @@ public class MemberEnrollEndServlet extends HttpServlet {
 		String memberName=request.getParameter("name");
 		String nickname=request.getParameter("nickname");
 		String phone=request.getParameter("phone");
-
 		Member m=new Member();
 		
 		m.setEmail(email);
 		m.setPassword(password);
 		m.setMemberName(memberName);
 		m.setNickname(nickname);
-		m.setPhone(phone);						
-	
-		
+		m.setPhone(phone);									
 		
 		int result=new MemberService().insertMember(m);
 		

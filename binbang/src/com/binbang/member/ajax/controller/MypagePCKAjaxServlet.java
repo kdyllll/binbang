@@ -13,7 +13,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MypagePasswordCheckAjaxServlet
  */
-@WebServlet("/member/myPagePCKAjax")
+@WebServlet("/mypage/myPagePCKAjax")
 public class MypagePCKAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
