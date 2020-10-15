@@ -27,7 +27,7 @@
 			</div>
 			
 			<div class="line1">
-				<input type="text" value="<%=na%>" class="favTitle">
+				<input type="text" value="<%=na%>" name="folderName" class="favTitle">
 				<div class="listLine"></div>
 			</div>			
 			
@@ -37,7 +37,8 @@
 				<!-- 버튼  class="Btn"-->
 				<div class="btnGroup">
 					<input type="button" id="backBtn" value="뒤로가기" onclick="fn_back11();"> 						
-					<input type="button" id="modifyBtn11" value="목록수정" >															
+					<input type="button" id="modifyBtn11" value="목록수정" >
+																	
 				</div>
 
 				
@@ -45,7 +46,7 @@
 					<div id="popupContent">					
 						<div class="popupHeader">
 							<p class="modifyTitle">목록수정</p>
-							<button class="xBtn">x</button>
+							<input type="button" class="xBtn" value="x">
 						</div>
 
 						<div class="popupSection">
@@ -53,8 +54,8 @@
 						</div>
 
 						<div class="popupFooter">
-							<input type="button" id="saveBtn" value="저장" onclick="fn_modify();">
-							<input type="button" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">														
+							<input type="submit" id="saveBtn" value="저장" onclick="fn_modify();">
+																				
 						</div>
 					</div>										
 				</div>			
@@ -105,9 +106,7 @@
  	 });
 	
 	
-	function fn_folderDelete(){
-		 	$(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/deleteFolder").submit();
-		}
+	
 	function fn_modify(){
 			$(".favHouse").attr("action","<%=request.getContextPath()%>/favorite/modifyFolder").submit();
 	}

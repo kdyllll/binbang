@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.binbang.house.model.vo.House,com.binbang.booking.model.vo.Booking,com.binbang.member.model.vo.Member"%>
     <%
+    	Member m2 = (Member)session.getAttribute("m");
 	    String guestName = (String)request.getAttribute("guestName");
 	    String houseName = (String)request.getAttribute("houseName");
 	    String in = (String)request.getAttribute("in");
@@ -38,16 +39,17 @@
                   <div>결제 방법 : <%=pay %></div>
                   <div class="priceLine">
                      <div class="priceInfoBox">
-                        <div class="priceInfo">￦<%=price %> </div>
+                        <div class="priceInfo">￦<%=price %></div>
                      </div>
                   </div>
+                  <div> 무통장 입금의 경우 1~3일 정도의 승인기간이 필요합니다. 추후 마이페이지 에서 확인하세요 </div>
                </div>
             </div>
             <div class="moveBox">
                <a href="<%=request.getContextPath()%>/mainMove" class="mainPage">
                   <div class="main">메인페이지</div>
                </a> 
-                <a href="<%=request.getContextPath()%>/member/myPage" class="myPage">
+                <a href="<%=request.getContextPath()%>/member/myPage?email=<%=m2.getEmail() %>" class="myPage">
                   <div class="my">마이페이지</div>
                </a>
             </div>

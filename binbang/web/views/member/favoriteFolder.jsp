@@ -53,8 +53,11 @@
  														<input type="hidden" value="<%=f.getFolderNo() %>" name="folderNo" readonly> 
 														<input type="hidden" value="<%=f.getFolderName() %>" name="folderName" readonly>
  														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
-														<input type="button" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
-														<p class="folderName"> <%=f.getFolderName() %> Folder</p>																																	
+														<input type="submit" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
+														<p class="folderName"> <%=f.getFolderName() %> Folder</p>
+														<input type="submit" id="deleteBtn" value="목록삭제" onclick="fn_folderDelete();">	
+															
+																																														
 										</form>																											
 								<%}%>											
 					</div>
@@ -79,6 +82,9 @@
 		
 		function fn_toContent(){			
 			$(".folderContents").attr("action","<%=request.getContextPath() %>/favorite/favoriteContents").submit();									
+		}
+		function fn_folderDelete(){
+		 	$(".folderContents").attr("action","<%=request.getContextPath()%>/favorite/deleteFolder").submit();
 		}
 				
 	</script>

@@ -1,3 +1,4 @@
+<%@page import="oracle.net.aso.n"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -11,6 +12,7 @@
 	String in = (String) request.getAttribute("checkIn");
 	String out1 = (String) request.getAttribute("checkOut");
 	String price = (String) request.getAttribute("totalPrice");
+	
 %>
 
 
@@ -27,7 +29,8 @@
 	<div class="wrap">
 		<%@ include file="/views/common/bookingHeader.jsp"%>
 		<section class="section">
-			<form action="<%=request.getContextPath()%>/booking/bookingFinal" class="bookingTest" method="post">
+			<form  class="bookingTest" method="post" onsubmit="return fn_booking();"
+			action="<%=request.getContextPath()%>/booking/bookingFinal">
 				<div class="reservation">
 					<ul>
 						<li>게스트이름 : <input type="text" name="guestName">
@@ -64,8 +67,8 @@
 					<div class="payMent">
 						결제방법 :
 						<div class="payments">
-							<label><input type="radio" name="pay" value="card"id="card">신용카드</label> 
-							<label><input type="radio"name="pay" value="bankTransfer" id="bankTransfer">무통장입금</label>
+							<label><input type="radio" name="pay" value="card" id="card">신용카드</label> 
+							<label><input type="radio"name="pay" value="bankTransfer" id="bankTransfer" >무통장입금</label>
 						</div>
 					</div>
 					<br> <br>
@@ -119,7 +122,7 @@
 							<div class="housePrice"><%=price%></div>
 							<br>
 							<div class="payInfoBox">
-								<div class="payInfo" method="POST">
+								<div class="payInfo" >
 									결제 약관 정보 <br> <input type="checkbox" name="check"
 										value="전체동의" id="check"> <label for="check">결제약관(개인정보)전체동의</label>
 									<div class="guidance">체크인 5일 전까지 결제 취소 시 전액환불처리됩니다.</div>
@@ -140,7 +143,7 @@
 									<input type="hidden" class="totalPoint" name="totalPoint" value="0">
 									<input type="hidden" class="totalPrice" name="totalPrice" value="<%=price%>">
 									<input type="hidden" class="memberNo" name="memberNo" value="<%=m2.getMemberNo()%>">
-									<input type="submit" value="Booking" class="lastPay">
+									<input type="submit" value="Booking" class="lastPay" >
 								
 							</div>
 
@@ -195,7 +198,7 @@
 	      if(cnt > total) {
 	         alert("최대인원을 초과했습니다");
 	      }
-	   })
+	   });
 
 	 function test() {
 		//housePrice에 초기값 넣어줌. 중복안되게
@@ -221,10 +224,47 @@
 			$(".totalPointsShow").html(totalPoints);
 			$(".totalPoints").val($(".pointWriter").val());
 		} 
+		
+		
+	 }
+		$('input[name=pay]').on("click",function(e){
+		
+			let payment=$("input[name=pay]:checked").val();
+			if(payment=="card"){
+			    //카드 결제 창 넘기는 로직
+			    $(".bookingTest").attr("action","<%=request.getContextPath()%>/booking/bookingFinal");
+			    //attr 속성값 추가 해주는 기능
+			}else if(payment=="bankTransfer"){
+				$(".bookingTest").attr("action","<%=request.getContextPath()%>/booking/bookingPayBank");
+			}
+			
+		});	
+		
 
-		//눈으로 확인하기위해	
-
-	}
+		
+			
+		
+		
+		function fn_booking(){
+			if($("input[name=pay]:checked").length==0){
+				alert("결제방법을 선택하세요");
+				return false;
+			}else if($("input[name=check]:checked").length==0){
+				alert("약관에 동의하세요");
+				return false;
+			}else if($("#pNum").val().trim()==0){
+				alert("숙박인원을 설정해 주세요");
+				return false;
+			}else{
+				console.log($(".bookingTest"));
+				return true;
+			}
+		};
+		
+			
+			
+	
+	
   
 </script>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>

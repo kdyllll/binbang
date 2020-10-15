@@ -494,10 +494,7 @@
 	       }
 	    //로그인 되어있다면 관심숙소 팝업 호출
 			function fn_favoritePopUp(e) {
-			 	const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
-		   		const title = "favoritePopUp";
-		   		const status = "left=100px, top=100px, width=500px, height=500px";
-		   		open(url,title,status);   
+				location.href="test1.php?tt_kb="; 
 				 
 			 }
 

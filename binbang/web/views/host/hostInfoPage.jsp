@@ -84,12 +84,18 @@
 						for(int i=0; i<rList.size(); i++) {
 							Review review = (Review)rList.get(i);
 					%>	
-					<div id="comment<%=i%>">
-						<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=review.getHouseNo()%>">
+					<div style="clear:both; margin-bottom:20px; height:200px;" id="comment<%=i%>">
+						<a style="margin-bottom:20px;" href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=review.getHouseNo()%>">
 							<h3 class="houseName"><%=review.getHouseName() %></h3>
 						</a>
-						<p class="checkInDate"><%=review.getCheckInDate() %></p>
-						<h3><%=review.getCommentContents()%></h3>
+						<% if(review.getFilePath() == null) { %>
+						<img style="width:180px; height:150px; float:left; margin-right:20px;" src="<%=request.getContextPath()%>/upload/review/noimg.gif">
+						<%} else { %>
+						<img style="width:180px; height:150px; float:left; margin-right:20px;" src="<%=request.getContextPath()%>/upload/review/<%=review.getFilePath()%>">
+						<%} %>
+						<span style="clear:both;"><%=review.getMemberName().substring(0,2) %>*</span>
+						<span class="checkInDate"><%=review.getCommentDate().substring(0,10) %></span>
+						<h3 style="margin-top:20px;line-height:20px; "><%=review.getCommentContents()%></h3>
 					</div>
 				<%} } %>
 			</div>
@@ -107,7 +113,7 @@
 		
 			let lengthSize = $(".hostHouseOne").length;
 			let startCnt = 3;
-			if(lengthSize < startCnt) {
+			if(lengthSize <= startCnt) {
 				$("#addBtn").css("display", "none");
 			}
 		 	for(let i=startCnt; i<lengthSize; i++) {
@@ -124,7 +130,7 @@
 			}
 			let commentSize = $("#hostCommentAll > div").length;
 			let startCnt2 = 3;
-			if(commentSize < startCnt2) {
+			if(commentSize <= startCnt2) {
 				$("#addBtn2").css("display", "none");
 			}
 			for(let i=startCnt2; i<commentSize; i++) {
@@ -136,7 +142,7 @@
 				} 
 				startCnt2 = startCnt2 + 3;
 				if(startCnt2 > commentSize) {
-					$("#addBtn2").css("display", "none");
+				 $("#addBtn2").css("display","none");
 				}
 			}
 		

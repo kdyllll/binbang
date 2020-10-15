@@ -69,12 +69,12 @@ public class FavoriteDao {
 	}
 	
 	//관심숙소 폴더 삭제
-	public int deleteFolder(Connection conn, Favorite f) {
+	public int deleteFolder(Connection conn, String fNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("deleteFolder"));
-			pstmt.setString(1, f.getFolderNo());
+			pstmt.setString(1, fNo);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -223,7 +223,7 @@ public class FavoriteDao {
 			}return result;
 			
 		}
-		
+
 		
 	
 }
