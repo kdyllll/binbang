@@ -74,10 +74,13 @@
 .searchCategory, .search{
     width: 300px;
     position: relative;
+    
+   
 }
 
 .search {
     margin-left: 20px;
+    
 }
 
 .searchCategory{

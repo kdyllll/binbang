@@ -8,7 +8,6 @@
 	List<Complaint> list=(List)request.getAttribute("list"); 
 	String type=request.getParameter("searchType");
 	String key=request.getParameter("searchKeyword");
- 	/* int result3=(int)request.getAttribute("result3");   */
 
 %>
 
@@ -23,7 +22,7 @@
         <div id="blackListContents" class="searchCommon">
             <p class="pageTitle">호스트 신고 관리</p>
            
-            <select class="searchCategory"  id="searchType">
+          <%--   <select class="searchCategory"  id="searchType">
 		      <option value="" selected disabled hidden>선택</option>
 		      <option value="c.email" <%=type!=null&&type.equals("c.email")?"selected":"" %>>신고 아이디</option>
 		      <option value="house_no" <%=type!=null&&type.equals("house_no")?"selected":"" %>>숙소 번호</option>
@@ -55,7 +54,7 @@
 	    				value="<%=key!=null&&type!=null&&type.equals("bl.member_name")?key:""%>">
 	    			<button class="inputButton"></button>
 	    		</form>
-	    	</div>
+	    	</div> --%>
     	
              
             
@@ -127,15 +126,6 @@
 
 
 <script>
-
-/* $(function(){
-	$(".accept").click(e=>{
-		console.log(e);
-        e.target.style.color="red";
-	})
-	
-}); */
-
 	
 	//검색
 	$(function(){

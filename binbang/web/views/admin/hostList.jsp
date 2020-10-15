@@ -36,6 +36,7 @@
 	    			<button class="inputButton"></button>
 	    		</form>
 	    	</div>
+	    	
 	    	<div class="search" id="search-member_name">
 	     		<form action="<%=request.getContextPath()%>/admin/searchHostList">
 	    			<input type="hidden" name="searchType" value="member_name">
