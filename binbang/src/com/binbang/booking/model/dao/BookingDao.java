@@ -163,6 +163,32 @@ public class BookingDao {
 		}return list;
 	}
 	
+	//포인트 마이페이지
+	public List<Booking> reservePointList(Connection conn, String memberNo){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Booking> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("reservePointList"));
+			pstmt.setString(1,memberNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Booking b=new Booking();
+				b.setReservationNo(rs.getString("reservation_no"));
+				b.setPointPlus(rs.getInt("point_plus"));
+				b.setPointMinus(rs.getInt("point_minus"));
+				b.setApprovalDate(rs.getDate("approval_date"));
+				b.setHouseName(rs.getString("house_name"));
+				list.add(b);				
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;				
+	}
+	
 	public int reserveCancel(Connection conn, String reservNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;

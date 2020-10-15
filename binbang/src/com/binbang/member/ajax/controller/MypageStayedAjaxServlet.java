@@ -41,8 +41,7 @@ public class MypageStayedAjaxServlet extends HttpServlet {
 		  Member m = (Member)session.getAttribute("m");
 		  List<Booking> list = new BookingService().reserveDoneList(m.getMemberNo());
 		  request.setAttribute("list",list);
-		  request.getRequestDispatcher("/ajax/member/myPageStayedAjax.jsp").forward(request, response);
-		
+		  request.getRequestDispatcher("/ajax/member/myPageStayedAjax.jsp").forward(request, response);		
 	}
 
 	/**

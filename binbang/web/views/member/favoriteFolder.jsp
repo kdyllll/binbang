@@ -20,7 +20,7 @@
 	<section class="section">
 					<form class="folderCreate" method="post">
 						<div class="line1">
-							<input type="text" value="<%=m.getMemberNo()%>" name="memberNo">																																		
+							<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">																																		
 							<p>관심숙소</p>				
 							<div class="listLine"></div>
 						</div>				
@@ -49,11 +49,12 @@
 
 					<div class="favoriteList">
 								<% for(Favorite f : list){%>
-										<form class="folderContents" method="post">		
- 														<input type="text" value="<%=f.getFolderNo() %>" name="folderNo" readonly> 
-														<input type="text" value="<%=f.getFolderName() %>" name="folderName" readonly>
- 														<input type="text" value="<%=m.getMemberNo()%>" name="memberNo">															
-														<input type="submit" class="eachList" id="eachList" onclick="fn_toContent();">								
+										<form class="folderContents" method="post">													
+ 														<input type="hidden" value="<%=f.getFolderNo() %>" name="folderNo" readonly> 
+														<input type="hidden" value="<%=f.getFolderName() %>" name="folderName" readonly>
+ 														<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">															
+														<input type="button" value="" class="eachList" id="eachList" onclick="fn_toContent();">														
+														<p class="folderName"> <%=f.getFolderName() %> Folder</p>																																	
 										</form>																											
 								<%}%>											
 					</div>
