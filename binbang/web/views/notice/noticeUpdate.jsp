@@ -48,18 +48,26 @@
     </div>
    <script>
       CKEDITOR.replace( 'noticeContent' );
-/*     var data = CKEDITOR.instances.noticeContent.getData();
-	console.log(data); */
-      <%-- $.ajax({
-		url:"<%=request.getContextPath()%>/notice/noticeDetailView"
-	}); 
-      
-      var formId = '<?=$getFormId?>';    //해당 폼 id 값 가져온다
+     
+    <%--   var content = CKEDITOR.instances.noticeContent.getData();
+      $(".enroll").click(e => {
+      $.ajax({
+ 		url:"<%=request.getContextPath()%>/notice/noticeDetailView",
+ 		type:"post",
+ 		dataType:"html",
+ 		data:{"data":content},
+ 		success:data => {
+ 			console.log(data);
+ 		}
+ 	}); 
+      });
+       --%>
+     /*  var formId = '<?=$getFormId?>';    //해당 폼 id 값 가져온다
       console.log("formId:"+formId);
       $.get("appr-form/form_"+formId+".html").done(function (data) {    //id값이 포함된 html형식 가져오면 해당내용 셋팅
        CKEDITOR.instances["noticeContent"].setData(data);
-      });
-       --%>
+      }); */
+      
       // Your code to save "data", usually through Ajax.
    </script>
    

@@ -152,7 +152,7 @@
     /* 팝업footer */
     .popupFooter{
       display: flex;
-      justify-content: space-between;      
+      float:right;      
     }
     #backBtn,#modifyBtn11{
        	width: 95px;
@@ -164,7 +164,7 @@
 		font-size: 15px;
     }
     
-    #deleteBtn, #saveBtn{
+    #saveBtn{
 	 	width: 80px;
 		height: 30px;
 		border: none;

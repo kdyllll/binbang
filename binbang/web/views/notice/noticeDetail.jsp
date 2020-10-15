@@ -1,12 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/views/common/commonLink.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/common.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/header.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/footer.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/common/nav.css" />
+    <script src="<%=request.getContextPath() %>/js/common/jquery-3.5.1.min.js"></script> 
+    <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/notice/noticeDetail.css" />
+	
 <%@ page import="com.binbang.notice.model.vo.Notice" %>
-<script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
-<% 
-	Notice n=(Notice)request.getAttribute("notice");
-%>
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/notice/noticeDetail.css" />
+<% Notice n=(Notice)request.getAttribute("notice");%>
     
 </head>
 <body>
@@ -34,13 +42,15 @@
       
       <div class="selectNoticeContent">
            <div class="titleDate">
-             <p class="postingTitle"><%=n.getNoticeTitle() %></p><br>
+             <p class="postingTitle"><%=n.getNoticeTitle() %></p>
              <p class="postingDate"><%=n.getNoticeDate() %></p>
            </div>
    
            <div class="selectNoticeline2"></div>
    
-           <div class="postingContent"><%=n.getNoticeContents() %></div>
+  
+           <div class="postingContent"><%=n.getNoticeContents() %></div> 
+      
           
         </div>
            
@@ -57,8 +67,9 @@
 
 <script>
 	
-   /*  var data = CKEDITOR.instances.editor1.getData();
+    /* var data = CKEDITOR.instances.editor1.getData(); */
 
    
     // Your code to save "data", usually through Ajax. */
 </script>
+

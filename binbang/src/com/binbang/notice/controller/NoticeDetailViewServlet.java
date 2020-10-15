@@ -30,6 +30,9 @@ public class NoticeDetailViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * String content=request.getParameter("data"); System.out.println(content);
+		 */
 		
 		String noticeNo=request.getParameter("noticeNo");
 		Notice n= new NoticeService().noticeDatailView(noticeNo);

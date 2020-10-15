@@ -104,7 +104,6 @@
        let x = 0;
      //재전송
      function sendNumber2(){
-    	   
     	clearInterval(x); 
         time=300; 
         sendNumber();
@@ -120,7 +119,7 @@
           sec=time%60;
           document.getElementById("timer").innerHTML="인증 시간 : "+min+"분"+sec+"초";
           time--;
-          
+    
 			if(time<0){
 	          clearInterval(x);
 	          document.getElementById("timer").innerHTML="다시 인증해주세요.";

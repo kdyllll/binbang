@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import ="com.binbang.member.model.vo.Member"  %>
+
 <% Member m1 = (Member)request.getAttribute("member"); %>
 
 <%@ include file="/views/common/commonLink.jsp"%>
