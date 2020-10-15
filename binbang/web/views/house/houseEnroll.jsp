@@ -19,6 +19,7 @@
 <%
 	Member member = (Member) session.getAttribute("m");
 %>
+
 </head>
 <body>
 	<div class="wrap">
@@ -146,7 +147,7 @@
 								</div>
 								<div class="photo2">
 									<div class="picLine">
-										<p class="picName" id="picName2"></p>
+										<p class="picName" id="picName2">사진은 최소 3장 등록해주세요</p>
 									</div>
 									<input type="file" name="picture2" id="picture2"
 										class="picture" accept="images/*" > <label
@@ -155,7 +156,7 @@
 								</div>
 								<div class="photo3">
 									<div class="picLine">
-										<p class="picName" id="picName3"></p>
+										<p class="picName" id="picName3">사진은 최소 3장 등록해주세요</p>
 									</div>
 									<input type="file" name="picture3" id="picture3"
 										class="picture" accept="images/*" > <label
@@ -528,9 +529,15 @@
                      $(this).val(d);
                      var week = new Array("일", "월", "화", "수", "목", "금",
                            "토");
-                  }
+				  },
+				  beforeShow: function() {
+						let i_offset= $(this).offset().top+$(this).height()-85; //클릭된 input의 위치값 체크
+						setTimeout(function(){
+							$('#ui-datepicker-div').css({'top':i_offset});  
+						});
+				  }
+		});
 
-               });
          $(".date2").datepicker(
                {
                   dateFormat : "yy/mm/dd",
@@ -541,7 +548,13 @@
                      $(this).val(d);
                      var week = new Array("일", "월", "화", "수", "목", "금",
                            "토");
-                  }
+				  },
+				  beforeShow: function() {
+						let i_offset= $(this).offset().top+$(this).height()-85; //클릭된 input의 위치값 체크
+						setTimeout(function(){
+							$('#ui-datepicker-div').css({'top':i_offset});  
+						});
+				  }
                });
       });
       
@@ -620,8 +633,9 @@
 
 	  //성수기 기간 중복 입력 방지
 	  $("#startDay1").on("change",function(e){
-		let sDayArr=$("#startDay1").val().split("/");
+		let sDayArr=$(e.target).val().split("/");
 		let sDay="";
+		console.log(sDay);
 		for(let s in sDayArr){
 			sDay+=sDayArr[s];
 		}
