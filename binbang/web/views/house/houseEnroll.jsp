@@ -604,7 +604,7 @@
   
       //입력항목 유효성검사
       function fn_complete(){
-		  let cnt=0;
+		let cnt=0;
 		$(".sub").each(function(i,v){
 			if($(v).val()){
 				cnt++;
