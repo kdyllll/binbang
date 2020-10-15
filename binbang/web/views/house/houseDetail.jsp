@@ -7,7 +7,6 @@
 
 
 <%
-	List<Favorite> favoriteList = (List<Favorite>) request.getAttribute("favorite");
 	House h = (House) request.getAttribute("house");
 	Booking b = (Booking) request.getAttribute("booking");
 	Double grade = (Double) request.getAttribute("grade");
@@ -95,30 +94,9 @@
 
 				<div class="info">
 					<div class="title">
-
-						<%=h.getHouseName()%>
-
-						<%
-							if (favoriteList != null) {
-								for (Favorite f : favoriteList) {
-									if (f.getHouseNo() != null && f.getHouseNo().equals(h.getHouseNo())) {
-						%>
-						<div class="heartCommon fav"></div>
-						<%
-							} else {
-						%>
+						<%=h.getHouseName()%>						
 						<div class="heartCommon heart"></div>
-						<%
-							}
-								}
-							} else {
-						%>
-						<div class="heartCommon heart"></div>
-						<%
-							}
-						%>
-						<input type="hidden" class="houseNoPopUp" name="houseNo"
-							value="<%=h.getHostNo()%>">
+						<input type="hidden" class="houseNoPopUp" name="houseNo" value="<%=h.getHouseNo()%>">
 					</div>
 					<br> <br> <br>
 					<div class="titleInfo">
@@ -435,10 +413,6 @@
 		<%@ include file="/views/common/footer.jsp"%>
 	</div>
 	<script src="<%=request.getContextPath()%>/js/common/header.js"></script>
-
-	<%-- <script src="<%=request.getContextPath()%>/js/common/heart.js"></script> --%>
-
-	<script src="<%=request.getContextPath()%>/js/common/heart.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/js/house/houseDetailSwiper.js"></script>
 	<script src="<%=request.getContextPath()%>/js/house/filter.js"></script>
@@ -481,6 +455,18 @@
 
 			loginPopUp.submit();
 		}
+		//관심숙소 있으면 하트아이콘 켜기
+<%-- 		<div class="heartCommon heart"></div>
+						<input type="hidden" class="houseNoPopUp" name="houseNo" value="<%=h.getHouseNo()%>"> --%>
+		let favorite=<%=request.getAttribute("favoriteJson")%>
+		let hNo=$(".houseNoPopUp").val();
+		for(let f in favorite){
+			if(favorite[f].houseNo=hNo){
+				$(".heartCommon").addClass("fav");
+				$(".heartCommon").removeClass("heart");
+			}
+			
+		}
 		
 		//관심숙소 버튼눌렀을때
 	       $(".heartCommon").on("click", e => {
@@ -506,6 +492,14 @@
 	            const status = "left=100px, top=100px, width=500px, height=500px";
 	            open(url,title,status); 
 	       }
+	    //로그인 되어있다면 관심숙소 팝업 호출
+			function fn_favoritePopUp(e) {
+			 	const url = "<%=request.getContextPath()%>/favorite/favoritePopUp?houseNo="+$(e.target).next().val();
+		   		const title = "favoritePopUp";
+		   		const status = "left=100px, top=100px, width=500px, height=500px";
+		   		open(url,title,status);   
+				 
+			 }
 
 	</script>
 	<!-- 지도 -->

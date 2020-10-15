@@ -17,6 +17,7 @@ import com.binbang.house.model.vo.Review;
 import com.binbang.member.model.service.MemberService;
 import com.binbang.member.model.vo.Favorite;
 import com.binbang.member.model.vo.Member;
+import com.google.gson.Gson;
 
 
 
@@ -49,7 +50,7 @@ public class HouseDetailMoveServlet extends HttpServlet {
 	         List<Favorite> favorite = new MemberService().selectFavList(m);         
  
 	         request.setAttribute("favorite", favorite);
-
+	         request.setAttribute("favoriteJson", new Gson().toJson(favorite));
 	      } catch (NullPointerException e) {
 
 	      }
