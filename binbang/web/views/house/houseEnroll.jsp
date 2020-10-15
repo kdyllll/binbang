@@ -617,6 +617,17 @@
 		 return true;
          }
       }
+
+	  //성수기 기간 중복 입력 방지
+	  $("#startDay1").on("change",function(e){
+		let sDayArr=$("#startDay1").val().split("/");
+		let sDay="";
+		for(let s in sDayArr){
+			sDay+=sDayArr[s];
+		}
+		console.log(sDay);
+	  });
+
    </script>
 
 

@@ -49,7 +49,9 @@
 
 					<br>
 					<br>
-					<p class="point">총 포인트 : <div class="totalPointsShow"><%=m.getTotalPoint() %></div></p>
+					<div class="pointSort">
+					<p class="point">총 포인트 :<div class="totalPointsShow"><%=m.getTotalPoint() %></div></p> 
+					</div>
 					<br>
 					<br>
 					<div class="cuphone">

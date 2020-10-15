@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,18 +8,15 @@
 <title>Insert title here</title>
 <style>
 @font-face {
-
    font-family: 'IBMPlexSansKR-Light';
    src:
       url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
       format('woff');
    font-weight: normal;
    font-style: normal;
-
 }
 
 body {
-
    font-family: 'IBMPlexSansKR-Light';
    padding: 0px;
    margin: 0px;
@@ -31,9 +28,7 @@ body {
    overflow: hidden;
    margin: 0px auto;
    position: relative;
-
 }
-
 
 video {
    width: 100%;
@@ -43,9 +38,7 @@ video {
    position: absolute;
    top: 50%;
    width: 100%;
-
 }
-
 
 .jb-text a {
 display:block;
@@ -54,15 +47,12 @@ display:block;
    font-size: 20px;
    color: #ffffff;
    text-decoration:none;
-
 }
-
 
 </style>
 
 </head>
 <body>
-
    <div class="jb-box">
       <video muted autoplay loop>
          <source
@@ -73,7 +63,6 @@ display:block;
          <a href="<%=request.getContextPath()%>/mainMove">메인으로이동</a>
       </div>
    </div>
-
 
 </body>
 </html>
