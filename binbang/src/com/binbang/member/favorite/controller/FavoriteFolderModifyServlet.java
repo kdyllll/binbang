@@ -43,13 +43,14 @@ public class FavoriteFolderModifyServlet extends HttpServlet {
 		f.setMemberNo(request.getParameter("memberNo"));
 		
 		int rs=new FavoriteService().modifyFolder(f);
+		System.out.println("찍히니?!?!!?!?!?!?"+folderNo);
 		
 		String msg="";
 		String loc="";
 		
 		if(rs>0) {
 			msg="폴더수정 성공";
-			loc="/favorite/favoriteFolder?memberNo="+memberNo;
+			loc="/favorite/favoriteContents";
 		}else {
 			msg="폴더수정 실패";
 			loc="/favorite/favoriteContents";
