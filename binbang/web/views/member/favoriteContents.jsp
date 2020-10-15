@@ -24,7 +24,7 @@
 				<input type="hidden" value="<%=mno%>" name="memberNo">
 			</div>			
 			<div class="line1">
-				<input type="text" value="<%=na%>" name="folderName" class="favTitle">
+				<input type="text" value="폴더이름 : <%=na%>" name="folderName" class="favTitle">
 				<div class="listLine"></div>
 			</div>						
 			<!-- 관심숙소폴더 -->
@@ -33,13 +33,13 @@
 				<!-- 버튼  class="Btn"-->
 				<div class="btnGroup">
 					<input type="button" id="backBtn" value="뒤로가기" onclick="fn_back11();"> 						
-					<input type="button" id="modifyBtn11" value="목록수정" >
+					<input type="button" id="modifyBtn11" value="폴더수정">
 																	
 				</div>				
 				<div class="modifyPop ModDisNone">
 					<div id="popupContent">					
 						<div class="popupHeader">
-							<p class="modifyTitle">목록수정</p>
+							<p class="modifyTitle">폴더수정</p>
 							<input type="button" class="xBtn" value="x">
 						</div>
 

@@ -49,7 +49,7 @@ public class FavoriteFolderModifyServlet extends HttpServlet {
 		
 		if(rs>0) {
 			msg="폴더수정 성공";
-			loc="/favorite/favoriteContents?folderNo="+folderNo;
+			loc="/favorite/favoriteFolder?folderNo="+folderNo;
 		}else {
 			msg="폴더수정 실패";
 			loc="/favorite/favoriteContents";

@@ -18,7 +18,8 @@
 	right:-45px;
 	border:none;
 	outline:none;
-	background-color: #ff9d6f;	
+	background-color: #ff9d6f;
+	cursor: pointer;	
 	}
 .listLine {
 	width: 100%;
@@ -70,12 +71,13 @@
 
 .folderName{
 	position: absolute;
-	right: 15px;
+	right: -45px;
 	top: 150px;
-	width:100px;
+	width:220px;
 	height:20px;
 	color:black;
-	border-wight:200;
+	border-wight:200;		
+	text-align: center;
 }
 .folderContents{
 	position:relative;

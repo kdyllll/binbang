@@ -17,7 +17,8 @@
 	.house {
 		padding: 6% 2%;
 		display:flex;
-		margin-bottom:50px;
+		justify-content:;
+		margin-bottom:50px;		
 	}	
 	.house > .myReserve,
 	.house > .myReserved,
@@ -25,7 +26,7 @@
 		position:relative;
 		width:250px;
 		height:300px;
-		margin : 3%;
+		margin : 3%;		
 	}
 	#houseResv{
 		font-size: 14px;
