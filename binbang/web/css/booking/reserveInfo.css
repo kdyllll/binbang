@@ -34,7 +34,7 @@
     width: 100%;
     height: 700px;
     display: flex;
-    padding: 300px 10px;
+    padding: 300px;
 
     margin-bottom:-130px;
     
@@ -45,9 +45,8 @@
 
 /* 예약정보 글씨 간격설정 */
 .bookingInfo{
-    padding: 100px 100px;
-    padding-left: 50px;
-    margin-left: 100px;
+   padding-top: 100px;
+    text-align: center;
    
     
 }
@@ -58,24 +57,23 @@
 /* 예약정보 글씨 아래 전체 박스 크기 및 간격 설정 */
 .infoBox{
     /* margin-top: 100px; */
-    width: 800px;
+    width: 100%;
     height: 400px;
     background-color:white;
   
-    
-   
     
 
 }
 
 /* 글씨들 사이의 간격설정 */
 .info{
-    width: 500px;
+    
     height: 400px;
     line-height: 40px;
     font-size: 15px;
-    padding_top:20px;
-    padding-left: 100px;
+    text-align: center;
+    justify-content: center;
+   
    
   
 }
@@ -95,7 +93,6 @@
 /* 예약 날짜 위아래로 있는 선 설정 */
 .priceLine{
     margin-top: 20px;
-    width: 900px;
     text-align: center;
     align-items: center;
     justify-content: center;

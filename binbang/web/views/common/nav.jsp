@@ -9,7 +9,7 @@
 		<% if(m==null) { %>
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/member/moveLoginPage">로그인</a></li>
-			<li><a href="<%=request.getContextPath()%>/member/memberEnrollChoice">회원가입</a></li>
+			<li><a href="<%=request.getContextPath()%>/member/memberEnroll">회원가입</a></li>
 		</ul>
 		<%} else if(m.getEmail().equals("admin@naver.com")) { %>
 		<ul>

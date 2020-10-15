@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-.section {
-    padding: 10% 18%; 
-  }
- 
+	.section {
+	    padding: 8% 15%; 
+	  }
+  
     /* 관심숙소 */
     .section .line1{	
 		width: 100%;
@@ -14,8 +14,7 @@
     	padding:2% 0;
     	outline:0;
     	border:0;
-    	font-size:20px;
-    	
+    	font-size:20px;	
     }
     
     .listLine{
@@ -34,34 +33,30 @@
       float:right;          
     }
     
-    
-    .favoriteList{
+    .favoriteList1{
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       padding-top: 2%; 
       z-index: 200;
     }
-    .favoriteList div{
-	  width: 230px;
-	  height: 150px;
-      position: relative;
-      background-size: cover;
-      box-shadow: 3px 5px 5px gray;
-    }
     
-    .eachList{
-      margin: 2%;
+    .eachContent{
+	    margin : 10%;
+		width : 270px;
+		height : 200px;
     }
 
     /* 관심숙소 버튼 */
-    .favoriteList .heartButton {     
+    .heartButton {     
       position: absolute;
-      top:5px;
-      left:190px;
+      top:12px;
+      right:18px;
 	  width:  30px;
       height: 30px;
       cursor: pointer;
+      outLine:none;
+      border:none;
     }
     .heart{
       background-image: url("../../image/common/icon/heart0.png");
@@ -71,12 +66,29 @@
       background-image: url("../../image/common/icon/heart1.png");
       background-size: cover;
     }
-  
-    .recomPic1 {
-    	position : relative;
-    	background-image: url("../../image/member/main/recommend/recommend1.jpg");      
-    }
-
+	
+	.houseContent{
+		position: absolute;
+		width : 280px;
+		height : 120px;
+		top:170px;
+		left:50px;
+		background-color: rgba(255, 255, 255, 0.836);
+	}
+	
+	.houseContent div{
+		display:flex;
+		flex-direction: column;	
+		margin: 2% 15%;
+	}
+	.houseContent div p{
+	padding: 2%;
+	}
+	
+	.favHouse{
+		position : relative;
+		margin:3%;
+	}
 
     /* 목록수정 팝업창 */
     .modifyPop {
@@ -140,7 +152,7 @@
     /* 팝업footer */
     .popupFooter{
       display: flex;
-      justify-content: space-between;      
+      float:right;      
     }
     #backBtn,#modifyBtn11{
        	width: 95px;
@@ -152,7 +164,7 @@
 		font-size: 15px;
     }
     
-    #deleteBtn, #saveBtn{
+    #saveBtn{
 	 	width: 80px;
 		height: 30px;
 		border: none;

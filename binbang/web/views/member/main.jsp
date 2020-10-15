@@ -25,7 +25,7 @@
 			<form class="searchBox">
 				<div class="searchLoc">
 					<p>위치</p>
-					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요" list="locationData">
+					<input type="text" name="search" id="search" placeholder="여행지를 입력해주세요" list="locationData" autocomplete="off">
 					<datalist id="locationData"></datalist>
 				</div>
 				<div class="checkInDate">
@@ -100,34 +100,39 @@
 	<script>
 		//달력 datepicker
 		$(function() {
-			$("#checkIn").datepicker(
-					{
-						dateFormat : "yy/mm/dd",
-						minDate: new Date(),
-						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
-								"7월", "8월", "9월", "10월", "11월", "12월" ],
-						onSelect : function(d) {
-							 $("#checkIn").val(d);
-							var week = new Array("일", "월", "화", "수", "목", "금","토");
-						}
-					});
-			$("#checkOut").datepicker(
-					{
-						dateFormat : "yy/mm/dd",
-						minDate: new Date(),
-						dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
-						monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
-								"7월", "8월", "9월", "10월", "11월", "12월" ],
-						onSelect : function(d) {
-							 $("#checkOut").val(d);
-							var week = new Array("일", "월", "화", "수", "목", "금","토");
-						}
-					});
-		});		
-		let cnt = 0;
+			$("#checkIn").datepicker({
+				dateFormat : "yy/mm/dd",
+				minDate: new Date(),
+				dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+				monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
+						"7월", "8월", "9월", "10월", "11월", "12월" ],
+				onSelect : function(d) {
+					 $("#checkIn").val(d);
+					var week = new Array("일", "월", "화", "수", "목", "금","토");
+				}
+			});
+			$("#checkOut").datepicker({
+				dateFormat : "yy/mm/dd",
+				minDate: new Date(),
+				dayNamesMin : [ "일", "월", "화", "수", "목", "금", "토" ],
+				monthNames : [ "1월", "2월", "3월", "4월", "5월", "6월",
+						"7월", "8월", "9월", "10월", "11월", "12월" ],
+				onSelect : function(d) {
+					 $("#checkOut").val(d);
+					var week = new Array("일", "월", "화", "수", "목", "금","토");
+				}
+			});
+			$("#checkIn").datepicker("option", "onClose", function (selectedDate){
+				$("#checkOut").datepicker( "option", "minDate", selectedDate );
+			});
+			$("#checkOut").datepicker();
+			$("#checkOut").datepicker("option", "minDate", $("#checkIn").val());
+			$("#checkOut").datepicker("option", "onClose", function (selectedDate){
+				$("#checkIn").datepicker( "option", "maxDate", selectedDate );
+			});
+		});	
 		
-
+		let cnt = 0;
 		$("#pAdd").on("click", e => {
 			if(cnt<9) {
 				cnt++;

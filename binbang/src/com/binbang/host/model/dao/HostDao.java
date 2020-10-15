@@ -140,7 +140,9 @@ public class HostDao {
 				r.setCommentContents(rs.getString("comment_contents"));
 				r.setHouseGrade(rs.getDouble("house_grade"));
 				r.setHouseName(rs.getString("house_name"));
-				r.setCheckInDate(rs.getDate("checkin_date"));
+				r.setCommentDate(rs.getString("comment_date"));
+				r.setFilePath(rs.getString("file_path"));
+				r.setMemberName(rs.getString("member_name"));
 				list.add(r);
 			}	
 		}catch(Exception e){

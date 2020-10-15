@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import ="com.binbang.member.model.vo.Member"  %>
+
 <% Member m1 = (Member)request.getAttribute("member"); %>
 
 <%@ include file="/views/common/commonLink.jsp"%>
@@ -33,7 +34,8 @@
 					</div>
 					<div>
 						<p>닉네임</p>
-						<input class="memeberNickName" value="<%=m1.getNickname()%>" id="nickname3" readonly>													
+						<input class="memeberNickName" value="<%=m1.getNickname()%>" id="nickname3" readonly>																			
+						<input type="hidden" value="<%=m1.getMemberNo() %>" name="memberNo">
 					</div>
 				</div>
 			</form>
@@ -63,7 +65,7 @@
 		$("#changeModify").click(e=>{
 			$.ajax({
 				url:"<%=request.getContextPath()%>/member/myPagePCKAjax",				
-				dataType:"html",
+				dataType:"html",				
 				success:data=>{
 					$("#AllContents").children().remove();
 					$("#AllContents").html(data);					
@@ -81,6 +83,7 @@
 			$.ajax({
 				url:"<%=request.getContextPath()%>/member/mypagePointAjax",
 				dataType:"html",
+				data :{"memberNo" : "<%=m1.getMemberNo() %>"} ,
 				success:data=>{
 					$("#AllContents").children().remove();
 					$("#AllContents").html(data);	

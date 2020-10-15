@@ -281,6 +281,12 @@
 					} 
 				}
 			}
+			let hName=$(".houseName");
+			if(hName.text().length>11){
+				let newName=hName.text().substring(0,11)+"..";
+				console.log(newName);
+				$(".houseName").text(newName);
+			}
 		}
 		//금액 검색 누를때(show,hide쓰거나 정보들 다 넘겨서 ajax쓰거나)
 		//필터 검색 누를때 두개 다

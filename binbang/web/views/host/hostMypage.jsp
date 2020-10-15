@@ -42,6 +42,7 @@
 							readonly="true"><%=h.getIntro()%></textarea>
 					</div>
 					<input type="hidden" name="memberNo" value="<%=h.getMemberNo()%>">
+					<input type="hidden" name="profilePicOri" value="<%=h.getProfilePic() %>">
 					<input type="submit" id="changeInfo" value="수정"
 						onclick="return invalidate();" />
 				</div>

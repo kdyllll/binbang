@@ -16,6 +16,7 @@ public class Review {
 	private String houseName;
 	private Date checkInDate;
 	private Date checkOutDate;
+	private String memberName;
 	
 
 	public Review() {
@@ -43,6 +44,22 @@ public class Review {
 		this.houseName = houseName;
 	}
 	
+
+
+
+
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+
+
+
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
 
 
 

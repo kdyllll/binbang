@@ -379,7 +379,6 @@ public class HouseDao {
 				r.setCommentContents(rs.getNString("comment_contents")); // 후기내용
 				r.setFilePath(rs.getNString("file_path")); // 후기사진
 				r.setHouseNo(rs.getNString("house_no")); // 숙소번호
-				
 				list.add(r);
 
 			}
