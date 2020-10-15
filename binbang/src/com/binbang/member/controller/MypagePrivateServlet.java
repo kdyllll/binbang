@@ -14,7 +14,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MypagePrivateServlet
  */
-@WebServlet(name="passwordCheck", urlPatterns="/member/mypagePrivate")
+@WebServlet(name="passwordCheck", urlPatterns="/mypage/mypagePrivate")
 public class MypagePrivateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

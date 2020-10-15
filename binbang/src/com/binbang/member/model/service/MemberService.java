@@ -129,6 +129,15 @@ public class MemberService {
 		return fList;
 	}
 	
+	public int updateMemberPoint(int total, String mNo) {
+		Connection conn=getConnection();
+		int result=dao.updateMemberPoint(conn,total,mNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
 	
 	
 	

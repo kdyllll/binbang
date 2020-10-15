@@ -17,7 +17,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MypageCouponAjaxServlet
  */
-@WebServlet("/member/mypagePointAjax")
+@WebServlet("/mypage/mypagePointAjax")
 public class MypagePointAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

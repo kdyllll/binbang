@@ -50,19 +50,14 @@ public class FavFolderPopUpAddServlet extends HttpServlet {
 		}else {
 			msg="폴더 추가에 실패했습니다.";
 		}
-		response.setContentType("text/html; charset=euc-kr"); //한글이 인코딩
-		PrintWriter out = response.getWriter(); //선언		   
+		response.setContentType("text/html; charset=euc-kr"); 
+		PrintWriter out = response.getWriter(); 		   
 	    String str="";
 	    str = "<script language='javascript'>";
 	    str += "alert('"+ msg + "');";  
-	    //str += " window.opener.location.reload();"; //부모창 새로고침 
-	    //str += " location.reload();"; // 새로고침 
 	    str+="location.replace('favoritePopUp?houseNo=";
 	    str+=houseNo;
 	    str+="');";
-	  //  str+="history.back();";
-	  //  str += " window.opener.location.reload();";
-	   // str += "location.reload(true);";
 	    str += "</script>";
 	    out.print(str);
 	} 

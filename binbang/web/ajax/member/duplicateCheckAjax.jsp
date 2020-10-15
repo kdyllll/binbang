@@ -23,7 +23,6 @@
 		<% if (email == null) { %>
 		<p class="title">이메일 인증</p>
 		<div class="line"></div>
-
 		<div class="line2">
 			[<span><%=request.getParameter("email")%></span>]는 사용가능합니다. 
 			<input type="button" value="인증하기" class="emailConfirm">
@@ -32,9 +31,7 @@
 				<input type="text"  name="num" id="num" class="passNumber" placeholder="인증번호 입력"> 				 
 				<input type="hidden" name="email" id="email" value="<%=request.getParameter("email")%>"> <!-- 중복이 아닌 email enroll input창에 띄어줌 -->
 				<input type="button" id="numConfirm" value="인증확인">			
-		</form>				
-
-		
+		</form>						
 		<form>
 			<div id="resend">
 				<p id="timer"></p>
@@ -58,8 +55,6 @@
 		</div>
 		<% } %>
 	</div>	
-
-
 	<script>
 /* 1. 중복되는 email일때 반복 logic*/
 	function fn_validate(){
@@ -95,12 +90,7 @@
 			}
 		});
 	});	
-	
 
-
-	
-	
-	
 	$("#numConfirm").click(e => {		
 		/* 인증번호 확인후 창닫기 */
 		$.ajax({
@@ -127,24 +117,17 @@
 				console.log(error);
 			}
 		});	
-	});
-	
-
-	
- 	
+	});		 	
  	/* 재전송 */ 
  	let time = 300;
  	let min = 0;
  	let sec = 0;
- 	let x = 0;
- 	
+ 	let x = 0; 	
  	function resendNum(){
  		clearInterval(x);
  		time=300; 		
  		sendNumber(); 		
- 	};
- 	
- 	
+ 	}; 	 	
  	function sendNumber(){
  		document.getElementById("resendBtn").style.display="block"; 		
  		x=setInterval(function(){

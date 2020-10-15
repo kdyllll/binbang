@@ -20,7 +20,7 @@ import com.binbang.member.model.vo.Member;
 /**
  * Servlet implementation class MypageMainAjaxServlet
  */
-@WebServlet("/member/mypageStayedAjax")
+@WebServlet("/mypage/mypageStayedAjax")
 public class MypageStayedAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
