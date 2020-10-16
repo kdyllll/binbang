@@ -32,14 +32,14 @@ justify-content:center;
 	width: 100%;
 	height: 2px;
 	background-color: black;
-	margin: 5% 0;
+	margin: 3% 0;
 }
 .pointCount .line7 {
 	width: 100%;
 	height: 1px;
 	background-color: black;
 	opacity: 40%;
-	margin: 5% 0;
+	margin: 3% 0;
 }
 .pointCount {
 	margin-top: 1%;
