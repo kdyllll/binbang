@@ -123,4 +123,11 @@ public class FavoriteService {
 			return f;
 		}
 		
+		public List selectConList(String no) {
+			Connection conn= getConnection();
+			List list= dao.selectConList(conn, no);
+			close(conn);
+			return list;
+		}
+		
 }

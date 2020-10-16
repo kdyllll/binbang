@@ -283,7 +283,7 @@ public class MemberDao {
 			close(pstmt);
 		}return fList;
 	}
-	
+	//폴더 리스트만 받아옴
 	public List<Favorite> selectFavAllList(Connection conn,Member m){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -296,9 +296,7 @@ public class MemberDao {
 			while(rs.next()) {
 				f=new Favorite();
 				f.setMemberNo(m.getMemberNo());
-				f.setFolderName(rs.getString("folder_name"));
 				f.setFolderNo(rs.getString("folder_no"));
-				f.setHouseNo(rs.getString("house_no"));
 				fList.add(f);
 			}		
 		}catch(SQLException e) {

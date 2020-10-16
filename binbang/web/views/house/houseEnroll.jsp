@@ -571,7 +571,6 @@
 						});
 				  },
 				  beforeShowDay : disableDay
-
 		});
 
          $(".date2").datepicker({
@@ -598,7 +597,6 @@
 		fn_minMaxDate($('#startDay3'),$('#endDay3'));
 		fn_minMaxDate($('#startDay4'),$('#endDay4'));
 		fn_minMaxDate($('#startDay5'),$('#endDay5'));
-		$("#startDay2").datepicker("option","beforeShowDay",disableDay);
 		
 	});
   
