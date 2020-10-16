@@ -139,7 +139,7 @@ private AdminDao dao=new AdminDao();
 	//이메일로
 	public int changeBlack(String email) {
 		Connection conn=getConnection();
-		int result=dao.hostOut(conn, email);
+		int result=dao.changeBlack(conn, email);
 		if(result>0) close(conn);
 		else rollback(conn);
 		return result;

@@ -42,9 +42,13 @@ public class HostComplainOutServlet extends HttpServlet {
 	
 
 		String hostNo=request.getParameter("hostNo");
+		System.out.println(hostNo);
 		String memberEmail=request.getParameter("memberEmail");
+		System.out.println(memberEmail);
 		String hostEmail=new AdminService().selectHostEmail(hostNo);
+		System.out.println(hostEmail);
 		String complaintNo=request.getParameter("complaintNo");
+		System.out.println(complaintNo);
 		
 		
 		String msg="권한박탈";
