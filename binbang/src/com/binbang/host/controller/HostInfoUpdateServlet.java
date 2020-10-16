@@ -60,7 +60,7 @@ public class HostInfoUpdateServlet extends HttpServlet {
 		String msg = "";
 
 		if(result > 0) {
-			msg = "호스트 정도 수정에 성공하였습니다";
+			msg = "호스트 정보 수정에 성공하였습니다";
 
 		} else {
 			msg = "호스트 정보 수정에 실패하였습니다.";
