@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.service.MemberService;
 
-/**
+/*
  * Servlet implementation class MemberDeleteServlet
  */
 @WebServlet("/mypage/memberDelete")
@@ -20,6 +20,7 @@ public class MemberDeleteServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+
 	public MemberDeleteServlet() {
 		super();
 		// TODO Auto-generated constructor stub
