@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.service.MemberService;
 
-/**
+/*
  * Servlet implementation class MemberDeleteServlet
  */
 @WebServlet("/mypage/memberDelete")
