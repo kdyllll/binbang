@@ -30,8 +30,7 @@ public class MemberEnrollEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+				
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String memberName=request.getParameter("name");

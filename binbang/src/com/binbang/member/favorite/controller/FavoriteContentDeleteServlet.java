@@ -40,14 +40,12 @@ public class FavoriteContentDeleteServlet extends HttpServlet {
 		System.out.println(folderName);
 		String houseNo=request.getParameter("houseNo");												
 		String folderNo=request.getParameter("folderNo");
-		
-		
+				
 		Favorite f=new Favorite();		
 		f.setHouseNo(houseNo);
 		f.setFolderNo(folderNo);
 		f.setMemberNo(memberNo);
-		
-		
+				
 		int result=new FavoriteService().removeContent(f);						
 		
 		String msg="";

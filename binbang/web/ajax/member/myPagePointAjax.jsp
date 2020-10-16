@@ -32,14 +32,14 @@ justify-content:center;
 	width: 100%;
 	height: 2px;
 	background-color: black;
-	margin: 2% 0;
+	margin: 5% 0;
 }
 .pointCount .line7 {
 	width: 100%;
 	height: 1px;
 	background-color: black;
 	opacity: 40%;
-	margin-top: 2%;
+	margin: 5% 0;
 }
 .pointCount {
 	margin-top: 1%;
@@ -49,6 +49,9 @@ justify-content:center;
 	justify-content: space-between;
 	font-size: 12px;
 	margin: 1% 0;
+}
+.pointCount>ul li{
+	font-size: 13px;
 }
 </style>
 

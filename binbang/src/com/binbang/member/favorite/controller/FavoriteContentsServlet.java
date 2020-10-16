@@ -20,40 +20,44 @@ import com.binbang.member.model.vo.Member;
 @WebServlet("/favorite/favoriteContents")
 public class FavoriteContentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FavoriteContentsServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//해당 폴더의 파일을 찾는 logic				 
+	public FavoriteContentsServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 해당 폴더의 파일을 찾는 logic
 		String folderNo = request.getParameter("folderNo");
 		System.out.println(folderNo);
-		 
+
 		Favorite f = new FavoriteService().selectFolderName(folderNo);
-		System.out.println(f.getFolderName());						
-											
+		System.out.println(f.getFolderName());
+
 		List<Favorite> list = new FavoriteService().selectFolder(folderNo);
-		System.out.println(list);			 		
-					
-		request.setAttribute("list",list);								
-		request.setAttribute("folderName",f.getFolderName());
-		request.setAttribute("folderNo", folderNo); 
+		System.out.println(list);
+
+		request.setAttribute("list", list);
+		request.setAttribute("folderName", f.getFolderName());
+		request.setAttribute("folderNo", folderNo);
 		request.getRequestDispatcher("/views/member/favoriteContents.jsp").forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -33,12 +33,9 @@ public class FavoriteFolderModifyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String folderNo = request.getParameter("folderNo");
-		System.out.println("너 folder" + folderNo);
-		String folderName = request.getParameterValues("folderName")[1];
-		System.out.println(folderName);
-		String memberNo = request.getParameter("memberNo");
-		System.out.println("너 Member" + memberNo);
+		String folderNo = request.getParameter("folderNo");		
+		String folderName = request.getParameterValues("folderName")[1];		
+		String memberNo = request.getParameter("memberNo");		
 
 		Favorite f = new Favorite();
 		f.setFolderNo(folderNo);
@@ -47,18 +44,20 @@ public class FavoriteFolderModifyServlet extends HttpServlet {
 
 		int rs = new FavoriteService().modifyFolder(f);
 
-		String msg=""; String loc="";
-		  
-		 if(rs>0) { 
-			 msg="폴더수정 성공";
-			 loc="/favorite/favoriteContents?folderNo="+folderNo; 
-			}else { 
-			msg="폴더수정 실패";
-			loc="/favorite/favoriteContents"; }
-		  
-		 request.setAttribute("msg", msg); request.setAttribute("loc", loc);
-		 request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);
-		 
+		String msg = "";
+		String loc = "";
+
+		if (rs > 0) {
+			msg = "폴더수정 성공";
+			loc = "/favorite/favoriteContents?folderNo=" + folderNo;
+		} else {
+			msg = "폴더수정 실패";
+			loc = "/favorite/favoriteContents";
+		}
+
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
 
 	}
 

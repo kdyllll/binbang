@@ -32,19 +32,15 @@ public class MemberUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		
 		Member m = new Member();
 		m.setEmail(request.getParameter("email2"));
 		m.setNickname(request.getParameter("nickname2"));
 		m.setPhone(request.getParameter("phone2"));
 
-		  String email= request.getParameter("email2");
-		  System.out.println("넘어온 email:"+email);
-		  String nickname= request.getParameter("nickname2");
-		  System.out.println("넘어온 nickname:"+nickname);
-		  String phone= request.getParameter("phone2");
-		  System.out.println("넘어온 phone:"+phone);		  	
+		String email= request.getParameter("email2");		
+		String nickname= request.getParameter("nickname2");		
+		String phone= request.getParameter("phone2");		
 		  
 		int rs=new MemberService().updateMember(m);
 		
@@ -57,9 +53,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		}else {
 			msg="회원수정 실패!";
 			loc="/mypage/mypagePrivate?email="+m.getEmail();			
-		}
-		
-		
+		}			
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);						
 		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);	

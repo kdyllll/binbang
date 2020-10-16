@@ -33,8 +33,7 @@ public class MypagePointAjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		  		  
-		String memberNo= request.getParameter("memberNo");		
-		System.out.println(memberNo);
+		String memberNo= request.getParameter("memberNo");				
 		
 		List<Booking> list = new BookingService().reservePointList(memberNo);
 		for(int i = 0 ; i< list.size(); i++) {
