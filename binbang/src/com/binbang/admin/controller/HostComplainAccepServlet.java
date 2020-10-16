@@ -43,6 +43,7 @@ public class HostComplainAccepServlet extends HttpServlet {
 		String hostNo=request.getParameter("hostNo");
 		String complaintNo=request.getParameter("complaintNo");
 		
+		
 		int result=new AdminService().acceptHostComplainCount(hostNo);
 		System.out.println(result);
 		String hostEmail=new AdminService().selectHostEmail(hostNo);
@@ -89,6 +90,8 @@ public class HostComplainAccepServlet extends HttpServlet {
 	            
 	            Transport.send(msg2);
 	            System.out.println("호스트에게 신고 승인 이메일 전송");
+	            
+	           
 	            
 	        }catch (Exception e) {
 	            e.printStackTrace();

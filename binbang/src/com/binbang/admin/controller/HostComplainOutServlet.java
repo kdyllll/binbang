@@ -40,14 +40,22 @@ public class HostComplainOutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+
 		String hostNo=request.getParameter("hostNo");
-		int result=new AdminService().hostOut(hostNo);
-		
-		
 		String memberEmail=request.getParameter("memberEmail");
 		String hostEmail=new AdminService().selectHostEmail(hostNo);
+		String complaintNo=request.getParameter("complaintNo");
 		
-		if(result>0) {
+		
+		String msg="권한박탈";
+		int result=new AdminService().acceptHostComplainState(complaintNo,msg);
+		System.out.println(result);
+        int result2=new AdminService().changeBlack(hostEmail);
+        System.out.println(result2);
+        int result3=new AdminService().hostOut(hostNo);
+        System.out.println(result3);
+		
+		if(result>0&&result2>0&&result3>0) {
 			String host="smtp.naver.com";
 			String user="tnrud2668@naver.com";
 			String password="spdlqj7547";
@@ -90,14 +98,14 @@ public class HostComplainOutServlet extends HttpServlet {
 	            Transport.send(msg2);
 	            System.out.println("호스트 권한 박탈 이메일 전송");
 	            
+	            
+	    		
 	        }catch (Exception e) {
 	            e.printStackTrace();
 	        }
 		}
 		
-		String complaintNo=request.getParameter("complaintNo");
-		String msg="권한박탈";
-		int result2=new AdminService().acceptHostComplainState(complaintNo,msg);
+		
 		
 		List<Complaint> list = new AdminService().complainList();
 		request.setAttribute("list",list);

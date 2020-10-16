@@ -159,6 +159,22 @@ public class AdminDao {
 		}return result;
 	}
 	
+	//권한박탈
+	
+	public int changeBlack(Connection conn, String email) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("changeBlack"));
+			pstmt.setString(1, email);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(conn);
+		}return result;
+	}
+	
 	//예약 리스트 
 	public List<Booking> reserveList(Connection conn){
 		PreparedStatement pstmt=null;
@@ -237,6 +253,7 @@ public class AdminDao {
 				com.setHostNo(rs.getString("host_no"));
 				com.setComplaintPic(rs.getString("complaint_pic"));
 				com.setComplaintState(rs.getString("complaint_state"));
+				com.setMemberNo("member_no");
 				list.add(com);
 			}
 		}catch(SQLException e) {
