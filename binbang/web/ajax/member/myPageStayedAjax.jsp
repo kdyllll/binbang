@@ -88,8 +88,7 @@
 											<div id="houseResv"><%=b.getHouseName() %></div>										
 											<div id="houseResv"><%=b.getCheckInDate() %> ~ <%=b.getCheckOutDate() %></div>										
 									</div>
-							</a>	
-							
+							</a>								
 							<div class="houseReq">
 								<div> <input type="text" value="<%=b.getHouseRequest() %>" class="hr">					 	</div>				
 								<div> <input type="button"  class="reservCancel" value="예약취소" onclick="test();"></div>
