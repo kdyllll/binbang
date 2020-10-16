@@ -7,7 +7,7 @@
 
 /* logo */
 .section .myPageLogo>p {
-	padding : 20px 0;	
+	padding : 50px 0;	
 	font-size: 20px;
 }
 
@@ -18,13 +18,13 @@
   	 display: inline-flex;  
      flex-wrap: wrap;
      justify-content:space-around; 
-     padding: 12px;  
+     padding: 10px;  
 }
 
 /* 회원정보 */
 .lineList div input {
    opacity: 50%;   
-   font-size : 15px;
+   font-size : 18px;
    font-weight:300;
    margin-top : 2%;
    background-color: none;
@@ -34,7 +34,7 @@
 
 /* 메뉴바 */
 .section .nav {
-	padding: 10%;
+	padding: 8%;
 }
 
 .nav button:hover {

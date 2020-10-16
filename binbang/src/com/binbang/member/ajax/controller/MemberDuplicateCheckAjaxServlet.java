@@ -32,8 +32,7 @@ public class MemberDuplicateCheckAjaxServlet extends HttpServlet {
 		 //입력한 email
 		String email=request.getParameter("email");
 		//존재한 email과 비교한 후 result
-		String result=new MemberService().emailCheck(email);
-		
+		String result=new MemberService().emailCheck(email);		
 		
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("/ajax/member/duplicateCheckAjax.jsp").forward(request, response);

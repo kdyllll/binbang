@@ -28,23 +28,15 @@
 						<td>비밀번호 확인</td>
 						<td><input type="password" placeholder="비밀번호 확인" id="pwck" onkeyup="pwCheck();"></td>
 						<td><input type="button" onclick="fn_updatePassword();" id="btn3" value="비밀번호변경" /></td>
-					</tr>		
+					</tr>						
 					<tr>
-						<td>현재 닉네임</td>
-						<td><%=m.getNickname()%></td>
-					</tr>
-					<tr class="tr2">
-						<td>새로운 닉네임</td>
-						<td><input type="text" placeholder="닉네임 입력" name="nickname2" id="nickname"></td>
+						<td>새로운 닉네임 입력</td>
+						<td><input type="text" value="<%=m.getNickname()%>" placeholder="닉네임 입력" name="nickname2" id="nickname" class="oneIn"></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>현재 전화번호</td>
-						<td><%=m.getPhone()%></td>
-					</tr>
-					<tr>
-						<td>새로운 전화번호</td>
-						<td><input type="text" placeholder="전화번호 입력" id="phone" name="phone2"></td>
+						<td>새로운 전화번호 입력</td>
+						<td><input type="text" value="<%=m.getPhone() %>" placeholder="전화번호 입력" id="phone" name="phone2" class="oneIn"></td>
 						<td><input type="button" onclick="fn_updateMember();" id="btn2" value="수정완료" /></td>
 					</tr>
 				</table>
