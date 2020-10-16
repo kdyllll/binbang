@@ -541,12 +541,28 @@
 		let day1=[];
 		let day2=[];
 		$(".date1").each(function(i,v){
+			// console.log(v);
 			day1.push(new Date($(v).val()));
+			
 		});
 		$(".date2").each(function(i,v){
+			// console.log(v);
 			day2.push(new Date($(v).val()));
+			
 		});
+		// day1.push(new Date($("#startDay1").val()));
+		// day1.push(new Date($("#startDay2").val()));
+		// day1.push(new Date($("#startDay3").val()));
+		// day1.push(new Date($("#startDay4").val()));
+		// day1.push(new Date($("#startDay5").val()));
+		// day2.push(new Date($("#endDay1").val()));
+		// day2.push(new Date($("#endDay2").val()));
+		// day2.push(new Date($("#endDay3").val()));
+		// day2.push(new Date($("#endDay4").val()));
+		// day2.push(new Date($("#endDay5").val()));
 		for(let i=0;i<5;i++){
+			console.log(day1[i]);
+			console.log(day2[i]);
 			if(date>=day1[i]&&date<=day2[i]){
 				return [false];
 			}else return [true];
