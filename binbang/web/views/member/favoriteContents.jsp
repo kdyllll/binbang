@@ -7,8 +7,7 @@
 <% 
 	List<Favorite> list = (List) request.getAttribute("list");
 	String na = (String)request.getAttribute("folderName"); 
-	String no = (String)request.getAttribute("folderNo");  
-	String mno = (String)request.getAttribute("memberNo");
+	String no = (String)request.getAttribute("folderNo");  	
 %>
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/favoriteContents.css" />
@@ -20,8 +19,8 @@
 <section class="section">		
 		<form class="favHouse" method="post">
 			<div>
-				<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">
-				<input type="text" value="<%=mno%>" name="memberNo">
+				<input type="hidden" value="<%=no%>" name="folderNo">
+				<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">
 			</div>			
 			<div class="line1">
 				<input type="text" value="폴더이름 : <%=na%>" name="folderName" class="favTitle">
@@ -61,8 +60,9 @@
 									<div class="eachContent">
 										<a href="<%=request.getContextPath()%>/house/houseDetailMove?houseNo=<%=f.getHouseNo()%>" class="eachContent">	
 												<input type="hidden" value="<%=na%>" name="folderName">
-												<input type="hidden" value="<%=no%>" name="folderNo" name="folderNo">						
-												<input type="hidden" value="<%=f.getHouseNo()%>" name="houseNo">															
+												<input type="hidden" value="<%=no%>" name="folderNo">
+												<input type="hidden" value="<%=m.getMemberNo()%>" name="memberNo">						
+												<input type="hidden" value="<%=f.getHouseNo()%>" name="houseNo">																								
 												<img src="<%=request.getContextPath() %>/upload/house/<%=f.getPictureName()%>" style="width:100%; height:100%;"  alt="사진">												 																						 																																																																							
 										</a>							
 									</div>

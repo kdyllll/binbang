@@ -17,7 +17,7 @@
 #pwCheck{
 	position : absolute;
 	top:85px;
-	right:400px;
+	right:420px;
 	font-size: 15px;
 }
 
@@ -79,3 +79,8 @@
 	width:130px;
 	margin: 3% 0;
 }
+
+.oneIn{
+	color:gray;	
+}
+

@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.binbang.member.model.service.FavoriteService;
 import com.binbang.member.model.vo.Favorite;
+import com.binbang.member.model.vo.Member;
 
 /**
  * Servlet implementation class MemberFavoriteContentsServlet
@@ -37,20 +39,12 @@ public class FavoriteContentsServlet extends HttpServlet {
 		System.out.println(folderNo);
 		 
 		Favorite f = new FavoriteService().selectFolderName(folderNo);
-		System.out.println(f.getFolderName());
-		
-		//해당회원번호
-		String memberNo = request.getParameter("memberNo");		
-									
-		
-		//해당 폴더의 관심숙소 번호		
-		
+		System.out.println(f.getFolderName());						
+											
 		List<Favorite> list = new FavoriteService().selectFolder(folderNo);
 		System.out.println(list);			 		
 					
-		request.setAttribute("list",list);				
-		
-		request.setAttribute("memberNo", memberNo);
+		request.setAttribute("list",list);								
 		request.setAttribute("folderName",f.getFolderName());
 		request.setAttribute("folderNo", folderNo); 
 		request.getRequestDispatcher("/views/member/favoriteContents.jsp").forward(request, response);
