@@ -16,46 +16,50 @@ import com.binbang.member.model.service.MemberService;
 @WebServlet("/mypage/memberDelete")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MemberDeleteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String email=request.getParameter("email2");
-		int result=new MemberService().deleteMember(email);
-		String msg="";
-		String loc="";
-		
-		if(result>0) {
-			msg="탈퇴완료";
-			loc="/views/mypage/main.jsp";
-			HttpSession session=request.getSession(false);
-			if(session!=null) {
-				session.invalidate();
-			}
-		}else {
-			msg="탈퇴실패";
-			loc="/views/mypage/myPage";
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);						
+	public MemberDeleteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String email = request.getParameter("email2");
+		int result = new MemberService().deleteMember(email);
+		String msg = "";
+		String loc = "";
+
+		if (result > 0) {
+			msg = "탈퇴완료";
+			loc = "/mainMove";
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				session.invalidate();
+			}
+		} else {
+			msg = "탈퇴실패";
+			loc = "/mypage/myPage";
+		}
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

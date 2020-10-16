@@ -45,7 +45,7 @@
 						<p class="division">|</p>
 						<a  href="#" id="findPw">비밀번호 찾기</a>
 						<p class="division">|</p>
-						<a href="<%=request.getContextPath()%>/member/memberEnrollChoice" id="newSignUP">회원가입</a>
+						<a href="<%=request.getContextPath()%>/member/memberEnroll" id="newSignUP">회원가입</a>
 					</div>
 
 					<div class="loginLine2"></div>

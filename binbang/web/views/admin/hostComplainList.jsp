@@ -22,41 +22,6 @@
         <div id="blackListContents" class="searchCommon">
             <p class="pageTitle">호스트 신고 관리</p>
            
-          <%--   <select class="searchCategory"  id="searchType">
-		      <option value="" selected disabled hidden>선택</option>
-		      <option value="c.email" <%=type!=null&&type.equals("c.email")?"selected":"" %>>신고 아이디</option>
-		      <option value="house_no" <%=type!=null&&type.equals("house_no")?"selected":"" %>>숙소 번호</option>
-		      <option value="bl.member_name" <%=type!=null&&type.equals("bl.member_name")?"selected":"" %>>호스트 이름</option>
-   			</select>
-   		
-			<div class="search" id="search-c.email">
-	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
-	    			<input type="hidden" name="searchType" value="c.email">
-	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-	    				value="<%=key!=null&&type!=null&&type.equals("c.email")?key:""%>">
-	    			<button class="inputButton"></button>
-	    		</form>
-	    	</div>
-			
-	    	<div class="search" id="search-house_no">
-	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
-	    			<input type="hidden" name="searchType" value="house_no">
-	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-	    				value="<%=key!=null&&type!=null&&type.equals("house_no")?key:""%>">
-	    			<button class="inputButton"></button>
-	    		</form>
-	    	</div>
-	    	
-	    	<div class="search" id="search-bl.member_name">
-	    		<form action="<%=request.getContextPath()%>/admin/searchHostComplainList">
-	    			<input type="hidden" name="searchType" value="bl.member_name">
-	    			<input type="text"  class="searchinput" name="searchKeyword" size="25"
-	    				value="<%=key!=null&&type!=null&&type.equals("bl.member_name")?key:""%>">
-	    			<button class="inputButton"></button>
-	    		</form>
-	    	</div> --%>
-    	
-             
             
             <div class="tb_wrap">
               <div class="tableDiv" >
@@ -86,16 +51,11 @@
                     <td class="cell1"><%=com.getComplaintDate() %></td>
                     <td class="complainCurrent cell3">
                       <div class="complainChoice">
-                    <%-- 	<input type="hidden" name="hostNo" value="<%=com.getHostNo() %>">
-                    	<input type="hidden" name="complaintNo" value="<%=com.getComplaintNo() %>">
-                    	<input type="hidden" name="memberEmail" value="<%=com.getMemberEmail() %>">
-                    	
-                    	<input type="button" class="accept" value="승인" >
-                    	<input type="button" name="cancle" class="cancle" value="거절" > --%>
+                   
                     <%if(com.getComplaintState().equals("대기")||com.getComplaintState()==null||com.getComplaintState().equals("")) {%>
                         	<input type="button" class="accept" value="승인" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainAccept?hostNo=<%=com.getHostNo() %>&complaintNo=<%=com.getComplaintNo()%>&memberEmail=<%=com.getMemberEmail()%>'">
                         	<input type="button" name="cancle" class="cancle" value="거절" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainReject?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
-                        	<input type="button" name="out" class="out" value="권한박탈" style="color:red" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainOut?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>'">
+                        	<input type="button" name="out" class="out" value="권한박탈" style="color:red" onclick="location.href='<%=request.getContextPath()%>/admin/hostComplainOut?hostNo=<%=com.getHostNo() %>&memberEmail=<%=com.getMemberEmail() %>&complaintNo=<%=com.getComplaintNo()%>&memberNo=<%=com.getMemberNo() %>>'">
                     <%} else if(com.getComplaintState().equals("신고")){ %>
                     	<p>신고 완료</p>  
                     <%} else if(com.getComplaintState().equals("거절")) {%>
@@ -143,7 +103,12 @@
 		$("#searchType").change(); 
 		
 	});
-		
+	
+	$(function(){
+		$(".out").click(e=>{
+			alert("정말 호스트 권한박탈을 하시겠습니까?");
+		});
+	});
 	
 /*  	$(function(){
 		$(".accept, .cancel, .out").on({

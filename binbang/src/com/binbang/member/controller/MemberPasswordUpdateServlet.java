@@ -36,8 +36,7 @@ public class MemberPasswordUpdateServlet extends HttpServlet {
 		String newPw=request.getParameter("new_pw");//변경할 비밀번호(입력)
 		String email=request.getParameter("email2");
 		System.out.println(newPw);
-		System.out.println(email);
-		
+		System.out.println(email);		
 		
 		int result=new MemberService().updatePassword(email,newPw);
 		System.out.println(result);

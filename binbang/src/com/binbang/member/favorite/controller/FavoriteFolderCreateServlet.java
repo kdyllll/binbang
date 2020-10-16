@@ -18,53 +18,54 @@ import com.binbang.member.model.vo.Favorite;
 @WebServlet("/favorite/favoriteFolderCreate")
 public class FavoriteFolderCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FavoriteFolderCreateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
-		
-		String memberNo=request.getParameter("memberNo");
-		System.out.println(memberNo);
-		String folderName=request.getParameter("folderName");
-		System.out.println(folderName);
-		
-		Favorite f=new Favorite();
-		f.setMemberNo(memberNo);
-		f.setFolderName(folderName);				
-		
-		int result=new FavoriteService().createFolder(f);
-		
-		String msg="";
-		String loc="/";
-		
-		if(result>0) {
-			msg="폴더생성";
-			loc="/favorite/favoriteFolder?memberNo="+f.getMemberNo();
-			
-			/* loc="/member/myPage?email="+m.getEmail(); */
-		}else {
-			msg="폴더생성 실패";
-			/* loc="/member/mypagePrivate?email="+m.getEmail(); */
-		}
-		
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request,response);				
+	public FavoriteFolderCreateServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String memberNo = request.getParameter("memberNo");
+		System.out.println(memberNo);
+		String folderName = request.getParameter("folderName");
+		System.out.println(folderName);
+
+		Favorite f = new Favorite();
+		f.setMemberNo(memberNo);
+		f.setFolderName(folderName);
+
+		int result = new FavoriteService().createFolder(f);
+
+		String msg = "";
+		String loc = "/";
+
+		if (result > 0) {
+			msg = "폴더생성";
+			loc = "/favorite/favoriteFolder?memberNo=" + f.getMemberNo();
+		} else {
+			msg = "폴더생성 실패";
+		}
+
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/printMsg.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -18,33 +18,37 @@ import com.binbang.member.model.vo.Favorite;
 @WebServlet("/favorite/favoriteFolder")
 public class FavoriteFolderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FavoriteFolderServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {											
-		
-		String memberNo = request.getParameter("memberNo");				
-		List<Favorite> list = new FavoriteService().viewFolder(memberNo);		
-		System.out.println(list);
-		
-		request.setAttribute("list", list);		
-		request.setAttribute("memberNo", memberNo);
-		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);	
+	public FavoriteFolderServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String memberNo = request.getParameter("memberNo");
+		List<Favorite> list = new FavoriteService().viewFolder(memberNo);
+		System.out.println(list);
+
+		request.setAttribute("list", list);
+		request.setAttribute("memberNo", memberNo);
+		request.getRequestDispatcher("/views/member/favoriteFolder.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

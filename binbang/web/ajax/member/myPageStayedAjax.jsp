@@ -17,15 +17,16 @@
 	.house {
 		padding: 6% 2%;
 		display:flex;		
-		margin-bottom:50px;			
+		margin-bottom:50px;	
+		flex-flow:wrap;					
 	}	
 	.house > .myReserve,
 	.house > .myReserved,
 	.house > .myCancel {
 		position:relative;
-		width:250px;
-		height:300px;
-		margin : 3%;		
+		width:230px;
+		height:280px;
+		margin : 3%;
 	}
 	#houseResv{
 		font-size: 14px;
@@ -50,7 +51,7 @@
 		width:250px;
 		background-color: rgba(255, 255, 255, 0.836);
 		position: absolute;
-	  	top: 220px;
+	  	top: 205px;
 	  	left: 0;
 	}
 	.houseInfo{
