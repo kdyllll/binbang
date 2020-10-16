@@ -246,8 +246,8 @@
 				</div>
 			</div>
 
-			<div class="houseinfobox2">
-				<div>
+			<div >
+				<div class="houseinfobox2">
 					전하고 싶은말
 					<div class="houseIntroduce2"><%=h.getHouseGemsung()%></div>
 				</div>
@@ -420,9 +420,7 @@
      
  	//eqiipment 숙소에 split를 통해서 , 기준으로 자르는 js
      let eqiipment = '<%=h.getEquipment()%>';
-     
      const words1 = eqiipment.split(',');
-     
       let a1 = $("<div>");
       $(".eqiipment > .all1 ").html("");
       for(let i = 0; i<words1.length; i++) {   
